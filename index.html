@@ -18,10 +18,10 @@
                     <h1>OptiScale 360</h1>
                 </div>
                 <ul class="nav-menu">
-                    <li><a href="#home" class="nav-link">Home</a></li>
-                    <li><a href="#services" class="nav-link">Services</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                    <li><a href="/" class="nav-link">Home</a></li>
+                    <li><a href="/services.html" class="nav-link">Services</a></li>
+                    <li><a href="/about.html" class="nav-link">About</a></li>
+                    <li><a href="/contact.html" class="nav-link">Contact</a></li>
                 </ul>
                 <div class="nav-toggle">
                     <span class="bar"></span>
@@ -44,7 +44,52 @@
                     </div>
                 </div>
                 <div class="hero-visual">
-                    <div class="hero-graphic"></div>
+                    <div class="hero-graphic">
+                        <div class="hero-animation">
+                            <div class="floating-icon icon-1">
+                                <svg viewBox="0 0 64 64" class="hero-icon">
+                                    <circle cx="32" cy="32" r="28" fill="#3b82f6" opacity="0.1"/>
+                                    <path d="M32 8L40 24H24L32 8Z" fill="#2563eb"/>
+                                    <rect x="26" y="24" width="12" height="24" rx="2" fill="#3b82f6"/>
+                                    <circle cx="32" cy="52" r="4" fill="#1e40af"/>
+                                </svg>
+                            </div>
+                            <div class="floating-icon icon-2">
+                                <svg viewBox="0 0 64 64" class="hero-icon">
+                                    <circle cx="32" cy="32" r="28" fill="#10b981" opacity="0.1"/>
+                                    <path d="M16 32L24 24V28H40V36H24V40L16 32Z" fill="#059669"/>
+                                    <rect x="42" y="26" width="6" height="12" rx="1" fill="#10b981"/>
+                                </svg>
+                            </div>
+                            <div class="floating-icon icon-3">
+                                <svg viewBox="0 0 64 64" class="hero-icon">
+                                    <circle cx="32" cy="32" r="28" fill="#f59e0b" opacity="0.1"/>
+                                    <rect x="20" y="16" width="24" height="32" rx="4" fill="#d97706"/>
+                                    <rect x="24" y="20" width="16" height="2" rx="1" fill="#fbbf24"/>
+                                    <rect x="24" y="26" width="16" height="2" rx="1" fill="#fbbf24"/>
+                                    <rect x="24" y="32" width="12" height="2" rx="1" fill="#fbbf24"/>
+                                </svg>
+                            </div>
+                            <div class="hero-chart">
+                                <svg viewBox="0 0 200 120" class="chart-svg">
+                                    <defs>
+                                        <linearGradient id="chartGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:0.3"/>
+                                            <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:0"/>
+                                        </linearGradient>
+                                    </defs>
+                                    <path d="M20 100 L40 80 L60 65 L80 45 L100 35 L120 25 L140 30 L160 15 L180 10" 
+                                          stroke="#2563eb" stroke-width="3" fill="none" class="chart-line"/>
+                                    <path d="M20 100 L40 80 L60 65 L80 45 L100 35 L120 25 L140 30 L160 15 L180 10 L180 100 L20 100" 
+                                          fill="url(#chartGradient)" class="chart-area"/>
+                                    <circle cx="40" cy="80" r="4" fill="#2563eb" class="chart-dot"/>
+                                    <circle cx="80" cy="45" r="4" fill="#2563eb" class="chart-dot"/>
+                                    <circle cx="120" cy="25" r="4" fill="#2563eb" class="chart-dot"/>
+                                    <circle cx="160" cy="15" r="4" fill="#2563eb" class="chart-dot"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -57,22 +102,88 @@
                 </div>
                 <div class="services-grid">
                     <div class="service-card">
-                        <div class="service-icon">🚀</div>
+                        <div class="service-icon">
+                            <svg viewBox="0 0 64 64" class="service-svg">
+                                <defs>
+                                    <linearGradient id="rocketGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#3b82f6"/>
+                                        <stop offset="100%" style="stop-color:#1e40af"/>
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="32" cy="32" r="30" fill="url(#rocketGradient)" opacity="0.1"/>
+                                <path d="M32 8C28 8 25 11 25 15V25L32 45L39 25V15C39 11 36 8 32 8Z" fill="url(#rocketGradient)"/>
+                                <path d="M25 25L18 30L25 35V25Z" fill="#f59e0b"/>
+                                <path d="M39 25V35L46 30L39 25Z" fill="#f59e0b"/>
+                                <circle cx="32" cy="20" r="3" fill="#ffffff"/>
+                                <path d="M28 48L32 52L36 48L32 45L28 48Z" fill="#ef4444"/>
+                            </svg>
+                        </div>
                         <h3>Business Process Optimization</h3>
                         <p>Streamline workflows and eliminate bottlenecks with AI-driven process analysis and optimization recommendations.</p>
                     </div>
                     <div class="service-card">
-                        <div class="service-icon">📊</div>
+                        <div class="service-icon">
+                            <svg viewBox="0 0 64 64" class="service-svg">
+                                <defs>
+                                    <linearGradient id="analyticsGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#10b981"/>
+                                        <stop offset="100%" style="stop-color:#059669"/>
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="32" cy="32" r="30" fill="url(#analyticsGradient)" opacity="0.1"/>
+                                <rect x="12" y="45" width="8" height="12" rx="2" fill="url(#analyticsGradient)"/>
+                                <rect x="22" y="38" width="8" height="19" rx="2" fill="url(#analyticsGradient)"/>
+                                <rect x="32" y="28" width="8" height="29" rx="2" fill="url(#analyticsGradient)"/>
+                                <rect x="42" y="35" width="8" height="22" rx="2" fill="url(#analyticsGradient)"/>
+                                <path d="M12 22L22 18L32 12L42 16L52 10" stroke="#3b82f6" stroke-width="3" fill="none"/>
+                                <circle cx="22" cy="18" r="3" fill="#3b82f6"/>
+                                <circle cx="32" cy="12" r="3" fill="#3b82f6"/>
+                                <circle cx="42" cy="16" r="3" fill="#3b82f6"/>
+                            </svg>
+                        </div>
                         <h3>Data Analytics & Insights</h3>
                         <p>Transform raw data into actionable insights with advanced analytics and real-time business intelligence dashboards.</p>
                     </div>
                     <div class="service-card">
-                        <div class="service-icon">⚡</div>
+                        <div class="service-icon">
+                            <svg viewBox="0 0 64 64" class="service-svg">
+                                <defs>
+                                    <linearGradient id="scalingGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#8b5cf6"/>
+                                        <stop offset="100%" style="stop-color:#6d28d9"/>
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="32" cy="32" r="30" fill="url(#scalingGradient)" opacity="0.1"/>
+                                <path d="M32 12L26 20H38L32 12Z" fill="url(#scalingGradient)"/>
+                                <rect x="28" y="20" width="8" height="24" rx="2" fill="url(#scalingGradient)"/>
+                                <path d="M20 32L14 26L14 38L20 32Z" fill="#f59e0b"/>
+                                <path d="M44 32L50 26L50 38L44 32Z" fill="#f59e0b"/>
+                                <circle cx="32" cy="48" r="4" fill="#ef4444"/>
+                                <path d="M24 24L32 16L40 24" stroke="#fbbf24" stroke-width="2" fill="none"/>
+                            </svg>
+                        </div>
                         <h3>Performance Scaling</h3>
                         <p>Scale your operations efficiently with automated systems and intelligent resource allocation strategies.</p>
                     </div>
                     <div class="service-card">
-                        <div class="service-icon">🎯</div>
+                        <div class="service-icon">
+                            <svg viewBox="0 0 64 64" class="service-svg">
+                                <defs>
+                                    <linearGradient id="consultingGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#f59e0b"/>
+                                        <stop offset="100%" style="stop-color:#d97706"/>
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="32" cy="32" r="30" fill="url(#consultingGradient)" opacity="0.1"/>
+                                <circle cx="32" cy="32" r="16" fill="none" stroke="url(#consultingGradient)" stroke-width="3"/>
+                                <circle cx="32" cy="32" r="8" fill="url(#consultingGradient)"/>
+                                <circle cx="32" cy="16" r="3" fill="#ef4444"/>
+                                <circle cx="48" cy="32" r="3" fill="#ef4444"/>
+                                <circle cx="32" cy="48" r="3" fill="#ef4444"/>
+                                <circle cx="16" cy="32" r="3" fill="#ef4444"/>
+                                <path d="M26 26L38 38M38 26L26 38" stroke="#ffffff" stroke-width="2"/>
+                            </svg>
+                        </div>
                         <h3>Strategic Consulting</h3>
                         <p>Expert guidance to align your optimization efforts with business objectives and maximize ROI.</p>
                     </div>
