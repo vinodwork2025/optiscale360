@@ -972,6 +972,26 @@ p {
 .service-card p {
     color: var(--text-secondary);
     line-height: 1.7;
+    margin-bottom: var(--space-lg);
+}
+
+.service-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.95rem;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 2px;
+    transition: var(--transition);
+}
+
+.service-link:hover {
+    color: var(--text-primary);
+    border-bottom-color: var(--primary-color);
+    transform: translateX(4px);
 }
 
 /* About Section */
