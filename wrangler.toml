@@ -1,0 +1,20 @@
+name = "optiscale360"
+compatibility_date = "2024-09-04"
+
+[env.production]
+route = "optiscale360.com/*"
+
+[[env.production.rules]]
+type = "Text"
+globs = ["**/*.html"]
+fallthrough = true
+
+[[env.production.rules]]
+type = "Text" 
+globs = ["**/*.css"]
+fallthrough = true
+
+[[env.production.rules]]
+type = "Text"
+globs = ["**/*.js"]
+fallthrough = true
