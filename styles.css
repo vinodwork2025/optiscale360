@@ -293,6 +293,40 @@ p {
     letter-spacing: -0.02em;
 }
 
+/* Logo Image Styles */
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.logo-link:hover {
+    opacity: 0.8;
+}
+
+.logo-image {
+    height: 40px;
+    width: auto;
+    max-width: 200px;
+    transition: all 0.3s ease;
+}
+
+/* Responsive logo sizing */
+@media (max-width: 768px) {
+    .logo-image {
+        height: 32px;
+        max-width: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-image {
+        height: 28px;
+        max-width: 120px;
+    }
+}
+
 .nav-menu {
     display: flex;
     list-style: none;
