@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next-Gen AI-Ready Websites – Pay What You Value | Optiscale360</title>
+    <meta name="description" content="Launch your future-proof website with no upfront costs. Zero risk. You decide the price only after experiencing real results with our AI-optimized websites.">
+    <meta name="keywords" content="AI websites, pay what you value, web design, SEO optimization, mobile-first, conversion optimization">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://optiscale360.com/pay-what-you-value">
+    <meta property="og:title" content="Next-Gen AI-Ready Websites – Pay What You Value">
+    <meta property="og:description" content="Launch your future-proof website with no upfront costs. Zero risk. You decide the price only after experiencing real results.">
+    <meta property="og:image" content="https://optiscale360.com/og-image-landing.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://optiscale360.com/pay-what-you-value">
+    <meta property="twitter:title" content="Next-Gen AI-Ready Websites – Pay What You Value">
+    <meta property="twitter:description" content="Launch your future-proof website with no upfront costs. Zero risk. You decide the price only after experiencing real results.">
+    <meta property="twitter:image" content="https://optiscale360.com/twitter-image-landing.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/webp" href="favicon.webp">
+    <link rel="apple-touch-icon" href="apple-touch-icon.webp">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Next-Gen AI-Ready Websites",
+        "description": "AI-optimized websites with pay-what-you-value pricing model",
+        "provider": {
+            "@type": "Organization",
+            "name": "Optiscale360",
+            "url": "https://optiscale360.com",
+            "logo": "https://optiscale360.com/logo.webp",
+            "sameAs": [
+                "https://linkedin.com/company/optiscale-advisors",
+                "https://twitter.com/optiscale"
+            ]
+        },
+        "offers": {
+            "@type": "Offer",
+            "name": "Pay What You Value Website Development",
+            "description": "Zero upfront cost website development - you decide the price after experiencing results",
+            "priceSpecification": {
+                "@type": "PaymentChargeSpecification",
+                "price": "0",
+                "priceCurrency": "USD",
+                "valueAddedTaxIncluded": "false"
+            },
+            "availability": "https://schema.org/InStock"
+        },
+        "areaServed": "Worldwide",
+        "serviceType": ["Web Development", "AI Integration", "SEO Optimization"],
+        "category": "Professional Services"
+    }
+    </script>
+    
+    <!-- Google Analytics (Replace with your tracking ID) -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script> -->
+</head>
+<body class="antialiased">
+    <div id="root"></div>
+    
+    <!-- React App will be mounted here -->
+    <script type="module">
+        // Import and render the React component
+        // This is a placeholder - in production, you would bundle this properly
+        console.log('Ready to mount React component: PayWhatYouValueLanding');
+    </script>
+    
+    <!-- Performance and Analytics Scripts -->
+    <script>
+        // Track page load time
+        window.addEventListener('load', function() {
+            const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+            console.log('Page Load Time:', loadTime + 'ms');
+        });
+        
+        // Track CTA clicks
+        document.addEventListener('click', function(e) {
+            if (e.target.matches('button, .cta-button, [role="button"]')) {
+                // Send analytics event
+                console.log('CTA clicked:', e.target.textContent.trim());
+                // gtag('event', 'click', { event_category: 'CTA', event_label: e.target.textContent.trim() });
+            }
+        });
+    </script>
+</body>
+</html>

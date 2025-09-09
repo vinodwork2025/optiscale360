@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Transform your business with AI-powered SEO and next-generation websites. Get 5X revenue growth with future-proof strategies.">
+    <meta name="keywords" content="AI SEO, LLM optimization, AI-ready websites, business transformation, operations scaling">
+    <meta name="author" content="Optiscale Advisors">
+    
+    <title>Transform Your Business with AI-Powered Solutions | Optiscale Advisors</title>
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* STUNNING PREMIUM DESIGN - Revolutionary Visual Experience */
+        
+        /* Advanced CSS Variables */
+        :root {
+            --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+            --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            --gradient-text: linear-gradient(135deg, #2563eb 0%, #7c3aed 50%, #db2777 100%);
+            --glow-primary: 0 0 40px rgba(37, 99, 235, 0.3);
+            --glow-secondary: 0 0 60px rgba(124, 58, 237, 0.2);
+            --backdrop-premium: blur(20px) saturate(180%);
+        }
+
+        /* Stunning Header */
+        .header-premium {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: var(--backdrop-premium);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .header-premium.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        .logo-premium {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+            font-size: 1.5rem;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-hero);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            box-shadow: var(--glow-primary);
+        }
+
+        .nav-premium {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link-premium {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link-premium:hover {
+            color: #2563eb;
+            background: rgba(37, 99, 235, 0.1);
+        }
+
+        .cta-premium {
+            background: var(--gradient-hero);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: var(--glow-primary);
+            transition: all 0.3s ease;
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        .cta-premium:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--glow-secondary);
+        }
+
+        /* Revolutionary Hero Section */
+        .hero-revolutionary {
+            min-height: 100vh;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(124, 58, 237, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(219, 39, 119, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            padding: 120px 2rem 80px;
+        }
+
+        /* Animated Background Elements */
+        .hero-bg-element {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--gradient-hero);
+            opacity: 0.1;
+            animation: float-rotate 20s ease-in-out infinite;
+        }
+
+        .hero-bg-element:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            width: 300px;
+            height: 300px;
+            animation-delay: 0s;
+        }
+
+        .hero-bg-element:nth-child(2) {
+            top: 60%;
+            right: 10%;
+            width: 200px;
+            height: 200px;
+            animation-delay: 5s;
+        }
+
+        .hero-bg-element:nth-child(3) {
+            bottom: 20%;
+            left: 20%;
+            width: 150px;
+            height: 150px;
+            animation-delay: 10s;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-content {
+            text-align: center;
+            margin-bottom: 6rem;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        /* Premium Service Cards Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card-premium {
+            background: var(--gradient-glass);
+            backdrop-filter: var(--backdrop-premium);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .service-card-premium::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-hero);
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            z-index: 1;
+        }
+
+        .service-card-premium:hover::before {
+            opacity: 0.05;
+        }
+
+        .service-card-premium:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.15),
+                var(--glow-primary);
+            border-color: rgba(37, 99, 235, 0.3);
+        }
+
+        .service-card-premium > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-icon-premium {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-hero);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            color: white;
+            font-size: 2rem;
+            box-shadow: var(--glow-primary);
+            animation: gentle-bounce 3s ease-in-out infinite;
+        }
+
+        .service-title-premium {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .service-description-premium {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+        }
+
+        .service-btn-premium {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 32px;
+            background: var(--gradient-hero);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: var(--glow-primary);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-btn-premium::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s;
+        }
+
+        .service-btn-premium:hover::before {
+            left: 100%;
+        }
+
+        .service-btn-premium:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--glow-secondary);
+        }
+
+        /* Stunning Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float-rotate {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-20px) rotate(90deg);
+            }
+            50% {
+                transform: translateY(-10px) rotate(180deg);
+            }
+            75% {
+                transform: translateY(-30px) rotate(270deg);
+            }
+        }
+
+        @keyframes gentle-bounce {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow: var(--glow-primary);
+            }
+            50% {
+                box-shadow: var(--glow-secondary);
+            }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 1rem;
+                height: 70px;
+            }
+
+            .nav-premium {
+                display: none;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .service-card-premium {
+                padding: 2rem;
+            }
+
+            .hero-revolutionary {
+                padding: 100px 1rem 60px;
+            }
+        }
+
+        /* Premium Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-menu-btn span {
+            width: 24px;
+            height: 3px;
+            background: var(--gradient-hero);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- PREMIUM HEADER -->
+    <header class="header-premium" id="header">
+        <div class="header-container">
+            <div class="logo-premium">
+                <div class="logo-icon">OS</div>
+                Optiscale Advisors
+            </div>
+            
+            <nav>
+                <ul class="nav-premium">
+                    <li><a href="#home" class="nav-link-premium">Home</a></li>
+                    <li><a href="#services" class="nav-link-premium">Services</a></li>
+                    <li><a href="#about" class="nav-link-premium">About</a></li>
+                    <li><a href="#contact" class="nav-link-premium">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <a href="#contact" class="cta-premium">Get Free Audit</a>
+            
+            <button class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- REVOLUTIONARY HERO SECTION -->
+    <section class="hero-revolutionary" id="home">
+        <!-- Animated Background Elements -->
+        <div class="hero-bg-element"></div>
+        <div class="hero-bg-element"></div>
+        <div class="hero-bg-element"></div>
+        
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Transform Your Business with AI-Powered Excellence
+                </h1>
+                <p class="hero-subtitle">
+                    Dominate search rankings and accelerate growth with cutting-edge AI technology. 
+                    Choose your path to exponential success and revolutionize your digital presence.
+                </p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- AI SEO Service -->
+                <div class="service-card-premium">
+                    <div class="service-icon-premium">
+                        🚀
+                    </div>
+                    <h3 class="service-title-premium">AI SEO Domination</h3>
+                    <p class="service-description-premium">
+                        Achieve 5X revenue growth with next-generation LLM-optimized SEO. 
+                        Dominate Google, AI overviews, and emerging search engines with 
+                        future-proof strategies that deliver measurable results.
+                    </p>
+                    <a href="#contact" class="service-btn-premium">
+                        Get Free AI SEO Audit
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- AI Website Service -->
+                <div class="service-card-premium">
+                    <div class="service-icon-premium">
+                        ⚡
+                    </div>
+                    <h3 class="service-title-premium">AI-Ready Websites</h3>
+                    <p class="service-description-premium">
+                        Launch your future-proof website with our revolutionary "Pay What You Value" model. 
+                        Zero upfront costs, lightning-fast performance, and mobile-first design 
+                        optimized for AI and maximum conversions.
+                    </p>
+                    <a href="#contact" class="service-btn-premium">
+                        Get AI-Ready Website
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section style="padding: 6rem 2rem; background: var(--bg-secondary);">
+        <div class="hero-container">
+            <h2 style="text-align: center; font-size: 3rem; font-weight: 800; margin-bottom: 4rem; background: var(--gradient-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                Why Choose Optiscale?
+            </h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem;">
+                <div style="text-align: center; padding: 2rem;">
+                    <div style="font-size: 4rem; margin-bottom: 1.5rem;">📈</div>
+                    <h4 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Proven Results</h4>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">Track record of scaling operations and improving search visibility for 100+ businesses worldwide</p>
+                </div>
+                
+                <div style="text-align: center; padding: 2rem;">
+                    <div style="font-size: 4rem; margin-bottom: 1.5rem;">🤖</div>
+                    <h4 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Cutting-Edge AI</h4>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">Latest AI technologies and LLM strategies to stay ahead of the competition</p>
+                </div>
+                
+                <div style="text-align: center; padding: 2rem;">
+                    <div style="font-size: 4rem; margin-bottom: 1.5rem;">🎯</div>
+                    <h4 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Tailored Solutions</h4>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">Custom strategies designed specifically for your business needs and industry</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA Section -->
+    <section id="contact" style="padding: 6rem 2rem; text-align: center; background: var(--gradient-hero); color: white;">
+        <div class="hero-container">
+            <h2 style="font-size: 3rem; font-weight: 800; margin-bottom: 2rem;">
+                Ready to Transform Your Business?
+            </h2>
+            <p style="font-size: 1.3rem; margin-bottom: 3rem; opacity: 0.9; max-width: 700px; margin-left: auto; margin-right: auto;">
+                Get a free audit and discover how we can revolutionize your operations and skyrocket your online visibility.
+            </p>
+            <a href="mailto:hello@optiscale360.com" class="service-btn-premium" style="background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.3); font-size: 1.2rem;">
+                Start Your Transformation Today
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
