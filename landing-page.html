@@ -9,17 +9,17 @@
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://optiscale360.com/pay-what-you-value">
+    <meta property="og:url" content="https://optiscale360.pages.dev/landing-page.html">
     <meta property="og:title" content="Next-Gen AI-Ready Websites – Pay What You Value">
     <meta property="og:description" content="Launch your future-proof website with no upfront costs. Zero risk. You decide the price only after experiencing real results.">
-    <meta property="og:image" content="https://optiscale360.com/og-image-landing.jpg">
+    <meta property="og:image" content="https://optiscale360.pages.dev/og-image-landing.jpg">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://optiscale360.com/pay-what-you-value">
+    <meta property="twitter:url" content="https://optiscale360.pages.dev/landing-page.html">
     <meta property="twitter:title" content="Next-Gen AI-Ready Websites – Pay What You Value">
     <meta property="twitter:description" content="Launch your future-proof website with no upfront costs. Zero risk. You decide the price only after experiencing real results.">
-    <meta property="twitter:image" content="https://optiscale360.com/twitter-image-landing.jpg">
+    <meta property="twitter:image" content="https://optiscale360.pages.dev/twitter-image-landing.jpg">
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -30,6 +30,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Existing Styles -->
+    <link rel="stylesheet" href="styles.css">
     
     <!-- TailwindCSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -63,8 +66,8 @@
         "provider": {
             "@type": "Organization",
             "name": "Optiscale360",
-            "url": "https://optiscale360.com",
-            "logo": "https://optiscale360.com/logo.webp",
+            "url": "https://optiscale360.pages.dev",
+            "logo": "https://optiscale360.pages.dev/logo.webp",
             "sameAs": [
                 "https://linkedin.com/company/optiscale-advisors",
                 "https://twitter.com/optiscale"
@@ -88,40 +91,701 @@
     }
     </script>
     
-    <!-- Google Analytics (Replace with your tracking ID) -->
-    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'GA_MEASUREMENT_ID');
-    </script> -->
-</head>
-<body class="antialiased">
-    <div id="root"></div>
-    
-    <!-- React App will be mounted here -->
-    <script type="module">
-        // Import and render the React component
-        // This is a placeholder - in production, you would bundle this properly
-        console.log('Ready to mount React component: PayWhatYouValueLanding');
-    </script>
-    
-    <!-- Performance and Analytics Scripts -->
-    <script>
-        // Track page load time
-        window.addEventListener('load', function() {
-            const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
-            console.log('Page Load Time:', loadTime + 'ms');
-        });
+    <style>
+        /* Additional Landing Page Specific Styles */
+        .hero-devices {
+            position: relative;
+            max-width: 400px;
+            margin: 0 auto;
+        }
         
+        .device-mockup {
+            background: #1f2937;
+            border-radius: 12px;
+            padding: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .device-screen {
+            background: white;
+            border-radius: 8px;
+            padding: 16px;
+            min-height: 120px;
+        }
+        
+        .device-mockup:hover {
+            transform: rotate(0deg) !important;
+        }
+        
+        .device-desktop {
+            transform: rotate(3deg);
+        }
+        
+        .device-mobile {
+            position: absolute;
+            bottom: -20px;
+            right: -40px;
+            width: 80px;
+            transform: rotate(-12deg);
+        }
+        
+        .device-tablet {
+            position: absolute;
+            top: -20px;
+            left: -40px;
+            width: 120px;
+            transform: rotate(12deg);
+        }
+        
+        .floating-element {
+            position: absolute;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .floating-element:nth-child(2) {
+            animation-delay: 1s;
+        }
+        
+        .floating-element:nth-child(3) {
+            animation-delay: 2s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .metric-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(229, 231, 235, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .step-connector {
+            position: relative;
+        }
+        
+        .step-connector::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -50%;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(to right, #3b82f6, transparent);
+            transform: translateY(-50%);
+        }
+        
+        .step-connector:last-child::after {
+            display: none;
+        }
+        
+        .testimonial-card {
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 24px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+            background: linear-gradient(135deg, #1d4ed8, #1e40af);
+        }
+        
+        .secondary-button {
+            border: 2px solid #d1d5db;
+            color: #374151;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .secondary-button:hover {
+            border-color: #2563eb;
+            color: #2563eb;
+        }
+    </style>
+</head>
+<body class="antialiased bg-white">
+    <!-- Header (Using existing header from main site) -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="/" class="logo-link">
+                        <img src="Optiscale360_logo.svg" alt="OptiScale 360" class="logo-image">
+                    </a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="/" class="nav-link">Home</a></li>
+                    <li><a href="/services.html" class="nav-link">Services</a></li>
+                    <li><a href="/landing-page.html" class="nav-link stunning-link active">Pay What You Value</a></li>
+                    <li><a href="/contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="nav-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section class="py-20 bg-gradient-to-br from-gray-50 to-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-8 fade-in-up">
+                        <h1 class="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+                            Next-Gen AI-Ready Websites – 
+                            <span class="text-blue-600"> Pay What You Value</span>
+                        </h1>
+                        <p class="text-xl text-gray-600 leading-relaxed">
+                            Launch your future-proof website with no upfront costs. Zero risk. 
+                            You decide the price only after experiencing real results.
+                        </p>
+                        
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="#contact" class="cta-button">
+                                Get My Free Next-Gen Website
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </a>
+                            <a href="#how-it-works" class="secondary-button">
+                                See How It Works
+                            </a>
+                        </div>
+
+                        <div class="flex items-center space-x-6 text-sm text-gray-500">
+                            <div class="flex items-center space-x-1">
+                                <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                <span>Zero upfront cost</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                <span>AI-optimized</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                <span>Mobile-first</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative fade-in-up">
+                        <div class="hero-devices">
+                            <!-- Desktop Mockup -->
+                            <div class="device-mockup device-desktop">
+                                <div class="device-screen">
+                                    <div class="flex space-x-1 mb-2">
+                                        <div class="w-2 h-2 bg-red-400 rounded-full"></div>
+                                        <div class="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                                        <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                                    </div>
+                                    <div class="space-y-2">
+                                        <div class="h-2 bg-gray-200 rounded w-full"></div>
+                                        <div class="h-2 bg-blue-600 rounded w-3/4"></div>
+                                        <div class="h-2 bg-gray-200 rounded w-1/2"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Mobile Mockup -->
+                            <div class="device-mockup device-mobile">
+                                <div class="device-screen" style="min-height: 60px;">
+                                    <div class="h-1 bg-gray-300 rounded w-8 mx-auto mb-1"></div>
+                                    <div class="space-y-1">
+                                        <div class="h-1 bg-blue-600 rounded w-full"></div>
+                                        <div class="h-1 bg-gray-200 rounded w-3/4"></div>
+                                        <div class="h-1 bg-gray-200 rounded w-1/2"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tablet Mockup -->
+                            <div class="device-mockup device-tablet">
+                                <div class="device-screen" style="min-height: 80px;">
+                                    <div class="space-y-1">
+                                        <div class="h-1 bg-gray-200 rounded w-full"></div>
+                                        <div class="h-1 bg-blue-600 rounded w-4/5"></div>
+                                        <div class="h-1 bg-gray-200 rounded w-3/5"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Elements -->
+                        <div class="floating-element bg-blue-100 text-blue-600" style="top: -30px; left: 20%;">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                        </div>
+                        <div class="floating-element bg-green-100 text-green-600" style="top: 50%; right: -20px;">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                            </svg>
+                        </div>
+                        <div class="floating-element bg-purple-100 text-purple-600" style="bottom: -30px; left: 30%;">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Value Proposition Section -->
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 fade-in-up">
+                    <h2 class="text-4xl font-bold text-gray-900 mb-4">
+                        Why Choose Our AI-Ready Websites?
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Experience the future of web development with zero risk and maximum value
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="metric-card fade-in-up">
+                        <div class="text-blue-600 mb-4">
+                            <svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">
+                            Lightning-Fast, Mobile-First Design
+                        </h3>
+                        <p class="text-gray-600">
+                            Optimized for speed and mobile performance from day one
+                        </p>
+                    </div>
+                    
+                    <div class="metric-card fade-in-up">
+                        <div class="text-blue-600 mb-4">
+                            <svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">
+                            AI & SEO Optimized
+                        </h3>
+                        <p class="text-gray-600">
+                            Built with AI integration and SEO best practices for maximum visibility
+                        </p>
+                    </div>
+                    
+                    <div class="metric-card fade-in-up">
+                        <div class="text-blue-600 mb-4">
+                            <svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">
+                            Conversion-Focused Layouts
+                        </h3>
+                        <p class="text-gray-600">
+                            Designed to turn visitors into customers with proven conversion tactics
+                        </p>
+                    </div>
+                    
+                    <div class="metric-card fade-in-up">
+                        <div class="text-blue-600 mb-4">
+                            <svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">
+                            Zero Risk, 100% Trust-Based
+                        </h3>
+                        <p class="text-gray-600">
+                            No upfront payment required – pay only when you see the value
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section id="how-it-works" class="py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 fade-in-up">
+                    <h2 class="text-4xl font-bold text-gray-900 mb-4">
+                        How It Works
+                    </h2>
+                    <p class="text-xl text-gray-600">
+                        Simple, transparent, and completely risk-free
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8 relative">
+                    <div class="text-center relative z-10 fade-in-up step-connector">
+                        <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">
+                            01
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">
+                            We Design & Launch Your AI-Ready Site
+                        </h3>
+                        <p class="text-gray-600">
+                            Our experts create your modern, AI-optimized website tailored to your business goals.
+                        </p>
+                    </div>
+                    
+                    <div class="text-center relative z-10 fade-in-up step-connector">
+                        <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">
+                            02
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">
+                            You Experience Growth & Results
+                        </h3>
+                        <p class="text-gray-600">
+                            Watch as your site drives traffic, generates leads, and grows your business.
+                        </p>
+                    </div>
+                    
+                    <div class="text-center relative z-10 fade-in-up step-connector">
+                        <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">
+                            03
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">
+                            You Pay What You Believe It's Worth
+                        </h3>
+                        <p class="text-gray-600">
+                            After experiencing the value, you decide what our work is worth to your business.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Proof Section -->
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 fade-in-up">
+                    <h2 class="text-4xl font-bold text-gray-900 mb-4">
+                        Trusted by Industry Leaders
+                    </h2>
+                    <p class="text-xl text-gray-600">
+                        See what our clients say about our AI-ready websites
+                    </p>
+                </div>
+
+                <!-- Key Stats -->
+                <div class="grid md:grid-cols-3 gap-8 mb-16">
+                    <div class="text-center fade-in-up">
+                        <div class="text-4xl font-bold text-blue-600 mb-2">500+</div>
+                        <div class="text-gray-600">Businesses Optimized</div>
+                    </div>
+                    <div class="text-center fade-in-up">
+                        <div class="text-4xl font-bold text-blue-600 mb-2">85%</div>
+                        <div class="text-gray-600">Average Efficiency Increase</div>
+                    </div>
+                    <div class="text-center fade-in-up">
+                        <div class="text-4xl font-bold text-blue-600 mb-2">24/7</div>
+                        <div class="text-gray-600">Support Available</div>
+                    </div>
+                </div>
+
+                <!-- Testimonials -->
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="testimonial-card fade-in-up">
+                        <div class="flex mb-4">
+                            <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                            <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                            <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                            <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                            <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                        </div>
+                        <p class="text-gray-600 mb-4 italic">
+                            "The pay-what-you-value approach gave us confidence to try their service. The results exceeded our expectations!"
+                        </p>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-gray-300 rounded-full mr-3"></div>
+                            <div>
+                                <div class="font-semibold text-gray-900">Sarah Johnson</div>
+                                <div class="text-sm text-gray-500">CEO, TechStart Inc.</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card fade-in-up">
+                        <div class="flex mb-4">
+                            <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                            <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                            <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                            <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                            <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                        </div>
+                        <p class="text-gray-600 mb-4 italic">
+                            "Our website traffic increased by 300% in just 8 weeks. The AI optimization really works."
+                        </p>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-gray-300 rounded-full mr-3"></div>
+                            <div>
+                                <div class="font-semibold text-gray-900">Michael Chen</div>
+                                <div class="text-sm text-gray-500">Marketing Director</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card fade-in-up">
+                        <div class="flex mb-4">
+                            <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                            <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                            <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                            <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                            <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                        </div>
+                        <p class="text-gray-600 mb-4 italic">
+                            "Finally, a web agency that puts results before payment. Highly recommended!"
+                        </p>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-gray-300 rounded-full mr-3"></div>
+                            <div>
+                                <div class="font-semibold text-gray-900">Emily Rodriguez</div>
+                                <div class="text-sm text-gray-500">Founder, GrowthCo</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Risk-Free Guarantee Banner -->
+        <section class="py-16 bg-blue-50">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in-up">
+                <svg class="w-16 h-16 text-blue-600 mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                </svg>
+                <h3 class="text-3xl font-bold text-gray-900 mb-4">
+                    100% Risk-Free Guarantee
+                </h3>
+                <p class="text-xl text-gray-600">
+                    Zero upfront cost. Zero risk. 100% Value-Driven. 
+                    You only pay if you're completely satisfied with the results.
+                </p>
+            </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section id="contact" class="py-20 bg-white">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <div class="space-y-8 fade-in-up">
+                    <h2 class="text-5xl font-bold text-gray-900">
+                        Ready for Your Future-Proof Website?
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                        Join hundreds of businesses who've transformed their online presence 
+                        with our risk-free approach.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="mailto:hello@optiscale360.com?subject=Free AI Website Request" class="cta-button">
+                            Get My Free Next-Gen Website
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                        <a href="/" class="secondary-button">
+                            See Demo Designs
+                        </a>
+                    </div>
+
+                    <div class="mt-12">
+                        <div class="w-32 h-32 bg-blue-100 rounded-full flex items-center justify-center mx-auto">
+                            <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (Using existing footer from main site) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>OptiScale 360</h3>
+                    <p>Creating AI-ready websites that drive real business results</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="/services.html">AI Website Design</a></li>
+                            <li><a href="/services.html">SEO Optimization</a></li>
+                            <li><a href="/services.html">Performance Scaling</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Contact</h4>
+                        <ul>
+                            <li><a href="mailto:hello@optiscale360.com">hello@optiscale360.com</a></li>
+                            <li><a href="tel:+919876543210">+91 98765 43210</a></li>
+                            <li>24/7 Support Available</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 OptiScale 360. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in-up elements
+        document.querySelectorAll('.fade-in-up').forEach((el) => {
+            observer.observe(el);
+        });
+
         // Track CTA clicks
         document.addEventListener('click', function(e) {
-            if (e.target.matches('button, .cta-button, [role="button"]')) {
-                // Send analytics event
+            if (e.target.matches('.cta-button, .secondary-button')) {
                 console.log('CTA clicked:', e.target.textContent.trim());
+                // Add your analytics tracking here
                 // gtag('event', 'click', { event_category: 'CTA', event_label: e.target.textContent.trim() });
             }
+        });
+
+        // Mobile menu functionality (if needed)
+        const mobileToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        if (mobileToggle && navMenu) {
+            mobileToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                mobileToggle.classList.toggle('active');
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
         });
     </script>
 </body>
