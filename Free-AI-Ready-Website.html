@@ -669,15 +669,19 @@
             transition: transform 0.3s ease;
         }
 
-        /* Step Illustrations */
+        /* Step Illustrations - Professional Design */
         .step-illustration {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 60px;
+            height: 64px;
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.6s ease;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            border-radius: 16px;
+            padding: 8px;
+            margin-bottom: 16px;
         }
 
         .step-illustration.visible {
@@ -686,8 +690,29 @@
         }
 
         .step-svg {
-            width: 60px;
-            height: 60px;
+            width: 48px;
+            height: 48px;
+            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.1));
+        }
+        
+        .glass-card {
+            padding: 16px !important;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        
+        .glass-card h3 {
+            margin-bottom: 8px !important;
+            font-size: 1.125rem !important;
+            line-height: 1.4 !important;
+        }
+        
+        .glass-card p {
+            font-size: 0.875rem !important;
+            line-height: 1.5 !important;
+            flex-grow: 1;
         }
 
         /* Responsive adjustments */
@@ -1260,51 +1285,42 @@
                             <!-- Connector Line -->
                             <div class="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-blue-500 to-transparent z-0"></div>
                         </div>
-                        <div class="glass-card rounded-xl p-4 hover-lift">
+                        <div class="glass-card rounded-xl hover-lift">
                             <!-- Draft Illustration -->
-                            <div class="step-illustration mb-4">
-                                <svg class="step-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-                                    <g class="draft-elements">
-                                        <!-- Design canvas -->
-                                        <rect x="20" y="30" width="80" height="60" rx="8" fill="#595959" stroke="#06b6d4" stroke-width="2" opacity="0">
-                                            <animate attributeName="opacity" values="0;1" dur="1s" begin="0s" fill="freeze"/>
-                                        </rect>
-                                        <!-- Canvas glow effect -->
-                                        <rect x="18" y="28" width="84" height="64" rx="10" fill="none" stroke="#06b6d4" stroke-width="1" opacity="0">
-                                            <animate attributeName="opacity" values="0;0.3;0.3" dur="1s" begin="0s" fill="freeze"/>
-                                        </rect>
-                                        <!-- Design elements appearing -->
-                                        <rect x="30" y="40" width="20" height="8" rx="2" fill="#06b6d4" opacity="0">
-                                            <animate attributeName="opacity" values="0;1" dur="0.5s" begin="0.5s" fill="freeze"/>
-                                        </rect>
-                                        <rect x="30" y="52" width="35" height="4" rx="1" fill="#888888" opacity="0">
-                                            <animate attributeName="opacity" values="0;1" dur="0.5s" begin="0.7s" fill="freeze"/>
-                                        </rect>
-                                        <rect x="30" y="58" width="25" height="4" rx="1" fill="#808080" opacity="0">
-                                            <animate attributeName="opacity" values="0;1" dur="0.5s" begin="0.9s" fill="freeze"/>
-                                        </rect>
-                                        <!-- Floating design tools -->
-                                        <circle cx="85" cy="45" r="8" fill="#8b5cf6" opacity="0">
-                                            <animate attributeName="opacity" values="0;1" dur="0.3s" begin="1.1s" fill="freeze"/>
-                                            <animateTransform attributeName="transform" type="translate" values="10,10;0,0" dur="0.3s" begin="1.1s" fill="freeze"/>
-                                        </circle>
-                                        <circle cx="85" cy="45" r="10" fill="none" stroke="#8b5cf6" stroke-width="1" opacity="0">
-                                            <animate attributeName="opacity" values="0;0.4" dur="0.3s" begin="1.1s" fill="freeze"/>
-                                        </circle>
-                                        <rect x="70" y="65" width="12" height="8" rx="2" fill="#059669" opacity="0">
-                                            <animate attributeName="opacity" values="0;1" dur="0.3s" begin="1.3s" fill="freeze"/>
-                                            <animateTransform attributeName="transform" type="translate" values="-10,10;0,0" dur="0.3s" begin="1.3s" fill="freeze"/>
-                                        </rect>
-                                        <rect x="69" y="64" width="14" height="10" rx="3" fill="none" stroke="#10b981" stroke-width="1" opacity="0">
-                                            <animate attributeName="opacity" values="0;0.4" dur="0.3s" begin="1.3s" fill="freeze"/>
-                                        </rect>
-                                    </g>
+                            <div class="step-illustration">
+                                <svg class="step-svg" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <linearGradient id="draftGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+                                            <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:1" />
+                                        </linearGradient>
+                                        <filter id="glow">
+                                            <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                                            <feMerge> 
+                                                <feMergeNode in="coloredBlur"/>
+                                                <feMergeNode in="SourceGraphic"/>
+                                            </feMerge>
+                                        </filter>
+                                    </defs>
+                                    <!-- Modern laptop/screen -->
+                                    <rect x="6" y="12" width="36" height="24" rx="3" fill="url(#draftGrad)" stroke="#60a5fa" stroke-width="1"/>
+                                    <!-- Screen content -->
+                                    <rect x="9" y="15" width="12" height="3" rx="1" fill="#ffffff" opacity="0.9"/>
+                                    <rect x="9" y="20" width="18" height="2" rx="1" fill="#e2e8f0" opacity="0.8"/>
+                                    <rect x="9" y="24" width="15" height="2" rx="1" fill="#cbd5e1" opacity="0.7"/>
+                                    <rect x="9" y="28" width="20" height="2" rx="1" fill="#94a3b8" opacity="0.6"/>
+                                    <!-- Design elements -->
+                                    <circle cx="36" cy="20" r="3" fill="#10b981" opacity="0.9"/>
+                                    <rect x="30" y="28" width="8" height="4" rx="1" fill="#f59e0b" opacity="0.8"/>
+                                    <!-- Base -->
+                                    <rect x="20" y="36" width="8" height="2" rx="1" fill="#6b7280"/>
+                                    <rect x="18" y="38" width="12" height="3" rx="1" fill="#374151"/>
                                 </svg>
                             </div>
-                            <h3 class="text-lg font-bold text-gray-900 mb-2">
+                            <h3 class="font-bold text-gray-900">
                                 Get Your Free Draft
                             </h3>
-                            <p class="text-sm text-gray-600 leading-snug">
+                            <p class="text-gray-600">
                                 We design and share a working draft of your website — tailored to your brand and goals. No upfront payment.
                             </p>
                         </div>
@@ -1319,53 +1335,37 @@
                             <!-- Connector Line -->
                             <div class="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-green-500 to-transparent z-0"></div>
                         </div>
-                        <div class="glass-card rounded-xl p-4 hover-lift">
+                        <div class="glass-card rounded-xl hover-lift">
                             <!-- Approve Illustration -->
-                            <div class="step-illustration mb-4">
-                                <svg class="step-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-                                    <g class="approve-elements">
-                                        <!-- Review screen -->
-                                        <rect x="15" y="25" width="90" height="70" rx="6" fill="#595959" stroke="#059669" stroke-width="2" opacity="0">
-                                            <animate attributeName="opacity" values="0;1" dur="0.8s" begin="0s" fill="freeze"/>
-                                        </rect>
-                                        <!-- Screen glow -->
-                                        <rect x="13" y="23" width="94" height="74" rx="8" fill="none" stroke="#10b981" stroke-width="1" opacity="0">
-                                            <animate attributeName="opacity" values="0;0.3;0.3" dur="0.8s" begin="0s" fill="freeze"/>
-                                        </rect>
-                                        <!-- Content blocks -->
-                                        <rect x="25" y="35" width="25" height="6" rx="2" fill="#059669" opacity="0">
-                                            <animate attributeName="opacity" values="0;1" dur="0.4s" begin="0.3s" fill="freeze"/>
-                                        </rect>
-                                        <rect x="25" y="45" width="40" height="4" rx="1" fill="#808080" opacity="0">
-                                            <animate attributeName="opacity" values="0;1" dur="0.4s" begin="0.5s" fill="freeze"/>
-                                        </rect>
-                                        <rect x="25" y="52" width="35" height="4" rx="1" fill="#7a7a7a" opacity="0">
-                                            <animate attributeName="opacity" values="0;1" dur="0.4s" begin="0.7s" fill="freeze"/>
-                                        </rect>
-                                        <!-- Approval checkmark -->
-                                        <circle cx="85" cy="45" r="12" fill="#059669" opacity="0">
-                                            <animate attributeName="opacity" values="0;1" dur="0.5s" begin="1s" fill="freeze"/>
-                                            <animate attributeName="r" values="0;12" dur="0.5s" begin="1s" fill="freeze"/>
-                                        </circle>
-                                        <!-- Checkmark glow -->
-                                        <circle cx="85" cy="45" r="15" fill="none" stroke="#10b981" stroke-width="2" opacity="0">
-                                            <animate attributeName="opacity" values="0;0.6;0.6" dur="0.5s" begin="1s" fill="freeze"/>
-                                            <animate attributeName="r" values="12;15" dur="0.5s" begin="1s" fill="freeze"/>
-                                        </circle>
-                                        <path d="M79 45 L83 49 L91 41" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0">
-                                            <animate attributeName="opacity" values="0;1" dur="0.3s" begin="1.2s" fill="freeze"/>
-                                        </path>
-                                        <!-- Revision arrows (subtle) -->
-                                        <path d="M70 65 Q75 70 80 65" fill="none" stroke="#888888" stroke-width="1.5" opacity="0">
-                                            <animate attributeName="opacity" values="0;0.5;0" dur="2s" begin="1.5s" repeatCount="indefinite"/>
-                                        </path>
-                                    </g>
+                            <div class="step-illustration">
+                                <svg class="step-svg" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <linearGradient id="approveGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+                                            <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+                                        </linearGradient>
+                                    </defs>
+                                    <!-- Document/review icon -->
+                                    <rect x="10" y="8" width="28" height="32" rx="3" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+                                    <!-- Content lines -->
+                                    <rect x="14" y="14" width="12" height="2" rx="1" fill="#cbd5e1"/>
+                                    <rect x="14" y="18" width="16" height="1.5" rx="0.5" fill="#e2e8f0"/>
+                                    <rect x="14" y="22" width="14" height="1.5" rx="0.5" fill="#e2e8f0"/>
+                                    <rect x="14" y="26" width="18" height="1.5" rx="0.5" fill="#e2e8f0"/>
+                                    <!-- Approval checkmark circle -->
+                                    <circle cx="36" cy="16" r="8" fill="url(#approveGrad)" stroke="#34d399" stroke-width="1"/>
+                                    <!-- Checkmark -->
+                                    <path d="M32 16 L35 19 L40 13" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <!-- Floating approval indicators -->
+                                    <circle cx="16" cy="32" r="2" fill="#22c55e" opacity="0.8"/>
+                                    <circle cx="24" cy="34" r="1.5" fill="#16a34a" opacity="0.7"/>
+                                    <circle cx="30" cy="32" r="1.5" fill="#15803d" opacity="0.6"/>
                                 </svg>
                             </div>
-                            <h3 class="text-lg font-bold text-gray-900 mb-2">
+                            <h3 class="font-bold text-gray-900">
                                 Refine & Approve
                             </h3>
-                            <p class="text-sm text-gray-600 leading-snug">
+                            <p class="text-gray-600">
                                 You review and request changes. We refine until you're 100% happy.
                             </p>
                         </div>
@@ -1380,63 +1380,45 @@
                             <!-- Connector Line -->
                             <div class="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-orange-500 to-transparent z-0"></div>
                         </div>
-                        <div class="glass-card rounded-xl p-4 hover-lift">
+                        <div class="glass-card rounded-xl hover-lift">
                             <!-- Launch Illustration -->
-                            <div class="step-illustration mb-4">
-                                <svg class="step-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-                                    <g class="launch-elements">
-                                        <!-- Rocket/Launch base -->
-                                        <ellipse cx="60" cy="85" rx="35" ry="8" fill="#6b6b6b" stroke="#808080" stroke-width="1" opacity="0">
-                                            <animate attributeName="opacity" values="0;1" dur="0.5s" begin="0s" fill="freeze"/>
-                                        </ellipse>
-                                        <!-- Website icon -->
-                                        <rect x="45" y="55" width="30" height="25" rx="4" fill="#d97706" stroke="#f59e0b" stroke-width="1" opacity="0">
-                                            <animate attributeName="opacity" values="0;1" dur="0.5s" begin="0.2s" fill="freeze"/>
-                                            <animateTransform attributeName="transform" type="translate" values="0,20;0,0" dur="0.5s" begin="0.2s" fill="freeze"/>
-                                        </rect>
-                                        <!-- Website glow -->
-                                        <rect x="43" y="53" width="34" height="29" rx="6" fill="none" stroke="#f59e0b" stroke-width="1" opacity="0">
-                                            <animate attributeName="opacity" values="0;0.4" dur="0.5s" begin="0.2s" fill="freeze"/>
-                                        </rect>
-                                        <!-- Launch trail -->
-                                        <path d="M50 80 Q45 75 48 70 Q52 72 50 80" fill="#0891b2" opacity="0">
-                                            <animate attributeName="opacity" values="0;1" dur="0.3s" begin="0.8s" fill="freeze"/>
-                                            <animateTransform attributeName="transform" type="scale" values="0;1" dur="0.3s" begin="0.8s" fill="freeze"/>
-                                        </path>
-                                        <path d="M70 80 Q75 75 72 70 Q68 72 70 80" fill="#8b5cf6" opacity="0">
-                                            <animate attributeName="opacity" values="0;1" dur="0.3s" begin="1s" fill="freeze"/>
-                                            <animateTransform attributeName="transform" type="scale" values="0;1" dur="0.3s" begin="1s" fill="freeze"/>
-                                        </path>
-                                        <!-- Success indicators -->
-                                        <circle cx="30" cy="40" r="3" fill="#059669" opacity="0">
-                                            <animate attributeName="opacity" values="0;1;0" dur="1s" begin="1.2s" repeatCount="indefinite"/>
-                                        </circle>
-                                        <circle cx="30" cy="40" r="5" fill="none" stroke="#10b981" stroke-width="1" opacity="0">
-                                            <animate attributeName="opacity" values="0;0.6;0" dur="1s" begin="1.2s" repeatCount="indefinite"/>
-                                        </circle>
-                                        <circle cx="90" cy="35" r="4" fill="#7c3aed" opacity="0">
-                                            <animate attributeName="opacity" values="0;1;0" dur="1.2s" begin="1.4s" repeatCount="indefinite"/>
-                                        </circle>
-                                        <circle cx="90" cy="35" r="6" fill="none" stroke="#8b5cf6" stroke-width="1" opacity="0">
-                                            <animate attributeName="opacity" values="0;0.6;0" dur="1.2s" begin="1.4s" repeatCount="indefinite"/>
-                                        </circle>
-                                        <circle cx="85" cy="55" r="2.5" fill="#d97706" opacity="0">
-                                            <animate attributeName="opacity" values="0;1;0" dur="0.8s" begin="1.6s" repeatCount="indefinite"/>
-                                        </circle>
-                                        <!-- Live indicator -->
-                                        <rect x="52" y="25" width="16" height="6" rx="3" fill="#059669" stroke="#10b981" stroke-width="1" opacity="0">
-                                            <animate attributeName="opacity" values="0;1" dur="0.4s" begin="1.8s" fill="freeze"/>
-                                        </rect>
-                                        <circle cx="55" cy="28" r="1.5" fill="white" opacity="0">
-                                            <animate attributeName="opacity" values="0;1;0;1" dur="1s" begin="2s" repeatCount="indefinite"/>
-                                        </circle>
-                                    </g>
+                            <div class="step-illustration">
+                                <svg class="step-svg" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <linearGradient id="launchGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+                                            <stop offset="100%" style="stop-color:#d97706;stop-opacity:1" />
+                                        </linearGradient>
+                                        <linearGradient id="rocketGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+                                            <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:1" />
+                                        </linearGradient>
+                                    </defs>
+                                    <!-- Rocket body -->
+                                    <ellipse cx="24" cy="32" rx="4" ry="8" fill="url(#rocketGrad)"/>
+                                    <!-- Rocket nose -->
+                                    <path d="M20 24 L24 16 L28 24 Z" fill="url(#launchGrad)"/>
+                                    <!-- Rocket fins -->
+                                    <path d="M20 36 L18 40 L20 40 Z" fill="#1e40af"/>
+                                    <path d="M28 36 L30 40 L28 40 Z" fill="#1e40af"/>
+                                    <!-- Launch flames -->
+                                    <ellipse cx="21" cy="40" rx="1.5" ry="3" fill="#ef4444" opacity="0.9"/>
+                                    <ellipse cx="24" cy="41" rx="2" ry="4" fill="#f97316" opacity="0.8"/>
+                                    <ellipse cx="27" cy="40" rx="1.5" ry="3" fill="#eab308" opacity="0.7"/>
+                                    <!-- Stars/success indicators -->
+                                    <path d="M12 20 L13 17 L14 20 L17 21 L14 22 L13 25 L12 22 L9 21 Z" fill="#fbbf24" opacity="0.8"/>
+                                    <path d="M36 18 L37 16 L38 18 L40 19 L38 20 L37 22 L36 20 L34 19 Z" fill="#60a5fa" opacity="0.7"/>
+                                    <circle cx="8" cy="12" r="1" fill="#34d399" opacity="0.9"/>
+                                    <circle cx="38" cy="8" r="1.5" fill="#8b5cf6" opacity="0.8"/>
+                                    <!-- Payment/value symbol -->
+                                    <circle cx="38" cy="32" r="6" fill="#10b981" opacity="0.9"/>
+                                    <text x="38" y="36" text-anchor="middle" font-size="8" fill="white" font-weight="bold">$</text>
                                 </svg>
                             </div>
-                            <h3 class="text-lg font-bold text-gray-900 mb-2">
+                            <h3 class="font-bold text-gray-900">
                                 Pay What You Value & Launch
                             </h3>
-                            <p class="text-sm text-gray-600 leading-snug">
+                            <p class="text-gray-600">
                                 Once you approve, we go live. You decide what's fair.
                             </p>
                         </div>
@@ -1449,79 +1431,41 @@
                                 04
                             </div>
                         </div>
-                        <div class="glass-card rounded-xl p-4 hover-lift">
+                        <div class="glass-card rounded-xl hover-lift">
                             <!-- Growth Illustration -->
-                            <div class="step-illustration mb-4">
-                                <svg class="step-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-                                    <g class="growth-elements">
-                                        <!-- Base platform -->
-                                        <rect x="30" y="75" width="60" height="8" rx="4" fill="#6b6b6b" stroke="#808080" stroke-width="1" opacity="0">
-                                            <animate attributeName="opacity" values="0;1" dur="0.5s" begin="0s" fill="freeze"/>
-                                        </rect>
-                                        <!-- Growth chart bars -->
-                                        <rect x="40" y="65" width="8" height="10" rx="2" fill="#0891b2" stroke="#06b6d4" stroke-width="1" opacity="0">
-                                            <animate attributeName="opacity" values="0;1" dur="0.3s" begin="0.3s" fill="freeze"/>
-                                            <animateTransform attributeName="transform" type="scaleY" values="0;1" dur="0.3s" begin="0.3s" fill="freeze"/>
-                                        </rect>
-                                        <rect x="52" y="55" width="8" height="20" rx="2" fill="#7c3aed" stroke="#8b5cf6" stroke-width="1" opacity="0">
-                                            <animate attributeName="opacity" values="0;1" dur="0.3s" begin="0.6s" fill="freeze"/>
-                                            <animateTransform attributeName="transform" type="scaleY" values="0;1" dur="0.3s" begin="0.6s" fill="freeze"/>
-                                        </rect>
-                                        <rect x="64" y="45" width="8" height="30" rx="2" fill="#9333ea" stroke="#a855f7" stroke-width="1" opacity="0">
-                                            <animate attributeName="opacity" values="0;1" dur="0.3s" begin="0.9s" fill="freeze"/>
-                                            <animateTransform attributeName="transform" type="scaleY" values="0;1" dur="0.3s" begin="0.9s" fill="freeze"/>
-                                        </rect>
-                                        <!-- Bar glows -->
-                                        <rect x="39" y="64" width="10" height="12" rx="3" fill="none" stroke="#06b6d4" stroke-width="1" opacity="0">
-                                            <animate attributeName="opacity" values="0;0.4" dur="0.3s" begin="0.3s" fill="freeze"/>
-                                        </rect>
-                                        <rect x="51" y="54" width="10" height="22" rx="3" fill="none" stroke="#8b5cf6" stroke-width="1" opacity="0">
-                                            <animate attributeName="opacity" values="0;0.4" dur="0.3s" begin="0.6s" fill="freeze"/>
-                                        </rect>
-                                        <rect x="63" y="44" width="10" height="32" rx="3" fill="none" stroke="#a855f7" stroke-width="1" opacity="0">
-                                            <animate attributeName="opacity" values="0;0.4" dur="0.3s" begin="0.9s" fill="freeze"/>
-                                        </rect>
-                                        <!-- Add-on service icons -->
-                                        <circle cx="25" cy="50" r="6" fill="#059669" stroke="#10b981" stroke-width="1" opacity="0">
-                                            <animate attributeName="opacity" values="0;1" dur="0.4s" begin="1.2s" fill="freeze"/>
-                                        </circle>
-                                        <path d="M22 50 L24 52 L28 48" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0">
-                                            <animate attributeName="opacity" values="0;1" dur="0.2s" begin="1.4s" fill="freeze"/>
-                                        </path>
-                                        <circle cx="95" cy="45" r="6" fill="#d97706" stroke="#f59e0b" stroke-width="1" opacity="0">
-                                            <animate attributeName="opacity" values="0;1" dur="0.4s" begin="1.6s" fill="freeze"/>
-                                        </circle>
-                                        <rect x="92" y="42" width="6" height="6" rx="1" fill="white" opacity="0">
-                                            <animate attributeName="opacity" values="0;1" dur="0.2s" begin="1.8s" fill="freeze"/>
-                                        </rect>
-                                        <!-- Growth arrow -->
-                                        <path d="M35 35 L80 15" stroke="#059669" stroke-width="3" fill="none" opacity="0">
-                                            <animate attributeName="opacity" values="0;1" dur="0.5s" begin="2s" fill="freeze"/>
-                                        </path>
-                                        <path d="M75 12 L80 15 L77 20" fill="#10b981" opacity="0">
-                                            <animate attributeName="opacity" values="0;1" dur="0.3s" begin="2.2s" fill="freeze"/>
-                                        </path>
-                                        <!-- Arrow glow -->
-                                        <path d="M35 35 L80 15" stroke="#10b981" stroke-width="1" fill="none" opacity="0">
-                                            <animate attributeName="opacity" values="0;0.6" dur="0.5s" begin="2s" fill="freeze"/>
-                                        </path>
-                                        <!-- Success particles -->
-                                        <circle cx="85" cy="25" r="1.5" fill="#059669" opacity="0">
-                                            <animate attributeName="opacity" values="0;1;0" dur="1s" begin="2.5s" repeatCount="indefinite"/>
-                                        </circle>
-                                        <circle cx="78" cy="30" r="1" fill="#0891b2" opacity="0">
-                                            <animate attributeName="opacity" values="0;1;0" dur="1.2s" begin="2.7s" repeatCount="indefinite"/>
-                                        </circle>
-                                        <circle cx="88" cy="32" r="1.2" fill="#7c3aed" opacity="0">
-                                            <animate attributeName="opacity" values="0;1;0" dur="0.9s" begin="2.9s" repeatCount="indefinite"/>
-                                        </circle>
-                                    </g>
+                            <div class="step-illustration">
+                                <svg class="step-svg" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <linearGradient id="growthGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" />
+                                            <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+                                        </linearGradient>
+                                    </defs>
+                                    <!-- Growth chart bars -->
+                                    <rect x="8" y="32" width="4" height="8" rx="2" fill="#60a5fa"/>
+                                    <rect x="16" y="28" width="4" height="12" rx="2" fill="#3b82f6"/>
+                                    <rect x="24" y="22" width="4" height="18" rx="2" fill="url(#growthGrad)"/>
+                                    <rect x="32" y="16" width="4" height="24" rx="2" fill="#7c3aed"/>
+                                    <!-- Base line -->
+                                    <line x1="6" y1="40" x2="42" y2="40" stroke="#e2e8f0" stroke-width="1"/>
+                                    <!-- Growth arrow -->
+                                    <path d="M8 36 L36 12" stroke="#10b981" stroke-width="2" fill="none" stroke-linecap="round"/>
+                                    <path d="M32 10 L36 12 L34 16" fill="#10b981"/>
+                                    <!-- Success indicators -->
+                                    <circle cx="40" cy="8" r="3" fill="#f59e0b" opacity="0.9"/>
+                                    <text x="40" y="11" text-anchor="middle" font-size="5" fill="white" font-weight="bold">$</text>
+                                    <circle cx="6" cy="24" r="2" fill="#10b981" opacity="0.8"/>
+                                    <path d="M4 24 L5.5 25.5 L8 22" stroke="white" stroke-width="1" fill="none" stroke-linecap="round"/>
+                                    <!-- Add-ons symbols -->
+                                    <rect x="38" y="28" width="6" height="4" rx="1" fill="#06b6d4" opacity="0.8"/>
+                                    <circle cx="4" cy="16" r="2" fill="#ef4444" opacity="0.7"/>
+                                    <rect x="2" y="14" width="4" height="4" rx="1" fill="none" stroke="#ef4444" stroke-width="1"/>
                                 </svg>
                             </div>
-                            <h3 class="text-lg font-bold text-gray-900 mb-2">
+                            <h3 class="font-bold text-gray-900">
                                 Grow Beyond Launch
                             </h3>
-                            <p class="text-sm text-gray-600 leading-snug">
+                            <p class="text-gray-600">
                                 Optional add-ons: AI content, SEO, funnels, CRM automation.
                             </p>
                         </div>
