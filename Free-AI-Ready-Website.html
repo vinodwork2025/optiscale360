@@ -1215,12 +1215,40 @@
         
         .glass-card {
             padding: 20px !important;
-            min-height: 180px;
+            height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
             text-align: center;
+        }
+        
+        /* Ensure equal heights using CSS Grid */
+        .how-it-works-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            align-items: stretch;
+        }
+        
+        @media (max-width: 1024px) {
+            .how-it-works-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .how-it-works-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+        
+        .how-it-works-step {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
         
         .glass-card h3 {
@@ -1260,7 +1288,6 @@
             }
 
             .glass-card {
-                min-height: 200px !important;
                 padding: 16px !important;
             }
 
@@ -1801,9 +1828,9 @@
                     </p>
                 </div>
 
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+                <div class="how-it-works-grid relative">
                     <!-- Step 1 -->
-                    <div class="text-center fade-in-up group">
+                    <div class="how-it-works-step text-center fade-in-up group">
                         <div class="relative mb-8">
                             <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto shadow-2xl group-hover:scale-110 transition-transform duration-300">
                                 01
@@ -1853,7 +1880,7 @@
                     </div>
                     
                     <!-- Step 2 -->
-                    <div class="text-center fade-in-up group">
+                    <div class="how-it-works-step text-center fade-in-up group">
                         <div class="relative mb-8">
                             <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-teal-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto shadow-2xl group-hover:scale-110 transition-transform duration-300">
                                 02
@@ -1898,7 +1925,7 @@
                     </div>
                     
                     <!-- Step 3 -->
-                    <div class="text-center fade-in-up group">
+                    <div class="how-it-works-step text-center fade-in-up group">
                         <div class="relative mb-8">
                             <div class="w-20 h-20 bg-gradient-to-br from-orange-500 to-red-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto shadow-2xl group-hover:scale-110 transition-transform duration-300">
                                 03
@@ -1951,7 +1978,7 @@
                     </div>
 
                     <!-- Step 4 -->
-                    <div class="text-center fade-in-up group">
+                    <div class="how-it-works-step text-center fade-in-up group">
                         <div class="relative mb-8">
                             <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto shadow-2xl group-hover:scale-110 transition-transform duration-300">
                                 04
