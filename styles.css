@@ -456,6 +456,7 @@ p {
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     transform: translateY(-1px);
+    color: var(--text-color);
 }
 
 /* Highlighted Navigation Item */
@@ -484,12 +485,35 @@ p {
 }
 
 .nav-link-highlight {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: #3b82f6;
+    font-weight: 600;
+    position: relative;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-weight: 600;
-    position: relative;
+}
+
+.nav-link-highlight:hover,
+.nav-link-highlight.active {
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Fallback for browsers that don't support background-clip */
+@supports not (-webkit-background-clip: text) {
+    .nav-link-highlight {
+        color: #3b82f6 !important;
+        -webkit-text-fill-color: #3b82f6 !important;
+    }
+    
+    .nav-link-highlight:hover,
+    .nav-link-highlight.active {
+        color: #2563eb !important;
+        -webkit-text-fill-color: #2563eb !important;
+    }
 }
 
 .nav-link-highlight::before {
@@ -518,8 +542,9 @@ p {
 
 .nav-tab-highlight .nav-link:hover,
 .nav-tab-highlight .nav-link.active {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(59, 130, 246, 0.08);
     backdrop-filter: blur(30px);
+    border: 1px solid rgba(59, 130, 246, 0.2);
 }
 
 /* Responsive Tabbed Navigation */
