@@ -248,6 +248,449 @@
         .cta-primary-light:hover::before {
             left: 100%;
         }
+
+        /* Device Mockup Styles */
+        .devices-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            margin: 0 auto;
+            perspective: 1000px;
+        }
+
+        .device {
+            position: absolute;
+            transition: transform 0.3s ease;
+        }
+
+        .device-frame {
+            background: linear-gradient(145deg, #f8fafc, #e2e8f0);
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1), 0 8px 16px rgba(0,0,0,0.1);
+            padding: 4px;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .device-screen {
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Desktop Device */
+        .desktop-device {
+            top: 0;
+            left: 0;
+            z-index: 3;
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .desktop-frame {
+            width: 320px;
+            height: 200px;
+        }
+
+        .screen-header {
+            background: #f1f5f9;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .screen-dots {
+            display: flex;
+            gap: 6px;
+            margin-right: 16px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .dot.red { background: #ef4444; }
+        .dot.yellow { background: #f59e0b; }
+        .dot.green { background: #10b981; }
+
+        .address-bar {
+            background: white;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            color: #64748b;
+            border: 1px solid #e2e8f0;
+        }
+
+        .dashboard-slide {
+            padding: 16px;
+            animation: slideInHorizontal 2s ease-out 0.5s both;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .brand-logo {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+            border-radius: 6px;
+        }
+
+        .nav-items {
+            display: flex;
+            gap: 8px;
+        }
+
+        .nav-item {
+            width: 16px;
+            height: 4px;
+            background: #e2e8f0;
+            border-radius: 2px;
+        }
+
+        .nav-item.active {
+            background: #3b82f6;
+        }
+
+        .content-block {
+            background: linear-gradient(90deg, #f1f5f9, #e2e8f0);
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+
+        .content-block.large {
+            height: 40px;
+        }
+
+        .content-row {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .content-row .content-block {
+            flex: 1;
+            height: 24px;
+        }
+
+        .metrics-row {
+            display: flex;
+            gap: 12px;
+        }
+
+        .metric-card {
+            flex: 1;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .metric-icon {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+            margin-bottom: 4px;
+        }
+
+        .metric-icon.lightning {
+            background: linear-gradient(45deg, #3b82f6, #60a5fa);
+        }
+
+        .metric-icon.brain {
+            background: linear-gradient(45deg, #8b5cf6, #a78bfa);
+        }
+
+        .metric-text {
+            width: 80%;
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 3px;
+        }
+
+        /* Tablet Device */
+        .tablet-device {
+            top: 40px;
+            right: 80px;
+            z-index: 2;
+            animation: fadeScaleIn 1s ease-out 0.3s both;
+        }
+
+        .tablet-frame {
+            width: 180px;
+            height: 240px;
+        }
+
+        .tablet-content {
+            padding: 16px 12px;
+            height: 100%;
+        }
+
+        .tablet-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .tablet-logo {
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(45deg, #6366f1, #8b5cf6);
+            border-radius: 4px;
+        }
+
+        .tablet-menu {
+            width: 16px;
+            height: 12px;
+            background: linear-gradient(to bottom, #e2e8f0 2px, transparent 2px, transparent 5px, #e2e8f0 5px, #e2e8f0 7px, transparent 7px, transparent 10px, #e2e8f0 10px);
+        }
+
+        .tablet-hero {
+            height: 60px;
+            background: linear-gradient(135deg, #f0f9ff, #dbeafe);
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+
+        .tablet-features {
+            display: flex;
+            gap: 8px;
+        }
+
+        .feature-card {
+            flex: 1;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .feature-icon {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+        }
+
+        .feature-icon.shield {
+            background: linear-gradient(45deg, #10b981, #34d399);
+        }
+
+        .feature-icon.chart {
+            background: linear-gradient(45deg, #f59e0b, #fbbf24);
+        }
+
+        /* Phone Device */
+        .phone-device {
+            bottom: 20px;
+            right: 20px;
+            z-index: 1;
+            animation: fadeScaleIn 1s ease-out 0.6s both;
+        }
+
+        .phone-frame {
+            width: 120px;
+            height: 200px;
+        }
+
+        .phone-content {
+            padding: 12px 8px;
+            height: 100%;
+        }
+
+        .phone-header {
+            margin-bottom: 16px;
+        }
+
+        .status-bar {
+            height: 4px;
+            background: linear-gradient(90deg, #10b981 30%, #e2e8f0 30%);
+            border-radius: 2px;
+        }
+
+        .phone-logo {
+            width: 16px;
+            height: 16px;
+            background: linear-gradient(45deg, #ec4899, #f472b6);
+            border-radius: 4px;
+            margin: 0 auto 12px;
+        }
+
+        .phone-cta {
+            height: 20px;
+            background: linear-gradient(90deg, #3b82f6, #6366f1);
+            border-radius: 6px;
+            margin-bottom: 12px;
+        }
+
+        .phone-features {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .phone-feature {
+            height: 16px;
+            background: #f1f5f9;
+            border-radius: 4px;
+        }
+
+        /* Site Building Animation */
+        .building-animation {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 80px;
+            height: 80px;
+            opacity: 0.7;
+        }
+
+        .building-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Benefit Icons */
+        .benefit-icons {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .benefit-icon {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            animation: float 3s ease-in-out infinite;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .benefit-icon:nth-child(1) { animation-delay: 0s; }
+        .benefit-icon:nth-child(2) { animation-delay: 0.5s; }
+        .benefit-icon:nth-child(3) { animation-delay: 1s; }
+        .benefit-icon:nth-child(4) { animation-delay: 1.5s; }
+
+        .icon-svg {
+            width: 20px;
+            height: 20px;
+            color: #3b82f6;
+        }
+
+        /* Animations */
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInHorizontal {
+            from {
+                transform: translateX(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeScaleIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Mouse parallax effect */
+        .device[data-tilt] {
+            transition: transform 0.3s ease;
+        }
+
+        /* Step Illustrations */
+        .step-illustration {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .step-illustration.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .step-svg {
+            width: 80px;
+            height: 80px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .devices-container {
+                height: 300px;
+                transform: scale(0.8);
+            }
+            
+            .desktop-frame {
+                width: 280px;
+                height: 180px;
+            }
+            
+            .tablet-frame {
+                width: 160px;
+                height: 200px;
+            }
+            
+            .phone-frame {
+                width: 100px;
+                height: 180px;
+            }
+
+            .step-illustration {
+                height: 60px;
+            }
+
+            .step-svg {
+                width: 60px;
+                height: 60px;
+            }
+        }
         
         .fade-in-up {
             opacity: 0;
@@ -502,62 +945,164 @@
 
                     <!-- Right Visual -->
                     <div class="relative fade-in-up">
-                        <div class="device-mockup">
-                            <!-- Modern Browser Mockup -->
-                            <div class="browser-mockup shadow-2xl">
-                                <div class="browser-header">
-                                    <div class="browser-dots">
-                                        <div class="browser-dot dot-red"></div>
-                                        <div class="browser-dot dot-yellow"></div>
-                                        <div class="browser-dot dot-green"></div>
-                                    </div>
-                                    <div class="url-bar">https://your-awesome-website.com</div>
-                                </div>
-                                
-                                <div class="website-preview min-h-80 p-6">
-                                    <!-- Website Preview Content -->
-                                    <div class="space-y-4">
-                                        <div class="flex items-center justify-between">
-                                            <div class="w-24 h-6 bg-gradient-to-r from-blue-500 to-purple-600 rounded"></div>
-                                            <div class="flex space-x-2">
-                                                <div class="w-16 h-6 bg-gray-200 rounded"></div>
-                                                <div class="w-16 h-6 bg-blue-600 text-white rounded text-xs flex items-center justify-center">Get Started</div>
+                        <!-- Device Mockup Group -->
+                        <div class="devices-container" id="devicesContainer">
+                            <!-- Desktop -->
+                            <div class="device desktop-device" data-tilt>
+                                <div class="device-frame desktop-frame">
+                                    <div class="device-screen">
+                                        <div class="screen-header">
+                                            <div class="screen-dots">
+                                                <div class="dot red"></div>
+                                                <div class="dot yellow"></div>
+                                                <div class="dot green"></div>
                                             </div>
+                                            <div class="address-bar">optiscale360.com</div>
                                         </div>
-                                        
-                                        <div class="space-y-3 mt-8">
-                                            <div class="w-full h-3 bg-gradient-to-r from-gray-300 to-transparent rounded"></div>
-                                            <div class="w-4/5 h-3 bg-gradient-to-r from-blue-600 to-transparent rounded"></div>
-                                            <div class="w-3/5 h-3 bg-gradient-to-r from-gray-300 to-transparent rounded"></div>
-                                        </div>
-                                        
-                                        <div class="grid grid-cols-3 gap-3 mt-6">
-                                            <div class="h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg flex items-center justify-center">
-                                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                                                </svg>
-                                            </div>
-                                            <div class="h-16 bg-gradient-to-br from-purple-100 to-purple-200 rounded-lg flex items-center justify-center">
-                                                <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
-                                                </svg>
-                                            </div>
-                                            <div class="h-16 bg-gradient-to-br from-green-100 to-green-200 rounded-lg flex items-center justify-center">
-                                                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="mt-6 p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg">
-                                            <div class="flex items-center space-x-2">
-                                                <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                                                <span class="text-xs text-gray-600">AI Optimization Active</span>
+                                        <div class="screen-content">
+                                            <!-- Dashboard sliding content -->
+                                            <div class="dashboard-slide">
+                                                <div class="dashboard-header">
+                                                    <div class="brand-logo"></div>
+                                                    <div class="nav-items">
+                                                        <div class="nav-item"></div>
+                                                        <div class="nav-item"></div>
+                                                        <div class="nav-item active"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="dashboard-content">
+                                                    <div class="content-block large"></div>
+                                                    <div class="content-row">
+                                                        <div class="content-block"></div>
+                                                        <div class="content-block"></div>
+                                                        <div class="content-block"></div>
+                                                    </div>
+                                                    <div class="metrics-row">
+                                                        <div class="metric-card">
+                                                            <div class="metric-icon lightning"></div>
+                                                            <div class="metric-text"></div>
+                                                        </div>
+                                                        <div class="metric-card">
+                                                            <div class="metric-icon brain"></div>
+                                                            <div class="metric-text"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+
+                            <!-- Tablet -->
+                            <div class="device tablet-device" data-tilt>
+                                <div class="device-frame tablet-frame">
+                                    <div class="device-screen">
+                                        <div class="tablet-content">
+                                            <div class="tablet-header">
+                                                <div class="tablet-logo"></div>
+                                                <div class="tablet-menu"></div>
+                                            </div>
+                                            <div class="tablet-body">
+                                                <div class="tablet-hero"></div>
+                                                <div class="tablet-features">
+                                                    <div class="feature-card">
+                                                        <div class="feature-icon shield"></div>
+                                                    </div>
+                                                    <div class="feature-card">
+                                                        <div class="feature-icon chart"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Phone -->
+                            <div class="device phone-device" data-tilt>
+                                <div class="device-frame phone-frame">
+                                    <div class="device-screen">
+                                        <div class="phone-content">
+                                            <div class="phone-header">
+                                                <div class="status-bar"></div>
+                                            </div>
+                                            <div class="phone-body">
+                                                <div class="phone-logo"></div>
+                                                <div class="phone-cta"></div>
+                                                <div class="phone-features">
+                                                    <div class="phone-feature"></div>
+                                                    <div class="phone-feature"></div>
+                                                    <div class="phone-feature"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Site Building Animation (Fallback SVG) -->
+                        <div class="building-animation">
+                            <svg class="building-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Building blocks animation -->
+                                <g class="building-blocks">
+                                    <rect class="block block-1" x="50" y="120" width="20" height="20" rx="4" fill="#3b82f6" opacity="0">
+                                        <animate attributeName="opacity" values="0;1;1" dur="3s" begin="0s" repeatCount="indefinite"/>
+                                        <animateTransform attributeName="transform" type="translate" values="0,20;0,0;0,0" dur="3s" begin="0s" repeatCount="indefinite"/>
+                                    </rect>
+                                    <rect class="block block-2" x="80" y="100" width="20" height="20" rx="4" fill="#6366f1" opacity="0">
+                                        <animate attributeName="opacity" values="0;0;1;1" dur="3s" begin="0s" repeatCount="indefinite"/>
+                                        <animateTransform attributeName="transform" type="translate" values="0,20;0,20;0,0;0,0" dur="3s" begin="0s" repeatCount="indefinite"/>
+                                    </rect>
+                                    <rect class="block block-3" x="110" y="80" width="20" height="20" rx="4" fill="#8b5cf6" opacity="0">
+                                        <animate attributeName="opacity" values="0;0;0;1;1" dur="3s" begin="0s" repeatCount="indefinite"/>
+                                        <animateTransform attributeName="transform" type="translate" values="0,20;0,20;0,20;0,0;0,0" dur="3s" begin="0s" repeatCount="indefinite"/>
+                                    </rect>
+                                </g>
+                                <!-- Connecting lines -->
+                                <g class="connections" stroke="#60a5fa" stroke-width="2" fill="none" opacity="0">
+                                    <line x1="70" y1="130" x2="90" y2="110">
+                                        <animate attributeName="opacity" values="0;0;1;1;0" dur="3s" begin="1s" repeatCount="indefinite"/>
+                                    </line>
+                                    <line x1="100" y1="110" x2="120" y2="90">
+                                        <animate attributeName="opacity" values="0;0;0;1;0" dur="3s" begin="1.5s" repeatCount="indefinite"/>
+                                    </line>
+                                </g>
+                                <!-- Launch effect -->
+                                <circle class="launch-pulse" cx="120" cy="90" r="5" fill="#10b981" opacity="0">
+                                    <animate attributeName="opacity" values="0;0;0;0;1;0" dur="3s" begin="2.5s" repeatCount="indefinite"/>
+                                    <animate attributeName="r" values="5;15;25" dur="0.5s" begin="2.5s" repeatCount="indefinite"/>
+                                </circle>
+                            </svg>
+                        </div>
+
+                        <!-- Benefit Icons (Line Style) -->
+                        <div class="benefit-icons">
+                            <!-- Lightning Bolt - Speed -->
+                            <div class="benefit-icon" style="top: 20%; right: -10%;">
+                                <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                                </svg>
+                            </div>
+                            <!-- Brain - AI -->
+                            <div class="benefit-icon" style="top: 45%; left: -8%;">
+                                <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M12 2a3 3 0 0 0-3 3c0 1.5-1 2.5-2.5 2.5S4 6.5 4 5a3 3 0 0 0-3 3c0 1.5 1 2.5 2.5 2.5S6 11.5 6 10c0-1.5 1-2.5 2.5-2.5S11 6.5 11 8a3 3 0 0 0 3 3c1.5 0 2.5 1 2.5 2.5S15.5 16 14 16c-1.5 0-2.5-1-2.5-2.5S10.5 11 12 11a3 3 0 0 0 3-3c0-1.5-1-2.5-2.5-2.5S10 4.5 10 6a3 3 0 0 0-3 3"/>
+                                </svg>
+                            </div>
+                            <!-- Shield - Trust -->
+                            <div class="benefit-icon" style="bottom: 30%; right: -5%;">
+                                <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
+                                </svg>
+                            </div>
+                            <!-- Chart Line - Growth -->
+                            <div class="benefit-icon" style="bottom: 10%; left: -5%;">
+                                <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M3 3v18h18"/>
+                                    <path d="M18 7l-5 5L8 7l-5 5"/>
+                                </svg>
                             </div>
                         </div>
                     </div>
@@ -671,6 +1216,36 @@
                             <div class="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-blue-500 to-transparent z-0"></div>
                         </div>
                         <div class="glass-card rounded-2xl p-6 hover-lift">
+                            <!-- Draft Illustration -->
+                            <div class="step-illustration mb-6">
+                                <svg class="step-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                                    <g class="draft-elements">
+                                        <!-- Design canvas -->
+                                        <rect x="20" y="30" width="80" height="60" rx="8" fill="none" stroke="#3b82f6" stroke-width="2" opacity="0">
+                                            <animate attributeName="opacity" values="0;1" dur="1s" begin="0s" fill="freeze"/>
+                                        </rect>
+                                        <!-- Design elements appearing -->
+                                        <rect x="30" y="40" width="20" height="8" rx="2" fill="#60a5fa" opacity="0">
+                                            <animate attributeName="opacity" values="0;1" dur="0.5s" begin="0.5s" fill="freeze"/>
+                                        </rect>
+                                        <rect x="30" y="52" width="35" height="4" rx="1" fill="#e2e8f0" opacity="0">
+                                            <animate attributeName="opacity" values="0;1" dur="0.5s" begin="0.7s" fill="freeze"/>
+                                        </rect>
+                                        <rect x="30" y="58" width="25" height="4" rx="1" fill="#e2e8f0" opacity="0">
+                                            <animate attributeName="opacity" values="0;1" dur="0.5s" begin="0.9s" fill="freeze"/>
+                                        </rect>
+                                        <!-- Floating design tools -->
+                                        <circle cx="85" cy="45" r="8" fill="#8b5cf6" opacity="0">
+                                            <animate attributeName="opacity" values="0;1" dur="0.3s" begin="1.1s" fill="freeze"/>
+                                            <animateTransform attributeName="transform" type="translate" values="10,10;0,0" dur="0.3s" begin="1.1s" fill="freeze"/>
+                                        </circle>
+                                        <rect x="70" y="65" width="12" height="8" rx="2" fill="#10b981" opacity="0">
+                                            <animate attributeName="opacity" values="0;1" dur="0.3s" begin="1.3s" fill="freeze"/>
+                                            <animateTransform attributeName="transform" type="translate" values="-10,10;0,0" dur="0.3s" begin="1.3s" fill="freeze"/>
+                                        </rect>
+                                    </g>
+                                </svg>
+                            </div>
                             <h3 class="text-xl font-bold text-gray-900 mb-4">
                                 Get Your Free Draft
                             </h3>
@@ -690,6 +1265,39 @@
                             <div class="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-green-500 to-transparent z-0"></div>
                         </div>
                         <div class="glass-card rounded-2xl p-6 hover-lift">
+                            <!-- Approve Illustration -->
+                            <div class="step-illustration mb-6">
+                                <svg class="step-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                                    <g class="approve-elements">
+                                        <!-- Review screen -->
+                                        <rect x="15" y="25" width="90" height="70" rx="6" fill="none" stroke="#10b981" stroke-width="2" opacity="0">
+                                            <animate attributeName="opacity" values="0;1" dur="0.8s" begin="0s" fill="freeze"/>
+                                        </rect>
+                                        <!-- Content blocks -->
+                                        <rect x="25" y="35" width="25" height="6" rx="2" fill="#d1fae5" opacity="0">
+                                            <animate attributeName="opacity" values="0;1" dur="0.4s" begin="0.3s" fill="freeze"/>
+                                        </rect>
+                                        <rect x="25" y="45" width="40" height="4" rx="1" fill="#f3f4f6" opacity="0">
+                                            <animate attributeName="opacity" values="0;1" dur="0.4s" begin="0.5s" fill="freeze"/>
+                                        </rect>
+                                        <rect x="25" y="52" width="35" height="4" rx="1" fill="#f3f4f6" opacity="0">
+                                            <animate attributeName="opacity" values="0;1" dur="0.4s" begin="0.7s" fill="freeze"/>
+                                        </rect>
+                                        <!-- Approval checkmark -->
+                                        <circle cx="85" cy="45" r="12" fill="#10b981" opacity="0">
+                                            <animate attributeName="opacity" values="0;1" dur="0.5s" begin="1s" fill="freeze"/>
+                                            <animate attributeName="r" values="0;12" dur="0.5s" begin="1s" fill="freeze"/>
+                                        </circle>
+                                        <path d="M79 45 L83 49 L91 41" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0">
+                                            <animate attributeName="opacity" values="0;1" dur="0.3s" begin="1.2s" fill="freeze"/>
+                                        </path>
+                                        <!-- Revision arrows (subtle) -->
+                                        <path d="M70 65 Q75 70 80 65" fill="none" stroke="#6b7280" stroke-width="1.5" opacity="0">
+                                            <animate attributeName="opacity" values="0;0.5;0" dur="2s" begin="1.5s" repeatCount="indefinite"/>
+                                        </path>
+                                    </g>
+                                </svg>
+                            </div>
                             <h3 class="text-xl font-bold text-gray-900 mb-4">
                                 Refine & Approve
                             </h3>
@@ -709,6 +1317,48 @@
                             <div class="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-orange-500 to-transparent z-0"></div>
                         </div>
                         <div class="glass-card rounded-2xl p-6 hover-lift">
+                            <!-- Launch Illustration -->
+                            <div class="step-illustration mb-6">
+                                <svg class="step-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                                    <g class="launch-elements">
+                                        <!-- Rocket/Launch base -->
+                                        <ellipse cx="60" cy="85" rx="35" ry="8" fill="#e2e8f0" opacity="0">
+                                            <animate attributeName="opacity" values="0;1" dur="0.5s" begin="0s" fill="freeze"/>
+                                        </ellipse>
+                                        <!-- Website icon -->
+                                        <rect x="45" y="55" width="30" height="25" rx="4" fill="#f59e0b" opacity="0">
+                                            <animate attributeName="opacity" values="0;1" dur="0.5s" begin="0.2s" fill="freeze"/>
+                                            <animateTransform attributeName="transform" type="translate" values="0,20;0,0" dur="0.5s" begin="0.2s" fill="freeze"/>
+                                        </rect>
+                                        <!-- Launch trail -->
+                                        <path d="M50 80 Q45 75 48 70 Q52 72 50 80" fill="#3b82f6" opacity="0">
+                                            <animate attributeName="opacity" values="0;1" dur="0.3s" begin="0.8s" fill="freeze"/>
+                                            <animateTransform attributeName="transform" type="scale" values="0;1" dur="0.3s" begin="0.8s" fill="freeze"/>
+                                        </path>
+                                        <path d="M70 80 Q75 75 72 70 Q68 72 70 80" fill="#6366f1" opacity="0">
+                                            <animate attributeName="opacity" values="0;1" dur="0.3s" begin="1s" fill="freeze"/>
+                                            <animateTransform attributeName="transform" type="scale" values="0;1" dur="0.3s" begin="1s" fill="freeze"/>
+                                        </path>
+                                        <!-- Success indicators -->
+                                        <circle cx="30" cy="40" r="3" fill="#10b981" opacity="0">
+                                            <animate attributeName="opacity" values="0;1;0" dur="1s" begin="1.2s" repeatCount="indefinite"/>
+                                        </circle>
+                                        <circle cx="90" cy="35" r="4" fill="#8b5cf6" opacity="0">
+                                            <animate attributeName="opacity" values="0;1;0" dur="1.2s" begin="1.4s" repeatCount="indefinite"/>
+                                        </circle>
+                                        <circle cx="85" cy="55" r="2.5" fill="#f59e0b" opacity="0">
+                                            <animate attributeName="opacity" values="0;1;0" dur="0.8s" begin="1.6s" repeatCount="indefinite"/>
+                                        </circle>
+                                        <!-- Live indicator -->
+                                        <rect x="52" y="25" width="16" height="6" rx="3" fill="#10b981" opacity="0">
+                                            <animate attributeName="opacity" values="0;1" dur="0.4s" begin="1.8s" fill="freeze"/>
+                                        </rect>
+                                        <circle cx="55" cy="28" r="1.5" fill="white" opacity="0">
+                                            <animate attributeName="opacity" values="0;1;0;1" dur="1s" begin="2s" repeatCount="indefinite"/>
+                                        </circle>
+                                    </g>
+                                </svg>
+                            </div>
                             <h3 class="text-xl font-bold text-gray-900 mb-4">
                                 Pay What You Value & Launch
                             </h3>
@@ -726,6 +1376,60 @@
                             </div>
                         </div>
                         <div class="glass-card rounded-2xl p-6 hover-lift">
+                            <!-- Growth Illustration -->
+                            <div class="step-illustration mb-6">
+                                <svg class="step-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                                    <g class="growth-elements">
+                                        <!-- Base platform -->
+                                        <rect x="30" y="75" width="60" height="8" rx="4" fill="#e2e8f0" opacity="0">
+                                            <animate attributeName="opacity" values="0;1" dur="0.5s" begin="0s" fill="freeze"/>
+                                        </rect>
+                                        <!-- Growth chart bars -->
+                                        <rect x="40" y="65" width="8" height="10" rx="2" fill="#3b82f6" opacity="0">
+                                            <animate attributeName="opacity" values="0;1" dur="0.3s" begin="0.3s" fill="freeze"/>
+                                            <animateTransform attributeName="transform" type="scaleY" values="0;1" dur="0.3s" begin="0.3s" fill="freeze"/>
+                                        </rect>
+                                        <rect x="52" y="55" width="8" height="20" rx="2" fill="#6366f1" opacity="0">
+                                            <animate attributeName="opacity" values="0;1" dur="0.3s" begin="0.6s" fill="freeze"/>
+                                            <animateTransform attributeName="transform" type="scaleY" values="0;1" dur="0.3s" begin="0.6s" fill="freeze"/>
+                                        </rect>
+                                        <rect x="64" y="45" width="8" height="30" rx="2" fill="#8b5cf6" opacity="0">
+                                            <animate attributeName="opacity" values="0;1" dur="0.3s" begin="0.9s" fill="freeze"/>
+                                            <animateTransform attributeName="transform" type="scaleY" values="0;1" dur="0.3s" begin="0.9s" fill="freeze"/>
+                                        </rect>
+                                        <!-- Add-on service icons -->
+                                        <circle cx="25" cy="50" r="6" fill="#10b981" opacity="0">
+                                            <animate attributeName="opacity" values="0;1" dur="0.4s" begin="1.2s" fill="freeze"/>
+                                        </circle>
+                                        <path d="M22 50 L24 52 L28 48" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0">
+                                            <animate attributeName="opacity" values="0;1" dur="0.2s" begin="1.4s" fill="freeze"/>
+                                        </path>
+                                        <circle cx="95" cy="45" r="6" fill="#f59e0b" opacity="0">
+                                            <animate attributeName="opacity" values="0;1" dur="0.4s" begin="1.6s" fill="freeze"/>
+                                        </circle>
+                                        <rect x="92" y="42" width="6" height="6" rx="1" fill="white" opacity="0">
+                                            <animate attributeName="opacity" values="0;1" dur="0.2s" begin="1.8s" fill="freeze"/>
+                                        </rect>
+                                        <!-- Growth arrow -->
+                                        <path d="M35 35 L80 15" stroke="#10b981" stroke-width="3" fill="none" opacity="0">
+                                            <animate attributeName="opacity" values="0;1" dur="0.5s" begin="2s" fill="freeze"/>
+                                        </path>
+                                        <path d="M75 12 L80 15 L77 20" fill="#10b981" opacity="0">
+                                            <animate attributeName="opacity" values="0;1" dur="0.3s" begin="2.2s" fill="freeze"/>
+                                        </path>
+                                        <!-- Success particles -->
+                                        <circle cx="85" cy="25" r="1.5" fill="#10b981" opacity="0">
+                                            <animate attributeName="opacity" values="0;1;0" dur="1s" begin="2.5s" repeatCount="indefinite"/>
+                                        </circle>
+                                        <circle cx="78" cy="30" r="1" fill="#3b82f6" opacity="0">
+                                            <animate attributeName="opacity" values="0;1;0" dur="1.2s" begin="2.7s" repeatCount="indefinite"/>
+                                        </circle>
+                                        <circle cx="88" cy="32" r="1.2" fill="#8b5cf6" opacity="0">
+                                            <animate attributeName="opacity" values="0;1;0" dur="0.9s" begin="2.9s" repeatCount="indefinite"/>
+                                        </circle>
+                                    </g>
+                                </svg>
+                            </div>
                             <h3 class="text-xl font-bold text-gray-900 mb-4">
                                 Grow Beyond Launch
                             </h3>
@@ -1088,6 +1792,43 @@
                     });
                 }
             }
+        });
+
+        // Mouse parallax effect for devices
+        document.addEventListener('mousemove', function(e) {
+            const devices = document.querySelectorAll('[data-tilt]');
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+            
+            devices.forEach((device, index) => {
+                const rect = device.getBoundingClientRect();
+                const deviceCenterX = rect.left + rect.width / 2;
+                const deviceCenterY = rect.top + rect.height / 2;
+                
+                // Calculate distance from mouse to device center
+                const deltaX = (e.clientX - deviceCenterX) / centerX;
+                const deltaY = (e.clientY - deviceCenterY) / centerY;
+                
+                // Apply subtle rotation and translation
+                const rotateX = deltaY * (5 + index * 2); // Different intensity per device
+                const rotateY = deltaX * (5 + index * 2);
+                const translateX = deltaX * (3 + index);
+                const translateY = deltaY * (3 + index);
+                
+                device.style.transform = `
+                    translate3d(${translateX}px, ${translateY}px, 0)
+                    rotateX(${rotateX}deg)
+                    rotateY(${rotateY}deg)
+                `;
+            });
+        });
+
+        // Reset device positions when mouse leaves
+        document.addEventListener('mouseleave', function() {
+            const devices = document.querySelectorAll('[data-tilt]');
+            devices.forEach(device => {
+                device.style.transform = 'translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg)';
+            });
         });
 
         // Mobile menu functionality
