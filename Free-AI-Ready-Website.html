@@ -249,13 +249,22 @@
             left: 100%;
         }
 
-        /* Device Mockup Styles */
-        .devices-container {
+        /* Hero Animation Styles */
+        .hero-animation-container {
             position: relative;
             width: 100%;
             height: 400px;
             margin: 0 auto;
-            perspective: 1000px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-svg {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            filter: drop-shadow(0 8px 32px rgba(0,0,0,0.1));
         }
 
         .device {
@@ -1000,183 +1009,197 @@
 
                     <!-- Right Visual -->
                     <div class="relative fade-in-up">
-                        <!-- Device Mockup Group -->
-                        <div class="devices-container" id="devicesContainer">
-                            <!-- Desktop -->
-                            <div class="device desktop-device" data-tilt>
-                                <div class="device-frame desktop-frame">
-                                    <div class="device-screen">
-                                        <div class="screen-header">
-                                            <div class="screen-dots">
-                                                <div class="dot red"></div>
-                                                <div class="dot yellow"></div>
-                                                <div class="dot green"></div>
-                                            </div>
-                                            <div class="address-bar">optiscale360.com</div>
-                                        </div>
-                                        <div class="screen-content">
-                                            <!-- Dashboard sliding content -->
-                                            <div class="dashboard-slide">
-                                                <div class="dashboard-header">
-                                                    <div class="brand-logo"></div>
-                                                    <div class="nav-items">
-                                                        <div class="nav-item"></div>
-                                                        <div class="nav-item"></div>
-                                                        <div class="nav-item active"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="dashboard-content">
-                                                    <div class="content-block large"></div>
-                                                    <div class="content-row">
-                                                        <div class="content-block"></div>
-                                                        <div class="content-block"></div>
-                                                        <div class="content-block"></div>
-                                                    </div>
-                                                    <div class="metrics-row">
-                                                        <div class="metric-card">
-                                                            <div class="metric-icon lightning"></div>
-                                                            <div class="metric-text"></div>
-                                                        </div>
-                                                        <div class="metric-card">
-                                                            <div class="metric-icon brain"></div>
-                                                            <div class="metric-text"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <!-- Stunning Website Creation Animation -->
+                        <div class="hero-animation-container">
+                            <svg class="hero-svg" viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <!-- Professional Gradients -->
+                                    <linearGradient id="primaryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                                    </linearGradient>
+                                    <linearGradient id="screenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#4facfe;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:1" />
+                                    </linearGradient>
+                                    <linearGradient id="successGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#11998e;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#38ef7d;stop-opacity:1" />
+                                    </linearGradient>
+                                    <linearGradient id="aiGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#f093fb;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#f5576c;stop-opacity:1" />
+                                    </linearGradient>
+                                    <!-- Glow Filter -->
+                                    <filter id="heroGlow" x="-50%" y="-50%" width="200%" height="200%">
+                                        <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                                        <feMerge> 
+                                            <feMergeNode in="coloredBlur"/>
+                                            <feMergeNode in="SourceGraphic"/>
+                                        </feMerge>
+                                    </filter>
+                                </defs>
 
-                            <!-- Tablet -->
-                            <div class="device tablet-device" data-tilt>
-                                <div class="device-frame tablet-frame">
-                                    <div class="device-screen">
-                                        <div class="tablet-content">
-                                            <div class="tablet-header">
-                                                <div class="tablet-logo"></div>
-                                                <div class="tablet-menu"></div>
-                                            </div>
-                                            <div class="tablet-body">
-                                                <div class="tablet-hero"></div>
-                                                <div class="tablet-features">
-                                                    <div class="feature-card">
-                                                        <div class="feature-icon shield"></div>
-                                                    </div>
-                                                    <div class="feature-card">
-                                                        <div class="feature-icon chart"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                <!-- Background Elements -->
+                                <circle cx="450" cy="50" r="30" fill="url(#aiGradient)" opacity="0.1">
+                                    <animate attributeName="r" values="30;35;30" dur="4s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="50" cy="100" r="20" fill="url(#successGradient)" opacity="0.15">
+                                    <animate attributeName="r" values="20;25;20" dur="3s" repeatCount="indefinite"/>
+                                </circle>
 
-                            <!-- Phone -->
-                            <div class="device phone-device" data-tilt>
-                                <div class="device-frame phone-frame">
-                                    <div class="device-screen">
-                                        <div class="phone-content">
-                                            <div class="phone-header">
-                                                <div class="status-bar"></div>
-                                            </div>
-                                            <div class="phone-body">
-                                                <div class="phone-logo"></div>
-                                                <div class="phone-cta"></div>
-                                                <div class="phone-features">
-                                                    <div class="phone-feature"></div>
-                                                    <div class="phone-feature"></div>
-                                                    <div class="phone-feature"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                <!-- Main Laptop Screen -->
+                                <g transform="translate(120, 80)">
+                                    <!-- Laptop Base -->
+                                    <rect x="0" y="200" width="260" height="15" rx="8" fill="url(#primaryGradient)" opacity="0">
+                                        <animate attributeName="opacity" values="0;1" dur="1s" begin="0.5s" fill="freeze"/>
+                                    </rect>
+                                    
+                                    <!-- Screen -->
+                                    <rect x="20" y="20" width="220" height="180" rx="12" fill="#1a1a1a" stroke="url(#screenGradient)" stroke-width="3" opacity="0">
+                                        <animate attributeName="opacity" values="0;1" dur="0.8s" begin="0.8s" fill="freeze"/>
+                                    </rect>
+                                    
+                                    <!-- Screen Glow -->
+                                    <rect x="15" y="15" width="230" height="190" rx="15" fill="none" stroke="url(#screenGradient)" stroke-width="1" opacity="0" filter="url(#heroGlow)">
+                                        <animate attributeName="opacity" values="0;0.6;0.6" dur="0.8s" begin="1s" fill="freeze"/>
+                                    </rect>
 
-                        <!-- Site Building Animation (Fallback SVG) -->
-                        <div class="building-animation">
-                            <svg class="building-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                                <!-- Building blocks animation -->
-                                <g class="building-blocks">
-                                    <rect class="block block-1" x="50" y="120" width="20" height="20" rx="4" fill="#06b6d4" opacity="0">
-                                        <animate attributeName="opacity" values="0;1;1" dur="3s" begin="0s" repeatCount="indefinite"/>
-                                        <animateTransform attributeName="transform" type="translate" values="0,20;0,0;0,0" dur="3s" begin="0s" repeatCount="indefinite"/>
+                                    <!-- Browser Header -->
+                                    <rect x="25" y="25" width="210" height="25" rx="3" fill="url(#primaryGradient)" opacity="0">
+                                        <animate attributeName="opacity" values="0;1" dur="0.5s" begin="1.5s" fill="freeze"/>
                                     </rect>
-                                    <rect class="block block-2" x="80" y="100" width="20" height="20" rx="4" fill="#8b5cf6" opacity="0">
-                                        <animate attributeName="opacity" values="0;0;1;1" dur="3s" begin="0s" repeatCount="indefinite"/>
-                                        <animateTransform attributeName="transform" type="translate" values="0,20;0,20;0,0;0,0" dur="3s" begin="0s" repeatCount="indefinite"/>
+                                    
+                                    <!-- Browser Dots -->
+                                    <circle cx="35" cy="37.5" r="3" fill="#ff5f57" opacity="0">
+                                        <animate attributeName="opacity" values="0;1" dur="0.3s" begin="1.8s" fill="freeze"/>
+                                    </circle>
+                                    <circle cx="50" cy="37.5" r="3" fill="#ffbd2e" opacity="0">
+                                        <animate attributeName="opacity" values="0;1" dur="0.3s" begin="2s" fill="freeze"/>
+                                    </circle>
+                                    <circle cx="65" cy="37.5" r="3" fill="#28ca42" opacity="0">
+                                        <animate attributeName="opacity" values="0;1" dur="0.3s" begin="2.2s" fill="freeze"/>
+                                    </circle>
+
+                                    <!-- Content Being Built -->
+                                    <!-- Header Section -->
+                                    <rect x="35" y="70" width="180" height="30" rx="4" fill="url(#screenGradient)" opacity="0">
+                                        <animate attributeName="opacity" values="0;0.8" dur="0.8s" begin="2.5s" fill="freeze"/>
+                                        <animate attributeName="width" values="0;180" dur="0.8s" begin="2.5s" fill="freeze"/>
                                     </rect>
-                                    <rect class="block block-3" x="110" y="80" width="20" height="20" rx="4" fill="#a855f7" opacity="0">
-                                        <animate attributeName="opacity" values="0;0;0;1;1" dur="3s" begin="0s" repeatCount="indefinite"/>
-                                        <animateTransform attributeName="transform" type="translate" values="0,20;0,20;0,20;0,0;0,0" dur="3s" begin="0s" repeatCount="indefinite"/>
+                                    
+                                    <!-- Navigation -->
+                                    <rect x="45" y="75" width="40" height="4" rx="2" fill="#ffffff" opacity="0">
+                                        <animate attributeName="opacity" values="0;0.9" dur="0.4s" begin="3s" fill="freeze"/>
                                     </rect>
-                                    <!-- Glowing effects for blocks -->
-                                    <rect class="glow-1" x="48" y="118" width="24" height="24" rx="6" fill="none" stroke="#06b6d4" stroke-width="1" opacity="0">
-                                        <animate attributeName="opacity" values="0;0.5;0.5;0" dur="3s" begin="0s" repeatCount="indefinite"/>
+                                    <rect x="95" y="75" width="30" height="4" rx="2" fill="#ffffff" opacity="0">
+                                        <animate attributeName="opacity" values="0;0.9" dur="0.4s" begin="3.2s" fill="freeze"/>
                                     </rect>
-                                    <rect class="glow-2" x="78" y="98" width="24" height="24" rx="6" fill="none" stroke="#8b5cf6" stroke-width="1" opacity="0">
-                                        <animate attributeName="opacity" values="0;0;0.5;0.5;0" dur="3s" begin="0s" repeatCount="indefinite"/>
+                                    <rect x="135" y="75" width="35" height="4" rx="2" fill="#ffffff" opacity="0">
+                                        <animate attributeName="opacity" values="0;0.9" dur="0.4s" begin="3.4s" fill="freeze"/>
                                     </rect>
-                                    <rect class="glow-3" x="108" y="78" width="24" height="24" rx="6" fill="none" stroke="#a855f7" stroke-width="1" opacity="0">
-                                        <animate attributeName="opacity" values="0;0;0;0.5;0.5" dur="3s" begin="0s" repeatCount="indefinite"/>
+
+                                    <!-- Hero Section -->
+                                    <rect x="35" y="110" width="120" height="15" rx="3" fill="url(#successGradient)" opacity="0">
+                                        <animate attributeName="opacity" values="0;0.9" dur="0.6s" begin="3.8s" fill="freeze"/>
+                                        <animate attributeName="width" values="0;120" dur="0.6s" begin="3.8s" fill="freeze"/>
+                                    </rect>
+                                    <rect x="35" y="130" width="90" height="8" rx="2" fill="#e2e8f0" opacity="0">
+                                        <animate attributeName="opacity" values="0;0.8" dur="0.4s" begin="4.2s" fill="freeze"/>
+                                    </rect>
+                                    <rect x="35" y="142" width="110" height="8" rx="2" fill="#cbd5e1" opacity="0">
+                                        <animate attributeName="opacity" values="0;0.8" dur="0.4s" begin="4.4s" fill="freeze"/>
+                                    </rect>
+
+                                    <!-- CTA Button -->
+                                    <rect x="35" y="160" width="60" height="20" rx="10" fill="url(#aiGradient)" opacity="0">
+                                        <animate attributeName="opacity" values="0;1" dur="0.5s" begin="4.8s" fill="freeze"/>
+                                        <animate attributeName="width" values="0;60" dur="0.5s" begin="4.8s" fill="freeze"/>
                                     </rect>
                                 </g>
-                                <!-- Connecting lines -->
-                                <g class="connections" stroke="#0891b2" stroke-width="2" fill="none" opacity="0">
-                                    <line x1="70" y1="130" x2="90" y2="110">
-                                        <animate attributeName="opacity" values="0;0;1;1;0" dur="3s" begin="1s" repeatCount="indefinite"/>
+
+                                <!-- AI Elements Floating Around -->
+                                <g opacity="0">
+                                    <animate attributeName="opacity" values="0;1" dur="0.8s" begin="5.5s" fill="freeze"/>
+                                    
+                                    <!-- AI Brain Icon -->
+                                    <circle cx="400" cy="150" r="25" fill="url(#aiGradient)" opacity="0.8">
+                                        <animate attributeName="cy" values="150;140;150" dur="3s" repeatCount="indefinite"/>
+                                    </circle>
+                                    <path d="M385 140 Q400 130 415 140 Q410 150 400 155 Q390 150 385 140" fill="#ffffff" opacity="0.9">
+                                        <animateTransform attributeName="transform" type="translate" values="0,10;0,0;0,10" dur="3s" repeatCount="indefinite"/>
+                                    </path>
+                                    
+                                    <!-- Speed Lines -->
+                                    <line x1="60" y1="180" x2="90" y2="180" stroke="url(#successGradient)" stroke-width="3" stroke-linecap="round" opacity="0.7">
+                                        <animate attributeName="x1" values="60;30;60" dur="2s" repeatCount="indefinite"/>
+                                        <animate attributeName="x2" values="90;60;90" dur="2s" repeatCount="indefinite"/>
                                     </line>
-                                    <line x1="100" y1="110" x2="120" y2="90">
-                                        <animate attributeName="opacity" values="0;0;0;1;0" dur="3s" begin="1.5s" repeatCount="indefinite"/>
+                                    <line x1="65" y1="200" x2="85" y2="200" stroke="url(#screenGradient)" stroke-width="2" stroke-linecap="round" opacity="0.6">
+                                        <animate attributeName="x1" values="65;45;65" dur="2.5s" repeatCount="indefinite"/>
+                                        <animate attributeName="x2" values="85;65;85" dur="2.5s" repeatCount="indefinite"/>
                                     </line>
+                                    
+                                    <!-- Success Indicators -->
+                                    <circle cx="430" cy="250" r="12" fill="url(#successGradient)">
+                                        <animate attributeName="r" values="12;16;12" dur="2s" repeatCount="indefinite"/>
+                                    </circle>
+                                    <path d="M424 250 L428 254 L436 246" stroke="#ffffff" stroke-width="2" stroke-linecap="round" fill="none"/>
+                                    
+                                    <!-- Mobile Responsive Icon -->
+                                    <rect x="60" y="280" width="15" height="25" rx="3" fill="url(#primaryGradient)" opacity="0.8">
+                                        <animate attributeName="width" values="15;18;15" dur="2.5s" repeatCount="indefinite"/>
+                                    </rect>
+                                    <rect x="62" y="285" width="11" height="15" rx="1" fill="#ffffff" opacity="0.9"/>
                                 </g>
-                                <!-- Launch effect -->
-                                <circle class="launch-pulse" cx="120" cy="90" r="5" fill="#059669" opacity="0">
-                                    <animate attributeName="opacity" values="0;0;0;0;1;0" dur="3s" begin="2.5s" repeatCount="indefinite"/>
-                                    <animate attributeName="r" values="5;15;25" dur="0.5s" begin="2.5s" repeatCount="indefinite"/>
-                                </circle>
-                                <!-- Launch glow -->
-                                <circle class="launch-glow" cx="120" cy="90" r="8" fill="none" stroke="#10b981" stroke-width="2" opacity="0">
-                                    <animate attributeName="opacity" values="0;0;0;0;0.8;0" dur="3s" begin="2.5s" repeatCount="indefinite"/>
-                                    <animate attributeName="r" values="8;20;35" dur="0.5s" begin="2.5s" repeatCount="indefinite"/>
-                                </circle>
+
+                                <!-- Particles Effect -->
+                                <g opacity="0">
+                                    <animate attributeName="opacity" values="0;1" dur="1s" begin="6s" fill="freeze"/>
+                                    
+                                    <circle cx="100" cy="50" r="2" fill="url(#aiGradient)">
+                                        <animate attributeName="cy" values="50;30;50" dur="4s" repeatCount="indefinite"/>
+                                        <animate attributeName="opacity" values="0.8;0.3;0.8" dur="4s" repeatCount="indefinite"/>
+                                    </circle>
+                                    <circle cx="380" cy="320" r="2.5" fill="url(#successGradient)">
+                                        <animate attributeName="cy" values="320;300;320" dur="3.5s" repeatCount="indefinite"/>
+                                        <animate attributeName="opacity" values="0.7;0.2;0.7" dur="3.5s" repeatCount="indefinite"/>
+                                    </circle>
+                                    <circle cx="450" cy="200" r="1.5" fill="url(#screenGradient)">
+                                        <animate attributeName="cy" values="200;180;200" dur="5s" repeatCount="indefinite"/>
+                                        <animate attributeName="opacity" values="0.9;0.4;0.9" dur="5s" repeatCount="indefinite"/>
+                                    </circle>
+                                </g>
                             </svg>
                         </div>
 
-                        <!-- Benefit Icons (Line Style) -->
-                        <div class="benefit-icons">
-                            <!-- Lightning Bolt - Speed -->
-                            <div class="benefit-icon" style="top: 20%; right: -10%;">
-                                <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                        <!-- Floating Benefit Icons -->
+                        <div class="absolute inset-0 pointer-events-none">
+                            <div class="benefit-icon absolute top-4 right-8">
+                                <svg class="icon-svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
                                 </svg>
                             </div>
-                            <!-- Brain - AI -->
-                            <div class="benefit-icon" style="top: 45%; left: -8%;">
-                                <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M12 2a3 3 0 0 0-3 3c0 1.5-1 2.5-2.5 2.5S4 6.5 4 5a3 3 0 0 0-3 3c0 1.5 1 2.5 2.5 2.5S6 11.5 6 10c0-1.5 1-2.5 2.5-2.5S11 6.5 11 8a3 3 0 0 0 3 3c1.5 0 2.5 1 2.5 2.5S15.5 16 14 16c-1.5 0-2.5-1-2.5-2.5S10.5 11 12 11a3 3 0 0 0 3-3c0-1.5-1-2.5-2.5-2.5S10 4.5 10 6a3 3 0 0 0-3 3"/>
+                            <div class="benefit-icon absolute bottom-8 right-16">
+                                <svg class="icon-svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                                 </svg>
                             </div>
-                            <!-- Shield - Trust -->
-                            <div class="benefit-icon" style="bottom: 30%; right: -5%;">
-                                <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
+                            <div class="benefit-icon absolute top-16 left-8">
+                                <svg class="icon-svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                                 </svg>
                             </div>
-                            <!-- Chart Line - Growth -->
-                            <div class="benefit-icon" style="bottom: 10%; left: -5%;">
-                                <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M3 3v18h18"/>
-                                    <path d="M18 7l-5 5L8 7l-5 5"/>
+                            <div class="benefit-icon absolute bottom-12 left-4">
+                                <svg class="icon-svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
                                 </svg>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
             </div>
 
             <!-- Scroll Indicator -->
