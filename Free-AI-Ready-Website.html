@@ -262,11 +262,17 @@
 
         .hero-svg {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1400px;
             height: auto;
-            filter: drop-shadow(0 8px 32px rgba(0,0,0,0.08));
-            aspect-ratio: 16/9;
-            transform: scale(1.2);
+            filter: drop-shadow(0 20px 60px rgba(139,92,246,0.3));
+            aspect-ratio: 5/3;
+            transform: scale(1.1);
+            animation: heroFloat 6s ease-in-out infinite;
+        }
+        
+        @keyframes heroFloat {
+            0%, 100% { transform: scale(1.1) translateY(0px); }
+            50% { transform: scale(1.1) translateY(-10px); }
         }
 
         .device {
@@ -1011,245 +1017,290 @@
 
                     <!-- Right Visual -->
                     <div class="relative fade-in-up">
-                        <!-- Premium Next-Gen AI-Ready Websites Hero Banner -->
+                        <!-- STUNNING Next-Gen AI Website Creation Visual -->
                         <div class="hero-animation-container">
-                            <svg class="hero-svg" viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="heroTitle" aria-describedby="heroDesc">
-                                <title id="heroTitle">Next-Gen AI-Ready Website Creation Ecosystem</title>
-                                <desc id="heroDesc">Isometric illustration showing AI-powered web development with connected devices, cloud infrastructure, and modern digital interfaces in a clean, light theme.</desc>
+                            <svg class="hero-svg" viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="heroTitle">
+                                <title id="heroTitle">Revolutionary AI-Powered Website Creation Ecosystem</title>
                                 
                                 <defs>
-                                    <!-- Premium Light Theme Gradients -->
-                                    <linearGradient id="primaryLight" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
-                                        <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                                    <!-- SPECTACULAR GRADIENTS -->
+                                    <radialGradient id="cosmicBurst" cx="50%" cy="50%" r="50%">
+                                        <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:1" />
+                                        <stop offset="25%" style="stop-color:#4ecdc4;stop-opacity:0.9" />
+                                        <stop offset="50%" style="stop-color:#45b7d1;stop-opacity:0.8" />
+                                        <stop offset="75%" style="stop-color:#6c5ce7;stop-opacity:0.9" />
+                                        <stop offset="100%" style="stop-color:#a29bfe;stop-opacity:1" />
+                                    </radialGradient>
+                                    <linearGradient id="neonPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" />
+                                        <stop offset="50%" style="stop-color:#a855f7;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#c084fc;stop-opacity:1" />
                                     </linearGradient>
-                                    <linearGradient id="surfaceGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:1" />
-                                        <stop offset="100%" style="stop-color:#e2e8f0;stop-opacity:1" />
+                                    <linearGradient id="electricBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#0ea5e9;stop-opacity:1" />
+                                        <stop offset="50%" style="stop-color:#38bdf8;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#7dd3fc;stop-opacity:1" />
                                     </linearGradient>
-                                    <linearGradient id="aiAccent" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" style="stop-color:#4f46e5;stop-opacity:1" />
-                                        <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
-                                    </linearGradient>
-                                    <linearGradient id="successLight" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <linearGradient id="cyberGreen" x1="0%" y1="0%" x2="100%" y2="100%">
                                         <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
-                                        <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+                                        <stop offset="50%" style="stop-color:#34d399;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#6ee7b7;stop-opacity:1" />
                                     </linearGradient>
-                                    <linearGradient id="cloudGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" style="stop-color:#fef3c7;stop-opacity:1" />
-                                        <stop offset="100%" style="stop-color:#fbbf24;stop-opacity:1" />
+                                    <linearGradient id="sunsetOrange" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#f97316;stop-opacity:1" />
+                                        <stop offset="50%" style="stop-color:#fb923c;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#fdba74;stop-opacity:1" />
                                     </linearGradient>
-                                    <!-- Soft Shadow Filter -->
-                                    <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
-                                        <feDropShadow dx="2" dy="8" stdDeviation="12" flood-color="rgba(0,0,0,0.08)"/>
-                                    </filter>
-                                    <!-- Glow Effect -->
-                                    <filter id="subtleGlow" x="-50%" y="-50%" width="200%" height="200%">
-                                        <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                                    
+                                    <!-- MIND-BLOWING FILTERS -->
+                                    <filter id="hyperGlow" x="-100%" y="-100%" width="300%" height="300%">
+                                        <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
                                         <feMerge> 
                                             <feMergeNode in="coloredBlur"/>
                                             <feMergeNode in="SourceGraphic"/>
                                         </feMerge>
                                     </filter>
+                                    <filter id="neonShadow" x="-50%" y="-50%" width="200%" height="200%">
+                                        <feDropShadow dx="0" dy="0" stdDeviation="12" flood-color="#8b5cf6" flood-opacity="0.6"/>
+                                        <feDropShadow dx="0" dy="8" stdDeviation="24" flood-color="rgba(0,0,0,0.3)"/>
+                                    </filter>
+                                    <filter id="liquidEffect" x="-50%" y="-50%" width="200%" height="200%">
+                                        <feTurbulence baseFrequency="0.3" numOctaves="4" result="noise"/>
+                                        <feDisplacementMap in="SourceGraphic" in2="noise" scale="3"/>
+                                    </filter>
                                 </defs>
 
-                                <!-- Background Light Texture -->
-                                <rect x="0" y="0" width="800" height="450" fill="url(#surfaceGrad)" opacity="0.3"/>
+                                <!-- COSMIC BACKGROUND -->
+                                <rect x="0" y="0" width="1000" height="600" fill="url(#cosmicBurst)" opacity="0.05"/>
                                 
-                                <!-- Floating Background Elements -->
-                                <circle cx="680" cy="80" r="60" fill="url(#aiAccent)" opacity="0.06">
-                                    <animate attributeName="r" values="60;70;60" dur="8s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.06;0.10;0.06" dur="8s" repeatCount="indefinite"/>
-                                </circle>
-                                <circle cx="120" cy="100" r="40" fill="url(#successLight)" opacity="0.08">
-                                    <animate attributeName="r" values="40;50;40" dur="6s" repeatCount="indefinite"/>
-                                </circle>
+                                <!-- FLOATING ENERGY ORBS -->
+                                <g class="energy-orbs">
+                                    <circle cx="100" cy="100" r="60" fill="url(#neonPurple)" opacity="0.1" filter="url(#hyperGlow)">
+                                        <animate attributeName="r" values="60;80;60" dur="4s" repeatCount="indefinite"/>
+                                        <animate attributeName="opacity" values="0.1;0.3;0.1" dur="4s" repeatCount="indefinite"/>
+                                        <animateTransform attributeName="transform" type="rotate" values="0 100 100;360 100 100" dur="20s" repeatCount="indefinite"/>
+                                    </circle>
+                                    <circle cx="850" cy="120" r="45" fill="url(#electricBlue)" opacity="0.15" filter="url(#hyperGlow)">
+                                        <animate attributeName="r" values="45;65;45" dur="6s" repeatCount="indefinite"/>
+                                        <animate attributeName="opacity" values="0.15;0.35;0.15" dur="6s" repeatCount="indefinite"/>
+                                        <animateTransform attributeName="transform" type="rotate" values="360 850 120;0 850 120" dur="25s" repeatCount="indefinite"/>
+                                    </circle>
+                                    <circle cx="800" cy="450" r="70" fill="url(#cyberGreen)" opacity="0.12" filter="url(#hyperGlow)">
+                                        <animate attributeName="r" values="70;90;70" dur="5s" repeatCount="indefinite"/>
+                                        <animate attributeName="opacity" values="0.12;0.28;0.12" dur="5s" repeatCount="indefinite"/>
+                                        <animateTransform attributeName="transform" type="rotate" values="0 800 450;360 800 450" dur="30s" repeatCount="indefinite"/>
+                                    </circle>
+                                </g>
 
-                                <!-- Main Isometric Workspace -->
-                                <g transform="translate(150, 120)" filter="url(#softShadow)">
-                                    <!-- Central Desktop/Workspace Platform -->
-                                    <!-- Isometric base -->
-                                    <path d="M0 200 L120 140 L400 140 L280 200 Z" fill="url(#surfaceGrad)" stroke="#cbd5e1" stroke-width="1"/>
-                                    <path d="M280 200 L400 140 L400 180 L280 240 Z" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
-                                    <path d="M0 200 L280 200 L280 240 L0 240 Z" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+                                <!-- SPECTACULAR MAIN SCENE -->
+                                <g transform="translate(200, 150)" filter="url(#neonShadow)">
                                     
-                                    <!-- Main Display Screen - Isometric -->
-                                    <g transform="translate(50, 60)">
-                                        <!-- Screen back -->
-                                        <path d="M0 80 L60 50 L260 50 L200 80 Z" fill="#1e293b" stroke="#334155" stroke-width="2" opacity="0">
-                                            <animate attributeName="opacity" values="0;1" dur="1s" begin="0.5s" fill="freeze"/>
+                                    <!-- FUTURISTIC HOLOGRAPHIC SCREEN -->
+                                    <g class="holographic-display">
+                                        <!-- Main hologram frame -->
+                                        <path d="M0 150 L80 100 L520 100 L440 150 L440 350 L520 400 L80 400 L0 350 Z" 
+                                              fill="rgba(139,92,246,0.1)" 
+                                              stroke="url(#neonPurple)" 
+                                              stroke-width="3" 
+                                              filter="url(#hyperGlow)" 
+                                              opacity="0">
+                                            <animate attributeName="opacity" values="0;1" dur="1.5s" begin="0.5s" fill="freeze"/>
                                         </path>
-                                        <!-- Screen left -->
-                                        <path d="M200 80 L260 50 L260 120 L200 150 Z" fill="#0f172a" stroke="#334155" stroke-width="1" opacity="0">
-                                            <animate attributeName="opacity" values="0;1" dur="1s" begin="0.7s" fill="freeze"/>
-                                        </path>
-                                        <!-- Screen top -->
-                                        <path d="M0 80 L200 80 L200 150 L0 150 Z" fill="#1a202c" stroke="#334155" stroke-width="1" opacity="0">
-                                            <animate attributeName="opacity" values="0;1" dur="1s" begin="0.9s" fill="freeze"/>
-                                        </path>
-
-                                        <!-- Screen Content -->
-                                        <g opacity="0">
-                                            <animate attributeName="opacity" values="0;1" dur="0.8s" begin="1.5s" fill="freeze"/>
-                                            <!-- Browser chrome -->
-                                            <rect x="10" y="90" width="180" height="15" rx="2" fill="url(#surfaceGrad)"/>
-                                            <circle cx="18" cy="97" r="2" fill="#ef4444"/>
-                                            <circle cx="28" cy="97" r="2" fill="#f59e0b"/>
-                                            <circle cx="38" cy="97" r="2" fill="#10b981"/>
-                                            
-                                            <!-- Website content being built -->
-                                            <rect x="15" y="110" width="80" height="8" rx="2" fill="url(#aiAccent)" opacity="0">
-                                                <animate attributeName="opacity" values="0;0.8" dur="0.6s" begin="2s" fill="freeze"/>
-                                                <animate attributeName="width" values="0;80" dur="0.8s" begin="2s" fill="freeze"/>
-                                            </rect>
-                                            <rect x="15" y="122" width="60" height="4" rx="1" fill="#94a3b8" opacity="0">
-                                                <animate attributeName="opacity" values="0;0.9" dur="0.4s" begin="2.5s" fill="freeze"/>
-                                            </rect>
-                                            <rect x="15" y="130" width="70" height="4" rx="1" fill="#cbd5e1" opacity="0">
-                                                <animate attributeName="opacity" values="0;0.9" dur="0.4s" begin="2.8s" fill="freeze"/>
-                                            </rect>
-                                            <rect x="15" y="140" width="45" height="12" rx="6" fill="url(#successLight)" opacity="0">
-                                                <animate attributeName="opacity" values="0;1" dur="0.5s" begin="3.2s" fill="freeze"/>
-                                            </rect>
-                                        </g>
-                                    </g>
-
-                                    <!-- AI Processing Unit - Isometric Cube -->
-                                    <g transform="translate(320, 80)" opacity="0">
-                                        <animate attributeName="opacity" values="0;1" dur="0.8s" begin="1.8s" fill="freeze"/>
-                                        <!-- Top face -->
-                                        <path d="M0 40 L30 25 L60 40 L30 55 Z" fill="url(#aiAccent)" filter="url(#subtleGlow)"/>
-                                        <!-- Left face -->
-                                        <path d="M0 40 L30 55 L30 85 L0 70 Z" fill="#3730a3"/>
-                                        <!-- Right face -->
-                                        <path d="M30 55 L60 40 L60 70 L30 85 Z" fill="#312e81"/>
                                         
-                                        <!-- AI Neural connections -->
-                                        <g opacity="0.8">
-                                            <circle cx="15" cy="42" r="2" fill="#fbbf24">
-                                                <animate attributeName="r" values="2;3;2" dur="2s" repeatCount="indefinite"/>
+                                        <!-- Holographic scan lines -->
+                                        <g opacity="0">
+                                            <animate attributeName="opacity" values="0;0.8" dur="0.8s" begin="2s" fill="freeze"/>
+                                            <line x1="20" y1="120" x2="500" y2="120" stroke="url(#electricBlue)" stroke-width="1" opacity="0.5">
+                                                <animate attributeName="y1" values="120;380;120" dur="3s" repeatCount="indefinite"/>
+                                                <animate attributeName="y2" values="120;380;120" dur="3s" repeatCount="indefinite"/>
+                                            </line>
+                                            <line x1="30" y1="130" x2="490" y2="130" stroke="url(#cyberGreen)" stroke-width="1" opacity="0.3">
+                                                <animate attributeName="y1" values="130;370;130" dur="2.5s" repeatCount="indefinite"/>
+                                                <animate attributeName="y2" values="130;370;130" dur="2.5s" repeatCount="indefinite"/>
+                                            </line>
+                                        </g>
+                                        
+                                        <!-- SPECTACULAR WEBSITE BEING BUILT -->
+                                        <g transform="translate(50, 130)" opacity="0">
+                                            <animate attributeName="opacity" values="0;1" dur="1s" begin="2.5s" fill="freeze"/>
+                                            
+                                            <!-- Header materializing -->
+                                            <rect x="0" y="0" width="400" height="60" rx="8" fill="url(#neonPurple)" opacity="0" filter="url(#hyperGlow)">
+                                                <animate attributeName="opacity" values="0;0.9" dur="0.8s" begin="3s" fill="freeze"/>
+                                                <animate attributeName="width" values="0;400" dur="1.2s" begin="3s" fill="freeze"/>
+                                            </rect>
+                                            
+                                            <!-- Navigation elements appearing -->
+                                            <circle cx="30" cy="30" r="8" fill="#fff" opacity="0">
+                                                <animate attributeName="opacity" values="0;1" dur="0.3s" begin="3.5s" fill="freeze"/>
+                                                <animate attributeName="r" values="0;8" dur="0.3s" begin="3.5s" fill="freeze"/>
                                             </circle>
-                                            <circle cx="30" cy="35" r="2" fill="#f59e0b">
-                                                <animate attributeName="r" values="2;3;2" dur="2.5s" repeatCount="indefinite"/>
-                                            </circle>
-                                            <circle cx="45" cy="42" r="2" fill="#eab308">
-                                                <animate attributeName="r" values="2;3;2" dur="3s" repeatCount="indefinite"/>
-                                            </circle>
+                                            <rect x="60" y="22" width="60" height="16" rx="8" fill="#fff" opacity="0">
+                                                <animate attributeName="opacity" values="0;1" dur="0.3s" begin="3.7s" fill="freeze"/>
+                                            </rect>
+                                            <rect x="140" y="22" width="50" height="16" rx="8" fill="#fff" opacity="0">
+                                                <animate attributeName="opacity" values="0;1" dur="0.3s" begin="3.9s" fill="freeze"/>
+                                            </rect>
+                                            <rect x="210" y="22" width="70" height="16" rx="8" fill="#fff" opacity="0">
+                                                <animate attributeName="opacity" values="0;1" dur="0.3s" begin="4.1s" fill="freeze"/>
+                                            </rect>
+                                            
+                                            <!-- Hero section explosion -->
+                                            <rect x="0" y="80" width="400" height="120" rx="12" fill="url(#electricBlue)" opacity="0" filter="url(#hyperGlow)">
+                                                <animate attributeName="opacity" values="0;0.8" dur="0.6s" begin="4.5s" fill="freeze"/>
+                                                <animate attributeName="width" values="0;400" dur="0.8s" begin="4.5s" fill="freeze"/>
+                                            </rect>
+                                            
+                                            <!-- Content blocks manifesting -->
+                                            <rect x="20" y="100" width="120" height="20" rx="4" fill="#fff" opacity="0">
+                                                <animate attributeName="opacity" values="0;1" dur="0.4s" begin="5s" fill="freeze"/>
+                                            </rect>
+                                            <rect x="20" y="130" width="200" height="12" rx="2" fill="rgba(255,255,255,0.7)" opacity="0">
+                                                <animate attributeName="opacity" values="0;1" dur="0.4s" begin="5.2s" fill="freeze"/>
+                                            </rect>
+                                            <rect x="20" y="150" width="180" height="12" rx="2" fill="rgba(255,255,255,0.7)" opacity="0">
+                                                <animate attributeName="opacity" values="0;1" dur="0.4s" begin="5.4s" fill="freeze"/>
+                                            </rect>
+                                            
+                                            <!-- CTA button explosion -->
+                                            <rect x="20" y="170" width="100" height="25" rx="12" fill="url(#sunsetOrange)" opacity="0" filter="url(#hyperGlow)">
+                                                <animate attributeName="opacity" values="0;1" dur="0.5s" begin="5.8s" fill="freeze"/>
+                                                <animate attributeName="width" values="0;100" dur="0.5s" begin="5.8s" fill="freeze"/>
+                                            </rect>
                                         </g>
                                     </g>
-
-                                    <!-- Connected Devices Network -->
-                                    <!-- Tablet -->
-                                    <g transform="translate(280, 100)" opacity="0">
-                                        <animate attributeName="opacity" values="0;1" dur="0.6s" begin="2.5s" fill="freeze"/>
-                                        <rect x="0" y="0" width="40" height="60" rx="4" fill="url(#surfaceGrad)" stroke="#cbd5e1" stroke-width="1"/>
-                                        <rect x="3" y="8" width="34" height="44" rx="2" fill="#1e293b"/>
-                                        <rect x="5" y="12" width="30" height="6" rx="1" fill="url(#aiAccent)" opacity="0.8"/>
-                                        <rect x="5" y="22" width="20" height="3" rx="0.5" fill="#94a3b8"/>
-                                        <rect x="5" y="28" width="25" height="3" rx="0.5" fill="#cbd5e1"/>
-                                    </g>
-
-                                    <!-- Smartphone -->
-                                    <g transform="translate(350, 110)" opacity="0">
-                                        <animate attributeName="opacity" values="0;1" dur="0.6s" begin="3s" fill="freeze"/>
-                                        <rect x="0" y="0" width="25" height="45" rx="4" fill="url(#surfaceGrad)" stroke="#cbd5e1" stroke-width="1"/>
-                                        <rect x="2" y="5" width="21" height="35" rx="2" fill="#1e293b"/>
-                                        <rect x="4" y="8" width="17" height="4" rx="1" fill="url(#successLight)"/>
-                                        <rect x="4" y="15" width="12" height="2" rx="0.5" fill="#94a3b8"/>
-                                        <rect x="4" y="19" width="15" height="2" rx="0.5" fill="#cbd5e1"/>
-                                    </g>
-
-                                    <!-- Cloud Infrastructure -->
-                                    <g transform="translate(100, 40)" opacity="0">
-                                        <animate attributeName="opacity" values="0;1" dur="1s" begin="3.5s" fill="freeze"/>
-                                        <!-- Cloud shape -->
-                                        <path d="M20 30 Q15 25 25 25 Q30 20 40 25 Q50 20 55 30 Q60 25 65 30 Q60 40 50 35 Q40 40 30 35 Q20 40 20 30" fill="url(#cloudGrad)" filter="url(#subtleGlow)"/>
-                                        <!-- Data nodes -->
-                                        <circle cx="35" cy="30" r="2" fill="#f59e0b" opacity="0.8">
-                                            <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
-                                        </circle>
-                                        <circle cx="45" cy="28" r="1.5" fill="#eab308" opacity="0.9">
-                                            <animate attributeName="opacity" values="0.9;1;0.9" dur="2.5s" repeatCount="indefinite"/>
-                                        </circle>
-                                    </g>
-                                </g>
-
-                                <!-- Data Flow Connections -->
-                                <g opacity="0" stroke="url(#aiAccent)" stroke-width="2" fill="none">
-                                    <animate attributeName="opacity" values="0;0.6" dur="1s" begin="4s" fill="freeze"/>
-                                    <!-- Flowing data streams -->
-                                    <path d="M280 220 Q350 200 420 180" stroke-dasharray="5,5">
-                                        <animate attributeName="stroke-dashoffset" values="0;-10" dur="2s" repeatCount="indefinite"/>
-                                    </path>
-                                    <path d="M250 180 Q300 160 350 140" stroke-dasharray="3,3">
-                                        <animate attributeName="stroke-dashoffset" values="0;-6" dur="1.5s" repeatCount="indefinite"/>
-                                    </path>
-                                    <path d="M450 220 Q500 200 550 180" stroke-dasharray="4,4">
-                                        <animate attributeName="stroke-dashoffset" values="0;-8" dur="1.8s" repeatCount="indefinite"/>
-                                    </path>
-                                </g>
-
-                                <!-- Floating UI Elements -->
-                                <g opacity="0">
-                                    <animate attributeName="opacity" values="0;1" dur="0.8s" begin="4.5s" fill="freeze"/>
                                     
-                                    <!-- Code snippets -->
-                                    <g transform="translate(600, 150)">
-                                        <rect x="0" y="0" width="80" height="60" rx="8" fill="url(#surfaceGrad)" filter="url(#softShadow)">
-                                            <animate attributeName="y" values="0;-5;0" dur="4s" repeatCount="indefinite"/>
-                                        </rect>
-                                        <rect x="5" y="8" width="25" height="3" rx="1" fill="url(#aiAccent)" opacity="0.7"/>
-                                        <rect x="5" y="15" width="40" height="2" rx="0.5" fill="#6b7280"/>
-                                        <rect x="5" y="20" width="35" height="2" rx="0.5" fill="#6b7280"/>
-                                        <rect x="5" y="25" width="30" height="2" rx="0.5" fill="#6b7280"/>
-                                        <rect x="5" y="35" width="20" height="8" rx="4" fill="url(#successLight)" opacity="0.8"/>
+                                    <!-- AI BRAIN CONSTELLATION -->
+                                    <g transform="translate(500, 50)" opacity="0">
+                                        <animate attributeName="opacity" values="0;1" dur="1s" begin="3s" fill="freeze"/>
+                                        
+                                        <!-- Central AI core -->
+                                        <circle cx="0" cy="50" r="30" fill="url(#neonPurple)" filter="url(#hyperGlow)">
+                                            <animate attributeName="r" values="30;40;30" dur="3s" repeatCount="indefinite"/>
+                                        </circle>
+                                        <circle cx="0" cy="50" r="15" fill="#fff" opacity="0.9">
+                                            <animate attributeName="opacity" values="0.9;0.5;0.9" dur="2s" repeatCount="indefinite"/>
+                                        </circle>
+                                        
+                                        <!-- Neural network connections -->
+                                        <g stroke="url(#electricBlue)" stroke-width="2" fill="none" opacity="0.8">
+                                            <path d="M0 50 Q-40 20 -60 0">
+                                                <animate attributeName="stroke-dasharray" values="0,100;50,50;100,0" dur="2s" repeatCount="indefinite"/>
+                                            </path>
+                                            <path d="M0 50 Q40 20 60 0">
+                                                <animate attributeName="stroke-dasharray" values="0,100;50,50;100,0" dur="2.5s" repeatCount="indefinite"/>
+                                            </path>
+                                            <path d="M0 50 Q-50 80 -70 120">
+                                                <animate attributeName="stroke-dasharray" values="0,100;50,50;100,0" dur="3s" repeatCount="indefinite"/>
+                                            </path>
+                                            <path d="M0 50 Q50 80 70 120">
+                                                <animate attributeName="stroke-dasharray" values="0,100;50,50;100,0" dur="2.8s" repeatCount="indefinite"/>
+                                            </path>
+                                        </g>
+                                        
+                                        <!-- Satellite nodes -->
+                                        <circle cx="-60" cy="0" r="8" fill="url(#cyberGreen)" filter="url(#hyperGlow)">
+                                            <animate attributeName="r" values="8;12;8" dur="2s" repeatCount="indefinite"/>
+                                        </circle>
+                                        <circle cx="60" cy="0" r="8" fill="url(#sunsetOrange)" filter="url(#hyperGlow)">
+                                            <animate attributeName="r" values="8;12;8" dur="2.5s" repeatCount="indefinite"/>
+                                        </circle>
+                                        <circle cx="-70" cy="120" r="8" fill="url(#electricBlue)" filter="url(#hyperGlow)">
+                                            <animate attributeName="r" values="8;12;8" dur="3s" repeatCount="indefinite"/>
+                                        </circle>
+                                        <circle cx="70" cy="120" r="8" fill="url(#neonPurple)" filter="url(#hyperGlow)">
+                                            <animate attributeName="r" values="8;12;8" dur="2.8s" repeatCount="indefinite"/>
+                                        </circle>
                                     </g>
+                                </g>
 
-                                    <!-- Analytics Dashboard -->
-                                    <g transform="translate(50, 280)">
-                                        <rect x="0" y="0" width="100" height="70" rx="8" fill="url(#surfaceGrad)" filter="url(#softShadow)">
-                                            <animate attributeName="y" values="0;-3;0" dur="5s" repeatCount="indefinite"/>
+                                <!-- SPECTACULAR FLOATING ELEMENTS -->
+                                <g class="floating-elements" opacity="0">
+                                    <animate attributeName="opacity" values="0;1" dur="1s" begin="6s" fill="freeze"/>
+                                    
+                                    <!-- Code Matrix -->
+                                    <g transform="translate(50, 350)">
+                                        <rect x="0" y="0" width="120" height="80" rx="16" fill="rgba(139,92,246,0.15)" stroke="url(#neonPurple)" stroke-width="2" filter="url(#hyperGlow)">
+                                            <animate attributeName="y" values="0;-10;0" dur="4s" repeatCount="indefinite"/>
+                                        </rect>
+                                        <text x="60" y="25" text-anchor="middle" font-size="12" fill="url(#electricBlue)" font-family="monospace" opacity="0.8">{'{'} AI CODE {'}'}</text>
+                                        <rect x="10" y="35" width="30" height="4" rx="2" fill="url(#cyberGreen)" opacity="0.7"/>
+                                        <rect x="10" y="45" width="50" height="4" rx="2" fill="url(#sunsetOrange)" opacity="0.7"/>
+                                        <rect x="10" y="55" width="40" height="4" rx="2" fill="url(#electricBlue)" opacity="0.7"/>
+                                    </g>
+                                    
+                                    <!-- Performance Rocket -->
+                                    <g transform="translate(750, 350)">
+                                        <circle cx="60" cy="60" r="50" fill="rgba(14,165,233,0.15)" stroke="url(#electricBlue)" stroke-width="2" filter="url(#hyperGlow)">
+                                            <animate attributeName="cy" values="60;50;60" dur="5s" repeatCount="indefinite"/>
+                                        </circle>
+                                        <!-- Speed gauge -->
+                                        <path d="M30 60 A30 30 0 0 1 90 60" stroke="url(#cyberGreen)" stroke-width="6" fill="none" opacity="0.5"/>
+                                        <path d="M30 60 A30 30 0 0 1 75 35" stroke="url(#sunsetOrange)" stroke-width="6" fill="none">
+                                            <animate attributeName="stroke-dasharray" values="0,94;70,24;94,0" dur="3s" repeatCount="indefinite"/>
+                                        </path>
+                                        <text x="60" y="85" text-anchor="middle" font-size="14" fill="url(#neonPurple)" font-family="system-ui" font-weight="bold">99.9%</text>
+                                    </g>
+                                    
+                                    <!-- Analytics Explosion -->
+                                    <g transform="translate(50, 50)">
+                                        <rect x="0" y="0" width="150" height="100" rx="20" fill="rgba(16,185,129,0.15)" stroke="url(#cyberGreen)" stroke-width="2" filter="url(#hyperGlow)">
+                                            <animate attributeName="y" values="0;-5;0" dur="6s" repeatCount="indefinite"/>
                                         </rect>
                                         <!-- Chart bars -->
-                                        <rect x="10" y="45" width="8" height="15" rx="1" fill="url(#successLight)"/>
-                                        <rect x="22" y="35" width="8" height="25" rx="1" fill="url(#aiAccent)"/>
-                                        <rect x="34" y="25" width="8" height="35" rx="1" fill="url(#cloudGrad)"/>
-                                        <rect x="46" y="20" width="8" height="40" rx="1" fill="url(#successLight)"/>
-                                        <!-- Trend line -->
-                                        <path d="M60 50 Q70 40 85 35" stroke="url(#aiAccent)" stroke-width="2" fill="none" opacity="0.8"/>
-                                        <circle cx="85" cy="35" r="2" fill="url(#aiAccent)"/>
-                                    </g>
-
-                                    <!-- Performance Metrics -->
-                                    <g transform="translate(580, 280)">
-                                        <circle cx="40" cy="40" r="35" fill="url(#surfaceGrad)" filter="url(#softShadow)">
-                                            <animate attributeName="cy" values="40;37;40" dur="6s" repeatCount="indefinite"/>
-                                        </circle>
-                                        <!-- Speed indicator -->
-                                        <path d="M20 40 A20 20 0 0 1 60 40" stroke="url(#successLight)" stroke-width="4" fill="none" opacity="0.3"/>
-                                        <path d="M20 40 A20 20 0 0 1 50 25" stroke="url(#successLight)" stroke-width="4" fill="none">
-                                            <animate attributeName="stroke-dasharray" values="0,63;45,18;63,0" dur="3s" repeatCount="indefinite"/>
-                                        </path>
-                                        <circle cx="40" cy="40" r="3" fill="url(#aiAccent)"/>
-                                        <text x="40" y="55" text-anchor="middle" font-size="8" fill="#475569" font-family="system-ui">98%</text>
+                                        <rect x="20" y="60" width="12" height="25" rx="2" fill="url(#cyberGreen)">
+                                            <animate attributeName="height" values="25;35;25" dur="2s" repeatCount="indefinite"/>
+                                        </rect>
+                                        <rect x="40" y="50" width="12" height="35" rx="2" fill="url(#neonPurple)">
+                                            <animate attributeName="height" values="35;45;35" dur="2.5s" repeatCount="indefinite"/>
+                                        </rect>
+                                        <rect x="60" y="40" width="12" height="45" rx="2" fill="url(#sunsetOrange)">
+                                            <animate attributeName="height" values="45;55;45" dur="3s" repeatCount="indefinite"/>
+                                        </rect>
+                                        <rect x="80" y="35" width="12" height="50" rx="2" fill="url(#electricBlue)">
+                                            <animate attributeName="height" values="50;60;50" dur="2.8s" repeatCount="indefinite"/>
+                                        </rect>
+                                        <!-- Trending line -->
+                                        <path d="M100 70 Q115 55 130 40" stroke="url(#neonPurple)" stroke-width="3" fill="none" opacity="0.8" filter="url(#hyperGlow)"/>
                                     </g>
                                 </g>
 
-                                <!-- Subtle Particle System -->
-                                <g opacity="0">
-                                    <animate attributeName="opacity" values="0;0.6" dur="1s" begin="5s" fill="freeze"/>
-                                    <circle cx="150" cy="100" r="2" fill="url(#aiAccent)" opacity="0.4">
-                                        <animate attributeName="cy" values="100;80;100" dur="8s" repeatCount="indefinite"/>
-                                        <animate attributeName="opacity" values="0.4;0.8;0.4" dur="8s" repeatCount="indefinite"/>
+                                <!-- MIND-BLOWING PARTICLE SYSTEM -->
+                                <g class="particle-system" opacity="0">
+                                    <animate attributeName="opacity" values="0;0.8" dur="2s" begin="7s" fill="freeze"/>
+                                    
+                                    <!-- Energy particles -->
+                                    <circle cx="200" cy="100" r="3" fill="url(#neonPurple)" opacity="0.6">
+                                        <animate attributeName="cy" values="100;50;100" dur="8s" repeatCount="indefinite"/>
+                                        <animate attributeName="opacity" values="0.6;1;0.6" dur="8s" repeatCount="indefinite"/>
                                     </circle>
-                                    <circle cx="650" cy="200" r="1.5" fill="url(#successLight)" opacity="0.5">
-                                        <animate attributeName="cy" values="200;180;200" dur="6s" repeatCount="indefinite"/>
-                                        <animate attributeName="opacity" values="0.5;0.9;0.5" dur="6s" repeatCount="indefinite"/>
+                                    <circle cx="600" cy="450" r="4" fill="url(#electricBlue)" opacity="0.7">
+                                        <animate attributeName="cy" values="450;400;450" dur="6s" repeatCount="indefinite"/>
+                                        <animate attributeName="opacity" values="0.7;1;0.7" dur="6s" repeatCount="indefinite"/>
                                     </circle>
-                                    <circle cx="500" cy="350" r="2.5" fill="url(#cloudGrad)" opacity="0.3">
-                                        <animate attributeName="cy" values="350;330;350" dur="10s" repeatCount="indefinite"/>
-                                        <animate attributeName="opacity" values="0.3;0.7;0.3" dur="10s" repeatCount="indefinite"/>
+                                    <circle cx="800" cy="200" r="2" fill="url(#cyberGreen)" opacity="0.8">
+                                        <animate attributeName="cy" values="200;150;200" dur="10s" repeatCount="indefinite"/>
+                                        <animate attributeName="opacity" values="0.8;1;0.8" dur="10s" repeatCount="indefinite"/>
                                     </circle>
+                                    <circle cx="300" cy="500" r="3.5" fill="url(#sunsetOrange)" opacity="0.5">
+                                        <animate attributeName="cy" values="500;450;500" dur="7s" repeatCount="indefinite"/>
+                                        <animate attributeName="opacity" values="0.5;1;0.5" dur="7s" repeatCount="indefinite"/>
+                                    </circle>
+                                </g>
+
+                                <!-- SPECTACULAR ENERGY WAVES -->
+                                <g class="energy-waves" opacity="0" stroke-width="2" fill="none">
+                                    <animate attributeName="opacity" values="0;0.6" dur="1s" begin="8s" fill="freeze"/>
+                                    
+                                    <path d="M0 300 Q250 200 500 300 T1000 300" stroke="url(#electricBlue)" opacity="0.4">
+                                        <animate attributeName="d" values="M0 300 Q250 200 500 300 T1000 300;M0 300 Q250 280 500 300 T1000 300;M0 300 Q250 200 500 300 T1000 300" dur="4s" repeatCount="indefinite"/>
+                                    </path>
+                                    <path d="M0 350 Q300 250 600 350 T1000 350" stroke="url(#neonPurple)" opacity="0.3">
+                                        <animate attributeName="d" values="M0 350 Q300 250 600 350 T1000 350;M0 350 Q300 330 600 350 T1000 350;M0 350 Q300 250 600 350 T1000 350" dur="5s" repeatCount="indefinite"/>
+                                    </path>
+                                    <path d="M0 400 Q200 300 400 400 T1000 400" stroke="url(#cyberGreen)" opacity="0.2">
+                                        <animate attributeName="d" values="M0 400 Q200 300 400 400 T1000 400;M0 400 Q200 380 400 400 T1000 400;M0 400 Q200 300 400 400 T1000 400" dur="6s" repeatCount="indefinite"/>
+                                    </path>
                                 </g>
                             </svg>
                         </div>
