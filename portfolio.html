@@ -245,378 +245,277 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        /* Next-Gen Contact Form Styles */
+        /* Stunning Compact Contact Form */
         .contact-form-wrapper {
             opacity: 0;
-            transform: translateY(20px) scale(0.95);
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(15px);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
             pointer-events: none;
         }
 
         .contact-form-wrapper.active {
             opacity: 1;
-            transform: translateY(0) scale(1);
+            transform: translateY(0);
             pointer-events: auto;
         }
 
         .contact-form-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 24px;
-            padding: 2.5rem;
-            box-shadow: 
-                0 25px 50px -12px rgba(0, 0, 0, 0.15),
-                0 0 0 1px rgba(255, 255, 255, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            position: relative;
-            overflow: hidden;
-            max-width: 100%;
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 32px;
+            max-width: 600px;
             margin: 0 auto;
-        }
-
-        .contact-form-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), transparent);
+            box-shadow: 
+                0 20px 25px -5px rgba(0, 0, 0, 0.1),
+                0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .form-header {
-            text-align: center;
-            margin-bottom: 2rem;
-            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 28px;
         }
 
-        .form-header h3 {
-            font-size: 1.75rem;
-            font-weight: 800;
-            color: #1e293b;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, #1e293b 0%, #3b82f6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .form-title h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #111827;
+            margin: 0 0 4px 0;
+            line-height: 1.2;
         }
 
-        .form-header p {
-            color: #64748b;
-            font-size: 0.95rem;
-            margin-bottom: 0;
+        .form-title p {
+            font-size: 15px;
+            color: #6b7280;
+            margin: 0;
+            font-weight: 500;
         }
 
         .close-btn {
-            position: absolute;
-            top: -1rem;
-            right: -1rem;
-            background: rgba(239, 68, 68, 0.1);
-            border: 1px solid rgba(239, 68, 68, 0.2);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
+            background: #f3f4f6;
+            border: none;
+            border-radius: 8px;
+            width: 36px;
+            height: 36px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #ef4444;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
+            color: #6b7280;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
 
         .close-btn:hover {
-            background: rgba(239, 68, 68, 0.2);
-            transform: scale(1.1);
-            border-color: rgba(239, 68, 68, 0.4);
+            background: #e5e7eb;
+            color: #374151;
         }
 
-        .project-form {
+        .compact-form {
             display: grid;
-            gap: 1.5rem;
+            gap: 20px;
         }
 
-        .form-row {
+        .form-row-compact {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1rem;
+            gap: 16px;
         }
 
-        .form-group {
-            position: relative;
+        .field-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
 
-        .form-input {
-            width: 100%;
-            padding: 1rem 1rem 1rem 1rem;
-            border: 2px solid rgba(148, 163, 184, 0.3);
-            border-radius: 12px;
-            font-size: 1rem;
-            color: #1e293b;
-            background: rgba(248, 250, 252, 0.8);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            outline: none;
-        }
-
-        .form-input:focus {
-            border-color: #3b82f6;
-            background: rgba(255, 255, 255, 0.9);
-            transform: translateY(-1px);
-            box-shadow: 
-                0 10px 25px -5px rgba(59, 130, 246, 0.1),
-                0 0 0 0 rgba(59, 130, 246, 0.1);
-        }
-
-        .form-input:focus + .form-label {
-            transform: translateY(-2.5rem) scale(0.85);
-            color: #3b82f6;
+        .field-label {
+            font-size: 14px;
             font-weight: 600;
+            color: #374151;
+            margin: 0;
         }
 
-        .form-input:not(:placeholder-shown) + .form-label {
-            transform: translateY(-2.5rem) scale(0.85);
-            color: #64748b;
-        }
-
-        .form-label {
-            position: absolute;
-            left: 1rem;
-            top: 1rem;
-            color: #94a3b8;
-            font-size: 1rem;
-            pointer-events: none;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            background: white;
-            padding: 0 0.5rem;
-            border-radius: 6px;
-        }
-
-        .form-highlight {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-            border-radius: 1px;
-        }
-
-        .form-input:focus ~ .form-highlight {
-            transform: scaleX(1);
-        }
-
-        .phone-input-wrapper {
-            display: grid;
-            grid-template-columns: 120px 1fr;
-            gap: 0.5rem;
-            position: relative;
-        }
-
-        .country-select {
-            padding: 1rem 0.75rem;
-            border: 2px solid rgba(148, 163, 184, 0.3);
-            border-radius: 12px;
-            font-size: 0.9rem;
-            color: #1e293b;
-            background: rgba(248, 250, 252, 0.8);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
+        .field-input {
+            height: 44px;
+            padding: 0 14px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 15px;
+            color: #111827;
+            background: #ffffff;
+            transition: all 0.2s ease;
             outline: none;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
-        .country-select:focus {
+        .field-input:focus {
             border-color: #3b82f6;
-            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .field-input::placeholder {
+            color: #9ca3af;
+            font-weight: 400;
+        }
+
+        .field-textarea {
+            height: auto;
+            padding: 12px 14px;
+            resize: vertical;
+            min-height: 88px;
+            line-height: 1.5;
+        }
+
+        .phone-field .field-input {
+            height: 44px;
+        }
+
+        .phone-wrapper {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 2px;
+        }
+
+        .country-code {
+            height: 44px;
+            padding: 0 8px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px 0 0 8px;
+            border-right: none;
+            font-size: 14px;
+            color: #111827;
+            background: #f9fafb;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.2s ease;
         }
 
         .phone-input {
-            border-top-left-radius: 0 !important;
-            border-bottom-left-radius: 0 !important;
+            border-radius: 0 8px 8px 0 !important;
+            border-left: none !important;
         }
 
-        .phone-label {
-            left: 130px !important;
+        .phone-wrapper:focus-within .country-code {
+            border-color: #3b82f6;
+            background: #ffffff;
         }
 
-        .form-textarea {
-            resize: vertical;
-            min-height: 120px;
-            font-family: inherit;
+        .phone-wrapper:focus-within .phone-input {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
 
-        .form-select {
-            cursor: pointer;
-        }
-
-        .form-hint {
-            display: block;
-            margin-top: 0.5rem;
-            color: #94a3b8;
-            font-size: 0.85rem;
-        }
-
-        .validation-message {
-            margin-top: 0.5rem;
-            font-size: 0.85rem;
-            color: #ef4444;
-            display: none;
-        }
-
-        .validation-message.show {
-            display: block;
-            animation: slideDown 0.3s ease;
-        }
-
-        .submit-btn {
-            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-            color: white;
+        .submit-button {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: #ffffff;
             border: none;
-            padding: 1.25rem 2rem;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: 700;
+            height: 48px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            overflow: hidden;
-            margin-top: 0.5rem;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 8px;
         }
 
-        .submit-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.6s ease;
+        .submit-button:hover {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.3);
         }
 
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 
-                0 20px 25px -5px rgba(59, 130, 246, 0.3),
-                0 10px 10px -5px rgba(59, 130, 246, 0.2);
-        }
-
-        .submit-btn:hover::before {
-            left: 100%;
-        }
-
-        .submit-btn:active {
+        .submit-button:active {
             transform: translateY(0);
         }
 
-        .btn-loading {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+        .submit-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
         }
 
-        .success-message {
+        .loading-spinner {
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
+
+        .success-state {
             text-align: center;
-            padding: 2rem;
-            animation: bounceIn 0.6s ease;
+            padding: 40px 20px;
         }
 
         .success-icon {
-            margin: 0 auto 1rem;
-            width: fit-content;
-            padding: 1rem;
-            background: rgba(16, 185, 129, 0.1);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
+            color: #10b981;
+            margin-bottom: 16px;
         }
 
-        .success-message h3 {
-            color: #1e293b;
-            font-size: 1.5rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
+        .success-state h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #111827;
+            margin: 0 0 8px 0;
         }
 
-        .success-message p {
-            color: #64748b;
-            margin-bottom: 1.5rem;
+        .success-state p {
+            font-size: 15px;
+            color: #6b7280;
+            margin: 0 0 24px 0;
         }
 
-        .new-project-btn {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            color: white;
+        .new-request-btn {
+            background: #10b981;
+            color: #ffffff;
             border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 10px;
+            height: 44px;
+            padding: 0 24px;
+            border-radius: 8px;
+            font-size: 15px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
         }
 
-        .new-project-btn:hover {
+        .new-request-btn:hover {
+            background: #059669;
             transform: translateY(-1px);
-            box-shadow: 0 10px 20px -5px rgba(16, 185, 129, 0.3);
         }
 
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
-        @keyframes bounceIn {
-            0% { opacity: 0; transform: scale(0.3); }
-            50% { opacity: 1; transform: scale(1.05); }
-            70% { transform: scale(0.9); }
-            100% { transform: scale(1); }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
+        /* Mobile Responsive */
+        @media (max-width: 640px) {
             .contact-form-card {
-                padding: 1.5rem;
-                margin: 0 1rem;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .form-header h3 {
-                font-size: 1.5rem;
-            }
-
-            .phone-input-wrapper {
-                grid-template-columns: 100px 1fr;
-            }
-
-            .phone-label {
-                left: 110px !important;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .contact-form-card {
-                padding: 1rem;
-                border-radius: 16px;
-            }
-
-            .phone-input-wrapper {
-                grid-template-columns: 1fr;
-                gap: 0.5rem;
-            }
-
-            .phone-label {
-                left: 1rem !important;
-            }
-
-            .country-select {
+                padding: 24px 20px;
+                margin: 0 16px;
                 border-radius: 12px;
             }
 
-            .phone-input {
-                border-radius: 12px !important;
+            .form-row-compact {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .form-title h3 {
+                font-size: 22px;
+            }
+
+            .phone-wrapper {
+                grid-template-columns: 90px 1fr;
+            }
+
+            .country-code {
+                padding: 0 6px;
+                font-size: 13px;
             }
         }
     </style>
@@ -1228,125 +1127,106 @@
                         </span>
                     </button>
 
-                    <!-- Inline Contact Form (Initially Hidden) -->
+                    <!-- Redesigned Compact Contact Form (Initially Hidden) -->
                     <div id="inlineContactForm" class="contact-form-wrapper hidden">
                         <div class="contact-form-card">
+                            <!-- Clean Header -->
                             <div class="form-header">
-                                <h3>Let's Build Your Next-Gen Website</h3>
-                                <p>Fill in your details and we'll get back to you within 2 hours</p>
+                                <div class="form-title">
+                                    <h3>Start Your Project</h3>
+                                    <p>We'll respond within 2 hours</p>
+                                </div>
                                 <button id="closeFormBtn" class="close-btn">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
                                     </svg>
                                 </button>
                             </div>
                             
-                            <form id="projectForm" class="project-form">
-                                <!-- Name Fields Row -->
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <input type="text" id="firstName" name="firstName" required class="form-input">
-                                        <label for="firstName" class="form-label">First Name *</label>
-                                        <div class="form-highlight"></div>
+                            <!-- Compact Form -->
+                            <form id="projectForm" class="compact-form">
+                                <!-- Name Row -->
+                                <div class="form-row-compact">
+                                    <div class="field-group">
+                                        <label class="field-label">Full Name *</label>
+                                        <input type="text" id="fullName" name="fullName" required class="field-input" placeholder="John Smith">
                                     </div>
-                                    <div class="form-group">
-                                        <input type="text" id="lastName" name="lastName" required class="form-input">
-                                        <label for="lastName" class="form-label">Last Name *</label>
-                                        <div class="form-highlight"></div>
-                                    </div>
-                                </div>
-
-                                <!-- Email Field -->
-                                <div class="form-group">
-                                    <input type="email" id="email" name="email" required class="form-input">
-                                    <label for="email" class="form-label">Email Address *</label>
-                                    <div class="form-highlight"></div>
-                                    <div class="validation-message"></div>
-                                </div>
-
-                                <!-- Business Name -->
-                                <div class="form-group">
-                                    <input type="text" id="businessName" name="businessName" required class="form-input">
-                                    <label for="businessName" class="form-label">Business Name *</label>
-                                    <div class="form-highlight"></div>
-                                </div>
-
-                                <!-- Phone Number with Country Code -->
-                                <div class="form-group phone-group">
-                                    <div class="phone-input-wrapper">
-                                        <select id="countryCode" name="countryCode" class="country-select" required>
-                                            <option value="+1" data-flag="🇺🇸">🇺🇸 +1</option>
-                                            <option value="+44" data-flag="🇬🇧">🇬🇧 +44</option>
-                                            <option value="+33" data-flag="🇫🇷">🇫🇷 +33</option>
-                                            <option value="+49" data-flag="🇩🇪">🇩🇪 +49</option>
-                                            <option value="+39" data-flag="🇮🇹">🇮🇹 +39</option>
-                                            <option value="+34" data-flag="🇪🇸">🇪🇸 +34</option>
-                                            <option value="+91" data-flag="🇮🇳">🇮🇳 +91</option>
-                                            <option value="+86" data-flag="🇨🇳">🇨🇳 +86</option>
-                                            <option value="+81" data-flag="🇯🇵">🇯🇵 +81</option>
-                                            <option value="+82" data-flag="🇰🇷">🇰🇷 +82</option>
-                                            <option value="+61" data-flag="🇦🇺">🇦🇺 +61</option>
-                                            <option value="+55" data-flag="🇧🇷">🇧🇷 +55</option>
-                                        </select>
-                                        <input type="tel" id="phone" name="phone" required class="form-input phone-input">
-                                        <label for="phone" class="form-label phone-label">Phone Number *</label>
-                                        <div class="form-highlight"></div>
+                                    <div class="field-group">
+                                        <label class="field-label">Email *</label>
+                                        <input type="email" id="email" name="email" required class="field-input" placeholder="john@company.com">
                                     </div>
                                 </div>
 
-                                <!-- Current Website (Optional) -->
-                                <div class="form-group">
-                                    <input type="url" id="website" name="website" class="form-input">
-                                    <label for="website" class="form-label">Current Website (Optional)</label>
-                                    <div class="form-highlight"></div>
-                                    <small class="form-hint">Help us understand your current online presence</small>
+                                <!-- Contact Row -->
+                                <div class="form-row-compact">
+                                    <div class="field-group phone-field">
+                                        <label class="field-label">Phone *</label>
+                                        <div class="phone-wrapper">
+                                            <select id="countryCode" name="countryCode" class="country-code">
+                                                <option value="+1">🇺🇸 +1</option>
+                                                <option value="+44">🇬🇧 +44</option>
+                                                <option value="+33">🇫🇷 +33</option>
+                                                <option value="+49">🇩🇪 +49</option>
+                                                <option value="+91">🇮🇳 +91</option>
+                                                <option value="+86">🇨🇳 +86</option>
+                                                <option value="+81">🇯🇵 +81</option>
+                                                <option value="+61">🇦🇺 +61</option>
+                                            </select>
+                                            <input type="tel" id="phone" name="phone" required class="field-input phone-input" placeholder="123-456-7890">
+                                        </div>
+                                    </div>
+                                    <div class="field-group">
+                                        <label class="field-label">Company *</label>
+                                        <input type="text" id="company" name="company" required class="field-input" placeholder="Your Company">
+                                    </div>
                                 </div>
 
-                                <!-- Project Type -->
-                                <div class="form-group">
-                                    <select id="projectType" name="projectType" required class="form-input form-select">
-                                        <option value="">Select Project Type</option>
+                                <!-- Project Details -->
+                                <div class="field-group">
+                                    <label class="field-label">Project Type *</label>
+                                    <select id="projectType" name="projectType" required class="field-input">
+                                        <option value="">Choose project type</option>
                                         <option value="new-website">New Website</option>
-                                        <option value="website-redesign">Website Redesign</option>
-                                        <option value="ecommerce">E-commerce Store</option>
+                                        <option value="redesign">Website Redesign</option>
+                                        <option value="ecommerce">E-commerce</option>
                                         <option value="web-app">Web Application</option>
                                         <option value="landing-page">Landing Page</option>
-                                        <option value="other">Other</option>
                                     </select>
-                                    <label for="projectType" class="form-label">Project Type *</label>
-                                    <div class="form-highlight"></div>
                                 </div>
 
-                                <!-- Project Description -->
-                                <div class="form-group">
-                                    <textarea id="projectDescription" name="projectDescription" rows="4" class="form-input form-textarea" placeholder="Tell us about your project vision, goals, and any specific requirements..."></textarea>
-                                    <label for="projectDescription" class="form-label">Project Description</label>
-                                    <div class="form-highlight"></div>
+                                <div class="field-group">
+                                    <label class="field-label">Current Website (Optional)</label>
+                                    <input type="url" id="website" name="website" class="field-input" placeholder="https://yourwebsite.com">
+                                </div>
+
+                                <div class="field-group">
+                                    <label class="field-label">Project Details</label>
+                                    <textarea id="projectDetails" name="projectDetails" rows="3" class="field-input field-textarea" placeholder="Brief description of your project requirements..."></textarea>
                                 </div>
 
                                 <!-- Submit Button -->
-                                <button type="submit" class="submit-btn">
-                                    <span class="btn-text">Start My Project</span>
-                                    <span class="btn-loading hidden">
-                                        <svg class="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
-                                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                <button type="submit" class="submit-button">
+                                    <span class="submit-text">Get My Quote</span>
+                                    <span class="submit-loading hidden">
+                                        <svg class="loading-spinner" viewBox="0 0 24 24">
+                                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none" opacity="0.25"/>
+                                            <path fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" opacity="0.75"/>
                                         </svg>
                                         Processing...
                                     </span>
                                 </button>
                             </form>
 
-                            <!-- Success Message -->
-                            <div id="successMessage" class="success-message hidden">
+                            <!-- Clean Success State -->
+                            <div id="successMessage" class="success-state hidden">
                                 <div class="success-icon">
-                                    <svg class="w-12 h-12 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M9 12l2 2 4-4M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/>
                                     </svg>
                                 </div>
-                                <h3>Project Request Submitted! 🎉</h3>
-                                <p>We'll review your requirements and get back to you within 2 hours with a personalized proposal.</p>
-                                <button id="newProjectBtn" class="new-project-btn">Submit Another Project</button>
+                                <h3>Request Submitted Successfully!</h3>
+                                <p>We'll send you a detailed proposal within 2 hours.</p>
+                                <button id="newProjectBtn" class="new-request-btn">Submit Another Request</button>
                             </div>
                         </div>
                     </div>
@@ -1469,7 +1349,7 @@
             scoreObserver.observe(card);
         });
 
-        // Next-Gen Contact Form Functionality
+        // Clean Contact Form Functionality
         document.addEventListener('DOMContentLoaded', function() {
             const startProjectBtn = document.getElementById('startProjectBtn');
             const inlineContactForm = document.getElementById('inlineContactForm');
@@ -1479,21 +1359,16 @@
             const successMessage = document.getElementById('successMessage');
             const newProjectBtn = document.getElementById('newProjectBtn');
 
-            // Form expanding animation
+            // Form show/hide functions
             function showForm() {
                 inlineContactForm.classList.remove('hidden');
-                startProjectBtn.style.transform = 'scale(0.95)';
-                startProjectBtn.style.opacity = '0.5';
+                startProjectBtn.style.opacity = '0.3';
+                startProjectBtn.style.pointerEvents = 'none';
                 
                 setTimeout(() => {
                     inlineContactForm.classList.add('active');
-                    startProjectBtn.style.display = 'none';
-                }, 100);
+                }, 50);
 
-                // Add blur effect to background
-                document.body.style.backdropFilter = 'blur(2px)';
-                
-                // Smooth scroll to form
                 contactFormContainer.scrollIntoView({ 
                     behavior: 'smooth', 
                     block: 'center' 
@@ -1505,11 +1380,9 @@
                 
                 setTimeout(() => {
                     inlineContactForm.classList.add('hidden');
-                    startProjectBtn.style.display = 'block';
-                    startProjectBtn.style.transform = 'scale(1)';
                     startProjectBtn.style.opacity = '1';
-                    document.body.style.backdropFilter = 'none';
-                }, 300);
+                    startProjectBtn.style.pointerEvents = 'auto';
+                }, 200);
             }
 
             // Event listeners
@@ -1532,97 +1405,61 @@
                 }
             });
 
-            // Form field interactions and validation
-            const formInputs = document.querySelectorAll('.form-input');
-            
-            formInputs.forEach(input => {
-                // Focus effects
-                input.addEventListener('focus', function() {
-                    this.closest('.form-group').classList.add('focused');
-                });
-
-                input.addEventListener('blur', function() {
-                    this.closest('.form-group').classList.remove('focused');
-                    validateField(this);
-                });
-
-                // Real-time input effects
-                input.addEventListener('input', function() {
-                    const label = this.nextElementSibling;
-                    if (this.value.trim() !== '') {
-                        label.style.transform = 'translateY(-2.5rem) scale(0.85)';
-                        label.style.color = '#64748b';
-                    } else if (!this.matches(':focus')) {
-                        label.style.transform = 'translateY(0) scale(1)';
-                        label.style.color = '#94a3b8';
-                    }
-                });
-            });
-
-            // Field validation
+            // Form validation
             function validateField(field) {
                 const value = field.value.trim();
                 const type = field.type;
-                const name = field.name;
                 let isValid = true;
-                let message = '';
 
-                // Clear previous validation
-                const validationMsg = field.parentElement.querySelector('.validation-message');
-                if (validationMsg) {
-                    validationMsg.classList.remove('show');
-                    validationMsg.textContent = '';
-                }
+                field.style.borderColor = '#e5e7eb';
 
                 if (field.hasAttribute('required') && !value) {
                     isValid = false;
-                    message = 'This field is required';
+                    field.style.borderColor = '#ef4444';
                 } else if (type === 'email' && value) {
                     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                     if (!emailRegex.test(value)) {
                         isValid = false;
-                        message = 'Please enter a valid email address';
+                        field.style.borderColor = '#ef4444';
                     }
                 } else if (type === 'tel' && value) {
-                    const phoneRegex = /^\d{6,15}$/;
-                    if (!phoneRegex.test(value.replace(/[\s-()]/g, ''))) {
+                    const phoneRegex = /^[\d\s\-\(\)]+$/;
+                    if (!phoneRegex.test(value) || value.replace(/\D/g, '').length < 6) {
                         isValid = false;
-                        message = 'Please enter a valid phone number';
+                        field.style.borderColor = '#ef4444';
                     }
                 } else if (type === 'url' && value) {
                     try {
                         new URL(value.startsWith('http') ? value : 'https://' + value);
                     } catch {
                         isValid = false;
-                        message = 'Please enter a valid website URL';
+                        field.style.borderColor = '#ef4444';
                     }
                 }
 
-                // Show validation message
-                if (!isValid && validationMsg) {
-                    validationMsg.textContent = message;
-                    validationMsg.classList.add('show');
-                    field.style.borderColor = '#ef4444';
-                } else {
-                    field.style.borderColor = isValid && value ? '#10b981' : '';
+                if (isValid && value) {
+                    field.style.borderColor = '#10b981';
                 }
 
                 return isValid;
             }
 
-            // Country code formatting
-            const countrySelect = document.getElementById('countryCode');
-            const phoneInput = document.getElementById('phone');
-            
-            countrySelect.addEventListener('change', function() {
-                phoneInput.focus();
+            // Add validation to form fields
+            const formFields = projectForm.querySelectorAll('.field-input');
+            formFields.forEach(field => {
+                field.addEventListener('blur', () => validateField(field));
+                field.addEventListener('input', () => {
+                    if (field.style.borderColor === 'rgb(239, 68, 68)') { // If it was red
+                        validateField(field);
+                    }
+                });
             });
 
             // Form submission
             projectForm.addEventListener('submit', async function(e) {
                 e.preventDefault();
 
-                // Validate all fields
+                // Validate all required fields
                 let isFormValid = true;
                 const requiredFields = projectForm.querySelectorAll('[required]');
                 
@@ -1633,107 +1470,60 @@
                 });
 
                 if (!isFormValid) {
-                    // Shake effect for invalid form
-                    projectForm.style.animation = 'shake 0.5s ease-in-out';
-                    setTimeout(() => {
-                        projectForm.style.animation = '';
-                    }, 500);
+                    // Shake form on validation error
+                    projectForm.style.animation = 'shake 0.3s ease-in-out';
+                    setTimeout(() => projectForm.style.animation = '', 300);
                     return;
                 }
 
                 // Show loading state
-                const submitBtn = document.querySelector('.submit-btn');
-                const btnText = submitBtn.querySelector('.btn-text');
-                const btnLoading = submitBtn.querySelector('.btn-loading');
+                const submitBtn = projectForm.querySelector('.submit-button');
+                const submitText = submitBtn.querySelector('.submit-text');
+                const submitLoading = submitBtn.querySelector('.submit-loading');
                 
                 submitBtn.disabled = true;
-                btnText.classList.add('hidden');
-                btnLoading.classList.remove('hidden');
+                submitText.classList.add('hidden');
+                submitLoading.classList.remove('hidden');
 
-                // Simulate form submission (replace with actual API call)
                 try {
-                    await new Promise(resolve => setTimeout(resolve, 2000));
+                    // Simulate API call
+                    await new Promise(resolve => setTimeout(resolve, 1500));
                     
-                    // Show success message
-                    projectForm.style.display = 'none';
+                    // Show success state
+                    projectForm.classList.add('hidden');
                     successMessage.classList.remove('hidden');
-                    
-                    // Confetti effect (optional)
-                    createConfetti();
                     
                 } catch (error) {
                     console.error('Form submission error:', error);
-                    alert('There was an error submitting your form. Please try again.');
+                    alert('There was an error submitting your request. Please try again.');
                 } finally {
                     submitBtn.disabled = false;
-                    btnText.classList.remove('hidden');
-                    btnLoading.classList.add('hidden');
+                    submitText.classList.remove('hidden');
+                    submitLoading.classList.add('hidden');
                 }
             });
 
-            // New project button
+            // New request button
             newProjectBtn.addEventListener('click', function() {
                 successMessage.classList.add('hidden');
-                projectForm.style.display = 'block';
+                projectForm.classList.remove('hidden');
                 projectForm.reset();
                 
-                // Reset all field states
-                formInputs.forEach(input => {
-                    const label = input.nextElementSibling;
-                    if (label && label.classList.contains('form-label')) {
-                        label.style.transform = 'translateY(0) scale(1)';
-                        label.style.color = '#94a3b8';
-                    }
-                    input.style.borderColor = '';
+                // Reset field colors
+                formFields.forEach(field => {
+                    field.style.borderColor = '#e5e7eb';
                 });
             });
 
-            // Confetti animation
-            function createConfetti() {
-                const colors = ['#3b82f6', '#8b5cf6', '#10b981', '#f59e0b', '#ef4444'];
-                const confettiContainer = document.createElement('div');
-                confettiContainer.style.position = 'fixed';
-                confettiContainer.style.top = '0';
-                confettiContainer.style.left = '0';
-                confettiContainer.style.width = '100%';
-                confettiContainer.style.height = '100%';
-                confettiContainer.style.pointerEvents = 'none';
-                confettiContainer.style.zIndex = '9999';
-                document.body.appendChild(confettiContainer);
-
-                for (let i = 0; i < 50; i++) {
-                    const confetti = document.createElement('div');
-                    confetti.style.position = 'absolute';
-                    confetti.style.left = Math.random() * 100 + '%';
-                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                    confetti.style.width = '10px';
-                    confetti.style.height = '10px';
-                    confetti.style.opacity = '0.8';
-                    confetti.style.borderRadius = '2px';
-                    confetti.style.animation = `confettiFall ${2 + Math.random() * 3}s linear forwards`;
-                    confettiContainer.appendChild(confetti);
-                }
-
-                setTimeout(() => {
-                    document.body.removeChild(confettiContainer);
-                }, 5000);
-            }
-
-            // Add confetti animation keyframes
-            if (!document.getElementById('confettiStyles')) {
+            // Add shake animation
+            if (!document.getElementById('shakeAnimation')) {
                 const style = document.createElement('style');
-                style.id = 'confettiStyles';
+                style.id = 'shakeAnimation';
                 style.textContent = `
-                    @keyframes confettiFall {
-                        to {
-                            transform: translateY(100vh) rotate(360deg);
-                            opacity: 0;
-                        }
-                    }
                     @keyframes shake {
                         0%, 100% { transform: translateX(0); }
-                        25% { transform: translateX(-5px); }
-                        75% { transform: translateX(5px); }
+                        25% { transform: translateX(-4px); }
+                        75% { transform: translateX(4px); }
                     }
                 `;
                 document.head.appendChild(style);
