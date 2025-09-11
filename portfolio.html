@@ -244,6 +244,381 @@
             border: 3px solid white;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
+        /* Next-Gen Contact Form Styles */
+        .contact-form-wrapper {
+            opacity: 0;
+            transform: translateY(20px) scale(0.95);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none;
+        }
+
+        .contact-form-wrapper.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+
+        .contact-form-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: 
+                0 25px 50px -12px rgba(0, 0, 0, 0.15),
+                0 0 0 1px rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .contact-form-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), transparent);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .form-header h3 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #1e293b 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .form-header p {
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: -1rem;
+            right: -1rem;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ef4444;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .close-btn:hover {
+            background: rgba(239, 68, 68, 0.2);
+            transform: scale(1.1);
+            border-color: rgba(239, 68, 68, 0.4);
+        }
+
+        .project-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 1rem;
+            border: 2px solid rgba(148, 163, 184, 0.3);
+            border-radius: 12px;
+            font-size: 1rem;
+            color: #1e293b;
+            background: rgba(248, 250, 252, 0.8);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            outline: none;
+        }
+
+        .form-input:focus {
+            border-color: #3b82f6;
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-1px);
+            box-shadow: 
+                0 10px 25px -5px rgba(59, 130, 246, 0.1),
+                0 0 0 0 rgba(59, 130, 246, 0.1);
+        }
+
+        .form-input:focus + .form-label {
+            transform: translateY(-2.5rem) scale(0.85);
+            color: #3b82f6;
+            font-weight: 600;
+        }
+
+        .form-input:not(:placeholder-shown) + .form-label {
+            transform: translateY(-2.5rem) scale(0.85);
+            color: #64748b;
+        }
+
+        .form-label {
+            position: absolute;
+            left: 1rem;
+            top: 1rem;
+            color: #94a3b8;
+            font-size: 1rem;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            background: white;
+            padding: 0 0.5rem;
+            border-radius: 6px;
+        }
+
+        .form-highlight {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            border-radius: 1px;
+        }
+
+        .form-input:focus ~ .form-highlight {
+            transform: scaleX(1);
+        }
+
+        .phone-input-wrapper {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 0.5rem;
+            position: relative;
+        }
+
+        .country-select {
+            padding: 1rem 0.75rem;
+            border: 2px solid rgba(148, 163, 184, 0.3);
+            border-radius: 12px;
+            font-size: 0.9rem;
+            color: #1e293b;
+            background: rgba(248, 250, 252, 0.8);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .country-select:focus {
+            border-color: #3b82f6;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .phone-input {
+            border-top-left-radius: 0 !important;
+            border-bottom-left-radius: 0 !important;
+        }
+
+        .phone-label {
+            left: 130px !important;
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+            font-family: inherit;
+        }
+
+        .form-select {
+            cursor: pointer;
+        }
+
+        .form-hint {
+            display: block;
+            margin-top: 0.5rem;
+            color: #94a3b8;
+            font-size: 0.85rem;
+        }
+
+        .validation-message {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: #ef4444;
+            display: none;
+        }
+
+        .validation-message.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            color: white;
+            border: none;
+            padding: 1.25rem 2rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 20px 25px -5px rgba(59, 130, 246, 0.3),
+                0 10px 10px -5px rgba(59, 130, 246, 0.2);
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-loading {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .success-message {
+            text-align: center;
+            padding: 2rem;
+            animation: bounceIn 0.6s ease;
+        }
+
+        .success-icon {
+            margin: 0 auto 1rem;
+            width: fit-content;
+            padding: 1rem;
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .success-message h3 {
+            color: #1e293b;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .success-message p {
+            color: #64748b;
+            margin-bottom: 1.5rem;
+        }
+
+        .new-project-btn {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .new-project-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 20px -5px rgba(16, 185, 129, 0.3);
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.3); }
+            50% { opacity: 1; transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .contact-form-card {
+                padding: 1.5rem;
+                margin: 0 1rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .form-header h3 {
+                font-size: 1.5rem;
+            }
+
+            .phone-input-wrapper {
+                grid-template-columns: 100px 1fr;
+            }
+
+            .phone-label {
+                left: 110px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-form-card {
+                padding: 1rem;
+                border-radius: 16px;
+            }
+
+            .phone-input-wrapper {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .phone-label {
+                left: 1rem !important;
+            }
+
+            .country-select {
+                border-radius: 12px;
+            }
+
+            .phone-input {
+                border-radius: 12px !important;
+            }
+        }
     </style>
 </head>
 <body class="antialiased bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50">
@@ -841,11 +1216,143 @@
                     <span class="block mt-4 font-semibold">Average delivery: 7 days. Payment after satisfaction guaranteed.</span>
                 </p>
                 
-                <div class="flex flex-col sm:flex-row gap-6 justify-center">
-                    <a href="/Free-AI-Ready-Website.html" class="bg-white text-blue-600 font-bold text-lg px-10 py-4 rounded-2xl hover:bg-blue-50 transition-all duration-300 transform hover:scale-105 shadow-2xl">
-                        Start Your Project →
-                    </a>
-                    <a href="/contact.html" class="bg-transparent text-white font-bold text-lg px-10 py-4 rounded-2xl border-2 border-white hover:bg-white hover:text-blue-600 transition-all duration-300 transform hover:scale-105">
+                <!-- Contact Form Container -->
+                <div id="contactFormContainer" class="relative max-w-2xl mx-auto">
+                    <!-- Start Project Button -->
+                    <button id="startProjectBtn" class="bg-white text-blue-600 font-bold text-lg px-10 py-4 rounded-2xl hover:bg-blue-50 transition-all duration-500 transform hover:scale-105 shadow-2xl mb-6 group">
+                        <span class="flex items-center justify-center gap-3">
+                            <svg class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                            </svg>
+                            Start Your Project
+                        </span>
+                    </button>
+
+                    <!-- Inline Contact Form (Initially Hidden) -->
+                    <div id="inlineContactForm" class="contact-form-wrapper hidden">
+                        <div class="contact-form-card">
+                            <div class="form-header">
+                                <h3>Let's Build Your Next-Gen Website</h3>
+                                <p>Fill in your details and we'll get back to you within 2 hours</p>
+                                <button id="closeFormBtn" class="close-btn">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            
+                            <form id="projectForm" class="project-form">
+                                <!-- Name Fields Row -->
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <input type="text" id="firstName" name="firstName" required class="form-input">
+                                        <label for="firstName" class="form-label">First Name *</label>
+                                        <div class="form-highlight"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" id="lastName" name="lastName" required class="form-input">
+                                        <label for="lastName" class="form-label">Last Name *</label>
+                                        <div class="form-highlight"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Email Field -->
+                                <div class="form-group">
+                                    <input type="email" id="email" name="email" required class="form-input">
+                                    <label for="email" class="form-label">Email Address *</label>
+                                    <div class="form-highlight"></div>
+                                    <div class="validation-message"></div>
+                                </div>
+
+                                <!-- Business Name -->
+                                <div class="form-group">
+                                    <input type="text" id="businessName" name="businessName" required class="form-input">
+                                    <label for="businessName" class="form-label">Business Name *</label>
+                                    <div class="form-highlight"></div>
+                                </div>
+
+                                <!-- Phone Number with Country Code -->
+                                <div class="form-group phone-group">
+                                    <div class="phone-input-wrapper">
+                                        <select id="countryCode" name="countryCode" class="country-select" required>
+                                            <option value="+1" data-flag="🇺🇸">🇺🇸 +1</option>
+                                            <option value="+44" data-flag="🇬🇧">🇬🇧 +44</option>
+                                            <option value="+33" data-flag="🇫🇷">🇫🇷 +33</option>
+                                            <option value="+49" data-flag="🇩🇪">🇩🇪 +49</option>
+                                            <option value="+39" data-flag="🇮🇹">🇮🇹 +39</option>
+                                            <option value="+34" data-flag="🇪🇸">🇪🇸 +34</option>
+                                            <option value="+91" data-flag="🇮🇳">🇮🇳 +91</option>
+                                            <option value="+86" data-flag="🇨🇳">🇨🇳 +86</option>
+                                            <option value="+81" data-flag="🇯🇵">🇯🇵 +81</option>
+                                            <option value="+82" data-flag="🇰🇷">🇰🇷 +82</option>
+                                            <option value="+61" data-flag="🇦🇺">🇦🇺 +61</option>
+                                            <option value="+55" data-flag="🇧🇷">🇧🇷 +55</option>
+                                        </select>
+                                        <input type="tel" id="phone" name="phone" required class="form-input phone-input">
+                                        <label for="phone" class="form-label phone-label">Phone Number *</label>
+                                        <div class="form-highlight"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Current Website (Optional) -->
+                                <div class="form-group">
+                                    <input type="url" id="website" name="website" class="form-input">
+                                    <label for="website" class="form-label">Current Website (Optional)</label>
+                                    <div class="form-highlight"></div>
+                                    <small class="form-hint">Help us understand your current online presence</small>
+                                </div>
+
+                                <!-- Project Type -->
+                                <div class="form-group">
+                                    <select id="projectType" name="projectType" required class="form-input form-select">
+                                        <option value="">Select Project Type</option>
+                                        <option value="new-website">New Website</option>
+                                        <option value="website-redesign">Website Redesign</option>
+                                        <option value="ecommerce">E-commerce Store</option>
+                                        <option value="web-app">Web Application</option>
+                                        <option value="landing-page">Landing Page</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                    <label for="projectType" class="form-label">Project Type *</label>
+                                    <div class="form-highlight"></div>
+                                </div>
+
+                                <!-- Project Description -->
+                                <div class="form-group">
+                                    <textarea id="projectDescription" name="projectDescription" rows="4" class="form-input form-textarea" placeholder="Tell us about your project vision, goals, and any specific requirements..."></textarea>
+                                    <label for="projectDescription" class="form-label">Project Description</label>
+                                    <div class="form-highlight"></div>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <button type="submit" class="submit-btn">
+                                    <span class="btn-text">Start My Project</span>
+                                    <span class="btn-loading hidden">
+                                        <svg class="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
+                                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                        </svg>
+                                        Processing...
+                                    </span>
+                                </button>
+                            </form>
+
+                            <!-- Success Message -->
+                            <div id="successMessage" class="success-message hidden">
+                                <div class="success-icon">
+                                    <svg class="w-12 h-12 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <h3>Project Request Submitted! 🎉</h3>
+                                <p>We'll review your requirements and get back to you within 2 hours with a personalized proposal.</p>
+                                <button id="newProjectBtn" class="new-project-btn">Submit Another Project</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Alternative CTA Button -->
+                    <a href="/contact.html" class="bg-transparent text-white font-bold text-lg px-10 py-4 rounded-2xl border-2 border-white hover:bg-white hover:text-blue-600 transition-all duration-300 transform hover:scale-105 mt-4 inline-block">
                         Schedule Consultation
                     </a>
                 </div>
@@ -960,6 +1467,277 @@
 
         document.querySelectorAll('.project-card').forEach(card => {
             scoreObserver.observe(card);
+        });
+
+        // Next-Gen Contact Form Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const startProjectBtn = document.getElementById('startProjectBtn');
+            const inlineContactForm = document.getElementById('inlineContactForm');
+            const contactFormContainer = document.getElementById('contactFormContainer');
+            const closeFormBtn = document.getElementById('closeFormBtn');
+            const projectForm = document.getElementById('projectForm');
+            const successMessage = document.getElementById('successMessage');
+            const newProjectBtn = document.getElementById('newProjectBtn');
+
+            // Form expanding animation
+            function showForm() {
+                inlineContactForm.classList.remove('hidden');
+                startProjectBtn.style.transform = 'scale(0.95)';
+                startProjectBtn.style.opacity = '0.5';
+                
+                setTimeout(() => {
+                    inlineContactForm.classList.add('active');
+                    startProjectBtn.style.display = 'none';
+                }, 100);
+
+                // Add blur effect to background
+                document.body.style.backdropFilter = 'blur(2px)';
+                
+                // Smooth scroll to form
+                contactFormContainer.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'center' 
+                });
+            }
+
+            function hideForm() {
+                inlineContactForm.classList.remove('active');
+                
+                setTimeout(() => {
+                    inlineContactForm.classList.add('hidden');
+                    startProjectBtn.style.display = 'block';
+                    startProjectBtn.style.transform = 'scale(1)';
+                    startProjectBtn.style.opacity = '1';
+                    document.body.style.backdropFilter = 'none';
+                }, 300);
+            }
+
+            // Event listeners
+            startProjectBtn.addEventListener('click', showForm);
+            closeFormBtn.addEventListener('click', hideForm);
+
+            // Click outside to close
+            document.addEventListener('click', function(e) {
+                if (inlineContactForm.classList.contains('active') && 
+                    !inlineContactForm.contains(e.target) && 
+                    !startProjectBtn.contains(e.target)) {
+                    hideForm();
+                }
+            });
+
+            // ESC key to close
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && inlineContactForm.classList.contains('active')) {
+                    hideForm();
+                }
+            });
+
+            // Form field interactions and validation
+            const formInputs = document.querySelectorAll('.form-input');
+            
+            formInputs.forEach(input => {
+                // Focus effects
+                input.addEventListener('focus', function() {
+                    this.closest('.form-group').classList.add('focused');
+                });
+
+                input.addEventListener('blur', function() {
+                    this.closest('.form-group').classList.remove('focused');
+                    validateField(this);
+                });
+
+                // Real-time input effects
+                input.addEventListener('input', function() {
+                    const label = this.nextElementSibling;
+                    if (this.value.trim() !== '') {
+                        label.style.transform = 'translateY(-2.5rem) scale(0.85)';
+                        label.style.color = '#64748b';
+                    } else if (!this.matches(':focus')) {
+                        label.style.transform = 'translateY(0) scale(1)';
+                        label.style.color = '#94a3b8';
+                    }
+                });
+            });
+
+            // Field validation
+            function validateField(field) {
+                const value = field.value.trim();
+                const type = field.type;
+                const name = field.name;
+                let isValid = true;
+                let message = '';
+
+                // Clear previous validation
+                const validationMsg = field.parentElement.querySelector('.validation-message');
+                if (validationMsg) {
+                    validationMsg.classList.remove('show');
+                    validationMsg.textContent = '';
+                }
+
+                if (field.hasAttribute('required') && !value) {
+                    isValid = false;
+                    message = 'This field is required';
+                } else if (type === 'email' && value) {
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(value)) {
+                        isValid = false;
+                        message = 'Please enter a valid email address';
+                    }
+                } else if (type === 'tel' && value) {
+                    const phoneRegex = /^\d{6,15}$/;
+                    if (!phoneRegex.test(value.replace(/[\s-()]/g, ''))) {
+                        isValid = false;
+                        message = 'Please enter a valid phone number';
+                    }
+                } else if (type === 'url' && value) {
+                    try {
+                        new URL(value.startsWith('http') ? value : 'https://' + value);
+                    } catch {
+                        isValid = false;
+                        message = 'Please enter a valid website URL';
+                    }
+                }
+
+                // Show validation message
+                if (!isValid && validationMsg) {
+                    validationMsg.textContent = message;
+                    validationMsg.classList.add('show');
+                    field.style.borderColor = '#ef4444';
+                } else {
+                    field.style.borderColor = isValid && value ? '#10b981' : '';
+                }
+
+                return isValid;
+            }
+
+            // Country code formatting
+            const countrySelect = document.getElementById('countryCode');
+            const phoneInput = document.getElementById('phone');
+            
+            countrySelect.addEventListener('change', function() {
+                phoneInput.focus();
+            });
+
+            // Form submission
+            projectForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                // Validate all fields
+                let isFormValid = true;
+                const requiredFields = projectForm.querySelectorAll('[required]');
+                
+                requiredFields.forEach(field => {
+                    if (!validateField(field)) {
+                        isFormValid = false;
+                    }
+                });
+
+                if (!isFormValid) {
+                    // Shake effect for invalid form
+                    projectForm.style.animation = 'shake 0.5s ease-in-out';
+                    setTimeout(() => {
+                        projectForm.style.animation = '';
+                    }, 500);
+                    return;
+                }
+
+                // Show loading state
+                const submitBtn = document.querySelector('.submit-btn');
+                const btnText = submitBtn.querySelector('.btn-text');
+                const btnLoading = submitBtn.querySelector('.btn-loading');
+                
+                submitBtn.disabled = true;
+                btnText.classList.add('hidden');
+                btnLoading.classList.remove('hidden');
+
+                // Simulate form submission (replace with actual API call)
+                try {
+                    await new Promise(resolve => setTimeout(resolve, 2000));
+                    
+                    // Show success message
+                    projectForm.style.display = 'none';
+                    successMessage.classList.remove('hidden');
+                    
+                    // Confetti effect (optional)
+                    createConfetti();
+                    
+                } catch (error) {
+                    console.error('Form submission error:', error);
+                    alert('There was an error submitting your form. Please try again.');
+                } finally {
+                    submitBtn.disabled = false;
+                    btnText.classList.remove('hidden');
+                    btnLoading.classList.add('hidden');
+                }
+            });
+
+            // New project button
+            newProjectBtn.addEventListener('click', function() {
+                successMessage.classList.add('hidden');
+                projectForm.style.display = 'block';
+                projectForm.reset();
+                
+                // Reset all field states
+                formInputs.forEach(input => {
+                    const label = input.nextElementSibling;
+                    if (label && label.classList.contains('form-label')) {
+                        label.style.transform = 'translateY(0) scale(1)';
+                        label.style.color = '#94a3b8';
+                    }
+                    input.style.borderColor = '';
+                });
+            });
+
+            // Confetti animation
+            function createConfetti() {
+                const colors = ['#3b82f6', '#8b5cf6', '#10b981', '#f59e0b', '#ef4444'];
+                const confettiContainer = document.createElement('div');
+                confettiContainer.style.position = 'fixed';
+                confettiContainer.style.top = '0';
+                confettiContainer.style.left = '0';
+                confettiContainer.style.width = '100%';
+                confettiContainer.style.height = '100%';
+                confettiContainer.style.pointerEvents = 'none';
+                confettiContainer.style.zIndex = '9999';
+                document.body.appendChild(confettiContainer);
+
+                for (let i = 0; i < 50; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.style.position = 'absolute';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.width = '10px';
+                    confetti.style.height = '10px';
+                    confetti.style.opacity = '0.8';
+                    confetti.style.borderRadius = '2px';
+                    confetti.style.animation = `confettiFall ${2 + Math.random() * 3}s linear forwards`;
+                    confettiContainer.appendChild(confetti);
+                }
+
+                setTimeout(() => {
+                    document.body.removeChild(confettiContainer);
+                }, 5000);
+            }
+
+            // Add confetti animation keyframes
+            if (!document.getElementById('confettiStyles')) {
+                const style = document.createElement('style');
+                style.id = 'confettiStyles';
+                style.textContent = `
+                    @keyframes confettiFall {
+                        to {
+                            transform: translateY(100vh) rotate(360deg);
+                            opacity: 0;
+                        }
+                    }
+                    @keyframes shake {
+                        0%, 100% { transform: translateX(0); }
+                        25% { transform: translateX(-5px); }
+                        75% { transform: translateX(5px); }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
         });
     </script>
 </body>
