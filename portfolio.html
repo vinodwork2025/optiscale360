@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - OptiScale 360 | AI-Powered Business Transformation Success Stories</title>
-    <meta name="description" content="Discover how OptiScale 360 has transformed businesses with AI-powered optimization. View our portfolio of successful projects, case studies, and measurable results.">
+    <title>Portfolio - OptiScale 360 | Next-Gen AI-SEO Website Design & Development</title>
+    <meta name="description" content="Explore OptiScale 360's stunning portfolio of AI-powered, SEO-optimized websites. See our futuristic designs, development timelines, and client success stories.">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,6 +24,7 @@
                         'fade-in': 'fade-in 0.6s ease-out',
                         'scale-in': 'scale-in 0.5s ease-out',
                         'bounce-slow': 'bounce 3s infinite',
+                        'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
                     }
                 }
             }
@@ -53,6 +54,11 @@
         @keyframes scale-in {
             from { opacity: 0; transform: scale(0.9); }
             to { opacity: 1; transform: scale(1); }
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.6); }
         }
         
         .gradient-text {
@@ -104,7 +110,7 @@
             }
         }
         
-        .case-study-card {
+        .project-card {
             position: relative;
             overflow: hidden;
             border-radius: 1rem;
@@ -113,13 +119,13 @@
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        .case-study-card:hover {
+        .project-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             border-color: rgba(59, 130, 246, 0.3);
         }
         
-        .case-study-card::before {
+        .project-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -131,7 +137,7 @@
             transition: opacity 0.3s ease;
         }
         
-        .case-study-card:hover::before {
+        .project-card:hover::before {
             opacity: 1;
         }
         
@@ -155,33 +161,71 @@
         .floating-element:nth-child(3) { animation-delay: -4s; }
         .floating-element:nth-child(4) { animation-delay: -6s; }
         
-        .process-step {
-            position: relative;
-            padding-left: 3rem;
+        .website-preview {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+            padding: 4px;
+            margin-bottom: 1rem;
         }
         
-        .process-step::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 2px;
-            height: 100%;
-            background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
-            opacity: 0.3;
+        .website-screen {
+            background: white;
+            border-radius: 6px;
+            height: 120px;
+            display: flex;
+            items-center: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            color: #64748b;
+            font-weight: 500;
         }
         
-        .process-step::after {
-            content: '';
-            position: absolute;
-            left: -8px;
-            top: 8px;
-            width: 18px;
-            height: 18px;
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+        .speed-score {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
             border-radius: 50%;
-            border: 3px solid white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+        
+        .seo-score {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+        
+        .payment-badge {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+        
+        .timeline-badge {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 600;
         }
         
         .testimonial-card {
@@ -196,6 +240,40 @@
             border-color: rgba(59, 130, 246, 0.3);
             transform: translateY(-6px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .process-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+            opacity: 0.3;
+        }
+        
+        .process-step {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .process-step::after {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
@@ -243,271 +321,299 @@
                 <div class="text-center space-y-8 animate-fade-in">
                     <div class="inline-flex items-center bg-white/80 backdrop-blur-lg rounded-full px-6 py-3 text-sm font-semibold border border-blue-200 shadow-lg">
                         <div class="w-2 h-2 bg-green-500 rounded-full mr-3 animate-pulse"></div>
-                        <span class="text-blue-700">Portfolio & Case Studies</span>
+                        <span class="text-blue-700">Next-Gen Website Portfolio</span>
                     </div>
                     
                     <h1 class="text-5xl lg:text-7xl font-black leading-tight">
-                        <span class="text-gray-900">Proven</span>
-                        <span class="block gradient-text">Success Stories</span>
+                        <span class="text-gray-900">Futuristic</span>
+                        <span class="block gradient-text">Web Masterpieces</span>
                     </h1>
                     
                     <p class="text-xl lg:text-2xl leading-relaxed text-gray-700 max-w-4xl mx-auto">
-                        <span class="text-gray-900 font-semibold">Real businesses. Real results.</span> 
-                        Discover how we've transformed companies with AI-powered optimization, delivering measurable ROI and sustainable growth.
+                        <span class="text-gray-900 font-semibold">AI-powered. SEO-optimized. Lightning-fast.</span> 
+                        Discover our portfolio of next-generation websites that combine cutting-edge design with unmatched performance.
                     </p>
                     
                     <!-- Key Metrics -->
                     <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-16 max-w-4xl mx-auto">
                         <div class="metric-card rounded-2xl p-6 text-center">
-                            <div class="text-3xl lg:text-4xl font-black text-blue-600 mb-2">150+</div>
-                            <div class="text-sm font-semibold text-gray-600">Projects Completed</div>
+                            <div class="text-3xl lg:text-4xl font-black text-blue-600 mb-2">200+</div>
+                            <div class="text-sm font-semibold text-gray-600">Websites Delivered</div>
                         </div>
                         <div class="metric-card rounded-2xl p-6 text-center">
-                            <div class="text-3xl lg:text-4xl font-black text-green-600 mb-2">$50M+</div>
-                            <div class="text-sm font-semibold text-gray-600">Cost Savings Generated</div>
+                            <div class="text-3xl lg:text-4xl font-black text-green-600 mb-2">7 Days</div>
+                            <div class="text-sm font-semibold text-gray-600">Average Delivery</div>
                         </div>
                         <div class="metric-card rounded-2xl p-6 text-center">
-                            <div class="text-3xl lg:text-4xl font-black text-purple-600 mb-2">98%</div>
-                            <div class="text-sm font-semibold text-gray-600">Client Satisfaction</div>
+                            <div class="text-3xl lg:text-4xl font-black text-purple-600 mb-2">98/100</div>
+                            <div class="text-sm font-semibold text-gray-600">Avg PageSpeed Score</div>
                         </div>
                         <div class="metric-card rounded-2xl p-6 text-center">
-                            <div class="text-3xl lg:text-4xl font-black text-orange-600 mb-2">2.5x</div>
-                            <div class="text-sm font-semibold text-gray-600">Avg Performance Boost</div>
+                            <div class="text-3xl lg:text-4xl font-black text-orange-600 mb-2">100%</div>
+                            <div class="text-sm font-semibold text-gray-600">Payment Success Rate</div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Featured Case Studies -->
+        <!-- Featured Projects -->
         <section class="py-24 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-20 animate-slide-up">
                     <h2 class="text-4xl lg:text-5xl font-black text-gray-900 mb-6">
-                        Featured <span class="gradient-text">Case Studies</span>
+                        Featured <span class="gradient-text">Projects</span>
                     </h2>
                     <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                        Deep dives into our most impactful transformations, showcasing the methodologies, challenges, and breakthrough results that define our approach.
+                        Showcase of our most innovative websites that push the boundaries of design, performance, and user experience.
                     </p>
                 </div>
                 
                 <div class="portfolio-grid">
-                    <!-- Case Study 1: E-commerce Giant -->
-                    <div class="case-study-card card-hover">
+                    <!-- Project 1: AI-Powered E-commerce -->
+                    <div class="project-card card-hover">
+                        <div class="website-preview">
+                            <div class="website-screen">
+                                <span>🛍️ AI E-commerce Platform</span>
+                            </div>
+                        </div>
                         <div class="p-8">
                             <div class="flex items-center justify-between mb-6">
                                 <div class="text-sm font-semibold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
-                                    E-COMMERCE TRANSFORMATION
+                                    AI E-COMMERCE
                                 </div>
-                                <div class="text-xs text-gray-500 font-medium">6 MONTHS PROJECT</div>
+                                <div class="timeline-badge">5 DAYS BUILD</div>
                             </div>
                             
                             <h3 class="text-2xl font-black text-gray-900 mb-4">
-                                Global Retailer Revenue Optimization
+                                NextGen Shopping Experience
                             </h3>
                             
                             <p class="text-gray-600 mb-8 leading-relaxed">
-                                Transformed a Fortune 500 retailer's entire supply chain and customer experience using AI-powered demand forecasting and personalization engines, resulting in unprecedented efficiency gains.
+                                Built an AI-powered e-commerce platform with personalized recommendations, voice search, and predictive inventory management. Features advanced animations and micro-interactions.
                             </p>
                             
-                            <!-- Results Grid -->
-                            <div class="grid grid-cols-2 gap-4 mb-8">
-                                <div class="bg-green-50 border border-green-200 rounded-lg p-4 text-center">
-                                    <div class="text-2xl font-black text-green-600">+187%</div>
-                                    <div class="text-xs font-semibold text-green-700">Revenue Growth</div>
+                            <!-- Performance Metrics -->
+                            <div class="grid grid-cols-3 gap-4 mb-8">
+                                <div class="text-center">
+                                    <div class="speed-score mx-auto mb-2">95</div>
+                                    <div class="text-xs font-semibold text-gray-600">PageSpeed</div>
                                 </div>
-                                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 text-center">
-                                    <div class="text-2xl font-black text-blue-600">-45%</div>
-                                    <div class="text-xs font-semibold text-blue-700">Inventory Costs</div>
+                                <div class="text-center">
+                                    <div class="seo-score mx-auto mb-2">100</div>
+                                    <div class="text-xs font-semibold text-gray-600">SEO Score</div>
                                 </div>
-                                <div class="bg-purple-50 border border-purple-200 rounded-lg p-4 text-center">
-                                    <div class="text-2xl font-black text-purple-600">+92%</div>
-                                    <div class="text-xs font-semibold text-purple-700">Customer Satisfaction</div>
-                                </div>
-                                <div class="bg-orange-50 border border-orange-200 rounded-lg p-4 text-center">
-                                    <div class="text-2xl font-black text-orange-600">$18M</div>
-                                    <div class="text-xs font-semibold text-orange-700">Annual Savings</div>
+                                <div class="text-center">
+                                    <div class="text-2xl font-black text-green-600 mb-2">0.8s</div>
+                                    <div class="text-xs font-semibold text-gray-600">Load Time</div>
                                 </div>
                             </div>
                             
                             <!-- Technologies Used -->
                             <div class="space-y-3 mb-8">
-                                <div class="text-sm font-semibold text-gray-700">Key Technologies:</div>
+                                <div class="text-sm font-semibold text-gray-700">Tech Stack:</div>
                                 <div class="flex flex-wrap gap-2">
-                                    <span class="tech-stack-item px-3 py-1 rounded-full text-xs font-medium">Machine Learning</span>
-                                    <span class="tech-stack-item px-3 py-1 rounded-full text-xs font-medium">Predictive Analytics</span>
-                                    <span class="tech-stack-item px-3 py-1 rounded-full text-xs font-medium">Real-time Processing</span>
-                                    <span class="tech-stack-item px-3 py-1 rounded-full text-xs font-medium">Cloud Infrastructure</span>
+                                    <span class="tech-stack-item px-3 py-1 rounded-full text-xs font-medium">Next.js 14</span>
+                                    <span class="tech-stack-item px-3 py-1 rounded-full text-xs font-medium">AI Integration</span>
+                                    <span class="tech-stack-item px-3 py-1 rounded-full text-xs font-medium">Framer Motion</span>
+                                    <span class="tech-stack-item px-3 py-1 rounded-full text-xs font-medium">Stripe Payments</span>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="payment-badge">
+                                    💰 Client Paid: $12,500
                                 </div>
                             </div>
                             
                             <button class="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold py-4 px-6 rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg">
-                                View Full Case Study →
+                                View Live Project →
                             </button>
                         </div>
                     </div>
                     
-                    <!-- Case Study 2: Manufacturing AI -->
-                    <div class="case-study-card card-hover">
+                    <!-- Project 2: SaaS Dashboard -->
+                    <div class="project-card card-hover">
+                        <div class="website-preview">
+                            <div class="website-screen">
+                                <span>📊 SaaS Analytics Dashboard</span>
+                            </div>
+                        </div>
                         <div class="p-8">
                             <div class="flex items-center justify-between mb-6">
                                 <div class="text-sm font-semibold text-green-600 bg-green-50 px-3 py-1 rounded-full">
-                                    MANUFACTURING AI
+                                    SAAS PLATFORM
                                 </div>
-                                <div class="text-xs text-gray-500 font-medium">8 MONTHS PROJECT</div>
+                                <div class="timeline-badge">3 DAYS BUILD</div>
                             </div>
                             
                             <h3 class="text-2xl font-black text-gray-900 mb-4">
-                                Smart Factory Automation System
+                                Real-time Analytics Platform
                             </h3>
                             
                             <p class="text-gray-600 mb-8 leading-relaxed">
-                                Revolutionized production efficiency for a leading automotive manufacturer through IoT integration, predictive maintenance, and intelligent quality control systems.
+                                Developed a sophisticated SaaS dashboard with real-time data visualization, AI-powered insights, and interactive charts. Optimized for performance and scalability.
                             </p>
                             
-                            <!-- Results Grid -->
-                            <div class="grid grid-cols-2 gap-4 mb-8">
-                                <div class="bg-green-50 border border-green-200 rounded-lg p-4 text-center">
-                                    <div class="text-2xl font-black text-green-600">+156%</div>
-                                    <div class="text-xs font-semibold text-green-700">Production Speed</div>
+                            <!-- Performance Metrics -->
+                            <div class="grid grid-cols-3 gap-4 mb-8">
+                                <div class="text-center">
+                                    <div class="speed-score mx-auto mb-2">98</div>
+                                    <div class="text-xs font-semibold text-gray-600">PageSpeed</div>
                                 </div>
-                                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 text-center">
-                                    <div class="text-2xl font-black text-blue-600">-78%</div>
-                                    <div class="text-xs font-semibold text-blue-700">Defect Rate</div>
+                                <div class="text-center">
+                                    <div class="seo-score mx-auto mb-2">95</div>
+                                    <div class="text-xs font-semibold text-gray-600">SEO Score</div>
                                 </div>
-                                <div class="bg-purple-50 border border-purple-200 rounded-lg p-4 text-center">
-                                    <div class="text-2xl font-black text-purple-600">-65%</div>
-                                    <div class="text-xs font-semibold text-purple-700">Downtime</div>
-                                </div>
-                                <div class="bg-orange-50 border border-orange-200 rounded-lg p-4 text-center">
-                                    <div class="text-2xl font-black text-orange-600">$24M</div>
-                                    <div class="text-xs font-semibold text-orange-700">ROI First Year</div>
+                                <div class="text-center">
+                                    <div class="text-2xl font-black text-green-600 mb-2">0.6s</div>
+                                    <div class="text-xs font-semibold text-gray-600">Load Time</div>
                                 </div>
                             </div>
                             
                             <!-- Technologies Used -->
                             <div class="space-y-3 mb-8">
-                                <div class="text-sm font-semibold text-gray-700">Key Technologies:</div>
+                                <div class="text-sm font-semibold text-gray-700">Tech Stack:</div>
                                 <div class="flex flex-wrap gap-2">
-                                    <span class="tech-stack-item px-3 py-1 rounded-full text-xs font-medium">IoT Sensors</span>
-                                    <span class="tech-stack-item px-3 py-1 rounded-full text-xs font-medium">Computer Vision</span>
-                                    <span class="tech-stack-item px-3 py-1 rounded-full text-xs font-medium">Edge Computing</span>
-                                    <span class="tech-stack-item px-3 py-1 rounded-full text-xs font-medium">Digital Twins</span>
+                                    <span class="tech-stack-item px-3 py-1 rounded-full text-xs font-medium">React 18</span>
+                                    <span class="tech-stack-item px-3 py-1 rounded-full text-xs font-medium">D3.js Charts</span>
+                                    <span class="tech-stack-item px-3 py-1 rounded-full text-xs font-medium">WebSocket</span>
+                                    <span class="tech-stack-item px-3 py-1 rounded-full text-xs font-medium">MongoDB</span>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="payment-badge">
+                                    💰 Client Paid: $8,900
                                 </div>
                             </div>
                             
                             <button class="w-full bg-gradient-to-r from-green-500 to-blue-600 text-white font-bold py-4 px-6 rounded-xl hover:from-green-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg">
-                                View Full Case Study →
+                                View Live Project →
                             </button>
                         </div>
                     </div>
                     
-                    <!-- Case Study 3: FinTech Revolution -->
-                    <div class="case-study-card card-hover">
+                    <!-- Project 3: AI-Powered Landing Page -->
+                    <div class="project-card card-hover">
+                        <div class="website-preview">
+                            <div class="website-screen">
+                                <span>🤖 AI Startup Landing</span>
+                            </div>
+                        </div>
                         <div class="p-8">
                             <div class="flex items-center justify-between mb-6">
                                 <div class="text-sm font-semibold text-purple-600 bg-purple-50 px-3 py-1 rounded-full">
-                                    FINTECH INNOVATION
+                                    AI STARTUP
                                 </div>
-                                <div class="text-xs text-gray-500 font-medium">4 MONTHS PROJECT</div>
+                                <div class="timeline-badge">2 DAYS BUILD</div>
                             </div>
                             
                             <h3 class="text-2xl font-black text-gray-900 mb-4">
-                                AI-Powered Risk Management Platform
+                                Interactive AI Showcase
                             </h3>
                             
                             <p class="text-gray-600 mb-8 leading-relaxed">
-                                Built a comprehensive risk assessment and fraud detection system for a major financial institution, processing millions of transactions with real-time decision making.
+                                Created a mind-blowing landing page for an AI startup featuring 3D animations, particle systems, and interactive demos. Includes AI chatbot integration and dynamic content.
                             </p>
                             
-                            <!-- Results Grid -->
-                            <div class="grid grid-cols-2 gap-4 mb-8">
-                                <div class="bg-green-50 border border-green-200 rounded-lg p-4 text-center">
-                                    <div class="text-2xl font-black text-green-600">99.7%</div>
-                                    <div class="text-xs font-semibold text-green-700">Accuracy Rate</div>
+                            <!-- Performance Metrics -->
+                            <div class="grid grid-cols-3 gap-4 mb-8">
+                                <div class="text-center">
+                                    <div class="speed-score mx-auto mb-2">96</div>
+                                    <div class="text-xs font-semibold text-gray-600">PageSpeed</div>
                                 </div>
-                                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 text-center">
-                                    <div class="text-2xl font-black text-blue-600">-89%</div>
-                                    <div class="text-xs font-semibold text-blue-700">False Positives</div>
+                                <div class="text-center">
+                                    <div class="seo-score mx-auto mb-2">98</div>
+                                    <div class="text-xs font-semibold text-gray-600">SEO Score</div>
                                 </div>
-                                <div class="bg-purple-50 border border-purple-200 rounded-lg p-4 text-center">
-                                    <div class="text-2xl font-black text-purple-600">50ms</div>
-                                    <div class="text-xs font-semibold text-purple-700">Response Time</div>
-                                </div>
-                                <div class="bg-orange-50 border border-orange-200 rounded-lg p-4 text-center">
-                                    <div class="text-2xl font-black text-orange-600">$12M</div>
-                                    <div class="text-xs font-semibold text-orange-700">Fraud Prevented</div>
+                                <div class="text-center">
+                                    <div class="text-2xl font-black text-green-600 mb-2">0.7s</div>
+                                    <div class="text-xs font-semibold text-gray-600">Load Time</div>
                                 </div>
                             </div>
                             
                             <!-- Technologies Used -->
                             <div class="space-y-3 mb-8">
-                                <div class="text-sm font-semibold text-gray-700">Key Technologies:</div>
+                                <div class="text-sm font-semibold text-gray-700">Tech Stack:</div>
                                 <div class="flex flex-wrap gap-2">
-                                    <span class="tech-stack-item px-3 py-1 rounded-full text-xs font-medium">Deep Learning</span>
-                                    <span class="tech-stack-item px-3 py-1 rounded-full text-xs font-medium">Anomaly Detection</span>
-                                    <span class="tech-stack-item px-3 py-1 rounded-full text-xs font-medium">Blockchain</span>
-                                    <span class="tech-stack-item px-3 py-1 rounded-full text-xs font-medium">Microservices</span>
+                                    <span class="tech-stack-item px-3 py-1 rounded-full text-xs font-medium">Three.js</span>
+                                    <span class="tech-stack-item px-3 py-1 rounded-full text-xs font-medium">GSAP</span>
+                                    <span class="tech-stack-item px-3 py-1 rounded-full text-xs font-medium">OpenAI API</span>
+                                    <span class="tech-stack-item px-3 py-1 rounded-full text-xs font-medium">Tailwind CSS</span>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="payment-badge">
+                                    💰 Client Paid: $15,000
                                 </div>
                             </div>
                             
                             <button class="w-full bg-gradient-to-r from-purple-500 to-pink-600 text-white font-bold py-4 px-6 rounded-xl hover:from-purple-600 hover:to-pink-700 transition-all duration-300 transform hover:scale-105 shadow-lg">
-                                View Full Case Study →
+                                View Live Project →
                             </button>
                         </div>
                     </div>
                     
-                    <!-- Case Study 4: Healthcare Transformation -->
-                    <div class="case-study-card card-hover">
+                    <!-- Project 4: Fintech Mobile App -->
+                    <div class="project-card card-hover">
+                        <div class="website-preview">
+                            <div class="website-screen">
+                                <span>💳 FinTech PWA</span>
+                            </div>
+                        </div>
                         <div class="p-8">
                             <div class="flex items-center justify-between mb-6">
                                 <div class="text-sm font-semibold text-red-600 bg-red-50 px-3 py-1 rounded-full">
-                                    HEALTHCARE AI
+                                    FINTECH PWA
                                 </div>
-                                <div class="text-xs text-gray-500 font-medium">10 MONTHS PROJECT</div>
+                                <div class="timeline-badge">7 DAYS BUILD</div>
                             </div>
                             
                             <h3 class="text-2xl font-black text-gray-900 mb-4">
-                                Patient Care Optimization System
+                                Banking Progressive Web App
                             </h3>
                             
                             <p class="text-gray-600 mb-8 leading-relaxed">
-                                Developed an intelligent patient management system for a hospital network, optimizing resource allocation, reducing wait times, and improving clinical outcomes.
+                                Built a secure fintech PWA with biometric authentication, real-time transactions, and AI-powered financial insights. Features offline capabilities and push notifications.
                             </p>
                             
-                            <!-- Results Grid -->
-                            <div class="grid grid-cols-2 gap-4 mb-8">
-                                <div class="bg-green-50 border border-green-200 rounded-lg p-4 text-center">
-                                    <div class="text-2xl font-black text-green-600">-67%</div>
-                                    <div class="text-xs font-semibold text-green-700">Wait Times</div>
+                            <!-- Performance Metrics -->
+                            <div class="grid grid-cols-3 gap-4 mb-8">
+                                <div class="text-center">
+                                    <div class="speed-score mx-auto mb-2">97</div>
+                                    <div class="text-xs font-semibold text-gray-600">PageSpeed</div>
                                 </div>
-                                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 text-center">
-                                    <div class="text-2xl font-black text-blue-600">+125%</div>
-                                    <div class="text-xs font-semibold text-blue-700">Bed Utilization</div>
+                                <div class="text-center">
+                                    <div class="seo-score mx-auto mb-2">92</div>
+                                    <div class="text-xs font-semibold text-gray-600">SEO Score</div>
                                 </div>
-                                <div class="bg-purple-50 border border-purple-200 rounded-lg p-4 text-center">
-                                    <div class="text-2xl font-black text-purple-600">+43%</div>
-                                    <div class="text-xs font-semibold text-purple-700">Patient Satisfaction</div>
-                                </div>
-                                <div class="bg-orange-50 border border-orange-200 rounded-lg p-4 text-center">
-                                    <div class="text-2xl font-black text-orange-600">$8.5M</div>
-                                    <div class="text-xs font-semibold text-orange-700">Operational Savings</div>
+                                <div class="text-center">
+                                    <div class="text-2xl font-black text-green-600 mb-2">0.9s</div>
+                                    <div class="text-xs font-semibold text-gray-600">Load Time</div>
                                 </div>
                             </div>
                             
                             <!-- Technologies Used -->
                             <div class="space-y-3 mb-8">
-                                <div class="text-sm font-semibold text-gray-700">Key Technologies:</div>
+                                <div class="text-sm font-semibold text-gray-700">Tech Stack:</div>
                                 <div class="flex flex-wrap gap-2">
-                                    <span class="tech-stack-item px-3 py-1 rounded-full text-xs font-medium">Natural Language Processing</span>
-                                    <span class="tech-stack-item px-3 py-1 rounded-full text-xs font-medium">Predictive Modeling</span>
-                                    <span class="tech-stack-item px-3 py-1 rounded-full text-xs font-medium">HIPAA Compliance</span>
-                                    <span class="tech-stack-item px-3 py-1 rounded-full text-xs font-medium">Electronic Health Records</span>
+                                    <span class="tech-stack-item px-3 py-1 rounded-full text-xs font-medium">Vue.js 3</span>
+                                    <span class="tech-stack-item px-3 py-1 rounded-full text-xs font-medium">PWA</span>
+                                    <span class="tech-stack-item px-3 py-1 rounded-full text-xs font-medium">WebAuthn</span>
+                                    <span class="tech-stack-item px-3 py-1 rounded-full text-xs font-medium">Plaid API</span>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="payment-badge">
+                                    💰 Client Paid: $22,000
                                 </div>
                             </div>
                             
                             <button class="w-full bg-gradient-to-r from-red-500 to-orange-600 text-white font-bold py-4 px-6 rounded-xl hover:from-red-600 hover:to-orange-700 transition-all duration-300 transform hover:scale-105 shadow-lg">
-                                View Full Case Study →
+                                View Live Project →
                             </button>
                         </div>
                     </div>
@@ -515,118 +621,118 @@
             </div>
         </section>
 
-        <!-- Our Process -->
+        <!-- Our Development Process -->
         <section class="py-24 bg-gradient-to-br from-slate-50 to-blue-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-20">
                     <h2 class="text-4xl lg:text-5xl font-black text-gray-900 mb-6">
-                        Our Proven <span class="gradient-text">Process</span>
+                        Our Lightning-Fast <span class="gradient-text">Process</span>
                     </h2>
                     <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                        A systematic approach that has delivered consistent results across industries. Every project follows our battle-tested methodology for maximum impact.
+                        From concept to launch in record time. Our streamlined process ensures quality delivery without compromising on innovation.
                     </p>
                 </div>
                 
                 <div class="grid lg:grid-cols-2 gap-16 items-start">
-                    <div class="space-y-12">
+                    <div class="process-timeline">
                         <div class="process-step">
                             <div class="mb-4">
                                 <div class="inline-flex items-center bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-3">
-                                    PHASE 1
+                                    DAY 1
                                 </div>
-                                <h3 class="text-2xl font-black text-gray-900">Discovery & Analysis</h3>
+                                <h3 class="text-2xl font-black text-gray-900">Discovery & Design</h3>
                             </div>
                             <p class="text-gray-600 leading-relaxed">
-                                Deep-dive into your business operations, identifying pain points, inefficiencies, and optimization opportunities through comprehensive data analysis and stakeholder interviews.
+                                Understand your vision, analyze requirements, and create stunning wireframes and mockups. We finalize the design system and user experience flow.
                             </p>
                         </div>
                         
                         <div class="process-step">
                             <div class="mb-4">
                                 <div class="inline-flex items-center bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-3">
-                                    PHASE 2
+                                    DAY 2-5
                                 </div>
-                                <h3 class="text-2xl font-black text-gray-900">Strategy & Architecture</h3>
+                                <h3 class="text-2xl font-black text-gray-900">Development Sprint</h3>
                             </div>
                             <p class="text-gray-600 leading-relaxed">
-                                Design custom AI solutions tailored to your specific needs, creating detailed technical specifications and implementation roadmaps with clear success metrics.
+                                Build your website using cutting-edge technologies, implement AI features, optimize for performance, and integrate all required functionalities.
                             </p>
                         </div>
                         
                         <div class="process-step">
                             <div class="mb-4">
                                 <div class="inline-flex items-center bg-purple-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-3">
-                                    PHASE 3
+                                    DAY 6
                                 </div>
-                                <h3 class="text-2xl font-black text-gray-900">Development & Integration</h3>
+                                <h3 class="text-2xl font-black text-gray-900">Testing & SEO</h3>
                             </div>
                             <p class="text-gray-600 leading-relaxed">
-                                Build and deploy cutting-edge AI systems with seamless integration into your existing infrastructure, ensuring minimal disruption to operations.
+                                Comprehensive testing across devices and browsers, SEO optimization, performance tuning, and security audits to ensure perfection.
                             </p>
                         </div>
                         
                         <div class="process-step">
                             <div class="mb-4">
                                 <div class="inline-flex items-center bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-3">
-                                    PHASE 4
+                                    DAY 7
                                 </div>
-                                <h3 class="text-2xl font-black text-gray-900">Optimization & Scaling</h3>
+                                <h3 class="text-2xl font-black text-gray-900">Launch & Handover</h3>
                             </div>
                             <p class="text-gray-600 leading-relaxed">
-                                Continuously monitor, refine, and scale solutions based on real-world performance data, ensuring sustained improvements and maximum ROI.
+                                Deploy your website, configure analytics, provide training, and ensure everything runs smoothly. You only pay after you're completely satisfied.
                             </p>
                         </div>
                     </div>
                     
                     <div class="glass-card rounded-3xl p-8 shadow-2xl">
-                        <h3 class="text-2xl font-black text-gray-900 mb-6">Project Success Metrics</h3>
+                        <h3 class="text-2xl font-black text-gray-900 mb-6">Delivery Performance</h3>
                         
                         <div class="space-y-6">
                             <div class="flex items-center justify-between">
                                 <span class="text-gray-700 font-semibold">On-Time Delivery</span>
                                 <div class="flex items-center space-x-2">
                                     <div class="w-32 bg-gray-200 rounded-full h-2">
-                                        <div class="bg-green-600 h-2 rounded-full" style="width: 96%"></div>
+                                        <div class="bg-green-600 h-2 rounded-full" style="width: 98%"></div>
                                     </div>
-                                    <span class="text-green-600 font-bold text-sm">96%</span>
+                                    <span class="text-green-600 font-bold text-sm">98%</span>
                                 </div>
                             </div>
                             
                             <div class="flex items-center justify-between">
-                                <span class="text-gray-700 font-semibold">Budget Adherence</span>
+                                <span class="text-gray-700 font-semibold">Client Satisfaction</span>
                                 <div class="flex items-center space-x-2">
                                     <div class="w-32 bg-gray-200 rounded-full h-2">
-                                        <div class="bg-blue-600 h-2 rounded-full" style="width: 94%"></div>
+                                        <div class="bg-blue-600 h-2 rounded-full" style="width: 96%"></div>
                                     </div>
-                                    <span class="text-blue-600 font-bold text-sm">94%</span>
+                                    <span class="text-blue-600 font-bold text-sm">96%</span>
                                 </div>
                             </div>
                             
                             <div class="flex items-center justify-between">
-                                <span class="text-gray-700 font-semibold">Performance Goals Met</span>
+                                <span class="text-gray-700 font-semibold">Performance Score</span>
                                 <div class="flex items-center space-x-2">
                                     <div class="w-32 bg-gray-200 rounded-full h-2">
-                                        <div class="bg-purple-600 h-2 rounded-full" style="width: 98%"></div>
+                                        <div class="bg-purple-600 h-2 rounded-full" style="width: 95%"></div>
                                     </div>
-                                    <span class="text-purple-600 font-bold text-sm">98%</span>
+                                    <span class="text-purple-600 font-bold text-sm">95+</span>
                                 </div>
                             </div>
                             
                             <div class="flex items-center justify-between">
-                                <span class="text-gray-700 font-semibold">Client Retention</span>
+                                <span class="text-gray-700 font-semibold">Payment Success</span>
                                 <div class="flex items-center space-x-2">
                                     <div class="w-32 bg-gray-200 rounded-full h-2">
-                                        <div class="bg-orange-600 h-2 rounded-full" style="width: 99%"></div>
+                                        <div class="bg-orange-600 h-2 rounded-full" style="width: 100%"></div>
                                     </div>
-                                    <span class="text-orange-600 font-bold text-sm">99%</span>
+                                    <span class="text-orange-600 font-bold text-sm">100%</span>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="mt-8 p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl border border-blue-200">
                             <div class="text-center">
-                                <div class="text-3xl font-black gradient-text mb-2">150+</div>
-                                <div class="text-sm font-semibold text-gray-600">Successfully Delivered Projects</div>
+                                <div class="text-3xl font-black gradient-text mb-2">7 Days</div>
+                                <div class="text-sm font-semibold text-gray-600">Average Project Timeline</div>
                             </div>
                         </div>
                     </div>
@@ -639,75 +745,77 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-20">
                     <h2 class="text-4xl lg:text-5xl font-black text-gray-900 mb-6">
-                        Our <span class="gradient-text">Technology Stack</span>
+                        Next-Gen <span class="gradient-text">Tech Stack</span>
                     </h2>
                     <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                        Cutting-edge technologies and frameworks that power our AI solutions, ensuring scalability, reliability, and peak performance.
+                        We use the most advanced technologies to build websites that are fast, secure, scalable, and future-ready.
                     </p>
                 </div>
                 
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <!-- AI & ML -->
+                    <!-- Frontend -->
                     <div class="text-center">
                         <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
-                            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-black text-gray-900 mb-4">AI & Machine Learning</h3>
-                        <div class="space-y-2">
-                            <span class="tech-stack-item block px-4 py-2 rounded-lg text-sm font-medium">TensorFlow</span>
-                            <span class="tech-stack-item block px-4 py-2 rounded-lg text-sm font-medium">PyTorch</span>
-                            <span class="tech-stack-item block px-4 py-2 rounded-lg text-sm font-medium">Scikit-learn</span>
-                            <span class="tech-stack-item block px-4 py-2 rounded-lg text-sm font-medium">OpenAI GPT</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Cloud & Infrastructure -->
-                    <div class="text-center">
-                        <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
                             <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
                             </svg>
                         </div>
-                        <h3 class="text-xl font-black text-gray-900 mb-4">Cloud & Infrastructure</h3>
+                        <h3 class="text-xl font-black text-gray-900 mb-4">Frontend Frameworks</h3>
                         <div class="space-y-2">
-                            <span class="tech-stack-item block px-4 py-2 rounded-lg text-sm font-medium">AWS</span>
-                            <span class="tech-stack-item block px-4 py-2 rounded-lg text-sm font-medium">Google Cloud</span>
-                            <span class="tech-stack-item block px-4 py-2 rounded-lg text-sm font-medium">Kubernetes</span>
-                            <span class="tech-stack-item block px-4 py-2 rounded-lg text-sm font-medium">Docker</span>
+                            <span class="tech-stack-item block px-4 py-2 rounded-lg text-sm font-medium">Next.js 14</span>
+                            <span class="tech-stack-item block px-4 py-2 rounded-lg text-sm font-medium">React 18</span>
+                            <span class="tech-stack-item block px-4 py-2 rounded-lg text-sm font-medium">Vue.js 3</span>
+                            <span class="tech-stack-item block px-4 py-2 rounded-lg text-sm font-medium">Svelte</span>
                         </div>
                     </div>
                     
-                    <!-- Data & Analytics -->
+                    <!-- Styling -->
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M4 2a2 2 0 00-2 2v11a3 3 0 106 0V4a2 2 0 00-2-2H4zm1 14a1 1 0 100-2 1 1 0 000 2zm5-1.757l4.9-4.9a2 2 0 000-2.828L13.485 5.1a2 2 0 00-2.828 0L10 5.757v8.486zM16 18H9.071l6-6H16a2 2 0 012 2v2a2 2 0 01-2 2z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-black text-gray-900 mb-4">Styling & Animation</h3>
+                        <div class="space-y-2">
+                            <span class="tech-stack-item block px-4 py-2 rounded-lg text-sm font-medium">Tailwind CSS</span>
+                            <span class="tech-stack-item block px-4 py-2 rounded-lg text-sm font-medium">Framer Motion</span>
+                            <span class="tech-stack-item block px-4 py-2 rounded-lg text-sm font-medium">GSAP</span>
+                            <span class="tech-stack-item block px-4 py-2 rounded-lg text-sm font-medium">Three.js</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Backend & Database -->
                     <div class="text-center">
                         <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
                             <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 001.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z"/>
+                                <path d="M3 12v3c0 1.657 3.134 3 7 3s7-1.343 7-3v-3c0 1.657-3.134 3-7 3s-7-1.343-7-3z"/>
+                                <path d="M3 7v3c0 1.657 3.134 3 7 3s7-1.343 7-3V7c0 1.657-3.134 3-7 3S3 8.657 3 7z"/>
+                                <path d="M17 5c0 1.657-3.134 3-7 3S3 6.657 3 5s3.134-3 7-3 7 1.343 7 3z"/>
                             </svg>
                         </div>
-                        <h3 class="text-xl font-black text-gray-900 mb-4">Data & Analytics</h3>
+                        <h3 class="text-xl font-black text-gray-900 mb-4">Backend & Database</h3>
                         <div class="space-y-2">
-                            <span class="tech-stack-item block px-4 py-2 rounded-lg text-sm font-medium">Apache Spark</span>
-                            <span class="tech-stack-item block px-4 py-2 rounded-lg text-sm font-medium">Elasticsearch</span>
+                            <span class="tech-stack-item block px-4 py-2 rounded-lg text-sm font-medium">Node.js</span>
+                            <span class="tech-stack-item block px-4 py-2 rounded-lg text-sm font-medium">Supabase</span>
                             <span class="tech-stack-item block px-4 py-2 rounded-lg text-sm font-medium">MongoDB</span>
-                            <span class="tech-stack-item block px-4 py-2 rounded-lg text-sm font-medium">PostgreSQL</span>
+                            <span class="tech-stack-item block px-4 py-2 rounded-lg text-sm font-medium">Prisma</span>
                         </div>
                     </div>
                     
-                    <!-- Development -->
+                    <!-- AI & SEO -->
                     <div class="text-center">
                         <div class="w-20 h-20 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
                             <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                             </svg>
                         </div>
-                        <h3 class="text-xl font-black text-gray-900 mb-4">Development</h3>
+                        <h3 class="text-xl font-black text-gray-900 mb-4">AI & SEO Tools</h3>
                         <div class="space-y-2">
-                            <span class="tech-stack-item block px-4 py-2 rounded-lg text-sm font-medium">Python</span>
-                            <span class="tech-stack-item block px-4 py-2 rounded-lg text-sm font-medium">Node.js</span>
-                            <span class="tech-stack-item block px-4 py-2 rounded-lg text-sm font-medium">React</span>
-                            <span class="tech-stack-item block px-4 py-2 rounded-lg text-sm font-medium">FastAPI</span>
+                            <span class="tech-stack-item block px-4 py-2 rounded-lg text-sm font-medium">OpenAI API</span>
+                            <span class="tech-stack-item block px-4 py-2 rounded-lg text-sm font-medium">Advanced SEO</span>
+                            <span class="tech-stack-item block px-4 py-2 rounded-lg text-sm font-medium">Analytics</span>
+                            <span class="tech-stack-item block px-4 py-2 rounded-lg text-sm font-medium">Performance</span>
                         </div>
                     </div>
                 </div>
@@ -722,7 +830,7 @@
                         What Our <span class="gradient-text">Clients Say</span>
                     </h2>
                     <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                        Don't just take our word for it. Hear directly from the leaders who've experienced transformational results.
+                        Real feedback from clients who've experienced the OptiScale 360 difference.
                     </p>
                 </div>
                 
@@ -734,16 +842,16 @@
                                 <path d="M6.5 10.5H4a1 1 0 01-1-1V6a5 5 0 0110 0v3.5a1 1 0 01-1 1h-2.5l-3 3v-3z"/>
                             </svg>
                             <p class="text-gray-700 leading-relaxed italic">
-                                "OptiScale 360 transformed our entire supply chain operation. The AI-powered forecasting system they built has reduced our inventory costs by 45% while improving customer satisfaction significantly."
+                                "Delivered our e-commerce site in just 5 days with incredible AI features. The website loads in under 1 second and our conversion rate increased by 340%. Worth every penny of the $12,500!"
                             </p>
                         </div>
                         <div class="flex items-center">
                             <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
-                                S.J
+                                M.R
                             </div>
                             <div>
-                                <div class="font-bold text-gray-900">Sarah Johnson</div>
-                                <div class="text-sm text-gray-600">COO, Global Retail Corp</div>
+                                <div class="font-bold text-gray-900">Marcus Rodriguez</div>
+                                <div class="text-sm text-gray-600">CEO, TechCommerce Inc</div>
                             </div>
                         </div>
                     </div>
@@ -755,16 +863,16 @@
                                 <path d="M6.5 10.5H4a1 1 0 01-1-1V6a5 5 0 0110 0v3.5a1 1 0 01-1 1h-2.5l-3 3v-3z"/>
                             </svg>
                             <p class="text-gray-700 leading-relaxed italic">
-                                "The smart factory system has been a game-changer. We've seen a 156% increase in production speed and 78% reduction in defects. The ROI exceeded our expectations within the first year."
+                                "The SaaS dashboard they built exceeded all expectations. Real-time data visualization, perfect performance scores, and delivered in 3 days. Our users love the intuitive interface!"
                             </p>
                         </div>
                         <div class="flex items-center">
                             <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
-                                M.C
+                                S.K
                             </div>
                             <div>
-                                <div class="font-bold text-gray-900">Michael Chen</div>
-                                <div class="text-sm text-gray-600">VP Operations, AutoTech Manufacturing</div>
+                                <div class="font-bold text-gray-900">Sarah Kim</div>
+                                <div class="text-sm text-gray-600">Product Manager, DataFlow</div>
                             </div>
                         </div>
                     </div>
@@ -776,16 +884,16 @@
                                 <path d="M6.5 10.5H4a1 1 0 01-1-1V6a5 5 0 0110 0v3.5a1 1 0 01-1 1h-2.5l-3 3v-3z"/>
                             </svg>
                             <p class="text-gray-700 leading-relaxed italic">
-                                "Their risk management platform has revolutionized our fraud detection capabilities. 99.7% accuracy with minimal false positives - it's exactly what we needed to scale confidently."
+                                "The 3D animations and AI integration on our landing page are mind-blowing. Lead generation increased by 500% and we're getting acquisition offers. Best $15k investment ever!"
                             </p>
                         </div>
                         <div class="flex items-center">
                             <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
-                                E.R
+                                D.L
                             </div>
                             <div>
-                                <div class="font-bold text-gray-900">Emily Rodriguez</div>
-                                <div class="text-sm text-gray-600">CTO, SecureBank Financial</div>
+                                <div class="font-bold text-gray-900">David Liu</div>
+                                <div class="text-sm text-gray-600">Founder, AI Innovations</div>
                             </div>
                         </div>
                     </div>
@@ -797,11 +905,11 @@
         <section class="py-24 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h2 class="text-4xl lg:text-5xl font-black text-white mb-8">
-                    Ready to Transform Your Business?
+                    Ready for Your Next-Gen Website?
                 </h2>
                 <p class="text-xl text-blue-100 mb-12 leading-relaxed">
-                    Join the ranks of industry leaders who've achieved breakthrough results with OptiScale 360. 
-                    Let's discuss how AI can revolutionize your operations.
+                    Join 200+ satisfied clients who've transformed their online presence with our AI-powered, lightning-fast websites.
+                    <span class="block mt-4 font-semibold">Average delivery: 7 days. Payment after satisfaction guaranteed.</span>
                 </p>
                 
                 <div class="flex flex-col sm:flex-row gap-6 justify-center">
@@ -814,7 +922,7 @@
                 </div>
                 
                 <div class="mt-12 text-blue-100 text-sm">
-                    <span class="font-semibold">No upfront costs • Risk-free evaluation • Pay what you value</span>
+                    <span class="font-semibold">⚡ Lightning-fast delivery • 🤖 AI-powered • 💰 Pay what you value • 🔒 Risk-free guarantee</span>
                 </div>
             </div>
         </section>
@@ -826,16 +934,16 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <h3>OptiScale 360</h3>
-                    <p>Optimizing businesses for the future</p>
+                    <p>Next-Gen Website Design & Development</p>
                 </div>
                 <div class="footer-links">
                     <div class="footer-column">
                         <h4>Services</h4>
                         <ul>
-                            <li><a href="/services.html">Process Optimization</a></li>
-                            <li><a href="/services.html">Data Analytics</a></li>
-                            <li><a href="/services.html">Performance Scaling</a></li>
-                            <li><a href="/services.html">Strategic Consulting</a></li>
+                            <li><a href="/services.html">AI-Powered Websites</a></li>
+                            <li><a href="/services.html">SEO Optimization</a></li>
+                            <li><a href="/services.html">Performance Tuning</a></li>
+                            <li><a href="/services.html">3D Animations</a></li>
                         </ul>
                     </div>
                     <div class="footer-column">
@@ -871,8 +979,8 @@
             });
         }, observerOptions);
 
-        // Observe all case study cards
-        document.querySelectorAll('.case-study-card').forEach(card => {
+        // Observe all project cards
+        document.querySelectorAll('.project-card').forEach(card => {
             observer.observe(card);
         });
 
@@ -881,7 +989,17 @@
             observer.observe(card);
         });
 
-        // Add hover effects for better interactivity
+        // Add pulse effect to payment badges
+        document.querySelectorAll('.payment-badge').forEach(badge => {
+            setInterval(() => {
+                badge.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    badge.style.transform = 'scale(1)';
+                }, 200);
+            }, 3000);
+        });
+
+        // Add hover effects for tech stack items
         document.querySelectorAll('.tech-stack-item').forEach(item => {
             item.addEventListener('mouseenter', function() {
                 this.style.transform = 'scale(1.05) translateY(-2px)';
@@ -890,6 +1008,38 @@
             item.addEventListener('mouseleave', function() {
                 this.style.transform = 'scale(1) translateY(0)';
             });
+        });
+
+        // Animate speed and SEO scores on scroll
+        const animateScores = () => {
+            document.querySelectorAll('.speed-score, .seo-score').forEach(score => {
+                const value = parseInt(score.textContent);
+                let current = 0;
+                const increment = value / 20;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= value) {
+                        current = value;
+                        clearInterval(timer);
+                    }
+                    score.textContent = Math.floor(current);
+                }, 50);
+            });
+        };
+
+        // Trigger score animation when visible
+        const scoreObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateScores();
+                    scoreObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        document.querySelectorAll('.project-card').forEach(card => {
+            scoreObserver.observe(card);
         });
     </script>
 </body>
