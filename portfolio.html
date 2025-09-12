@@ -518,6 +518,334 @@
                 font-size: 13px;
             }
         }
+
+        /* Google Calendar Booking Widget */
+        .calendar-booking-container {
+            position: relative;
+        }
+
+        .calendar-widget {
+            opacity: 0;
+            transform: translateY(15px);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            pointer-events: none;
+            margin-top: 20px;
+        }
+
+        .calendar-widget.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .booking-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 32px;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: 
+                0 20px 25px -5px rgba(0, 0, 0, 0.1),
+                0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .booking-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 32px;
+        }
+
+        .booking-title h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #111827;
+            margin: 0 0 4px 0;
+        }
+
+        .booking-title p {
+            font-size: 15px;
+            color: #6b7280;
+            margin: 0;
+        }
+
+        .booking-close-btn {
+            background: #f3f4f6;
+            border: none;
+            border-radius: 8px;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6b7280;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .booking-close-btn:hover {
+            background: #e5e7eb;
+            color: #374151;
+        }
+
+        .booking-content {
+            display: grid;
+            gap: 24px;
+        }
+
+        .booking-option {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 24px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+        }
+
+        .booking-option:hover {
+            border-color: #d1d5db;
+            background: #f9fafb;
+        }
+
+        .option-icon {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 10px;
+        }
+
+        .option-content {
+            flex: 1;
+        }
+
+        .option-content h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #111827;
+            margin: 0 0 4px 0;
+        }
+
+        .option-content p {
+            font-size: 15px;
+            color: #6b7280;
+            margin: 0 0 16px 0;
+        }
+
+        .option-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .primary-btn {
+            background: #3b82f6;
+            color: #ffffff;
+        }
+
+        .primary-btn:hover {
+            background: #2563eb;
+            transform: translateY(-1px);
+        }
+
+        .secondary-btn {
+            background: #f3f4f6;
+            color: #374151;
+        }
+
+        .secondary-btn:hover {
+            background: #e5e7eb;
+        }
+
+        .quick-booking-form {
+            margin-top: 24px;
+            padding: 24px;
+            background: #f9fafb;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .form-row-booking {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .booking-field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .booking-field label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .booking-field input,
+        .booking-field select,
+        .booking-field textarea {
+            height: 44px;
+            padding: 0 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 15px;
+            color: #111827;
+            background: #ffffff;
+            transition: all 0.2s ease;
+            outline: none;
+        }
+
+        .booking-field textarea {
+            height: auto;
+            padding: 12px;
+            resize: vertical;
+            min-height: 88px;
+        }
+
+        .booking-field input:focus,
+        .booking-field select:focus,
+        .booking-field textarea:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .datetime-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .submit-booking-btn {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: #ffffff;
+            border: none;
+            height: 48px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .submit-booking-btn:hover {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.3);
+        }
+
+        .submit-booking-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .booking-spinner {
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
+
+        .booking-success {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .success-booking-icon {
+            color: #10b981;
+            margin-bottom: 16px;
+        }
+
+        .booking-success h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #111827;
+            margin: 0 0 8px 0;
+        }
+
+        .booking-success p {
+            font-size: 15px;
+            color: #6b7280;
+            margin: 0 0 16px 0;
+        }
+
+        .next-steps {
+            text-align: left;
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+
+        .next-steps li {
+            color: #6b7280;
+            margin-bottom: 8px;
+        }
+
+        .schedule-another-btn {
+            background: #10b981;
+            color: #ffffff;
+            border: none;
+            height: 44px;
+            padding: 0 24px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .schedule-another-btn:hover {
+            background: #059669;
+            transform: translateY(-1px);
+        }
+
+        /* Mobile Booking Responsive */
+        @media (max-width: 640px) {
+            .booking-card {
+                padding: 24px 20px;
+                margin: 0 16px;
+            }
+
+            .form-row-booking {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .datetime-row {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .booking-option {
+                flex-direction: column;
+                text-align: center;
+                gap: 12px;
+            }
+
+            .booking-title h3 {
+                font-size: 20px;
+            }
+        }
     </style>
 </head>
 <body class="antialiased bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50">
@@ -1231,10 +1559,142 @@
                         </div>
                     </div>
 
-                    <!-- Alternative CTA Button -->
-                    <a href="/contact.html" class="bg-transparent text-white font-bold text-lg px-10 py-4 rounded-2xl border-2 border-white hover:bg-white hover:text-blue-600 transition-all duration-300 transform hover:scale-105 mt-4 inline-block">
-                        Schedule Consultation
-                    </a>
+                    <!-- Google Calendar Integration -->
+                    <div class="calendar-booking-container">
+                        <button id="scheduleConsultationBtn" class="bg-transparent text-white font-bold text-lg px-10 py-4 rounded-2xl border-2 border-white hover:bg-white hover:text-blue-600 transition-all duration-300 transform hover:scale-105 mt-4 inline-block">
+                            <span class="flex items-center justify-center gap-3">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
+                                </svg>
+                                Schedule Consultation
+                            </span>
+                        </button>
+
+                        <!-- Inline Booking Widget (Initially Hidden) -->
+                        <div id="calendarBookingWidget" class="calendar-widget hidden">
+                            <div class="booking-card">
+                                <!-- Header -->
+                                <div class="booking-header">
+                                    <div class="booking-title">
+                                        <h3>Schedule Your Free Consultation</h3>
+                                        <p>30-minute strategy session • No commitment required</p>
+                                    </div>
+                                    <button id="closeBookingBtn" class="booking-close-btn">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <!-- Calendar Integration Options -->
+                                <div class="booking-content">
+                                    <!-- Option 1: Direct Google Calendar Link -->
+                                    <div class="booking-option">
+                                        <div class="option-icon">
+                                            <svg class="w-8 h-8 text-blue-600" viewBox="0 0 24 24" fill="currentColor">
+                                                <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                                            </svg>
+                                        </div>
+                                        <div class="option-content">
+                                            <h4>Book with Google Calendar</h4>
+                                            <p>Choose from available time slots and book directly</p>
+                                            <a href="#" id="googleCalendarBtn" class="option-btn primary-btn">
+                                                View Available Times
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <!-- Option 2: Quick Booking Form -->
+                                    <div class="booking-option">
+                                        <div class="option-icon">
+                                            <svg class="w-8 h-8 text-green-600" viewBox="0 0 24 24" fill="currentColor">
+                                                <path d="M9 11H7v6h2v-6zm4 0h-2v6h2v-6zm4 0h-2v6h2v-6zM4 22h16v-2H4v2zm14-8V6c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v8H4v2h16v-2h-2zM8 6h8v8H8V6z"/>
+                                            </svg>
+                                        </div>
+                                        <div class="option-content">
+                                            <h4>Quick Schedule Request</h4>
+                                            <p>Tell us your preferred time and we'll confirm availability</p>
+                                            <button id="quickBookingBtn" class="option-btn secondary-btn">
+                                                Request Time Slot
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Quick Booking Form -->
+                                    <form id="quickBookingForm" class="quick-booking-form hidden">
+                                        <div class="form-row-booking">
+                                            <div class="booking-field">
+                                                <label>Your Name *</label>
+                                                <input type="text" id="consultationName" required placeholder="John Smith">
+                                            </div>
+                                            <div class="booking-field">
+                                                <label>Email *</label>
+                                                <input type="email" id="consultationEmail" required placeholder="john@company.com">
+                                            </div>
+                                        </div>
+                                        <div class="form-row-booking">
+                                            <div class="booking-field">
+                                                <label>Phone</label>
+                                                <input type="tel" id="consultationPhone" placeholder="+1 (555) 123-4567">
+                                            </div>
+                                            <div class="booking-field">
+                                                <label>Company</label>
+                                                <input type="text" id="consultationCompany" placeholder="Your Company">
+                                            </div>
+                                        </div>
+                                        <div class="booking-field">
+                                            <label>Preferred Date & Time</label>
+                                            <div class="datetime-row">
+                                                <input type="date" id="consultationDate" min="" required>
+                                                <select id="consultationTime" required>
+                                                    <option value="">Select time</option>
+                                                    <option value="09:00">9:00 AM</option>
+                                                    <option value="10:00">10:00 AM</option>
+                                                    <option value="11:00">11:00 AM</option>
+                                                    <option value="14:00">2:00 PM</option>
+                                                    <option value="15:00">3:00 PM</option>
+                                                    <option value="16:00">4:00 PM</option>
+                                                    <option value="17:00">5:00 PM</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="booking-field">
+                                            <label>What would you like to discuss?</label>
+                                            <textarea id="consultationTopic" rows="3" placeholder="Brief description of your website needs or questions..."></textarea>
+                                        </div>
+                                        <button type="submit" class="submit-booking-btn">
+                                            <span class="submit-booking-text">Schedule Consultation</span>
+                                            <span class="submit-booking-loading hidden">
+                                                <svg class="booking-spinner" viewBox="0 0 24 24">
+                                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none" opacity="0.25"/>
+                                                    <path fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" opacity="0.75"/>
+                                                </svg>
+                                                Scheduling...
+                                            </span>
+                                        </button>
+                                    </form>
+
+                                    <!-- Success Message -->
+                                    <div id="bookingSuccess" class="booking-success hidden">
+                                        <div class="success-booking-icon">
+                                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M9 12l2 2 4-4M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/>
+                                            </svg>
+                                        </div>
+                                        <h3>Consultation Scheduled!</h3>
+                                        <p>We've received your request and will send you a calendar invitation within 1 hour.</p>
+                                        <p><strong>Next Steps:</strong></p>
+                                        <ul class="next-steps">
+                                            <li>Check your email for calendar invite</li>
+                                            <li>Add the meeting to your calendar</li>
+                                            <li>We'll send you a prep questionnaire</li>
+                                        </ul>
+                                        <button id="scheduleAnotherBtn" class="schedule-another-btn">Schedule Another</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="mt-12 text-blue-100 text-sm">
@@ -1527,6 +1987,265 @@
                     }
                 `;
                 document.head.appendChild(style);
+            }
+        });
+
+        // Google Calendar Booking Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const scheduleConsultationBtn = document.getElementById('scheduleConsultationBtn');
+            const calendarBookingWidget = document.getElementById('calendarBookingWidget');
+            const closeBookingBtn = document.getElementById('closeBookingBtn');
+            const googleCalendarBtn = document.getElementById('googleCalendarBtn');
+            const quickBookingBtn = document.getElementById('quickBookingBtn');
+            const quickBookingForm = document.getElementById('quickBookingForm');
+            const bookingSuccess = document.getElementById('bookingSuccess');
+            const scheduleAnotherBtn = document.getElementById('scheduleAnotherBtn');
+            const consultationDate = document.getElementById('consultationDate');
+
+            // Set minimum date to today
+            const today = new Date().toISOString().split('T')[0];
+            consultationDate.min = today;
+            consultationDate.value = today;
+
+            // Show/hide booking widget
+            function showBookingWidget() {
+                calendarBookingWidget.classList.remove('hidden');
+                scheduleConsultationBtn.style.opacity = '0.3';
+                scheduleConsultationBtn.style.pointerEvents = 'none';
+                
+                setTimeout(() => {
+                    calendarBookingWidget.classList.add('active');
+                }, 50);
+
+                // Scroll to widget
+                calendarBookingWidget.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'center' 
+                });
+            }
+
+            function hideBookingWidget() {
+                calendarBookingWidget.classList.remove('active');
+                
+                setTimeout(() => {
+                    calendarBookingWidget.classList.add('hidden');
+                    scheduleConsultationBtn.style.opacity = '1';
+                    scheduleConsultationBtn.style.pointerEvents = 'auto';
+                    
+                    // Reset form
+                    resetBookingForm();
+                }, 200);
+            }
+
+            function resetBookingForm() {
+                quickBookingForm.classList.add('hidden');
+                bookingSuccess.classList.add('hidden');
+                quickBookingForm.reset();
+                consultationDate.value = today;
+                
+                // Reset field styles
+                const fields = quickBookingForm.querySelectorAll('input, select, textarea');
+                fields.forEach(field => {
+                    field.style.borderColor = '#e5e7eb';
+                });
+            }
+
+            // Event listeners
+            scheduleConsultationBtn.addEventListener('click', showBookingWidget);
+            closeBookingBtn.addEventListener('click', hideBookingWidget);
+
+            // Google Calendar integration
+            googleCalendarBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Generate Google Calendar booking link
+                const startDate = new Date();
+                startDate.setDate(startDate.getDate() + 1); // Tomorrow
+                startDate.setHours(14, 0, 0, 0); // 2 PM
+                
+                const endDate = new Date(startDate);
+                endDate.setMinutes(30); // 30 minute meeting
+                
+                const googleCalendarUrl = createGoogleCalendarUrl({
+                    title: 'Free Website Consultation - OptiScale 360',
+                    startDate: startDate,
+                    endDate: endDate,
+                    description: 'Free 30-minute consultation to discuss your website needs and digital strategy.',
+                    location: 'Video Call (Link will be provided)'
+                });
+                
+                window.open(googleCalendarUrl, '_blank');
+            });
+
+            // Show quick booking form
+            quickBookingBtn.addEventListener('click', function() {
+                quickBookingForm.classList.remove('hidden');
+                quickBookingForm.scrollIntoView({ behavior: 'smooth' });
+            });
+
+            // Form validation
+            function validateBookingField(field) {
+                const value = field.value.trim();
+                const type = field.type;
+                let isValid = true;
+
+                field.style.borderColor = '#e5e7eb';
+
+                if (field.hasAttribute('required') && !value) {
+                    isValid = false;
+                    field.style.borderColor = '#ef4444';
+                } else if (type === 'email' && value) {
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(value)) {
+                        isValid = false;
+                        field.style.borderColor = '#ef4444';
+                    }
+                }
+
+                if (isValid && value) {
+                    field.style.borderColor = '#10b981';
+                }
+
+                return isValid;
+            }
+
+            // Add validation to booking form fields
+            const bookingFields = quickBookingForm.querySelectorAll('input, select, textarea');
+            bookingFields.forEach(field => {
+                field.addEventListener('blur', () => validateBookingField(field));
+                field.addEventListener('input', () => {
+                    if (field.style.borderColor === 'rgb(239, 68, 68)') {
+                        validateBookingField(field);
+                    }
+                });
+            });
+
+            // Form submission
+            quickBookingForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                // Validate required fields
+                let isValid = true;
+                const requiredFields = quickBookingForm.querySelectorAll('[required]');
+                
+                requiredFields.forEach(field => {
+                    if (!validateBookingField(field)) {
+                        isValid = false;
+                    }
+                });
+
+                if (!isValid) {
+                    quickBookingForm.style.animation = 'shake 0.3s ease-in-out';
+                    setTimeout(() => quickBookingForm.style.animation = '', 300);
+                    return;
+                }
+
+                // Show loading state
+                const submitBtn = quickBookingForm.querySelector('.submit-booking-btn');
+                const submitText = submitBtn.querySelector('.submit-booking-text');
+                const submitLoading = submitBtn.querySelector('.submit-booking-loading');
+                
+                submitBtn.disabled = true;
+                submitText.classList.add('hidden');
+                submitLoading.classList.remove('hidden');
+
+                try {
+                    // Get form data
+                    const formData = {
+                        name: document.getElementById('consultationName').value,
+                        email: document.getElementById('consultationEmail').value,
+                        phone: document.getElementById('consultationPhone').value,
+                        company: document.getElementById('consultationCompany').value,
+                        date: document.getElementById('consultationDate').value,
+                        time: document.getElementById('consultationTime').value,
+                        topic: document.getElementById('consultationTopic').value
+                    };
+
+                    // Create Google Calendar event (simulation)
+                    await createCalendarEvent(formData);
+                    
+                    // Show success state
+                    quickBookingForm.classList.add('hidden');
+                    bookingSuccess.classList.remove('hidden');
+                    
+                } catch (error) {
+                    console.error('Booking error:', error);
+                    alert('There was an error scheduling your consultation. Please try again or contact us directly.');
+                } finally {
+                    submitBtn.disabled = false;
+                    submitText.classList.remove('hidden');
+                    submitLoading.classList.add('hidden');
+                }
+            });
+
+            // Schedule another consultation
+            scheduleAnotherBtn.addEventListener('click', function() {
+                resetBookingForm();
+                quickBookingForm.classList.remove('hidden');
+            });
+
+            // Click outside to close
+            document.addEventListener('click', function(e) {
+                if (calendarBookingWidget.classList.contains('active') && 
+                    !calendarBookingWidget.contains(e.target) && 
+                    !scheduleConsultationBtn.contains(e.target)) {
+                    hideBookingWidget();
+                }
+            });
+
+            // ESC key to close
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && calendarBookingWidget.classList.contains('active')) {
+                    hideBookingWidget();
+                }
+            });
+
+            // Helper functions
+            function createGoogleCalendarUrl(eventData) {
+                const formatDate = (date) => {
+                    return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+                };
+
+                const params = new URLSearchParams({
+                    action: 'TEMPLATE',
+                    text: eventData.title,
+                    dates: `${formatDate(eventData.startDate)}/${formatDate(eventData.endDate)}`,
+                    details: eventData.description,
+                    location: eventData.location || ''
+                });
+
+                return `https://calendar.google.com/calendar/render?${params.toString()}`;
+            }
+
+            async function createCalendarEvent(formData) {
+                // Simulate calendar event creation
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                
+                // In a real implementation, you would:
+                // 1. Send data to your backend
+                // 2. Create Google Calendar event via Google Calendar API
+                // 3. Send calendar invitation to the user
+                // 4. Send confirmation email
+                
+                console.log('Calendar event data:', formData);
+                
+                // For now, we'll create a Google Calendar URL the user can click
+                const eventDate = new Date(`${formData.date}T${formData.time}:00`);
+                const eventEndDate = new Date(eventDate);
+                eventEndDate.setMinutes(eventEndDate.getMinutes() + 30);
+                
+                const calendarUrl = createGoogleCalendarUrl({
+                    title: `Consultation with ${formData.name} - OptiScale 360`,
+                    startDate: eventDate,
+                    endDate: eventEndDate,
+                    description: `Website consultation with ${formData.name} from ${formData.company}\n\nTopic: ${formData.topic}\n\nContact: ${formData.email} | ${formData.phone}`,
+                    location: 'Video Call (Link will be provided)'
+                });
+                
+                // Store for later use
+                window.lastBookingCalendarUrl = calendarUrl;
+                
+                return { success: true, calendarUrl };
             }
         });
     </script>
