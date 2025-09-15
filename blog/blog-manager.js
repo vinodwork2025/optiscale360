@@ -126,9 +126,10 @@ class BlogManager {
 
     // Render blog posts
     renderPosts() {
-        const postsContainer = document.querySelector('div[class*="grid"][class*="lg:grid-cols-3"][class*="md:grid-cols-2"][class*="gap-8"]');
+        const postsContainer = document.getElementById('blog-posts-container') ||
+                              document.querySelector('div[class*="grid"][class*="lg:grid-cols-3"][class*="md:grid-cols-2"][class*="gap-8"]');
         if (!postsContainer) {
-            console.error('Posts container not found. Looking for grid with lg:grid-cols-3 md:grid-cols-2 gap-8');
+            console.error('Posts container not found. Looking for #blog-posts-container or grid with lg:grid-cols-3');
             return;
         }
 
@@ -235,7 +236,8 @@ class BlogManager {
 
     // Render search results
     renderSearchResults(searchResults) {
-        const postsContainer = document.querySelector('div[class*="grid"][class*="lg:grid-cols-3"][class*="md:grid-cols-2"][class*="gap-8"]');
+        const postsContainer = document.getElementById('blog-posts-container') ||
+                              document.querySelector('div[class*="grid"][class*="lg:grid-cols-3"][class*="md:grid-cols-2"][class*="gap-8"]');
         if (!postsContainer) {
             console.error('Posts container not found for search results');
             return;

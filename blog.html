@@ -360,8 +360,15 @@
                     </p>
                 </div>
                 
-                <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
-                    <!-- Article 1 -->
+                <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-8" id="blog-posts-container">
+                    <!-- Loading placeholder - will be replaced by BlogManager -->
+                    <div class="col-span-full flex items-center justify-center py-16">
+                        <div class="text-center">
+                            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+                            <p class="text-gray-600 text-lg">Loading articles...</p>
+                        </div>
+                    </div>
+                    <!-- Static articles will be replaced by dynamic content -->
                     <article class="blog-card bg-white rounded-2xl overflow-hidden shadow-lg">
                         <div class="aspect-video bg-gradient-to-br from-blue-500 to-purple-600 relative">
                             <div class="absolute inset-0 bg-black/20"></div>
