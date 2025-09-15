@@ -606,20 +606,23 @@
     <script src="script.js"></script>
     <script src="blog/blog-manager.js"></script>
     <script>
-        // Blog functionality
+        // Initialize the blog system
         document.addEventListener('DOMContentLoaded', function() {
-            // Category filter functionality
+            // Initialize the blog manager
+            if (typeof BlogManager !== 'undefined') {
+                const blogManager = new BlogManager();
+                blogManager.init();
+            }
+
+            // Legacy functionality for backwards compatibility
             const categoryButtons = document.querySelectorAll('.category-tag');
-            
+
             categoryButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     // Remove active class from all buttons
                     categoryButtons.forEach(btn => btn.classList.remove('active'));
                     // Add active class to clicked button
                     this.classList.add('active');
-                    
-                    // Filter articles (in a real implementation, this would filter the content)
-                    console.log('Filtering by:', this.textContent.trim());
                 });
             });
             
