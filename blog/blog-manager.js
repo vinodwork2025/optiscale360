@@ -15,11 +15,21 @@ class BlogManager {
     // Initialize the blog system
     async init() {
         try {
+            console.log('BlogManager: Starting initialization...');
             await this.loadPosts();
+            console.log('BlogManager: Posts loaded:', this.posts.length, 'posts');
+
             this.setupEventListeners();
             this.renderFeaturedPost();
+            console.log('BlogManager: Featured post rendered');
+
             this.renderPosts();
+            console.log('BlogManager: Posts rendered');
+
             this.renderCategories();
+            console.log('BlogManager: Categories rendered');
+
+            console.log('BlogManager: Initialization complete!');
         } catch (error) {
             console.error('Failed to initialize blog:', error);
         }
@@ -116,8 +126,11 @@ class BlogManager {
 
     // Render blog posts
     renderPosts() {
-        const postsContainer = document.querySelector('.grid.lg\\:grid-cols-3.md\\:grid-cols-2.gap-8');
-        if (!postsContainer) return;
+        const postsContainer = document.querySelector('div[class*="grid"][class*="lg:grid-cols-3"][class*="md:grid-cols-2"][class*="gap-8"]');
+        if (!postsContainer) {
+            console.error('Posts container not found. Looking for grid with lg:grid-cols-3 md:grid-cols-2 gap-8');
+            return;
+        }
 
         const filteredPosts = this.getFilteredPosts();
         const startIndex = (this.currentPage - 1) * this.postsPerPage;
@@ -171,8 +184,11 @@ class BlogManager {
 
     // Render category filters
     renderCategories() {
-        const categoryContainer = document.querySelector('.flex.flex-wrap.justify-center.gap-4');
-        if (!categoryContainer) return;
+        const categoryContainer = document.querySelector('div[class*="flex"][class*="flex-wrap"][class*="justify-center"][class*="gap-4"]');
+        if (!categoryContainer) {
+            console.error('Category container not found. Looking for flex flex-wrap justify-center gap-4');
+            return;
+        }
 
         const categoryButtons = this.categories.map(category => {
             const isActive = this.currentCategory === category.slug;
@@ -217,15 +233,42 @@ class BlogManager {
         this.renderSearchResults(searchResults);
     }
 
+    // Render search results
+    renderSearchResults(searchResults) {
+        const postsContainer = document.querySelector('div[class*="grid"][class*="lg:grid-cols-3"][class*="md:grid-cols-2"][class*="gap-8"]');
+        if (!postsContainer) {
+            console.error('Posts container not found for search results');
+            return;
+        }
+
+        if (searchResults.length === 0) {
+            postsContainer.innerHTML = `
+                <div class="col-span-full text-center py-12">
+                    <p class="text-gray-500 text-lg">No articles found matching your search.</p>
+                </div>
+            `;
+            return;
+        }
+
+        postsContainer.innerHTML = searchResults.map(post => this.createPostCard(post)).join('');
+    }
+
     // Get filtered posts based on current category
     getFilteredPosts() {
         if (this.currentCategory === 'all') {
             return this.posts.filter(post => !post.featured);
         }
-        return this.posts.filter(post =>
-            !post.featured &&
-            post.category.toLowerCase().replace(/\s+/g, '-').replace(/&/g, '').replace(/\s+/g, '') === this.currentCategory
-        );
+        return this.posts.filter(post => {
+            if (post.featured) return false;
+
+            // Convert category to slug format for comparison
+            const categorySlug = post.category.toLowerCase()
+                .replace(/\s+/g, '-')
+                .replace(/&/g, '')
+                .replace(/\s+/g, '');
+
+            return categorySlug === this.currentCategory;
+        });
     }
 
     // Navigate to individual post
