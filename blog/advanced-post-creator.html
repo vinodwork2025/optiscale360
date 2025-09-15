@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Blog Post Creator - OptiScale 360</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Additional Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/mammoth@1.4.2/mammoth.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.snow.css" rel="stylesheet">
+
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .form-input:focus { border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); }
+
+        /* Media Upload Styles */
+        .upload-zone {
+            border: 2px dashed #cbd5e1;
+            border-radius: 12px;
+            background: #f8fafc;
+            transition: all 0.3s ease;
+        }
+
+        .upload-zone.dragover {
+            border-color: #3b82f6;
+            background: #eff6ff;
+        }
+
+        .image-preview {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #f1f5f9;
+        }
+
+        .image-preview img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .image-controls {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            display: flex;
+            gap: 4px;
+        }
+
+        .image-controls button {
+            background: rgba(0,0,0,0.7);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 4px 8px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        /* Quill Editor Customization */
+        .ql-container {
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            min-height: 200px;
+        }
+
+        .ql-toolbar {
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        /* SEO Score Indicator */
+        .seo-score {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .seo-score.excellent { background: #10b981; color: white; }
+        .seo-score.good { background: #f59e0b; color: white; }
+        .seo-score.poor { background: #ef4444; color: white; }
+
+        /* Media Gallery */
+        .media-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .media-item {
+            border: 2px solid transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .media-item:hover {
+            border-color: #3b82f6;
+            transform: scale(1.02);
+        }
+
+        .media-item.selected {
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+        }
+
+        /* Progress Bars */
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #3b82f6;
+            transition: width 0.3s ease;
+        }
+
+        /* Collapsible Sections */
+        .collapsible-header {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .collapsible-content.open {
+            max-height: 1000px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .media-gallery {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="max-w-7xl mx-auto py-8 px-4">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">Advanced Blog Post Creator</h1>
+            <p class="text-xl text-gray-600">Create professional blog posts with media, SEO optimization, and Word/PDF import</p>
+        </div>
+
+        <!-- Progress Indicator -->
+        <div class="mb-8">
+            <div class="flex items-center justify-between mb-2">
+                <span class="text-sm font-medium text-gray-700">Post Creation Progress</span>
+                <span class="text-sm text-gray-500" id="progressText">0% Complete</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+            <!-- Main Content Area -->
+            <div class="lg:col-span-2">
+                <!-- Document Import Section -->
+                <div class="bg-white rounded-2xl shadow-xl p-6 mb-8">
+                    <div class="collapsible-header flex items-center justify-between mb-4" onclick="toggleSection('importSection')">
+                        <h2 class="text-2xl font-semibold text-gray-900">📄 Import Content</h2>
+                        <svg class="w-6 h-6 transform transition-transform" id="importIcon">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </div>
+
+                    <div class="collapsible-content" id="importSection">
+                        <div class="grid md:grid-cols-2 gap-4 mb-4">
+                            <div class="upload-zone p-6 text-center" id="wordUploadZone">
+                                <input type="file" id="wordFile" accept=".docx,.doc" class="hidden">
+                                <svg class="mx-auto h-12 w-12 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                </svg>
+                                <p class="text-sm text-gray-600 mb-2">Drop Word document here or</p>
+                                <button onclick="document.getElementById('wordFile').click()" class="text-blue-600 font-medium">Browse Files</button>
+                                <p class="text-xs text-gray-500 mt-2">Supports .docx and .doc files</p>
+                            </div>
+
+                            <div class="upload-zone p-6 text-center" id="pdfUploadZone">
+                                <input type="file" id="pdfFile" accept=".pdf" class="hidden">
+                                <svg class="mx-auto h-12 w-12 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                                </svg>
+                                <p class="text-sm text-gray-600 mb-2">Drop PDF document here or</p>
+                                <button onclick="document.getElementById('pdfFile').click()" class="text-blue-600 font-medium">Browse Files</button>
+                                <p class="text-xs text-gray-500 mt-2">Supports PDF files with text</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm text-blue-800">
+                            <strong>💡 Pro Tip:</strong> Images and formatting from Word/PDF will be automatically extracted and optimized for web use.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Basic Information -->
+                <div class="bg-white rounded-2xl shadow-xl p-6 mb-8">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-6">📝 Post Details</h2>
+
+                    <form id="blogPostForm" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Post Title *</label>
+                                <input type="text" id="title" required
+                                       class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none"
+                                       placeholder="Enter compelling blog post title"
+                                       oninput="updateProgress(); analyzeSEO()">
+                                <div class="mt-1 text-xs text-gray-500">
+                                    <span id="titleLength">0</span>/60 characters (optimal: 50-60)
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Category *</label>
+                                <select id="category" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none" onchange="updateProgress()">
+                                    <option value="">Select Category</option>
+                                    <option value="Web Design">Web Design</option>
+                                    <option value="AI & ML">AI & ML</option>
+                                    <option value="Development">Development</option>
+                                    <option value="SEO">SEO</option>
+                                    <option value="Business">Business</option>
+                                    <option value="AI & Web Design">AI & Web Design</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Meta Description *</label>
+                            <textarea id="metaDescription" required
+                                     class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none"
+                                     rows="3" maxlength="160"
+                                     placeholder="Compelling description for search engines and social sharing (150-160 characters)"
+                                     oninput="updateProgress(); analyzeSEO()"></textarea>
+                            <div class="mt-1 text-xs text-gray-500">
+                                <span id="metaLength">0</span>/160 characters (optimal: 150-160)
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Focus Keywords</label>
+                            <input type="text" id="focusKeywords"
+                                   class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none"
+                                   placeholder="primary keyword, secondary keyword, long-tail keyword"
+                                   oninput="analyzeSEO()">
+                            <div class="mt-1 text-xs text-gray-500">
+                                Enter 1-3 target keywords separated by commas
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Read Time (minutes)</label>
+                                <input type="number" id="readTime" min="1" max="60" value="5"
+                                       class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none">
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Tags</label>
+                                <input type="text" id="tags"
+                                       class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none"
+                                       placeholder="tag1, tag2, tag3">
+                            </div>
+
+                            <div class="flex items-center justify-center">
+                                <label class="flex items-center">
+                                    <input type="checkbox" id="featured" class="mr-3 h-4 w-4 text-blue-600" onchange="updateProgress()">
+                                    <span class="text-sm font-medium text-gray-700">Featured Post</span>
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Media Management -->
+                <div class="bg-white rounded-2xl shadow-xl p-6 mb-8">
+                    <div class="collapsible-header flex items-center justify-between mb-4" onclick="toggleSection('mediaSection')">
+                        <h2 class="text-2xl font-semibold text-gray-900">🖼️ Media Gallery</h2>
+                        <svg class="w-6 h-6 transform transition-transform" id="mediaIcon">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </div>
+
+                    <div class="collapsible-content open" id="mediaSection">
+                        <!-- Featured Image -->
+                        <div class="mb-6">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Featured Image</label>
+                            <div class="upload-zone p-6 text-center" id="featuredImageZone">
+                                <input type="file" id="featuredImageFile" accept="image/*" class="hidden">
+                                <div id="featuredImagePreview" class="hidden mb-4">
+                                    <div class="image-preview">
+                                        <img id="featuredImg" src="" alt="Featured image preview">
+                                        <div class="image-controls">
+                                            <button onclick="editImage('featured')" class="edit-btn">Edit</button>
+                                            <button onclick="removeImage('featured')" class="remove-btn">Remove</button>
+                                        </div>
+                                    </div>
+                                    <input type="text" id="featuredAltText" placeholder="Alt text for accessibility"
+                                           class="mt-2 w-full px-3 py-2 border border-gray-300 rounded-md text-sm">
+                                </div>
+                                <div id="featuredImageUpload">
+                                    <svg class="mx-auto h-12 w-12 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                    </svg>
+                                    <p class="text-sm text-gray-600 mb-2">Drop featured image here or</p>
+                                    <button onclick="document.getElementById('featuredImageFile').click()"
+                                            class="text-blue-600 font-medium">Browse Images</button>
+                                    <p class="text-xs text-gray-500 mt-2">Recommended: 1200x630px for social sharing</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Multiple Images Upload -->
+                        <div class="mb-6">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Content Images</label>
+                            <div class="upload-zone p-6 text-center" id="imagesUploadZone">
+                                <input type="file" id="contentImages" accept="image/*" multiple class="hidden">
+                                <svg class="mx-auto h-12 w-12 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                                </svg>
+                                <p class="text-sm text-gray-600 mb-2">Drop multiple images here or</p>
+                                <button onclick="document.getElementById('contentImages').click()"
+                                        class="text-blue-600 font-medium">Browse Images</button>
+                                <p class="text-xs text-gray-500 mt-2">Upload multiple images for your blog post content</p>
+                            </div>
+                        </div>
+
+                        <!-- Uploaded Images Gallery -->
+                        <div id="uploadedImagesGallery" class="hidden">
+                            <h3 class="text-lg font-medium text-gray-900 mb-3">Uploaded Images</h3>
+                            <div class="media-gallery" id="imageGallery"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Editor -->
+                <div class="bg-white rounded-2xl shadow-xl p-6 mb-8">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-6">✍️ Content Editor</h2>
+
+                    <!-- Editor Toolbar -->
+                    <div class="mb-4">
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <button type="button" onclick="insertContent('heading')" class="px-3 py-2 bg-gray-200 rounded text-sm hover:bg-gray-300">H2 Heading</button>
+                            <button type="button" onclick="insertContent('subheading')" class="px-3 py-2 bg-gray-200 rounded text-sm hover:bg-gray-300">H3 Heading</button>
+                            <button type="button" onclick="insertContent('paragraph')" class="px-3 py-2 bg-gray-200 rounded text-sm hover:bg-gray-300">Paragraph</button>
+                            <button type="button" onclick="insertContent('list')" class="px-3 py-2 bg-gray-200 rounded text-sm hover:bg-gray-300">Bullet List</button>
+                            <button type="button" onclick="insertContent('numbered')" class="px-3 py-2 bg-gray-200 rounded text-sm hover:bg-gray-300">Numbered List</button>
+                            <button type="button" onclick="insertContent('quote')" class="px-3 py-2 bg-gray-200 rounded text-sm hover:bg-gray-300">Quote</button>
+                            <button type="button" onclick="insertImage()" class="px-3 py-2 bg-blue-600 text-white rounded text-sm hover:bg-blue-700">Insert Image</button>
+                            <button type="button" onclick="generateSampleContent()" class="px-3 py-2 bg-green-600 text-white rounded text-sm hover:bg-green-700">Sample Content</button>
+                        </div>
+
+                        <!-- Rich Text Editor -->
+                        <div id="editor-container" style="height: 400px;"></div>
+
+                        <!-- Word Count -->
+                        <div class="mt-2 text-xs text-gray-500 flex justify-between">
+                            <span>Word count: <span id="wordCount">0</span> words</span>
+                            <span>Reading time: <span id="autoReadTime">0</span> minutes</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Author Information -->
+                <div class="bg-white rounded-2xl shadow-xl p-6">
+                    <div class="collapsible-header flex items-center justify-between mb-4" onclick="toggleSection('authorSection')">
+                        <h2 class="text-2xl font-semibold text-gray-900">👤 Author Information</h2>
+                        <svg class="w-6 h-6 transform transition-transform" id="authorIcon">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </div>
+
+                    <div class="collapsible-content" id="authorSection">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Author Name *</label>
+                                <input type="text" id="author" required
+                                       class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none"
+                                       placeholder="Author name">
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Author Title</label>
+                                <input type="text" id="authorTitle"
+                                       class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none"
+                                       placeholder="e.g., Content Strategist">
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6 mt-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Author Image URL</label>
+                                <input type="url" id="authorImage"
+                                       class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none"
+                                       placeholder="https://...">
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Social Links</label>
+                                <div class="flex gap-2">
+                                    <input type="url" id="authorTwitter" placeholder="Twitter URL"
+                                           class="form-input flex-1 px-3 py-2 border border-gray-300 rounded-md text-sm">
+                                    <input type="url" id="authorLinkedIn" placeholder="LinkedIn URL"
+                                           class="form-input flex-1 px-3 py-2 border border-gray-300 rounded-md text-sm">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Author Bio</label>
+                            <textarea id="authorBio"
+                                     class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none"
+                                     rows="3" placeholder="Brief author biography"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="lg:col-span-1">
+                <!-- SEO Analysis -->
+                <div class="bg-white rounded-2xl shadow-xl p-6 mb-8">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">🔍 SEO Analysis</h3>
+
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <div class="text-sm text-gray-600">Overall SEO Score</div>
+                            <div class="text-xs text-gray-500">Based on content analysis</div>
+                        </div>
+                        <div class="seo-score poor" id="seoScore">0</div>
+                    </div>
+
+                    <div class="space-y-4" id="seoChecklist">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-700">Title optimization</span>
+                            <span class="text-xs text-red-600" id="titleStatus">✗ Missing</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-700">Meta description</span>
+                            <span class="text-xs text-red-600" id="metaStatus">✗ Missing</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-700">Focus keywords</span>
+                            <span class="text-xs text-red-600" id="keywordStatus">✗ Missing</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-700">Content length</span>
+                            <span class="text-xs text-red-600" id="lengthStatus">✗ Too short</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-700">Headings structure</span>
+                            <span class="text-xs text-red-600" id="headingStatus">✗ Missing</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-700">Image alt text</span>
+                            <span class="text-xs text-red-600" id="altStatus">✗ Missing</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                        <h4 class="text-sm font-medium text-blue-900 mb-2">💡 SEO Recommendations</h4>
+                        <ul class="text-xs text-blue-800 space-y-1" id="seoRecommendations">
+                            <li>Add a compelling title with focus keywords</li>
+                            <li>Write a meta description between 150-160 characters</li>
+                            <li>Include focus keywords in content naturally</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="bg-white rounded-2xl shadow-xl p-6 mb-8">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">⚡ Quick Actions</h3>
+
+                    <div class="space-y-3">
+                        <button onclick="generateSEOMetadata()" class="w-full px-4 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
+                            🤖 Auto-Generate SEO
+                        </button>
+                        <button onclick="autoGenerateAltText()" class="w-full px-4 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">
+                            🏷️ Auto Alt Text
+                        </button>
+                        <button onclick="saveAsDraft()" class="w-full px-4 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
+                            💾 Save as Draft
+                        </button>
+                        <button onclick="previewPost()" class="w-full px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                            👁️ Preview Post
+                        </button>
+                        <button onclick="generateSlug()" class="w-full px-4 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
+                            🔗 Generate URL Slug
+                        </button>
+                        <button onclick="optimizeImages()" class="w-full px-4 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
+                            🖼️ Optimize All Images
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Publish Settings -->
+                <div class="bg-white rounded-2xl shadow-xl p-6">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">📅 Publish Settings</h3>
+
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Publish Date</label>
+                            <input type="date" id="publishDate"
+                                   class="form-input w-full px-3 py-2 border border-gray-300 rounded-md text-sm">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
+                            <select id="postStatus" class="form-input w-full px-3 py-2 border border-gray-300 rounded-md text-sm">
+                                <option value="draft">Draft</option>
+                                <option value="published">Published</option>
+                                <option value="scheduled">Scheduled</option>
+                            </select>
+                        </div>
+
+                        <div class="pt-4 border-t">
+                            <button type="submit" form="blogPostForm"
+                                    class="w-full px-6 py-3 gradient-bg text-white rounded-lg hover:opacity-90 transition-opacity font-medium">
+                                🚀 Generate Blog Post
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Output Section -->
+        <div id="outputSection" class="hidden mt-12">
+            <div class="bg-white rounded-2xl shadow-xl p-8">
+                <h2 class="text-2xl font-semibold text-gray-900 mb-6">📤 Generated Files</h2>
+
+                <!-- Generated HTML -->
+                <div class="mb-8">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-medium text-gray-900">HTML File</h3>
+                        <div class="flex gap-2">
+                            <button onclick="copyToClipboard('htmlOutput')" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Copy HTML</button>
+                            <button onclick="downloadFile('htmlOutput', 'html')" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Download</button>
+                        </div>
+                    </div>
+                    <textarea id="htmlOutput" class="w-full h-64 p-4 border border-gray-300 rounded-lg font-mono text-xs" readonly></textarea>
+                </div>
+
+                <!-- Generated JSON -->
+                <div class="mb-8">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-medium text-gray-900">JSON Database Entry</h3>
+                        <div class="flex gap-2">
+                            <button onclick="copyToClipboard('jsonOutput')" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Copy JSON</button>
+                            <button onclick="downloadFile('jsonOutput', 'json')" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Download</button>
+                        </div>
+                    </div>
+                    <textarea id="jsonOutput" class="w-full h-32 p-4 border border-gray-300 rounded-lg font-mono text-xs" readonly></textarea>
+                </div>
+
+                <!-- Media Files List -->
+                <div id="mediaFilesSection" class="hidden mb-8">
+                    <h3 class="text-lg font-medium text-gray-900 mb-4">📁 Media Files</h3>
+                    <div id="mediaFilesList" class="space-y-2"></div>
+                </div>
+
+                <!-- Instructions -->
+                <div class="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-lg p-6">
+                    <h3 class="text-lg font-medium text-blue-900 mb-3">📋 Next Steps:</h3>
+                    <ol class="list-decimal list-inside space-y-2 text-blue-800">
+                        <li>Save the HTML file as <code class="bg-white px-2 py-1 rounded">blog/posts/[slug].html</code></li>
+                        <li>Add the JSON entry to your <code class="bg-white px-2 py-1 rounded">blog/posts.json</code> file</li>
+                        <li>Upload any media files to your <code class="bg-white px-2 py-1 rounded">blog/media/</code> directory</li>
+                        <li>Commit and push changes to make your post live!</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Preview Modal -->
+        <div id="previewModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+            <div class="flex items-center justify-center min-h-screen p-4">
+                <div class="bg-white rounded-2xl max-w-4xl w-full max-h-screen overflow-y-auto">
+                    <div class="sticky top-0 bg-white border-b px-8 py-4 flex justify-between items-center">
+                        <h2 class="text-2xl font-semibold">Preview</h2>
+                        <button onclick="closePreview()" class="text-gray-500 hover:text-gray-700">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="previewContent" class="p-8"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load the JavaScript functionality -->
+    <script src="advanced-blog-creator.js"></script>
+</body>
+</html>
