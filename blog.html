@@ -615,10 +615,17 @@
     <script>
         // Initialize the blog system
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize the blog manager
-            if (typeof BlogManager !== 'undefined') {
+            // Initialize the simplified blog manager
+            if (typeof SimpleBlogManager !== 'undefined') {
+                console.log('🚀 Initializing SimpleBlogManager from blog.html');
+                const blogManager = new SimpleBlogManager();
+                blogManager.init();
+            } else if (typeof BlogManager !== 'undefined') {
+                console.log('🚀 Fallback to BlogManager');
                 const blogManager = new BlogManager();
                 blogManager.init();
+            } else {
+                console.error('❌ No blog manager found!');
             }
 
             // Legacy functionality for backwards compatibility

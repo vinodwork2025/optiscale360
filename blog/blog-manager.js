@@ -1,144 +1,121 @@
+
 /**
- * Blog Management System for OptiScale 360
- * Handles blog post loading, filtering, and display
+ * SIMPLIFIED Blog Manager - Direct posts loading
+ * Fixed version that guarantees posts display
  */
 
-class BlogManager {
+class SimpleBlogManager {
     constructor() {
         this.posts = [];
         this.categories = [];
         this.currentCategory = 'all';
-        this.postsPerPage = 9;
-        this.currentPage = 1;
     }
 
     // Initialize the blog system
     async init() {
+        console.log('📍 SimpleBlogManager: Starting initialization...');
         try {
-            console.log('BlogManager: Starting initialization...');
             await this.loadPosts();
-            console.log('BlogManager: Posts loaded:', this.posts.length, 'posts');
-
-            this.setupEventListeners();
-            this.renderFeaturedPost();
-            console.log('BlogManager: Featured post rendered');
+            console.log('📍 Posts loaded:', this.posts.length, 'posts');
 
             this.renderPosts();
-            console.log('BlogManager: Posts rendered');
+            console.log('📍 Posts rendered to DOM');
 
             this.renderCategories();
-            console.log('BlogManager: Categories rendered');
+            console.log('📍 Categories rendered');
 
-            console.log('BlogManager: Initialization complete!');
+            this.setupEventListeners();
+            console.log('📍 Event listeners setup complete');
+
+            console.log('✅ SimpleBlogManager: Initialization complete!');
         } catch (error) {
-            console.error('Failed to initialize blog:', error);
+            console.error('❌ SimpleBlogManager initialization failed:', error);
         }
     }
 
     // Load posts from JSON file
     async loadPosts() {
         try {
+            console.log('📍 Fetching posts.json...');
             const response = await fetch('./blog/posts.json');
+
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+            }
+
             const data = await response.json();
-            this.posts = data.posts;
-            this.categories = data.categories;
+            this.posts = data.posts || [];
+            this.categories = data.categories || [];
+
+            console.log('✅ Posts loaded successfully:', this.posts.length, 'posts');
+
+            // Log first few posts for debugging
+            this.posts.slice(0, 3).forEach((post, i) => {
+                console.log(`📄 Post ${i+1}: "${post.title}" (${post.category})`);
+            });
+
         } catch (error) {
-            console.error('Failed to load posts:', error);
-            // Fallback data
+            console.error('❌ Failed to load posts:', error);
+            // Use hardcoded fallback to ensure something displays
             this.posts = this.getFallbackPosts();
             this.categories = this.getFallbackCategories();
-        }
-    }
-
-    // Setup event listeners
-    setupEventListeners() {
-        // Category filter buttons
-        document.addEventListener('click', (e) => {
-            if (e.target.classList.contains('category-tag')) {
-                e.preventDefault();
-                const category = e.target.dataset.category || 'all';
-                this.filterByCategory(category);
-            }
-        });
-
-        // Search functionality
-        const searchInput = document.querySelector('input[type="text"]');
-        if (searchInput) {
-            searchInput.addEventListener('input', (e) => {
-                this.searchPosts(e.target.value);
-            });
-        }
-
-        // Read more buttons
-        document.addEventListener('click', (e) => {
-            if (e.target.classList.contains('read-more-btn')) {
-                e.preventDefault();
-                const postId = e.target.dataset.postId;
-                this.navigateToPost(postId);
-            }
-        });
-    }
-
-    // Render featured post
-    renderFeaturedPost() {
-        const featuredPost = this.posts.find(post => post.featured);
-        if (!featuredPost) return;
-
-        const featuredSection = document.querySelector('.featured-post');
-        if (featuredSection) {
-            featuredSection.innerHTML = `
-                <div class="featured-content p-12 text-white" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.9), rgba(139, 92, 246, 0.9)), url('${featuredPost.featuredImage}') center/cover;">
-                    <div class="max-w-4xl">
-                        <div class="flex items-center gap-4 mb-6">
-                            <span class="category-tag !bg-white/20 !text-white">${featuredPost.category}</span>
-                            <span class="text-white/80">•</span>
-                            <span class="text-white/80">${featuredPost.readTime} min read</span>
-                            <span class="text-white/80">•</span>
-                            <span class="text-white/80">${this.formatDate(featuredPost.publishDate)}</span>
-                        </div>
-
-                        <h3 class="text-4xl lg:text-5xl font-black mb-6 leading-tight">
-                            ${featuredPost.title}
-                        </h3>
-
-                        <p class="text-xl text-white/90 mb-8 leading-relaxed">
-                            ${featuredPost.excerpt}
-                        </p>
-
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center gap-4">
-                                <img src="${featuredPost.authorImage}" alt="${featuredPost.author}" class="w-12 h-12 rounded-full">
-                                <div>
-                                    <div class="font-semibold">${featuredPost.author}</div>
-                                    <div class="text-white/80 text-sm">${featuredPost.authorTitle}</div>
-                                </div>
-                            </div>
-
-                            <button class="bg-white text-gray-900 px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-colors read-more-btn" data-post-id="${featuredPost.id}">
-                                Read Full Article →
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            `;
+            console.log('⚠️  Using fallback posts:', this.posts.length, 'posts');
         }
     }
 
     // Render blog posts
     renderPosts() {
-        const postsContainer = document.getElementById('blog-posts-container') ||
-                              document.querySelector('div[class*="grid"][class*="lg:grid-cols-3"][class*="md:grid-cols-2"][class*="gap-8"]');
-        if (!postsContainer) {
-            console.error('Posts container not found. Looking for #blog-posts-container or grid with lg:grid-cols-3');
+        console.log('📍 Starting renderPosts...');
+
+        // Try multiple selectors to find container
+        const container = document.getElementById('blog-posts-container') ||
+                          document.querySelector('.grid.lg\\:grid-cols-3') ||
+                          document.querySelector('[class*="grid"][class*="lg:grid-cols-3"]') ||
+                          document.querySelector('.grid');
+
+        if (!container) {
+            console.error('❌ No posts container found!');
+            console.log('📍 Available containers:', document.querySelectorAll('.grid, [class*="grid"]'));
             return;
         }
 
-        const filteredPosts = this.getFilteredPosts();
-        const startIndex = (this.currentPage - 1) * this.postsPerPage;
-        const endIndex = startIndex + this.postsPerPage;
-        const postsToShow = filteredPosts.slice(startIndex, endIndex);
+        console.log('✅ Container found:', container.className);
 
-        postsContainer.innerHTML = postsToShow.map(post => this.createPostCard(post)).join('');
+        const filteredPosts = this.getFilteredPosts();
+        console.log('📍 Filtered posts:', filteredPosts.length);
+
+        if (filteredPosts.length === 0) {
+            container.innerHTML = `
+                <div class="col-span-full text-center py-12">
+                    <p class="text-gray-500 text-lg">No blog posts found.</p>
+                    <p class="text-gray-400 text-sm mt-2">Total posts in database: ${this.posts.length}</p>
+                </div>
+            `;
+            return;
+        }
+
+        const postsHTML = filteredPosts.map(post => this.createPostCard(post)).join('');
+        container.innerHTML = postsHTML;
+
+        console.log('✅ Posts rendered:', filteredPosts.length, 'posts displayed');
+    }
+
+    // Get filtered posts
+    getFilteredPosts() {
+        if (this.currentCategory === 'all') {
+            return this.posts.filter(post => !post.featured);
+        }
+
+        return this.posts.filter(post => {
+            if (post.featured) return false;
+
+            const categorySlug = post.category.toLowerCase()
+                .replace(/\s+/g, '-')
+                .replace(/&/g, '')
+                .replace(/\s+/g, '');
+
+            return categorySlug === this.currentCategory;
+        });
     }
 
     // Create individual post card HTML
@@ -148,17 +125,18 @@ class BlogManager {
             'AI & ML': 'from-green-500 to-teal-600',
             'Development': 'from-orange-500 to-red-600',
             'SEO': 'from-purple-500 to-pink-600',
-            'Business': 'from-indigo-500 to-blue-600'
+            'Business': 'from-indigo-500 to-blue-600',
+            'Healthcare Technology': 'from-emerald-500 to-cyan-600'
         };
 
         const gradientClass = categoryColors[post.category] || 'from-gray-500 to-gray-700';
 
         return `
-            <article class="blog-card bg-white rounded-2xl overflow-hidden shadow-lg">
+            <article class="blog-card bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
                 <div class="aspect-video bg-gradient-to-br ${gradientClass} relative">
                     <div class="absolute inset-0 bg-black/20"></div>
                     <div class="absolute top-4 left-4">
-                        <span class="category-tag !bg-white !text-gray-800">${post.category}</span>
+                        <span class="bg-white text-gray-800 px-3 py-1 rounded-full text-sm font-semibold">${post.category}</span>
                     </div>
                 </div>
                 <div class="p-6">
@@ -183,97 +161,60 @@ class BlogManager {
         `;
     }
 
-    // Render category filters
+    // Render categories
     renderCategories() {
         const categoryContainer = document.querySelector('div[class*="flex"][class*="flex-wrap"][class*="justify-center"][class*="gap-4"]');
+
         if (!categoryContainer) {
-            console.error('Category container not found. Looking for flex flex-wrap justify-center gap-4');
+            console.log('⚠️  Category container not found');
             return;
         }
 
         const categoryButtons = this.categories.map(category => {
             const isActive = this.currentCategory === category.slug;
-            const activeClass = isActive ? 'active !bg-blue-600 !text-white' : '';
+            const activeClass = isActive ? 'bg-blue-600 text-white' : 'bg-blue-100 text-blue-600';
 
             return `
-                <button class="category-tag ${activeClass}" data-category="${category.slug}">
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                    </svg>
+                <button class="category-tag px-4 py-2 rounded-full text-sm font-semibold transition-colors hover:bg-blue-200 ${activeClass}"
+                        data-category="${category.slug}">
                     ${category.name}
                 </button>
             `;
         }).join('');
 
         categoryContainer.innerHTML = categoryButtons;
+        console.log('✅ Categories rendered:', this.categories.length);
     }
 
-    // Filter posts by category
+    // Setup event listeners
+    setupEventListeners() {
+        // Category filtering
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('category-tag')) {
+                e.preventDefault();
+                const category = e.target.dataset.category || 'all';
+                this.filterByCategory(category);
+            }
+
+            if (e.target.classList.contains('read-more-btn')) {
+                e.preventDefault();
+                const postId = e.target.dataset.postId;
+                this.navigateToPost(postId);
+            }
+        });
+
+        console.log('✅ Event listeners attached');
+    }
+
+    // Filter by category
     filterByCategory(category) {
         this.currentCategory = category;
-        this.currentPage = 1;
+        console.log('📍 Filtering by category:', category);
         this.renderPosts();
         this.renderCategories();
-        this.updateURL();
     }
 
-    // Search posts
-    searchPosts(query) {
-        if (!query.trim()) {
-            this.currentCategory = 'all';
-            this.renderPosts();
-            return;
-        }
-
-        const searchResults = this.posts.filter(post =>
-            post.title.toLowerCase().includes(query.toLowerCase()) ||
-            post.excerpt.toLowerCase().includes(query.toLowerCase()) ||
-            post.tags.some(tag => tag.toLowerCase().includes(query.toLowerCase()))
-        );
-
-        this.renderSearchResults(searchResults);
-    }
-
-    // Render search results
-    renderSearchResults(searchResults) {
-        const postsContainer = document.getElementById('blog-posts-container') ||
-                              document.querySelector('div[class*="grid"][class*="lg:grid-cols-3"][class*="md:grid-cols-2"][class*="gap-8"]');
-        if (!postsContainer) {
-            console.error('Posts container not found for search results');
-            return;
-        }
-
-        if (searchResults.length === 0) {
-            postsContainer.innerHTML = `
-                <div class="col-span-full text-center py-12">
-                    <p class="text-gray-500 text-lg">No articles found matching your search.</p>
-                </div>
-            `;
-            return;
-        }
-
-        postsContainer.innerHTML = searchResults.map(post => this.createPostCard(post)).join('');
-    }
-
-    // Get filtered posts based on current category
-    getFilteredPosts() {
-        if (this.currentCategory === 'all') {
-            return this.posts.filter(post => !post.featured);
-        }
-        return this.posts.filter(post => {
-            if (post.featured) return false;
-
-            // Convert category to slug format for comparison
-            const categorySlug = post.category.toLowerCase()
-                .replace(/\s+/g, '-')
-                .replace(/&/g, '')
-                .replace(/\s+/g, '');
-
-            return categorySlug === this.currentCategory;
-        });
-    }
-
-    // Navigate to individual post
+    // Navigate to post
     navigateToPost(postId) {
         const post = this.posts.find(p => p.id === postId);
         if (post) {
@@ -281,49 +222,38 @@ class BlogManager {
         }
     }
 
-    // Format date for display
+    // Format date
     formatDate(dateString) {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         return new Date(dateString).toLocaleDateString('en-US', options);
     }
 
-    // Update URL with current filters
-    updateURL() {
-        const url = new URL(window.location);
-        if (this.currentCategory !== 'all') {
-            url.searchParams.set('category', this.currentCategory);
-        } else {
-            url.searchParams.delete('category');
-        }
-        window.history.pushState({}, '', url);
-    }
-
-    // Get URL parameters
-    getURLParams() {
-        const params = new URLSearchParams(window.location.search);
-        const category = params.get('category');
-        if (category) {
-            this.currentCategory = category;
-        }
-    }
-
-    // Fallback data if JSON fails to load
+    // Fallback posts data
     getFallbackPosts() {
         return [
             {
-                id: "ai-web-design-trends-2024",
-                title: "The Future of AI-Powered Web Design: 10 Game-Changing Trends for 2024",
-                slug: "ai-web-design-trends-2024",
-                excerpt: "Discover how artificial intelligence is revolutionizing web design, from automated layouts to personalized user experiences.",
-                author: "Alex Chen",
-                authorTitle: "AI Design Specialist",
+                id: "blockchain-ehr-consent-management-sulonya-sevenhills",
+                title: "Revolutionary Blockchain-Based EHR Consent Management",
+                slug: "blockchain-ehr-consent-management-sulonya-sevenhills",
+                excerpt: "Discover how Sulonya's cutting-edge blockchain-based consent management system transforms Electronic Health Records security.",
+                author: "Sulonya Healthcare Solutions",
+                authorImage: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=80&h=80&fit=crop&crop=face",
+                category: "Healthcare Technology",
+                publishDate: "2025-01-15",
+                readTime: 12,
+                featured: false
+            },
+            {
+                id: "staff-augmentation-for-startups-scale-your-enginee",
+                title: "Staff Augmentation for Startups: Scale Your Engineering Team",
+                slug: "staff-augmentation-for-startups-scale-your-enginee",
+                excerpt: "Discover how staff augmentation helps startups scale engineering teams efficiently without hiring headaches.",
+                author: "Vinod Kumar",
                 authorImage: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face",
-                category: "AI & ML",
-                tags: ["AI", "Web Design", "Machine Learning"],
-                publishDate: "2024-01-15",
+                category: "Business",
+                publishDate: "2025-09-15",
                 readTime: 8,
-                featured: true,
-                featuredImage: "https://images.unsplash.com/photo-1555421689-491a97ff2040?w=1200&h=630&fit=crop"
+                featured: false
             }
         ];
     }
@@ -332,20 +262,19 @@ class BlogManager {
     getFallbackCategories() {
         return [
             { name: "All Posts", slug: "all", description: "All blog posts" },
-            { name: "Web Design", slug: "web-design", description: "Latest trends in web design" },
-            { name: "AI & ML", slug: "ai-ml", description: "Artificial Intelligence insights" },
-            { name: "Development", slug: "development", description: "Web development tips" },
-            { name: "SEO", slug: "seo", description: "Search engine optimization" },
-            { name: "Business", slug: "business", description: "Business optimization strategies" }
+            { name: "Healthcare Technology", slug: "healthcare-technology", description: "Healthcare tech insights" },
+            { name: "Business", slug: "business", description: "Business optimization" },
+            { name: "AI & ML", slug: "ai-ml", description: "AI insights" }
         ];
     }
 }
 
 // Initialize blog when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    const blogManager = new BlogManager();
+    console.log('🚀 DOM loaded, initializing SimpleBlogManager...');
+    const blogManager = new SimpleBlogManager();
     blogManager.init();
 });
 
-// Export for potential external use
-window.BlogManager = BlogManager;
+// Export for external use
+window.SimpleBlogManager = SimpleBlogManager;
