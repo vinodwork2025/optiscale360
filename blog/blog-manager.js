@@ -33,34 +33,192 @@ class SimpleBlogManager {
         }
     }
 
-    // Load posts from lightweight JSON file
+    // Load posts data (embedded for reliability)
     async loadPosts() {
-        try {
-            console.log('📍 Fetching posts-light.json...');
-            const response = await fetch('./blog/posts-light.json');
+        console.log('📍 Loading posts data...');
 
-            if (!response.ok) {
-                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-            }
+        // Embedded posts data - no external fetch needed
+        const data = {
+            "posts": [
+                {
+                    "id": "blockchain-ehr-consent-management-sulonya-sevenhills",
+                    "title": "Revolutionary Blockchain-Based EHR Consent Management: Sulonya's Innovative Solution for SevenHills Healthcare",
+                    "slug": "blockchain-ehr-consent-management-sulonya-sevenhills",
+                    "excerpt": "Discover how Sulonya's cutting-edge blockchain-based consent management system transforms Electronic Health Records (EHR) security, ensuring patients maintain complete control over their medical data while enabling seamless, compliant access for healthcare providers.",
+                    "author": "Sulonya Healthcare Solutions",
+                    "authorImage": "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=80&h=80&fit=crop&crop=face",
+                    "category": "Healthcare Technology",
+                    "publishDate": "2025-01-15",
+                    "readTime": 12,
+                    "featured": false,
+                    "featuredImage": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800&h=400&fit=crop"
+                },
+                {
+                    "id": "staff-augmentation-for-startups-scale-your-enginee",
+                    "title": "Staff Augmentation for Startups: Scale Your Engineering Team Without Hiring Headaches",
+                    "slug": "staff-augmentation-for-startups-scale-your-enginee",
+                    "excerpt": "Discover how staff augmentation helps startups scale engineering teams efficiently without hiring headaches. Learn cost-effective strategies, benefits, and best practices for rapid team scaling.",
+                    "author": "Vinod Kumar",
+                    "authorImage": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face",
+                    "category": "Business",
+                    "publishDate": "2025-09-15",
+                    "readTime": 12,
+                    "featured": false,
+                    "featuredImage": "https://images.unsplash.com/photo-1555421689-491a97ff2040?w=800&h=400&fit=crop"
+                },
+                {
+                    "id": "google-tracker",
+                    "title": "Google Tracker",
+                    "slug": "google-tracker",
+                    "excerpt": "Get detailed Google search tracking and insights with our comprehensive Google Tracker tool.",
+                    "author": "Alex Chen",
+                    "authorImage": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face",
+                    "category": "SEO",
+                    "publishDate": "2024-01-10",
+                    "readTime": 6,
+                    "featured": false,
+                    "featuredImage": "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=400&fit=crop"
+                },
+                {
+                    "id": "build-your-own-ai-agent-7-day-adventure-for-kids-a",
+                    "title": "Build Your Own AI Agent: 7-Day Adventure for Kids (Age 8)",
+                    "slug": "build-your-own-ai-agent-7-day-adventure-for-kids-a",
+                    "excerpt": "Join an exciting 7-day journey to build your first AI agent! Perfect for curious kids who love tech and want to create something amazing.",
+                    "author": "Sarah Johnson",
+                    "authorImage": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&h=80&fit=crop&crop=face",
+                    "category": "AI & ML",
+                    "publishDate": "2024-01-08",
+                    "readTime": 10,
+                    "featured": false,
+                    "featuredImage": "https://images.unsplash.com/photo-1555685812-4b943f1cb0eb?w=800&h=400&fit=crop"
+                },
+                {
+                    "id": "ai-web-design-trends-2024",
+                    "title": "AI-Powered Web Design Trends That Will Dominate 2024",
+                    "slug": "ai-web-design-trends-2024",
+                    "excerpt": "Explore the revolutionary AI-powered web design trends reshaping the digital landscape in 2024. From intelligent layouts to automated optimization.",
+                    "author": "Alex Chen",
+                    "authorImage": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face",
+                    "category": "AI & ML",
+                    "publishDate": "2024-01-07",
+                    "readTime": 8,
+                    "featured": false,
+                    "featuredImage": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=400&fit=crop"
+                },
+                {
+                    "id": "responsive-design-beyond-mobile",
+                    "title": "Responsive Design in 2024: Beyond Mobile-First Thinking",
+                    "slug": "responsive-design-beyond-mobile",
+                    "excerpt": "Discover the evolution of responsive design beyond mobile-first approaches. Learn about device-agnostic design and future-proof responsive strategies.",
+                    "author": "Maria Garcia",
+                    "authorImage": "https://images.unsplash.com/photo-1494790108755-2616b612b567?w=80&h=80&fit=crop&crop=face",
+                    "category": "Web Design",
+                    "publishDate": "2024-01-06",
+                    "readTime": 7,
+                    "featured": false,
+                    "featuredImage": "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&h=400&fit=crop"
+                },
+                {
+                    "id": "seo-ai-optimization-guide",
+                    "title": "AI-Powered SEO: How Machine Learning is Changing Search Rankings",
+                    "slug": "seo-ai-optimization-guide",
+                    "excerpt": "Understand how AI and machine learning are revolutionizing SEO strategies. Learn to optimize for AI-driven search algorithms and voice search.",
+                    "author": "David Park",
+                    "authorImage": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face",
+                    "category": "SEO",
+                    "publishDate": "2024-01-05",
+                    "readTime": 9,
+                    "featured": false,
+                    "featuredImage": "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=800&h=400&fit=crop"
+                },
+                {
+                    "id": "website-performance-optimization-2024",
+                    "title": "Website Performance Optimization: Advanced Techniques That Actually Work in 2024",
+                    "slug": "website-performance-optimization-2024",
+                    "excerpt": "Master the latest website performance optimization techniques that deliver real results. From Core Web Vitals to cutting-edge loading strategies.",
+                    "author": "Tom Wilson",
+                    "authorImage": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=face",
+                    "category": "Development",
+                    "publishDate": "2024-01-04",
+                    "readTime": 11,
+                    "featured": false,
+                    "featuredImage": "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=400&fit=crop"
+                },
+                {
+                    "id": "business-automation-ai-tools",
+                    "title": "5 AI Tools That Will Automate Your Business (And You Haven't Heard Of Them)",
+                    "slug": "business-automation-ai-tools",
+                    "excerpt": "Discover lesser-known but powerful AI tools that can automate key business processes and boost productivity significantly.",
+                    "author": "Lisa Chen",
+                    "authorImage": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face",
+                    "category": "Business",
+                    "publishDate": "2024-01-04",
+                    "readTime": 6,
+                    "featured": false,
+                    "featuredImage": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=400&fit=crop"
+                },
+                {
+                    "id": "conversion-rate-optimization-psychology",
+                    "title": "The Psychology of High-Converting Websites: What Makes Users Click 'Buy'",
+                    "slug": "conversion-rate-optimization-psychology",
+                    "excerpt": "Learn the psychology behind high-converting websites and how to apply behavioral science to boost your conversion rates.",
+                    "author": "Emma Rodriguez",
+                    "authorImage": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&h=80&fit=crop&crop=face",
+                    "category": "Business",
+                    "publishDate": "2024-01-03",
+                    "readTime": 9,
+                    "featured": false,
+                    "featuredImage": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop"
+                }
+            ],
+            "categories": [
+                {
+                    "name": "All Posts",
+                    "slug": "all",
+                    "description": "All blog posts"
+                },
+                {
+                    "name": "Web Design",
+                    "slug": "web-design",
+                    "description": "Latest trends and techniques in web design"
+                },
+                {
+                    "name": "AI & ML",
+                    "slug": "ai-ml",
+                    "description": "Artificial Intelligence and Machine Learning insights"
+                },
+                {
+                    "name": "Development",
+                    "slug": "development",
+                    "description": "Web development tips and best practices"
+                },
+                {
+                    "name": "SEO",
+                    "slug": "seo",
+                    "description": "Search engine optimization strategies"
+                },
+                {
+                    "name": "Business",
+                    "slug": "business",
+                    "description": "Business optimization and growth strategies"
+                },
+                {
+                    "name": "Healthcare Technology",
+                    "slug": "healthcare-technology",
+                    "description": "Healthcare technology and digital health solutions"
+                }
+            ]
+        };
 
-            const data = await response.json();
-            this.posts = data.posts || [];
-            this.categories = data.categories || [];
+        this.posts = data.posts || [];
+        this.categories = data.categories || [];
 
-            console.log('✅ Posts loaded successfully:', this.posts.length, 'posts');
+        console.log('✅ Posts loaded successfully:', this.posts.length, 'posts');
 
-            // Log first few posts for debugging
-            this.posts.slice(0, 3).forEach((post, i) => {
-                console.log(`📄 Post ${i+1}: "${post.title}" (${post.category})`);
-            });
-
-        } catch (error) {
-            console.error('❌ Failed to load posts:', error);
-            // Use hardcoded fallback to ensure something displays
-            this.posts = this.getFallbackPosts();
-            this.categories = this.getFallbackCategories();
-            console.log('⚠️  Using fallback posts:', this.posts.length, 'posts');
-        }
+        // Log first few posts for debugging
+        this.posts.slice(0, 3).forEach((post, i) => {
+            console.log(`📄 Post ${i+1}: "${post.title}" (${post.category})`);
+        });
     }
 
     // Render blog posts
