@@ -10,6 +10,7 @@ class AdvancedBlogCreator {
         this.quillEditor = null;
         this.seoScore = 0;
         this.currentSlug = '';
+        this.githubPublisher = null;
 
         this.init();
     }
@@ -20,6 +21,14 @@ class AdvancedBlogCreator {
         this.setupDragAndDrop();
         this.initializeDatePicker();
         this.updateProgress();
+        this.initializeGitHubPublisher();
+    }
+
+    // Initialize GitHub publisher
+    initializeGitHubPublisher() {
+        if (typeof GitHubPublisher !== 'undefined') {
+            this.githubPublisher = new GitHubPublisher();
+        }
     }
 
     // Initialize Quill rich text editor
@@ -736,20 +745,33 @@ class AdvancedBlogCreator {
             publishSection = document.createElement('div');
             publishSection.id = 'publishSection';
             publishSection.className = 'mt-6 p-6 bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-xl';
+            const githubConfigured = this.githubPublisher && this.githubPublisher.isConfigured();
+
             publishSection.innerHTML = `
                 <h3 class="text-xl font-semibold text-gray-900 mb-4">🚀 Publish Your Post</h3>
-                <div class="flex flex-col sm:flex-row gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    ${githubConfigured ? `
+                    <button onclick="blogCreator.publishToGitHub()"
+                            class="px-6 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors font-medium">
+                        🐙 Publish to GitHub
+                    </button>
+                    ` : `
+                    <button onclick="openGitHubConfig()"
+                            class="px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors font-medium text-sm">
+                        ⚙️ Setup GitHub
+                    </button>
+                    `}
                     <button onclick="blogCreator.publishPostDirectly()"
-                            class="flex-1 px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium">
-                        ✅ Publish Now
+                            class="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium">
+                        ✅ Server Publish
                     </button>
                     <button onclick="blogCreator.publishAsDraft()"
-                            class="flex-1 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium">
-                        📝 Save as Draft
+                            class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium">
+                        📝 Save Draft
                     </button>
-                    <button onclick="blogCreator.schedulePost()"
-                            class="flex-1 px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors font-medium">
-                        ⏰ Schedule Post
+                    <button onclick="blogCreator.downloadFiles()"
+                            class="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors font-medium">
+                        💾 Download Files
                     </button>
                 </div>
                 <div id="publishStatus" class="mt-4 hidden"></div>
@@ -895,6 +917,64 @@ class AdvancedBlogCreator {
                 this.showPublishStatus(`💡 Click "🔧 Test Publishing Setup" to diagnose the issue`, 'info');
             }, 3000);
         }
+    }
+
+    // Publish to GitHub (for Cloudflare Pages)
+    async publishToGitHub() {
+        try {
+            if (!this.githubPublisher || !this.githubPublisher.isConfigured()) {
+                this.showPublishStatus('❌ GitHub not configured. Click "⚙️ Setup GitHub" first.', 'error');
+                return;
+            }
+
+            this.showPublishStatus('📤 Publishing to GitHub...', 'info');
+
+            const formData = this.getFormData();
+            const postData = {
+                ...this.generateJSON(formData),
+                content: formData.content,
+                htmlContent: await this.generateHTML(formData),
+                mediaFiles: this.prepareMediaFiles()
+            };
+
+            const result = await this.githubPublisher.publishPost(postData);
+
+            if (result.success) {
+                this.showPublishStatus(
+                    `✅ Published to GitHub! <a href="${result.postUrl}" target="_blank" class="underline">View Post</a>`,
+                    'success'
+                );
+
+                this.showPublishStatus(
+                    '🚀 Cloudflare Pages is deploying your post (30-60 seconds)...',
+                    'info'
+                );
+
+                // Clear form after successful publish
+                setTimeout(() => {
+                    if (confirm('Post published to GitHub! Cloudflare Pages will deploy it automatically. Create another post?')) {
+                        this.resetForm();
+                    }
+                }, 3000);
+            } else {
+                throw new Error(result.message);
+            }
+        } catch (error) {
+            console.error('GitHub publishing error:', error);
+            this.showPublishStatus(`❌ GitHub publishing failed: ${error.message}`, 'error');
+        }
+    }
+
+    // Download files (renamed from publishClientSide for clarity)
+    downloadFiles() {
+        const formData = this.getFormData();
+        const publishData = {
+            ...this.generateJSON(formData),
+            content: formData.content,
+            mediaFiles: this.prepareMediaFiles()
+        };
+
+        this.publishClientSide(publishData);
     }
 
     // Client-side publishing fallback (downloads files for manual upload)
@@ -1543,6 +1623,10 @@ function testPublishingSetup() {
     if (window.blogCreator) {
         window.open('./test-publish.html', '_blank');
     }
+}
+
+function openGitHubConfig() {
+    window.open('./github-config.html', '_blank', 'width=900,height=800');
 }
 
 // Initialize the blog creator when the page loads

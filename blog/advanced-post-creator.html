@@ -12,6 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.snow.css" rel="stylesheet">
+    <script src="./github-publisher.js"></script>
 
     <style>
         * { font-family: 'Inter', sans-serif; }
@@ -513,6 +514,9 @@
                         </button>
                         <button onclick="testPublishingSetup()" class="w-full px-4 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors">
                             🔧 Test Publishing Setup
+                        </button>
+                        <button onclick="openGitHubConfig()" class="w-full px-4 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors">
+                            ⚙️ Configure GitHub
                         </button>
                     </div>
                 </div>
