@@ -1,0 +1,171 @@
+{
+  "posts": [
+    {
+      "id": "blockchain-ehr-consent-management-sulonya-sevenhills",
+      "title": "Revolutionary Blockchain-Based EHR Consent Management: Sulonya's Innovative Solution for SevenHills Healthcare",
+      "slug": "blockchain-ehr-consent-management-sulonya-sevenhills",
+      "excerpt": "Discover how Sulonya's cutting-edge blockchain-based consent management system transforms Electronic Health Records (EHR) security, ensuring patients maintain complete control over their medical data while enabling seamless, compliant access for healthcare providers.",
+      "author": "Sulonya Healthcare Solutions",
+      "authorImage": "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=80&h=80&fit=crop&crop=face",
+      "category": "Healthcare Technology",
+      "publishDate": "2025-01-15",
+      "readTime": 12,
+      "featured": false,
+      "featuredImage": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800&h=400&fit=crop"
+    },
+    {
+      "id": "staff-augmentation-for-startups-scale-your-enginee",
+      "title": "Staff Augmentation for Startups: Scale Your Engineering Team Without Hiring Headaches",
+      "slug": "staff-augmentation-for-startups-scale-your-enginee",
+      "excerpt": "Discover how staff augmentation helps startups scale engineering teams efficiently without hiring headaches. Learn cost-effective strategies, benefits, and best practices for rapid team scaling.",
+      "author": "Vinod Kumar",
+      "authorImage": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face",
+      "category": "Business",
+      "publishDate": "2025-09-15",
+      "readTime": 12,
+      "featured": false,
+      "featuredImage": "https://images.unsplash.com/photo-1555421689-491a97ff2040?w=800&h=400&fit=crop"
+    },
+    {
+      "id": "google-tracker",
+      "title": "Google Tracker",
+      "slug": "google-tracker",
+      "excerpt": "I've updated the Google Sheet tracker template to include 50 top business listing platforms across global, Indian, and niche-specific directories.",
+      "author": "Vinod",
+      "authorImage": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face",
+      "category": "Business",
+      "publishDate": "2025-09-15",
+      "readTime": 3,
+      "featured": false,
+      "featuredImage": "https://images.unsplash.com/photo-1555421689-491a97ff2040?w=800&h=400&fit=crop"
+    },
+    {
+      "id": "build-your-own-ai-agent-7-day-adventure-for-kids-a",
+      "title": "Build Your Own AI Agent: 7-Day Adventure for Kids (Age 8)",
+      "slug": "build-your-own-ai-agent-7-day-adventure-for-kids-a",
+      "excerpt": "Imagine having a super-smart helper who can talk, answer questions, learn new things, and play games. That's what an AI agent is! In this book, you'll learn how to create your very own AI agent.",
+      "author": "Vinod",
+      "authorImage": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face",
+      "category": "AI & ML",
+      "publishDate": "2025-09-15",
+      "readTime": 4,
+      "featured": false,
+      "featuredImage": "https://images.unsplash.com/photo-1555421689-491a97ff2040?w=800&h=400&fit=crop"
+    },
+    {
+      "id": "ai-web-design-trends-2024",
+      "title": "The Future of AI-Powered Web Design: 10 Game-Changing Trends for 2024",
+      "slug": "ai-web-design-trends-2024",
+      "excerpt": "Discover how artificial intelligence is revolutionizing web design, from automated layouts to personalized user experiences. Learn the cutting-edge techniques that will define the next generation of websites.",
+      "author": "Alex Chen",
+      "authorImage": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face",
+      "category": "AI & Web Design",
+      "publishDate": "2024-01-15",
+      "readTime": 8,
+      "featured": false,
+      "featuredImage": "https://images.unsplash.com/photo-1555421689-491a97ff2040?w=1200&h=630&fit=crop"
+    },
+    {
+      "id": "responsive-design-beyond-mobile",
+      "title": "Responsive Design in 2024: Beyond Mobile-First Thinking",
+      "slug": "responsive-design-beyond-mobile",
+      "excerpt": "Explore the evolution of responsive design and discover new approaches that consider foldable devices, wearables, and emerging screen technologies.",
+      "author": "Sarah Kim",
+      "authorImage": "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&crop=face",
+      "category": "Web Design",
+      "publishDate": "2024-01-12",
+      "readTime": 5,
+      "featured": false,
+      "featuredImage": "https://images.unsplash.com/photo-1559028006-448665bd7c7f?w=800&h=400&fit=crop"
+    },
+    {
+      "id": "seo-ai-optimization-guide",
+      "title": "AI-Powered SEO: The Complete Guide to Ranking Higher with Machine Learning",
+      "slug": "seo-ai-optimization-guide",
+      "excerpt": "Unlock the power of AI for SEO optimization. Learn how machine learning algorithms can boost your search rankings and drive more organic traffic.",
+      "author": "Marcus Rodriguez",
+      "authorImage": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face",
+      "category": "SEO",
+      "publishDate": "2024-01-10",
+      "readTime": 12,
+      "featured": false,
+      "featuredImage": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop"
+    },
+    {
+      "id": "website-performance-optimization-2024",
+      "title": "Website Performance Optimization: 15 Techniques That Actually Work in 2024",
+      "slug": "website-performance-optimization-2024",
+      "excerpt": "Master the art of website performance optimization with these proven techniques that deliver real results. Speed up your site and improve user experience.",
+      "author": "David Park",
+      "authorImage": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=face",
+      "category": "Development",
+      "publishDate": "2024-01-08",
+      "readTime": 10,
+      "featured": false,
+      "featuredImage": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop"
+    },
+    {
+      "id": "business-automation-ai-tools",
+      "title": "5 AI Tools That Will Automate Your Business Operations (And Save You 20+ Hours Per Week)",
+      "slug": "business-automation-ai-tools",
+      "excerpt": "Discover the AI tools that successful businesses use to automate repetitive tasks, streamline workflows, and focus on what matters most.",
+      "author": "Emily Watson",
+      "authorImage": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&h=80&fit=crop&crop=face",
+      "category": "Business",
+      "publishDate": "2024-01-05",
+      "readTime": 7,
+      "featured": false,
+      "featuredImage": "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=400&fit=crop"
+    },
+    {
+      "id": "conversion-rate-optimization-psychology",
+      "title": "The Psychology of Conversion: How to Design Websites That Actually Convert",
+      "slug": "conversion-rate-optimization-psychology",
+      "excerpt": "Understand the psychological triggers that drive user behavior and learn how to design websites that convert visitors into customers.",
+      "author": "Lisa Chen",
+      "authorImage": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face",
+      "category": "Business",
+      "publishDate": "2024-01-03",
+      "readTime": 9,
+      "featured": false,
+      "featuredImage": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop"
+    }
+  ],
+  "categories": [
+    {
+      "name": "All Posts",
+      "slug": "all",
+      "description": "All blog posts"
+    },
+    {
+      "name": "Web Design",
+      "slug": "web-design",
+      "description": "Latest trends and techniques in web design"
+    },
+    {
+      "name": "AI & ML",
+      "slug": "ai-ml",
+      "description": "Artificial Intelligence and Machine Learning insights"
+    },
+    {
+      "name": "Development",
+      "slug": "development",
+      "description": "Web development tips and best practices"
+    },
+    {
+      "name": "SEO",
+      "slug": "seo",
+      "description": "Search engine optimization strategies"
+    },
+    {
+      "name": "Business",
+      "slug": "business",
+      "description": "Business optimization and growth strategies"
+    },
+    {
+      "name": "Healthcare Technology",
+      "slug": "healthcare-technology",
+      "description": "Healthcare technology and digital health solutions"
+    }
+  ]
+}

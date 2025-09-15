@@ -33,11 +33,11 @@ class SimpleBlogManager {
         }
     }
 
-    // Load posts from JSON file
+    // Load posts from lightweight JSON file
     async loadPosts() {
         try {
-            console.log('📍 Fetching posts.json...');
-            const response = await fetch('./blog/posts.json');
+            console.log('📍 Fetching posts-light.json...');
+            const response = await fetch('./blog/posts-light.json');
 
             if (!response.ok) {
                 throw new Error(`HTTP ${response.status}: ${response.statusText}`);
@@ -150,8 +150,10 @@ class SimpleBlogManager {
                 </div>
                 <div class="p-6">
                     <div class="text-sm text-gray-500 mb-3">${this.formatDate(post.publishDate)} • ${post.readTime} min read</div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-blue-600 transition-colors">
-                        ${post.title}
+                    <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight">
+                        <a href="./blog/posts/${post.slug}.html" class="hover:text-blue-600 transition-colors">
+                            ${post.title}
+                        </a>
                     </h3>
                     <p class="text-gray-600 mb-4 leading-relaxed">
                         ${post.excerpt}
@@ -161,9 +163,9 @@ class SimpleBlogManager {
                             <img src="${post.authorImage}" alt="${post.author}" class="w-8 h-8 rounded-full">
                             <span class="text-sm font-medium text-gray-700">${post.author}</span>
                         </div>
-                        <button class="text-blue-600 font-semibold hover:text-blue-700 transition-colors read-more-btn" data-post-id="${post.id}">
+                        <a href="./blog/posts/${post.slug}.html" class="text-blue-600 font-semibold hover:text-blue-700 transition-colors">
                             Read More →
-                        </button>
+                        </a>
                     </div>
                 </div>
             </article>
@@ -204,12 +206,6 @@ class SimpleBlogManager {
                 const category = e.target.dataset.category || 'all';
                 this.filterByCategory(category);
             }
-
-            if (e.target.classList.contains('read-more-btn')) {
-                e.preventDefault();
-                const postId = e.target.dataset.postId;
-                this.navigateToPost(postId);
-            }
         });
 
         console.log('✅ Event listeners attached');
@@ -223,13 +219,6 @@ class SimpleBlogManager {
         this.renderCategories();
     }
 
-    // Navigate to post
-    navigateToPost(postId) {
-        const post = this.posts.find(p => p.id === postId);
-        if (post) {
-            window.location.href = `./blog/posts/${post.slug}.html`;
-        }
-    }
 
     // Format date
     formatDate(dateString) {
