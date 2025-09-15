@@ -760,6 +760,35 @@ class AdvancedBlogCreator {
         outputSection.scrollIntoView({ behavior: 'smooth' });
     }
 
+    // Test server connection
+    async testServerConnection() {
+        try {
+            // Test Node.js server
+            const nodeResponse = await fetch('http://localhost:3001/api/health');
+            if (nodeResponse.ok) {
+                const nodeResult = await nodeResponse.json();
+                console.log('Node.js server:', nodeResult);
+                return 'nodejs';
+            }
+        } catch (error) {
+            console.log('Node.js server not available:', error.message);
+        }
+
+        try {
+            // Test PHP endpoint
+            const phpResponse = await fetch('./publish-post.php', {
+                method: 'OPTIONS',
+                headers: { 'Content-Type': 'application/json' }
+            });
+            console.log('PHP endpoint status:', phpResponse.status);
+            return 'php';
+        } catch (error) {
+            console.log('PHP endpoint not available:', error.message);
+        }
+
+        throw new Error('No publishing server available. Please check setup instructions.');
+    }
+
     // Publish post directly to website
     async publishPostDirectly() {
         try {
@@ -772,9 +801,14 @@ class AdvancedBlogCreator {
                 mediaFiles: this.prepareMediaFiles()
             };
 
-            // Try Node.js server first, fallback to PHP
-            let response;
+            console.log('Publishing data:', publishData);
+
+            let response = null;
+            let serverType = 'unknown';
+
+            // Try Node.js server first
             try {
+                this.showPublishStatus('Trying Node.js server...', 'info');
                 response = await fetch('http://localhost:3001/api/publish-post', {
                     method: 'POST',
                     headers: {
@@ -782,22 +816,63 @@ class AdvancedBlogCreator {
                     },
                     body: JSON.stringify(publishData)
                 });
-            } catch (error) {
+                serverType = 'Node.js';
+                console.log('Node.js response received:', response.status);
+            } catch (nodeError) {
+                console.log('Node.js server not available:', nodeError.message);
+
                 // Fallback to PHP endpoint
-                response = await fetch('./publish-post.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(publishData)
-                });
+                try {
+                    this.showPublishStatus('Trying PHP endpoint...', 'info');
+                    response = await fetch('./publish-post.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(publishData)
+                    });
+                    serverType = 'PHP';
+                    console.log('PHP response received:', response.status);
+                } catch (phpError) {
+                    // Final fallback: client-side download
+                    console.log('Neither server available, using client-side fallback');
+                    this.publishClientSide(publishData);
+                    return;
+                }
             }
 
-            const result = await response.json();
+            // Handle response
+            if (!response) {
+                throw new Error('No server response received');
+            }
 
-            if (response.ok && result.success) {
+            console.log(`Response from ${serverType}:`, response.status, response.statusText);
+
+            let responseText = '';
+            try {
+                responseText = await response.text();
+                console.log('Response text:', responseText);
+            } catch (textError) {
+                console.error('Error reading response text:', textError);
+                throw new Error('Could not read server response');
+            }
+
+            if (!responseText || responseText.trim() === '') {
+                throw new Error(`${serverType} server returned empty response. Check server logs.`);
+            }
+
+            let result;
+            try {
+                result = JSON.parse(responseText);
+                console.log('Parsed result:', result);
+            } catch (jsonError) {
+                console.error('JSON parsing failed. Response was:', responseText);
+                throw new Error(`${serverType} server returned invalid JSON. Response: ${responseText.substring(0, 200)}...`);
+            }
+
+            if (response.ok && result && result.success) {
                 this.showPublishStatus(
-                    `✅ Post published successfully! <a href="${result.postUrl}" target="_blank" class="underline">View Post</a>`,
+                    `✅ Post published successfully via ${serverType}! <a href="${result.postUrl}" target="_blank" class="underline">View Post</a>`,
                     'success'
                 );
 
@@ -808,12 +883,90 @@ class AdvancedBlogCreator {
                     }
                 }, 2000);
             } else {
-                throw new Error(result.error || 'Publishing failed');
+                const errorMsg = result?.error || `Server returned status ${response.status}`;
+                throw new Error(`Publishing failed: ${errorMsg}`);
             }
         } catch (error) {
             console.error('Publishing error:', error);
             this.showPublishStatus(`❌ Publishing failed: ${error.message}`, 'error');
+
+            // Show setup hint
+            setTimeout(() => {
+                this.showPublishStatus(`💡 Click "🔧 Test Publishing Setup" to diagnose the issue`, 'info');
+            }, 3000);
         }
+    }
+
+    // Client-side publishing fallback (downloads files for manual upload)
+    async publishClientSide(publishData) {
+        try {
+            this.showPublishStatus('No server available. Creating files for manual upload...', 'info');
+
+            // Generate HTML content
+            const htmlContent = await this.generateHTML({
+                ...publishData,
+                content: publishData.content || this.quillEditor.root.innerHTML
+            });
+
+            // Create HTML file
+            this.downloadAsFile(htmlContent, `${publishData.slug}.html`, 'text/html');
+
+            // Create/update posts.json entry
+            const postsData = {
+                posts: [publishData],
+                message: 'Add this entry to your posts.json file'
+            };
+            this.downloadAsFile(JSON.stringify(postsData, null, 2), `${publishData.slug}-post-data.json`, 'application/json');
+
+            // Download media files
+            if (publishData.mediaFiles && publishData.mediaFiles.length > 0) {
+                publishData.mediaFiles.forEach((media, index) => {
+                    if (media.data) {
+                        this.downloadDataUrlAsFile(media.data, media.name);
+                    }
+                });
+            }
+
+            this.showPublishStatus(
+                `✅ Files created! Upload the HTML file to your posts folder and update posts.json manually.`,
+                'success'
+            );
+
+            // Show instructions
+            setTimeout(() => {
+                this.showPublishStatus(
+                    `📁 Files downloaded: 1) ${publishData.slug}.html (upload to posts/) 2) post-data.json (merge with posts.json) 3) Media files (upload to media/images/)`,
+                    'info'
+                );
+            }, 2000);
+
+        } catch (error) {
+            console.error('Client-side publishing error:', error);
+            this.showPublishStatus(`❌ Client-side publishing failed: ${error.message}`, 'error');
+        }
+    }
+
+    // Download content as file
+    downloadAsFile(content, filename, mimeType) {
+        const blob = new Blob([content], { type: mimeType });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+    }
+
+    // Download data URL as file
+    downloadDataUrlAsFile(dataUrl, filename) {
+        const link = document.createElement('a');
+        link.href = dataUrl;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     }
 
     // Publish as draft
@@ -848,7 +1001,26 @@ class AdvancedBlogCreator {
                 });
             }
 
-            const result = await response.json();
+            let result;
+            try {
+                const responseText = await response.text();
+                console.log('Draft server response:', responseText);
+
+                if (!responseText.trim()) {
+                    throw new Error('Empty response from server');
+                }
+
+                result = JSON.parse(responseText);
+            } catch (jsonError) {
+                console.error('JSON parsing error:', jsonError);
+                if (response.status === 404) {
+                    throw new Error('Publishing endpoint not found. Please check your server setup.');
+                } else if (response.status === 500) {
+                    throw new Error('Server error occurred. Check server logs for details.');
+                } else {
+                    throw new Error(`Server returned invalid response (Status: ${response.status}). Check your publishing server.`);
+                }
+            }
 
             if (response.ok && result.success) {
                 this.showPublishStatus('✅ Draft saved successfully!', 'success');
@@ -1365,6 +1537,12 @@ function autoGenerateAltText() {
     creator.displayImageGallery();
     creator.analyzeSEO();
     alert('Alt text has been auto-generated for all images!');
+}
+
+function testPublishingSetup() {
+    if (window.blogCreator) {
+        window.open('./test-publish.html', '_blank');
+    }
 }
 
 // Initialize the blog creator when the page loads

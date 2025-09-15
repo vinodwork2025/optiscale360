@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publishing Test Tool</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold mb-8">Publishing System Test</h1>
+
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h2 class="text-xl font-semibold mb-4">Server Connection Test</h2>
+            <div class="space-y-4">
+                <button onclick="testNodeJS()" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+                    Test Node.js Server (Port 3001)
+                </button>
+                <button onclick="testPHP()" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
+                    Test PHP Endpoint
+                </button>
+                <button onclick="testPublish()" class="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700">
+                    Test Sample Publish
+                </button>
+            </div>
+            <div id="testResults" class="mt-6 p-4 bg-gray-50 rounded border min-h-32">
+                <p class="text-gray-600">Click a button above to test your publishing setup...</p>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-xl font-semibold mb-4">Setup Instructions</h2>
+            <div class="space-y-4 text-sm">
+                <div class="p-4 bg-blue-50 rounded border-l-4 border-blue-400">
+                    <h3 class="font-semibold text-blue-800">Node.js Setup (Recommended)</h3>
+                    <ol class="list-decimal list-inside mt-2 text-blue-700">
+                        <li>Open terminal in the blog folder</li>
+                        <li>Run: <code class="bg-blue-100 px-1">npm install</code></li>
+                        <li>Run: <code class="bg-blue-100 px-1">npm start</code></li>
+                        <li>Test Node.js button should show "OK" status</li>
+                    </ol>
+                </div>
+
+                <div class="p-4 bg-green-50 rounded border-l-4 border-green-400">
+                    <h3 class="font-semibold text-green-800">PHP Setup</h3>
+                    <ol class="list-decimal list-inside mt-2 text-green-700">
+                        <li>Ensure web server (Apache/Nginx) is running</li>
+                        <li>Verify PHP 7.4+ is installed</li>
+                        <li>Check file permissions for blog directory</li>
+                        <li>Test PHP button should not show 404 error</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function logResult(message, type = 'info') {
+            const results = document.getElementById('testResults');
+            const timestamp = new Date().toLocaleTimeString();
+            const color = type === 'error' ? 'text-red-600' : type === 'success' ? 'text-green-600' : 'text-blue-600';
+            results.innerHTML += `<div class="${color}"><strong>[${timestamp}]</strong> ${message}</div>`;
+            results.scrollTop = results.scrollHeight;
+        }
+
+        function clearResults() {
+            document.getElementById('testResults').innerHTML = '';
+        }
+
+        async function testNodeJS() {
+            clearResults();
+            logResult('Testing Node.js server on localhost:3001...');
+
+            try {
+                const response = await fetch('http://localhost:3001/api/health');
+                const result = await response.json();
+
+                if (response.ok) {
+                    logResult(`✅ Node.js server is running: ${result.status}`, 'success');
+                    logResult('Server info: ' + JSON.stringify(result, null, 2), 'success');
+                } else {
+                    logResult(`❌ Node.js server error: ${response.status}`, 'error');
+                }
+            } catch (error) {
+                logResult(`❌ Cannot connect to Node.js server: ${error.message}`, 'error');
+                logResult('💡 Make sure to run "npm start" in the blog directory', 'info');
+            }
+        }
+
+        async function testPHP() {
+            clearResults();
+            logResult('Testing PHP endpoint...');
+
+            try {
+                const response = await fetch('./publish-post.php', {
+                    method: 'OPTIONS'
+                });
+
+                logResult(`PHP endpoint response: ${response.status}`, response.status === 200 ? 'success' : 'info');
+
+                if (response.status === 404) {
+                    logResult('❌ PHP file not found or web server not configured', 'error');
+                } else if (response.status === 500) {
+                    logResult('❌ PHP error - check server logs', 'error');
+                } else {
+                    logResult('✅ PHP endpoint is accessible', 'success');
+                }
+            } catch (error) {
+                logResult(`❌ Cannot reach PHP endpoint: ${error.message}`, 'error');
+            }
+        }
+
+        async function testPublish() {
+            clearResults();
+            logResult('Testing sample blog post publish...');
+
+            const samplePost = {
+                title: "Test Post - " + new Date().toISOString(),
+                slug: "test-post-" + Date.now(),
+                excerpt: "This is a test post to verify publishing functionality.",
+                content: "<p>This is a test post created by the publishing test tool.</p>",
+                author: "Test Author",
+                authorTitle: "Test Specialist",
+                category: "Test",
+                tags: ["test", "publishing"],
+                metaDescription: "Test post for publishing system verification",
+                keywords: "test, publishing, verification",
+                publishDate: new Date().toISOString().split('T')[0],
+                readTime: 1,
+                featured: false,
+                status: "draft"
+            };
+
+            // Try Node.js first
+            try {
+                logResult('Trying Node.js server...');
+                const nodeResponse = await fetch('http://localhost:3001/api/publish-post', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(samplePost)
+                });
+
+                const nodeText = await nodeResponse.text();
+                logResult('Node.js response: ' + nodeText);
+
+                if (nodeResponse.ok) {
+                    const nodeResult = JSON.parse(nodeText);
+                    if (nodeResult.success) {
+                        logResult('✅ Node.js publish test successful!', 'success');
+                        return;
+                    }
+                }
+            } catch (error) {
+                logResult('Node.js not available: ' + error.message);
+            }
+
+            // Try PHP fallback
+            try {
+                logResult('Trying PHP endpoint...');
+                const phpResponse = await fetch('./publish-post.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(samplePost)
+                });
+
+                const phpText = await phpResponse.text();
+                logResult('PHP response: ' + phpText);
+
+                if (phpResponse.ok) {
+                    const phpResult = JSON.parse(phpText);
+                    if (phpResult.success) {
+                        logResult('✅ PHP publish test successful!', 'success');
+                        return;
+                    }
+                }
+            } catch (error) {
+                logResult('❌ PHP test failed: ' + error.message, 'error');
+            }
+
+            logResult('❌ Both Node.js and PHP tests failed', 'error');
+            logResult('💡 Check the setup instructions above', 'info');
+        }
+    </script>
+</body>
+</html>
