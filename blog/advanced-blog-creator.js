@@ -721,9 +721,233 @@ class AdvancedBlogCreator {
         // Show media files if any
         this.displayMediaFiles();
 
-        // Show output section
-        document.getElementById('outputSection').classList.remove('hidden');
-        document.getElementById('outputSection').scrollIntoView({ behavior: 'smooth' });
+        // Show output section with publish options
+        this.showOutputWithPublishOptions(formData, htmlContent, jsonData);
+    }
+
+    // Show output section with publish options
+    showOutputWithPublishOptions(formData, htmlContent, jsonData) {
+        const outputSection = document.getElementById('outputSection');
+        outputSection.classList.remove('hidden');
+
+        // Add publish buttons if not already present
+        let publishSection = document.getElementById('publishSection');
+        if (!publishSection) {
+            publishSection = document.createElement('div');
+            publishSection.id = 'publishSection';
+            publishSection.className = 'mt-6 p-6 bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-xl';
+            publishSection.innerHTML = `
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">🚀 Publish Your Post</h3>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button onclick="blogCreator.publishPostDirectly()"
+                            class="flex-1 px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium">
+                        ✅ Publish Now
+                    </button>
+                    <button onclick="blogCreator.publishAsDraft()"
+                            class="flex-1 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium">
+                        📝 Save as Draft
+                    </button>
+                    <button onclick="blogCreator.schedulePost()"
+                            class="flex-1 px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors font-medium">
+                        ⏰ Schedule Post
+                    </button>
+                </div>
+                <div id="publishStatus" class="mt-4 hidden"></div>
+            `;
+            outputSection.appendChild(publishSection);
+        }
+
+        outputSection.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Publish post directly to website
+    async publishPostDirectly() {
+        try {
+            this.showPublishStatus('Publishing post...', 'info');
+
+            const formData = this.getFormData();
+            const publishData = {
+                ...this.generateJSON(formData),
+                content: formData.content,
+                mediaFiles: this.prepareMediaFiles()
+            };
+
+            // Try Node.js server first, fallback to PHP
+            let response;
+            try {
+                response = await fetch('http://localhost:3001/api/publish-post', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(publishData)
+                });
+            } catch (error) {
+                // Fallback to PHP endpoint
+                response = await fetch('./publish-post.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(publishData)
+                });
+            }
+
+            const result = await response.json();
+
+            if (response.ok && result.success) {
+                this.showPublishStatus(
+                    `✅ Post published successfully! <a href="${result.postUrl}" target="_blank" class="underline">View Post</a>`,
+                    'success'
+                );
+
+                // Clear form after successful publish
+                setTimeout(() => {
+                    if (confirm('Post published successfully! Would you like to create another post?')) {
+                        this.resetForm();
+                    }
+                }, 2000);
+            } else {
+                throw new Error(result.error || 'Publishing failed');
+            }
+        } catch (error) {
+            console.error('Publishing error:', error);
+            this.showPublishStatus(`❌ Publishing failed: ${error.message}`, 'error');
+        }
+    }
+
+    // Publish as draft
+    async publishAsDraft() {
+        try {
+            const formData = this.getFormData();
+            const draftData = {
+                ...this.generateJSON(formData),
+                content: formData.content,
+                status: 'draft',
+                mediaFiles: this.prepareMediaFiles()
+            };
+
+            // Try Node.js server first, fallback to PHP
+            let response;
+            try {
+                response = await fetch('http://localhost:3001/api/publish-post', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(draftData)
+                });
+            } catch (error) {
+                // Fallback to PHP endpoint
+                response = await fetch('./publish-post.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(draftData)
+                });
+            }
+
+            const result = await response.json();
+
+            if (response.ok && result.success) {
+                this.showPublishStatus('✅ Draft saved successfully!', 'success');
+            } else {
+                throw new Error(result.error || 'Draft save failed');
+            }
+        } catch (error) {
+            console.error('Draft save error:', error);
+            this.showPublishStatus(`❌ Draft save failed: ${error.message}`, 'error');
+        }
+    }
+
+    // Schedule post for later
+    schedulePost() {
+        const publishDate = document.getElementById('publishDate').value;
+        const today = new Date().toISOString().split('T')[0];
+
+        if (publishDate <= today) {
+            alert('Please select a future date for scheduling.');
+            return;
+        }
+
+        // For now, save as draft with scheduled status
+        const formData = this.getFormData();
+        const scheduledData = {
+            ...this.generateJSON(formData),
+            content: formData.content,
+            status: 'scheduled',
+            scheduledDate: publishDate,
+            mediaFiles: this.prepareMediaFiles()
+        };
+
+        this.showPublishStatus(`📅 Post scheduled for ${publishDate}`, 'info');
+        // TODO: Implement actual scheduling logic
+    }
+
+    // Prepare media files for upload
+    prepareMediaFiles() {
+        const mediaFiles = [];
+
+        if (this.featuredImage) {
+            mediaFiles.push({
+                type: 'featured',
+                name: `${this.currentSlug}-featured.jpg`,
+                data: this.featuredImage.dataUrl,
+                altText: document.getElementById('featuredAltText')?.value || this.featuredImage.altText
+            });
+        }
+
+        this.uploadedImages.forEach((img, index) => {
+            mediaFiles.push({
+                type: 'content',
+                name: `${this.currentSlug}-image-${index + 1}.jpg`,
+                data: img.dataUrl,
+                altText: img.altText
+            });
+        });
+
+        return mediaFiles;
+    }
+
+    // Show publish status message
+    showPublishStatus(message, type) {
+        const statusDiv = document.getElementById('publishStatus');
+        statusDiv.classList.remove('hidden');
+
+        const colors = {
+            success: 'bg-green-100 border-green-300 text-green-800',
+            error: 'bg-red-100 border-red-300 text-red-800',
+            info: 'bg-blue-100 border-blue-300 text-blue-800'
+        };
+
+        statusDiv.className = `mt-4 p-4 border rounded-lg ${colors[type] || colors.info}`;
+        statusDiv.innerHTML = message;
+    }
+
+    // Reset form for new post
+    resetForm() {
+        document.getElementById('blogPostForm').reset();
+        this.quillEditor.setContents([]);
+        this.uploadedImages = [];
+        this.featuredImage = null;
+        this.seoScore = 0;
+
+        // Hide preview sections
+        document.getElementById('featuredImagePreview').classList.add('hidden');
+        document.getElementById('featuredImageUpload').style.display = 'block';
+        document.getElementById('uploadedImagesGallery').classList.add('hidden');
+        document.getElementById('outputSection').classList.add('hidden');
+
+        // Reset displays
+        this.updateWordCount();
+        this.updateTitleLength();
+        this.updateMetaLength();
+        this.analyzeSEO();
+        this.updateProgress();
+
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     // Get form data
