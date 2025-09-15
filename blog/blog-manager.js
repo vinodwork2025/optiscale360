@@ -102,11 +102,16 @@ class SimpleBlogManager {
 
     // Get filtered posts
     getFilteredPosts() {
+        console.log('🔍 Filtering posts - Current category:', this.currentCategory);
+        console.log('📊 Total posts available:', this.posts.length);
+
         if (this.currentCategory === 'all') {
-            return this.posts.filter(post => !post.featured);
+            const filtered = this.posts.filter(post => !post.featured);
+            console.log('📊 Non-featured posts:', filtered.length);
+            return filtered;
         }
 
-        return this.posts.filter(post => {
+        const filtered = this.posts.filter(post => {
             if (post.featured) return false;
 
             const categorySlug = post.category.toLowerCase()
@@ -114,8 +119,12 @@ class SimpleBlogManager {
                 .replace(/&/g, '')
                 .replace(/\s+/g, '');
 
+            console.log(`📊 Post "${post.title}" category: "${post.category}" -> slug: "${categorySlug}", matches "${this.currentCategory}": ${categorySlug === this.currentCategory}`);
             return categorySlug === this.currentCategory;
         });
+
+        console.log('📊 Filtered posts for category', this.currentCategory + ':', filtered.length);
+        return filtered;
     }
 
     // Create individual post card HTML
