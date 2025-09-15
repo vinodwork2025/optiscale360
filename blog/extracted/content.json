@@ -1,0 +1,42 @@
+{
+  "title": "Sulonya Digital Health Solutions: Comprehensive E-Health Platform for SevenHills Healthcare",
+  "slug": "sulonya-digital-health-solutions-sevenhills-healthcare",
+  "sections": [
+    {
+      "heading": "Executive Summary",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Digital transformation in healthcare is no longer optional—it's essential. This proposal outlines a comprehensive e-health solution designed specifically for SevenHills Healthcare, leveraging cutting-edge technology to enhance patient care, streamline operations, and drive sustainable growth."
+        }
+      ],
+      "level": 1
+    },
+    {
+      "heading": "Healthcare Digital Transformation Overview",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "The healthcare industry is experiencing unprecedented digital evolution. From telemedicine platforms to AI-powered diagnostics, healthcare providers must adapt to remain competitive and deliver superior patient outcomes."
+        }
+      ],
+      "level": 2
+    }
+  ],
+  "tables": [],
+  "images": [],
+  "metadata": {
+    "category": "Healthcare Technology",
+    "tags": [
+      "Digital Health",
+      "Healthcare IT",
+      "E-Health Solutions",
+      "Medical Technology",
+      "Healthcare Transformation"
+    ],
+    "author": "Sulonya Healthcare Solutions",
+    "authorTitle": "Healthcare Technology Specialist",
+    "readTime": 8,
+    "featured": false
+  }
+}

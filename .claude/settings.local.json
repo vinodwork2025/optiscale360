@@ -6,7 +6,9 @@
       "Bash(git commit:*)",
       "Bash(git push:*)",
       "Bash(git pull:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Read(//c/Users/Warrior/Downloads/**)",
+      "Bash(python -m pip install python-docx pillow)"
     ],
     "deny": [],
     "ask": []
