@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROI Calculator - OptiScale 360 | Business Investment Returns Calculator</title>
+    <meta name="description" content="Calculate the return on investment for your business optimization initiatives. Free ROI calculator with detailed analysis and projections.">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .calculator-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .input-group {
+            position: relative;
+        }
+        .input-group input:focus + label,
+        .input-group input:not(:placeholder-shown) + label {
+            transform: translateY(-0.5rem) scale(0.8);
+            color: #3b82f6;
+        }
+        .input-group label {
+            position: absolute;
+            left: 1rem;
+            top: 1rem;
+            transition: all 0.3s ease;
+            pointer-events: none;
+            color: #6b7280;
+        }
+        .result-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        .chart-container {
+            position: relative;
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <a href="../index.html" class="text-2xl font-bold text-blue-600">OptiScale 360</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="../index.html" class="text-gray-700 hover:text-blue-600 transition-colors">Home</a>
+                    <a href="../about.html" class="text-gray-700 hover:text-blue-600 transition-colors">About</a>
+                    <a href="../services.html" class="text-gray-700 hover:text-blue-600 transition-colors">Services</a>
+                    <a href="../case-studies.html" class="text-gray-700 hover:text-blue-600 transition-colors">Case Studies</a>
+                    <a href="../resources.html" class="text-blue-600 font-medium">Resources</a>
+                    <a href="../contact.html" class="text-gray-700 hover:text-blue-600 transition-colors">Contact</a>
+                </div>
+                <a href="../contact.html" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                    Get Started
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="bg-gray-100 py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center space-x-2 text-sm text-gray-600">
+                <a href="../index.html" class="hover:text-blue-600">Home</a>
+                <span>/</span>
+                <a href="../resources.html" class="hover:text-blue-600">Resources</a>
+                <span>/</span>
+                <span class="text-gray-900">ROI Calculator</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
+                ROI Calculator
+            </h1>
+            <p class="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
+                Calculate the return on investment for your business optimization projects and make data-driven decisions.
+            </p>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section class="py-20 -mt-10 relative z-10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Calculator Form -->
+                <div class="calculator-card rounded-2xl p-8 shadow-2xl">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-8">Investment Details</h2>
+
+                    <form id="roiCalculator" class="space-y-6">
+                        <!-- Initial Investment -->
+                        <div class="input-group">
+                            <input type="number" id="initialInvestment" placeholder=" " class="w-full px-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <label for="initialInvestment">Initial Investment ($)</label>
+                        </div>
+
+                        <!-- Annual Benefits -->
+                        <div class="input-group">
+                            <input type="number" id="annualBenefits" placeholder=" " class="w-full px-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <label for="annualBenefits">Annual Benefits ($)</label>
+                        </div>
+
+                        <!-- Time Period -->
+                        <div class="input-group">
+                            <input type="number" id="timePeriod" placeholder=" " value="3" class="w-full px-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <label for="timePeriod">Time Period (years)</label>
+                        </div>
+
+                        <!-- Annual Costs -->
+                        <div class="input-group">
+                            <input type="number" id="annualCosts" placeholder=" " class="w-full px-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <label for="annualCosts">Annual Operating Costs ($)</label>
+                        </div>
+
+                        <!-- Discount Rate -->
+                        <div class="input-group">
+                            <input type="number" id="discountRate" placeholder=" " value="5" step="0.1" class="w-full px-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <label for="discountRate">Discount Rate (%)</label>
+                        </div>
+
+                        <button type="button" onclick="calculateROI()" class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
+                            Calculate ROI
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Results Panel -->
+                <div class="space-y-6">
+                    <!-- ROI Result Card -->
+                    <div id="roiResults" class="result-card rounded-2xl p-8 text-white shadow-2xl" style="display: none;">
+                        <h3 class="text-2xl font-bold mb-6">ROI Analysis</h3>
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="text-center">
+                                <div class="text-3xl font-bold" id="roiPercentage">0%</div>
+                                <div class="text-white/80">ROI Percentage</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold" id="netProfit">$0</div>
+                                <div class="text-white/80">Net Profit</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Detailed Metrics -->
+                    <div id="detailedMetrics" class="bg-white rounded-2xl p-8 shadow-xl" style="display: none;">
+                        <h3 class="text-xl font-bold text-gray-900 mb-6">Detailed Analysis</h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Total Investment:</span>
+                                <span class="font-semibold" id="totalInvestment">$0</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Total Returns:</span>
+                                <span class="font-semibold" id="totalReturns">$0</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Payback Period:</span>
+                                <span class="font-semibold" id="paybackPeriod">0 years</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">NPV:</span>
+                                <span class="font-semibold" id="npvValue">$0</span>
+                            </div>
+                            <div class="flex justify-between border-t pt-4">
+                                <span class="text-gray-900 font-semibold">Investment Grade:</span>
+                                <span class="font-bold" id="investmentGrade">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chart Section -->
+            <div id="chartSection" class="mt-16 bg-white rounded-2xl p-8 shadow-xl" style="display: none;">
+                <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">Investment Projection</h3>
+                <div class="chart-container">
+                    <canvas id="roiChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Cards -->
+    <section class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Understanding ROI</h2>
+                <p class="text-xl text-gray-600">Learn how to interpret your results and make better investment decisions</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl p-8 shadow-lg">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Positive ROI</h3>
+                    <p class="text-gray-600">ROI > 0% indicates a profitable investment. The higher the percentage, the better the return.</p>
+                </div>
+
+                <div class="bg-white rounded-xl p-8 shadow-lg">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Payback Period</h3>
+                    <p class="text-gray-600">The time it takes to recover your initial investment. Shorter periods are generally better.</p>
+                </div>
+
+                <div class="bg-white rounded-xl p-8 shadow-lg">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">NPV Analysis</h3>
+                    <p class="text-gray-600">Net Present Value considers the time value of money. Positive NPV indicates a good investment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-gray-900 py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+                Ready to Optimize Your Investments?
+            </h2>
+            <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                Get expert guidance on maximizing your ROI with our business optimization services.
+            </p>
+            <a href="../contact.html" class="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors">
+                Schedule a Consultation
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">OptiScale 360</h3>
+                    <p class="text-gray-400">Optimizing business operations for sustainable growth and success.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Resources</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="../resources.html" class="hover:text-white">All Resources</a></li>
+                        <li><a href="business-templates.html" class="hover:text-white">Business Templates</a></li>
+                        <li><a href="roi-calculator.html" class="hover:text-white">ROI Calculator</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="../about.html" class="hover:text-white">About Us</a></li>
+                        <li><a href="../services.html" class="hover:text-white">Services</a></li>
+                        <li><a href="../contact.html" class="hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Connect</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">LinkedIn</a></li>
+                        <li><a href="#" class="hover:text-white">Twitter</a></li>
+                        <li><a href="#" class="hover:text-white">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 OptiScale 360. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        let roiChart = null;
+
+        function calculateROI() {
+            const initialInvestment = parseFloat(document.getElementById('initialInvestment').value) || 0;
+            const annualBenefits = parseFloat(document.getElementById('annualBenefits').value) || 0;
+            const timePeriod = parseFloat(document.getElementById('timePeriod').value) || 3;
+            const annualCosts = parseFloat(document.getElementById('annualCosts').value) || 0;
+            const discountRate = parseFloat(document.getElementById('discountRate').value) / 100 || 0.05;
+
+            if (initialInvestment <= 0 || annualBenefits <= 0) {
+                alert('Please enter valid investment and benefit amounts.');
+                return;
+            }
+
+            // Calculate metrics
+            const netAnnualBenefit = annualBenefits - annualCosts;
+            const totalBenefits = netAnnualBenefit * timePeriod;
+            const netProfit = totalBenefits - initialInvestment;
+            const roiPercentage = (netProfit / initialInvestment) * 100;
+
+            // Calculate NPV
+            let npv = -initialInvestment;
+            for (let year = 1; year <= timePeriod; year++) {
+                npv += netAnnualBenefit / Math.pow(1 + discountRate, year);
+            }
+
+            // Calculate payback period
+            const paybackPeriod = initialInvestment / netAnnualBenefit;
+
+            // Determine investment grade
+            let grade, gradeColor;
+            if (roiPercentage >= 50) {
+                grade = 'Excellent';
+                gradeColor = 'text-green-600';
+            } else if (roiPercentage >= 25) {
+                grade = 'Good';
+                gradeColor = 'text-blue-600';
+            } else if (roiPercentage >= 10) {
+                grade = 'Fair';
+                gradeColor = 'text-yellow-600';
+            } else if (roiPercentage > 0) {
+                grade = 'Poor';
+                gradeColor = 'text-orange-600';
+            } else {
+                grade = 'Loss';
+                gradeColor = 'text-red-600';
+            }
+
+            // Update UI
+            document.getElementById('roiPercentage').textContent = roiPercentage.toFixed(1) + '%';
+            document.getElementById('netProfit').textContent = '$' + netProfit.toLocaleString();
+            document.getElementById('totalInvestment').textContent = '$' + initialInvestment.toLocaleString();
+            document.getElementById('totalReturns').textContent = '$' + totalBenefits.toLocaleString();
+            document.getElementById('paybackPeriod').textContent = paybackPeriod.toFixed(1) + ' years';
+            document.getElementById('npvValue').textContent = '$' + npv.toLocaleString();
+
+            const gradeElement = document.getElementById('investmentGrade');
+            gradeElement.textContent = grade;
+            gradeElement.className = 'font-bold ' + gradeColor;
+
+            // Show results
+            document.getElementById('roiResults').style.display = 'block';
+            document.getElementById('detailedMetrics').style.display = 'block';
+            document.getElementById('chartSection').style.display = 'block';
+
+            // Create chart
+            createROIChart(initialInvestment, netAnnualBenefit, timePeriod);
+        }
+
+        function createROIChart(initialInvestment, netAnnualBenefit, timePeriod) {
+            const ctx = document.getElementById('roiChart').getContext('2d');
+
+            if (roiChart) {
+                roiChart.destroy();
+            }
+
+            const years = [];
+            const cumulativeReturns = [];
+            const cumulativeInvestment = [];
+
+            for (let year = 0; year <= timePeriod; year++) {
+                years.push('Year ' + year);
+                cumulativeInvestment.push(initialInvestment);
+
+                if (year === 0) {
+                    cumulativeReturns.push(0);
+                } else {
+                    cumulativeReturns.push(netAnnualBenefit * year);
+                }
+            }
+
+            roiChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: years,
+                    datasets: [{
+                        label: 'Cumulative Returns',
+                        data: cumulativeReturns,
+                        borderColor: '#3b82f6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }, {
+                        label: 'Initial Investment',
+                        data: cumulativeInvestment,
+                        borderColor: '#ef4444',
+                        backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                        borderDash: [5, 5],
+                        fill: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: 'ROI Projection Over Time'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + value.toLocaleString();
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
