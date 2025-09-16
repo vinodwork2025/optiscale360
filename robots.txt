@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+
+# Optimize for search engines
+Sitemap: https://optiscale360.pages.dev/sitemap.xml
+
+# Block unnecessary files
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /package.json
+Disallow: /package-lock.json
+Disallow: /*.js$
+Disallow: /*.log$
+
+# Allow important blog content
+Allow: /blog/
+Allow: /blog/posts/
+Allow: /*.html$
+Allow: /*.css$
+Allow: /*.svg$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.webp$

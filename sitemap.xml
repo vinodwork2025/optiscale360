@@ -4,7 +4,7 @@
         <loc>https://optiscale360.pages.dev/</loc>
         <lastmod>2025-09-16</lastmod>
         <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
+        <priority>1.0</priority>
     </url>
     <url>
         <loc>https://optiscale360.pages.dev/blog.html</loc>
@@ -31,9 +31,69 @@
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://optiscale360.pages.dev/blog/posts/ai-powered-seo-complete-guide-2025.html</loc>
+        <loc>https://optiscale360.pages.dev/blog/posts/ai-tools-small-business-2025.html</loc>
         <lastmod>2025-09-16</lastmod>
-        <changefreq>weekly</changefreq>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://optiscale360.pages.dev/blog/posts/ai-web-design-trends-2024.html</loc>
+        <lastmod>2025-09-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://optiscale360.pages.dev/blog/posts/blockchain-ehr-consent-management-sulonya-sevenhills.html</loc>
+        <lastmod>2025-09-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://optiscale360.pages.dev/blog/posts/build-your-own-ai-agent-7-day-adventure-for-kids-a.html</loc>
+        <lastmod>2025-09-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://optiscale360.pages.dev/blog/posts/business-automation-ai-tools.html</loc>
+        <lastmod>2025-09-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://optiscale360.pages.dev/blog/posts/conversion-rate-optimization-psychology.html</loc>
+        <lastmod>2025-09-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://optiscale360.pages.dev/blog/posts/google-tracker.html</loc>
+        <lastmod>2025-09-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://optiscale360.pages.dev/blog/posts/responsive-design-beyond-mobile.html</loc>
+        <lastmod>2025-09-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://optiscale360.pages.dev/blog/posts/seo-ai-optimization-guide.html</loc>
+        <lastmod>2025-09-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://optiscale360.pages.dev/blog/posts/staff-augmentation-for-startups-scale-your-enginee.html</loc>
+        <lastmod>2025-09-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://optiscale360.pages.dev/blog/posts/website-performance-optimization-2024.html</loc>
+        <lastmod>2025-09-16</lastmod>
+        <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 </urlset>
