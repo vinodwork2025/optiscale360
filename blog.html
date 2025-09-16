@@ -815,23 +815,35 @@
     <script>
         // Initialize the blog system
         document.addEventListener('DOMContentLoaded', async function() {
-            // Initialize the simplified blog manager
+            // Initialize the blog manager for existing posts first
             if (typeof SimpleBlogManager !== 'undefined') {
                 console.log('🚀 Initializing SimpleBlogManager from blog.html');
                 window.blogManager = new SimpleBlogManager();
                 await window.blogManager.init();
 
-                // Add Sanity posts after blog manager is initialized
-                if (window.sanityBlogIntegration) {
+                // Then add Sanity posts after the blog manager has rendered
+                if (typeof addSanityPostsToBlog !== 'undefined') {
                     console.log('🔗 Adding Sanity posts...');
-                    await window.sanityBlogIntegration.addSanityPostsToManager();
+                    await addSanityPostsToBlog();
                 }
             } else if (typeof BlogManager !== 'undefined') {
                 console.log('🚀 Fallback to BlogManager');
                 window.blogManager = new BlogManager();
                 await window.blogManager.init();
+
+                // Add Sanity posts after legacy blog manager
+                if (typeof addSanityPostsToBlog !== 'undefined') {
+                    console.log('🔗 Adding Sanity posts...');
+                    await addSanityPostsToBlog();
+                }
             } else {
                 console.error('❌ No blog manager found!');
+
+                // If no blog manager, just add Sanity posts
+                if (typeof addSanityPostsToBlog !== 'undefined') {
+                    console.log('🔗 Adding Sanity posts (no blog manager)...');
+                    await addSanityPostsToBlog();
+                }
             }
 
             // Legacy functionality for backwards compatibility
