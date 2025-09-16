@@ -800,19 +800,36 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="https://unpkg.com/@sanity/client@6.4.9/dist/index.browser.js"></script>
     <script src="blog/blog-manager.js"></script>
     <script>
+        // Initialize Sanity client
+        window.sanityClient = sanityClient.createClient({
+            projectId: 'n8rucjn3',
+            dataset: 'production',
+            apiVersion: '2024-01-01',
+            useCdn: true,
+        });
+    </script>
+    <script src="sanity-blog-integration.js"></script>
+    <script>
         // Initialize the blog system
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', async function() {
             // Initialize the simplified blog manager
             if (typeof SimpleBlogManager !== 'undefined') {
                 console.log('🚀 Initializing SimpleBlogManager from blog.html');
-                const blogManager = new SimpleBlogManager();
-                blogManager.init();
+                window.blogManager = new SimpleBlogManager();
+                await window.blogManager.init();
+
+                // Add Sanity posts after blog manager is initialized
+                if (window.sanityBlogIntegration) {
+                    console.log('🔗 Adding Sanity posts...');
+                    await window.sanityBlogIntegration.addSanityPostsToManager();
+                }
             } else if (typeof BlogManager !== 'undefined') {
                 console.log('🚀 Fallback to BlogManager');
-                const blogManager = new BlogManager();
-                blogManager.init();
+                window.blogManager = new BlogManager();
+                await window.blogManager.init();
             } else {
                 console.error('❌ No blog manager found!');
             }

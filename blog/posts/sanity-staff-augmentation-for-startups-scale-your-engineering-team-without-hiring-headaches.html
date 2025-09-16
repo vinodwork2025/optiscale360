@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Augmentation for Startups: Scale Your Engineering Team Without Hiring Headaches - OptiScale 360</title>
+    <meta name="description" content="Discover how staff augmentation can help startups scale their engineering teams efficiently without the traditional hiring challenges.">
+    <link rel="stylesheet" href="../../styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <a href="../../index.html" class="text-2xl font-bold text-blue-600">OptiScale 360</a>
+                <div class="space-x-8">
+                    <a href="../../index.html" class="text-gray-700 hover:text-blue-600">Home</a>
+                    <a href="../../blog.html" class="text-blue-600 font-medium">Blog</a>
+                    <a href="../../contact.html" class="text-gray-700 hover:text-blue-600">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Content -->
+    <article class="max-w-4xl mx-auto px-4 py-12">
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Staff Augmentation for Startups: Scale Your Engineering Team Without Hiring Headaches
+            </h1>
+            <div class="flex items-center justify-center space-x-6 text-gray-600">
+                <span>📅 September 16, 2025</span>
+                <span>👤 OptiScale360 Team</span>
+                <span>⏱️ 5 min read</span>
+            </div>
+        </header>
+
+        <!-- Featured Image -->
+        <div class="mb-12">
+            <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&h=400&fit=crop"
+                 alt="Team collaboration and scaling"
+                 class="w-full h-64 md:h-96 object-cover rounded-lg shadow-lg">
+        </div>
+
+        <!-- Content -->
+        <div class="prose prose-lg max-w-none">
+            <div id="sanity-content" class="space-y-6">
+                <p class="text-xl text-gray-700 leading-relaxed">
+                    <strong>Loading content from Sanity CMS...</strong>
+                </p>
+            </div>
+        </div>
+
+        <!-- Back to Blog -->
+        <div class="mt-12 text-center">
+            <a href="../../blog.html"
+               class="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                ← Back to Blog
+            </a>
+        </div>
+    </article>
+
+    <!-- Load Sanity Content -->
+    <script src="https://unpkg.com/@sanity/client@6.4.9/dist/index.browser.js"></script>
+    <script>
+        // Initialize Sanity client
+        const client = sanityClient.createClient({
+            projectId: 'n8rucjn3',
+            dataset: 'production',
+            apiVersion: '2024-01-01',
+            useCdn: true,
+        });
+
+        async function loadContent() {
+            try {
+                const query = `*[_type == "post" && slug.current == "staff-augmentation-for-startups-scale-your-engineering-team-without-hiring-headaches"][0]{
+                    title,
+                    content,
+                    publishedAt
+                }`;
+
+                const post = await client.fetch(query);
+
+                if (post && post.content) {
+                    document.getElementById('sanity-content').innerHTML = `
+                        <div class="whitespace-pre-wrap text-gray-700 leading-relaxed">
+                            ${post.content}
+                        </div>
+                    `;
+                } else {
+                    document.getElementById('sanity-content').innerHTML = `
+                        <p class="text-gray-600">Content not found. Please check if the post is published in Sanity Studio.</p>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error loading content:', error);
+                document.getElementById('sanity-content').innerHTML = `
+                    <p class="text-red-600">Error loading content. Please try again later.</p>
+                `;
+            }
+        }
+
+        // Load content when page loads
+        document.addEventListener('DOMContentLoaded', loadContent);
+    </script>
+</body>
+</html>
