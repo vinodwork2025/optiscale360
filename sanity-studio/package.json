@@ -1,0 +1,27 @@
+{
+  "name": "optiscale360-sanity-studio",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Sanity Studio for OptiScale 360 Blog",
+  "main": "package.json",
+  "scripts": {
+    "dev": "sanity dev",
+    "start": "sanity dev",
+    "build": "sanity build",
+    "deploy": "sanity deploy"
+  },
+  "keywords": [
+    "sanity"
+  ],
+  "dependencies": {
+    "@sanity/color-input": "^3.0.0",
+    "@sanity/image-url": "^1.0.2",
+    "@sanity/vision": "^3.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sanity": "^3.0.0"
+  },
+  "devDependencies": {
+    "@sanity/eslint-config-studio": "^3.0.0"
+  }
+}
