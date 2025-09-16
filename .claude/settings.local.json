@@ -8,7 +8,10 @@
       "Bash(git pull:*)",
       "Bash(node:*)",
       "Read(//c/Users/Warrior/Downloads/**)",
-      "Bash(python -m pip install python-docx pillow)"
+      "Bash(python -m pip install python-docx pillow)",
+      "Read(//c/c/Users/warrior/optiscale360/**)",
+      "Bash(python:*)",
+      "Bash(sed:*)"
     ],
     "deny": [],
     "ask": []
