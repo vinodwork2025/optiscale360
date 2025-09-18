@@ -7,23 +7,35 @@
     "build:blog": "node blog-generator.js",
     "build": "npm run build:blog",
     "dev": "npm run build:blog && python -m http.server 8000",
-    "preview": "npm run build:blog && start index.html"
+    "preview": "npm run build:blog && start index.html",
+    "admin": "node blog-admin-server.js",
+    "admin:dev": "nodemon blog-admin-server.js",
+    "start:admin": "npm run admin",
+    "publish:api": "node blog-publish-api.js",
+    "publish:dev": "nodemon blog-publish-api.js",
+    "start:publisher": "npm run publish:api"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
     "marked": "^9.1.6",
     "marked-highlight": "^2.0.6",
-    "highlight.js": "^11.9.0"
+    "highlight.js": "^11.9.0",
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "multer": "^1.4.5-lts.1"
   },
   "devDependencies": {
-    "live-server": "^1.2.2"
+    "live-server": "^1.2.2",
+    "nodemon": "^3.0.2"
   },
   "keywords": [
     "blog",
     "markdown",
     "seo",
     "static-site",
-    "cloudflare-pages"
+    "cloudflare-pages",
+    "admin-interface",
+    "cms"
   ],
   "author": "OptiScale 360",
   "license": "MIT"

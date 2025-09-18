@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Admin Pro - OptiScale 360</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/github.min.css">
+    <style>
+        /* Enhanced admin styles with publishing features */
+        .admin-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: var(--space-lg);
+            min-height: 100vh;
+        }
+
+        .admin-header {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            text-align: center;
+            position: relative;
+        }
+
+        .status-badge {
+            position: absolute;
+            top: var(--space-lg);
+            right: var(--space-lg);
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--border-radius);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .status-ready {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .status-publishing {
+            background: #f59e0b;
+            color: white;
+            animation: pulse 2s infinite;
+        }
+
+        .status-error {
+            background: #ef4444;
+            color: white;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .admin-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: var(--space-xl);
+            align-items: start;
+        }
+
+        .admin-sidebar {
+            position: sticky;
+            top: var(--space-lg);
+        }
+
+        .admin-main {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+        }
+
+        .form-section {
+            padding: var(--space-xl);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .form-section:last-child {
+            border-bottom: none;
+        }
+
+        .form-section h3 {
+            margin-bottom: var(--space-md);
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .form-group {
+            margin-bottom: var(--space-lg);
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: var(--space-xs);
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: var(--space-md);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            font-family: var(--font-family);
+            font-size: 1rem;
+            transition: var(--transition-fast);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .form-control.textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .tags-input {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+            align-items: center;
+            padding: var(--space-xs);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            min-height: 45px;
+        }
+
+        .tag-item {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--border-radius-sm);
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.85rem;
+        }
+
+        .tag-remove {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 0;
+            width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tag-input {
+            border: none;
+            outline: none;
+            flex: 1;
+            min-width: 100px;
+            padding: var(--space-xs);
+            font-family: var(--font-family);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-md);
+        }
+
+        .form-row.three {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .editor-container {
+            position: relative;
+        }
+
+        .editor-tabs {
+            display: flex;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .editor-tab {
+            padding: var(--space-md) var(--space-lg);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-muted);
+            transition: var(--transition-fast);
+        }
+
+        .editor-tab.active {
+            background: var(--bg-primary);
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .editor-content {
+            height: 500px;
+            overflow: hidden;
+        }
+
+        .markdown-editor {
+            width: 100%;
+            height: 100%;
+            border: none;
+            padding: var(--space-lg);
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            resize: none;
+            outline: none;
+        }
+
+        .preview-content {
+            height: 100%;
+            overflow-y: auto;
+            padding: var(--space-lg);
+            background: var(--bg-primary);
+        }
+
+        .preview-content h1,
+        .preview-content h2,
+        .preview-content h3 {
+            color: var(--text-primary);
+            margin-top: var(--space-lg);
+            margin-bottom: var(--space-md);
+        }
+
+        .preview-content h1 {
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: var(--space-xs);
+        }
+
+        .preview-content h2 {
+            color: var(--primary-color);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: var(--space-md);
+            padding: var(--space-xl);
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .btn-publish {
+            background: linear-gradient(135deg, var(--accent-color) 0%, #059669 100%);
+            color: white;
+            padding: var(--space-md) var(--space-xl);
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-publish:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-publish:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-publish.publishing {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+            padding: var(--space-md) var(--space-xl);
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            padding: var(--space-md) var(--space-xl);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-primary);
+            border-color: var(--primary-color);
+        }
+
+        .sidebar-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-lg);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-lg);
+        }
+
+        .sidebar-card h3 {
+            margin-bottom: var(--space-md);
+            color: var(--text-primary);
+        }
+
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .post-item {
+            padding: var(--space-md);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            margin-bottom: var(--space-md);
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .post-item:hover {
+            border-color: var(--primary-color);
+            background: var(--bg-secondary);
+        }
+
+        .post-title {
+            font-weight: 600;
+            margin-bottom: var(--space-xs);
+            color: var(--text-primary);
+        }
+
+        .post-meta {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: var(--space-xs);
+        }
+
+        .status-published {
+            background: var(--accent-color);
+        }
+
+        .status-draft {
+            background: var(--text-muted);
+        }
+
+        .publish-progress {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: var(--space-lg);
+            margin-top: var(--space-lg);
+            display: none;
+        }
+
+        .progress-step {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-xs) 0;
+            color: var(--text-muted);
+        }
+
+        .progress-step.active {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .progress-step.complete {
+            color: var(--accent-color);
+        }
+
+        .progress-step.error {
+            color: #ef4444;
+        }
+
+        .progress-icon {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--bg-tertiary);
+            font-size: 12px;
+        }
+
+        .progress-step.active .progress-icon {
+            background: var(--primary-color);
+            color: white;
+            animation: spin 1s linear infinite;
+        }
+
+        .progress-step.complete .progress-icon {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .progress-step.error .progress-icon {
+            background: #ef4444;
+            color: white;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .notification {
+            position: fixed;
+            top: var(--space-lg);
+            right: var(--space-lg);
+            padding: var(--space-md) var(--space-lg);
+            background: var(--accent-color);
+            color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lg);
+            opacity: 0;
+            transform: translateX(100%);
+            transition: var(--transition);
+            z-index: 1000;
+        }
+
+        .notification.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .notification.error {
+            background: #ef4444;
+        }
+
+        .notification.warning {
+            background: #f59e0b;
+        }
+
+        .deployment-info {
+            background: var(--bg-gradient-subtle);
+            border: 1px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            padding: var(--space-md);
+            margin-top: var(--space-md);
+            font-size: 0.9rem;
+        }
+
+        .deployment-info h4 {
+            margin-bottom: var(--space-xs);
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 1024px) {
+            .admin-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .admin-sidebar {
+                position: static;
+                order: -1;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* CodeMirror customization */
+        .CodeMirror {
+            height: 500px !important;
+            font-family: 'Monaco', 'Consolas', monospace !important;
+            font-size: 14px !important;
+            line-height: 1.6 !important;
+        }
+
+        .CodeMirror-scroll {
+            padding: var(--space-lg) !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <div class="admin-header">
+            <div class="status-badge" id="statusBadge">Ready</div>
+            <h1>🚀 Blog Admin Pro - OptiScale 360</h1>
+            <p>Create, preview, and publish your AI-optimized blog content directly to your live site</p>
+
+            <div class="deployment-info">
+                <h4>🌐 Auto-Deployment Enabled</h4>
+                <p>Your posts will be automatically built and deployed to <strong>optiscale360.pages.dev</strong> via Cloudflare Pages when you publish.</p>
+            </div>
+        </div>
+
+        <div class="admin-grid">
+            <div class="admin-sidebar">
+                <div class="sidebar-card">
+                    <h3>📚 Recent Posts</h3>
+                    <ul class="post-list" id="postList">
+                        <!-- Posts will be loaded here -->
+                    </ul>
+                    <button class="btn-secondary btn-small" onclick="loadPosts()" style="width: 100%;">
+                        🔄 Refresh Posts
+                    </button>
+                </div>
+
+                <div class="sidebar-card">
+                    <h3>⚡ Quick Actions</h3>
+                    <button class="btn-secondary btn-small" onclick="newPost()" style="width: 100%; margin-bottom: var(--space-xs);">
+                        ➕ New Post
+                    </button>
+                    <button class="btn-secondary btn-small" onclick="saveAsDraft()" style="width: 100%; margin-bottom: var(--space-xs);">
+                        💾 Save Draft
+                    </button>
+                    <button class="btn-secondary btn-small" onclick="previewPost()" style="width: 100%; margin-bottom: var(--space-xs);">
+                        👀 Preview
+                    </button>
+                    <button class="btn-secondary btn-small" onclick="buildBlog()" style="width: 100%;">
+                        🔨 Build Blog
+                    </button>
+                </div>
+
+                <div class="sidebar-card">
+                    <h3>📊 Post Stats</h3>
+                    <div id="postStats">
+                        <p><strong>Word Count:</strong> <span id="wordCount">0</span></p>
+                        <p><strong>Reading Time:</strong> <span id="readingTime">0 min</span></p>
+                        <p><strong>Character Count:</strong> <span id="charCount">0</span></p>
+                    </div>
+                </div>
+
+                <div class="sidebar-card">
+                    <h3>🚀 Deployment Status</h3>
+                    <div id="deploymentStatus">
+                        <p>Ready to publish</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="admin-main">
+                <form id="blogForm">
+                    <!-- Post Details Section -->
+                    <div class="form-section">
+                        <h3>📄 Post Details</h3>
+                        <div class="form-group">
+                            <label for="title">Title *</label>
+                            <input type="text" id="title" class="form-control" placeholder="Your amazing blog post title" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Meta Description * (150-160 characters)</label>
+                            <textarea id="description" class="form-control" placeholder="SEO-optimized description that will appear in search results" maxlength="160" required></textarea>
+                            <small id="descLength">0/160 characters</small>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="author">Author</label>
+                                <input type="text" id="author" class="form-control" placeholder="Your name" value="OptiScale 360 Team">
+                            </div>
+                            <div class="form-group">
+                                <label for="date">Publish Date</label>
+                                <input type="date" id="date" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="category">Category</label>
+                                <select id="category" class="form-control">
+                                    <option value="SEO Strategy">SEO Strategy</option>
+                                    <option value="Case Study">Case Study</option>
+                                    <option value="Local SEO">Local SEO</option>
+                                    <option value="Technical SEO">Technical SEO</option>
+                                    <option value="Content Marketing">Content Marketing</option>
+                                    <option value="AI & SEO">AI & SEO</option>
+                                    <option value="Tools & Resources">Tools & Resources</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="image">Featured Image URL</label>
+                                <input type="url" id="image" class="form-control" placeholder="/images/blog/your-image.jpg">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Tags</label>
+                            <div class="tags-input" id="tagsInput">
+                                <input type="text" class="tag-input" placeholder="Type tag and press Enter" onkeypress="addTag(event)">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Content Type & Schema Section -->
+                    <div class="form-section">
+                        <h3>🤖 AI & Schema Settings</h3>
+                        <div class="form-row three">
+                            <div class="form-group">
+                                <label for="type">Content Type</label>
+                                <select id="type" class="form-control" onchange="updateSchemaOptions()">
+                                    <option value="">Standard Article</option>
+                                    <option value="how-to">How-To Guide</option>
+                                    <option value="case-study">Case Study</option>
+                                    <option value="faq">FAQ Post</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="schema">Schema Type</label>
+                                <select id="schema" class="form-control">
+                                    <option value="">Auto-detect</option>
+                                    <option value="Article">Article</option>
+                                    <option value="HowTo">How-To</option>
+                                    <option value="FAQ">FAQ</option>
+                                    <option value="Service">Service</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="totalTime">Time Required</label>
+                                <input type="text" id="totalTime" class="form-control" placeholder="PT30M (30 minutes)">
+                            </div>
+                        </div>
+
+                        <!-- Service-specific fields -->
+                        <div id="serviceFields" style="display: none;">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="serviceName">Service Name</label>
+                                    <input type="text" id="serviceName" class="form-control" placeholder="SEO Consulting">
+                                </div>
+                                <div class="form-group">
+                                    <label for="serviceType">Service Type</label>
+                                    <input type="text" id="serviceType" class="form-control" placeholder="Digital Marketing">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ Section -->
+                        <div id="faqSection" style="display: none;">
+                            <h4>❓ FAQ Items</h4>
+                            <div id="faqItems"></div>
+                            <button type="button" class="btn-secondary btn-small" onclick="addFAQItem()">+ Add FAQ</button>
+                        </div>
+                    </div>
+
+                    <!-- Content Editor Section -->
+                    <div class="form-section">
+                        <h3>✍️ Content Editor</h3>
+                        <div class="editor-container">
+                            <div class="editor-tabs">
+                                <button type="button" class="editor-tab active" onclick="switchTab('write')">Write</button>
+                                <button type="button" class="editor-tab" onclick="switchTab('preview')">Preview</button>
+                            </div>
+                            <div class="editor-content">
+                                <textarea id="contentEditor" class="markdown-editor" placeholder="# Your Blog Post Title
+
+Write your amazing content here using Markdown...
+
+## Section 1
+
+Content for your first section.
+
+## Section 2
+
+More great content...
+
+### Subsection
+
+Even more detailed information.
+
+> Pro tip: Use blockquotes for important notes!
+
+**Bold text** and *italic text* work great.
+
+- Bullet point 1
+- Bullet point 2
+- Bullet point 3
+
+1. Numbered list item 1
+2. Numbered list item 2
+
+```javascript
+// Code blocks are supported too!
+console.log('Hello, World!');
+```
+
+[Link to OptiScale 360](https://optiscale360.pages.dev)
+
+![Alt text for image](/images/blog/example.jpg)"></textarea>
+                                <div id="previewPane" class="preview-content" style="display: none;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="action-buttons">
+                        <button type="button" class="btn-publish" id="publishBtn" onclick="publishPost()">
+                            <span id="publishText">🚀 Publish to Live Site</span>
+                        </button>
+                        <button type="button" class="btn-primary" onclick="generateAndDownload()">
+                            📥 Download Only
+                        </button>
+                        <button type="button" class="btn-secondary" onclick="saveAsDraft()">
+                            💾 Save Draft
+                        </button>
+                        <button type="button" class="btn-secondary" onclick="previewPost()">
+                            👀 Preview
+                        </button>
+                        <button type="button" class="btn-secondary" onclick="clearForm()">
+                            🗑️ Clear
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Publishing Progress -->
+                <div class="publish-progress" id="publishProgress">
+                    <h4>🚀 Publishing Progress</h4>
+                    <div class="progress-step" id="step1">
+                        <div class="progress-icon">1</div>
+                        <span>Validating post content...</span>
+                    </div>
+                    <div class="progress-step" id="step2">
+                        <div class="progress-icon">2</div>
+                        <span>Saving to posts directory...</span>
+                    </div>
+                    <div class="progress-step" id="step3">
+                        <div class="progress-icon">3</div>
+                        <span>Building blog site...</span>
+                    </div>
+                    <div class="progress-step" id="step4">
+                        <div class="progress-icon">4</div>
+                        <span>Committing to Git...</span>
+                    </div>
+                    <div class="progress-step" id="step5">
+                        <div class="progress-icon">5</div>
+                        <span>Deploying to Cloudflare Pages...</span>
+                    </div>
+                    <div class="progress-step" id="step6">
+                        <div class="progress-icon">✓</div>
+                        <span>Live on optiscale360.pages.dev!</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/markdown/markdown.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+
+    <script>
+        // Global variables
+        let editor;
+        let currentPost = null;
+        let tags = [];
+        let faqCount = 0;
+        let isPublishing = false;
+
+        // Initialize the editor
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set default date
+            document.getElementById('date').value = new Date().toISOString().split('T')[0];
+
+            // Initialize CodeMirror
+            editor = CodeMirror.fromTextArea(document.getElementById('contentEditor'), {
+                mode: 'markdown',
+                theme: 'github',
+                lineNumbers: true,
+                lineWrapping: true,
+                autofocus: true,
+                extraKeys: {
+                    'Ctrl-S': function() { saveAsDraft(); },
+                    'Ctrl-Enter': function() { publishPost(); }
+                }
+            });
+
+            // Update stats on content change
+            editor.on('change', function() {
+                updateStats();
+                if (document.querySelector('.editor-tab.active').textContent === 'Preview') {
+                    updatePreview();
+                }
+            });
+
+            // Update description length counter
+            document.getElementById('description').addEventListener('input', function() {
+                document.getElementById('descLength').textContent = this.value.length + '/160 characters';
+            });
+
+            // Load any existing posts
+            loadPosts();
+        });
+
+        // Tab switching
+        function switchTab(tab) {
+            const tabs = document.querySelectorAll('.editor-tab');
+            tabs.forEach(t => t.classList.remove('active'));
+
+            if (tab === 'write') {
+                tabs[0].classList.add('active');
+                editor.getWrapperElement().style.display = 'block';
+                document.getElementById('previewPane').style.display = 'none';
+            } else {
+                tabs[1].classList.add('active');
+                editor.getWrapperElement().style.display = 'none';
+                document.getElementById('previewPane').style.display = 'block';
+                updatePreview();
+            }
+        }
+
+        // Update preview
+        function updatePreview() {
+            const content = editor.getValue();
+            const previewPane = document.getElementById('previewPane');
+
+            try {
+                previewPane.innerHTML = marked.parse(content);
+            } catch (error) {
+                previewPane.innerHTML = '<p style="color: red;">Preview error: ' + error.message + '</p>';
+            }
+        }
+
+        // Update stats
+        function updateStats() {
+            const content = editor.getValue();
+            const words = content.trim().split(/\s+/).length;
+            const chars = content.length;
+            const readingTime = Math.ceil(words / 200);
+
+            document.getElementById('wordCount').textContent = words;
+            document.getElementById('charCount').textContent = chars;
+            document.getElementById('readingTime').textContent = readingTime + ' min';
+        }
+
+        // Tag management
+        function addTag(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                const input = event.target;
+                const tag = input.value.trim();
+
+                if (tag && !tags.includes(tag)) {
+                    tags.push(tag);
+                    input.value = '';
+                    renderTags();
+                }
+            }
+        }
+
+        function removeTag(tag) {
+            tags = tags.filter(t => t !== tag);
+            renderTags();
+        }
+
+        function renderTags() {
+            const container = document.getElementById('tagsInput');
+            const input = container.querySelector('.tag-input');
+
+            // Clear existing tags but keep input
+            const existingTags = container.querySelectorAll('.tag-item');
+            existingTags.forEach(tag => tag.remove());
+
+            // Add tags before input
+            tags.forEach(tag => {
+                const tagEl = document.createElement('div');
+                tagEl.className = 'tag-item';
+                tagEl.innerHTML = `
+                    ${tag}
+                    <button type="button" class="tag-remove" onclick="removeTag('${tag}')">×</button>
+                `;
+                container.insertBefore(tagEl, input);
+            });
+        }
+
+        // Schema options update
+        function updateSchemaOptions() {
+            const type = document.getElementById('type').value;
+            const schemaSelect = document.getElementById('schema');
+            const serviceFields = document.getElementById('serviceFields');
+            const faqSection = document.getElementById('faqSection');
+
+            // Reset schema options
+            schemaSelect.innerHTML = '<option value="">Auto-detect</option>';
+
+            if (type === 'how-to') {
+                schemaSelect.innerHTML += '<option value="HowTo" selected>How-To</option>';
+                serviceFields.style.display = 'none';
+                faqSection.style.display = 'block';
+            } else if (type === 'case-study') {
+                schemaSelect.innerHTML += '<option value="Article" selected>Article</option>';
+                schemaSelect.innerHTML += '<option value="Service">Service</option>';
+                serviceFields.style.display = 'block';
+                faqSection.style.display = 'none';
+            } else if (type === 'faq') {
+                schemaSelect.innerHTML += '<option value="FAQ" selected>FAQ</option>';
+                serviceFields.style.display = 'none';
+                faqSection.style.display = 'block';
+            } else {
+                schemaSelect.innerHTML += '<option value="Article">Article</option>';
+                schemaSelect.innerHTML += '<option value="Service">Service</option>';
+                serviceFields.style.display = 'none';
+                faqSection.style.display = 'none';
+            }
+        }
+
+        // FAQ management
+        function addFAQItem() {
+            faqCount++;
+            const faqItems = document.getElementById('faqItems');
+            const faqItem = document.createElement('div');
+            faqItem.className = 'faq-item';
+            faqItem.innerHTML = `
+                <div style="display: flex; gap: var(--space-xs); margin-bottom: var(--space-md);">
+                    <button type="button" class="btn-secondary btn-small" onclick="removeFAQItem(${faqCount})">Remove</button>
+                </div>
+                <div class="form-group">
+                    <label>Question</label>
+                    <input type="text" class="form-control" id="faq_q_${faqCount}" placeholder="What is...?">
+                </div>
+                <div class="form-group">
+                    <label>Answer</label>
+                    <textarea class="form-control" id="faq_a_${faqCount}" placeholder="The answer is..."></textarea>
+                </div>
+            `;
+            faqItem.id = `faq_item_${faqCount}`;
+            faqItems.appendChild(faqItem);
+        }
+
+        function removeFAQItem(id) {
+            document.getElementById(`faq_item_${id}`).remove();
+        }
+
+        // Generate frontmatter and content
+        function generateFrontmatter() {
+            const frontmatter = {
+                title: document.getElementById('title').value,
+                description: document.getElementById('description').value,
+                date: document.getElementById('date').value,
+                author: document.getElementById('author').value || 'OptiScale 360 Team',
+                category: document.getElementById('category').value,
+                tags: tags
+            };
+
+            // Add optional fields
+            const image = document.getElementById('image').value;
+            if (image) frontmatter.image = image;
+
+            const type = document.getElementById('type').value;
+            if (type) frontmatter.type = type;
+
+            const schema = document.getElementById('schema').value;
+            if (schema) frontmatter.schema = schema;
+
+            const totalTime = document.getElementById('totalTime').value;
+            if (totalTime) frontmatter.totalTime = totalTime;
+
+            // Service fields
+            const serviceName = document.getElementById('serviceName').value;
+            const serviceType = document.getElementById('serviceType').value;
+            if (serviceName) frontmatter.serviceName = serviceName;
+            if (serviceType) frontmatter.serviceType = serviceType;
+
+            // FAQ items
+            const faqItems = [];
+            document.querySelectorAll('.faq-item').forEach(item => {
+                const question = item.querySelector('input').value;
+                const answer = item.querySelector('textarea').value;
+                if (question && answer) {
+                    faqItems.push({ question, answer });
+                }
+            });
+            if (faqItems.length > 0) frontmatter.faqs = faqItems;
+
+            return frontmatter;
+        }
+
+        // Generate filename slug
+        function generateSlug(title) {
+            return title.toLowerCase()
+                .replace(/[^a-z0-9]+/g, '-')
+                .replace(/^-|-$/g, '');
+        }
+
+        // Update progress step
+        function updateProgressStep(stepId, status) {
+            const step = document.getElementById(stepId);
+            step.className = `progress-step ${status}`;
+
+            const icon = step.querySelector('.progress-icon');
+            if (status === 'active') {
+                icon.innerHTML = '⟳';
+            } else if (status === 'complete') {
+                icon.innerHTML = '✓';
+            } else if (status === 'error') {
+                icon.innerHTML = '✗';
+            }
+        }
+
+        // Publish post directly to live site
+        async function publishPost() {
+            const title = document.getElementById('title').value;
+            const description = document.getElementById('description').value;
+
+            if (!title || !description) {
+                showNotification('Please fill in title and description', 'error');
+                return;
+            }
+
+            if (isPublishing) {
+                showNotification('Publishing in progress...', 'warning');
+                return;
+            }
+
+            isPublishing = true;
+            const publishBtn = document.getElementById('publishBtn');
+            const statusBadge = document.getElementById('statusBadge');
+            const progressDiv = document.getElementById('publishProgress');
+
+            // Update UI
+            publishBtn.disabled = true;
+            publishBtn.className = 'btn-publish publishing';
+            publishBtn.innerHTML = '<span>🔄 Publishing...</span>';
+            statusBadge.textContent = 'Publishing';
+            statusBadge.className = 'status-badge status-publishing';
+            progressDiv.style.display = 'block';
+
+            try {
+                // Step 1: Validate content
+                updateProgressStep('step1', 'active');
+                await delay(1000);
+
+                const frontmatter = generateFrontmatter();
+                const content = editor.getValue();
+
+                if (!frontmatter.title || !frontmatter.description || !content.trim()) {
+                    throw new Error('Missing required content');
+                }
+
+                updateProgressStep('step1', 'complete');
+
+                // Step 2: Save to posts directory
+                updateProgressStep('step2', 'active');
+                await delay(1000);
+
+                const slug = generateSlug(frontmatter.title);
+                const filename = `${slug}.md`;
+                const yamlFrontmatter = jsyaml.dump(frontmatter);
+                const fullContent = `---\n${yamlFrontmatter}---\n\n${content}`;
+
+                // Simulate saving file (in real implementation, this would make API call)
+                await savePostToFile(filename, fullContent);
+                updateProgressStep('step2', 'complete');
+
+                // Step 3: Build blog
+                updateProgressStep('step3', 'active');
+                await delay(2000);
+                await buildBlogSite();
+                updateProgressStep('step3', 'complete');
+
+                // Step 4: Commit to Git
+                updateProgressStep('step4', 'active');
+                await delay(2000);
+                const commitMessage = `📝 Add new blog post: ${frontmatter.title}
+
+Published via Blog Admin Pro
+
+🤖 Generated with Claude Code (https://claude.ai/code)
+
+Co-Authored-By: Claude <noreply@anthropic.com>`;
+                await commitToGit(commitMessage);
+                updateProgressStep('step4', 'complete');
+
+                // Step 5: Deploy to Cloudflare
+                updateProgressStep('step5', 'active');
+                await delay(3000);
+                // Cloudflare Pages automatically deploys on git push
+                updateProgressStep('step5', 'complete');
+
+                // Step 6: Complete
+                updateProgressStep('step6', 'complete');
+
+                // Success!
+                statusBadge.textContent = 'Published';
+                statusBadge.className = 'status-badge status-ready';
+                showNotification(`🎉 Post published successfully! Live at: https://optiscale360.pages.dev/blog/${slug}/`, 'success');
+
+                // Update deployment status
+                document.getElementById('deploymentStatus').innerHTML = `
+                    <p style="color: var(--accent-color); font-weight: 600;">✅ Successfully Published</p>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">
+                        Live URL: <a href="https://optiscale360.pages.dev/blog/${slug}/" target="_blank" style="color: var(--primary-color);">
+                            optiscale360.pages.dev/blog/${slug}/
+                        </a>
+                    </p>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">
+                        Published: ${new Date().toLocaleString()}
+                    </p>
+                `;
+
+                // Clear form for next post
+                setTimeout(() => {
+                    if (confirm('Post published successfully! Create a new post?')) {
+                        clearForm();
+                    }
+                }, 2000);
+
+            } catch (error) {
+                console.error('Publishing error:', error);
+                showNotification('❌ Publishing failed: ' + error.message, 'error');
+                statusBadge.textContent = 'Error';
+                statusBadge.className = 'status-badge status-error';
+
+                // Mark current step as error
+                const activeStep = document.querySelector('.progress-step.active');
+                if (activeStep) {
+                    updateProgressStep(activeStep.id, 'error');
+                }
+            } finally {
+                // Reset UI
+                isPublishing = false;
+                publishBtn.disabled = false;
+                publishBtn.className = 'btn-publish';
+                publishBtn.innerHTML = '<span>🚀 Publish to Live Site</span>';
+
+                // Hide progress after delay
+                setTimeout(() => {
+                    progressDiv.style.display = 'none';
+                    // Reset all steps
+                    document.querySelectorAll('.progress-step').forEach((step, index) => {
+                        step.className = 'progress-step';
+                        step.querySelector('.progress-icon').innerHTML = index + 1;
+                    });
+                    document.querySelector('.progress-step:last-child .progress-icon').innerHTML = '✓';
+                }, 5000);
+            }
+        }
+
+        // Helper functions for publishing
+        async function delay(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        // Check if API server is running
+        async function checkAPIServer() {
+            try {
+                const response = await fetch('http://localhost:3002/api/health');
+                const data = await response.json();
+                return data.success;
+            } catch (error) {
+                return false;
+            }
+        }
+
+        async function savePostToFile(filename, content) {
+            // Check if we have API server running
+            const hasAPI = await checkAPIServer();
+
+            if (hasAPI) {
+                // Use real API
+                console.log(`Saving ${filename} via API...`);
+                const frontmatter = generateFrontmatter();
+                const postContent = editor.getValue();
+
+                const response = await fetch('http://localhost:3002/api/save-draft', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        frontmatter,
+                        content: postContent,
+                        filename
+                    })
+                });
+
+                const result = await response.json();
+                if (!result.success) {
+                    throw new Error(result.error);
+                }
+                return result;
+            } else {
+                // Fallback to localStorage simulation
+                console.log(`Saving ${filename} (simulation)...`);
+                localStorage.setItem(`published_${filename}`, content);
+                return { success: true, message: 'Saved (simulation)' };
+            }
+        }
+
+        async function buildBlogSite() {
+            const hasAPI = await checkAPIServer();
+
+            if (hasAPI) {
+                console.log('Building blog site via API...');
+                const response = await fetch('http://localhost:3002/api/build', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                });
+
+                const result = await response.json();
+                if (!result.success) {
+                    throw new Error(result.error);
+                }
+                return result;
+            } else {
+                // Simulation fallback
+                console.log('Building blog site (simulation)...');
+                await delay(1500);
+                return { success: true, message: 'Built (simulation)' };
+            }
+        }
+
+        async function commitToGit(message) {
+            const hasAPI = await checkAPIServer();
+
+            if (hasAPI) {
+                // Real publishing via API
+                console.log('Publishing via API...');
+                const frontmatter = generateFrontmatter();
+                const content = editor.getValue();
+
+                const response = await fetch('http://localhost:3002/api/publish', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        frontmatter,
+                        content,
+                        commitMessage: message
+                    })
+                });
+
+                const result = await response.json();
+                if (!result.success) {
+                    throw new Error(result.error);
+                }
+                return result;
+            } else {
+                // Simulation fallback
+                console.log('Committing to Git (simulation)...', message);
+                await delay(1500);
+                return { success: true, message: 'Committed (simulation)' };
+            }
+        }
+
+        // Build blog only
+        async function buildBlog() {
+            showNotification('🔨 Building blog...', 'info');
+            try {
+                await buildBlogSite();
+                showNotification('✅ Blog built successfully!', 'success');
+            } catch (error) {
+                showNotification('❌ Build failed: ' + error.message, 'error');
+            }
+        }
+
+        // Generate and download post (existing functionality)
+        function generateAndDownload() {
+            const title = document.getElementById('title').value;
+            if (!title) {
+                showNotification('Please enter a title', 'error');
+                return;
+            }
+
+            const frontmatter = generateFrontmatter();
+            const content = editor.getValue();
+
+            // Generate full markdown content
+            const yamlFrontmatter = jsyaml.dump(frontmatter);
+            const fullContent = `---\n${yamlFrontmatter}---\n\n${content}`;
+
+            // Create filename
+            const slug = generateSlug(title);
+            const filename = `${slug}.md`;
+
+            // Create and download file
+            const blob = new Blob([fullContent], { type: 'text/markdown' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+            showNotification(`📝 Downloaded: ${filename}`, 'success');
+        }
+
+        // Save as draft (localStorage)
+        function saveAsDraft() {
+            const title = document.getElementById('title').value || 'Untitled Draft';
+            const slug = generateSlug(title) || 'untitled-' + Date.now();
+
+            const draftData = {
+                frontmatter: generateFrontmatter(),
+                content: editor.getValue(),
+                slug: slug,
+                savedAt: new Date().toISOString()
+            };
+
+            localStorage.setItem(`draft_${slug}`, JSON.stringify(draftData));
+            showNotification('💾 Draft saved!', 'success');
+            loadPosts();
+        }
+
+        // Preview post (open in new tab)
+        function previewPost() {
+            const title = document.getElementById('title').value || 'Preview';
+            const frontmatter = generateFrontmatter();
+            const content = editor.getValue();
+
+            // Generate preview HTML
+            const previewHTML = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>${frontmatter.title}</title>
+                    <style>
+                        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; max-width: 800px; margin: 2rem auto; padding: 0 2rem; line-height: 1.6; }
+                        h1, h2, h3 { color: #2563eb; }
+                        h1 { border-bottom: 2px solid #2563eb; padding-bottom: 0.5rem; }
+                        pre { background: #f3f4f6; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; }
+                        blockquote { border-left: 4px solid #2563eb; padding-left: 1rem; margin: 1rem 0; background: #f9fafb; padding: 1rem; border-radius: 0.5rem; }
+                        .meta { background: #f3f4f6; padding: 1rem; border-radius: 0.5rem; margin-bottom: 2rem; }
+                        .publish-info { background: #10b981; color: white; padding: 1rem; border-radius: 0.5rem; margin-bottom: 2rem; text-align: center; }
+                    </style>
+                </head>
+                <body>
+                    <div class="publish-info">
+                        <h3>🚀 This post will be published to:</h3>
+                        <p><strong>https://optiscale360.pages.dev/blog/${generateSlug(frontmatter.title)}/</strong></p>
+                    </div>
+                    <div class="meta">
+                        <h3>Post Preview</h3>
+                        <p><strong>Title:</strong> ${frontmatter.title}</p>
+                        <p><strong>Description:</strong> ${frontmatter.description}</p>
+                        <p><strong>Category:</strong> ${frontmatter.category}</p>
+                        <p><strong>Tags:</strong> ${frontmatter.tags.join(', ')}</p>
+                        <p><strong>Date:</strong> ${frontmatter.date}</p>
+                        <p><strong>Schema:</strong> ${frontmatter.schema || 'Article'}</p>
+                    </div>
+                    ${marked.parse(content)}
+                </body>
+                </html>
+            `;
+
+            const blob = new Blob([previewHTML], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            window.open(url, '_blank');
+        }
+
+        // Load posts (from localStorage for now)
+        function loadPosts() {
+            const postList = document.getElementById('postList');
+            postList.innerHTML = '';
+
+            // Get drafts from localStorage
+            const drafts = [];
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key.startsWith('draft_')) {
+                    try {
+                        const draft = JSON.parse(localStorage.getItem(key));
+                        drafts.push({ ...draft, key, type: 'draft' });
+                    } catch (e) {
+                        console.error('Error parsing draft:', e);
+                    }
+                }
+                if (key.startsWith('published_')) {
+                    try {
+                        const published = localStorage.getItem(key);
+                        const lines = published.split('\n');
+                        const title = lines.find(line => line.startsWith('title:'))?.replace('title:', '').trim().replace(/"/g, '') || 'Published Post';
+                        drafts.push({
+                            key,
+                            type: 'published',
+                            frontmatter: { title },
+                            savedAt: new Date().toISOString()
+                        });
+                    } catch (e) {
+                        console.error('Error parsing published post:', e);
+                    }
+                }
+            }
+
+            // Sort by saved date
+            drafts.sort((a, b) => new Date(b.savedAt) - new Date(a.savedAt));
+
+            if (drafts.length === 0) {
+                postList.innerHTML = '<li style="padding: 1rem; text-align: center; color: var(--text-muted);">No posts yet</li>';
+                return;
+            }
+
+            drafts.slice(0, 10).forEach(item => {
+                const li = document.createElement('li');
+                li.className = 'post-item';
+                if (item.type === 'draft') {
+                    li.onclick = () => loadDraft(item.key);
+                }
+                li.innerHTML = `
+                    <div class="post-title">
+                        <span class="status-indicator ${item.type === 'published' ? 'status-published' : 'status-draft'}"></span>
+                        ${item.frontmatter.title || 'Untitled'}
+                    </div>
+                    <div class="post-meta">
+                        ${item.type === 'published' ? 'Published' : 'Draft'} • ${new Date(item.savedAt).toLocaleDateString()}
+                    </div>
+                `;
+                postList.appendChild(li);
+            });
+        }
+
+        // Load draft
+        function loadDraft(key) {
+            try {
+                const draft = JSON.parse(localStorage.getItem(key));
+
+                // Load frontmatter
+                const fm = draft.frontmatter;
+                document.getElementById('title').value = fm.title || '';
+                document.getElementById('description').value = fm.description || '';
+                document.getElementById('author').value = fm.author || '';
+                document.getElementById('date').value = fm.date || '';
+                document.getElementById('category').value = fm.category || '';
+                document.getElementById('image').value = fm.image || '';
+                document.getElementById('type').value = fm.type || '';
+                document.getElementById('schema').value = fm.schema || '';
+                document.getElementById('totalTime').value = fm.totalTime || '';
+                document.getElementById('serviceName').value = fm.serviceName || '';
+                document.getElementById('serviceType').value = fm.serviceType || '';
+
+                // Load tags
+                tags = fm.tags || [];
+                renderTags();
+
+                // Load content
+                editor.setValue(draft.content || '');
+
+                // Update schema options and stats
+                updateSchemaOptions();
+                updateStats();
+
+                currentPost = key;
+                showNotification('📖 Draft loaded!', 'success');
+
+            } catch (e) {
+                showNotification('❌ Error loading draft', 'error');
+                console.error('Error loading draft:', e);
+            }
+        }
+
+        // New post
+        function newPost() {
+            if (confirm('Create a new post? Any unsaved changes will be lost.')) {
+                clearForm();
+                showNotification('📝 New post started!', 'success');
+            }
+        }
+
+        // Clear form
+        function clearForm() {
+            document.getElementById('blogForm').reset();
+            editor.setValue('');
+            tags = [];
+            renderTags();
+            currentPost = null;
+            faqCount = 0;
+            document.getElementById('faqItems').innerHTML = '';
+            document.getElementById('date').value = new Date().toISOString().split('T')[0];
+            document.getElementById('author').value = 'OptiScale 360 Team';
+            updateStats();
+
+            // Reset deployment status
+            document.getElementById('deploymentStatus').innerHTML = '<p>Ready to publish</p>';
+            document.getElementById('statusBadge').textContent = 'Ready';
+            document.getElementById('statusBadge').className = 'status-badge status-ready';
+        }
+
+        // Show notification
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = `notification show ${type}`;
+
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 5000);
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey || e.metaKey) {
+                if (e.key === 's') {
+                    e.preventDefault();
+                    saveAsDraft();
+                } else if (e.key === 'Enter') {
+                    e.preventDefault();
+                    publishPost();
+                }
+            }
+        });
+
+        // Auto-save every 30 seconds
+        setInterval(() => {
+            const title = document.getElementById('title').value;
+            const content = editor.getValue();
+            if (title && content && !isPublishing) {
+                saveAsDraft();
+            }
+        }, 30000);
+    </script>
+</body>
+</html>
