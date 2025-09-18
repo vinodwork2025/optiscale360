@@ -366,144 +366,50 @@ function generateTableOfContents(content) {
 
 // Generate blog index page
 function generateBlogIndex(posts) {
-    const recentPosts = posts.slice(0, 10);
+    // Read the enhanced blog template
+    const templatePath = path.join(__dirname, 'blog', 'index.html');
+    let template = fs.readFileSync(templatePath, 'utf8');
 
-    return `<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI SEO Blog - Latest Insights & Strategies | ${SITE_NAME}</title>
-    <meta name="description" content="Stay ahead with the latest AI SEO strategies, case studies, and industry insights from OptiScale 360. Expert tips to dominate search results.">
-    <meta name="keywords" content="AI SEO, search engine optimization, digital marketing, organic traffic, SEO strategies">
-    <meta name="robots" content="index, follow">
+    // Prepare posts data for JavaScript injection
+    const postsData = posts.map(post => ({
+        slug: post.slug,
+        title: post.frontmatter.title,
+        description: post.frontmatter.description,
+        date: post.frontmatter.date,
+        category: post.frontmatter.category || 'SEO Strategy',
+        tags: post.frontmatter.tags || ['SEO'],
+        author: post.frontmatter.author || AUTHOR.name,
+        readingTime: post.readingTime
+    }));
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="${SITE_URL}/blog/">
-    <meta property="og:title" content="AI SEO Blog - Latest Insights & Strategies">
-    <meta property="og:description" content="Stay ahead with the latest AI SEO strategies, case studies, and industry insights from OptiScale 360.">
-    <meta property="og:image" content="${SITE_URL}/Optiscale360_logo.svg">
-    <meta property="og:site_name" content="${SITE_NAME}">
+    // Create categories and tags from real data
+    const categories = [...new Set(postsData.map(post => post.category))];
+    const allTags = postsData.flatMap(post => post.tags);
+    const uniqueTags = [...new Set(allTags)];
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="${SITE_URL}/blog/">
-    <meta property="twitter:title" content="AI SEO Blog - Latest Insights & Strategies">
-    <meta property="twitter:description" content="Stay ahead with the latest AI SEO strategies, case studies, and industry insights from OptiScale 360.">
-    <meta property="twitter:image" content="${SITE_URL}/Optiscale360_logo.svg">
+    // Update filter buttons to match real categories
+    const categoryFilters = categories.map(category =>
+        `<button class="filter-btn" data-filter="${category}">${category}</button>`
+    ).join('\n                    ');
 
-    <!-- Canonical URL -->
-    <link rel="canonical" href="${SITE_URL}/blog/">
+    // Replace filter buttons in template
+    template = template.replace(
+        /<button class="filter-btn" data-filter="SEO Strategy">SEO Strategy<\/button>[\s\S]*?<button class="filter-btn" data-filter="Technical SEO">Technical<\/button>/,
+        categoryFilters
+    );
 
-    <!-- RSS Feed -->
-    <link rel="alternate" type="application/rss+xml" title="${SITE_NAME} Blog RSS Feed" href="${SITE_URL}/blog/feed.xml">
+    // Replace the mock data function with real data
+    const realDataFunction = `
+        function getMockPosts() {
+            return ${JSON.stringify(postsData, null, 16)};
+        }`;
 
-    <link rel="stylesheet" href="../styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    template = template.replace(
+        /function getMockPosts\(\) \{[\s\S]*?\];[\s\S]*?\}/,
+        realDataFunction.trim()
+    );
 
-    <!-- JSON-LD for Blog -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Blog",
-        "name": "${SITE_NAME} Blog",
-        "description": "AI SEO insights and strategies from OptiScale 360",
-        "url": "${SITE_URL}/blog/",
-        "publisher": {
-            "@type": "Organization",
-            "name": "${SITE_NAME}",
-            "logo": {
-                "@type": "ImageObject",
-                "url": "${SITE_URL}/Optiscale360_logo.svg"
-            }
-        },
-        "blogPost": [
-            ${recentPosts.map(post => `{
-                "@type": "BlogPosting",
-                "headline": "${post.frontmatter.title}",
-                "description": "${post.frontmatter.description}",
-                "url": "${SITE_URL}/blog/${post.slug}/",
-                "datePublished": "${post.frontmatter.date}",
-                "author": {
-                    "@type": "Person",
-                    "name": "${post.frontmatter.author || AUTHOR.name}"
-                }
-            }`).join(',\n            ')}
-        ]
-    }
-    </script>
-</head>
-<body>
-    <header class="header">
-        <nav class="nav">
-            <div class="nav-container">
-                <div class="nav-logo">
-                    <a href="/" class="logo-link">
-                        <img src="../Optiscale360_logo.svg" alt="OptiScale 360" class="logo-image">
-                    </a>
-                </div>
-                <ul class="nav-menu nav-tabs">
-                    <li class="nav-tab"><a href="/" class="nav-link">Home</a></li>
-                    <li class="nav-tab"><a href="/services.html" class="nav-link">Services</a></li>
-                    <li class="nav-tab"><a href="/case-studies.html" class="nav-link">Case Studies</a></li>
-                    <li class="nav-tab"><a href="/resources.html" class="nav-link">Resources</a></li>
-                    <li class="nav-tab"><a href="/blog/" class="nav-link active">Blog</a></li>
-                    <li class="nav-tab"><a href="/contact.html" class="nav-link">Contact</a></li>
-                </ul>
-                <div class="nav-cta">
-                    <a href="/Free-AI-Ready-Website.html" class="cta-btn">Build Your Next-Gen Website</a>
-                </div>
-                <div class="nav-toggle">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <main class="blog-main">
-        <div class="blog-container">
-            <header class="blog-header">
-                <div class="breadcrumbs">
-                    <a href="/">Home</a>
-                    <span>›</span>
-                    <span>Blog</span>
-                </div>
-                <h1 class="blog-title">AI SEO Insights & Strategies</h1>
-                <p class="blog-description">Stay ahead of the curve with cutting-edge AI SEO strategies, case studies, and industry insights that deliver real results.</p>
-            </header>
-
-            <div class="blog-posts-grid">
-                ${posts.map(post => `
-                <article class="blog-post-card">
-                    <div class="post-card-meta">
-                        <span class="post-category">${post.frontmatter.category || 'SEO'}</span>
-                        <time class="post-date" datetime="${post.frontmatter.date}">${new Date(post.frontmatter.date).toLocaleDateString()}</time>
-                    </div>
-                    <h2 class="post-card-title">
-                        <a href="/blog/${post.slug}/">${post.frontmatter.title}</a>
-                    </h2>
-                    <p class="post-card-excerpt">${post.frontmatter.description}</p>
-                    <div class="post-card-footer">
-                        <span class="post-reading-time">${post.readingTime}</span>
-                        <a href="/blog/${post.slug}/" class="post-read-more">Read More →</a>
-                    </div>
-                    ${post.frontmatter.tags ? `
-                    <div class="post-card-tags">
-                        ${post.frontmatter.tags.slice(0, 3).map(tag => `<span class="tag">${tag}</span>`).join('')}
-                    </div>
-                    ` : ''}
-                </article>
-                `).join('')}
-            </div>
-        </div>
-    </main>
-
-    <script src="../script.js"></script>
-</body>
-</html>`;
+    return template;
 }
 
 // Generate RSS feed
