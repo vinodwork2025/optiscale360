@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OptiScale 360 - Content Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@sanity/client/dist/index.browser.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-100">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-4">
+                    <h1 class="text-2xl font-bold text-gray-900">OptiScale 360 CMS</h1>
+                    <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Content Manager</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="text-gray-600 hover:text-gray-900 transition-colors">View Site</a>
+                    <button onclick="startLocalStudio()" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                        Start Local Studio
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Setup Instructions -->
+        <div class="bg-white rounded-xl shadow-sm p-8 mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Content Management Setup</h2>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Option 1: Local Studio -->
+                <div class="border border-blue-200 rounded-lg p-6 bg-blue-50">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-blue-900 mb-3">Option 1: Local Studio</h3>
+                    <p class="text-blue-800 text-sm mb-4">Run Sanity Studio locally on your computer</p>
+                    <div class="space-y-2 text-sm text-blue-700 mb-4">
+                        <p><strong>1.</strong> Open Terminal/Command Prompt</p>
+                        <p><strong>2.</strong> Navigate to project folder:</p>
+                        <code class="block bg-blue-100 p-2 rounded text-xs">cd optiscale360/studio</code>
+                        <p><strong>3.</strong> Start the studio:</p>
+                        <code class="block bg-blue-100 p-2 rounded text-xs">npm run dev</code>
+                        <p><strong>4.</strong> Open <a href="http://localhost:3333" target="_blank" class="underline">http://localhost:3333</a></p>
+                    </div>
+                    <button onclick="copyCommand('cd optiscale360/studio && npm run dev')" class="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm">
+                        Copy Command
+                    </button>
+                </div>
+
+                <!-- Option 2: Deploy Studio -->
+                <div class="border border-green-200 rounded-lg p-6 bg-green-50">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-green-900 mb-3">Option 2: Deploy Studio</h3>
+                    <p class="text-green-800 text-sm mb-4">Deploy to Sanity's cloud for online access</p>
+                    <div class="space-y-2 text-sm text-green-700 mb-4">
+                        <p><strong>1.</strong> Open Terminal/Command Prompt</p>
+                        <p><strong>2.</strong> Navigate to studio folder:</p>
+                        <code class="block bg-green-100 p-2 rounded text-xs">cd optiscale360/studio</code>
+                        <p><strong>3.</strong> Deploy the studio:</p>
+                        <code class="block bg-green-100 p-2 rounded text-xs">npm run deploy</code>
+                        <p><strong>4.</strong> Follow the prompts to choose URL</p>
+                    </div>
+                    <button onclick="copyCommand('cd optiscale360/studio && npm run deploy')" class="w-full bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 text-sm">
+                        Copy Command
+                    </button>
+                </div>
+
+                <!-- Option 3: Use Sanity.io -->
+                <div class="border border-purple-200 rounded-lg p-6 bg-purple-50">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-purple-900 mb-3">Option 3: Use Sanity.io</h3>
+                    <p class="text-purple-800 text-sm mb-4">Access your project directly on Sanity.io</p>
+                    <div class="space-y-2 text-sm text-purple-700 mb-4">
+                        <p><strong>1.</strong> Go to <a href="https://www.sanity.io/manage" target="_blank" class="underline">sanity.io/manage</a></p>
+                        <p><strong>2.</strong> Login to your account</p>
+                        <p><strong>3.</strong> Find project: <strong>n8rucjn3</strong></p>
+                        <p><strong>4.</strong> Click "Open Studio" or "Content"</p>
+                    </div>
+                    <a href="https://www.sanity.io/manage" target="_blank" class="w-full bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 text-sm block text-center">
+                        Open Sanity.io
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Types Guide -->
+        <div class="bg-white rounded-xl shadow-sm p-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Content Types Available</h2>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Business Templates -->
+                <div class="border border-gray-200 rounded-lg p-6">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Business Templates</h3>
+                    <p class="text-sm text-gray-600 mb-3">Add downloadable templates organized by category</p>
+                    <ul class="text-xs text-gray-500 space-y-1">
+                        <li>• Template Title</li>
+                        <li>• Category Selection</li>
+                        <li>• Description</li>
+                        <li>• Download URL</li>
+                        <li>• Featured Toggle</li>
+                    </ul>
+                </div>
+
+                <!-- Best Practices -->
+                <div class="border border-gray-200 rounded-lg p-6">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Best Practices</h3>
+                    <p class="text-sm text-gray-600 mb-3">Create comprehensive practice guides with rich content</p>
+                    <ul class="text-xs text-gray-500 space-y-1">
+                        <li>• Practice Title</li>
+                        <li>• URL Slug</li>
+                        <li>• Summary Text</li>
+                        <li>• Rich Content (Text + Images)</li>
+                        <li>• Category</li>
+                    </ul>
+                </div>
+
+                <!-- Industry Insights -->
+                <div class="border border-gray-200 rounded-lg p-6">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Industry Insights</h3>
+                    <p class="text-sm text-gray-600 mb-3">Publish latest industry trends and analysis</p>
+                    <ul class="text-xs text-gray-500 space-y-1">
+                        <li>• Insight Title</li>
+                        <li>• URL Slug</li>
+                        <li>• Summary</li>
+                        <li>• Full Content</li>
+                        <li>• Industry Category</li>
+                        <li>• Featured Toggle</li>
+                    </ul>
+                </div>
+
+                <!-- Webinars & Training -->
+                <div class="border border-gray-200 rounded-lg p-6">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Webinars & Training</h3>
+                    <p class="text-sm text-gray-600 mb-3">Schedule and manage training events</p>
+                    <ul class="text-xs text-gray-500 space-y-1">
+                        <li>• Event Title</li>
+                        <li>• Description</li>
+                        <li>• Event Date & Time</li>
+                        <li>• Duration</li>
+                        <li>• Event Type</li>
+                        <li>• Registration URL</li>
+                    </ul>
+                </div>
+
+                <!-- FAQs -->
+                <div class="border border-gray-200 rounded-lg p-6">
+                    <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">FAQs</h3>
+                    <p class="text-sm text-gray-600 mb-3">Build comprehensive help documentation</p>
+                    <ul class="text-xs text-gray-500 space-y-1">
+                        <li>• Question</li>
+                        <li>• Rich Text Answer</li>
+                        <li>• Category</li>
+                        <li>• Display Order</li>
+                    </ul>
+                </div>
+
+                <!-- Content Status -->
+                <div class="border border-gray-200 rounded-lg p-6 bg-gray-50">
+                    <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Auto-Sync</h3>
+                    <p class="text-sm text-gray-600 mb-3">Content automatically updates on your website</p>
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 bg-green-400 rounded-full mr-2"></div>
+                        <span class="text-xs text-green-600">Connected to Project n8rucjn3</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Copy Success Toast -->
+    <div id="copyToast" class="fixed bottom-4 right-4 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg transform translate-y-full transition-transform duration-300">
+        <div class="flex items-center space-x-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Command copied to clipboard!</span>
+        </div>
+    </div>
+
+    <script>
+        function copyCommand(command) {
+            navigator.clipboard.writeText(command).then(() => {
+                showToast();
+            }).catch(() => {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = command;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showToast();
+            });
+        }
+
+        function showToast() {
+            const toast = document.getElementById('copyToast');
+            toast.classList.remove('translate-y-full');
+            setTimeout(() => {
+                toast.classList.add('translate-y-full');
+            }, 3000);
+        }
+
+        function startLocalStudio() {
+            if (confirm('This will open Terminal/Command Prompt. Make sure to navigate to the studio folder and run "npm run dev"')) {
+                // Try to open terminal (works on some systems)
+                try {
+                    window.open('ms-terminal:', '_blank');
+                } catch(e) {
+                    copyCommand('cd optiscale360/studio && npm run dev');
+                    alert('Command copied to clipboard! Paste it in your Terminal/Command Prompt.');
+                }
+            }
+        }
+    </script>
+</body>
+</html>
