@@ -176,397 +176,308 @@
             }
         }
 
-        /* Enhanced Blog Page Styles */
-        .blog-hero {
-            background: var(--bg-gradient-hero);
-            padding: var(--space-3xl) 0;
-            position: relative;
-            overflow: hidden;
-        }
+        /* Modern Magazine Blog Styles */
 
-        .blog-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--bg-gradient-subtle);
-            opacity: 0.7;
-        }
-
-        .blog-hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .blog-hero-badge {
-            display: inline-flex;
+        /* Header Search Bar */
+        .header-search {
+            display: flex;
             align-items: center;
-            gap: var(--space-xs);
-            background: var(--glass-bg);
-            backdrop-filter: var(--backdrop-blur);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--border-radius-xl);
-            padding: var(--space-xs) var(--space-lg);
-            margin-bottom: var(--space-lg);
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--primary-color);
+            margin-left: auto;
+            margin-right: var(--space-lg);
         }
 
-        .blog-hero-title {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 800;
-            margin-bottom: var(--space-lg);
-            background: var(--bg-gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .blog-hero-description {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            margin-bottom: var(--space-2xl);
-            line-height: 1.6;
-        }
-
-        .blog-search-container {
+        .header-search-container {
             position: relative;
-            max-width: 600px;
-            margin: 0 auto var(--space-xl);
+            width: 300px;
         }
 
-        .blog-search {
+        .header-search-input {
             width: 100%;
-            padding: var(--space-lg) var(--space-xl);
-            padding-left: 3.5rem;
-            border: 2px solid var(--border-color);
-            border-radius: var(--border-radius-xl);
-            font-size: 1.1rem;
-            background: var(--bg-primary);
-            transition: var(--transition);
-            box-shadow: var(--shadow-sm);
+            padding: var(--space-xs) var(--space-md);
+            padding-left: 2.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 25px;
+            background: var(--bg-secondary);
+            font-size: 0.9rem;
+            transition: var(--transition-fast);
         }
 
-        .blog-search:focus {
+        .header-search-input:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: var(--shadow-glow);
+            background: var(--bg-primary);
+            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
         }
 
-        .search-icon {
+        .header-search-icon {
             position: absolute;
-            left: var(--space-lg);
+            left: 0.75rem;
             top: 50%;
             transform: translateY(-50%);
-            width: 1.25rem;
-            height: 1.25rem;
+            width: 1rem;
+            height: 1rem;
             color: var(--text-muted);
         }
 
-        .blog-filters {
-            display: flex;
-            justify-content: center;
-            gap: var(--space-md);
-            margin-bottom: var(--space-3xl);
-            flex-wrap: wrap;
+        /* Magazine Hero Section */
+        .magazine-hero {
+            padding: var(--space-xl) 0 var(--space-2xl);
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-bottom: 1px solid var(--border-color);
         }
 
-        .filter-btn {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: var(--border-radius-xl);
-            padding: var(--space-xs) var(--space-lg);
-            color: var(--text-secondary);
-            font-weight: 500;
-            transition: var(--transition);
-            cursor: pointer;
+        .magazine-hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+            text-align: center;
         }
 
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
-            transform: translateY(-1px);
+        .magazine-title {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--space-sm);
+            letter-spacing: -0.02em;
         }
 
-        .blog-main-content {
+        .magazine-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        /* Latest Posts Carousel */
+        .latest-carousel-section {
             padding: var(--space-2xl) 0;
+            background: var(--bg-primary);
         }
 
-        .blog-layout {
-            display: grid;
-            grid-template-columns: 1fr 300px;
-            gap: var(--space-3xl);
+        .carousel-header {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-xl);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0;
+        }
+
+        .carousel-container {
+            position: relative;
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 var(--space-lg);
         }
 
-        .blog-content {
-            min-width: 0;
-        }
-
-        .featured-section {
-            margin-bottom: var(--space-3xl);
-        }
-
-        .section-title {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: var(--space-xl);
-            color: var(--text-primary);
-            position: relative;
-            padding-left: var(--space-lg);
-        }
-
-        .section-title::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: var(--bg-gradient-1);
-            border-radius: 2px;
-        }
-
-        .featured-post {
-            background: var(--bg-primary);
-            border-radius: var(--border-radius-xl);
+        .carousel-wrapper {
             overflow: hidden;
-            box-shadow: var(--shadow-lg);
+            border-radius: var(--border-radius-lg);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+            gap: var(--space-lg);
+        }
+
+        .carousel-post {
+            min-width: 350px;
+            background: var(--bg-primary);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
             transition: var(--transition);
-            position: relative;
         }
 
-        .featured-post::before {
-            content: 'FEATURED';
-            position: absolute;
-            top: var(--space-lg);
-            right: var(--space-lg);
-            background: var(--accent-color);
-            color: white;
-            padding: var(--space-xs) var(--space-md);
-            border-radius: var(--border-radius);
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            z-index: 2;
-        }
-
-        .featured-post:hover {
-            transform: translateY(-8px);
+        .carousel-post:hover {
+            transform: translateY(-4px);
             box-shadow: var(--shadow-xl);
         }
 
-        .featured-image {
-            width: 100%;
-            height: 300px;
-            background: var(--bg-gradient-1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .featured-image::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(45deg, rgba(37, 99, 235, 0.1), rgba(8, 145, 178, 0.1));
-        }
-
-        .featured-content {
-            padding: var(--space-2xl);
-        }
-
-        .featured-meta {
-            display: flex;
-            align-items: center;
-            gap: var(--space-md);
-            margin-bottom: var(--space-lg);
-        }
-
-        .featured-category {
-            background: var(--bg-gradient-1);
-            color: white;
-            padding: var(--space-xs) var(--space-md);
-            border-radius: var(--border-radius);
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        .featured-date {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        .featured-title {
-            font-size: 1.75rem;
-            font-weight: 700;
-            margin-bottom: var(--space-md);
-            line-height: 1.3;
-        }
-
-        .featured-title a {
-            color: var(--text-primary);
-            text-decoration: none;
-            transition: var(--transition-fast);
-        }
-
-        .featured-title a:hover {
-            color: var(--primary-color);
-        }
-
-        .featured-excerpt {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: var(--space-lg);
-            line-height: 1.7;
-        }
-
-        .featured-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .featured-tags {
-            display: flex;
-            gap: var(--space-xs);
-            flex-wrap: wrap;
-        }
-
-        .featured-tag {
-            background: var(--bg-secondary);
-            color: var(--text-muted);
-            padding: 0.25rem 0.5rem;
-            border-radius: var(--border-radius-sm);
-            font-size: 0.8rem;
-            border: 1px solid var(--border-color);
-        }
-
-        .read-more-btn {
-            background: var(--primary-color);
-            color: white;
-            padding: var(--space-md) var(--space-xl);
-            border-radius: var(--border-radius);
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: var(--space-xs);
-        }
-
-        .read-more-btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-
-        .posts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: var(--space-xl);
-        }
-
-        .post-card {
-            background: var(--bg-primary);
-            border: 1px solid var(--border-color);
-            border-radius: var(--border-radius-lg);
-            overflow: hidden;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .post-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--bg-gradient-1);
-        }
-
-        .post-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary-color);
-        }
-
-        .post-card-image {
+        .carousel-post-image {
             width: 100%;
             height: 200px;
-            background: var(--bg-secondary);
-            position: relative;
-            overflow: hidden;
-            transition: background 0.3s ease, opacity 0.3s ease;
-            opacity: 0.7;
-        }
-
-        .post-card-image.loaded {
-            opacity: 1;
-        }
-
-        .post-card-content {
-            padding: var(--space-xl);
-        }
-
-        .post-card-meta {
-            display: flex;
-            align-items: center;
-            gap: var(--space-md);
-            margin-bottom: var(--space-md);
-        }
-
-        .post-card-category {
             background: var(--bg-gradient-1);
+            position: relative;
+        }
+
+        .carousel-post-content {
+            padding: var(--space-lg);
+        }
+
+        .carousel-post-category {
+            background: var(--primary-color);
             color: white;
             padding: 0.25rem 0.75rem;
             border-radius: var(--border-radius-sm);
             font-size: 0.8rem;
             font-weight: 600;
-        }
-
-        .post-card-date {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        .post-card-title {
-            font-size: 1.25rem;
-            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
             margin-bottom: var(--space-md);
-            line-height: 1.4;
+            display: inline-block;
         }
 
-        .post-card-title a {
+        .carousel-post-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: var(--space-sm);
+        }
+
+        .carousel-post-title a {
             color: var(--text-primary);
             text-decoration: none;
             transition: var(--transition-fast);
         }
 
-        .post-card-title a:hover {
+        .carousel-post-title a:hover {
             color: var(--primary-color);
         }
 
-        .post-card-excerpt {
+        .carousel-post-excerpt {
+            font-size: 0.9rem;
             color: var(--text-secondary);
-            margin-bottom: var(--space-lg);
             line-height: 1.6;
+            margin-bottom: var(--space-md);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .carousel-post-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .carousel-nav {
+            display: flex;
+            gap: var(--space-xs);
+        }
+
+        .carousel-btn {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .carousel-btn:hover {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+
+        .carousel-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        /* Magazine Grid Layout */
+        .magazine-main {
+            padding: var(--space-2xl) 0;
+            background: var(--bg-primary);
+        }
+
+        .magazine-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+        }
+
+        .posts-grid-magazine {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: var(--space-2xl);
+        }
+
+        .magazine-post-card {
+            background: var(--bg-primary);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .magazine-post-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(37, 99, 235, 0.2);
+        }
+
+        .magazine-post-image {
+            width: 100%;
+            height: 250px;
+            background: var(--bg-gradient-2);
+            position: relative;
+        }
+
+        .magazine-post-category-overlay {
+            position: absolute;
+            top: var(--space-md);
+            left: var(--space-md);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .magazine-post-content {
+            padding: var(--space-xl);
+        }
+
+        .magazine-post-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: var(--space-md);
+        }
+
+        .magazine-post-title a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+
+        .magazine-post-title a:hover {
+            color: var(--primary-color);
+        }
+
+        .magazine-post-excerpt {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: var(--space-lg);
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
 
-        .post-card-footer {
+        .magazine-post-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -574,148 +485,34 @@
             border-top: 1px solid var(--border-color);
         }
 
-        .post-card-reading-time {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        .post-card-link {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition-fast);
-        }
-
-        .post-card-link:hover {
-            color: var(--primary-dark);
-        }
-
-        .blog-sidebar {
-            position: sticky;
-            top: var(--space-xl);
-            height: fit-content;
-        }
-
-        .sidebar-widget {
-            background: var(--bg-primary);
-            border: 1px solid var(--border-color);
-            border-radius: var(--border-radius-lg);
-            padding: var(--space-xl);
-            margin-bottom: var(--space-xl);
-        }
-
-        .widget-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: var(--space-lg);
-            color: var(--text-primary);
-        }
-
-        .categories-list {
-            list-style: none;
-        }
-
-        .categories-list li {
-            margin-bottom: var(--space-md);
-        }
-
-        .categories-list a {
+        .magazine-post-meta {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            color: var(--text-secondary);
-            text-decoration: none;
-            padding: var(--space-xs) var(--space-md);
-            border-radius: var(--border-radius);
-            transition: var(--transition-fast);
-        }
-
-        .categories-list a:hover {
-            background: var(--bg-secondary);
-            color: var(--primary-color);
-        }
-
-        .category-count {
-            background: var(--bg-secondary);
-            color: var(--text-muted);
-            padding: 0.25rem 0.5rem;
-            border-radius: var(--border-radius-sm);
-            font-size: 0.8rem;
-        }
-
-        .tags-cloud {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--space-xs);
-        }
-
-        .tag-cloud-item {
-            background: var(--bg-secondary);
-            color: var(--text-secondary);
-            padding: var(--space-xs) var(--space-md);
-            border-radius: var(--border-radius);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: var(--transition-fast);
-            border: 1px solid var(--border-color);
-        }
-
-        .tag-cloud-item:hover {
-            background: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
-        }
-
-        .newsletter-signup {
-            background: var(--bg-gradient-1);
-            color: white;
-            border-radius: var(--border-radius-lg);
-            padding: var(--space-xl);
-            text-align: center;
-        }
-
-        .newsletter-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: var(--space-md);
-        }
-
-        .newsletter-description {
-            margin-bottom: var(--space-lg);
-            opacity: 0.9;
-        }
-
-        .newsletter-form {
-            display: flex;
             gap: var(--space-md);
+            font-size: 0.9rem;
+            color: var(--text-muted);
         }
 
-        .newsletter-input {
-            flex: 1;
-            padding: var(--space-md);
-            border: none;
-            border-radius: var(--border-radius);
-            font-size: 1rem;
-        }
-
-        .newsletter-btn {
-            background: white;
+        .magazine-read-more {
             color: var(--primary-color);
-            border: none;
-            padding: var(--space-md) var(--space-lg);
-            border-radius: var(--border-radius);
             font-weight: 600;
-            cursor: pointer;
+            text-decoration: none;
             transition: var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .newsletter-btn:hover {
-            background: var(--bg-secondary);
+        .magazine-read-more:hover {
+            color: var(--primary-dark);
+            transform: translateX(2px);
         }
 
+        /* Load More Button */
         .load-more-container {
             text-align: center;
             margin-top: var(--space-3xl);
+            padding: var(--space-xl) 0;
         }
 
         .load-more-btn {
@@ -739,130 +536,111 @@
             transform: translateY(-2px);
         }
 
+        /* No Results */
         .no-results {
             text-align: center;
             padding: var(--space-3xl);
             color: var(--text-muted);
         }
 
-        .no-results-icon {
-            width: 4rem;
-            height: 4rem;
-            margin: 0 auto var(--space-lg);
-            color: var(--text-light);
+        .no-results h3 {
+            margin-bottom: var(--space-md);
+            color: var(--text-secondary);
         }
 
-        /* Mobile Responsive */
+        /* Magazine Responsive Design */
         @media (max-width: 1024px) {
-            .blog-layout {
-                grid-template-columns: 1fr;
-                gap: var(--space-xl);
+            .header-search {
+                display: none;
             }
 
-            .blog-sidebar {
-                position: static;
-                order: -1;
+            .carousel-post {
+                min-width: 300px;
+            }
+
+            .posts-grid-magazine {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                gap: var(--space-xl);
             }
         }
 
         @media (max-width: 768px) {
-            .blog-hero {
-                padding: var(--space-2xl) 0;
+            .magazine-hero {
+                padding: var(--space-lg) 0;
             }
 
-            .blog-hero-title {
-                font-size: 2.5rem;
+            .magazine-title {
+                font-size: 2rem;
             }
 
-            .blog-hero-description {
-                font-size: 1.1rem;
+            .carousel-post {
+                min-width: 280px;
             }
 
-            .blog-filters {
-                gap: var(--space-xs);
-                flex-wrap: wrap;
+            .carousel-post-content {
+                padding: var(--space-md);
             }
 
-            .posts-grid {
+            .posts-grid-magazine {
                 grid-template-columns: 1fr;
                 gap: var(--space-lg);
             }
 
-            .newsletter-form {
-                flex-direction: column;
+            .magazine-post-content {
+                padding: var(--space-lg);
             }
 
-            .blog-layout {
-                padding: 0 var(--space-md);
+            .magazine-post-title {
+                font-size: 1.25rem;
             }
         }
 
         @media (max-width: 480px) {
-            .blog-hero-title {
-                font-size: 2rem;
-                line-height: 1.2;
+            .nav-container {
+                padding: var(--space-md) var(--space-md);
             }
 
-            .blog-hero-description {
-                font-size: 1rem;
+            .nav-menu {
+                display: none;
             }
 
-            .blog-search-container {
-                width: 100%;
+            .nav-cta {
+                display: none;
             }
 
-            .blog-search {
-                font-size: 16px; /* Prevents zoom on iOS */
+            .nav-toggle {
+                display: flex;
             }
 
-            .blog-filters {
-                justify-content: center;
+            .magazine-container,
+            .carousel-container {
+                padding: 0 var(--space-md);
             }
 
-            .filter-btn {
-                padding: var(--space-xs) var(--space-sm);
-                font-size: 0.85rem;
+            .carousel-header {
+                padding: 0 var(--space-md);
             }
 
-            .posts-grid {
-                grid-template-columns: 1fr;
+            .carousel-post {
+                min-width: 260px;
+            }
+
+            .magazine-post-image {
+                height: 200px;
+            }
+
+            .magazine-post-content {
+                padding: var(--space-md);
+            }
+
+            .magazine-post-title {
+                font-size: 1.1rem;
+            }
+
+            .magazine-post-footer {
+                flex-direction: column;
                 gap: var(--space-md);
-            }
-
-            .post-card {
-                margin: 0 -var(--space-xs);
-            }
-
-            .post-card-content {
-                padding: var(--space-lg);
-            }
-
-            .post-card-title {
-                font-size: 1.1rem;
-            }
-
-            .featured-post-content {
-                padding: var(--space-lg);
-            }
-
-            .featured-title {
-                font-size: 1.5rem;
-            }
-
-            .blog-sidebar {
-                margin-top: var(--space-xl);
-            }
-
-            .sidebar-widget {
-                padding: var(--space-lg);
-            }
-
-            .widget-title {
-                font-size: 1.1rem;
-            }
-
-            .newsletter-form input {
-                font-size: 16px; /* Prevents zoom on iOS */
+                align-items: flex-start;
             }
         }
 
@@ -920,6 +698,18 @@
                     <li class="nav-tab"><a href="/blog/" class="nav-link active">Blog</a></li>
                     <li class="nav-tab"><a href="/contact.html" class="nav-link">Contact</a></li>
                 </ul>
+
+                <!-- Header Search Bar -->
+                <div class="header-search">
+                    <div class="header-search-container">
+                        <svg class="header-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"/>
+                            <path d="m21 21-4.35-4.35"/>
+                        </svg>
+                        <input type="text" class="header-search-input" id="headerSearch" placeholder="Search articles...">
+                    </div>
+                </div>
+
                 <div class="nav-cta">
                     <a href="/Free-AI-Ready-Website.html" class="cta-btn">Build Your Next-Gen Website</a>
                 </div>
@@ -932,121 +722,74 @@
         </nav>
     </header>
 
-    <!-- Blog Hero Section -->
-    <section class="blog-hero">
-        <div class="container">
-            <div class="blog-hero-content">
-                <div class="blog-hero-badge">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                    </svg>
-                    Latest AI SEO Insights
-                </div>
-                <h1 class="blog-hero-title">AI SEO Mastery Hub</h1>
-                <p class="blog-hero-description">
-                    Discover cutting-edge strategies, expert insights, and proven tactics to dominate search results with AI-powered SEO techniques.
-                </p>
+    <!-- Magazine Hero Section -->
+    <section class="magazine-hero">
+        <div class="magazine-hero-content">
+            <h1 class="magazine-title">AI SEO Insights & Strategies</h1>
+            <p class="magazine-subtitle">Latest expert insights, case studies, and cutting-edge strategies to dominate search results</p>
+        </div>
+    </section>
 
-                <div class="blog-search-container">
-                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="11" cy="11" r="8"/>
-                        <path d="m21 21-4.35-4.35"/>
+    <!-- Latest Posts Carousel -->
+    <section class="latest-carousel-section">
+        <div class="carousel-header">
+            <h2 class="section-title">Latest Articles</h2>
+            <div class="carousel-nav">
+                <button class="carousel-btn" id="prevBtn" onclick="moveCarousel(-1)">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 18l-6-6 6-6"/>
                     </svg>
-                    <input type="text" class="blog-search" id="blogSearch" placeholder="Search for AI SEO strategies, case studies, guides...">
-                </div>
+                </button>
+                <button class="carousel-btn" id="nextBtn" onclick="moveCarousel(1)">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
 
-                <div class="blog-filters" id="blogFilters">
-                    <button class="filter-btn active" data-filter="all">All Posts</button>
-                    <button class="filter-btn" data-filter="SEO Strategy">SEO Strategy</button>
-                    <button class="filter-btn" data-filter="Case Study">Case Study</button>
-                    <button class="filter-btn" data-filter="Local SEO">Local SEO</button>
+        <div class="carousel-container">
+            <div class="carousel-wrapper">
+                <div class="carousel-track" id="carouselTrack">
+                    <!-- Carousel posts will be loaded here -->
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Main Blog Content -->
-    <main class="blog-main-content">
-        <div class="blog-layout">
-            <div class="blog-content">
-                <!-- Featured Post Section -->
-                <section class="featured-section" id="featuredSection">
-                    <h2 class="section-title">Featured Article</h2>
-                    <div id="featuredPost">
-                        <!-- Featured post will be loaded here -->
-                    </div>
-                </section>
-
-                <!-- Recent Posts Section -->
-                <section class="posts-section">
-                    <h2 class="section-title">Latest Insights</h2>
-                    <div class="posts-grid" id="postsGrid">
-                        <!-- Posts will be loaded here -->
-                    </div>
-
-                    <div class="load-more-container" id="loadMoreContainer" style="display: none;">
-                        <button class="load-more-btn" id="loadMoreBtn">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 5v14M5 12h14"/>
-                            </svg>
-                            Load More Articles
-                        </button>
-                    </div>
-
-                    <div class="no-results" id="noResults" style="display: none;">
-                        <svg class="no-results-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-                            <circle cx="11" cy="11" r="8"/>
-                            <path d="m21 21-4.35-4.35"/>
-                            <path d="M11 7v4M11 15h.01"/>
-                        </svg>
-                        <h3>No articles found</h3>
-                        <p>Try adjusting your search terms or filters</p>
-                    </div>
-                </section>
+    <!-- Magazine Main Content -->
+    <main class="magazine-main">
+        <div class="magazine-container">
+            <div class="posts-grid-magazine" id="magazineGrid">
+                <!-- Magazine posts will be loaded here -->
             </div>
 
-            <!-- Sidebar -->
-            <aside class="blog-sidebar">
-                <!-- Categories Widget -->
-                <div class="sidebar-widget">
-                    <h3 class="widget-title">Categories</h3>
-                    <ul class="categories-list" id="categoriesList">
-                        <!-- Categories will be loaded here -->
-                    </ul>
-                </div>
+            <div class="load-more-container" id="loadMoreContainer" style="display: none;">
+                <button class="load-more-btn" id="loadMoreBtn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 5v14M5 12h14"/>
+                    </svg>
+                    Load More Articles
+                </button>
+            </div>
 
-                <!-- Popular Tags Widget -->
-                <div class="sidebar-widget">
-                    <h3 class="widget-title">Popular Topics</h3>
-                    <div class="tags-cloud" id="tagsCloud">
-                        <!-- Tags will be loaded here -->
-                    </div>
-                </div>
-
-                <!-- Newsletter Signup -->
-                <div class="sidebar-widget">
-                    <div class="newsletter-signup">
-                        <h3 class="newsletter-title">Stay Updated</h3>
-                        <p class="newsletter-description">Get the latest AI SEO insights delivered to your inbox</p>
-                        <form class="newsletter-form" id="newsletterForm">
-                            <input type="email" class="newsletter-input" placeholder="Your email" required>
-                            <button type="submit" class="newsletter-btn">Subscribe</button>
-                        </form>
-                    </div>
-                </div>
-            </aside>
+            <div class="no-results" id="noResults" style="display: none;">
+                <h3>No articles found</h3>
+                <p>Try adjusting your search terms</p>
+            </div>
         </div>
     </main>
 
     <script>
-        // Blog functionality
+        // Magazine Blog functionality
         let allPosts = [];
         let filteredPosts = [];
-        let currentFilter = 'all';
         let currentPage = 1;
+        let carouselIndex = 0;
         const postsPerPage = 6;
+        const postsPerView = 3; // Posts visible in carousel
 
-        // Initialize blog
+        // Initialize magazine blog
         document.addEventListener('DOMContentLoaded', function() {
             loadBlogPosts();
             setupEventListeners();
@@ -1070,10 +813,8 @@
             }
 
             filteredPosts = [...allPosts];
-            renderFeaturedPost();
-            renderPosts();
-            renderCategories();
-            renderTags();
+            renderCarousel();
+            renderMagazinePosts();
         }
 
         // Mock data for demonstration
@@ -1144,23 +885,148 @@
 
         // Setup event listeners
         function setupEventListeners() {
-            // Search functionality
-            const searchInput = document.getElementById('blogSearch');
-            searchInput.addEventListener('input', debounce(handleSearch, 300));
-
-            // Filter buttons
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            filterButtons.forEach(btn => {
-                btn.addEventListener('click', () => handleFilter(btn));
-            });
+            // Header search functionality
+            const headerSearchInput = document.getElementById('headerSearch');
+            if (headerSearchInput) {
+                headerSearchInput.addEventListener('input', debounce(handleHeaderSearch, 300));
+            }
 
             // Load more button
             const loadMoreBtn = document.getElementById('loadMoreBtn');
-            loadMoreBtn.addEventListener('click', loadMorePosts);
+            if (loadMoreBtn) {
+                loadMoreBtn.addEventListener('click', loadMorePosts);
+            }
+        }
 
-            // Newsletter form
-            const newsletterForm = document.getElementById('newsletterForm');
-            newsletterForm.addEventListener('submit', handleNewsletterSignup);
+        // Handle header search
+        function handleHeaderSearch(event) {
+            const query = event.target.value.toLowerCase();
+
+            if (!query.trim()) {
+                filteredPosts = [...allPosts];
+            } else {
+                filteredPosts = allPosts.filter(post => {
+                    return post.title.toLowerCase().includes(query) ||
+                           post.description.toLowerCase().includes(query) ||
+                           post.category.toLowerCase().includes(query) ||
+                           post.tags.some(tag => tag.toLowerCase().includes(query));
+                });
+            }
+
+            currentPage = 1;
+            renderMagazinePosts();
+        }
+
+        // Render carousel
+        function renderCarousel() {
+            const carouselTrack = document.getElementById('carouselTrack');
+            if (!carouselTrack) return;
+
+            const latestPosts = allPosts.slice(0, 4); // Show first 4 posts
+
+            carouselTrack.innerHTML = latestPosts.map(post => `
+                <article class="carousel-post">
+                    <div class="carousel-post-image"></div>
+                    <div class="carousel-post-content">
+                        <span class="carousel-post-category">${post.category}</span>
+                        <h3 class="carousel-post-title">
+                            <a href="/blog/${post.slug}/">${post.title}</a>
+                        </h3>
+                        <p class="carousel-post-excerpt">${post.description}</p>
+                        <div class="carousel-post-meta">
+                            <span>${new Date(post.date).toLocaleDateString()}</span>
+                            <span>${post.readingTime}</span>
+                        </div>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        // Render magazine posts
+        function renderMagazinePosts() {
+            const magazineGrid = document.getElementById('magazineGrid');
+            const noResults = document.getElementById('noResults');
+            const loadMoreContainer = document.getElementById('loadMoreContainer');
+
+            if (!magazineGrid) return;
+
+            const postsToShow = filteredPosts.slice(0, currentPage * postsPerPage);
+
+            if (postsToShow.length === 0) {
+                magazineGrid.innerHTML = '';
+                noResults.style.display = 'block';
+                loadMoreContainer.style.display = 'none';
+                return;
+            }
+
+            noResults.style.display = 'none';
+
+            magazineGrid.innerHTML = postsToShow.map(post => `
+                <article class="magazine-post-card">
+                    <div class="magazine-post-image">
+                        <div class="magazine-post-category-overlay">${post.category}</div>
+                    </div>
+                    <div class="magazine-post-content">
+                        <h2 class="magazine-post-title">
+                            <a href="/blog/${post.slug}/">${post.title}</a>
+                        </h2>
+                        <p class="magazine-post-excerpt">${post.description}</p>
+                        <div class="magazine-post-footer">
+                            <div class="magazine-post-meta">
+                                <span>${new Date(post.date).toLocaleDateString()}</span>
+                                <span>${post.readingTime}</span>
+                                <span>By ${post.author}</span>
+                            </div>
+                            <a href="/blog/${post.slug}/" class="magazine-read-more">
+                                Read More
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            `).join('');
+
+            // Show/hide load more button
+            const hasMore = filteredPosts.length > currentPage * postsPerPage;
+            loadMoreContainer.style.display = hasMore ? 'block' : 'none';
+        }
+
+        // Carousel navigation
+        function moveCarousel(direction) {
+            const track = document.getElementById('carouselTrack');
+            const posts = document.querySelectorAll('.carousel-post');
+            const totalPosts = posts.length;
+
+            if (totalPosts <= postsPerView) return; // No need to move if all posts are visible
+
+            carouselIndex += direction;
+
+            // Loop around
+            if (carouselIndex < 0) {
+                carouselIndex = Math.max(0, totalPosts - postsPerView);
+            } else if (carouselIndex > totalPosts - postsPerView) {
+                carouselIndex = 0;
+            }
+
+            const translateX = -carouselIndex * (100 / postsPerView);
+            track.style.transform = `translateX(${translateX}%)`;
+
+            // Update button states
+            updateCarouselButtons();
+        }
+
+        // Update carousel button states
+        function updateCarouselButtons() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const totalPosts = document.querySelectorAll('.carousel-post').length;
+
+            if (prevBtn && nextBtn) {
+                prevBtn.disabled = carouselIndex === 0;
+                nextBtn.disabled = carouselIndex >= totalPosts - postsPerView;
+            }
         }
 
         // Debounce function
@@ -1176,269 +1042,11 @@
             };
         }
 
-        // Handle search
-        function handleSearch(event) {
-            const query = event.target.value.toLowerCase();
-
-            filteredPosts = allPosts.filter(post => {
-                return post.title.toLowerCase().includes(query) ||
-                       post.description.toLowerCase().includes(query) ||
-                       post.category.toLowerCase().includes(query) ||
-                       post.tags.some(tag => tag.toLowerCase().includes(query));
-            });
-
-            // Apply current filter if not 'all'
-            if (currentFilter !== 'all') {
-                filteredPosts = filteredPosts.filter(post => post.category === currentFilter);
-            }
-
-            currentPage = 1;
-            renderPosts();
-        }
-
-        // Handle filter
-        function handleFilter(button) {
-            // Update active button
-            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-
-            currentFilter = button.dataset.filter;
-
-            if (currentFilter === 'all') {
-                filteredPosts = [...allPosts];
-            } else {
-                filteredPosts = allPosts.filter(post => post.category === currentFilter);
-            }
-
-            // Apply search if active
-            const searchQuery = document.getElementById('blogSearch').value.toLowerCase();
-            if (searchQuery) {
-                filteredPosts = filteredPosts.filter(post => {
-                    return post.title.toLowerCase().includes(searchQuery) ||
-                           post.description.toLowerCase().includes(searchQuery) ||
-                           post.category.toLowerCase().includes(searchQuery) ||
-                           post.tags.some(tag => tag.toLowerCase().includes(searchQuery));
-                });
-            }
-
-            currentPage = 1;
-            renderPosts();
-        }
-
-        // Render featured post
-        function renderFeaturedPost() {
-            const featuredContainer = document.getElementById('featuredPost');
-            const featuredPost = allPosts[0]; // Use first post as featured
-
-            if (!featuredPost) return;
-
-            featuredContainer.innerHTML = `
-                <article class="featured-post">
-                    <div class="featured-image"></div>
-                    <div class="featured-content">
-                        <div class="featured-meta">
-                            <span class="featured-category">${featuredPost.category}</span>
-                            <span class="featured-date">${new Date(featuredPost.date).toLocaleDateString()}</span>
-                        </div>
-                        <h2 class="featured-title">
-                            <a href="/blog/${featuredPost.slug}/">${featuredPost.title}</a>
-                        </h2>
-                        <p class="featured-excerpt">${featuredPost.description}</p>
-                        <div class="featured-footer">
-                            <div class="featured-tags">
-                                ${featuredPost.tags.slice(0, 3).map(tag => `<span class="featured-tag">${tag}</span>`).join('')}
-                            </div>
-                            <a href="/blog/${featuredPost.slug}/" class="read-more-btn">
-                                Read Full Article
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </article>
-            `;
-        }
-
-        // Render posts
-        function renderPosts() {
-            const postsContainer = document.getElementById('postsGrid');
-            const noResults = document.getElementById('noResults');
-            const loadMoreContainer = document.getElementById('loadMoreContainer');
-
-            // Skip featured post for grid
-            const postsToShow = filteredPosts.slice(1, currentPage * postsPerPage + 1);
-
-            if (postsToShow.length === 0) {
-                postsContainer.innerHTML = '';
-                noResults.style.display = 'block';
-                loadMoreContainer.style.display = 'none';
-                return;
-            }
-
-            noResults.style.display = 'none';
-
-            postsContainer.innerHTML = postsToShow.map(post => `
-                <article class="post-card">
-                    <div class="post-card-image"></div>
-                    <div class="post-card-content">
-                        <div class="post-card-meta">
-                            <span class="post-card-category">${post.category}</span>
-                            <span class="post-card-date">${new Date(post.date).toLocaleDateString()}</span>
-                        </div>
-                        <h3 class="post-card-title">
-                            <a href="/blog/${post.slug}/">${post.title}</a>
-                        </h3>
-                        <p class="post-card-excerpt">${post.description}</p>
-                        <div class="post-card-footer">
-                            <span class="post-card-reading-time">5 min read</span>
-                            <a href="/blog/${post.slug}/" class="post-card-link">Read More →</a>
-                        </div>
-                    </div>
-                </article>
-            `).join('');
-
-            // Show/hide load more button
-            const hasMore = filteredPosts.length > currentPage * postsPerPage + 1;
-            loadMoreContainer.style.display = hasMore ? 'block' : 'none';
-        }
-
         // Load more posts
         function loadMorePosts() {
             currentPage++;
-            renderPosts();
+            renderMagazinePosts();
         }
-
-        // Render categories
-        function renderCategories() {
-            const categoriesContainer = document.getElementById('categoriesList');
-            const categories = [...new Set(allPosts.map(post => post.category))];
-
-            categoriesContainer.innerHTML = categories.map(category => {
-                const count = allPosts.filter(post => post.category === category).length;
-                return `
-                    <li>
-                        <a href="#" data-filter="${category}" onclick="filterByCategory('${category}')">
-                            ${category}
-                            <span class="category-count">${count}</span>
-                        </a>
-                    </li>
-                `;
-            }).join('');
-        }
-
-        // Render tags
-        function renderTags() {
-            const tagsContainer = document.getElementById('tagsCloud');
-            const allTags = allPosts.flatMap(post => post.tags);
-            const uniqueTags = [...new Set(allTags)].slice(0, 12); // Limit to 12 tags
-
-            tagsContainer.innerHTML = uniqueTags.map(tag =>
-                `<a href="#" class="tag-cloud-item" onclick="searchByTag('${tag}')">${tag}</a>`
-            ).join('');
-        }
-
-        // Filter by category (from sidebar)
-        function filterByCategory(category) {
-            const filterBtn = document.querySelector(`[data-filter="${category}"]`);
-            if (filterBtn) {
-                handleFilter(filterBtn);
-            }
-        }
-
-        // Search by tag
-        function searchByTag(tag) {
-            document.getElementById('blogSearch').value = tag;
-            handleSearch({ target: { value: tag } });
-        }
-
-        // Handle newsletter signup
-        function handleNewsletterSignup(event) {
-            event.preventDefault();
-            const email = event.target.querySelector('input[type="email"]').value;
-
-            // Simulate newsletter signup
-            alert(`Thank you! We'll send AI SEO insights to ${email}`);
-            event.target.reset();
-        }
-
-        // Performance Optimizations
-
-        // Lazy loading for post card images using Intersection Observer
-        function initLazyLoading() {
-            if ('IntersectionObserver' in window) {
-                const lazyImages = document.querySelectorAll('.post-card-image');
-                const imageObserver = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const img = entry.target;
-                            img.style.background = 'var(--bg-gradient-2)';
-                            img.classList.add('loaded');
-                            observer.unobserve(img);
-                        }
-                    });
-                }, { rootMargin: '50px' });
-
-                lazyImages.forEach(img => imageObserver.observe(img));
-            }
-        }
-
-        // Preload critical resources
-        function preloadCriticalResources() {
-            const link = document.createElement('link');
-            link.rel = 'preconnect';
-            link.href = 'https://fonts.googleapis.com';
-            document.head.appendChild(link);
-        }
-
-        // Performance monitoring (simple timing)
-        function trackPerformance() {
-            if ('performance' in window) {
-                window.addEventListener('load', () => {
-                    setTimeout(() => {
-                        const loadTime = performance.now();
-                        console.log(`Blog page loaded in ${loadTime.toFixed(2)}ms`);
-
-                        // Track Core Web Vitals if available
-                        if ('PerformanceObserver' in window) {
-                            const observer = new PerformanceObserver((list) => {
-                                for (const entry of list.getEntries()) {
-                                    if (entry.entryType === 'largest-contentful-paint') {
-                                        console.log(`LCP: ${entry.startTime.toFixed(2)}ms`);
-                                    }
-                                }
-                            });
-                            observer.observe({ entryTypes: ['largest-contentful-paint'] });
-                        }
-                    }, 0);
-                });
-            }
-        }
-
-        // Optimize scroll performance with passive listeners
-        function initOptimizedScrolling() {
-            let ticking = false;
-
-            function handleScroll() {
-                if (!ticking) {
-                    requestAnimationFrame(() => {
-                        // Add scroll-based animations here if needed
-                        ticking = false;
-                    });
-                    ticking = true;
-                }
-            }
-
-            window.addEventListener('scroll', handleScroll, { passive: true });
-        }
-
-        // Initialize performance optimizations
-        document.addEventListener('DOMContentLoaded', () => {
-            preloadCriticalResources();
-            initLazyLoading();
-            initOptimizedScrolling();
-            trackPerformance();
-        });
 
         // Mobile menu toggle (if needed)
         const navToggle = document.querySelector('.nav-toggle');
