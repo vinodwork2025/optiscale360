@@ -1,11 +1,9 @@
-export const sanityConfig = {
-  projectId: 'qxn2e29n',
-  dataset: 'production',
-  apiVersion: '2023-05-03',
-  useCdn: true
-};
+import { defineConfig } from 'sanity'
+import { structureTool } from 'sanity/structure'
+import { visionTool } from '@sanity/vision'
 
-export const schemas = [
+// Define schemas for OptiScale 360
+const schemaTypes = [
   {
     name: 'businessTemplate',
     title: 'Business Template',
@@ -15,7 +13,7 @@ export const schemas = [
         name: 'title',
         title: 'Template Title',
         type: 'string',
-        validation: Rule => Rule.required()
+        validation: (Rule: any) => Rule.required()
       },
       {
         name: 'category',
@@ -31,7 +29,7 @@ export const schemas = [
             {title: 'Project Management', value: 'project'}
           ]
         },
-        validation: Rule => Rule.required()
+        validation: (Rule: any) => Rule.required()
       },
       {
         name: 'description',
@@ -61,7 +59,7 @@ export const schemas = [
         title: 'title',
         category: 'category'
       },
-      prepare(selection) {
+      prepare(selection: any) {
         const {title, category} = selection;
         return {
           title: title,
@@ -79,7 +77,7 @@ export const schemas = [
         name: 'title',
         title: 'Practice Title',
         type: 'string',
-        validation: Rule => Rule.required()
+        validation: (Rule: any) => Rule.required()
       },
       {
         name: 'slug',
@@ -89,7 +87,7 @@ export const schemas = [
           source: 'title',
           maxLength: 96
         },
-        validation: Rule => Rule.required()
+        validation: (Rule: any) => Rule.required()
       },
       {
         name: 'summary',
@@ -143,7 +141,7 @@ export const schemas = [
         name: 'title',
         title: 'Insight Title',
         type: 'string',
-        validation: Rule => Rule.required()
+        validation: (Rule: any) => Rule.required()
       },
       {
         name: 'slug',
@@ -212,7 +210,7 @@ export const schemas = [
         name: 'title',
         title: 'Event Title',
         type: 'string',
-        validation: Rule => Rule.required()
+        validation: (Rule: any) => Rule.required()
       },
       {
         name: 'description',
@@ -223,7 +221,7 @@ export const schemas = [
         name: 'eventDate',
         title: 'Event Date',
         type: 'datetime',
-        validation: Rule => Rule.required()
+        validation: (Rule: any) => Rule.required()
       },
       {
         name: 'duration',
@@ -266,7 +264,7 @@ export const schemas = [
         name: 'question',
         title: 'Question',
         type: 'string',
-        validation: Rule => Rule.required()
+        validation: (Rule: any) => Rule.required()
       },
       {
         name: 'answer',
@@ -305,4 +303,56 @@ export const schemas = [
       }
     ]
   }
-];
+]
+
+export default defineConfig({
+  name: 'optiscale360',
+  title: 'OptiScale 360 CMS',
+  projectId: 'qxn2e29n',
+  dataset: 'production',
+
+  plugins: [
+    structureTool({
+      structure: (S) =>
+        S.list()
+          .title('Content')
+          .items([
+            S.listItem()
+              .title('Business Templates')
+              .child(
+                S.documentTypeList('businessTemplate')
+                  .title('Business Templates')
+              ),
+            S.listItem()
+              .title('Best Practices')
+              .child(
+                S.documentTypeList('bestPractice')
+                  .title('Best Practices')
+              ),
+            S.listItem()
+              .title('Industry Insights')
+              .child(
+                S.documentTypeList('industryInsight')
+                  .title('Industry Insights')
+              ),
+            S.listItem()
+              .title('Webinars & Training')
+              .child(
+                S.documentTypeList('webinar')
+                  .title('Webinars & Training')
+              ),
+            S.listItem()
+              .title('FAQs')
+              .child(
+                S.documentTypeList('faq')
+                  .title('FAQs')
+              ),
+          ])
+    }),
+    visionTool()
+  ],
+
+  schema: {
+    types: schemaTypes
+  }
+})

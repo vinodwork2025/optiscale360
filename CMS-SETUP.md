@@ -57,7 +57,7 @@ sanity deploy
 
 **Environment Variables** (if deploying your own)
 ```
-SANITY_PROJECT_ID=n8rucjn3
+SANITY_PROJECT_ID=qxn2e29n
 SANITY_DATASET=production
 SANITY_API_VERSION=2023-05-03
 ```
@@ -127,7 +127,7 @@ SANITY_API_VERSION=2023-05-03
 
 ### API Integration
 - **Client**: @sanity/client for data fetching
-- **Endpoint**: https://n8rucjn3.api.sanity.io/v2023-05-03/data/query/production
+- **Endpoint**: https://qxn2e29n.api.sanity.io/v2023-05-03/data/query/production
 - **Real-time**: Content updates automatically
 - **CDN**: Sanity CDN for fast global delivery
 
@@ -160,7 +160,7 @@ SANITY_API_VERSION=2023-05-03
 - Clear browser cache and refresh
 
 **Can't access Sanity Studio?**
-- Ensure you have admin access to project n8rucjn3
+- Ensure you have admin access to project qxn2e29n
 - Contact Sanity support if login issues persist
 
 **Deployment issues?**

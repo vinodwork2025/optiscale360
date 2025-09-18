@@ -1,7 +1,7 @@
 import { createClient } from '@sanity/client';
 
 const client = createClient({
-  projectId: 'n8rucjn3',
+  projectId: 'qxn2e29n',
   dataset: 'production',
   apiVersion: '2023-05-03',
   useCdn: true
@@ -203,7 +203,7 @@ export class ContentAPI {
     if (!image.asset) return '';
     const ref = image.asset._ref;
     const [id, dimensions, format] = ref.replace('image-', '').split('-');
-    return `https://cdn.sanity.io/images/n8rucjn3/production/${id}-${dimensions}.${format}`;
+    return `https://cdn.sanity.io/images/qxn2e29n/production/${id}-${dimensions}.${format}`;
   }
 }
 
