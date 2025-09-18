@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+    <title>OptiScale 360 Blog</title>
+    <description>AI SEO insights and strategies from OptiScale 360</description>
+    <link>https://optiscale360.pages.dev/blog/</link>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 18 Sep 2025 09:17:16 GMT</lastBuildDate>
+    <atom:link href="https://optiscale360.pages.dev/blog/feed.xml" rel="self" type="application/rss+xml"/>
+
+    
+    <item>
+        <title><![CDATA[The Ultimate Guide to AI-Powered SEO: Dominate Search Results in 2024]]></title>
+        <description><![CDATA[Master AI SEO with our comprehensive guide. Learn cutting-edge strategies, tools, and techniques to boost organic traffic by 300% and outrank competitors.]]></description>
+        <link>https://optiscale360.pages.dev/blog/ai-seo-ultimate-guide/</link>
+        <guid>https://optiscale360.pages.dev/blog/ai-seo-ultimate-guide/</guid>
+        <pubDate>Fri, 15 Mar 2024 00:00:00 GMT</pubDate>
+        <author>info@optiscale360.com (Sarah Mitchell)</author>
+        <category>SEO Strategy</category>
+    </item>
+    
+    <item>
+        <title><![CDATA[Case Study: How We Increased Ecommerce Organic Traffic by 425% in 8 Months]]></title>
+        <description><![CDATA[Discover how our AI-powered SEO strategy transformed a struggling ecommerce site into a traffic powerhouse, generating $2.1M in additional revenue.]]></description>
+        <link>https://optiscale360.pages.dev/blog/case-study-ecommerce-seo-success/</link>
+        <guid>https://optiscale360.pages.dev/blog/case-study-ecommerce-seo-success/</guid>
+        <pubDate>Sun, 10 Mar 2024 00:00:00 GMT</pubDate>
+        <author>info@optiscale360.com (Marcus Rodriguez)</author>
+        <category>Case Study</category>
+    </item>
+    
+    <item>
+        <title><![CDATA[Local SEO Mastery: Complete Guide for Dominating Local Search in 2024]]></title>
+        <description><![CDATA[Master local SEO with our step-by-step guide. Learn proven strategies to dominate Google Maps, increase local visibility, and drive more customers to your business.]]></description>
+        <link>https://optiscale360.pages.dev/blog/local-seo-guide-2024/</link>
+        <guid>https://optiscale360.pages.dev/blog/local-seo-guide-2024/</guid>
+        <pubDate>Tue, 05 Mar 2024 00:00:00 GMT</pubDate>
+        <author>info@optiscale360.com (Jennifer Chen)</author>
+        <category>Local SEO</category>
+    </item>
+    
+</channel>
+</rss>

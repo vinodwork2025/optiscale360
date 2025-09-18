@@ -1,0 +1,40 @@
+name = "optiscale360-blog"
+compatibility_date = "2024-03-15"
+
+[build]
+command = "node _build.js"
+publish = "."
+
+[[redirects]]
+from = "/blog"
+to = "/blog/"
+status = 301
+
+[[redirects]]
+from = "/blog/feed"
+to = "/blog/feed.xml"
+status = 301
+
+[env.production.vars]
+ENVIRONMENT = "production"
+
+# Static files configuration
+[site]
+bucket = "."
+
+# Cache headers for blog content
+[[headers]]
+for = "/blog/**"
+[headers.values]
+Cache-Control = "public, max-age=3600"
+
+[[headers]]
+for = "/blog/feed.xml"
+[headers.values]
+Cache-Control = "public, max-age=1800"
+Content-Type = "application/rss+xml; charset=utf-8"
+
+[[headers]]
+for = "/blog/*.html"
+[headers.values]
+Cache-Control = "public, max-age=3600"

@@ -1,0 +1,30 @@
+{
+  "name": "optiscale360-blog",
+  "version": "1.0.0",
+  "description": "AI-powered SEO blog system for OptiScale 360",
+  "main": "blog-generator.js",
+  "scripts": {
+    "build:blog": "node blog-generator.js",
+    "build": "npm run build:blog",
+    "dev": "npm run build:blog && python -m http.server 8000",
+    "preview": "npm run build:blog && start index.html"
+  },
+  "dependencies": {
+    "gray-matter": "^4.0.3",
+    "marked": "^9.1.6",
+    "marked-highlight": "^2.0.6",
+    "highlight.js": "^11.9.0"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  },
+  "keywords": [
+    "blog",
+    "markdown",
+    "seo",
+    "static-site",
+    "cloudflare-pages"
+  ],
+  "author": "OptiScale 360",
+  "license": "MIT"
+}
