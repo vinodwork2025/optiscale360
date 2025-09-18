@@ -1,21 +1,17 @@
+# Cloudflare Pages headers for CORS and module support
+
 /*
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
 
-/
-  Content-Type: text/html; charset=utf-8
+# Enable ES6 modules
+/*.js
+  Content-Type: application/javascript
 
-/index.html
-  Content-Type: text/html; charset=utf-8
-
-*.html
-  Content-Type: text/html; charset=utf-8
-  
-*.css
-  Content-Type: text/css; charset=utf-8
-  Cache-Control: public, max-age=31536000
-  
-*.js
-  Content-Type: application/javascript; charset=utf-8
-  Cache-Control: public, max-age=31536000
+# API routes
+/api/*
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS
+  Access-Control-Allow-Headers: Content-Type, Authorization

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Content Management - OptiScale 360 Admin</title>
+    <title>Sanity CMS - OptiScale 360 Admin</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -26,91 +26,156 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center space-x-4">
-                    <h1 class="text-2xl font-bold text-gray-900">OptiScale 360 Admin</h1>
-                    <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Content Management</span>
+                    <h1 class="text-2xl font-bold text-gray-900">OptiScale 360 CMS</h1>
+                    <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Sanity Powered</span>
                 </div>
                 <div class="flex items-center space-x-4">
                     <a href="index.html" class="text-gray-600 hover:text-gray-900 transition-colors">View Site</a>
-                    <button id="saveAll" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
-                        Save All Changes
-                    </button>
+                    <a href="https://optiscale360.sanity.studio" target="_blank" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                        Open Sanity Studio
+                    </a>
                 </div>
             </div>
         </div>
     </header>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div class="grid lg:grid-cols-4 gap-8">
-            <!-- Sidebar Navigation -->
+        <div class="grid lg:grid-cols-3 gap-8">
+
+            <!-- Instructions -->
             <div class="lg:col-span-1">
-                <nav class="bg-white rounded-xl p-6 shadow-sm">
-                    <h2 class="text-lg font-semibold text-gray-900 mb-4">Resource Pages</h2>
-                    <div class="space-y-2">
-                        <button onclick="loadEditor('business-templates')" class="w-full text-left px-3 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors resource-nav-btn" data-resource="business-templates">
-                            📄 Business Templates
-                        </button>
-                        <button onclick="loadEditor('best-practices')" class="w-full text-left px-3 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors resource-nav-btn" data-resource="best-practices">
-                            📋 Best Practices Guide
-                        </button>
-                        <button onclick="loadEditor('industry-insights')" class="w-full text-left px-3 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors resource-nav-btn" data-resource="industry-insights">
-                            📊 Industry Insights
-                        </button>
-                        <button onclick="loadEditor('roi-calculator')" class="w-full text-left px-3 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors resource-nav-btn" data-resource="roi-calculator">
-                            🧮 ROI Calculator
-                        </button>
-                        <button onclick="loadEditor('webinars-training')" class="w-full text-left px-3 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors resource-nav-btn" data-resource="webinars-training">
-                            🎓 Webinars & Training
-                        </button>
-                        <button onclick="loadEditor('support-center')" class="w-full text-left px-3 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors resource-nav-btn" data-resource="support-center">
-                            🛠️ Support Center
-                        </button>
+                <div class="bg-white rounded-xl p-6 shadow-sm">
+                    <h2 class="text-lg font-semibold text-gray-900 mb-4">Content Management</h2>
+                    <div class="space-y-4 text-sm text-gray-600">
+                        <div>
+                            <h3 class="font-medium text-gray-900 mb-2">📝 Add Content</h3>
+                            <p>Click "Open Sanity Studio" above to access the full CMS where you can add and edit all your content.</p>
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-gray-900 mb-2">🔄 Auto-Sync</h3>
+                            <p>Content automatically appears on your website within seconds of publishing.</p>
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-gray-900 mb-2">📊 Content Types</h3>
+                            <ul class="list-disc pl-4 space-y-1">
+                                <li>Business Templates</li>
+                                <li>Best Practices</li>
+                                <li>Industry Insights</li>
+                                <li>Webinars & Training</li>
+                                <li>FAQs</li>
+                            </ul>
+                        </div>
                     </div>
-                </nav>
+                </div>
             </div>
 
-            <!-- Main Content Editor -->
-            <div class="lg:col-span-3">
-                <div id="editorContainer" class="bg-white rounded-xl shadow-sm">
-                    <!-- Welcome Screen -->
-                    <div id="welcomeScreen" class="p-12 text-center">
-                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
-                            </svg>
+            <!-- Quick Actions -->
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-xl shadow-sm p-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Quick Actions</h2>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- Business Templates -->
+                        <div class="border border-gray-200 rounded-lg p-6 hover:border-blue-300 transition-colors">
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="font-semibold text-gray-900 mb-2">Business Templates</h3>
+                            <p class="text-sm text-gray-600 mb-4">Add downloadable templates organized by category</p>
+                            <a href="https://optiscale360.sanity.studio/structure/businessTemplate" target="_blank" class="text-blue-600 text-sm font-medium hover:text-blue-700">
+                                Manage Templates →
+                            </a>
                         </div>
-                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Content Management System</h2>
-                        <p class="text-gray-600 mb-8 max-w-2xl mx-auto">Select a resource page from the sidebar to edit its content. You can modify text, add new sections, update templates, and more.</p>
-                        <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                            <div class="p-6 bg-green-50 rounded-lg">
-                                <h3 class="font-semibold text-green-900 mb-2">✅ Easy to Use</h3>
-                                <p class="text-green-700 text-sm">Simple interface for editing content without coding knowledge</p>
+
+                        <!-- Best Practices -->
+                        <div class="border border-gray-200 rounded-lg p-6 hover:border-green-300 transition-colors">
+                            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                                </svg>
                             </div>
-                            <div class="p-6 bg-blue-50 rounded-lg">
-                                <h3 class="font-semibold text-blue-900 mb-2">⚡ Live Preview</h3>
-                                <p class="text-blue-700 text-sm">See changes in real-time before publishing</p>
+                            <h3 class="font-semibold text-gray-900 mb-2">Best Practices</h3>
+                            <p class="text-sm text-gray-600 mb-4">Create comprehensive practice guides</p>
+                            <a href="https://optiscale360.sanity.studio/structure/bestPractice" target="_blank" class="text-green-600 text-sm font-medium hover:text-green-700">
+                                Manage Practices →
+                            </a>
+                        </div>
+
+                        <!-- Industry Insights -->
+                        <div class="border border-gray-200 rounded-lg p-6 hover:border-purple-300 transition-colors">
+                            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                                </svg>
                             </div>
+                            <h3 class="font-semibold text-gray-900 mb-2">Industry Insights</h3>
+                            <p class="text-sm text-gray-600 mb-4">Publish latest industry trends and analysis</p>
+                            <a href="https://optiscale360.sanity.studio/structure/industryInsight" target="_blank" class="text-purple-600 text-sm font-medium hover:text-purple-700">
+                                Manage Insights →
+                            </a>
+                        </div>
+
+                        <!-- Webinars -->
+                        <div class="border border-gray-200 rounded-lg p-6 hover:border-red-300 transition-colors">
+                            <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="font-semibold text-gray-900 mb-2">Webinars & Training</h3>
+                            <p class="text-sm text-gray-600 mb-4">Schedule and manage training events</p>
+                            <a href="https://optiscale360.sanity.studio/structure/webinar" target="_blank" class="text-red-600 text-sm font-medium hover:text-red-700">
+                                Manage Events →
+                            </a>
+                        </div>
+
+                        <!-- Support FAQs -->
+                        <div class="border border-gray-200 rounded-lg p-6 hover:border-teal-300 transition-colors">
+                            <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="font-semibold text-gray-900 mb-2">Support FAQs</h3>
+                            <p class="text-sm text-gray-600 mb-4">Build comprehensive help documentation</p>
+                            <a href="https://optiscale360.sanity.studio/structure/faq" target="_blank" class="text-teal-600 text-sm font-medium hover:text-teal-700">
+                                Manage FAQs →
+                            </a>
+                        </div>
+
+                        <!-- Site Preview -->
+                        <div class="border border-gray-200 rounded-lg p-6 hover:border-gray-400 transition-colors">
+                            <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="font-semibold text-gray-900 mb-2">Preview Site</h3>
+                            <p class="text-sm text-gray-600 mb-4">View your live website and published content</p>
+                            <a href="index.html" class="text-gray-600 text-sm font-medium hover:text-gray-700">
+                                View Website →
+                            </a>
                         </div>
                     </div>
 
-                    <!-- Dynamic Editor Content -->
-                    <div id="editorContent" class="hidden">
-                        <!-- Content will be loaded dynamically -->
+                    <!-- Status Info -->
+                    <div class="mt-8 p-4 bg-green-50 border border-green-200 rounded-lg">
+                        <div class="flex items-center">
+                            <div class="w-3 h-3 bg-green-400 rounded-full mr-3"></div>
+                            <p class="text-sm text-green-800">
+                                <strong>CMS Status:</strong> Connected to Sanity (Project ID: n8rucjn3)
+                            </p>
+                        </div>
+                        <p class="text-xs text-green-600 mt-2">
+                            Content changes are automatically synced to your live website.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Success Toast -->
-    <div id="successToast" class="fixed bottom-4 right-4 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg transform translate-y-full transition-transform duration-300">
-        <div class="flex items-center space-x-2">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-            </svg>
-            <span>Changes saved successfully!</span>
-        </div>
-    </div>
-
-    <script src="admin-system.js"></script>
 </body>
 </html>
