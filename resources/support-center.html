@@ -164,7 +164,7 @@
                 <p class="text-xl text-gray-600">Quick answers to common questions</p>
             </div>
 
-            <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+            <div id="faq-list" class="bg-white rounded-2xl shadow-xl overflow-hidden">
                 <div class="faq-item p-6" onclick="toggleFAQ(1)">
                     <div class="flex justify-between items-center">
                         <h3 class="text-lg font-semibold text-gray-900">How do I get started with OptiScale 360 services?</h3>
@@ -352,6 +352,7 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script src="../content-integration.js"></script>
     <script>
         function toggleFAQ(id) {
             const answer = document.getElementById(`faq-answer-${id}`);
