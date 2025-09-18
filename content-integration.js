@@ -8,8 +8,17 @@ class ContentIntegration {
         const contentData = this.getStoredContent();
         const currentPage = this.getCurrentPageType();
 
-        if (currentPage && contentData[currentPage]) {
+        console.log('Content Integration Debug:', {
+            currentPage,
+            hasContentData: !!contentData,
+            hasPageData: !!(contentData && contentData[currentPage])
+        });
+
+        if (currentPage && contentData && contentData[currentPage]) {
+            console.log('Rendering content for:', currentPage);
             this.renderPageContent(currentPage, contentData[currentPage]);
+        } else {
+            console.log('No content to render - using default page content');
         }
     }
 
@@ -227,3 +236,8 @@ function toggleFAQ(index) {
 document.addEventListener('DOMContentLoaded', () => {
     new ContentIntegration();
 });
+
+// Also check for content updates periodically
+setInterval(() => {
+    const integration = new ContentIntegration();
+}, 2000);

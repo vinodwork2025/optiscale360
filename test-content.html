@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Test - OptiScale 360</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold mb-8">Content Integration Test</h1>
+
+        <div class="bg-white p-6 rounded-lg shadow mb-6">
+            <h2 class="text-xl font-semibold mb-4">Stored Content Check</h2>
+            <button onclick="checkContent()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                Check LocalStorage Content
+            </button>
+            <pre id="contentDisplay" class="mt-4 bg-gray-100 p-4 rounded text-sm overflow-auto max-h-96"></pre>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow mb-6">
+            <h2 class="text-xl font-semibold mb-4">Test Content Addition</h2>
+            <button onclick="addTestContent()" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 mr-2">
+                Add Test Content
+            </button>
+            <button onclick="clearContent()" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
+                Clear All Content
+            </button>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow">
+            <h2 class="text-xl font-semibold mb-4">Business Templates Test</h2>
+            <div id="templates-grid" class="grid md:grid-cols-2 gap-4">
+                <!-- Content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function checkContent() {
+            const content = localStorage.getItem('optiscale-content');
+            const display = document.getElementById('contentDisplay');
+
+            if (content) {
+                display.textContent = JSON.stringify(JSON.parse(content), null, 2);
+            } else {
+                display.textContent = 'No content found in localStorage';
+            }
+        }
+
+        function addTestContent() {
+            const testContent = {
+                'business-templates': {
+                    title: 'Business Templates',
+                    description: 'Ready-to-use templates for business planning, process documentation, and strategic planning.',
+                    sections: [
+                        {
+                            title: 'Strategic Planning Templates',
+                            items: ['Business Plan Template', 'SWOT Analysis Template', 'Strategic Roadmap Template']
+                        },
+                        {
+                            title: 'Financial Templates',
+                            items: ['Budget Planning Template', 'Financial Forecast Template', 'ROI Analysis Template']
+                        },
+                        {
+                            title: 'NEW TEST CATEGORY',
+                            items: ['Test Template 1', 'Test Template 2']
+                        }
+                    ]
+                }
+            };
+
+            localStorage.setItem('optiscale-content', JSON.stringify(testContent));
+            alert('Test content added! Check content now.');
+            loadTestContent();
+        }
+
+        function clearContent() {
+            localStorage.removeItem('optiscale-content');
+            document.getElementById('contentDisplay').textContent = '';
+            document.getElementById('templates-grid').innerHTML = '';
+            alert('Content cleared!');
+        }
+
+        function loadTestContent() {
+            const content = localStorage.getItem('optiscale-content');
+            if (content) {
+                const data = JSON.parse(content);
+                const templatesData = data['business-templates'];
+
+                if (templatesData && templatesData.sections) {
+                    renderTemplates(templatesData.sections);
+                }
+            }
+        }
+
+        function renderTemplates(sections) {
+            const container = document.getElementById('templates-grid');
+            let html = '';
+
+            sections.forEach(section => {
+                html += `
+                    <div class="bg-gray-50 p-4 rounded border">
+                        <h3 class="font-semibold text-gray-900 mb-2">${section.title}</h3>
+                        <ul class="space-y-1">
+                            ${section.items.map(item => `<li class="text-gray-600">• ${item}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        // Load content on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadTestContent();
+        });
+    </script>
+</body>
+</html>
