@@ -309,7 +309,7 @@ function generatePostHTML(post) {
             </div>
             ` : ''}
 
-            <div class="blog-post-content">
+            <div class="blog-content">
                 ${htmlContent}
             </div>
 
