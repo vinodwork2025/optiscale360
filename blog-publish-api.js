@@ -205,8 +205,32 @@ app.post('/api/publish', async (req, res) => {
         const filename = `${slug}.md`;
         const filePath = path.join(POSTS_DIR, filename);
 
-        // Process images if any
+        // Clean and process content
         let processedContent = content;
+
+        // Remove Microsoft Word artifacts and clean HTML
+        processedContent = processedContent
+            .replace(/<div class="WordSection1">/g, '')
+            .replace(/<\/div>/g, '')
+            .replace(/<p class="MsoTitle"[^>]*>/g, '<h1>')
+            .replace(/<p class="MsoNormal"[^>]*>/g, '<p>')
+            .replace(/<p class="MsoBodyText"[^>]*>/g, '<p>')
+            .replace(/<span[^>]*>/g, '')
+            .replace(/<\/span>/g, '')
+            .replace(/<o:p><\/o:p>/g, '')
+            .replace(/<!--.*?-->/gs, '')
+            .replace(/style="[^"]*"/g, '')
+            .replace(/class="[^"]*"/g, '')
+            .replace(/lang="[^"]*"/g, '')
+            .replace(/align="[^"]*"/g, '')
+            .replace(/margin[^;]*;/g, '')
+            .replace(/font-[^;]*;/g, '')
+            .replace(/color:[^;]*;/g, '')
+            .replace(/letter-spacing:[^;]*;/g, '')
+            .replace(/\s+/g, ' ')
+            .trim();
+
+        // Process images if any
         if (images && images.length > 0) {
             const imagesDir = path.join(__dirname, 'blog', 'images');
             if (!fs.existsSync(imagesDir)) {
@@ -224,8 +248,11 @@ app.post('/api/publish', async (req, res) => {
 
                     fs.writeFileSync(imagePath, base64Data, 'base64');
 
-                    // Replace base64 images in content with relative paths
-                    processedContent = processedContent.replace(img.data, `../images/${imageName}`);
+                    // Replace base64 images in content with proper HTML
+                    processedContent = processedContent.replace(
+                        img.data,
+                        `<img src="../images/${imageName}" alt="${img.name}" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px;">`
+                    );
                 }
             }
         }
@@ -238,11 +265,13 @@ app.post('/api/publish', async (req, res) => {
         });
 
         // Step 2: Create frontmatter
+        const currentDate = new Date().toISOString().split('T')[0];
         const frontmatter = {
             title: title,
             excerpt: excerpt || '',
             category: category || 'General',
-            publishDate: new Date().toISOString().split('T')[0],
+            date: currentDate,
+            publishDate: currentDate,
             author: 'OptiScale 360 Team',
             tags: []
         };

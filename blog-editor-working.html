@@ -253,6 +253,12 @@
             border: 1px solid #fecaca;
         }
 
+        .status.info {
+            background: #dbeafe;
+            color: #1e40af;
+            border: 1px solid #93c5fd;
+        }
+
         .loading {
             opacity: 0.6;
             pointer-events: none;
@@ -610,14 +616,25 @@
                 const result = await response.json();
 
                 if (result.success) {
-                    showStatus('🎉 Post published successfully!', 'success');
+                    showStatus(`🎉 Post "${result.slug}" published successfully! Opening in 3 seconds...`, 'success');
+
+                    // Clear form
+                    document.getElementById('title').value = '';
+                    document.getElementById('excerpt').value = '';
+                    contentEditor.innerHTML = '';
+                    uploadedImages = [];
+                    imageList.innerHTML = '';
+                    updateStats();
+
+                    // Auto-open published post
                     setTimeout(() => {
                         if (result.url) {
                             window.open(result.url, '_blank');
+                            showStatus(`✅ Post live at: ${result.url}`, 'success');
                         }
-                    }, 1000);
+                    }, 3000);
                 } else {
-                    showStatus(`Error: ${result.error}`, 'error');
+                    showStatus(`❌ Publishing failed: ${result.error}`, 'error');
                 }
             } catch (error) {
                 showStatus(`Network error: ${error.message}`, 'error');
