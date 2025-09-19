@@ -10,11 +10,12 @@ const { execSync } = require('child_process');
 const cors = require('cors');
 
 const app = express();
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 3003;
 
 // Middleware
 app.use(cors());
-app.use(express.json({ limit: '10mb' }));
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(express.static(__dirname));
 
 // Paths
@@ -187,42 +188,72 @@ app.get('/api/posts/:filename', (req, res) => {
 
 // Publish new post (complete workflow)
 app.post('/api/publish', async (req, res) => {
-    const { frontmatter, content, commitMessage } = req.body;
+    const { title, excerpt, category, content, images } = req.body;
 
-    if (!frontmatter || !content) {
+    if (!title || !content) {
         return res.status(400).json({
             success: false,
-            error: 'Frontmatter and content are required'
-        });
-    }
-
-    if (!frontmatter.title) {
-        return res.status(400).json({
-            success: false,
-            error: 'Post title is required'
+            error: 'Title and content are required'
         });
     }
 
     try {
         const results = [];
 
-        // Step 1: Generate filename and content
-        const slug = generateSlug(frontmatter.title);
+        // Step 1: Generate filename and process images
+        const slug = generateSlug(title);
         const filename = `${slug}.md`;
         const filePath = path.join(POSTS_DIR, filename);
 
-        // Generate YAML frontmatter
-        const yamlFrontmatter = generateYAMLFrontmatter(frontmatter);
-        const fullContent = `---\n${yamlFrontmatter}---\n\n${content}`;
+        // Process images if any
+        let processedContent = content;
+        if (images && images.length > 0) {
+            const imagesDir = path.join(__dirname, 'blog', 'images');
+            if (!fs.existsSync(imagesDir)) {
+                fs.mkdirSync(imagesDir, { recursive: true });
+            }
+
+            // Save images and update content
+            for (let i = 0; i < images.length; i++) {
+                const img = images[i];
+                if (img.data && img.name) {
+                    const base64Data = img.data.replace(/^data:image\/[a-z]+;base64,/, '');
+                    const ext = img.name.split('.').pop();
+                    const imageName = `${slug}-${i + 1}.${ext}`;
+                    const imagePath = path.join(imagesDir, imageName);
+
+                    fs.writeFileSync(imagePath, base64Data, 'base64');
+
+                    // Replace base64 images in content with relative paths
+                    processedContent = processedContent.replace(img.data, `../images/${imageName}`);
+                }
+            }
+        }
 
         results.push({
             step: 1,
-            description: 'Validate content',
+            description: 'Process content and images',
             status: 'completed',
-            details: `Generated slug: ${slug}`
+            details: `Generated slug: ${slug}, processed ${images ? images.length : 0} images`
         });
 
-        // Step 2: Save to posts directory
+        // Step 2: Create frontmatter
+        const frontmatter = {
+            title: title,
+            excerpt: excerpt || '',
+            category: category || 'General',
+            publishDate: new Date().toISOString().split('T')[0],
+            author: 'OptiScale 360 Team',
+            tags: []
+        };
+
+        const yamlFrontmatter = Object.entries(frontmatter)
+            .map(([key, value]) => `${key}: "${value}"`)
+            .join('\n');
+
+        const fullContent = `---\n${yamlFrontmatter}\n---\n\n${processedContent}`;
+
+        // Step 3: Save to posts directory
         fs.writeFileSync(filePath, fullContent, 'utf8');
         results.push({
             step: 2,
@@ -231,7 +262,7 @@ app.post('/api/publish', async (req, res) => {
             details: `Saved: blog/posts/${filename}`
         });
 
-        // Step 3: Build blog
+        // Step 4: Build blog
         const buildResult = executeCommand('node blog-generator.js', 'Build blog site');
         results.push({
             step: 3,
@@ -244,10 +275,10 @@ app.post('/api/publish', async (req, res) => {
             throw new Error(`Build failed: ${buildResult.error}`);
         }
 
-        // Step 4: Commit to Git
-        const finalCommitMessage = commitMessage || `📝 Add new blog post: ${frontmatter.title}
+        // Step 5: Commit to Git
+        const commitMessage = `📝 Add new blog post: ${title}
 
-Published via Blog Admin Pro
+Published via Rich Blog Editor
 
 🤖 Generated with Claude Code (https://claude.ai/code)
 
@@ -258,7 +289,7 @@ Co-Authored-By: Claude <noreply@anthropic.com>`;
             throw new Error(`Git add failed: ${gitAddResult.error}`);
         }
 
-        const commitResult = executeCommand(`git commit -m "${finalCommitMessage.replace(/"/g, '\\"')}"`, 'Commit changes');
+        const commitResult = executeCommand(`git commit -m "${commitMessage.replace(/"/g, '\\"')}"`, 'Commit changes');
         results.push({
             step: 4,
             description: 'Commit to Git',
@@ -270,7 +301,7 @@ Co-Authored-By: Claude <noreply@anthropic.com>`;
             throw new Error(`Git commit failed: ${commitResult.error}`);
         }
 
-        // Step 5: Push to remote
+        // Step 6: Push to remote
         const pushResult = executeCommand('git push', 'Push to remote repository');
         results.push({
             step: 5,
@@ -297,20 +328,19 @@ Co-Authored-By: Claude <noreply@anthropic.com>`;
         console.error('Publishing error:', error);
         res.status(500).json({
             success: false,
-            error: error.message,
-            results: results
+            error: error.message
         });
     }
 });
 
 // Save draft (create/update post without publishing)
 app.post('/api/save-draft', (req, res) => {
-    const { frontmatter, content, filename } = req.body;
+    const { title, excerpt, category, content, images } = req.body;
 
-    if (!frontmatter || !content) {
+    if (!title || !content) {
         return res.status(400).json({
             success: false,
-            error: 'Frontmatter and content are required'
+            error: 'Title and content are required'
         });
     }
 

@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rich Blog Editor - OptiScale 360</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Quill.js Rich Text Editor -->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+
+    <style>
+        .editor-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-lg);
+            min-height: 100vh;
+            background: #f8fafc;
+        }
+
+        .editor-header {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .editor-grid {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: var(--space-xl);
+        }
+
+        .editor-main {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .editor-sidebar {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            padding: var(--space-lg);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            height: fit-content;
+            position: sticky;
+            top: var(--space-lg);
+        }
+
+        .form-section {
+            padding: var(--space-xl);
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .form-section:last-child {
+            border-bottom: none;
+        }
+
+        .form-group {
+            margin-bottom: var(--space-lg);
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: var(--space-xs);
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: var(--space-md);
+            border: 1px solid #d1d5db;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Rich Text Editor Styles */
+        .ql-editor {
+            min-height: 400px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .ql-toolbar {
+            border-top: 1px solid #e2e8f0;
+            border-left: 1px solid #e2e8f0;
+            border-right: 1px solid #e2e8f0;
+            background: #f8fafc;
+        }
+
+        .ql-container {
+            border-bottom: 1px solid #e2e8f0;
+            border-left: 1px solid #e2e8f0;
+            border-right: 1px solid #e2e8f0;
+        }
+
+        /* Image Upload Styles */
+        .image-upload {
+            border: 2px dashed #d1d5db;
+            border-radius: var(--border-radius-lg);
+            padding: var(--space-xl);
+            text-align: center;
+            background: #f9fafb;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .image-upload:hover {
+            border-color: var(--accent-color);
+            background: #eff6ff;
+        }
+
+        .image-upload.dragover {
+            border-color: var(--accent-color);
+            background: #dbeafe;
+        }
+
+        .image-preview {
+            margin-top: var(--space-md);
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: var(--space-md);
+        }
+
+        .image-item {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            aspect-ratio: 1;
+        }
+
+        .image-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-remove {
+            position: absolute;
+            top: var(--space-xs);
+            right: var(--space-xs);
+            background: rgba(239, 68, 68, 0.9);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+        }
+
+        .btn {
+            padding: var(--space-md) var(--space-lg);
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .btn-primary {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #2563eb;
+        }
+
+        .btn-secondary {
+            background: #6b7280;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #4b5563;
+        }
+
+        .btn-success {
+            background: #10b981;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #059669;
+        }
+
+        .status-message {
+            padding: var(--space-md);
+            border-radius: var(--border-radius);
+            margin-bottom: var(--space-lg);
+            display: none;
+        }
+
+        .status-success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #a7f3d0;
+        }
+
+        .status-error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fecaca;
+        }
+
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .category-tag {
+            display: inline-block;
+            padding: var(--space-xs) var(--space-md);
+            background: #eff6ff;
+            color: #1d4ed8;
+            border-radius: var(--border-radius);
+            font-size: 0.875rem;
+            margin-right: var(--space-xs);
+            margin-bottom: var(--space-xs);
+        }
+
+        .meta-info {
+            background: #f8fafc;
+            padding: var(--space-md);
+            border-radius: var(--border-radius);
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        @media (max-width: 768px) {
+            .editor-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .editor-sidebar {
+                order: -1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="editor-container">
+        <header class="editor-header">
+            <h1 style="margin: 0; color: var(--primary-color);">🚀 Rich Blog Editor</h1>
+            <p style="margin: var(--space-xs) 0 0 0; color: #6b7280;">Create stunning blog posts with images, formatting, and professional styling</p>
+        </header>
+
+        <div id="statusMessage" class="status-message"></div>
+
+        <div class="editor-grid">
+            <div class="editor-main">
+                <form id="blogForm">
+                    <!-- Basic Info Section -->
+                    <div class="form-section">
+                        <h3 style="margin-bottom: var(--space-md); color: var(--primary-color);">📝 Post Information</h3>
+
+                        <div class="form-group">
+                            <label class="form-label" for="title">Title *</label>
+                            <input type="text" id="title" name="title" class="form-input" placeholder="Enter your blog post title" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="excerpt">Excerpt</label>
+                            <textarea id="excerpt" name="excerpt" class="form-input form-textarea" placeholder="Brief description of your post"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="category">Category</label>
+                            <select id="category" name="category" class="form-input">
+                                <option value="SEO Strategy">SEO Strategy</option>
+                                <option value="Digital Marketing">Digital Marketing</option>
+                                <option value="AI & Technology">AI & Technology</option>
+                                <option value="Business Growth">Business Growth</option>
+                                <option value="Case Studies">Case Studies</option>
+                                <option value="Industry News">Industry News</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Image Upload Section -->
+                    <div class="form-section">
+                        <h3 style="margin-bottom: var(--space-md); color: var(--primary-color);">🖼️ Images</h3>
+
+                        <div class="image-upload" id="imageUpload">
+                            <div style="font-size: 3rem; margin-bottom: var(--space-md);">📸</div>
+                            <p style="margin: 0; font-weight: 600; color: #374151;">Drop images here or click to upload</p>
+                            <p style="margin: var(--space-xs) 0 0 0; font-size: 0.875rem; color: #6b7280;">Supports JPG, PNG, WebP (max 5MB each)</p>
+                            <input type="file" id="imageInput" accept="image/*" multiple hidden>
+                        </div>
+
+                        <div id="imagePreview" class="image-preview"></div>
+                    </div>
+
+                    <!-- Rich Text Editor Section -->
+                    <div class="form-section">
+                        <h3 style="margin-bottom: var(--space-md); color: var(--primary-color);">✍️ Content</h3>
+                        <div id="editor" style="background: white;"></div>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="form-section">
+                        <div class="btn-group">
+                            <button type="button" id="saveDraft" class="btn btn-secondary">💾 Save Draft</button>
+                            <button type="submit" id="publishBtn" class="btn btn-success">🚀 Publish Post</button>
+                            <button type="button" id="previewBtn" class="btn btn-primary">👁️ Preview</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="editor-sidebar">
+                <h3 style="margin-bottom: var(--space-md); color: var(--primary-color);">📊 Post Stats</h3>
+
+                <div class="meta-info">
+                    <p style="margin: 0 0 var(--space-xs) 0;"><strong>Word Count:</strong> <span id="wordCount">0</span></p>
+                    <p style="margin: 0 0 var(--space-xs) 0;"><strong>Reading Time:</strong> <span id="readingTime">0 min</span></p>
+                    <p style="margin: 0;"><strong>Images:</strong> <span id="imageCount">0</span></p>
+                </div>
+
+                <h4 style="margin: var(--space-lg) 0 var(--space-md) 0; color: var(--primary-color);">💡 Writing Tips</h4>
+                <ul style="margin: 0; padding-left: var(--space-lg); font-size: 0.875rem; color: #6b7280; line-height: 1.6;">
+                    <li>Use headings (H2, H3) to structure content</li>
+                    <li>Add images every 300-500 words</li>
+                    <li>Keep paragraphs under 3 sentences</li>
+                    <li>Include bullet points and lists</li>
+                    <li>Add internal and external links</li>
+                </ul>
+
+                <h4 style="margin: var(--space-lg) 0 var(--space-md) 0; color: var(--primary-color);">🎯 SEO Features</h4>
+                <div style="font-size: 0.875rem; color: #6b7280; line-height: 1.6;">
+                    <div class="category-tag">Auto Meta Tags</div>
+                    <div class="category-tag">Schema Markup</div>
+                    <div class="category-tag">Social Sharing</div>
+                    <div class="category-tag">Image Alt Text</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Quill Rich Text Editor
+        const quill = new Quill('#editor', {
+            theme: 'snow',
+            placeholder: 'Start writing your amazing blog post...',
+            modules: {
+                toolbar: [
+                    [{ 'header': [1, 2, 3, false] }],
+                    ['bold', 'italic', 'underline', 'strike'],
+                    [{ 'color': [] }, { 'background': [] }],
+                    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                    [{ 'indent': '-1'}, { 'indent': '+1' }],
+                    [{ 'align': [] }],
+                    ['blockquote', 'code-block'],
+                    ['link', 'image'],
+                    ['clean']
+                ]
+            }
+        });
+
+        // Global variables
+        let uploadedImages = [];
+        const API_BASE = 'http://localhost:3002/api';
+
+        // Image upload functionality
+        const imageUpload = document.getElementById('imageUpload');
+        const imageInput = document.getElementById('imageInput');
+        const imagePreview = document.getElementById('imagePreview');
+
+        // Click to upload
+        imageUpload.addEventListener('click', () => imageInput.click());
+
+        // Drag and drop
+        imageUpload.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            imageUpload.classList.add('dragover');
+        });
+
+        imageUpload.addEventListener('dragleave', () => {
+            imageUpload.classList.remove('dragover');
+        });
+
+        imageUpload.addEventListener('drop', (e) => {
+            e.preventDefault();
+            imageUpload.classList.remove('dragover');
+            handleFiles(e.dataTransfer.files);
+        });
+
+        // File input change
+        imageInput.addEventListener('change', (e) => {
+            handleFiles(e.target.files);
+        });
+
+        // Handle file uploads
+        function handleFiles(files) {
+            Array.from(files).forEach(file => {
+                if (file.type.startsWith('image/') && file.size <= 5 * 1024 * 1024) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        const imageData = {
+                            name: file.name,
+                            data: e.target.result,
+                            size: file.size
+                        };
+                        uploadedImages.push(imageData);
+                        displayImage(imageData, uploadedImages.length - 1);
+                        updateStats();
+                        insertImageIntoEditor(imageData);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        // Display uploaded image
+        function displayImage(imageData, index) {
+            const imageItem = document.createElement('div');
+            imageItem.className = 'image-item';
+            imageItem.innerHTML = `
+                <img src="${imageData.data}" alt="${imageData.name}">
+                <button class="image-remove" onclick="removeImage(${index})">×</button>
+            `;
+            imagePreview.appendChild(imageItem);
+        }
+
+        // Remove image
+        function removeImage(index) {
+            uploadedImages.splice(index, 1);
+            imagePreview.innerHTML = '';
+            uploadedImages.forEach((img, i) => displayImage(img, i));
+            updateStats();
+        }
+
+        // Insert image into editor
+        function insertImageIntoEditor(imageData) {
+            const range = quill.getSelection() || { index: quill.getLength() };
+            quill.insertEmbed(range.index, 'image', imageData.data);
+            quill.setSelection(range.index + 1);
+        }
+
+        // Update stats
+        function updateStats() {
+            const text = quill.getText();
+            const wordCount = text.trim().split(/\s+/).filter(word => word.length > 0).length;
+            const readingTime = Math.ceil(wordCount / 250);
+
+            document.getElementById('wordCount').textContent = wordCount;
+            document.getElementById('readingTime').textContent = readingTime;
+            document.getElementById('imageCount').textContent = uploadedImages.length;
+        }
+
+        // Update stats on text change
+        quill.on('text-change', updateStats);
+
+        // Form submission
+        document.getElementById('blogForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            await publishPost();
+        });
+
+        // Save draft
+        document.getElementById('saveDraft').addEventListener('click', async () => {
+            await saveDraft();
+        });
+
+        // Preview
+        document.getElementById('previewBtn').addEventListener('click', () => {
+            showPreview();
+        });
+
+        // Publish post
+        async function publishPost() {
+            const formData = getFormData();
+            if (!formData.title.trim()) {
+                showMessage('Please enter a title', 'error');
+                return;
+            }
+
+            setLoading(true);
+            try {
+                const response = await fetch(`${API_BASE}/publish`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    showMessage('🎉 Post published successfully!', 'success');
+                    setTimeout(() => {
+                        window.open(result.url, '_blank');
+                    }, 1000);
+                } else {
+                    showMessage(`Error: ${result.error}`, 'error');
+                }
+            } catch (error) {
+                showMessage(`Network error: ${error.message}`, 'error');
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        // Save draft
+        async function saveDraft() {
+            const formData = getFormData();
+            setLoading(true);
+            try {
+                const response = await fetch(`${API_BASE}/save-draft`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    showMessage('💾 Draft saved!', 'success');
+                } else {
+                    showMessage(`Error: ${result.error}`, 'error');
+                }
+            } catch (error) {
+                showMessage(`Network error: ${error.message}`, 'error');
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        // Get form data
+        function getFormData() {
+            return {
+                title: document.getElementById('title').value,
+                excerpt: document.getElementById('excerpt').value,
+                category: document.getElementById('category').value,
+                content: quill.root.innerHTML,
+                images: uploadedImages
+            };
+        }
+
+        // Show message
+        function showMessage(message, type) {
+            const statusEl = document.getElementById('statusMessage');
+            statusEl.textContent = message;
+            statusEl.className = `status-message status-${type}`;
+            statusEl.style.display = 'block';
+            setTimeout(() => {
+                statusEl.style.display = 'none';
+            }, 5000);
+        }
+
+        // Set loading state
+        function setLoading(loading) {
+            const form = document.getElementById('blogForm');
+            if (loading) {
+                form.classList.add('loading');
+            } else {
+                form.classList.remove('loading');
+            }
+        }
+
+        // Show preview
+        function showPreview() {
+            const formData = getFormData();
+            const previewWindow = window.open('', '_blank');
+            previewWindow.document.write(`
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>${formData.title}</title>
+                    <link rel="stylesheet" href="styles.css">
+                    <style>
+                        body { max-width: 800px; margin: 0 auto; padding: 2rem; }
+                        h1 { color: var(--primary-color); }
+                        .category { background: #eff6ff; color: #1d4ed8; padding: 0.25rem 0.75rem; border-radius: 0.25rem; font-size: 0.875rem; }
+                    </style>
+                </head>
+                <body>
+                    <div class="category">${formData.category}</div>
+                    <h1>${formData.title}</h1>
+                    <p><em>${formData.excerpt}</em></p>
+                    <div>${formData.content}</div>
+                </body>
+                </html>
+            `);
+        }
+
+        // Initialize
+        updateStats();
+    </script>
+</body>
+</html>

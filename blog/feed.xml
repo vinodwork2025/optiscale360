@@ -5,7 +5,7 @@
     <description>AI SEO insights and strategies from OptiScale 360</description>
     <link>https://optiscale360.pages.dev/blog/</link>
     <language>en-us</language>
-    <lastBuildDate>Fri, 19 Sep 2025 06:18:00 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 19 Sep 2025 06:36:21 GMT</lastBuildDate>
     <atom:link href="https://optiscale360.pages.dev/blog/feed.xml" rel="self" type="application/rss+xml"/>
 
     
@@ -57,6 +57,16 @@
         <pubDate>Tue, 05 Mar 2024 00:00:00 GMT</pubDate>
         <author>info@optiscale360.com (Jennifer Chen)</author>
         <category>Local SEO</category>
+    </item>
+    
+    <item>
+        <title><![CDATA[This is a test post]]></title>
+        <description><![CDATA[undefined]]></description>
+        <link>https://optiscale360.pages.dev/blog/this-is-a-test-post/</link>
+        <guid>https://optiscale360.pages.dev/blog/this-is-a-test-post/</guid>
+        <pubDate>Invalid Date</pubDate>
+        <author>info@optiscale360.com (OptiScale 360 Team)</author>
+        <category>Industry News</category>
     </item>
     
 </channel>
