@@ -243,33 +243,8 @@ function generatePostHTML(post) {
     ${schemas.map(schema => `<script type="application/ld+json">\n${JSON.stringify(schema, null, 2)}\n</script>`).join('\n    ')}
 </head>
 <body>
-    <header class="header">
-        <nav class="nav">
-            <div class="nav-container">
-                <div class="nav-logo">
-                    <a href="/" class="logo-link">
-                        <img src="../../Optiscale360_logo.svg" alt="OptiScale 360" class="logo-image">
-                    </a>
-                </div>
-                <ul class="nav-menu nav-tabs">
-                    <li class="nav-tab"><a href="/" class="nav-link">Home</a></li>
-                    <li class="nav-tab"><a href="/services.html" class="nav-link">Services</a></li>
-                    <li class="nav-tab"><a href="/case-studies.html" class="nav-link">Case Studies</a></li>
-                    <li class="nav-tab"><a href="/resources.html" class="nav-link">Resources</a></li>
-                    <li class="nav-tab"><a href="/blog/" class="nav-link">Blog</a></li>
-                    <li class="nav-tab"><a href="/contact.html" class="nav-link">Contact</a></li>
-                </ul>
-                <div class="nav-cta">
-                    <a href="/Free-AI-Ready-Website.html" class="cta-btn">Build Your Next-Gen Website</a>
-                </div>
-                <div class="nav-toggle">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <!-- Global Header -->
+    <div id="header-placeholder"></div>
 
     <main class="blog-post-main">
         <article class="blog-post-container">
@@ -341,6 +316,10 @@ function generatePostHTML(post) {
         </article>
     </main>
 
+    <!-- Global Footer -->
+    <div id="footer-placeholder"></div>
+
+    <script src="../../components/loader.js"></script>
     <script src="../../script.js"></script>
 </body>
 </html>`;
