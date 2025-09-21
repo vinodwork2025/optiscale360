@@ -489,121 +489,188 @@
             </div>
         </section>
 
-        <!-- Resources Preview Section -->
-        <section id="blog-preview" class="py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50">
-            <div class="container mx-auto px-4">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl lg:text-5xl font-black text-gray-900 mb-6">
-                        Latest <span class="gradient-text">Insights</span>
-                    </h2>
-                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                        Stay ahead with our latest articles on AI, SEO, web development, and business optimization strategies.
-                    </p>
+        <!-- Featured Blog Posts Carousel -->
+        <section id="blog-preview" class="featured-blog-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                        </svg>
+                        <span>Featured Articles</span>
+                    </div>
+                    <h2>Latest <span class="title-highlight">Insights & Expertise</span></h2>
+                    <p>Discover cutting-edge strategies, AI innovations, and business optimization insights from our expert team</p>
                 </div>
 
-                <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-8 mb-12">
-                    <article class="blog-card bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
-                        <div class="aspect-video bg-gradient-to-br from-gray-500 to-gray-600 relative">
-                            <div class="absolute inset-0 bg-black/20"></div>
-                            <div class="absolute top-4 left-4">
-                                <span class="bg-white text-gray-800 px-3 py-1 rounded-full text-sm font-semibold">
-                        AI & ML
-                    </span>
-                                
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <div class="text-sm text-gray-500 mb-3">September 16, 2025 • 7 min read</div>
-                            <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight">
-                                <a href="./blog/posts/ai-tools-small-business-2025.html" class="hover:text-blue-600 transition-colors">
-                                    10 AI Tools Every Small Business Should Use in 2025
-                                </a>
-                            </h3>
-                            <p class="text-gray-600 mb-4 leading-relaxed">
-                                Discover the most powerful AI tools that can transform your small business operations, from customer service automation ...
-                            </p>
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center gap-3">
-                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" alt="OptiScale 360" class="w-8 h-8 rounded-full">
-                                    <span class="text-sm font-medium text-gray-700">OptiScale 360</span>
+                <div class="blog-carousel-container">
+                    <div class="blog-carousel" id="blogCarousel">
+                        <!-- Blog Post 1 -->
+                        <div class="blog-slide active">
+                            <article class="featured-blog-card">
+                                <div class="blog-image">
+                                    <div class="image-overlay"></div>
+                                    <div class="blog-category">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M9 19c-5 0-7-3-7-3s2-3 7-3 7 3 7 3-2 3-7 3z"/>
+                                            <path d="M9 19c5 0 7-3 7-3s-2-3-7-3-7 3-7 3 2 3 7 3z"/>
+                                            <circle cx="9" cy="16" r="1"/>
+                                        </svg>
+                                        <span>AI & SEO</span>
+                                    </div>
+                                    <div class="gradient-bg"></div>
                                 </div>
-                                <a href="./blog/posts/ai-tools-small-business-2025.html" class="text-blue-600 font-semibold hover:text-blue-700 transition-colors">
-                                    Read More →
-                                </a>
-                            </div>
+                                <div class="blog-content">
+                                    <div class="blog-meta">
+                                        <div class="author-info">
+                                            <div class="author-avatar">
+                                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" alt="OptiScale 360">
+                                            </div>
+                                            <div>
+                                                <span class="author-name">OptiScale 360 Team</span>
+                                                <span class="post-date">Dec 19, 2025</span>
+                                            </div>
+                                        </div>
+                                        <span class="reading-time">8 min read</span>
+                                    </div>
+                                    <h3 class="blog-title">
+                                        <a href="/blog/ai-seo-ultimate-guide/">AI SEO Ultimate Guide: Dominate Search Results with LLM-Powered Strategies</a>
+                                    </h3>
+                                    <p class="blog-excerpt">Discover how AI and Large Language Models are revolutionizing SEO. Learn advanced strategies to outrank competitors and achieve 300% more organic traffic.</p>
+                                    <div class="blog-tags">
+                                        <span class="tag">AI SEO</span>
+                                        <span class="tag">LLM</span>
+                                        <span class="tag">Strategy</span>
+                                    </div>
+                                    <a href="/blog/ai-seo-ultimate-guide/" class="read-more-btn">
+                                        <span>Read Full Article</span>
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M7 17l9.2-9.2M17 17V7H7"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </article>
                         </div>
-                    </article>
 
-                    <article class="blog-card bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
-                        <div class="aspect-video bg-gradient-to-br from-gray-500 to-gray-600 relative">
-                            <div class="absolute inset-0 bg-black/20"></div>
-                            <div class="absolute top-4 left-4">
-                                <span class="bg-white text-gray-800 px-3 py-1 rounded-full text-sm font-semibold">
-                        AI & Web Design
-                    </span>
-                                
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <div class="text-sm text-gray-500 mb-3">September 16, 2025 • 8 min read</div>
-                            <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight">
-                                <a href="./blog/posts/ai-web-design-trends-2024.html" class="hover:text-blue-600 transition-colors">
-                                    The Future of AI-Powered Web Design: 10 Game-Changing Trends for 2024
-                                </a>
-                            </h3>
-                            <p class="text-gray-600 mb-4 leading-relaxed">
-                                Explore the future of AI-powered web design with 10 game-changing trends that will revolutionize how we create websites ...
-                            </p>
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center gap-3">
-                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" alt="Alex Chen" class="w-8 h-8 rounded-full">
-                                    <span class="text-sm font-medium text-gray-700">Alex Chen</span>
+                        <!-- Blog Post 2 -->
+                        <div class="blog-slide">
+                            <article class="featured-blog-card">
+                                <div class="blog-image">
+                                    <div class="image-overlay"></div>
+                                    <div class="blog-category">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/>
+                                            <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+                                        </svg>
+                                        <span>Case Study</span>
+                                    </div>
+                                    <div class="gradient-bg gradient-success"></div>
                                 </div>
-                                <a href="./blog/posts/ai-web-design-trends-2024.html" class="text-blue-600 font-semibold hover:text-blue-700 transition-colors">
-                                    Read More →
-                                </a>
-                            </div>
+                                <div class="blog-content">
+                                    <div class="blog-meta">
+                                        <div class="author-info">
+                                            <div class="author-avatar">
+                                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face" alt="Marketing Expert">
+                                            </div>
+                                            <div>
+                                                <span class="author-name">Sarah Johnson</span>
+                                                <span class="post-date">Dec 15, 2025</span>
+                                            </div>
+                                        </div>
+                                        <span class="reading-time">12 min read</span>
+                                    </div>
+                                    <h3 class="blog-title">
+                                        <a href="/blog/case-study-ecommerce-seo-success/">E-commerce SEO Success: How We Increased Organic Traffic by 400%</a>
+                                    </h3>
+                                    <p class="blog-excerpt">Real case study showing how our AI-powered SEO strategies transformed an e-commerce store's search rankings and revenue in just 6 months.</p>
+                                    <div class="blog-tags">
+                                        <span class="tag">E-commerce</span>
+                                        <span class="tag">SEO</span>
+                                        <span class="tag">Results</span>
+                                    </div>
+                                    <a href="/blog/case-study-ecommerce-seo-success/" class="read-more-btn">
+                                        <span>Read Case Study</span>
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M7 17l9.2-9.2M17 17V7H7"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </article>
                         </div>
-                    </article>
 
-                    <article class="blog-card bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
-                        <div class="aspect-video bg-gradient-to-br from-gray-500 to-gray-600 relative">
-                            <div class="absolute inset-0 bg-black/20"></div>
-                            <div class="absolute top-4 left-4">
-                                <span class="bg-white text-gray-800 px-3 py-1 rounded-full text-sm font-semibold">
-                        Healthcare Technology
-                    </span>
-                                
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <div class="text-sm text-gray-500 mb-3">September 16, 2025 • 12 min read</div>
-                            <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight">
-                                <a href="./blog/posts/blockchain-ehr-consent-management-sulonya-sevenhills.html" class="hover:text-blue-600 transition-colors">
-                                    Revolutionary Blockchain-Based EHR Consent Management: Sulonya's Innovative Solution for SevenHills Healthcare
-                                </a>
-                            </h3>
-                            <p class="text-gray-600 mb-4 leading-relaxed">
-                                Learn how Sulonya's blockchain-based EHR consent management system revolutionizes healthcare data security, giving patie...
-                            </p>
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center gap-3">
-                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" alt="Sulonya Healthcare Solutions" class="w-8 h-8 rounded-full">
-                                    <span class="text-sm font-medium text-gray-700">Sulonya Healthcare Solutions</span>
+                        <!-- Blog Post 3 -->
+                        <div class="blog-slide">
+                            <article class="featured-blog-card">
+                                <div class="blog-image">
+                                    <div class="image-overlay"></div>
+                                    <div class="blog-category">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+                                            <polyline points="3.27,6.96 12,12.01 20.73,6.96"/>
+                                            <line x1="12" y1="22.08" x2="12" y2="12"/>
+                                        </svg>
+                                        <span>Local SEO</span>
+                                    </div>
+                                    <div class="gradient-bg gradient-purple"></div>
                                 </div>
-                                <a href="./blog/posts/blockchain-ehr-consent-management-sulonya-sevenhills.html" class="text-blue-600 font-semibold hover:text-blue-700 transition-colors">
-                                    Read More →
-                                </a>
-                            </div>
+                                <div class="blog-content">
+                                    <div class="blog-meta">
+                                        <div class="author-info">
+                                            <div class="author-avatar">
+                                                <img src="https://images.unsplash.com/photo-1494790108755-2616b332c852?w=40&h=40&fit=crop&crop=face" alt="SEO Specialist">
+                                            </div>
+                                            <div>
+                                                <span class="author-name">Michael Chen</span>
+                                                <span class="post-date">Dec 10, 2025</span>
+                                            </div>
+                                        </div>
+                                        <span class="reading-time">6 min read</span>
+                                    </div>
+                                    <h3 class="blog-title">
+                                        <a href="/blog/local-seo-guide-2024/">Local SEO Mastery: Complete Guide for 2024 Dominance</a>
+                                    </h3>
+                                    <p class="blog-excerpt">Master local search optimization with our comprehensive guide. Learn the exact strategies to dominate local search results and attract more customers.</p>
+                                    <div class="blog-tags">
+                                        <span class="tag">Local SEO</span>
+                                        <span class="tag">Guide</span>
+                                        <span class="tag">2024</span>
+                                    </div>
+                                    <a href="/blog/local-seo-guide-2024/" class="read-more-btn">
+                                        <span>Read Guide</span>
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M7 17l9.2-9.2M17 17V7H7"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </article>
                         </div>
-                    </article>
+                    </div>
+
+                    <!-- Carousel Controls -->
+                    <div class="carousel-controls">
+                        <button class="carousel-btn prev-btn" id="prevBtn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M15 18l-6-6 6-6"/>
+                            </svg>
+                        </button>
+                        <div class="carousel-indicators" id="carouselIndicators">
+                            <button class="indicator active" data-slide="0"></button>
+                            <button class="indicator" data-slide="1"></button>
+                            <button class="indicator" data-slide="2"></button>
+                        </div>
+                        <button class="carousel-btn next-btn" id="nextBtn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 18l6-6-6-6"/>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
 
-                <div class="text-center">
-                    <a href="blog.html" class="bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-blue-700 transition-colors transform hover:scale-105 inline-flex items-center gap-2">
-                        View All Articles
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                <div class="blog-section-footer">
+                    <a href="/blog/" class="view-all-btn">
+                        <span>Explore All Articles</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M7 17l9.2-9.2M17 17V7H7"/>
                         </svg>
                     </a>
                 </div>
