@@ -2,13 +2,14 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     console.log('OptiScale 360 website loaded successfully');
-    
+
     // Initialize all functionality
     initMobileMenu();
     initSmoothScrolling();
     initContactForm();
     initAnimations();
     initBlogCarousel();
+    initAnimatedCounters();
 });
 
 // Mobile Menu Toggle
@@ -486,3 +487,46 @@ function initBlogAnimations() {
 document.addEventListener("DOMContentLoaded", () => {
     setTimeout(initBlogAnimations, 100);
 });
+
+// Animated Counter Function
+function initAnimatedCounters() {
+    const counters = document.querySelectorAll('.counter');
+    const observerOptions = {
+        threshold: 0.5,
+        rootMargin: '0px 0px -100px 0px'
+    };
+
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.hasAnimated) {
+                entry.target.hasAnimated = true;
+                animateCounter(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    counters.forEach(counter => {
+        counterObserver.observe(counter);
+    });
+}
+
+function animateCounter(element) {
+    const target = parseInt(element.getAttribute('data-target'));
+    const duration = 2000; // 2 seconds
+    const increment = target / (duration / 16); // 60fps
+    let current = 0;
+
+    element.classList.add('counting');
+
+    const timer = setInterval(() => {
+        current += increment;
+
+        if (current >= target) {
+            current = target;
+            clearInterval(timer);
+            element.classList.remove('counting');
+        }
+
+        element.textContent = Math.floor(current);
+    }, 16);
+}
