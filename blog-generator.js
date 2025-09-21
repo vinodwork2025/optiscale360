@@ -72,7 +72,7 @@ function generateJSONLD(post, type = 'BlogPosting') {
         "@type": type,
         "headline": post.frontmatter.title,
         "description": post.frontmatter.description,
-        "image": post.frontmatter.image || `${SITE_URL}/Optiscale360_logo.svg`,
+        "image": post.frontmatter.image || `${SITE_URL}/360_logo.svg`,
         "author": {
             "@type": "Person",
             "name": post.frontmatter.author || AUTHOR.name,
@@ -83,7 +83,7 @@ function generateJSONLD(post, type = 'BlogPosting') {
             "name": SITE_NAME,
             "logo": {
                 "@type": "ImageObject",
-                "url": `${SITE_URL}/Optiscale360_logo.svg`
+                "url": `${SITE_URL}/360_logo.svg`
             }
         },
         "datePublished": post.frontmatter.date,
@@ -103,7 +103,7 @@ function generateJSONLD(post, type = 'BlogPosting') {
             "@type": "HowTo",
             "name": post.frontmatter.title,
             "description": post.frontmatter.description,
-            "image": post.frontmatter.image || `${SITE_URL}/Optiscale360_logo.svg`,
+            "image": post.frontmatter.image || `${SITE_URL}/360_logo.svg`,
             "totalTime": post.frontmatter.totalTime || "PT30M",
             "estimatedCost": {
                 "@type": "MonetaryAmount",
@@ -151,7 +151,7 @@ function generateJSONLD(post, type = 'BlogPosting') {
         "@type": "Organization",
         "name": SITE_NAME,
         "url": SITE_URL,
-        "logo": `${SITE_URL}/Optiscale360_logo.svg`,
+        "logo": `${SITE_URL}/360_logo.svg`,
         "description": "AI-powered SEO agency delivering 300% more organic traffic through advanced LLM-driven optimization strategies.",
         "sameAs": [
             "https://twitter.com/optiscale360",
@@ -213,7 +213,7 @@ function generatePostHTML(post) {
     <meta property="og:url" content="${SITE_URL}/blog/${post.slug}/">
     <meta property="og:title" content="${post.frontmatter.title}">
     <meta property="og:description" content="${post.frontmatter.description}">
-    <meta property="og:image" content="${post.frontmatter.image || `${SITE_URL}/Optiscale360_logo.svg`}">
+    <meta property="og:image" content="${post.frontmatter.image || `${SITE_URL}/360_logo.svg`}">
     <meta property="og:site_name" content="${SITE_NAME}">
     <meta property="article:published_time" content="${post.frontmatter.date}">
     <meta property="article:modified_time" content="${post.frontmatter.updated || post.frontmatter.date}">
@@ -226,7 +226,7 @@ function generatePostHTML(post) {
     <meta property="twitter:url" content="${SITE_URL}/blog/${post.slug}/">
     <meta property="twitter:title" content="${post.frontmatter.title}">
     <meta property="twitter:description" content="${post.frontmatter.description}">
-    <meta property="twitter:image" content="${post.frontmatter.image || `${SITE_URL}/Optiscale360_logo.svg`}">
+    <meta property="twitter:image" content="${post.frontmatter.image || `${SITE_URL}/360_logo.svg`}">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="${SITE_URL}/blog/${post.slug}/">
