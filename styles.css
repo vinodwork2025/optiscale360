@@ -4445,29 +4445,86 @@ html {
 
 .hero-social-proof {
     animation: fadeInUp 1s ease-out 1.2s both;
+    overflow: hidden;
+    position: relative;
 }
 
-.social-proof-text {
-    font-size: 0.9rem;
-    color: #64748b;
-    margin-bottom: 1.5rem;
-    font-weight: 500;
+/* Client Logos Scrolling Container */
+.client-logos-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(90deg,
+        rgba(248, 250, 252, 0) 0%,
+        rgba(248, 250, 252, 0.1) 15%,
+        rgba(248, 250, 252, 0.1) 85%,
+        rgba(248, 250, 252, 0) 100%);
+    border-radius: 12px;
+    padding: 20px 0;
 }
 
-.company-logos {
+.client-logos-container::before,
+.client-logos-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 80px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.client-logos-container::before {
+    left: 0;
+    background: linear-gradient(90deg,
+        rgba(248, 250, 252, 1) 0%,
+        rgba(248, 250, 252, 0.8) 50%,
+        rgba(248, 250, 252, 0) 100%);
+}
+
+.client-logos-container::after {
+    right: 0;
+    background: linear-gradient(90deg,
+        rgba(248, 250, 252, 0) 0%,
+        rgba(248, 250, 252, 0.8) 50%,
+        rgba(248, 250, 252, 1) 100%);
+}
+
+.client-logos-track {
     display: flex;
-    gap: 2rem;
+    animation: scroll-logos 25s linear infinite;
+    gap: 2.5rem;
     align-items: center;
+    padding: 0 2rem;
 }
 
-.company-logo {
-    opacity: 0.6;
-    transition: opacity 0.3s ease;
+.client-logos-track:hover {
+    animation-play-state: paused;
+}
+
+.client-logo {
+    flex-shrink: 0;
+    opacity: 0.7;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     color: #64748b;
+    transform: scale(0.95);
+    filter: grayscale(100%) blur(0.5px);
 }
 
-.company-logo:hover {
+.client-logo:hover {
     opacity: 1;
+    transform: scale(1.05);
+    filter: grayscale(0%) blur(0px);
+    color: #1e293b;
+}
+
+@keyframes scroll-logos {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
 /* Enhanced Tooltip Styles */
