@@ -4101,14 +4101,14 @@ html {
    ============================================ */
 
 .hero-nextgen {
-    min-height: 75vh;
+    min-height: 70vh;
     position: relative;
     display: flex;
     align-items: center;
     background: linear-gradient(135deg, #fafbfc 0%, #f8fafc 50%, #f1f5f9 100%);
     overflow: hidden;
     padding-top: 100px; /* Add spacing from fixed header */
-    padding-bottom: 60px;
+    padding-bottom: 40px;
 }
 
 .hero-background {
@@ -4443,32 +4443,6 @@ html {
     transform: translateX(4px);
 }
 
-.hero-social-proof {
-    animation: fadeInUp 1s ease-out 1.2s both;
-}
-
-.social-proof-text {
-    font-size: 0.9rem;
-    color: #64748b;
-    margin-bottom: 1.5rem;
-    font-weight: 500;
-}
-
-.company-logos {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-}
-
-.company-logo {
-    opacity: 0.6;
-    transition: opacity 0.3s ease;
-    color: #64748b;
-}
-
-.company-logo:hover {
-    opacity: 1;
-}
 
 /* Enhanced Tooltip Styles */
 .tooltip-container {
