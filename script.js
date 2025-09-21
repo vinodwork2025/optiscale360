@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initAnimations();
     initBlogCarousel();
     initAnimatedCounters();
+    initNewsletterForm();
 });
 
 // Mobile Menu Toggle
@@ -529,4 +530,75 @@ function animateCounter(element) {
 
         element.textContent = Math.floor(current);
     }, 16);
+}
+
+// Newsletter Form Handling
+function initNewsletterForm() {
+    const newsletterForm = document.getElementById('newsletterForm');
+
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form data
+            const emailInput = this.querySelector('input[type="email"]');
+            const email = emailInput.value.trim();
+
+            // Basic validation
+            if (!email) {
+                showNotification('Please enter your email address.', 'error');
+                return;
+            }
+
+            if (!isValidEmail(email)) {
+                showNotification('Please enter a valid email address.', 'error');
+                return;
+            }
+
+            // Get submit button
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+
+            // Show loading state
+            submitBtn.innerHTML = '<span>Subscribing...</span>';
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = '0.7';
+
+            // Simulate API call
+            setTimeout(() => {
+                showNotification('🎉 Welcome aboard! You\'ve been successfully subscribed to our newsletter.', 'success');
+                emailInput.value = '';
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                submitBtn.style.opacity = '1';
+
+                // Add a subtle success animation to the form
+                this.style.transform = 'scale(1.02)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 200);
+            }, 1500);
+        });
+
+        // Add real-time email validation
+        const emailInput = newsletterForm.querySelector('input[type="email"]');
+        if (emailInput) {
+            emailInput.addEventListener('blur', function() {
+                const email = this.value.trim();
+                if (email && !isValidEmail(email)) {
+                    this.style.borderColor = '#ef4444';
+                    this.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, 0.1)';
+                } else {
+                    this.style.borderColor = '';
+                    this.style.boxShadow = '';
+                }
+            });
+
+            emailInput.addEventListener('input', function() {
+                // Reset error styling on input
+                this.style.borderColor = '';
+                this.style.boxShadow = '';
+            });
+        }
+    }
 }
