@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 (currentPath === '/' && href === '/') ||
                 (currentPath.includes('/services') && href.includes('/services')) ||
                 (currentPath.includes('/case-studies') && href.includes('/case-studies')) ||
+                (currentPath.includes('/blog') && href.includes('/blog')) ||
                 (currentPath.includes('/contact') && href.includes('/contact'))) {
                 link.classList.add('active');
             }

@@ -682,45 +682,8 @@
     </script>
 </head>
 <body>
-    <header class="header">
-        <nav class="nav">
-            <div class="nav-container">
-                <div class="nav-logo">
-                    <a href="/" class="logo-link">
-                        <img src="../360_logo.svg" alt="OptiScale 360" class="logo-image">
-                    </a>
-                </div>
-                <ul class="nav-menu nav-tabs">
-                    <li class="nav-tab"><a href="/" class="nav-link">Home</a></li>
-                    <li class="nav-tab"><a href="/services.html" class="nav-link">Services</a></li>
-                    <li class="nav-tab"><a href="/case-studies.html" class="nav-link">Case Studies</a></li>
-                    <li class="nav-tab"><a href="/resources.html" class="nav-link">Resources</a></li>
-                    <li class="nav-tab"><a href="/blog/" class="nav-link active">Blog</a></li>
-                    <li class="nav-tab"><a href="/contact.html" class="nav-link">Contact</a></li>
-                </ul>
-
-                <!-- Header Search Bar -->
-                <div class="header-search">
-                    <div class="header-search-container">
-                        <svg class="header-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="11" cy="11" r="8"/>
-                            <path d="m21 21-4.35-4.35"/>
-                        </svg>
-                        <input type="text" class="header-search-input" id="headerSearch" placeholder="Search articles...">
-                    </div>
-                </div>
-
-                <div class="nav-cta">
-                    <a href="/Free-AI-Ready-Website.html" class="cta-btn">Build Your Next-Gen Website</a>
-                </div>
-                <div class="nav-toggle">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <!-- Global Header -->
+    <div id="header-placeholder"></div>
 
     <!-- Magazine Hero Section -->
     <section class="magazine-hero">
@@ -1080,5 +1043,6 @@
             });
         }
     </script>
+    <script src="../components/loader.js"></script>
 </body>
 </html>
