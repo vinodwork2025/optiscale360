@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initBlogCarousel();
     initAnimatedCounters();
     initNewsletterForm();
+    initTestimonialsCarousel();
 });
 
 // Mobile Menu Toggle
@@ -601,4 +602,158 @@ function initNewsletterForm() {
             });
         }
     }
+}
+
+// Testimonials Carousel Functionality
+function initTestimonialsCarousel() {
+    const track = document.getElementById('testimonialTrack');
+    const cards = document.querySelectorAll('.testimonial-card');
+    const indicators = document.querySelectorAll('.indicator');
+    const prevBtn = document.getElementById('prevTestimonial');
+    const nextBtn = document.getElementById('nextTestimonial');
+
+    if (!track || cards.length === 0) return;
+
+    let currentIndex = 0;
+    let isTransitioning = false;
+    let autoPlayInterval;
+    const autoPlayDuration = 6000; // 6 seconds
+
+    // Update testimonial display
+    function updateTestimonial(newIndex) {
+        if (isTransitioning || newIndex === currentIndex) return;
+
+        isTransitioning = true;
+
+        // Remove active class from current card and indicator
+        cards[currentIndex].classList.remove('active');
+        indicators[currentIndex].classList.remove('active');
+
+        // Update index
+        currentIndex = newIndex;
+
+        // Add active class to new card and indicator
+        setTimeout(() => {
+            cards[currentIndex].classList.add('active');
+            indicators[currentIndex].classList.add('active');
+            isTransitioning = false;
+        }, 100);
+    }
+
+    // Next testimonial
+    function nextTestimonial() {
+        const newIndex = (currentIndex + 1) % cards.length;
+        updateTestimonial(newIndex);
+    }
+
+    // Previous testimonial
+    function prevTestimonial() {
+        const newIndex = (currentIndex - 1 + cards.length) % cards.length;
+        updateTestimonial(newIndex);
+    }
+
+    // Auto-play functionality
+    function startAutoPlay() {
+        autoPlayInterval = setInterval(nextTestimonial, autoPlayDuration);
+    }
+
+    function stopAutoPlay() {
+        clearInterval(autoPlayInterval);
+    }
+
+    function resetAutoPlay() {
+        stopAutoPlay();
+        startAutoPlay();
+    }
+
+    // Event listeners for navigation buttons
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            nextTestimonial();
+            resetAutoPlay();
+        });
+    }
+
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            prevTestimonial();
+            resetAutoPlay();
+        });
+    }
+
+    // Event listeners for indicators
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            updateTestimonial(index);
+            resetAutoPlay();
+        });
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft' && document.querySelector('.testimonials-section')) {
+            prevTestimonial();
+            resetAutoPlay();
+        } else if (e.key === 'ArrowRight' && document.querySelector('.testimonials-section')) {
+            nextTestimonial();
+            resetAutoPlay();
+        }
+    });
+
+    // Touch/swipe support
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    track.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        stopAutoPlay();
+    });
+
+    track.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+        resetAutoPlay();
+    });
+
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const swipeDistance = touchStartX - touchEndX;
+
+        if (Math.abs(swipeDistance) > swipeThreshold) {
+            if (swipeDistance > 0) {
+                nextTestimonial(); // Swipe left - next testimonial
+            } else {
+                prevTestimonial(); // Swipe right - previous testimonial
+            }
+        }
+    }
+
+    // Pause auto-play on hover
+    const testimonialsSection = document.querySelector('.testimonials-section');
+    if (testimonialsSection) {
+        testimonialsSection.addEventListener('mouseenter', stopAutoPlay);
+        testimonialsSection.addEventListener('mouseleave', startAutoPlay);
+    }
+
+    // Intersection Observer for performance
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                startAutoPlay();
+            } else {
+                stopAutoPlay();
+            }
+        });
+    });
+
+    if (testimonialsSection) {
+        observer.observe(testimonialsSection);
+    }
+
+    // Initialize first testimonial
+    cards[0].classList.add('active');
+    indicators[0].classList.add('active');
+
+    // Start auto-play after a delay
+    setTimeout(startAutoPlay, 2000);
 }
