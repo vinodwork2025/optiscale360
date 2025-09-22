@@ -6,8 +6,8 @@
     <meta name="cache-control" content="no-cache, no-store, must-revalidate">
     <meta name="pragma" content="no-cache">
     <meta name="expires" content="0">
-    <title>AI Search Domination | OptiScale 360 - Fortune 500 Trusted</title>
-    <meta name="description" content="91% of businesses are invisible to AI search. We're the only agency specializing in AI search visibility. Trusted by Fortune 500 companies to dominate ChatGPT recommendations.">
+    <title>AI Search Optimization | OptiScale 360 - Professional SEO Services</title>
+    <meta name="description" content="Specialized AI search optimization services to improve your business visibility in AI-powered search results. Professional SEO consulting and website optimization.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -350,14 +350,20 @@
         }
 
         .hero-badge {
-            background: rgba(10, 14, 39, 0.06);
+            background: rgba(59, 130, 246, 0.08);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(10, 14, 39, 0.1);
-            padding: var(--space-sm) var(--space-md);
-            border-radius: var(--radius-lg);
+            border: 1px solid rgba(59, 130, 246, 0.15);
+            padding: 8px 16px;
+            border-radius: 12px;
             font-size: 0.875rem;
-            font-weight: 600;
-            color: var(--primary-navy);
+            font-weight: 500;
+            color: var(--primary-blue);
+            transition: all 0.2s ease;
+        }
+
+        .hero-badge:hover {
+            background: rgba(59, 130, 246, 0.12);
+            transform: translateY(-1px);
         }
 
         .trust-indicators {
@@ -740,12 +746,12 @@
 
         .service-card {
             background: var(--pure-white);
-            border: 1px solid var(--silver-dark);
-            border-radius: var(--radius-xl);
-            padding: var(--space-xl);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            border-radius: 16px;
+            padding: 32px;
             position: relative;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
         }
 
         .service-card::before {
@@ -754,18 +760,19 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
-            background: var(--gradient-primary);
+            height: 3px;
+            background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%);
+            border-radius: 16px 16px 0 0;
         }
 
         .service-card.audit::before {
-            background: linear-gradient(135deg, var(--success) 0%, #059669 100%);
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
         }
 
         .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-xl);
-            border-color: var(--primary-blue);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            border-color: rgba(59, 130, 246, 0.3);
         }
 
         .card-badge {
@@ -833,26 +840,28 @@
 
         .service-title {
             font-family: var(--font-primary);
-            font-size: 1.75rem;
-            font-weight: 700;
+            font-size: 1.5rem;
+            font-weight: 600;
             color: var(--primary-navy);
-            margin-bottom: var(--space-md);
-            line-height: 1.3;
+            margin-bottom: 16px;
+            line-height: 1.4;
+            letter-spacing: -0.01em;
         }
 
         .service-problem {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            margin-bottom: var(--space-md);
-            font-style: italic;
+            color: #64748B;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+            line-height: 1.6;
+            font-weight: 400;
         }
 
         .service-solution {
             color: var(--text-primary);
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 500;
-            margin-bottom: var(--space-md);
-            line-height: 1.5;
+            margin-bottom: 20px;
+            line-height: 1.6;
         }
 
         .service-results {
@@ -1078,15 +1087,17 @@
 
         .testimonial-card {
             background: var(--pure-white);
-            border-radius: var(--radius-xl);
-            padding: var(--space-xl);
-            box-shadow: var(--shadow-md);
-            transition: transform 0.3s ease;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
         }
 
         .testimonial-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
         }
 
         .testimonial-content {
@@ -1203,8 +1214,18 @@
         }
 
         .pillar-card {
+            background: var(--pure-white);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            border-radius: 16px;
             text-align: center;
-            padding: var(--space-xl);
+            padding: 32px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
         }
 
         .pillar-icon {
@@ -1227,16 +1248,19 @@
 
         .pillar-title {
             font-family: var(--font-primary);
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 1.25rem;
+            font-weight: 600;
             color: var(--primary-navy);
-            margin-bottom: var(--space-md);
+            margin-bottom: 12px;
+            line-height: 1.4;
+            letter-spacing: -0.01em;
         }
 
         .pillar-description {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
+            color: #64748B;
+            font-size: 0.95rem;
             line-height: 1.6;
+            font-weight: 400;
         }
 
         /* PROCESS SECTION */
@@ -1776,8 +1800,8 @@
                 </svg>
             </div>
             <div class="banner-text">
-                <div class="banner-headline">AI Search Revolution: 91% of Businesses Are Invisible</div>
-                <div class="banner-subtext">We help smart businesses dominate AI search while competitors fall behind</div>
+                <div class="banner-headline">AI Search is Changing How Customers Find Businesses</div>
+                <div class="banner-subtext">We help businesses adapt to AI-powered search and improve their online visibility</div>
             </div>
             <a href="/ai-visibility-audit.html" class="banner-cta">Discover Your AI Visibility</a>
         </div>
@@ -1790,12 +1814,12 @@
                 <div class="hero-left">
                     <h1>Your Customers Are Using AI to Find Businesses. <span class="highlight">Can They Find Yours?</span></h1>
 
-                    <p class="hero-subtitle">We're the only agency that specializes in AI search visibility. While your competitors guess, we deliver proven systems that capture customers before they even know you exist.</p>
+                    <p class="hero-subtitle">We specialize in AI search optimization to help businesses improve their visibility in AI-powered search results. Our data-driven approach helps you stay competitive in the evolving search landscape.</p>
 
                     <div class="hero-badges">
-                        <div class="hero-badge">500+ Companies Analyzed</div>
-                        <div class="hero-badge">91% Success Rate</div>
-                        <div class="hero-badge">AI Search Pioneers</div>
+                        <div class="hero-badge">SEO Specialists</div>
+                        <div class="hero-badge">AI Search Focus</div>
+                        <div class="hero-badge">Data-Driven Results</div>
                     </div>
 
                     <div class="trust-indicators">
@@ -2064,9 +2088,9 @@
                     <p class="service-solution">Comprehensive AI audit reveals exactly why you're invisible and how to fix it</p>
 
                     <div class="service-features">
-                        <div class="feature-item">✓ Average client sees 200% increase in 90 days</div>
-                        <div class="feature-item">✓ 47+ hidden keyword opportunities found</div>
-                        <div class="feature-item">✓ Complete competitor gap analysis</div>
+                        <div class="feature-item">✓ Comprehensive 47-point analysis</div>
+                        <div class="feature-item">✓ AI search optimization recommendations</div>
+                        <div class="feature-item">✓ Competitor analysis and insights</div>
                     </div>
 
                     <div class="service-investment">
@@ -2156,7 +2180,7 @@
                 <div class="testimonial-card">
                     <div class="video-badge">📹 Video</div>
                     <div class="testimonial-content">
-                        "The AI visibility audit revealed we were completely invisible to ChatGPT searches. After implementing their recommendations, we're now the top-mentioned business in our industry. ROI was immediate - $340k in new revenue in 90 days."
+                        "The AI visibility audit provided valuable insights into how our business appears in AI search results. After implementing their recommendations, we saw improvements in our online visibility and search presence."
                     </div>
                     <div class="testimonial-author">
                         <div class="author-avatar">
@@ -2188,7 +2212,7 @@
                 <div class="testimonial-card">
                     <div class="video-badge">📹 Video</div>
                     <div class="testimonial-content">
-                        "Started with their AI audit, then rebuilt our site completely. Now we dominate both traditional search AND AI recommendations. Best business investment we've ever made - 450% ROI in 6 months."
+                        "Started with their AI audit, then rebuilt our site with their recommendations. We've seen meaningful improvements in both traditional search rankings and AI search visibility. Great investment for our business."
                     </div>
                     <div class="testimonial-author">
                         <div class="author-avatar">
@@ -2239,8 +2263,8 @@
                             <circle cx="12" cy="12" r="3"/>
                         </svg>
                     </div>
-                    <h3 class="pillar-title">AI Search Explosion</h3>
-                    <p class="pillar-description">68% of searches now happen through AI assistants. Traditional SEO rankings become irrelevant when customers ask ChatGPT for recommendations.</p>
+                    <h3 class="pillar-title">AI Search Growth</h3>
+                    <p class="pillar-description">AI-powered search is becoming increasingly popular. Businesses need to adapt their SEO strategies to remain visible in this evolving search landscape.</p>
                 </div>
 
                 <div class="pillar-card">
@@ -2251,8 +2275,8 @@
                             <circle cx="12" cy="14.3" r="2"/>
                         </svg>
                     </div>
-                    <h3 class="pillar-title">Traditional SEO Dying</h3>
-                    <p class="pillar-description">Google's own AI Overviews are replacing organic results. The old playbook of keywords and backlinks won't save you in the AI era.</p>
+                    <h3 class="pillar-title">SEO Evolution</h3>
+                    <p class="pillar-description">Search engines are integrating AI features that change how results are displayed. Traditional SEO strategies need to evolve alongside these technological advances.</p>
                 </div>
 
                 <div class="pillar-card">
@@ -2263,8 +2287,8 @@
                             <path d="M8 12l2 2 4-4"/>
                         </svg>
                     </div>
-                    <h3 class="pillar-title">First-Mover Window Closing</h3>
-                    <p class="pillar-description">Early adopters capture 80% of AI search market share. Every day you wait, your competitors get further ahead in the AI visibility race.</p>
+                    <h3 class="pillar-title">Early Adoption Advantage</h3>
+                    <p class="pillar-description">Businesses that adapt early to new search technologies often gain competitive advantages. Staying informed and proactive helps maintain market position.</p>
                 </div>
             </div>
         </div>
@@ -2378,7 +2402,7 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <h3>OptiScale 360</h3>
-                    <p class="footer-description">The world's leading AI search visibility agency. We help Fortune 500 companies and ambitious businesses dominate the future of search.</p>
+                    <p class="footer-description">Professional SEO and AI search optimization services. We help businesses improve their visibility in traditional and AI-powered search results.</p>
                     <div class="certifications">
                         <div class="cert-badge">ISO 27001</div>
                         <div class="cert-badge">SOC 2</div>
