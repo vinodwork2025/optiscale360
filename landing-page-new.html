@@ -670,66 +670,8 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-8">
-                <div class="md:col-span-2">
-                    <div class="flex items-center space-x-3 mb-6">
-                        <div class="w-12 h-12 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
-                            <span class="text-white font-bold text-xl">O</span>
-                        </div>
-                        <span class="text-2xl font-bold">Optiscale360</span>
-                    </div>
-                    <p class="text-gray-400 mb-6 max-w-md leading-relaxed">
-                        India's premier digital agency delivering world-class AI-ready websites 
-                        and digital experiences that drive real business growth.
-                    </p>
-                    <div class="flex space-x-4">
-                        <div class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors cursor-pointer">
-                            <span class="text-sm">L</span>
-                        </div>
-                        <div class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors cursor-pointer">
-                            <span class="text-sm">T</span>
-                        </div>
-                        <div class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors cursor-pointer">
-                            <span class="text-sm">I</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <h4 class="text-lg font-semibold mb-6">Services</h4>
-                    <ul class="space-y-3 text-gray-400">
-                        <li><a href="#" class="hover:text-white transition-colors">AI Website Development</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Digital Strategy</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Performance Optimization</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">SEO & Marketing</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-lg font-semibold mb-6">Company</h4>
-                    <ul class="space-y-3 text-gray-400">
-                        <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Portfolio</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Careers</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-400 text-sm">
-                    © 2024 Optiscale360. All rights reserved.
-                </p>
-                <div class="flex space-x-6 mt-4 md:mt-0">
-                    <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
-                    <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</a>
-                    <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Cookie Policy</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+        <!-- FOOTER INCLUDE -->
+    <div id="footer-placeholder"></div>
 
     <script>
         // Intersection Observer for animations
@@ -771,6 +713,23 @@
                 console.log('CTA clicked:', e.target.textContent.trim());
                 // Add your analytics tracking here
             }
+        });
+    
+        // Load Header and Footer Components
+        async function loadComponent(placeholderId, componentPath) {
+            try {
+                const response = await fetch(componentPath);
+                const html = await response.text();
+                document.getElementById(placeholderId).innerHTML = html;
+            } catch (error) {
+                console.error(`Error loading ${componentPath}:`, error);
+            }
+        }
+
+        // Load components when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            loadComponent('header-placeholder', '/components/header.html');
+            loadComponent('footer-placeholder', '/components/footer.html');
         });
     </script>
 </body>

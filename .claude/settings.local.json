@@ -11,7 +11,8 @@
       "Bash(python -m pip install python-docx pillow)",
       "Read(//c/c/Users/warrior/optiscale360/**)",
       "Bash(python:*)",
-      "Bash(sed:*)"
+      "Bash(sed:*)",
+      "WebFetch(domain:optiscale360.pages.dev)"
     ],
     "deny": [],
     "ask": []

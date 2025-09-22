@@ -1772,21 +1772,8 @@
     </style>
 </head>
 <body>
-    <!-- PREMIUM HEADER -->
-    <header class="header" id="header">
-        <nav class="nav-container">
-            <a href="/" class="logo">
-                <img src="360_logo.svg" alt="OptiScale 360" style="height: 60px; width: auto;">
-            </a>
-            <div class="nav-menu">
-                <a href="#services" class="nav-link">Services</a>
-                <a href="#case-studies" class="nav-link">Case Studies</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#contact" class="nav-link">Contact</a>
-            </div>
-            <a href="/Free-AI-Ready-Website.html" class="header-cta">Free AI-Ready Website</a>
-        </nav>
-    </header>
+    <!-- HEADER INCLUDE -->
+    <div id="header-placeholder"></div>
 
     <!-- STUNNING FEATURE BANNER -->
     <section class="feature-banner">
@@ -2396,56 +2383,8 @@
         </div>
     </section>
 
-    <!-- PREMIUM FOOTER -->
-    <footer class="footer" id="about">
-        <div class="footer-container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <h3>OptiScale 360</h3>
-                    <p class="footer-description">Professional SEO and AI search optimization services. We help businesses improve their visibility in traditional and AI-powered search results.</p>
-                    <div class="certifications">
-                        <div class="cert-badge">ISO 27001</div>
-                        <div class="cert-badge">SOC 2</div>
-                        <div class="cert-badge">GDPR</div>
-                    </div>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Services</h4>
-                    <ul class="footer-links">
-                        <li><a href="/ai-visibility-audit.html">AI Visibility Audit</a></li>
-                        <li><a href="/Free-AI-Ready-Website.html">AI-Ready Websites</a></li>
-                        <li><a href="#case-studies">Case Studies</a></li>
-                        <li><a href="#consultation">Free Consultation</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Company</h4>
-                    <ul class="footer-links">
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="/blog/">Blog</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                        <li><a href="/careers">Careers</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-section" id="contact">
-                    <h4>Contact</h4>
-                    <ul class="footer-links">
-                        <li>hello@optiscale360.com</li>
-                        <li>+1 (555) 123-4567</li>
-                        <li>San Francisco, CA</li>
-                        <li>New York, NY</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2024 OptiScale 360. All rights reserved. | Privacy Policy | Terms of Service</p>
-            </div>
-        </div>
-    </footer>
+    <!-- FOOTER INCLUDE -->
+    <div id="footer-placeholder"></div>
 
     <!-- PREMIUM JAVASCRIPT -->
     <script>
@@ -2632,6 +2571,23 @@
                 const img = new Image();
                 img.src = src;
             });
+        });
+
+        // Load Header and Footer Components
+        async function loadComponent(placeholderId, componentPath) {
+            try {
+                const response = await fetch(componentPath);
+                const html = await response.text();
+                document.getElementById(placeholderId).innerHTML = html;
+            } catch (error) {
+                console.error(`Error loading ${componentPath}:`, error);
+            }
+        }
+
+        // Load components when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            loadComponent('header-placeholder', '/components/header.html');
+            loadComponent('footer-placeholder', '/components/footer.html');
         });
     </script>
 </body>
