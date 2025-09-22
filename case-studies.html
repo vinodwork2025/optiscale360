@@ -304,6 +304,102 @@
             height: 16px;
         }
 
+        /* NDA Disclaimer */
+        .nda-disclaimer {
+            background: linear-gradient(135deg, #1E293B 0%, #334155 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 0 auto 3rem;
+            max-width: 800px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .nda-disclaimer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+
+        .nda-disclaimer::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .nda-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .nda-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 1rem;
+            background: rgba(59, 130, 246, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .nda-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #FFFFFF;
+        }
+
+        .nda-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #CBD5E1;
+            margin-bottom: 1.5rem;
+        }
+
+        .nda-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .nda-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            justify-content: center;
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #E2E8F0;
+        }
+
+        .nda-feature svg {
+            width: 16px;
+            height: 16px;
+            color: var(--accent);
+        }
+
         /* Industry Colors */
         .fintech { background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%); }
         .healthcare { background: linear-gradient(135deg, #10B981 0%, #059669 100%); }
@@ -444,6 +540,15 @@
             .hero-stats {
                 grid-template-columns: 1fr;
             }
+
+            .nda-disclaimer {
+                padding: 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .nda-features {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
@@ -486,6 +591,47 @@
             <div class="section-header">
                 <h2 class="section-title">Transformational Case Studies</h2>
                 <p class="section-subtitle">Discover how businesses across 8 industries achieved remarkable growth with our AI-ready website optimization and enhanced AI search visibility.</p>
+            </div>
+
+            <!-- NDA Disclaimer -->
+            <div class="nda-disclaimer">
+                <div class="nda-content">
+                    <div class="nda-icon">🔒</div>
+                    <h3 class="nda-title">Client Confidentiality & NDA Policy</h3>
+                    <p class="nda-text">
+                        In accordance with our strict Non-Disclosure Agreement (NDA) policy and commitment to client confidentiality,
+                        we have anonymized all company names, website URLs, and identifying information in these case studies.
+                        The metrics, results, and implementation details presented are authentic and represent real client outcomes
+                        achieved through our AI-ready website optimization services.
+                    </p>
+
+                    <div class="nda-features">
+                        <div class="nda-feature">
+                            <svg fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Strict NDA Policy</span>
+                        </div>
+                        <div class="nda-feature">
+                            <svg fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Authentic Results</span>
+                        </div>
+                        <div class="nda-feature">
+                            <svg fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Client Privacy</span>
+                        </div>
+                        <div class="nda-feature">
+                            <svg fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span>Verified Metrics</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="case-grid">
