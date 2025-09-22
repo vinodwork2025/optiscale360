@@ -702,6 +702,23 @@ Implement LocalBusiness schema:</p>
     <div id="footer-placeholder"></div>
 
     <script src="../../components/loader.js"></script>
-    <script src="../../script.js"></script>
+    <script src="../../script.js">
+    // Load Header and Footer Components
+    async function loadComponent(placeholderId, componentPath) {
+        try {
+            const response = await fetch(componentPath);
+            const html = await response.text();
+            document.getElementById(placeholderId).innerHTML = html;
+        } catch (error) {
+            console.error(`Error loading ${componentPath}:`, error);
+        }
+    }
+
+    // Load components when DOM is ready
+    document.addEventListener('DOMContentLoaded', function() {
+        loadComponent('header-placeholder', '/components/header.html');
+        loadComponent('footer-placeholder', '/components/footer.html');
+    });
+    </script>
 </body>
 </html>

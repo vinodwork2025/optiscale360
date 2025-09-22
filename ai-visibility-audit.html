@@ -3063,6 +3063,23 @@
     </script>
 
     <!-- Google Analytics 4 (replace with your measurement ID) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX">
+    // Load Header and Footer Components
+    async function loadComponent(placeholderId, componentPath) {
+        try {
+            const response = await fetch(componentPath);
+            const html = await response.text();
+            document.getElementById(placeholderId).innerHTML = html;
+        } catch (error) {
+            console.error(`Error loading ${componentPath}:`, error);
+        }
+    }
+
+    // Load components when DOM is ready
+    document.addEventListener('DOMContentLoaded', function() {
+        loadComponent('header-placeholder', '/components/header.html');
+        loadComponent('footer-placeholder', '/components/footer.html');
+    });
+    </script>
 </body>
 </html>
