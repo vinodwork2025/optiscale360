@@ -7,7 +7,6 @@
             <div class="footer-brand">
                 <div class="brand-header">
                     <img src="/360_logo.svg" alt="OptiScale 360" class="footer-logo">
-                    <span class="brand-name">OptiScale 360</span>
                 </div>
                 <p class="brand-tagline">AI-powered SEO optimization for modern businesses</p>
 
@@ -145,8 +144,8 @@
 .brand-header {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 0.5rem;
+    justify-content: flex-start;
+    margin-bottom: 1rem;
 }
 
 .footer-logo {
@@ -155,12 +154,7 @@
     filter: brightness(0) saturate(100%) invert(100%);
 }
 
-.brand-name {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #FFFFFF;
-    letter-spacing: -0.02em;
-}
+/* Brand name removed - using logo only */
 
 .brand-tagline {
     color: #94A3B8;
@@ -343,7 +337,6 @@
 
     .brand-header {
         justify-content: center;
-        text-align: center;
     }
 
     .brand-tagline {
