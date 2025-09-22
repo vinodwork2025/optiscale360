@@ -894,6 +894,50 @@
             transform: translateX(4px);
         }
 
+        /* SERVICE FEATURES */
+        .service-features {
+            margin: var(--space-lg) 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-bottom: var(--space-sm);
+            line-height: 1.5;
+        }
+
+        .feature-item:last-child {
+            margin-bottom: 0;
+        }
+
+        /* PRICING STRUCTURE */
+        .service-investment {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin: var(--space-lg) 0;
+        }
+
+        .price-strike {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            text-decoration: line-through;
+            font-weight: 500;
+        }
+
+        .price-free {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--success);
+            background: linear-gradient(135deg, var(--success) 0%, #059669 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
 
         /* AUTHORITY PROOF SECTION */
         .authority-proof {
@@ -1834,13 +1878,20 @@
 
                     <h3 class="service-title">AI Visibility Intelligence Report</h3>
 
-                    <p class="service-problem">Your website exists, but AI assistants don't know it does</p>
+                    <p class="service-problem">Your website audit, but AI-powered! Don't have 4 years? We'll show you what to tackle now vs ignore</p>
 
-                    <p class="service-solution">Comprehensive 47-point analysis reveals exactly why you're invisible and how to fix it</p>
+                    <p class="service-solution">Comprehensive AI audit reveals exactly why you're invisible and how to fix it</p>
 
-                    <div class="service-results">Average client sees 340% increase in AI mentions</div>
+                    <div class="service-features">
+                        <div class="feature-item">✓ Average client sees 200% increase in 90 days</div>
+                        <div class="feature-item">✓ 47+ hidden keyword opportunities found</div>
+                        <div class="feature-item">✓ Complete competitor gap analysis</div>
+                    </div>
 
-                    <div class="service-investment">Starting at $2,997</div>
+                    <div class="service-investment">
+                        <span class="price-strike">$2,997</span>
+                        <span class="price-free">FREE</span>
+                    </div>
 
                     <a href="/ai-visibility-audit.html" class="service-cta">
                         <span>Get My AI Visibility Report</span>
