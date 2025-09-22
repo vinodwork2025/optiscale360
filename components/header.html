@@ -1,4 +1,4 @@
-<header class="header" style="position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(229, 231, 235, 0.8);">
+<header class="header" style="position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(229, 231, 235, 0.8); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);">
     <nav class="nav">
         <div class="nav-container">
             <div class="nav-logo">
@@ -8,14 +8,93 @@
             </div>
             <ul class="nav-menu nav-tabs">
                 <li class="nav-tab"><a href="/" class="nav-link">Home</a></li>
-                <li class="nav-tab"><a href="/services.html" class="nav-link">Services</a></li>
+                <li class="nav-tab nav-dropdown">
+                    <a href="/services.html" class="nav-link">Services <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6,9 12,15 18,9"></polyline></svg></a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-section">
+                            <h4>Core Services</h4>
+                            <a href="/ai-visibility-audit.html" class="dropdown-link">
+                                <div class="dropdown-icon">🔍</div>
+                                <div>
+                                    <span>AI Visibility Audit</span>
+                                    <small>Comprehensive AI search analysis</small>
+                                </div>
+                            </a>
+                            <a href="/Free-AI-Ready-Website.html" class="dropdown-link">
+                                <div class="dropdown-icon">🚀</div>
+                                <div>
+                                    <span>AI-Ready Website</span>
+                                    <small>Modern, AI-optimized websites</small>
+                                </div>
+                            </a>
+                            <a href="/services.html" class="dropdown-link">
+                                <div class="dropdown-icon">⚡</div>
+                                <div>
+                                    <span>All Services</span>
+                                    <small>Complete service portfolio</small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-tab nav-dropdown">
+                    <a href="/resources.html" class="nav-link">Resources <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6,9 12,15 18,9"></polyline></svg></a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-section">
+                            <h4>Free Resources</h4>
+                            <a href="/resources/roi-calculator.html" class="dropdown-link">
+                                <div class="dropdown-icon">📊</div>
+                                <div>
+                                    <span>ROI Calculator</span>
+                                    <small>Calculate your potential returns</small>
+                                </div>
+                            </a>
+                            <a href="/resources/best-practices.html" class="dropdown-link">
+                                <div class="dropdown-icon">💡</div>
+                                <div>
+                                    <span>Best Practices</span>
+                                    <small>AI SEO optimization guides</small>
+                                </div>
+                            </a>
+                            <a href="/resources/industry-insights.html" class="dropdown-link">
+                                <div class="dropdown-icon">📈</div>
+                                <div>
+                                    <span>Industry Insights</span>
+                                    <small>Latest market reports & trends</small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </li>
                 <li class="nav-tab"><a href="/case-studies.html" class="nav-link">Case Studies</a></li>
                 <li class="nav-tab"><a href="/blog/" class="nav-link">Blog</a></li>
-                <li class="nav-tab"><a href="/contact.html" class="nav-link">Contact</a></li>
+                <li class="nav-tab nav-dropdown">
+                    <a href="/about.html" class="nav-link">Company <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6,9 12,15 18,9"></polyline></svg></a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-section">
+                            <h4>About Us</h4>
+                            <a href="/about.html" class="dropdown-link">
+                                <div class="dropdown-icon">🏢</div>
+                                <div>
+                                    <span>About OptiScale 360</span>
+                                    <small>Our story and mission</small>
+                                </div>
+                            </a>
+                            <a href="/contact.html" class="dropdown-link">
+                                <div class="dropdown-icon">📞</div>
+                                <div>
+                                    <span>Contact Us</span>
+                                    <small>Get in touch with our team</small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </li>
             </ul>
             <div class="nav-cta">
-                <a href="/Free-AI-Ready-Website.html" class="cta-btn tooltip-container" data-tooltip="No Upfront fees, Pay what You Value after seeing results">
-                    Build Your Next-Gen Website
+                <a href="/ai-visibility-audit.html" class="cta-btn secondary-btn">Free Audit</a>
+                <a href="/Free-AI-Ready-Website.html" class="cta-btn primary-btn tooltip-container" data-tooltip="No upfront fees, pay what you value after seeing results">
+                    Get Started
                 </a>
             </div>
             <div class="nav-toggle">
