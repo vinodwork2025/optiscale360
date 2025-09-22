@@ -1,7 +1,7 @@
-// OptiScale 360 - Interactive Website Functionality
+// Optiscale Advisors - Interactive Website Functionality
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('OptiScale 360 website loaded successfully');
+    console.log('Optiscale Advisors website loaded successfully');
 
     // Initialize all functionality
     initMobileMenu();
