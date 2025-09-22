@@ -798,25 +798,7 @@
         }
 
         .service-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--gradient-primary);
-            border-radius: var(--radius-lg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
             margin-bottom: var(--space-lg);
-            position: relative;
-        }
-
-        .service-card.audit .service-icon {
-            background: linear-gradient(135deg, var(--success) 0%, #059669 100%);
-        }
-
-        .service-icon svg {
-            width: 40px;
-            height: 40px;
-            color: var(--pure-white);
         }
 
         .service-title {
@@ -1030,16 +1012,6 @@
             50% { transform: translateY(-18px) scale(0.9); }
         }
 
-        /* ANIMATED SERVICE ICONS */
-        .animated-icon {
-            width: 100%;
-            height: 100%;
-        }
-
-        .service-icon:hover .animated-icon {
-            transform: scale(1.1);
-            transition: transform 0.3s ease;
-        }
 
 
         /* AUTHORITY PROOF SECTION */
@@ -1206,21 +1178,8 @@
         }
 
         .pillar-icon {
-            width: 100px;
-            height: 100px;
-            background: var(--gradient-primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             margin: 0 auto var(--space-lg);
             position: relative;
-        }
-
-        .pillar-icon svg {
-            width: 50px;
-            height: 50px;
-            color: var(--pure-white);
         }
 
         .pillar-title {
@@ -2021,38 +1980,13 @@
                     <div class="card-badge">For Existing Websites</div>
 
                     <div class="service-icon">
-                        <svg viewBox="0 0 100 100" class="animated-icon audit-icon">
-                            <defs>
-                                <linearGradient id="audit-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#10B981"/>
-                                    <stop offset="100%" style="stop-color:#059669"/>
-                                </linearGradient>
-                            </defs>
-                            <!-- Animated radar circles -->
-                            <circle cx="50" cy="50" r="35" fill="none" stroke="url(#audit-gradient)" stroke-width="3" opacity="0.3">
-                                <animate attributeName="r" values="35;45;35" dur="3s" repeatCount="indefinite"/>
-                                <animate attributeName="opacity" values="0.3;0.1;0.3" dur="3s" repeatCount="indefinite"/>
-                            </circle>
-                            <circle cx="50" cy="50" r="25" fill="none" stroke="url(#audit-gradient)" stroke-width="2" opacity="0.5">
-                                <animate attributeName="r" values="25;35;25" dur="2s" repeatCount="indefinite"/>
-                                <animate attributeName="opacity" values="0.5;0.2;0.5" dur="2s" repeatCount="indefinite"/>
-                            </circle>
-                            <!-- Central magnifying glass -->
-                            <circle cx="45" cy="45" r="15" fill="none" stroke="white" stroke-width="3"/>
-                            <path d="m55 55 10 10" stroke="white" stroke-width="3" stroke-linecap="round">
-                                <animateTransform attributeName="transform" type="rotate" values="0 50 50;360 50 50" dur="4s" repeatCount="indefinite"/>
-                            </path>
-                            <!-- AI brain dots -->
-                            <circle cx="40" cy="40" r="2" fill="white">
-                                <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite"/>
-                            </circle>
-                            <circle cx="50" cy="40" r="2" fill="white">
-                                <animate attributeName="opacity" values="0.3;1;0.3" dur="1.5s" repeatCount="indefinite"/>
-                            </circle>
-                            <circle cx="45" cy="50" r="2" fill="white">
-                                <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite" begin="0.5s"/>
-                            </circle>
-                        </svg>
+                        <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-600 rounded-2xl flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"/>
+                                <path d="m21 21-4.35-4.35"/>
+                                <path d="M11 8a3 3 0 100 6 3 3 0 000-6z"/>
+                            </svg>
+                        </div>
                     </div>
 
                     <h3 class="service-title">AI Visibility Intelligence Report</h3>
@@ -2085,41 +2019,15 @@
                     <div class="card-badge">For New/Outdated Websites</div>
 
                     <div class="service-icon">
-                        <svg viewBox="0 0 100 100" class="animated-icon website-icon">
-                            <defs>
-                                <linearGradient id="website-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#3B82F6"/>
-                                    <stop offset="100%" style="stop-color:#1D4ED8"/>
-                                </linearGradient>
-                            </defs>
-                            <!-- Animated browser window -->
-                            <rect x="15" y="20" width="70" height="55" rx="5" fill="white" stroke="url(#website-gradient)" stroke-width="2">
-                                <animate attributeName="fill" values="white;#F8FAFC;white" dur="3s" repeatCount="indefinite"/>
-                            </rect>
-                            <!-- Browser header -->
-                            <rect x="15" y="20" width="70" height="15" rx="5" fill="url(#website-gradient)"/>
-                            <!-- Browser dots -->
-                            <circle cx="25" cy="27.5" r="2" fill="white"/>
-                            <circle cx="32" cy="27.5" r="2" fill="white"/>
-                            <circle cx="39" cy="27.5" r="2" fill="white"/>
-                            <!-- AI-powered content lines -->
-                            <line x1="25" y1="45" x2="75" y2="45" stroke="url(#website-gradient)" stroke-width="2">
-                                <animate attributeName="stroke-dasharray" values="0,50;50,0;0,50" dur="2s" repeatCount="indefinite"/>
-                            </line>
-                            <line x1="25" y1="52" x2="65" y2="52" stroke="url(#website-gradient)" stroke-width="2">
-                                <animate attributeName="stroke-dasharray" values="0,40;40,0;0,40" dur="2.5s" repeatCount="indefinite"/>
-                            </line>
-                            <line x1="25" y1="59" x2="70" y2="59" stroke="url(#website-gradient)" stroke-width="2">
-                                <animate attributeName="stroke-dasharray" values="0,45;45,0;0,45" dur="1.8s" repeatCount="indefinite"/>
-                            </line>
-                            <!-- AI brain symbol -->
-                            <circle cx="50" cy="15" r="8" fill="url(#website-gradient)">
-                                <animate attributeName="r" values="8;10;8" dur="2s" repeatCount="indefinite"/>
-                            </circle>
-                            <path d="M45 12 Q50 8 55 12 Q50 16 45 12" fill="white">
-                                <animateTransform attributeName="transform" type="rotate" values="0 50 15;360 50 15" dur="4s" repeatCount="indefinite"/>
-                            </path>
-                        </svg>
+                        <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                <path d="M3 9h18"/>
+                                <path d="M9 21V9"/>
+                                <circle cx="9" cy="13.5" r="1.5"/>
+                                <circle cx="15" cy="13.5" r="1.5"/>
+                            </svg>
+                        </div>
                     </div>
 
                     <h3 class="service-title">AI-Ready Website (Free Draft)</h3>
@@ -2232,10 +2140,12 @@
             <div class="pillars-grid">
                 <div class="pillar-card">
                     <div class="pillar-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-                            <circle cx="12" cy="12" r="3"/>
-                        </svg>
+                        <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300 mx-auto">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                        </div>
                     </div>
                     <h3 class="pillar-title">AI Search Explosion</h3>
                     <p class="pillar-description">68% of searches now happen through AI assistants. Traditional SEO rankings become irrelevant when customers ask ChatGPT for recommendations.</p>
@@ -2243,11 +2153,13 @@
 
                 <div class="pillar-card">
                     <div class="pillar-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M3 3v18h18"/>
-                            <path d="M18.7 8L12 14.3L8.7 11L3 16.7"/>
-                            <circle cx="12" cy="14.3" r="2"/>
-                        </svg>
+                        <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300 mx-auto">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                <path d="M3 3v18h18"/>
+                                <path d="M18.7 8L12 14.3L8.7 11L3 16.7"/>
+                                <circle cx="12" cy="14.3" r="2"/>
+                            </svg>
+                        </div>
                     </div>
                     <h3 class="pillar-title">Traditional SEO Dying</h3>
                     <p class="pillar-description">Google's own AI Overviews are replacing organic results. The old playbook of keywords and backlinks won't save you in the AI era.</p>
@@ -2255,11 +2167,13 @@
 
                 <div class="pillar-card">
                     <div class="pillar-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"/>
-                            <polyline points="12,6 12,12 16,14"/>
-                            <path d="M8 12l2 2 4-4"/>
-                        </svg>
+                        <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300 mx-auto">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12,6 12,12 16,14"/>
+                                <path d="M8 12l2 2 4-4"/>
+                            </svg>
+                        </div>
                     </div>
                     <h3 class="pillar-title">First-Mover Window Closing</h3>
                     <p class="pillar-description">Early adopters capture 80% of AI search market share. Every day you wait, your competitors get further ahead in the AI visibility race.</p>
