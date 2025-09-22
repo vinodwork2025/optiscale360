@@ -938,6 +938,109 @@
             background-clip: text;
         }
 
+        /* FLOATING LLM LOGOS */
+        .floating-logos {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .logo-float {
+            position: absolute;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+            animation-duration: 6s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+        }
+
+        .logo-float:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .logo-1 {
+            top: 10%;
+            left: 85%;
+            animation: float1 6s ease-in-out infinite;
+        }
+
+        .logo-2 {
+            top: 25%;
+            left: 10%;
+            animation: float2 7s ease-in-out infinite;
+        }
+
+        .logo-3 {
+            top: 60%;
+            left: 90%;
+            animation: float3 5s ease-in-out infinite;
+        }
+
+        .logo-4 {
+            top: 70%;
+            left: 5%;
+            animation: float4 8s ease-in-out infinite;
+        }
+
+        .logo-5 {
+            top: 40%;
+            left: 95%;
+            animation: float5 6.5s ease-in-out infinite;
+        }
+
+        .logo-6 {
+            top: 15%;
+            left: 5%;
+            animation: float6 7.5s ease-in-out infinite;
+        }
+
+        @keyframes float1 {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        @keyframes float2 {
+            0%, 100% { transform: translateX(0px) translateY(0px); }
+            50% { transform: translateX(15px) translateY(-15px); }
+        }
+
+        @keyframes float3 {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-25px) scale(1.1); }
+        }
+
+        @keyframes float4 {
+            0%, 100% { transform: translateX(0px) rotate(0deg); }
+            50% { transform: translateX(-20px) rotate(-180deg); }
+        }
+
+        @keyframes float5 {
+            0%, 100% { transform: translateY(0px) translateX(0px); }
+            33% { transform: translateY(-10px) translateX(-10px); }
+            66% { transform: translateY(10px) translateX(10px); }
+        }
+
+        @keyframes float6 {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-18px) scale(0.9); }
+        }
+
+        /* ANIMATED SERVICE ICONS */
+        .animated-icon {
+            width: 100%;
+            height: 100%;
+        }
+
+        .service-icon:hover .animated-icon {
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+        }
+
 
         /* AUTHORITY PROOF SECTION */
         .authority-proof {
@@ -1711,6 +1814,56 @@
 
                 <div class="hero-visual">
                     <div class="dashboard-container">
+                        <!-- Floating LLM Logos -->
+                        <div class="floating-logos">
+                            <div class="logo-float logo-1">
+                                <svg width="40" height="40" viewBox="0 0 40 40" class="openai-logo">
+                                    <path d="M37.532 16.87a9.963 9.963 0 0 0-.856-8.184 10.078 10.078 0 0 0-10.855-4.835A9.964 9.964 0 0 0 18.306.5a10.079 10.079 0 0 0-9.614 6.977 9.967 9.967 0 0 0-6.664 4.834 10.08 10.08 0 0 0 1.24 11.817 9.965 9.965 0 0 0 .856 8.185 10.079 10.079 0 0 0 10.855 4.835 9.965 9.965 0 0 0 7.516 3.35 10.078 10.078 0 0 0 9.617-6.981 9.967 9.967 0 0 0 6.663-4.834 10.079 10.079 0 0 0-1.243-11.813ZM22.498 30.967a2.48 2.48 0 0 1-2.487-2.487c0-1.377 1.11-2.487 2.487-2.487s2.487 1.11 2.487 2.487c0 1.377-1.11 2.487-2.487 2.487Zm6.8-9.608c-.978 0-1.31-.421-1.31-1.31v-5.115c0-.978.421-1.31 1.31-1.31.978 0 1.31.421 1.31 1.31v5.115c0 .978-.421 1.31-1.31 1.31Zm-13.8 0c-.978 0-1.31-.421-1.31-1.31v-5.115c0-.978.421-1.31 1.31-1.31.978 0 1.31.421 1.31 1.31v5.115c0 .978-.421 1.31-1.31 1.31Z" fill="#10A37F"/>
+                                </svg>
+                            </div>
+                            <div class="logo-float logo-2">
+                                <svg width="40" height="40" viewBox="0 0 40 40" class="perplexity-logo">
+                                    <circle cx="20" cy="20" r="18" fill="#1FB6FF"/>
+                                    <path d="M20 5 L32 15 L32 25 L20 35 L8 25 L8 15 Z" fill="white"/>
+                                    <circle cx="20" cy="20" r="6" fill="#1FB6FF"/>
+                                </svg>
+                            </div>
+                            <div class="logo-float logo-3">
+                                <svg width="40" height="40" viewBox="0 0 40 40" class="claude-logo">
+                                    <rect width="40" height="40" rx="8" fill="#D97706"/>
+                                    <path d="M12 12h16a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H12a4 4 0 0 1-4-4v-8a4 4 0 0 1 4-4z" fill="white"/>
+                                    <path d="M16 18v4m4-6v8m4-4v4" stroke="#D97706" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                            <div class="logo-float logo-4">
+                                <svg width="40" height="40" viewBox="0 0 40 40" class="gemini-logo">
+                                    <defs>
+                                        <linearGradient id="gemini-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#4285F4"/>
+                                            <stop offset="50%" style="stop-color:#9C27B0"/>
+                                            <stop offset="100%" style="stop-color:#FF9800"/>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle cx="20" cy="20" r="18" fill="url(#gemini-gradient)"/>
+                                    <path d="M12 20 L20 12 L28 20 L20 28 Z" fill="white"/>
+                                    <circle cx="20" cy="20" r="4" fill="url(#gemini-gradient)"/>
+                                </svg>
+                            </div>
+                            <div class="logo-float logo-5">
+                                <svg width="40" height="40" viewBox="0 0 40 40" class="mistral-logo">
+                                    <circle cx="20" cy="20" r="18" fill="#FF6B35"/>
+                                    <path d="M15 15 L25 15 L25 25 L15 25 Z" fill="white"/>
+                                    <path d="M18 18 L22 22 M22 18 L18 22" stroke="#FF6B35" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <div class="logo-float logo-6">
+                                <svg width="40" height="40" viewBox="0 0 40 40" class="cohere-logo">
+                                    <circle cx="20" cy="20" r="18" fill="#39C2D7"/>
+                                    <path d="M12 20 Q20 12 28 20 Q20 28 12 20" fill="white"/>
+                                </svg>
+                            </div>
+                        </div>
+
                         <div class="analytics-dashboard">
                             <div class="dashboard-header">
                                 <div class="dashboard-title">
@@ -1868,11 +2021,37 @@
                     <div class="card-badge">For Existing Websites</div>
 
                     <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="8"/>
-                            <path d="m21 21-4.35-4.35"/>
-                            <circle cx="12" cy="12" r="3"/>
-                            <path d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M1 12h6M17 12h6M4.22 19.78l4.24-4.24M15.54 8.46l4.24-4.24"/>
+                        <svg viewBox="0 0 100 100" class="animated-icon audit-icon">
+                            <defs>
+                                <linearGradient id="audit-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#10B981"/>
+                                    <stop offset="100%" style="stop-color:#059669"/>
+                                </linearGradient>
+                            </defs>
+                            <!-- Animated radar circles -->
+                            <circle cx="50" cy="50" r="35" fill="none" stroke="url(#audit-gradient)" stroke-width="3" opacity="0.3">
+                                <animate attributeName="r" values="35;45;35" dur="3s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.3;0.1;0.3" dur="3s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="50" cy="50" r="25" fill="none" stroke="url(#audit-gradient)" stroke-width="2" opacity="0.5">
+                                <animate attributeName="r" values="25;35;25" dur="2s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.5;0.2;0.5" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            <!-- Central magnifying glass -->
+                            <circle cx="45" cy="45" r="15" fill="none" stroke="white" stroke-width="3"/>
+                            <path d="m55 55 10 10" stroke="white" stroke-width="3" stroke-linecap="round">
+                                <animateTransform attributeName="transform" type="rotate" values="0 50 50;360 50 50" dur="4s" repeatCount="indefinite"/>
+                            </path>
+                            <!-- AI brain dots -->
+                            <circle cx="40" cy="40" r="2" fill="white">
+                                <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="50" cy="40" r="2" fill="white">
+                                <animate attributeName="opacity" values="0.3;1;0.3" dur="1.5s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="45" cy="50" r="2" fill="white">
+                                <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite" begin="0.5s"/>
+                            </circle>
                         </svg>
                     </div>
 
@@ -1906,12 +2085,40 @@
                     <div class="card-badge">For New/Outdated Websites</div>
 
                     <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                            <path d="M3 9h18M9 21V9"/>
-                            <circle cx="9" cy="13.5" r="1.5"/>
-                            <circle cx="15" cy="13.5" r="1.5"/>
-                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                        <svg viewBox="0 0 100 100" class="animated-icon website-icon">
+                            <defs>
+                                <linearGradient id="website-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#3B82F6"/>
+                                    <stop offset="100%" style="stop-color:#1D4ED8"/>
+                                </linearGradient>
+                            </defs>
+                            <!-- Animated browser window -->
+                            <rect x="15" y="20" width="70" height="55" rx="5" fill="white" stroke="url(#website-gradient)" stroke-width="2">
+                                <animate attributeName="fill" values="white;#F8FAFC;white" dur="3s" repeatCount="indefinite"/>
+                            </rect>
+                            <!-- Browser header -->
+                            <rect x="15" y="20" width="70" height="15" rx="5" fill="url(#website-gradient)"/>
+                            <!-- Browser dots -->
+                            <circle cx="25" cy="27.5" r="2" fill="white"/>
+                            <circle cx="32" cy="27.5" r="2" fill="white"/>
+                            <circle cx="39" cy="27.5" r="2" fill="white"/>
+                            <!-- AI-powered content lines -->
+                            <line x1="25" y1="45" x2="75" y2="45" stroke="url(#website-gradient)" stroke-width="2">
+                                <animate attributeName="stroke-dasharray" values="0,50;50,0;0,50" dur="2s" repeatCount="indefinite"/>
+                            </line>
+                            <line x1="25" y1="52" x2="65" y2="52" stroke="url(#website-gradient)" stroke-width="2">
+                                <animate attributeName="stroke-dasharray" values="0,40;40,0;0,40" dur="2.5s" repeatCount="indefinite"/>
+                            </line>
+                            <line x1="25" y1="59" x2="70" y2="59" stroke="url(#website-gradient)" stroke-width="2">
+                                <animate attributeName="stroke-dasharray" values="0,45;45,0;0,45" dur="1.8s" repeatCount="indefinite"/>
+                            </line>
+                            <!-- AI brain symbol -->
+                            <circle cx="50" cy="15" r="8" fill="url(#website-gradient)">
+                                <animate attributeName="r" values="8;10;8" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            <path d="M45 12 Q50 8 55 12 Q50 16 45 12" fill="white">
+                                <animateTransform attributeName="transform" type="rotate" values="0 50 15;360 50 15" dur="4s" repeatCount="indefinite"/>
+                            </path>
                         </svg>
                     </div>
 
