@@ -123,6 +123,18 @@
             padding: 0 20px;
         }
 
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 12px;
+            }
+        }
+
         .btn {
             display: inline-flex;
             align-items: center;
@@ -440,6 +452,24 @@
             overflow: hidden;
         }
 
+        @media (max-width: 1024px) {
+            .hero {
+                padding: 100px 0 120px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 80px 0 100px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 60px 0 80px;
+            }
+        }
+
         .hero::before {
             content: '';
             position: absolute;
@@ -556,6 +586,26 @@
             align-items: center;
         }
 
+        @media (max-width: 1024px) {
+            .hero-content {
+                gap: 60px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content {
+                gap: 32px;
+            }
+        }
+
         .hero-text {
             max-width: 600px;
         }
@@ -600,6 +650,27 @@
             line-height: 1.1;
             position: relative;
             z-index: 2;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.75rem;
+                margin-bottom: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.25rem;
+                margin-bottom: 20px;
+                line-height: 1.2;
+            }
         }
 
         .hero-title::after {
@@ -1633,42 +1704,51 @@
             animation: spin 1s ease-in-out infinite;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            /* Header responsive styles removed - using global header component */
+        /* Enhanced Responsive Design */
 
-            .hero {
-                padding: 60px 0 80px;
-            }
-
-            .hero-content {
-                grid-template-columns: 1fr;
-                gap: 48px;
-                text-align: center;
-            }
-
-            .hero-title {
+        /* Tablet Styles */
+        @media (max-width: 1024px) {
+            .section-title {
                 font-size: 2.5rem;
-            }
-
-            .hero-stats {
-                justify-content: center;
-            }
-
-            .container {
-                padding: 0 16px;
             }
 
             .authority-content {
                 grid-template-columns: 1fr;
-                gap: 48px;
+                gap: 60px;
                 text-align: center;
             }
 
+            .comparison-visual {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .vs-divider {
+                justify-self: center;
+                transform: rotate(90deg);
+                margin: 20px 0;
+            }
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .hero-stats {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            .hero-badge {
+                font-size: 0.8rem;
+                padding: 10px 20px;
+                margin-bottom: 24px;
+            }
+
             .authority-avatar {
-                width: 200px;
-                height: 200px;
-                font-size: 48px;
+                width: 180px;
+                height: 180px;
+                font-size: 40px;
                 margin: 0 auto;
             }
 
@@ -1677,85 +1757,58 @@
                 flex-direction: row;
                 justify-content: center;
                 margin-top: 20px;
-            }
-
-            .comparison-visual {
-                grid-template-columns: 1fr;
-                gap: 32px;
-                text-align: center;
-            }
-
-            .vs-divider {
-                justify-self: center;
-                transform: rotate(90deg);
+                flex-wrap: wrap;
+                gap: 12px;
             }
 
             .countdown-timer {
                 flex-wrap: wrap;
                 gap: 16px;
+                justify-content: center;
             }
 
             .timer-box {
                 min-width: 80px;
-                padding: 16px;
+                padding: 16px 12px;
+                flex: 1;
+                max-width: 120px;
             }
 
             .timer-number {
-                font-size: 2rem;
+                font-size: 1.8rem;
+            }
+
+            .timer-label {
+                font-size: 0.8rem;
             }
 
             .cta-title {
-                font-size: 2rem;
+                font-size: 2.2rem;
+                line-height: 1.2;
             }
 
             .section-title {
-                font-size: 2rem;
+                font-size: 2.2rem;
+                line-height: 1.2;
             }
 
             .form-row {
                 grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-title {
-                font-size: 2rem;
-            }
-
-            .hero-form {
-                padding: 24px;
+                gap: 12px;
             }
 
             .btn-large, .btn-xl {
                 padding: 16px 24px;
                 font-size: 16px;
-            }
-
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
-
-            .benefits-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .company-logos {
-                gap: 24px;
-            }
-
-            .trust-indicators {
-                flex-direction: column;
-                align-items: center;
+                width: 100%;
+                justify-self: center;
             }
 
             .popup-content {
-                padding: 32px 24px;
                 margin: 20px;
+                padding: 32px 24px;
+                max-height: 90vh;
+                overflow-y: auto;
             }
 
             .popup-form .form-row {
@@ -1763,11 +1816,79 @@
             }
 
             .popup-title {
+                font-size: 1.75rem;
+            }
+        }
+
+        /* Small Mobile Styles */
+        @media (max-width: 480px) {
+            .hero-form {
+                padding: 20px;
+                margin: 0 auto;
+            }
+
+            .hero-badge {
+                font-size: 0.75rem;
+                padding: 8px 16px;
+            }
+
+            .btn-large, .btn-xl {
+                padding: 14px 20px;
+                font-size: 15px;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .company-logos {
+                gap: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .trust-indicators {
+                flex-direction: column;
+                align-items: center;
+                gap: 16px;
+            }
+
+            .authority-avatar {
+                width: 150px;
+                height: 150px;
+                font-size: 36px;
+            }
+
+            .timer-box {
+                min-width: 70px;
+                padding: 12px 8px;
+            }
+
+            .timer-number {
                 font-size: 1.5rem;
             }
 
-            .logo-image-main {
-                height: 48px;
+            .cta-title {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .popup-title {
+                font-size: 1.5rem;
             }
         }
     </style>
