@@ -2,28 +2,21 @@
     <div class="header-backdrop"></div>
     <nav class="nav-container">
         <a href="/" class="brand-logo">
-            <div class="logo-container">
-                <img src="/360_logo.svg" alt="OptiScale 360" class="logo-image">
-                <div class="logo-glow"></div>
-            </div>
+            <img src="/360_logo.svg" alt="OptiScale 360" class="logo-image">
         </a>
 
         <div class="nav-center">
             <div class="nav-menu">
-                <a href="/services.html" class="nav-link">
-                    <span class="link-text">Services</span>
+                <a href="/" class="nav-link">
+                    <span class="link-text">Home</span>
                     <div class="link-indicator"></div>
                 </a>
                 <a href="/case-studies.html" class="nav-link">
                     <span class="link-text">Case Studies</span>
                     <div class="link-indicator"></div>
                 </a>
-                <a href="/blog/" class="nav-link">
-                    <span class="link-text">Blog</span>
-                    <div class="link-indicator"></div>
-                </a>
-                <a href="/about.html" class="nav-link">
-                    <span class="link-text">About</span>
+                <a href="/resources.html" class="nav-link">
+                    <span class="link-text">Resources</span>
                     <div class="link-indicator"></div>
                 </a>
                 <a href="/contact.html" class="nav-link">
@@ -130,48 +123,16 @@
 .brand-logo {
     display: flex;
     align-items: center;
-    gap: 12px;
     text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.logo-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 80px;
-    height: 80px;
+    height: 100%;
+    padding: 8px 0;
 }
 
 .logo-image {
-    width: 70px;
-    height: 70px;
-    transition: all 0.3s ease;
-    filter: drop-shadow(0 2px 4px rgba(0, 102, 255, 0.1));
-}
-
-.logo-glow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(0, 102, 255, 0.15) 0%, transparent 70%);
-    opacity: 0;
-    transition: all 0.4s ease;
-}
-
-.brand-logo:hover .logo-glow {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1.2);
-}
-
-.brand-logo:hover .logo-image {
-    transform: scale(1.05);
-    filter: drop-shadow(0 4px 8px rgba(0, 102, 255, 0.2));
+    height: 100%;
+    width: auto;
+    max-height: 68px;
+    object-fit: contain;
 }
 
 /* Brand text styles removed - using logo only */
@@ -470,14 +431,8 @@
 
     /* Brand text removed - logo only */
 
-    .logo-container {
-        width: 60px;
-        height: 60px;
-    }
-
     .logo-image {
-        width: 50px;
-        height: 50px;
+        max-height: 56px;
     }
 
     .premium-cta {
@@ -497,14 +452,8 @@
 
     /* Brand text removed - logo only */
 
-    .logo-container {
-        width: 50px;
-        height: 50px;
-    }
-
     .logo-image {
-        width: 42px;
-        height: 42px;
+        max-height: 48px;
     }
 
     .premium-cta {

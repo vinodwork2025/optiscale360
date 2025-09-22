@@ -114,104 +114,7 @@
             background: var(--primary-dark);
         }
 
-        /* Header */
-        .header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: var(--backdrop-blur);
-            box-shadow: var(--shadow-sm);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(229, 231, 235, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .header.scrolled {
-            background: rgba(255, 255, 255, 0.98);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 80px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .logo:hover {
-            transform: scale(1.05);
-        }
-
-        .logo-image {
-            width: 48px;
-            height: 48px;
-            transition: all 0.3s ease;
-            filter: drop-shadow(0 4px 8px rgba(37, 99, 235, 0.1));
-        }
-
-        .logo-image-main {
-            height: 56px;
-            width: auto;
-            max-width: 200px;
-            transition: all 0.3s ease;
-            filter: drop-shadow(0 4px 12px rgba(37, 99, 235, 0.15));
-        }
-
-        .logo:hover .logo-image-main {
-            transform: scale(1.05);
-            filter: drop-shadow(0 6px 16px rgba(37, 99, 235, 0.2));
-        }
-
-        .logo-text {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: var(--gradient-primary);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            position: relative;
-        }
-
-        .logo-text::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient-primary);
-            transition: width 0.3s ease;
-        }
-
-        .logo:hover .logo-text::after {
-            width: 100%;
-        }
-
-        .header-cta {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .header-trust {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.875rem;
-            color: var(--gray-600);
-        }
+        /* Header styles removed - using global header component */
 
         /* Utility Classes */
         .container {
@@ -1732,13 +1635,7 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .header-content {
-                padding: 0 16px;
-            }
-
-            .header-trust {
-                display: none;
-            }
+            /* Header responsive styles removed - using global header component */
 
             .hero {
                 padding: 60px 0 80px;
@@ -2764,17 +2661,7 @@
             });
         }
 
-        // Header scroll effect
-        function updateHeader() {
-            const header = document.querySelector('.header');
-            const scrolled = window.pageYOffset;
-
-            if (scrolled > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        }
+        // Header scroll effect removed - using global header component
 
         // Smooth parallax on scroll
         let ticking = false;
@@ -2782,7 +2669,6 @@
             if (!ticking) {
                 requestAnimationFrame(() => {
                     updateParallax();
-                    updateHeader();
                     ticking = false;
                 });
                 ticking = true;
