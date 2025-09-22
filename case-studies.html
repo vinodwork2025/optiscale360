@@ -3,991 +3,991 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Case Studies - OptiScale 360 | Real Client Results & Success Stories</title>
-    <meta name="description" content="Explore OptiScale 360's detailed case studies showcasing real client results, performance improvements, and successful website transformations with measurable ROI.">
-    <link rel="stylesheet" href="styles.css">
+    <title>AI-Ready Website Case Studies - Real Results & ROI | OptiScale 360</title>
+    <meta name="description" content="Discover how businesses achieved 312% traffic growth and 89% higher AI visibility with our AI-ready websites. Real case studies across 8 industries with detailed results.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'sans': ['Inter', 'system-ui', 'sans-serif'],
-                    },
-                    animation: {
-                        'gradient-x': 'gradient-x 15s ease infinite',
-                        'float': 'float 6s ease-in-out infinite',
-                        'slide-up': 'slide-up 0.8s ease-out',
-                        'fade-in': 'fade-in 0.6s ease-out',
-                        'scale-in': 'scale-in 0.5s ease-out',
-                        'bounce-slow': 'bounce 3s infinite',
-                        'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
-                    }
-                }
-            }
-        }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @keyframes gradient-x {
-            0%, 100% { background-size: 200% 200%; background-position: left center; }
-            50% { background-size: 200% 200%; background-position: right center; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        
+
+        :root {
+            --primary: #0066FF;
+            --primary-dark: #0052CC;
+            --secondary: #8B5CF6;
+            --accent: #10B981;
+            --text-primary: #0F172A;
+            --text-secondary: #475569;
+            --text-muted: #64748B;
+            --bg-white: #FFFFFF;
+            --bg-gray: #F8FAFC;
+            --bg-light: #F1F5F9;
+            --border: #E2E8F0;
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            --gradient-success: linear-gradient(135deg, var(--accent) 0%, #059669 100%);
+        }
+
+        body {
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header Include Placeholder */
+        #header-placeholder {
+            margin-bottom: 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #334155 100%);
+            color: white;
+            padding: 6rem 0 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="20" r="3" fill="rgba(255,255,255,0.08)"/><circle cx="40" cy="60" r="2" fill="rgba(255,255,255,0.12)"/><circle cx="70" cy="80" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
         @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(2deg); }
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
-        
-        @keyframes slide-up {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
         }
-        
-        @keyframes fade-in {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes scale-in {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        
-        @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
-            50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.6); }
-        }
-        
-        .gradient-text {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #FFFFFF 0%, #E2E8F0 100%);
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-size: 200% 200%;
-            animation: gradient-x 3s ease infinite;
+            line-height: 1.2;
         }
-        
-        .card-hover {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #CBD5E1;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        
-        .card-hover:hover {
-            transform: translateY(-12px) scale(1.02);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        }
-        
-        .glass-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .metric-card {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            transition: all 0.3s ease;
-        }
-        
-        .metric-card:hover {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.15));
-            border-color: rgba(59, 130, 246, 0.3);
-            transform: translateY(-4px);
-        }
-        
-        .portfolio-grid {
+
+        .hero-stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
+            margin-top: 3rem;
         }
-        
-        @media (max-width: 768px) {
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
+
+        .hero-stat {
+            text-align: center;
         }
-        
-        .project-card {
+
+        .hero-stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+        }
+
+        .hero-stat-label {
+            color: #94A3B8;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Case Studies Grid */
+        .case-studies {
+            padding: 5rem 0;
+            background: var(--bg-gray);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .case-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            border-radius: 1rem;
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            border: 1px solid rgba(226, 232, 240, 0.5);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            border-color: rgba(59, 130, 246, 0.3);
+
+        .case-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
         }
-        
-        .project-card::before {
+
+        .case-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            background: var(--gradient-primary);
         }
-        
-        .project-card:hover::before {
-            opacity: 1;
+
+        .case-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
         }
-        
-        .tech-stack-item {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.05));
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            transition: all 0.3s ease;
-        }
-        
-        .tech-stack-item:hover {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.1));
-            border-color: rgba(59, 130, 246, 0.4);
-            transform: scale(1.05);
-        }
-        
-        .floating-element {
-            animation: float 8s ease-in-out infinite;
-        }
-        
-        .floating-element:nth-child(2) { animation-delay: -2s; }
-        .floating-element:nth-child(3) { animation-delay: -4s; }
-        .floating-element:nth-child(4) { animation-delay: -6s; }
-        
-        .speed-score {
-            background: linear-gradient(135deg, #10b981, #059669);
-            color: white;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
+
+        .case-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
-            animation: pulse-glow 2s ease-in-out infinite;
+            font-size: 24px;
+            flex-shrink: 0;
         }
-        
-        .seo-score {
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-            color: white;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            animation: pulse-glow 2s ease-in-out infinite;
-        }
-        
-        
-        .timeline-badge {
-            background: linear-gradient(135deg, #f59e0b, #d97706);
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 1rem;
-            font-size: 0.75rem;
+
+        .case-info h3 {
+            font-size: 1.25rem;
             font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
         }
-        
-        .testimonial-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.9));
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(226, 232, 240, 0.5);
-            transition: all 0.4s ease;
+
+        .case-info .industry {
+            color: var(--text-muted);
+            font-size: 0.9rem;
         }
-        
-        .testimonial-card:hover {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.95));
-            border-color: rgba(59, 130, 246, 0.3);
-            transform: translateY(-6px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+
+        .case-challenge {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
         }
-        
-        .process-timeline {
+
+        .case-challenge h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .case-solution {
+            margin-bottom: 1.5rem;
+        }
+
+        .case-solution h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .solution-list {
+            list-style: none;
+            space-y: 0.5rem;
+        }
+
+        .solution-list li {
+            padding-left: 1.5rem;
             position: relative;
-            padding-left: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
         }
-        
-        .process-timeline::before {
-            content: '';
+
+        .solution-list li::before {
+            content: '✓';
             position: absolute;
             left: 0;
-            top: 0;
-            width: 2px;
-            height: 100%;
-            background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
-            opacity: 0.3;
+            color: var(--accent);
+            font-weight: 600;
         }
-        
-        .process-step {
+
+        .case-results {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .result-metric {
+            text-align: center;
+            padding: 0.75rem;
+            background: var(--bg-gray);
+            border-radius: 8px;
+        }
+
+        .result-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            display: block;
+        }
+
+        .result-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        .case-timeline {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .timeline-icon {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Industry Colors */
+        .fintech { background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%); }
+        .healthcare { background: linear-gradient(135deg, #10B981 0%, #059669 100%); }
+        .ecommerce { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); }
+        .saas { background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%); }
+        .education { background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%); }
+        .legal { background: linear-gradient(135deg, #6B7280 0%, #4B5563 100%); }
+        .real-estate { background: linear-gradient(135deg, #06B6D4 0%, #0891B2 100%); }
+        .manufacturing { background: linear-gradient(135deg, #84CC16 0%, #65A30D 100%); }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
             position: relative;
-            margin-bottom: 2rem;
+            overflow: hidden;
         }
-        
-        .process-step::after {
+
+        .cta-section::before {
             content: '';
             position: absolute;
-            left: -2rem;
-            top: 0.5rem;
-            width: 12px;
-            height: 12px;
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-            border-radius: 50%;
-            border: 3px solid white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon points="0,100 100,0 100,100" fill="rgba(255,255,255,0.05)"/></svg>');
         }
 
-        /* Stunning Compact Contact Form */
-        .contact-form-wrapper {
-            opacity: 0;
-            transform: translateY(15px);
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-            pointer-events: none;
+        .cta-content {
+            position: relative;
+            z-index: 2;
         }
 
-        .contact-form-wrapper.active {
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: auto;
-        }
-
-        .contact-form-card {
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 32px;
-            max-width: 600px;
-            margin: 0 auto;
-            box-shadow: 
-                0 20px 25px -5px rgba(0, 0, 0, 0.1),
-                0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .form-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 28px;
-        }
-
-        .form-title h3 {
-            font-size: 24px;
+        .cta-title {
+            font-size: 2.5rem;
             font-weight: 700;
-            color: #111827;
-            margin: 0 0 4px 0;
+            margin-bottom: 1rem;
             line-height: 1.2;
         }
 
-        .form-title p {
-            font-size: 15px;
-            color: #6b7280;
-            margin: 0;
-            font-weight: 500;
+        .cta-subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .close-btn {
-            background: #f3f4f6;
-            border: none;
-            border-radius: 8px;
-            width: 36px;
-            height: 36px;
+        .cta-buttons {
             display: flex;
-            align-items: center;
+            gap: 1rem;
             justify-content: center;
-            color: #6b7280;
-            cursor: pointer;
-            transition: all 0.2s ease;
+            flex-wrap: wrap;
         }
 
-        .close-btn:hover {
-            background: #e5e7eb;
-            color: #374151;
-        }
-
-        .compact-form {
-            display: grid;
-            gap: 20px;
-        }
-
-        .form-row-compact {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-
-        .field-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .field-label {
-            font-size: 14px;
-            font-weight: 600;
-            color: #374151;
-            margin: 0;
-        }
-
-        .field-input {
-            height: 44px;
-            padding: 0 14px;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            font-size: 15px;
-            color: #111827;
-            background: #ffffff;
-            transition: all 0.2s ease;
-            outline: none;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        }
-
-        .field-input:focus {
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-
-        .field-input::placeholder {
-            color: #9ca3af;
-            font-weight: 400;
-        }
-
-        .field-textarea {
-            height: auto;
-            padding: 12px 14px;
-            resize: vertical;
-            min-height: 88px;
-            line-height: 1.5;
-        }
-
-        .phone-field .field-input {
-            height: 44px;
-        }
-
-        .phone-wrapper {
-            display: grid;
-            grid-template-columns: 100px 1fr;
-            gap: 2px;
-        }
-
-        .country-code {
-            height: 44px;
-            padding: 0 8px;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px 0 0 8px;
-            border-right: none;
-            font-size: 14px;
-            color: #111827;
-            background: #f9fafb;
-            cursor: pointer;
-            outline: none;
-            transition: all 0.2s ease;
-        }
-
-        .phone-input {
-            border-radius: 0 8px 8px 0 !important;
-            border-left: none !important;
-        }
-
-        .phone-wrapper:focus-within .country-code {
-            border-color: #3b82f6;
-            background: #ffffff;
-        }
-
-        .phone-wrapper:focus-within .phone-input {
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-
-        .submit-button {
-            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-            color: #ffffff;
-            border: none;
-            height: 48px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 8px;
-        }
-
-        .submit-button:hover {
-            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
-            transform: translateY(-1px);
-            box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.3);
-        }
-
-        .submit-button:active {
-            transform: translateY(0);
-        }
-
-        .submit-button:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-
-        .loading-spinner {
-            width: 20px;
-            height: 20px;
-            animation: spin 1s linear infinite;
-        }
-
-        .success-state {
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        .success-icon {
-            color: #10b981;
-            margin-bottom: 16px;
-        }
-
-        .success-state h3 {
-            font-size: 20px;
-            font-weight: 700;
-            color: #111827;
-            margin: 0 0 8px 0;
-        }
-
-        .success-state p {
-            font-size: 15px;
-            color: #6b7280;
-            margin: 0 0 24px 0;
-        }
-
-        .new-request-btn {
-            background: #10b981;
-            color: #ffffff;
-            border: none;
-            height: 44px;
-            padding: 0 24px;
-            border-radius: 8px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .new-request-btn:hover {
-            background: #059669;
-            transform: translateY(-1px);
-        }
-
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 640px) {
-            .contact-form-card {
-                padding: 24px 20px;
-                margin: 0 16px;
-                border-radius: 12px;
-            }
-
-            .form-row-compact {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .form-title h3 {
-                font-size: 22px;
-            }
-
-            .phone-wrapper {
-                grid-template-columns: 90px 1fr;
-            }
-
-            .country-code {
-                padding: 0 6px;
-                font-size: 13px;
-            }
-        }
-
-        /* Google Calendar Booking Widget */
-        .calendar-booking-container {
-            position: relative;
-        }
-
-        .calendar-widget {
-            opacity: 0;
-            transform: translateY(15px);
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-            pointer-events: none;
-            margin-top: 20px;
-        }
-
-        .calendar-widget.active {
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: auto;
-        }
-
-        .booking-card {
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 32px;
-            max-width: 700px;
-            margin: 0 auto;
-            box-shadow: 
-                0 20px 25px -5px rgba(0, 0, 0, 0.1),
-                0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .booking-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 32px;
-        }
-
-        .booking-title h3 {
-            font-size: 24px;
-            font-weight: 700;
-            color: #111827;
-            margin: 0 0 4px 0;
-        }
-
-        .booking-title p {
-            font-size: 15px;
-            color: #6b7280;
-            margin: 0;
-        }
-
-        .booking-close-btn {
-            background: #f3f4f6;
-            border: none;
-            border-radius: 8px;
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #6b7280;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .booking-close-btn:hover {
-            background: #e5e7eb;
-            color: #374151;
-        }
-
-        .booking-content {
-            display: grid;
-            gap: 24px;
-        }
-
-        .booking-option {
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-            padding: 24px;
-            border: 2px solid #e5e7eb;
-            border-radius: 12px;
-            transition: all 0.2s ease;
-        }
-
-        .booking-option:hover {
-            border-color: #d1d5db;
-            background: #f9fafb;
-        }
-
-        .option-icon {
-            flex-shrink: 0;
-            width: 48px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(59, 130, 246, 0.1);
-            border-radius: 10px;
-        }
-
-        .option-content {
-            flex: 1;
-        }
-
-        .option-content h4 {
-            font-size: 18px;
-            font-weight: 600;
-            color: #111827;
-            margin: 0 0 4px 0;
-        }
-
-        .option-content p {
-            font-size: 15px;
-            color: #6b7280;
-            margin: 0 0 16px 0;
-        }
-
-        .option-btn {
+        .btn {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-size: 14px;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 50px;
             font-weight: 600;
             text-decoration: none;
-            transition: all 0.2s ease;
-            border: none;
-            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
         }
 
-        .primary-btn {
-            background: #3b82f6;
-            color: #ffffff;
+        .btn-primary {
+            background: white;
+            color: var(--primary);
         }
 
-        .primary-btn:hover {
-            background: #2563eb;
-            transform: translateY(-1px);
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
         }
 
-        .secondary-btn {
-            background: #f3f4f6;
-            color: #374151;
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border-color: rgba(255, 255, 255, 0.3);
         }
 
-        .secondary-btn:hover {
-            background: #e5e7eb;
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: white;
         }
 
-        .quick-booking-form {
-            margin-top: 24px;
-            padding: 24px;
-            background: #f9fafb;
-            border-radius: 12px;
-            border: 1px solid #e5e7eb;
+        /* Footer Include Placeholder */
+        #footer-placeholder {
+            margin-top: 0;
         }
 
-        .form-row-booking {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-bottom: 20px;
-        }
-
-        .booking-field {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .booking-field label {
-            font-size: 14px;
-            font-weight: 600;
-            color: #374151;
-        }
-
-        .booking-field input,
-        .booking-field select,
-        .booking-field textarea {
-            height: 44px;
-            padding: 0 12px;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            font-size: 15px;
-            color: #111827;
-            background: #ffffff;
-            transition: all 0.2s ease;
-            outline: none;
-        }
-
-        .booking-field textarea {
-            height: auto;
-            padding: 12px;
-            resize: vertical;
-            min-height: 88px;
-        }
-
-        .booking-field input:focus,
-        .booking-field select:focus,
-        .booking-field textarea:focus {
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-
-        .datetime-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-
-        .submit-booking-btn {
-            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-            color: #ffffff;
-            border: none;
-            height: 48px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 20px;
-            width: 100%;
-        }
-
-        .submit-booking-btn:hover {
-            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
-            transform: translateY(-1px);
-            box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.3);
-        }
-
-        .submit-booking-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .booking-spinner {
-            width: 20px;
-            height: 20px;
-            animation: spin 1s linear infinite;
-        }
-
-        .booking-success {
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        .success-booking-icon {
-            color: #10b981;
-            margin-bottom: 16px;
-        }
-
-        .booking-success h3 {
-            font-size: 20px;
-            font-weight: 700;
-            color: #111827;
-            margin: 0 0 8px 0;
-        }
-
-        .booking-success p {
-            font-size: 15px;
-            color: #6b7280;
-            margin: 0 0 16px 0;
-        }
-
-        .next-steps {
-            text-align: left;
-            margin: 20px 0;
-            padding-left: 20px;
-        }
-
-        .next-steps li {
-            color: #6b7280;
-            margin-bottom: 8px;
-        }
-
-        .schedule-another-btn {
-            background: #10b981;
-            color: #ffffff;
-            border: none;
-            height: 44px;
-            padding: 0 24px;
-            border-radius: 8px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .schedule-another-btn:hover {
-            background: #059669;
-            transform: translateY(-1px);
-        }
-
-        /* Mobile Booking Responsive */
-        @media (max-width: 640px) {
-            .booking-card {
-                padding: 24px 20px;
-                margin: 0 16px;
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
             }
 
-            .form-row-booking {
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .case-grid {
                 grid-template-columns: 1fr;
-                gap: 20px;
             }
 
-            .datetime-row {
-                grid-template-columns: 1fr;
-                gap: 16px;
+            .case-results {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .booking-option {
+            .cta-title {
+                font-size: 2rem;
+            }
+
+            .cta-buttons {
                 flex-direction: column;
-                text-align: center;
-                gap: 12px;
+                align-items: center;
             }
 
-            .booking-title h3 {
-                font-size: 20px;
+            .container {
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 4rem 0 3rem;
+            }
+
+            .case-card {
+                padding: 1.5rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
-<body class="antialiased bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50">
-        <!-- HEADER INCLUDE -->
+<body>
+    <!-- HEADER INCLUDE -->
     <div id="header-placeholder"></div>
-                                <div class="booking-header">
-                                    <div class="booking-title">
-                                        <h3>Schedule Your Free Consultation</h3>
-                                        <p>30-minute strategy session • No commitment required</p>
-                                    </div>
-                                    <button id="closeBookingBtn" class="booking-close-btn">
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                                            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                        </svg>
-                                    </button>
-                                </div>
 
-                                <!-- Calendar Integration Options -->
-                                <div class="booking-content">
-                                    <!-- Option 1: Direct Google Calendar Link -->
-                                    <div class="booking-option">
-                                        <div class="option-icon">
-                                            <svg class="w-8 h-8 text-blue-600" viewBox="0 0 24 24" fill="currentColor">
-                                                <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
-                                            </svg>
-                                        </div>
-                                        <div class="option-content">
-                                            <h4>Book with Google Calendar</h4>
-                                            <p>Choose from available time slots and book directly</p>
-                                            <a href="#" id="googleCalendarBtn" class="option-btn primary-btn">
-                                                View Available Times
-                                            </a>
-                                        </div>
-                                    </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>AI-Ready Website Success Stories</h1>
+                <p class="hero-subtitle">Real businesses achieving extraordinary results with AI-optimized websites and enhanced search visibility across traditional and AI-powered platforms.</p>
 
-                                    <!-- Option 2: Quick Booking Form -->
-                                    <div class="booking-option">
-                                        <div class="option-icon">
-                                            <svg class="w-8 h-8 text-green-600" viewBox="0 0 24 24" fill="currentColor">
-                                                <path d="M9 11H7v6h2v-6zm4 0h-2v6h2v-6zm4 0h-2v6h2v-6zM4 22h16v-2H4v2zm14-8V6c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v8H4v2h16v-2h-2zM8 6h8v8H8V6z"/>
-                                            </svg>
-                                        </div>
-                                        <div class="option-content">
-                                            <h4>Quick Schedule Request</h4>
-                                            <p>Tell us your preferred time and we'll confirm availability</p>
-                                            <button id="quickBookingBtn" class="option-btn secondary-btn">
-                                                Request Time Slot
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <!-- Quick Booking Form -->
-                                    <form id="quickBookingForm" class="quick-booking-form hidden">
-                                        <div class="form-row-booking">
-                                            <div class="booking-field">
-                                                <label>Your Name *</label>
-                                                <input type="text" id="consultationName" required placeholder="John Smith">
-                                            </div>
-                                            <div class="booking-field">
-                                                <label>Email *</label>
-                                                <input type="email" id="consultationEmail" required placeholder="john@company.com">
-                                            </div>
-                                        </div>
-                                        <div class="form-row-booking">
-                                            <div class="booking-field">
-                                                <label>Phone</label>
-                                                <input type="tel" id="consultationPhone" placeholder="+1 (555) 123-4567">
-                                            </div>
-                                            <div class="booking-field">
-                                                <label>Company</label>
-                                                <input type="text" id="consultationCompany" placeholder="Your Company">
-                                            </div>
-                                        </div>
-                                        <div class="booking-field">
-                                            <label>Preferred Date & Time</label>
-                                            <div class="datetime-row">
-                                                <input type="date" id="consultationDate" min="" required>
-                                                <select id="consultationTime" required>
-                                                    <option value="">Select time</option>
-                                                    <option value="09:00">9:00 AM</option>
-                                                    <option value="10:00">10:00 AM</option>
-                                                    <option value="11:00">11:00 AM</option>
-                                                    <option value="14:00">2:00 PM</option>
-                                                    <option value="15:00">3:00 PM</option>
-                                                    <option value="16:00">4:00 PM</option>
-                                                    <option value="17:00">5:00 PM</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="booking-field">
-                                            <label>What would you like to discuss?</label>
-                                            <textarea id="consultationTopic" rows="3" placeholder="Brief description of your website needs or questions..."></textarea>
-                                        </div>
-                                        <button type="submit" class="submit-booking-btn">
-                                            <span class="submit-booking-text">Schedule Consultation</span>
-                                            <span class="submit-booking-loading hidden">
-                                                <svg class="booking-spinner" viewBox="0 0 24 24">
-                                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none" opacity="0.25"/>
-                                                    <path fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" opacity="0.75"/>
-                                                </svg>
-                                                Scheduling...
-                                            </span>
-                                        </button>
-                                    </form>
-
-                                    <!-- Success Message -->
-                                    <div id="bookingSuccess" class="booking-success hidden">
-                                        <div class="success-booking-icon">
-                                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                                <path d="M9 12l2 2 4-4M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/>
-                                            </svg>
-                                        </div>
-                                        <h3>Consultation Scheduled!</h3>
-                                        <p>We've received your request and will send you a calendar invitation within 1 hour.</p>
-                                        <p><strong>Next Steps:</strong></p>
-                                        <ul class="next-steps">
-                                            <li>Check your email for calendar invite</li>
-                                            <li>Add the meeting to your calendar</li>
-                                            <li>We'll send you a prep questionnaire</li>
-                                        </ul>
-                                        <button id="scheduleAnotherBtn" class="schedule-another-btn">Schedule Another</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">312%</span>
+                        <span class="hero-stat-label">Average Traffic Growth</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">89%</span>
+                        <span class="hero-stat-label">Higher AI Visibility</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">6.2x</span>
+                        <span class="hero-stat-label">ROI Improvement</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">45 Days</span>
+                        <span class="hero-stat-label">Average Implementation</span>
                     </div>
                 </div>
-                
-                <div class="mt-12 text-blue-100 text-sm">
-                    <span class="font-semibold">⚡ Lightning-fast delivery • 🤖 AI-powered • 💰 Pay what you value • 🔒 Risk-free guarantee</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section class="case-studies">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Transformational Case Studies</h2>
+                <p class="section-subtitle">Discover how businesses across 8 industries achieved remarkable growth with our AI-ready website optimization and enhanced AI search visibility.</p>
+            </div>
+
+            <div class="case-grid">
+                <!-- Case Study 1: FinTech -->
+                <div class="case-card">
+                    <div class="case-header">
+                        <div class="case-icon fintech">💳</div>
+                        <div class="case-info">
+                            <h3>CryptoSecure Wallet</h3>
+                            <div class="industry">FinTech • Digital Wallet Platform</div>
+                        </div>
+                    </div>
+
+                    <div class="case-challenge">
+                        <h4>Challenge</h4>
+                        <p>Low visibility in AI-powered search results for crypto-related queries. Traditional SEO wasn't capturing voice searches and AI assistant responses about cryptocurrency security.</p>
+                    </div>
+
+                    <div class="case-solution">
+                        <h4>AI-Ready Solution</h4>
+                        <ul class="solution-list">
+                            <li>Structured data implementation for financial services</li>
+                            <li>AI-optimized content for voice search queries</li>
+                            <li>ChatGPT and Bard-friendly FAQ optimization</li>
+                            <li>Schema markup for crypto-specific terminology</li>
+                            <li>Conversational AI content strategy</li>
+                        </ul>
+                    </div>
+
+                    <div class="case-results">
+                        <div class="result-metric">
+                            <span class="result-number">427%</span>
+                            <span class="result-label">AI Visibility</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="result-number">89%</span>
+                            <span class="result-label">Voice Search</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="result-number">156%</span>
+                            <span class="result-label">Organic Traffic</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="result-number">$2.4M</span>
+                            <span class="result-label">Revenue Impact</span>
+                        </div>
+                    </div>
+
+                    <div class="case-timeline">
+                        <svg class="timeline-icon" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                            <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>Implementation: 38 days • Results tracking: 6 months</span>
+                    </div>
+                </div>
+
+                <!-- Case Study 2: Healthcare -->
+                <div class="case-card">
+                    <div class="case-header">
+                        <div class="case-icon healthcare">🏥</div>
+                        <div class="case-info">
+                            <h3>MediConnect Telehealth</h3>
+                            <div class="industry">Healthcare • Telemedicine Platform</div>
+                        </div>
+                    </div>
+
+                    <div class="case-challenge">
+                        <h4>Challenge</h4>
+                        <p>Healthcare queries weren't appearing in AI-generated health advice. Missing from ChatGPT responses about telemedicine options and virtual care solutions.</p>
+                    </div>
+
+                    <div class="case-solution">
+                        <h4>AI-Ready Solution</h4>
+                        <ul class="solution-list">
+                            <li>Medical schema markup implementation</li>
+                            <li>AI-friendly health content optimization</li>
+                            <li>Voice search for medical queries</li>
+                            <li>Conversational healthcare content</li>
+                            <li>Symptom-checker AI integration</li>
+                        </ul>
+                    </div>
+
+                    <div class="case-results">
+                        <div class="result-metric">
+                            <span class="result-number">298%</span>
+                            <span class="result-label">Medical Queries</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="result-number">167%</span>
+                            <span class="result-label">Patient Leads</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="result-number">78%</span>
+                            <span class="result-label">AI Mentions</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="result-number">$890K</span>
+                            <span class="result-label">Revenue Growth</span>
+                        </div>
+                    </div>
+
+                    <div class="case-timeline">
+                        <svg class="timeline-icon" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                            <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>Implementation: 42 days • Results tracking: 8 months</span>
+                    </div>
+                </div>
+
+                <!-- Case Study 3: E-commerce -->
+                <div class="case-card">
+                    <div class="case-header">
+                        <div class="case-icon ecommerce">🛍️</div>
+                        <div class="case-info">
+                            <h3>EcoStyle Fashion</h3>
+                            <div class="industry">E-commerce • Sustainable Fashion</div>
+                        </div>
+                    </div>
+
+                    <div class="case-challenge">
+                        <h4>Challenge</h4>
+                        <p>Sustainable fashion products weren't being recommended by AI shopping assistants. Low visibility in product recommendation algorithms and AI-powered shopping platforms.</p>
+                    </div>
+
+                    <div class="case-solution">
+                        <h4>AI-Ready Solution</h4>
+                        <ul class="solution-list">
+                            <li>Product schema with sustainability data</li>
+                            <li>AI-optimized product descriptions</li>
+                            <li>Voice commerce optimization</li>
+                            <li>Visual search enhancement</li>
+                            <li>AI shopping assistant integration</li>
+                        </ul>
+                    </div>
+
+                    <div class="case-results">
+                        <div class="result-metric">
+                            <span class="result-number">384%</span>
+                            <span class="result-label">Product Visibility</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="result-number">127%</span>
+                            <span class="result-label">Conversion Rate</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="result-number">234%</span>
+                            <span class="result-label">Voice Orders</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="result-number">$1.8M</span>
+                            <span class="result-label">Sales Increase</span>
+                        </div>
+                    </div>
+
+                    <div class="case-timeline">
+                        <svg class="timeline-icon" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                            <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>Implementation: 35 days • Results tracking: 5 months</span>
+                    </div>
+                </div>
+
+                <!-- Case Study 4: SaaS -->
+                <div class="case-card">
+                    <div class="case-header">
+                        <div class="case-icon saas">💻</div>
+                        <div class="case-info">
+                            <h3>CloudSync Analytics</h3>
+                            <div class="industry">SaaS • Business Intelligence</div>
+                        </div>
+                    </div>
+
+                    <div class="case-challenge">
+                        <h4>Challenge</h4>
+                        <p>Complex B2B software wasn't being explained effectively by AI assistants. Missing from AI-generated software recommendation lists and comparison responses.</p>
+                    </div>
+
+                    <div class="case-solution">
+                        <h4>AI-Ready Solution</h4>
+                        <ul class="solution-list">
+                            <li>Technical documentation optimization</li>
+                            <li>AI-friendly feature explanations</li>
+                            <li>Integration guides for AI consumption</li>
+                            <li>Use case-driven content structure</li>
+                            <li>Conversational onboarding content</li>
+                        </ul>
+                    </div>
+
+                    <div class="case-results">
+                        <div class="result-metric">
+                            <span class="result-number">312%</span>
+                            <span class="result-label">Demo Requests</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="result-number">89%</span>
+                            <span class="result-label">AI Recommendations</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="result-number">156%</span>
+                            <span class="result-label">Lead Quality</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="result-number">$3.2M</span>
+                            <span class="result-label">ARR Growth</span>
+                        </div>
+                    </div>
+
+                    <div class="case-timeline">
+                        <svg class="timeline-icon" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                            <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>Implementation: 51 days • Results tracking: 9 months</span>
+                    </div>
+                </div>
+
+                <!-- Case Study 5: Education -->
+                <div class="case-card">
+                    <div class="case-header">
+                        <div class="case-icon education">🎓</div>
+                        <div class="case-info">
+                            <h3>SkillForward Academy</h3>
+                            <div class="industry">Education • Online Learning Platform</div>
+                        </div>
+                    </div>
+
+                    <div class="case-challenge">
+                        <h4>Challenge</h4>
+                        <p>Educational content wasn't being surfaced in AI-powered learning recommendations. Students couldn't find courses through conversational AI queries about skill development.</p>
+                    </div>
+
+                    <div class="case-solution">
+                        <h4>AI-Ready Solution</h4>
+                        <ul class="solution-list">
+                            <li>Educational schema markup implementation</li>
+                            <li>Learning path optimization for AI</li>
+                            <li>Skill-based content categorization</li>
+                            <li>Voice search for course discovery</li>
+                            <li>AI tutor integration readiness</li>
+                        </ul>
+                    </div>
+
+                    <div class="case-results">
+                        <div class="result-metric">
+                            <span class="result-number">267%</span>
+                            <span class="result-label">Course Enrollments</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="result-number">134%</span>
+                            <span class="result-label">AI Visibility</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="result-number">89%</span>
+                            <span class="result-label">Voice Discovery</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="result-number">$1.4M</span>
+                            <span class="result-label">Revenue Impact</span>
+                        </div>
+                    </div>
+
+                    <div class="case-timeline">
+                        <svg class="timeline-icon" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                            <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>Implementation: 29 days • Results tracking: 7 months</span>
+                    </div>
+                </div>
+
+                <!-- Case Study 6: Legal Services -->
+                <div class="case-card">
+                    <div class="case-header">
+                        <div class="case-icon legal">⚖️</div>
+                        <div class="case-info">
+                            <h3>JusticePartners Law</h3>
+                            <div class="industry">Legal Services • Corporate Law Firm</div>
+                        </div>
+                    </div>
+
+                    <div class="case-challenge">
+                        <h4>Challenge</h4>
+                        <p>Legal expertise wasn't being recognized by AI assistants for legal advice queries. Firm's specializations weren't appearing in AI-generated legal resource recommendations.</p>
+                    </div>
+
+                    <div class="case-solution">
+                        <h4>AI-Ready Solution</h4>
+                        <ul class="solution-list">
+                            <li>Legal practice area schema markup</li>
+                            <li>AI-friendly legal content optimization</li>
+                            <li>Case study structure for AI consumption</li>
+                            <li>Attorney expertise optimization</li>
+                            <li>Voice search for legal services</li>
+                        </ul>
+                    </div>
+
+                    <div class="case-results">
+                        <div class="result-metric">
+                            <span class="result-number">198%</span>
+                            <span class="result-label">Legal Consultations</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="result-number">145%</span>
+                            <span class="result-label">AI Referrals</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="result-number">67%</span>
+                            <span class="result-label">Voice Inquiries</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="result-number">$2.1M</span>
+                            <span class="result-label">Case Value</span>
+                        </div>
+                    </div>
+
+                    <div class="case-timeline">
+                        <svg class="timeline-icon" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                            <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>Implementation: 47 days • Results tracking: 6 months</span>
+                    </div>
+                </div>
+
+                <!-- Case Study 7: Real Estate -->
+                <div class="case-card">
+                    <div class="case-header">
+                        <div class="case-icon real-estate">🏠</div>
+                        <div class="case-info">
+                            <h3>PrimeTowers Realty</h3>
+                            <div class="industry">Real Estate • Luxury Property Development</div>
+                        </div>
+                    </div>
+
+                    <div class="case-challenge">
+                        <h4>Challenge</h4>
+                        <p>Property listings weren't appearing in AI-powered real estate searches. Voice queries about luxury properties weren't returning relevant results from their inventory.</p>
+                    </div>
+
+                    <div class="case-solution">
+                        <h4>AI-Ready Solution</h4>
+                        <ul class="solution-list">
+                            <li>Real estate schema for properties</li>
+                            <li>AI-optimized property descriptions</li>
+                            <li>Voice search for property features</li>
+                            <li>Virtual tour AI integration</li>
+                            <li>Location-based AI optimization</li>
+                        </ul>
+                    </div>
+
+                    <div class="case-results">
+                        <div class="result-metric">
+                            <span class="result-number">342%</span>
+                            <span class="result-label">Property Views</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="result-number">167%</span>
+                            <span class="result-label">AI Searches</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="result-number">89%</span>
+                            <span class="result-label">Voice Queries</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="result-number">$8.7M</span>
+                            <span class="result-label">Sales Volume</span>
+                        </div>
+                    </div>
+
+                    <div class="case-timeline">
+                        <svg class="timeline-icon" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                            <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>Implementation: 33 days • Results tracking: 4 months</span>
+                    </div>
+                </div>
+
+                <!-- Case Study 8: Manufacturing -->
+                <div class="case-card">
+                    <div class="case-header">
+                        <div class="case-icon manufacturing">🏭</div>
+                        <div class="case-info">
+                            <h3>GreenTech Manufacturing</h3>
+                            <div class="industry">Manufacturing • Sustainable Industrial Solutions</div>
+                        </div>
+                    </div>
+
+                    <div class="case-challenge">
+                        <h4>Challenge</h4>
+                        <p>B2B manufacturing solutions weren't being recommended by AI for industrial automation queries. Technical specifications weren't AI-accessible for procurement searches.</p>
+                    </div>
+
+                    <div class="case-solution">
+                        <h4>AI-Ready Solution</h4>
+                        <ul class="solution-list">
+                            <li>Industrial product schema markup</li>
+                            <li>Technical specification optimization</li>
+                            <li>AI-friendly documentation</li>
+                            <li>Procurement-focused content</li>
+                            <li>Supply chain AI integration</li>
+                        </ul>
+                    </div>
+
+                    <div class="case-results">
+                        <div class="result-metric">
+                            <span class="result-number">278%</span>
+                            <span class="result-label">B2B Inquiries</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="result-number">134%</span>
+                            <span class="result-label">Procurement Leads</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="result-number">92%</span>
+                            <span class="result-label">AI Visibility</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="result-number">$4.6M</span>
+                            <span class="result-label">Contract Value</span>
+                        </div>
+                    </div>
+
+                    <div class="case-timeline">
+                        <svg class="timeline-icon" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                            <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>Implementation: 56 days • Results tracking: 8 months</span>
+                    </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <!-- Footer -->
-        <!-- Global Footer -->
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Transform Your Website for the AI Era?</h2>
+                <p class="cta-subtitle">Join these successful businesses and achieve remarkable growth with our AI-ready website optimization. Get your comprehensive AI visibility audit and custom implementation strategy.</p>
+
+                <div class="cta-buttons">
+                    <a href="/Free-AI-Ready-Website.html" class="btn btn-primary">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
+                        </svg>
+                        Get Your Free AI-Ready Website
+                    </a>
+                    <a href="/ai-visibility-audit.html" class="btn btn-outline">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        Start Free AI Visibility Audit
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER INCLUDE -->
     <div id="footer-placeholder"></div>
 
-    <script src="script.js"></script>
     <script>
-        // Intersection Observer for animations
+        // Load Header and Footer Components
+        async function loadComponent(placeholderId, componentPath) {
+            try {
+                const response = await fetch(componentPath);
+                const html = await response.text();
+                document.getElementById(placeholderId).innerHTML = html;
+            } catch (error) {
+                console.error(`Error loading ${componentPath}:`, error);
+            }
+        }
+
+        // Load components when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            loadComponent('header-placeholder', '/components/header.html');
+            loadComponent('footer-placeholder', '/components/footer.html');
+        });
+
+        // Smooth scrolling for anchor links
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+
+        // Add scroll animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -996,522 +996,22 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-slide-up');
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
                 }
             });
         }, observerOptions);
 
-        // Observe all project cards
-        document.querySelectorAll('.project-card').forEach(card => {
-            observer.observe(card);
-        });
-
-        // Observe metric cards
-        document.querySelectorAll('.metric-card').forEach(card => {
-            observer.observe(card);
-        });
-
-
-        // Add hover effects for tech stack items
-        document.querySelectorAll('.tech-stack-item').forEach(item => {
-            item.addEventListener('mouseenter', function() {
-                this.style.transform = 'scale(1.05) translateY(-2px)';
-            });
-            
-            item.addEventListener('mouseleave', function() {
-                this.style.transform = 'scale(1) translateY(0)';
-            });
-        });
-
-        // Animate speed and SEO scores on scroll
-        const animateScores = () => {
-            document.querySelectorAll('.speed-score, .seo-score').forEach(score => {
-                const value = parseInt(score.textContent);
-                let current = 0;
-                const increment = value / 20;
-                
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= value) {
-                        current = value;
-                        clearInterval(timer);
-                    }
-                    score.textContent = Math.floor(current);
-                }, 50);
-            });
-        };
-
-        // Trigger score animation when visible
-        const scoreObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateScores();
-                    scoreObserver.unobserve(entry.target);
-                }
-            });
-        });
-
-        document.querySelectorAll('.project-card').forEach(card => {
-            scoreObserver.observe(card);
-        });
-
-        // Clean Contact Form Functionality
+        // Observe all case cards
         document.addEventListener('DOMContentLoaded', function() {
-            const startProjectBtn = document.getElementById('startProjectBtn');
-            const inlineContactForm = document.getElementById('inlineContactForm');
-            const contactFormContainer = document.getElementById('contactFormContainer');
-            const closeFormBtn = document.getElementById('closeFormBtn');
-            const projectForm = document.getElementById('projectForm');
-            const successMessage = document.getElementById('successMessage');
-            const newProjectBtn = document.getElementById('newProjectBtn');
-
-            // Form show/hide functions
-            function showForm() {
-                inlineContactForm.classList.remove('hidden');
-                startProjectBtn.style.opacity = '0.3';
-                startProjectBtn.style.pointerEvents = 'none';
-                
-                setTimeout(() => {
-                    inlineContactForm.classList.add('active');
-                }, 50);
-
-                contactFormContainer.scrollIntoView({ 
-                    behavior: 'smooth', 
-                    block: 'center' 
-                });
-            }
-
-            function hideForm() {
-                inlineContactForm.classList.remove('active');
-                
-                setTimeout(() => {
-                    inlineContactForm.classList.add('hidden');
-                    startProjectBtn.style.opacity = '1';
-                    startProjectBtn.style.pointerEvents = 'auto';
-                }, 200);
-            }
-
-            // Event listeners
-            startProjectBtn.addEventListener('click', showForm);
-            closeFormBtn.addEventListener('click', hideForm);
-
-            // Click outside to close
-            document.addEventListener('click', function(e) {
-                if (inlineContactForm.classList.contains('active') && 
-                    !inlineContactForm.contains(e.target) && 
-                    !startProjectBtn.contains(e.target)) {
-                    hideForm();
-                }
+            const cards = document.querySelectorAll('.case-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+                observer.observe(card);
             });
-
-            // ESC key to close
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && inlineContactForm.classList.contains('active')) {
-                    hideForm();
-                }
-            });
-
-            // Form validation
-            function validateField(field) {
-                const value = field.value.trim();
-                const type = field.type;
-                let isValid = true;
-
-                field.style.borderColor = '#e5e7eb';
-
-                if (field.hasAttribute('required') && !value) {
-                    isValid = false;
-                    field.style.borderColor = '#ef4444';
-                } else if (type === 'email' && value) {
-                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                    if (!emailRegex.test(value)) {
-                        isValid = false;
-                        field.style.borderColor = '#ef4444';
-                    }
-                } else if (type === 'tel' && value) {
-                    const phoneRegex = /^[\d\s\-\(\)]+$/;
-                    if (!phoneRegex.test(value) || value.replace(/\D/g, '').length < 6) {
-                        isValid = false;
-                        field.style.borderColor = '#ef4444';
-                    }
-                } else if (type === 'url' && value) {
-                    try {
-                        new URL(value.startsWith('http') ? value : 'https://' + value);
-                    } catch {
-                        isValid = false;
-                        field.style.borderColor = '#ef4444';
-                    }
-                }
-
-                if (isValid && value) {
-                    field.style.borderColor = '#10b981';
-                }
-
-                return isValid;
-            }
-
-            // Add validation to form fields
-            const formFields = projectForm.querySelectorAll('.field-input');
-            formFields.forEach(field => {
-                field.addEventListener('blur', () => validateField(field));
-                field.addEventListener('input', () => {
-                    if (field.style.borderColor === 'rgb(239, 68, 68)') { // If it was red
-                        validateField(field);
-                    }
-                });
-            });
-
-            // Form submission
-            projectForm.addEventListener('submit', async function(e) {
-                e.preventDefault();
-
-                // Validate all required fields
-                let isFormValid = true;
-                const requiredFields = projectForm.querySelectorAll('[required]');
-                
-                requiredFields.forEach(field => {
-                    if (!validateField(field)) {
-                        isFormValid = false;
-                    }
-                });
-
-                if (!isFormValid) {
-                    // Shake form on validation error
-                    projectForm.style.animation = 'shake 0.3s ease-in-out';
-                    setTimeout(() => projectForm.style.animation = '', 300);
-                    return;
-                }
-
-                // Show loading state
-                const submitBtn = projectForm.querySelector('.submit-button');
-                const submitText = submitBtn.querySelector('.submit-text');
-                const submitLoading = submitBtn.querySelector('.submit-loading');
-                
-                submitBtn.disabled = true;
-                submitText.classList.add('hidden');
-                submitLoading.classList.remove('hidden');
-
-                try {
-                    // Simulate API call
-                    await new Promise(resolve => setTimeout(resolve, 1500));
-                    
-                    // Show success state
-                    projectForm.classList.add('hidden');
-                    successMessage.classList.remove('hidden');
-                    
-                } catch (error) {
-                    console.error('Form submission error:', error);
-                    alert('There was an error submitting your request. Please try again.');
-                } finally {
-                    submitBtn.disabled = false;
-                    submitText.classList.remove('hidden');
-                    submitLoading.classList.add('hidden');
-                }
-            });
-
-            // New request button
-            newProjectBtn.addEventListener('click', function() {
-                successMessage.classList.add('hidden');
-                projectForm.classList.remove('hidden');
-                projectForm.reset();
-                
-                // Reset field colors
-                formFields.forEach(field => {
-                    field.style.borderColor = '#e5e7eb';
-                });
-            });
-
-            // Add shake animation
-            if (!document.getElementById('shakeAnimation')) {
-                const style = document.createElement('style');
-                style.id = 'shakeAnimation';
-                style.textContent = `
-                    @keyframes shake {
-                        0%, 100% { transform: translateX(0); }
-                        25% { transform: translateX(-4px); }
-                        75% { transform: translateX(4px); }
-                    }
-                `;
-                document.head.appendChild(style);
-            }
         });
-
-        // Google Calendar Booking Functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const scheduleConsultationBtn = document.getElementById('scheduleConsultationBtn');
-            const calendarBookingWidget = document.getElementById('calendarBookingWidget');
-            const closeBookingBtn = document.getElementById('closeBookingBtn');
-            const googleCalendarBtn = document.getElementById('googleCalendarBtn');
-            const quickBookingBtn = document.getElementById('quickBookingBtn');
-            const quickBookingForm = document.getElementById('quickBookingForm');
-            const bookingSuccess = document.getElementById('bookingSuccess');
-            const scheduleAnotherBtn = document.getElementById('scheduleAnotherBtn');
-            const consultationDate = document.getElementById('consultationDate');
-
-            // Set minimum date to today
-            const today = new Date().toISOString().split('T')[0];
-            consultationDate.min = today;
-            consultationDate.value = today;
-
-            // Show/hide booking widget
-            function showBookingWidget() {
-                calendarBookingWidget.classList.remove('hidden');
-                scheduleConsultationBtn.style.opacity = '0.3';
-                scheduleConsultationBtn.style.pointerEvents = 'none';
-                
-                setTimeout(() => {
-                    calendarBookingWidget.classList.add('active');
-                }, 50);
-
-                // Scroll to widget
-                calendarBookingWidget.scrollIntoView({ 
-                    behavior: 'smooth', 
-                    block: 'center' 
-                });
-            }
-
-            function hideBookingWidget() {
-                calendarBookingWidget.classList.remove('active');
-                
-                setTimeout(() => {
-                    calendarBookingWidget.classList.add('hidden');
-                    scheduleConsultationBtn.style.opacity = '1';
-                    scheduleConsultationBtn.style.pointerEvents = 'auto';
-                    
-                    // Reset form
-                    resetBookingForm();
-                }, 200);
-            }
-
-            function resetBookingForm() {
-                quickBookingForm.classList.add('hidden');
-                bookingSuccess.classList.add('hidden');
-                quickBookingForm.reset();
-                consultationDate.value = today;
-                
-                // Reset field styles
-                const fields = quickBookingForm.querySelectorAll('input, select, textarea');
-                fields.forEach(field => {
-                    field.style.borderColor = '#e5e7eb';
-                });
-            }
-
-            // Event listeners
-            scheduleConsultationBtn.addEventListener('click', showBookingWidget);
-            closeBookingBtn.addEventListener('click', hideBookingWidget);
-
-            // Google Calendar integration
-            googleCalendarBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                // Generate Google Calendar booking link
-                const startDate = new Date();
-                startDate.setDate(startDate.getDate() + 1); // Tomorrow
-                startDate.setHours(14, 0, 0, 0); // 2 PM
-                
-                const endDate = new Date(startDate);
-                endDate.setMinutes(30); // 30 minute meeting
-                
-                const googleCalendarUrl = createGoogleCalendarUrl({
-                    title: 'Free Website Consultation - OptiScale 360',
-                    startDate: startDate,
-                    endDate: endDate,
-                    description: 'Free 30-minute consultation to discuss your website needs and digital strategy.',
-                    location: 'Video Call (Link will be provided)'
-                });
-                
-                window.open(googleCalendarUrl, '_blank');
-            });
-
-            // Show quick booking form
-            quickBookingBtn.addEventListener('click', function() {
-                quickBookingForm.classList.remove('hidden');
-                quickBookingForm.scrollIntoView({ behavior: 'smooth' });
-            });
-
-            // Form validation
-            function validateBookingField(field) {
-                const value = field.value.trim();
-                const type = field.type;
-                let isValid = true;
-
-                field.style.borderColor = '#e5e7eb';
-
-                if (field.hasAttribute('required') && !value) {
-                    isValid = false;
-                    field.style.borderColor = '#ef4444';
-                } else if (type === 'email' && value) {
-                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                    if (!emailRegex.test(value)) {
-                        isValid = false;
-                        field.style.borderColor = '#ef4444';
-                    }
-                }
-
-                if (isValid && value) {
-                    field.style.borderColor = '#10b981';
-                }
-
-                return isValid;
-            }
-
-            // Add validation to booking form fields
-            const bookingFields = quickBookingForm.querySelectorAll('input, select, textarea');
-            bookingFields.forEach(field => {
-                field.addEventListener('blur', () => validateBookingField(field));
-                field.addEventListener('input', () => {
-                    if (field.style.borderColor === 'rgb(239, 68, 68)') {
-                        validateBookingField(field);
-                    }
-                });
-            });
-
-            // Form submission
-            quickBookingForm.addEventListener('submit', async function(e) {
-                e.preventDefault();
-
-                // Validate required fields
-                let isValid = true;
-                const requiredFields = quickBookingForm.querySelectorAll('[required]');
-                
-                requiredFields.forEach(field => {
-                    if (!validateBookingField(field)) {
-                        isValid = false;
-                    }
-                });
-
-                if (!isValid) {
-                    quickBookingForm.style.animation = 'shake 0.3s ease-in-out';
-                    setTimeout(() => quickBookingForm.style.animation = '', 300);
-                    return;
-                }
-
-                // Show loading state
-                const submitBtn = quickBookingForm.querySelector('.submit-booking-btn');
-                const submitText = submitBtn.querySelector('.submit-booking-text');
-                const submitLoading = submitBtn.querySelector('.submit-booking-loading');
-                
-                submitBtn.disabled = true;
-                submitText.classList.add('hidden');
-                submitLoading.classList.remove('hidden');
-
-                try {
-                    // Get form data
-                    const formData = {
-                        name: document.getElementById('consultationName').value,
-                        email: document.getElementById('consultationEmail').value,
-                        phone: document.getElementById('consultationPhone').value,
-                        company: document.getElementById('consultationCompany').value,
-                        date: document.getElementById('consultationDate').value,
-                        time: document.getElementById('consultationTime').value,
-                        topic: document.getElementById('consultationTopic').value
-                    };
-
-                    // Create Google Calendar event (simulation)
-                    await createCalendarEvent(formData);
-                    
-                    // Show success state
-                    quickBookingForm.classList.add('hidden');
-                    bookingSuccess.classList.remove('hidden');
-                    
-                } catch (error) {
-                    console.error('Booking error:', error);
-                    alert('There was an error scheduling your consultation. Please try again or contact us directly.');
-                } finally {
-                    submitBtn.disabled = false;
-                    submitText.classList.remove('hidden');
-                    submitLoading.classList.add('hidden');
-                }
-            });
-
-            // Schedule another consultation
-            scheduleAnotherBtn.addEventListener('click', function() {
-                resetBookingForm();
-                quickBookingForm.classList.remove('hidden');
-            });
-
-            // Click outside to close
-            document.addEventListener('click', function(e) {
-                if (calendarBookingWidget.classList.contains('active') && 
-                    !calendarBookingWidget.contains(e.target) && 
-                    !scheduleConsultationBtn.contains(e.target)) {
-                    hideBookingWidget();
-                }
-            });
-
-            // ESC key to close
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && calendarBookingWidget.classList.contains('active')) {
-                    hideBookingWidget();
-                }
-            });
-
-            // Helper functions
-            function createGoogleCalendarUrl(eventData) {
-                const formatDate = (date) => {
-                    return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
-                };
-
-                const params = new URLSearchParams({
-                    action: 'TEMPLATE',
-                    text: eventData.title,
-                    dates: `${formatDate(eventData.startDate)}/${formatDate(eventData.endDate)}`,
-                    details: eventData.description,
-                    location: eventData.location || ''
-                });
-
-                return `https://calendar.google.com/calendar/render?${params.toString()}`;
-            }
-
-            async function createCalendarEvent(formData) {
-                // Simulate calendar event creation
-                await new Promise(resolve => setTimeout(resolve, 1500));
-                
-                // In a real implementation, you would:
-                // 1. Send data to your backend
-                // 2. Create Google Calendar event via Google Calendar API
-                // 3. Send calendar invitation to the user
-                // 4. Send confirmation email
-                
-                console.log('Calendar event data:', formData);
-                
-                // For now, we'll create a Google Calendar URL the user can click
-                const eventDate = new Date(`${formData.date}T${formData.time}:00`);
-                const eventEndDate = new Date(eventDate);
-                eventEndDate.setMinutes(eventEndDate.getMinutes() + 30);
-                
-                const calendarUrl = createGoogleCalendarUrl({
-                    title: `Consultation with ${formData.name} - OptiScale 360`,
-                    startDate: eventDate,
-                    endDate: eventEndDate,
-                    description: `Website consultation with ${formData.name} from ${formData.company}\n\nTopic: ${formData.topic}\n\nContact: ${formData.email} | ${formData.phone}`,
-                    location: 'Video Call (Link will be provided)'
-                });
-                
-                // Store for later use
-                window.lastBookingCalendarUrl = calendarUrl;
-                
-                return { success: true, calendarUrl };
-            }
-        });
-    </script>
-    <script src="/components/loader.js">
-    // Load Header and Footer Components
-    async function loadComponent(placeholderId, componentPath) {
-        try {
-            const response = await fetch(componentPath);
-            const html = await response.text();
-            document.getElementById(placeholderId).innerHTML = html;
-        } catch (error) {
-            console.error(`Error loading ${componentPath}:`, error);
-        }
-    }
-
-    // Load components when DOM is ready
-    document.addEventListener('DOMContentLoaded', function() {
-        loadComponent('header-placeholder', '/components/header.html');
-        loadComponent('footer-placeholder', '/components/footer.html');
-    });
     </script>
 </body>
 </html>
