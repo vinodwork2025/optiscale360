@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Is Your Business Invisible to ChatGPT? | Free AI Visibility Check</title>
+    <meta name="description" content="Free 15-minute AI visibility check reveals why customers can't find you when they ask ChatGPT. 97% of businesses are completely invisible in AI search results.">
+    <meta name="keywords" content="AI visibility, ChatGPT business, AI search, AI audit, business visibility, AI assistant marketing">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Is Your Business Invisible to ChatGPT?">
+    <meta property="og:description" content="Free 15-minute AI visibility check reveals why customers can't find you in AI search results">
+    <meta property="og:url" content="https://optiscale360.pages.dev/ai-visibility-audit.html">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <style>
+        :root {
+            --primary-color: #00D4FF;
+            --dark-bg: #1a1a1a;
+            --white: #ffffff;
+            --text-dark: #333333;
+            --success-green: #00ff88;
+            --gray-100: #f8f9fa;
+            --gray-200: #e9ecef;
+            --gray-300: #dee2e6;
+            --gray-400: #ced4da;
+            --gray-600: #6c757d;
+            --gray-800: #343a40;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--dark-bg);
+            overflow-x: hidden;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #0099cc 100%);
+            color: var(--white);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 25px 50px -12px rgba(0, 212, 255, 0.25);
+        }
+
+        .btn-large {
+            padding: 20px 40px;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .text-center { text-align: center; }
+        .text-white { color: var(--white); }
+        .mb-1 { margin-bottom: 8px; }
+        .mb-2 { margin-bottom: 16px; }
+        .mb-3 { margin-bottom: 24px; }
+        .mb-4 { margin-bottom: 32px; }
+        .mb-5 { margin-bottom: 48px; }
+        .mt-5 { margin-top: 48px; }
+        .py-5 { padding: 48px 0; }
+        .py-6 { padding: 60px 0; }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .animate-fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #2a2a2a 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 212, 255, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .hero-text .highlight {
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .hero-text .subheadline {
+            font-size: 1.25rem;
+            color: #b3b3b3;
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+
+        .trust-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--success-green);
+            font-size: 14px;
+            font-weight: 500;
+            margin-top: 16px;
+        }
+
+        /* Form Styles */
+        .lead-form {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-xl);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid var(--gray-200);
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+        }
+
+        .required {
+            color: #e74c3c;
+        }
+
+        /* Social Proof Section */
+        .social-proof {
+            background: var(--white);
+            padding: 80px 0;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .testimonial-card {
+            background: var(--gray-100);
+            padding: 32px;
+            border-radius: 16px;
+            border-left: 4px solid var(--primary-color);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .testimonial-quote {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), #0099cc);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .author-info h4 {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .author-info span {
+            color: var(--gray-600);
+            font-size: 14px;
+        }
+
+        /* Problem Section */
+        .problem-section {
+            background: var(--dark-bg);
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 64px;
+            color: var(--white);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 40px 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 24px;
+            background: linear-gradient(135deg, var(--primary-color), #0099cc);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 24px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+        }
+
+        .stat-text {
+            color: var(--white);
+            font-size: 1.1rem;
+        }
+
+        /* Visual Comparison */
+        .comparison-visual {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 40px;
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .comparison-side {
+            text-align: center;
+        }
+
+        .comparison-side h3 {
+            margin-bottom: 24px;
+            font-size: 1.5rem;
+        }
+
+        .vs-divider {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .vs-divider::before {
+            content: 'VS';
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-weight: 700;
+            position: absolute;
+            z-index: 2;
+        }
+
+        /* Solution Section */
+        .solution-section {
+            background: var(--white);
+            padding: 100px 0;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .benefit-card {
+            padding: 32px;
+            border-radius: 16px;
+            border: 2px solid var(--gray-200);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .benefit-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 24px;
+            background: linear-gradient(135deg, var(--primary-color), #0099cc);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 24px;
+        }
+
+        /* Urgency Section */
+        .urgency-section {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #2a2a2a 100%);
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .urgency-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin: 32px 0;
+        }
+
+        .timer-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            min-width: 80px;
+        }
+
+        .timer-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: block;
+        }
+
+        .timer-label {
+            color: var(--white);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Authority Section */
+        .authority-section {
+            background: var(--white);
+            padding: 80px 0;
+        }
+
+        .authority-content {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 40px;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .authority-avatar {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), #0099cc);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 48px;
+            font-weight: 700;
+        }
+
+        .credentials {
+            list-style: none;
+            margin-top: 24px;
+        }
+
+        .credentials li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .credentials li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success-green);
+            font-weight: 700;
+        }
+
+        /* Final CTA Section */
+        .final-cta {
+            background: var(--dark-bg);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-headline {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .cta-subtext {
+            font-size: 1.25rem;
+            color: #b3b3b3;
+            margin-bottom: 48px;
+        }
+
+        /* Sticky CTA */
+        .sticky-cta {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: none;
+        }
+
+        .sticky-cta.show {
+            display: block;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: var(--success-green);
+            color: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        /* Exit Intent Popup */
+        .exit-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .popup-content {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 16px;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--gray-600);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .authority-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .comparison-visual {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .countdown-timer {
+                flex-wrap: wrap;
+                gap: 16px;
+            }
+
+            .cta-headline {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 0 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .lead-form {
+                padding: 24px;
+            }
+
+            .btn-large {
+                padding: 16px 24px;
+                font-size: 16px;
+            }
+
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--white);
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content animate-fade-in">
+                <div class="hero-text">
+                    <h1>Is Your Business <span class="highlight">Invisible to ChatGPT?</span></h1>
+                    <p class="subheadline">Free 15-Minute AI Visibility Check Reveals Why Customers Can't Find You (And Your Competitors Are Missing This Too)</p>
+                    <div class="trust-indicator">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                        </svg>
+                        No sales pitch • 15-minute call • Completely free
+                    </div>
+                </div>
+
+                <div class="lead-form animate-fade-in">
+                    <h3 style="margin-bottom: 24px; color: var(--text-dark); font-size: 1.5rem; font-weight: 700;">Get My Free AI Visibility Check</h3>
+                    <form id="leadForm" action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name">Full Name <span class="required">*</span></label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Company Name <span class="required">*</span></label>
+                            <input type="text" id="company" name="company" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number <span class="required">*</span></label>
+                            <input type="tel" id="phone" name="phone" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-large" style="width: 100%;">
+                            <span class="btn-text">Get My Free AI Visibility Check</span>
+                            <span class="loading" style="display: none;"></span>
+                        </button>
+                    </form>
+                    <div class="success-message" id="successMessage">
+                        🎉 Success! We'll contact you within 24 hours to schedule your free AI visibility check.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="social-proof">
+        <div class="container">
+            <h2 class="section-title" style="color: var(--text-dark);">What Business Owners Discovered</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"I had no idea my $2M company was completely invisible to AI search. When customers asked ChatGPT about accounting firms, even my biggest competitors weren't mentioned!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SM</div>
+                        <div class="author-info">
+                            <h4>Sarah Martinez</h4>
+                            <span>CEO, Martinez & Associates CPA</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"This opened my eyes to a massive opportunity before my competition figures it out. The AI visibility gap is real and it's costing businesses customers every day."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MR</div>
+                        <div class="author-info">
+                            <h4>Michael Rodriguez</h4>
+                            <span>Founder, Rodriguez Law Group</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"When customers asked ChatGPT about local marketing agencies, my 15-year-old company wasn't even in the top 10 recommendations. This audit was a wake-up call."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JL</div>
+                        <div class="author-info">
+                            <h4>Jennifer Lee</h4>
+                            <span>Owner, Digital Boost Marketing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem-section">
+        <div class="container">
+            <h2 class="section-title">The Invisible Business Crisis</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">🤖</div>
+                    <div class="stat-number">68%</div>
+                    <p class="stat-text">of customers now use AI assistants for business recommendations</p>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">👻</div>
+                    <div class="stat-number">97%</div>
+                    <p class="stat-text">of businesses are completely invisible in AI search results</p>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">🏆</div>
+                    <div class="stat-number">80%</div>
+                    <p class="stat-text">First-movers capture 80% of AI-driven market share</p>
+                </div>
+            </div>
+
+            <div class="comparison-visual">
+                <div class="comparison-side">
+                    <h3>Traditional Google Search</h3>
+                    <div style="background: var(--gray-100); padding: 20px; border-radius: 8px; text-align: left;">
+                        <div style="margin-bottom: 10px; padding: 8px; background: var(--white); border-radius: 4px;">🔗 YourBusiness.com</div>
+                        <div style="margin-bottom: 10px; padding: 8px; background: var(--white); border-radius: 4px;">🔗 Competitor1.com</div>
+                        <div style="margin-bottom: 10px; padding: 8px; background: var(--white); border-radius: 4px;">🔗 Competitor2.com</div>
+                        <small style="color: var(--gray-600);">You appear in search results</small>
+                    </div>
+                </div>
+
+                <div class="vs-divider"></div>
+
+                <div class="comparison-side">
+                    <h3>AI Assistant Recommendations</h3>
+                    <div style="background: var(--gray-100); padding: 20px; border-radius: 8px; text-align: left;">
+                        <div style="margin-bottom: 10px; padding: 8px; background: #ffebee; border-radius: 4px; color: #c62828;">❌ Your business not mentioned</div>
+                        <div style="margin-bottom: 10px; padding: 8px; background: var(--white); border-radius: 4px;">✓ Competitor recommendations</div>
+                        <div style="margin-bottom: 10px; padding: 8px; background: var(--white); border-radius: 4px;">✓ Generic suggestions</div>
+                        <small style="color: var(--gray-600);">Customers can't find you</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution-section">
+        <div class="container">
+            <h2 class="section-title" style="color: var(--text-dark);">What You'll Discover in Your Free Check</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🔍</div>
+                    <h3 style="margin-bottom: 16px;">AI Visibility Analysis</h3>
+                    <p>See exactly how your business currently appears when customers ask AI assistants for recommendations</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚔️</div>
+                    <h3 style="margin-bottom: 16px;">Competitor Intelligence</h3>
+                    <p>Discover which competitors (if any) are getting mentioned instead of you in AI recommendations</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h3 style="margin-bottom: 16px;">Missed Opportunities</h3>
+                    <p>Identify the 3 biggest missed opportunities that are costing you customers every day</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <h3 style="margin-bottom: 16px;">Quick Wins</h3>
+                    <p>Get actionable fixes that can improve your AI visibility in just 48 hours</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Urgency Section -->
+    <section class="urgency-section">
+        <div class="container">
+            <div class="urgency-content">
+                <h2 class="section-title">Limited Availability</h2>
+                <p style="color: var(--white); font-size: 1.2rem; margin-bottom: 32px;">
+                    I'm personally conducting only <strong style="color: var(--primary-color);">15 free AI visibility checks</strong> this month to ensure quality analysis. <strong style="color: var(--primary-color);">8 spots remaining.</strong>
+                </p>
+
+                <div class="countdown-timer">
+                    <div class="timer-box">
+                        <span class="timer-number" id="days">07</span>
+                        <span class="timer-label">Days</span>
+                    </div>
+                    <div class="timer-box">
+                        <span class="timer-number" id="hours">14</span>
+                        <span class="timer-label">Hours</span>
+                    </div>
+                    <div class="timer-box">
+                        <span class="timer-number" id="minutes">23</span>
+                        <span class="timer-label">Minutes</span>
+                    </div>
+                    <div class="timer-box">
+                        <span class="timer-number" id="seconds">45</span>
+                        <span class="timer-label">Seconds</span>
+                    </div>
+                </div>
+
+                <a href="#leadForm" class="btn btn-primary btn-large">Claim Your Free Check Before Spots Fill</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Authority Section -->
+    <section class="authority-section">
+        <div class="container">
+            <div class="authority-content">
+                <div class="authority-avatar">JR</div>
+                <div>
+                    <h2 style="margin-bottom: 16px;">Hi, I'm John Roberts</h2>
+                    <p style="font-size: 1.1rem; margin-bottom: 24px; color: var(--gray-600);">
+                        I help businesses capture customers through AI search before their competitors realize what's happening.
+                    </p>
+                    <ul class="credentials">
+                        <li>AI Search Optimization Expert since 2023</li>
+                        <li>Helped 200+ businesses become AI-visible</li>
+                        <li>Featured in TechCrunch for AI marketing innovation</li>
+                        <li>Former Google AI team consultant</li>
+                        <li>Certified in OpenAI and Anthropic systems</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-headline">Don't Let Competitors Capture Your <span style="color: var(--primary-color);">AI Search Market Share</span></h2>
+                <p class="cta-subtext">Get your free AI visibility check now. 15 minutes could change how customers find your business.</p>
+
+                <div class="lead-form" style="margin: 48px auto 0; max-width: 500px;">
+                    <form id="finalForm" action="#" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Full Name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="company" placeholder="Company Name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Email Address" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="phone" placeholder="Phone Number" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-large" style="width: 100%;">
+                            Get My Free AI Visibility Check Now
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sticky CTA -->
+    <div class="sticky-cta" id="stickyCta">
+        <a href="#leadForm" class="btn btn-primary">Get Free AI Check</a>
+    </div>
+
+    <!-- Exit Intent Popup -->
+    <div class="exit-popup" id="exitPopup">
+        <div class="popup-content">
+            <button class="popup-close" onclick="closeExitPopup()">&times;</button>
+            <h3 style="margin-bottom: 16px;">Wait! Don't Miss This Opportunity</h3>
+            <p style="margin-bottom: 24px; color: var(--gray-600);">
+                Your competitors might be reading this page too. Secure your free AI visibility check before they do.
+            </p>
+            <a href="#leadForm" class="btn btn-primary" onclick="closeExitPopup()">Claim My Free Check Now</a>
+        </div>
+    </div>
+
+    <script>
+        // Form handling
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            const form = event.target;
+            const button = form.querySelector('button[type="submit"]');
+            const btnText = button.querySelector('.btn-text') || button;
+            const loading = button.querySelector('.loading');
+            const successMessage = form.parentNode.querySelector('.success-message') || document.getElementById('successMessage');
+
+            // Show loading state
+            if (loading) loading.style.display = 'inline-block';
+            btnText.textContent = 'Submitting...';
+            button.disabled = true;
+
+            // Simulate form submission (replace with actual endpoint)
+            setTimeout(() => {
+                // Hide loading
+                if (loading) loading.style.display = 'none';
+                btnText.textContent = 'Get My Free AI Visibility Check';
+                button.disabled = false;
+
+                // Show success message
+                form.style.display = 'none';
+                successMessage.style.display = 'block';
+
+                // Track conversion (replace with actual analytics)
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'conversion', {
+                        'send_to': 'AW-CONVERSION_ID/CONVERSION_LABEL'
+                    });
+                }
+
+                // Scroll to success message
+                successMessage.scrollIntoView({ behavior: 'smooth' });
+            }, 2000);
+        }
+
+        // Attach form handlers
+        document.getElementById('leadForm').addEventListener('submit', handleFormSubmit);
+        document.getElementById('finalForm').addEventListener('submit', handleFormSubmit);
+
+        // Countdown timer
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const endTime = now + (7 * 24 * 60 * 60 * 1000) + (14 * 60 * 60 * 1000) + (23 * 60 * 1000) + (45 * 1000);
+
+            const distance = endTime - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Sticky CTA
+        function handleScroll() {
+            const stickyCta = document.getElementById('stickyCta');
+            const finalCta = document.querySelector('.final-cta');
+            const finalCtaTop = finalCta.offsetTop;
+            const scrollPosition = window.pageYOffset;
+
+            if (scrollPosition > 1000 && scrollPosition < finalCtaTop - 200) {
+                stickyCta.classList.add('show');
+            } else {
+                stickyCta.classList.remove('show');
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll);
+
+        // Exit intent popup
+        let exitIntentShown = false;
+
+        function showExitPopup() {
+            if (!exitIntentShown) {
+                document.getElementById('exitPopup').style.display = 'flex';
+                exitIntentShown = true;
+            }
+        }
+
+        function closeExitPopup() {
+            document.getElementById('exitPopup').style.display = 'none';
+        }
+
+        document.addEventListener('mouseleave', function(e) {
+            if (e.clientY <= 0) {
+                showExitPopup();
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.testimonial-card, .stat-card, .benefit-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+
+        // Form validation
+        function validateForm(form) {
+            const requiredFields = form.querySelectorAll('[required]');
+            let isValid = true;
+
+            requiredFields.forEach(field => {
+                const value = field.value.trim();
+
+                if (!value) {
+                    field.style.borderColor = '#e74c3c';
+                    isValid = false;
+                } else if (field.type === 'email' && !isValidEmail(value)) {
+                    field.style.borderColor = '#e74c3c';
+                    isValid = false;
+                } else {
+                    field.style.borderColor = 'var(--gray-200)';
+                }
+            });
+
+            return isValid;
+        }
+
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        // Add real-time validation
+        document.querySelectorAll('.form-control').forEach(input => {
+            input.addEventListener('blur', function() {
+                if (this.hasAttribute('required')) {
+                    const value = this.value.trim();
+
+                    if (!value) {
+                        this.style.borderColor = '#e74c3c';
+                    } else if (this.type === 'email' && !isValidEmail(value)) {
+                        this.style.borderColor = '#e74c3c';
+                    } else {
+                        this.style.borderColor = 'var(--primary-color)';
+                    }
+                }
+            });
+
+            input.addEventListener('input', function() {
+                if (this.style.borderColor === '#e74c3c') {
+                    this.style.borderColor = 'var(--gray-200)';
+                }
+            });
+        });
+
+        // Google Analytics 4 (replace with your measurement ID)
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+
+        // Track scroll depth
+        let maxScroll = 0;
+        window.addEventListener('scroll', function() {
+            const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+
+            if (scrollPercent > maxScroll) {
+                maxScroll = scrollPercent;
+
+                if (maxScroll >= 25 && maxScroll < 50) {
+                    gtag('event', 'scroll', { 'scroll_depth': '25' });
+                } else if (maxScroll >= 50 && maxScroll < 75) {
+                    gtag('event', 'scroll', { 'scroll_depth': '50' });
+                } else if (maxScroll >= 75 && maxScroll < 90) {
+                    gtag('event', 'scroll', { 'scroll_depth': '75' });
+                } else if (maxScroll >= 90) {
+                    gtag('event', 'scroll', { 'scroll_depth': '90' });
+                }
+            }
+        });
+
+        // Track button clicks
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function() {
+                gtag('event', 'click', {
+                    'event_category': 'button',
+                    'event_label': this.textContent.trim()
+                });
+            });
+        });
+    </script>
+
+    <!-- Google Analytics 4 (replace with your measurement ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+</body>
+</html>
