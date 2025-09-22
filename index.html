@@ -393,89 +393,308 @@
             justify-content: center;
         }
 
-        .ai-interface {
-            background: rgba(255, 255, 255, 0.7);
+        .dashboard-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .analytics-dashboard {
+            background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(10, 14, 39, 0.1);
             border-radius: var(--radius-xl);
             padding: var(--space-xl);
-            width: 100%;
-            max-width: 500px;
             position: relative;
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow-xl);
         }
 
-        .interface-header {
+        .dashboard-header {
             display: flex;
             align-items: center;
-            gap: var(--space-sm);
+            justify-content: space-between;
             margin-bottom: var(--space-lg);
             padding-bottom: var(--space-md);
             border-bottom: 1px solid rgba(10, 14, 39, 0.1);
         }
 
-        .dot {
-            width: 12px;
-            height: 12px;
+        .dashboard-title {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            color: var(--primary-navy);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .title-icon {
+            width: 24px;
+            height: 24px;
+            color: var(--primary-blue);
+        }
+
+        .live-indicator {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            color: var(--success);
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--success);
             border-radius: 50%;
+            animation: pulse 2s infinite;
         }
 
-        .dot.red { background: #FF5F57; }
-        .dot.yellow { background: #FFBD2E; }
-        .dot.green { background: #28CA42; }
-
-        .search-query {
-            background: rgba(10, 14, 39, 0.05);
-            border: 1px solid rgba(10, 14, 39, 0.1);
-            border-radius: var(--radius-md);
-            padding: var(--space-md);
-            margin-bottom: var(--space-lg);
-            font-style: italic;
-            color: var(--text-secondary);
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
         }
 
-        .results-comparison {
+        .metrics-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: var(--space-md);
+            margin-bottom: var(--space-lg);
         }
 
-        .result-card {
+        .metric-card {
             background: rgba(10, 14, 39, 0.03);
             border: 1px solid rgba(10, 14, 39, 0.1);
             border-radius: var(--radius-md);
             padding: var(--space-md);
-            text-align: center;
         }
 
-        .result-card.before {
-            border-color: #FF5F57;
+        .metric-card.primary {
+            border-left: 4px solid var(--primary-blue);
         }
 
-        .result-card.after {
-            border-color: var(--success);
+        .metric-card.secondary {
+            border-left: 4px solid var(--success);
         }
 
-        .result-label {
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: var(--space-xs);
+        .metric-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--space-sm);
         }
 
-        .result-card.before .result-label {
-            color: #FF5F57;
+        .metric-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            font-weight: 500;
         }
 
-        .result-card.after .result-label {
+        .trend-up {
+            width: 16px;
+            height: 16px;
             color: var(--success);
         }
 
-        .result-value {
-            font-size: 1.5rem;
+        .metric-value {
+            font-size: 2rem;
             font-weight: 700;
             color: var(--primary-navy);
+            line-height: 1;
+            margin-bottom: var(--space-xs);
+        }
+
+        .metric-unit {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .metric-change {
+            font-size: 0.75rem;
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        .chart-section {
+            margin-bottom: var(--space-lg);
+        }
+
+        .chart-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--space-md);
+        }
+
+        .chart-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--primary-navy);
+        }
+
+        .chart-legend {
+            display: flex;
+            gap: var(--space-md);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .legend-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .legend-dot.primary {
+            background: var(--primary-blue);
+        }
+
+        .legend-dot.secondary {
+            background: var(--text-muted);
+        }
+
+        .chart-container {
+            background: rgba(10, 14, 39, 0.02);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+        }
+
+        .chart-bars {
+            display: flex;
+            align-items: end;
+            gap: var(--space-sm);
+            height: 120px;
+            margin-bottom: var(--space-sm);
+        }
+
+        .bar-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            flex: 1;
+            height: 100%;
+        }
+
+        .bar {
+            width: 100%;
+            max-width: 20px;
+            border-radius: 2px 2px 0 0;
+            transition: all 0.3s ease;
+        }
+
+        .bar.before {
+            background: var(--text-muted);
+            opacity: 0.6;
+        }
+
+        .bar.after {
+            background: var(--primary-blue);
+        }
+
+        .chart-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .insights-section {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+
+        .insight-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-sm);
+            background: rgba(10, 14, 39, 0.03);
+            border-radius: var(--radius-sm);
+        }
+
+        .insight-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .insight-icon.success {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+        }
+
+        .insight-icon.warning {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--warning);
+        }
+
+        .insight-icon svg {
+            width: 12px;
+            height: 12px;
+        }
+
+        .insight-text {
+            font-size: 0.875rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-icon {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-blue);
+            opacity: 0.6;
+        }
+
+        .floating-icon svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .floating-icon.icon-1 {
+            top: 10%;
+            right: -20px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-icon.icon-2 {
+            bottom: 20%;
+            left: -20px;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        .floating-icon.icon-3 {
+            top: 50%;
+            right: -30px;
+            animation: float 7s ease-in-out infinite;
+            animation-delay: -2s;
         }
 
         /* DUAL SERVICE SHOWCASE */
@@ -1311,6 +1530,28 @@
             .stats-grid {
                 grid-template-columns: 1fr;
             }
+
+            .dashboard-container {
+                max-width: 100%;
+                padding: 0 var(--space-md);
+            }
+
+            .analytics-dashboard {
+                padding: var(--space-lg);
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-sm);
+            }
+
+            .chart-bars {
+                height: 100px;
+            }
+
+            .floating-icon {
+                display: none;
+            }
         }
 
         /* PREMIUM ANIMATIONS */
@@ -1424,28 +1665,141 @@
                 </div>
 
                 <div class="hero-visual">
-                    <div class="ai-interface">
-                        <div class="interface-header">
-                            <div class="dot red"></div>
-                            <div class="dot yellow"></div>
-                            <div class="dot green"></div>
-                            <span style="margin-left: auto; font-size: 0.9rem; opacity: 0.8;">AI Assistant</span>
-                        </div>
-
-                        <div class="search-query">
-                            "What are the best marketing agencies for e-commerce businesses?"
-                        </div>
-
-                        <div class="results-comparison">
-                            <div class="result-card before">
-                                <div class="result-label">Before</div>
-                                <div class="result-value">0</div>
-                                <div style="font-size: 0.8rem; opacity: 0.8;">Mentions</div>
+                    <div class="dashboard-container">
+                        <div class="analytics-dashboard">
+                            <div class="dashboard-header">
+                                <div class="dashboard-title">
+                                    <div class="title-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M3 3v18h18"/>
+                                            <path d="M18.7 8L12 14.3L8.7 11L3 16.7"/>
+                                            <circle cx="18.7" cy="8" r="2"/>
+                                            <circle cx="12" cy="14.3" r="2"/>
+                                            <circle cx="8.7" cy="11" r="2"/>
+                                        </svg>
+                                    </div>
+                                    <span>AI Search Analytics</span>
+                                </div>
+                                <div class="live-indicator">
+                                    <div class="pulse-dot"></div>
+                                    <span>Live Data</span>
+                                </div>
                             </div>
-                            <div class="result-card after">
-                                <div class="result-label">After</div>
-                                <div class="result-value">#1</div>
-                                <div style="font-size: 0.8rem; opacity: 0.8;">Recommended</div>
+
+                            <div class="metrics-grid">
+                                <div class="metric-card primary">
+                                    <div class="metric-header">
+                                        <span class="metric-label">AI Visibility Score</span>
+                                        <div class="trend-up">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M7 17l9.2-9.2M17 17V7H7"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="metric-value">94<span class="metric-unit">%</span></div>
+                                    <div class="metric-change">+340% from last month</div>
+                                </div>
+
+                                <div class="metric-card secondary">
+                                    <div class="metric-header">
+                                        <span class="metric-label">Search Mentions</span>
+                                        <div class="trend-up">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M7 17l9.2-9.2M17 17V7H7"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="metric-value">2.4<span class="metric-unit">K</span></div>
+                                    <div class="metric-change">+890% increase</div>
+                                </div>
+                            </div>
+
+                            <div class="chart-section">
+                                <div class="chart-header">
+                                    <span class="chart-title">AI Search Performance</span>
+                                    <div class="chart-legend">
+                                        <div class="legend-item">
+                                            <div class="legend-dot primary"></div>
+                                            <span>After OptScale</span>
+                                        </div>
+                                        <div class="legend-item">
+                                            <div class="legend-dot secondary"></div>
+                                            <span>Before</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="chart-container">
+                                    <div class="chart-bars">
+                                        <div class="bar-group">
+                                            <div class="bar before" style="height: 15%"></div>
+                                            <div class="bar after" style="height: 85%"></div>
+                                        </div>
+                                        <div class="bar-group">
+                                            <div class="bar before" style="height: 20%"></div>
+                                            <div class="bar after" style="height: 90%"></div>
+                                        </div>
+                                        <div class="bar-group">
+                                            <div class="bar before" style="height: 10%"></div>
+                                            <div class="bar after" style="height: 95%"></div>
+                                        </div>
+                                        <div class="bar-group">
+                                            <div class="bar before" style="height: 25%"></div>
+                                            <div class="bar after" style="height: 88%"></div>
+                                        </div>
+                                        <div class="bar-group">
+                                            <div class="bar before" style="height: 18%"></div>
+                                            <div class="bar after" style="height: 92%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="chart-labels">
+                                        <span>Jan</span>
+                                        <span>Feb</span>
+                                        <span>Mar</span>
+                                        <span>Apr</span>
+                                        <span>May</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="insights-section">
+                                <div class="insight-item">
+                                    <div class="insight-icon success">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M9 12l2 2 4-4"/>
+                                            <circle cx="12" cy="12" r="10"/>
+                                        </svg>
+                                    </div>
+                                    <span class="insight-text">Dominating 47 AI search queries</span>
+                                </div>
+                                <div class="insight-item">
+                                    <div class="insight-icon warning">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                                        </svg>
+                                    </div>
+                                    <span class="insight-text">Revenue attribution: $340K</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="floating-elements">
+                            <div class="floating-icon icon-1">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="3"/>
+                                    <path d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M1 12h6M17 12h6M4.22 19.78l4.24-4.24M15.54 8.46l4.24-4.24"/>
+                                </svg>
+                            </div>
+                            <div class="floating-icon icon-2">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 19c-5 0-7-3-7-3s2-3 7-3 7 3 7 3-2 3-7 3z"/>
+                                    <path d="M9 19c5 0 7-3 7-3s-2-3-7-3-7 3-7 3 2 3 7 3z"/>
+                                    <circle cx="9" cy="16" r="1"/>
+                                </svg>
+                            </div>
+                            <div class="floating-icon icon-3">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                                </svg>
                             </div>
                         </div>
                     </div>
@@ -1924,7 +2278,7 @@
         // PREMIUM PARALLAX EFFECT
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
-            const parallaxElements = document.querySelectorAll('.hero-visual, .ai-interface');
+            const parallaxElements = document.querySelectorAll('.hero-visual, .analytics-dashboard');
 
             parallaxElements.forEach(element => {
                 const speed = 0.5;
