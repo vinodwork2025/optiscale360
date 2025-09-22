@@ -109,7 +109,7 @@
             display: flex;
             align-items: center;
             justify-content: between;
-            height: 80px;
+            height: 90px;
         }
 
         .logo {
@@ -179,7 +179,7 @@
             background: var(--gradient-feature);
             color: var(--pure-white);
             padding: var(--space-md) 0;
-            margin-top: 80px;
+            margin-top: 90px;
             position: relative;
             overflow: hidden;
         }
@@ -892,6 +892,100 @@
 
         .service-cta:hover svg {
             transform: translateX(4px);
+        }
+
+        /* SERVICE OFFERING STRUCTURE */
+        .service-offering {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            margin: var(--space-lg) 0;
+            padding: var(--space-lg);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(16, 185, 129, 0.05) 100%);
+            border: 1px solid rgba(59, 130, 246, 0.15);
+            border-radius: var(--radius-lg);
+            position: relative;
+        }
+
+        .service-offering::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-blue) 0%, var(--success) 100%);
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        }
+
+        .offering-free {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-md);
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: var(--radius-md);
+            transition: all 0.3s ease;
+        }
+
+        .offering-free:hover {
+            background: rgba(16, 185, 129, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .free-label {
+            background: var(--success);
+            color: var(--pure-white);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            min-width: 45px;
+            text-align: center;
+        }
+
+        .free-text {
+            font-weight: 600;
+            color: var(--primary-navy);
+            font-size: 0.95rem;
+        }
+
+        .offering-upgrade {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-md);
+            background: rgba(59, 130, 246, 0.08);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: var(--radius-md);
+            transition: all 0.3s ease;
+        }
+
+        .offering-upgrade:hover {
+            background: rgba(59, 130, 246, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .upgrade-label {
+            background: var(--primary-blue);
+            color: var(--pure-white);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            min-width: 70px;
+            text-align: center;
+        }
+
+        .upgrade-text {
+            font-weight: 600;
+            color: var(--primary-navy);
+            font-size: 0.95rem;
         }
 
         /* AUTHORITY PROOF SECTION */
@@ -1833,16 +1927,25 @@
 
                     <h3 class="service-title">AI Visibility Intelligence Report</h3>
 
-                    <p class="service-problem">Your website exists, but AI assistants don't know it does</p>
+                    <p class="service-problem">78% of businesses are invisible to AI - losing customers to competitors who show up first</p>
 
-                    <p class="service-solution">Comprehensive 47-point analysis reveals exactly why you're invisible and how to fix it</p>
+                    <p class="service-solution">Discover exactly how visible your business is to AI assistants with our FREE diagnostic scan (takes 2 minutes)</p>
 
                     <div class="service-results">Average client sees 340% increase in AI mentions</div>
 
-                    <div class="service-investment">Starting at $2,997</div>
+                    <div class="service-offering">
+                        <div class="offering-free">
+                            <span class="free-label">FREE</span>
+                            <span class="free-text">Instant AI Visibility Score (12 critical checkpoints)</span>
+                        </div>
+                        <div class="offering-upgrade">
+                            <span class="upgrade-label">PREMIUM</span>
+                            <span class="upgrade-text">Complete Competitive Analysis ($497 value) • 47-point audit</span>
+                        </div>
+                    </div>
 
                     <a href="/ai-visibility-audit.html" class="service-cta">
-                        <span>Get My AI Visibility Report</span>
+                        <span>Get My Free AI Visibility Score (2 Min)</span>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
                         </svg>
