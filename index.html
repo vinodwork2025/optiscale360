@@ -333,10 +333,10 @@
 
         .hero-subtitle {
             font-size: 1.25rem;
-            line-height: 1.6;
+            line-height: 1.7;
             color: var(--text-secondary);
             margin-bottom: var(--space-lg);
-            max-width: 90%;
+            max-width: 85%;
         }
 
         .hero-badges {
@@ -1015,7 +1015,7 @@
 
         /* DUAL SERVICE SHOWCASE */
         .services-showcase {
-            padding: var(--space-3xl) 0;
+            padding: var(--space-3xl) 0 calc(var(--space-3xl) + var(--space-lg));
             background: var(--pure-white);
         }
 
@@ -1470,7 +1470,7 @@
         /* AUTHORITY PROOF SECTION */
         .authority-proof {
             background: var(--silver);
-            padding: var(--space-3xl) 0;
+            padding: calc(var(--space-3xl) + var(--space-lg)) 0;
         }
 
         .proof-container {
@@ -1490,6 +1490,32 @@
             font-weight: 700;
             color: var(--primary-navy);
             margin-bottom: var(--space-md);
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+        }
+
+        .section-title {
+            font-family: var(--font-primary);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin-bottom: var(--space-md);
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 400;
         }
 
         .testimonials-grid {
@@ -1610,8 +1636,8 @@
 
         /* AI REVOLUTION SECTION */
         .ai-revolution {
-            padding: var(--space-3xl) 0;
-            background: var(--pure-white);
+            padding: calc(var(--space-3xl) + var(--space-lg)) 0;
+            background: var(--silver);
         }
 
         .revolution-container {
@@ -1698,8 +1724,8 @@
 
         /* PROCESS SECTION */
         .process-section {
-            background: var(--silver);
-            padding: var(--space-3xl) 0;
+            background: var(--pure-white);
+            padding: calc(var(--space-3xl) + var(--space-lg)) 0;
         }
 
         .process-container {
@@ -1786,8 +1812,8 @@
 
         /* TEAM SECTION */
         .team-section {
-            background: var(--silver);
-            padding: var(--space-3xl) 0;
+            background: var(--pure-white);
+            padding: calc(var(--space-3xl) + var(--space-lg)) 0;
         }
 
         .team-container {
@@ -1914,7 +1940,7 @@
         .final-cta {
             background: linear-gradient(135deg, #0A0E27 0%, #1A1B3B 50%, #2D3748 100%);
             color: var(--pure-white);
-            padding: var(--space-3xl) 0;
+            padding: calc(var(--space-3xl) + var(--space-xl)) 0;
             position: relative;
             overflow: hidden;
         }
@@ -2132,6 +2158,7 @@
 
             .hero-left h1 {
                 font-size: 2.5rem;
+                line-height: 1.1;
             }
 
             .services-grid {
@@ -2166,12 +2193,15 @@
             .showcase-header h2,
             .proof-header h2,
             .revolution-header h2,
-            .process-header h2 {
+            .process-header h2,
+            .section-title {
                 font-size: 2rem;
+                line-height: 1.2;
             }
 
             .final-cta-title {
                 font-size: 2rem;
+                line-height: 1.2;
             }
         }
 
@@ -2305,7 +2335,7 @@
                 <div class="hero-left">
                     <h1>Your Customers Are Using AI to Find Businesses. <span class="highlight">Can They Find Yours?</span></h1>
 
-                    <p class="hero-subtitle">We specialize in AI search optimization to help businesses improve their visibility in AI-powered search results. Our data-driven approach helps you stay competitive in the evolving search landscape.</p>
+                    <p class="hero-subtitle">We help businesses optimize their online presence for AI-powered search platforms. Our strategic approach ensures your company remains visible and competitive in the evolving search landscape.</p>
 
                     <div class="hero-badges">
                         <div class="hero-badge">SEO Specialists</div>
@@ -2579,7 +2609,7 @@
 
             <div class="consultation-cta">
                 <div class="consultation-content">
-                    <p class="consultation-text">Not sure which approach fits your business? 🤔</p>
+                    <p class="consultation-text">Not sure which approach fits your business best?</p>
                     <a href="/contact.html" class="consultation-btn">
                         <span>Schedule a Free 15-Min Consultation</span>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -3540,8 +3570,8 @@
     <!-- FINAL CTA SECTION -->
     <section class="final-cta" id="get-analysis">
         <div class="final-cta-container">
-            <h2 class="final-cta-title">Ready to Dominate AI Search Before Your Competitors Figure It Out?</h2>
-            <p class="final-cta-subtitle">Choose your path to AI search domination</p>
+            <h2 class="final-cta-title">Ready to Optimize Your Business for AI Search?</h2>
+            <p class="final-cta-subtitle">Choose the approach that best fits your business needs</p>
 
             <div class="cta-buttons">
                 <a href="/ai-visibility-audit.html" class="cta-button">
