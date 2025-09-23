@@ -1600,14 +1600,8 @@
             font-weight: 800;
             color: var(--primary-blue);
             margin-bottom: var(--space-sm);
-            counter-increment: counter;
-            transition: all 0.3s ease;
         }
 
-        .stat-number.counting {
-            transform: scale(1.05);
-            color: #1d4ed8;
-        }
 
         .stat-label {
             color: var(--text-secondary);
@@ -2595,19 +2589,19 @@
 
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-number counter" data-target="127">0</div>
+                    <div class="stat-number">127+</div>
                     <div class="stat-label">Businesses Analyzed</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number counter" data-target="73">0</div>
+                    <div class="stat-number">73%</div>
                     <div class="stat-label">Improved AI Visibility</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number counter" data-target="48">0</div>
+                    <div class="stat-number">48%</div>
                     <div class="stat-label">Avg % Increase in Mentions</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number counter" data-target="24">0</div>
+                    <div class="stat-number">24+</div>
                     <div class="stat-label">Months Average Project</div>
                 </div>
             </div>
@@ -3480,50 +3474,6 @@
             });
         });
 
-        // COUNTER ANIMATION
-        function animateCounters() {
-            const counters = document.querySelectorAll('.counter');
-            counters.forEach((counter, index) => {
-                const target = parseFloat(counter.getAttribute('data-target'));
-                const duration = 2000; // 2 seconds
-                const startTime = performance.now();
-
-                // Add counting class for visual feedback
-                counter.classList.add('counting');
-
-                const updateCounter = (currentTime) => {
-                    const elapsed = currentTime - startTime;
-                    const progress = Math.min(elapsed / duration, 1);
-
-                    // Use easing function for smooth animation
-                    const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-                    const current = target * easeOutQuart;
-
-                    // Format the display value
-                    let displayValue = Math.floor(current);
-                    counter.textContent = displayValue;
-
-                    if (progress < 1) {
-                        requestAnimationFrame(updateCounter);
-                    } else {
-                        // Final value with appropriate suffix
-                        let finalText;
-                        if (target >= 100) {
-                            finalText = target + '+';
-                        } else {
-                            finalText = target + '%';
-                        }
-                        counter.textContent = finalText;
-                        counter.classList.remove('counting');
-                    }
-                };
-
-                // Stagger the animation start
-                setTimeout(() => {
-                    requestAnimationFrame(updateCounter);
-                }, index * 200);
-            });
-        }
 
         // SCROLL ANIMATIONS
         function handleScrollAnimations() {
@@ -3538,28 +3488,6 @@
             });
         }
 
-        // INTERSECTION OBSERVER FOR COUNTERS
-        const observeCounters = () => {
-            const counterSection = document.querySelector('.stats-grid');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        // Add small delay to ensure visibility
-                        setTimeout(() => {
-                            animateCounters();
-                        }, 200);
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.3,
-                rootMargin: '0px 0px -50px 0px'
-            });
-
-            if (counterSection) {
-                observer.observe(counterSection);
-            }
-        };
 
         // PREMIUM LOADING ANIMATION
         function initLoadingAnimations() {
@@ -3579,7 +3507,6 @@
         // INITIALIZE ALL ANIMATIONS
         document.addEventListener('DOMContentLoaded', () => {
             initLoadingAnimations();
-            observeCounters();
 
             // Add scroll listener for animations
             window.addEventListener('scroll', handleScrollAnimations);
@@ -3588,23 +3515,6 @@
             handleScrollAnimations();
         });
 
-        // Backup counter trigger
-        setTimeout(() => {
-            const statsSection = document.querySelector('.stats-grid');
-            if (statsSection) {
-                const rect = statsSection.getBoundingClientRect();
-                const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-                if (isVisible) {
-                    const counters = document.querySelectorAll('.counter');
-                    const hasStarted = Array.from(counters).some(counter =>
-                        counter.textContent !== '0' && !counter.textContent.includes('+') && !counter.textContent.includes('%')
-                    );
-                    if (!hasStarted) {
-                        animateCounters();
-                    }
-                }
-            }
-        }, 3000);
 
         // PREMIUM PARALLAX EFFECT
         window.addEventListener('scroll', () => {
