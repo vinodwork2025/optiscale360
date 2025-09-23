@@ -3544,11 +3544,17 @@
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        animateCounters();
+                        // Add small delay to ensure visibility
+                        setTimeout(() => {
+                            animateCounters();
+                        }, 200);
                         observer.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.5 });
+            }, {
+                threshold: 0.3,
+                rootMargin: '0px 0px -50px 0px'
+            });
 
             if (counterSection) {
                 observer.observe(counterSection);
@@ -3581,6 +3587,24 @@
             // Trigger initial check for visible elements
             handleScrollAnimations();
         });
+
+        // Backup counter trigger
+        setTimeout(() => {
+            const statsSection = document.querySelector('.stats-grid');
+            if (statsSection) {
+                const rect = statsSection.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                if (isVisible) {
+                    const counters = document.querySelectorAll('.counter');
+                    const hasStarted = Array.from(counters).some(counter =>
+                        counter.textContent !== '0' && !counter.textContent.includes('+') && !counter.textContent.includes('%')
+                    );
+                    if (!hasStarted) {
+                        animateCounters();
+                    }
+                }
+            }
+        }, 3000);
 
         // PREMIUM PARALLAX EFFECT
         window.addEventListener('scroll', () => {
