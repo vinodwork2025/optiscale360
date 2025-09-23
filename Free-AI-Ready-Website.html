@@ -2645,6 +2645,46 @@
                 display: none;
             }
         }
+
+        /* Lead Capture Form Mobile Optimization */
+        @media (max-width: 768px) {
+            #leadCaptureForm .grid {
+                grid-template-columns: 1fr !important;
+            }
+            #leadCaptureForm input,
+            #leadCaptureForm select,
+            #leadCaptureForm textarea {
+                font-size: 16px !important; /* Prevent zoom on iOS */
+            }
+            .hero-content-animate .bg-white\/80 {
+                padding: 1.5rem !important;
+                margin: 1rem 0;
+            }
+            .hero-content-animate button[type="submit"] {
+                font-size: 1.1rem !important;
+                padding: 1rem 2rem !important;
+                touch-action: manipulation;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content-animate h1 {
+                font-size: 2rem !important;
+                text-align: center;
+            }
+            .hero-content-animate p {
+                text-align: center;
+                font-size: 1rem !important;
+            }
+            #leadCaptureForm {
+                padding: 1rem !important;
+            }
+            #leadCaptureForm input,
+            #leadCaptureForm select,
+            #leadCaptureForm textarea {
+                padding: 0.75rem !important;
+            }
+        }
     </style>
 </head>
 <body class="antialiased bg-white">
@@ -3799,12 +3839,84 @@
             });
         });
 
+        // Lead Capture Form Handling
+        const leadForm = document.getElementById('leadCaptureForm');
+        if (leadForm) {
+            leadForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const submitBtn = leadForm.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+
+                // Show loading state
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = `
+                    <div class="relative z-10 flex items-center justify-center gap-3">
+                        <svg class="w-6 h-6 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12a8 8 0 0116 0M4 12a8 8 0 010 0"/>
+                        </svg>
+                        <span>Starting Your FREE Build...</span>
+                    </div>
+                `;
+
+                // Collect form data
+                const formData = new FormData(leadForm);
+                const data = Object.fromEntries(formData.entries());
+
+                // Simulate form submission (replace with actual API call)
+                setTimeout(() => {
+                    // Show success message
+                    const successMessage = document.createElement('div');
+                    successMessage.className = 'fixed top-20 right-4 bg-green-500 text-white p-6 rounded-2xl shadow-2xl z-50 max-w-md';
+                    successMessage.innerHTML = `
+                        <div class="flex items-start gap-3">
+                            <svg class="w-6 h-6 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <div>
+                                <h4 class="font-bold mb-1">Website Build Started!</h4>
+                                <p class="text-sm">We're beginning work on your FREE website draft. You'll receive an email with project details within 24 hours.</p>
+                            </div>
+                        </div>
+                    `;
+                    document.body.appendChild(successMessage);
+
+                    // Auto-remove message
+                    setTimeout(() => {
+                        successMessage.remove();
+                    }, 5000);
+
+                    // Reset form
+                    leadForm.reset();
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalText;
+
+                    // Scroll to how it works section
+                    document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' });
+                }, 2000);
+            });
+
+            // Real-time form validation
+            const inputs = leadForm.querySelectorAll('input, textarea, select');
+            inputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    if (this.checkValidity()) {
+                        this.classList.remove('border-red-300');
+                        this.classList.add('border-green-300');
+                    } else {
+                        this.classList.remove('border-green-300');
+                        this.classList.add('border-red-300');
+                    }
+                });
+            });
+        }
+
         // Add subtle parallax effect to hero background
         window.addEventListener('scroll', function() {
             const scrolled = window.pageYOffset;
             const parallaxElements = document.querySelectorAll('.floating-icon');
             const speed = 0.5;
-            
+
             parallaxElements.forEach(element => {
                 const yPos = -(scrolled * speed);
                 element.style.transform = `translateY(${yPos}px)`;
