@@ -2746,52 +2746,147 @@
                             <span class="text-green-700">Revolutionary Pay-What-You-Value Model</span>
                         </div>
                         
-                        <h1 class="text-3xl lg:text-4xl font-black leading-tight">
-                            <span class="text-gray-900">We Build Your</span>
+                        <h1 class="text-3xl lg:text-5xl font-black leading-tight mb-6">
+                            <span class="text-gray-900">Get Your</span>
                             <span class="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 animate-gradient-x">
                                 AI-Ready Website
                             </span>
-                            <span class="text-gray-900">You Pay What It's Worth</span>
+                            <span class="text-gray-900">Built FREE</span>
                         </h1>
                         
-                        <p class="text-lg lg:text-xl leading-relaxed text-gray-700 max-w-2xl">
-                            <span class="text-gray-900 font-semibold">100% risk-free development.</span> We build your complete AI-ready website draft at no cost, you review the finished product, then pay what you believe it's worth. Website goes live after payment, then we track performance for 90 days.
+                        <p class="text-lg lg:text-xl leading-relaxed text-gray-700 mb-8">
+                            <span class="text-gray-900 font-semibold">100% risk-free development.</span> We build your complete website draft at no cost. You review it, then pay what you believe it's worth.
                         </p>
                         
-                        <!-- CTA Buttons -->
-                        <div class="flex flex-col sm:flex-row gap-4 pt-8">
-                            <a href="#contact" class="group relative bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold text-lg px-8 py-4 rounded-2xl inline-flex items-center gap-3 shadow-2xl hover:shadow-blue-500/25 transform hover:scale-105 transition-all duration-300 overflow-hidden">
-                                <div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                                <svg class="w-6 h-6 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                                </svg>
-                                <span class="relative z-10">Build My Website Draft FREE</span>
-                                <svg class="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                                </svg>
-                            </a>
-                            <a href="#how-it-works" class="group border-2 border-gray-300 text-gray-700 hover:text-blue-700 hover:border-blue-400 bg-white/60 backdrop-blur-lg font-semibold text-lg px-8 py-4 rounded-2xl inline-flex items-center gap-3 transition-all duration-300 hover:bg-white/80 shadow-lg">
+                        <!-- Lead Capture Form -->
+                        <div class="bg-white/80 backdrop-blur-lg rounded-2xl p-6 lg:p-8 shadow-2xl border border-blue-200">
+                            <div class="text-center mb-6">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-2">Start Your FREE Website Build</h3>
+                                <p class="text-gray-600">Fill out the form below and we'll begin creating your AI-ready website draft immediately.</p>
+                            </div>
+
+                            <form id="leadCaptureForm" class="space-y-4">
+                                <!-- Name Fields -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="space-y-2">
+                                        <label for="firstName" class="block text-sm font-semibold text-gray-700">First Name *</label>
+                                        <input type="text" id="firstName" name="firstName" required
+                                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-0 transition-colors duration-300 bg-white/70 backdrop-blur-sm"
+                                            placeholder="John">
+                                    </div>
+                                    <div class="space-y-2">
+                                        <label for="lastName" class="block text-sm font-semibold text-gray-700">Last Name *</label>
+                                        <input type="text" id="lastName" name="lastName" required
+                                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-0 transition-colors duration-300 bg-white/70 backdrop-blur-sm"
+                                            placeholder="Doe">
+                                    </div>
+                                </div>
+
+                                <!-- Email and Phone -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="space-y-2">
+                                        <label for="email" class="block text-sm font-semibold text-gray-700">Email Address *</label>
+                                        <input type="email" id="email" name="email" required
+                                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-0 transition-colors duration-300 bg-white/70 backdrop-blur-sm"
+                                            placeholder="john@company.com">
+                                    </div>
+                                    <div class="space-y-2">
+                                        <label for="phone" class="block text-sm font-semibold text-gray-700">Phone Number</label>
+                                        <input type="tel" id="phone" name="phone"
+                                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-0 transition-colors duration-300 bg-white/70 backdrop-blur-sm"
+                                            placeholder="+1 (555) 123-4567">
+                                    </div>
+                                </div>
+
+                                <!-- Company and Website -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="space-y-2">
+                                        <label for="company" class="block text-sm font-semibold text-gray-700">Company Name *</label>
+                                        <input type="text" id="company" name="company" required
+                                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-0 transition-colors duration-300 bg-white/70 backdrop-blur-sm"
+                                            placeholder="Your Company Ltd.">
+                                    </div>
+                                    <div class="space-y-2">
+                                        <label for="currentWebsite" class="block text-sm font-semibold text-gray-700">Current Website</label>
+                                        <input type="url" id="currentWebsite" name="currentWebsite"
+                                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-0 transition-colors duration-300 bg-white/70 backdrop-blur-sm"
+                                            placeholder="https://yoursite.com (if any)">
+                                    </div>
+                                </div>
+
+                                <!-- Business Type -->
+                                <div class="space-y-2">
+                                    <label for="businessType" class="block text-sm font-semibold text-gray-700">Business Type *</label>
+                                    <select id="businessType" name="businessType" required
+                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-0 transition-colors duration-300 bg-white/70 backdrop-blur-sm">
+                                        <option value="">Select your business type</option>
+                                        <option value="ecommerce">E-commerce / Online Store</option>
+                                        <option value="saas">SaaS / Software</option>
+                                        <option value="local-business">Local Business / Service</option>
+                                        <option value="restaurant">Restaurant / Food Service</option>
+                                        <option value="healthcare">Healthcare / Medical</option>
+                                        <option value="legal">Legal / Professional Services</option>
+                                        <option value="real-estate">Real Estate</option>
+                                        <option value="consulting">Consulting / Agency</option>
+                                        <option value="nonprofit">Non-profit Organization</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+
+                                <!-- Project Goals -->
+                                <div class="space-y-2">
+                                    <label for="projectGoals" class="block text-sm font-semibold text-gray-700">What are your main website goals? *</label>
+                                    <textarea id="projectGoals" name="projectGoals" rows="3" required
+                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-0 transition-colors duration-300 bg-white/70 backdrop-blur-sm resize-none"
+                                        placeholder="Describe what you want to achieve with your new website (e.g., increase sales, generate leads, showcase portfolio, etc.)"></textarea>
+                                </div>
+
+                                <!-- Newsletter Signup -->
+                                <div class="flex items-start space-x-3">
+                                    <input type="checkbox" id="newsletter" name="newsletter" class="mt-1 w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                                    <label for="newsletter" class="text-sm text-gray-600">Send me updates on my website progress and exclusive web development tips</label>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <button type="submit" class="w-full group relative bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold text-lg px-8 py-4 rounded-xl shadow-2xl hover:shadow-blue-500/25 transform hover:scale-[1.02] transition-all duration-300 overflow-hidden">
+                                    <div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                    <div class="relative z-10 flex items-center justify-center gap-3">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                        </svg>
+                                        <span>Start Building My FREE Website</span>
+                                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                        </svg>
+                                    </div>
+                                </button>
+
+                                <!-- Trust Indicators -->
+                                <div class="flex items-center justify-center gap-6 pt-4 text-sm text-gray-600 font-medium">
+                                    <span class="flex items-center gap-2">
+                                        <div class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
+                                        100% FREE Draft
+                                    </span>
+                                    <span class="flex items-center gap-2">
+                                        <div class="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></div>
+                                        No Upfront Cost
+                                    </span>
+                                    <span class="flex items-center gap-2">
+                                        <div class="w-1.5 h-1.5 bg-purple-500 rounded-full animate-pulse"></div>
+                                        You Set The Price
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Secondary CTA -->
+                        <div class="text-center">
+                            <a href="#how-it-works" class="group inline-flex items-center gap-3 text-gray-700 hover:text-blue-700 font-semibold text-lg transition-all duration-300">
                                 <svg class="w-6 h-6 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"/>
                                 </svg>
-                                <span>See How It Works</span>
+                                <span>Learn How Our Process Works</span>
                             </a>
-                        </div>
-                        
-                        <!-- Tagline under buttons -->
-                        <div class="flex items-center justify-center gap-6 pt-6 text-sm text-gray-600 font-medium">
-                            <span class="flex items-center gap-2">
-                                <div class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
-                                Complete draft built FREE
-                            </span>
-                            <span class="flex items-center gap-2">
-                                <div class="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></div>
-                                You set the price
-                            </span>
-                            <span class="flex items-center gap-2">
-                                <div class="w-1.5 h-1.5 bg-purple-500 rounded-full animate-pulse"></div>
-                                90-day performance tracking
-                            </span>
                         </div>
                     </div>
 
