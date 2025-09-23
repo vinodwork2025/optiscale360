@@ -1150,12 +1150,56 @@
 
         .service-title {
             font-family: var(--font-primary);
-            font-size: 1.5rem;
-            font-weight: 600;
+            font-size: 1.75rem;
+            font-weight: 700;
             color: var(--primary-navy);
-            margin-bottom: 16px;
-            line-height: 1.4;
+            margin-bottom: 24px;
+            line-height: 1.3;
             letter-spacing: -0.01em;
+            transition: all 0.3s ease;
+        }
+
+        .professional-highlight {
+            background: linear-gradient(135deg, #0066FF 0%, #0052CC 50%, #003D99 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2rem;
+            font-weight: 800;
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 16px;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(0, 102, 255, 0.1);
+            box-shadow:
+                0 8px 32px rgba(0, 102, 255, 0.1),
+                0 2px 8px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .professional-highlight::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .professional-highlight:hover::before {
+            left: 100%;
+        }
+
+        .professional-highlight:hover {
+            transform: translateY(-2px);
+            box-shadow:
+                0 12px 40px rgba(0, 102, 255, 0.2),
+                0 4px 12px rgba(0, 0, 0, 0.1);
+            border-color: rgba(0, 102, 255, 0.2);
         }
 
         .service-problem {
@@ -1168,9 +1212,9 @@
 
         .service-solution {
             color: var(--text-primary);
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 500;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             line-height: 1.6;
         }
 
@@ -1234,8 +1278,8 @@
             display: flex;
             align-items: center;
             color: var(--text-primary);
-            font-size: 0.95rem;
-            font-weight: 500;
+            font-size: 1.05rem;
+            font-weight: 600;
             margin-bottom: var(--space-sm);
             line-height: 1.5;
         }
@@ -2322,123 +2366,7 @@
                 <!-- Service 1: AI Visibility Audit -->
                 <div class="service-card audit">
 
-                    <div class="service-icon">
-                        <svg viewBox="0 0 120 120" class="animated-icon audit-icon">
-                            <defs>
-                                <linearGradient id="rainbow-1" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#FF6B6B">
-                                        <animate attributeName="stop-color" values="#FF6B6B;#4ECDC4;#45B7D1;#96CEB4;#FFEAA7;#DDA0DD;#FF6B6B" dur="4s" repeatCount="indefinite"/>
-                                    </stop>
-                                    <stop offset="50%" style="stop-color:#4ECDC4">
-                                        <animate attributeName="stop-color" values="#4ECDC4;#45B7D1;#96CEB4;#FFEAA7;#DDA0DD;#FF6B6B;#4ECDC4" dur="4s" repeatCount="indefinite"/>
-                                    </stop>
-                                    <stop offset="100%" style="stop-color:#45B7D1">
-                                        <animate attributeName="stop-color" values="#45B7D1;#96CEB4;#FFEAA7;#DDA0DD;#FF6B6B;#4ECDC4;#45B7D1" dur="4s" repeatCount="indefinite"/>
-                                    </stop>
-                                </linearGradient>
-                                <linearGradient id="rainbow-2" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#96CEB4">
-                                        <animate attributeName="stop-color" values="#96CEB4;#FFEAA7;#DDA0DD;#FF6B6B;#4ECDC4;#45B7D1;#96CEB4" dur="3s" repeatCount="indefinite"/>
-                                    </stop>
-                                    <stop offset="100%" style="stop-color:#FFEAA7">
-                                        <animate attributeName="stop-color" values="#FFEAA7;#DDA0DD;#FF6B6B;#4ECDC4;#45B7D1;#96CEB4;#FFEAA7" dur="3s" repeatCount="indefinite"/>
-                                    </stop>
-                                </linearGradient>
-                                <radialGradient id="glow-multi" cx="50%" cy="50%" r="50%">
-                                    <stop offset="0%" style="stop-color:#FF6B6B;stop-opacity:0.3">
-                                        <animate attributeName="stop-color" values="#FF6B6B;#4ECDC4;#45B7D1;#96CEB4;#FF6B6B" dur="5s" repeatCount="indefinite"/>
-                                    </stop>
-                                    <stop offset="100%" style="stop-color:#4ECDC4;stop-opacity:0"/>
-                                </radialGradient>
-                                <filter id="glow-filter" x="-50%" y="-50%" width="200%" height="200%">
-                                    <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
-                                    <feMerge>
-                                        <feMergeNode in="coloredBlur"/>
-                                        <feMergeNode in="SourceGraphic"/>
-                                    </feMerge>
-                                </filter>
-                            </defs>
-
-                            <!-- Dynamic background glow -->
-                            <circle cx="60" cy="60" r="50" fill="url(#glow-multi)" opacity="0.6">
-                                <animate attributeName="r" values="50;60;50" dur="4s" repeatCount="indefinite"/>
-                                <animate attributeName="opacity" values="0.6;0.3;0.6" dur="4s" repeatCount="indefinite"/>
-                            </circle>
-
-                            <!-- AI Brain Core -->
-                            <g filter="url(#glow-filter)">
-                                <circle cx="60" cy="60" r="25" fill="url(#rainbow-1)" opacity="0.9">
-                                    <animate attributeName="r" values="25;28;25" dur="3s" repeatCount="indefinite"/>
-                                </circle>
-
-                                <!-- Neural Network Connections -->
-                                <g stroke="url(#rainbow-2)" stroke-width="2" fill="none" opacity="0.8">
-                                    <path d="M40 45 Q60 35 80 45">
-                                        <animate attributeName="d" values="M40 45 Q60 35 80 45;M40 45 Q60 30 80 45;M40 45 Q60 35 80 45" dur="2s" repeatCount="indefinite"/>
-                                    </path>
-                                    <path d="M40 75 Q60 85 80 75">
-                                        <animate attributeName="d" values="M40 75 Q60 85 80 75;M40 75 Q60 90 80 75;M40 75 Q60 85 80 75" dur="2.5s" repeatCount="indefinite"/>
-                                    </path>
-                                    <path d="M45 40 Q35 60 45 80">
-                                        <animate attributeName="d" values="M45 40 Q35 60 45 80;M45 40 Q30 60 45 80;M45 40 Q35 60 45 80" dur="2.2s" repeatCount="indefinite"/>
-                                    </path>
-                                    <path d="M75 40 Q85 60 75 80">
-                                        <animate attributeName="d" values="M75 40 Q85 60 75 80;M75 40 Q90 60 75 80;M75 40 Q85 60 75 80" dur="1.8s" repeatCount="indefinite"/>
-                                    </path>
-                                </g>
-
-                                <!-- Intelligence Nodes -->
-                                <circle cx="45" cy="45" r="4" fill="url(#rainbow-1)">
-                                    <animate attributeName="r" values="4;6;4" dur="1.5s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="1;0.6;1" dur="1.5s" repeatCount="indefinite"/>
-                                </circle>
-                                <circle cx="75" cy="45" r="4" fill="url(#rainbow-2)">
-                                    <animate attributeName="r" values="4;6;4" dur="1.8s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="1;0.6;1" dur="1.8s" repeatCount="indefinite"/>
-                                </circle>
-                                <circle cx="45" cy="75" r="4" fill="url(#rainbow-1)">
-                                    <animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="1;0.6;1" dur="2s" repeatCount="indefinite"/>
-                                </circle>
-                                <circle cx="75" cy="75" r="4" fill="url(#rainbow-2)">
-                                    <animate attributeName="r" values="4;6;4" dur="1.3s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="1;0.6;1" dur="1.3s" repeatCount="indefinite"/>
-                                </circle>
-
-                                <!-- Central AI Symbol -->
-                                <g transform="translate(60,60)">
-                                    <path d="M-8,-8 L8,8 M8,-8 L-8,8" stroke="white" stroke-width="3" stroke-linecap="round">
-                                        <animateTransform attributeName="transform" type="rotate" values="0;360;0" dur="6s" repeatCount="indefinite"/>
-                                    </path>
-                                    <circle cx="0" cy="0" r="3" fill="white">
-                                        <animate attributeName="r" values="3;5;3" dur="2s" repeatCount="indefinite"/>
-                                    </circle>
-                                </g>
-                            </g>
-
-                            <!-- Orbiting Data Points -->
-                            <g>
-                                <circle cx="90" cy="30" r="2" fill="url(#rainbow-1)">
-                                    <animateTransform attributeName="transform" type="rotate" values="0 60 60;360 60 60" dur="8s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
-                                </circle>
-                                <circle cx="30" cy="30" r="2" fill="url(#rainbow-2)">
-                                    <animateTransform attributeName="transform" type="rotate" values="0 60 60;-360 60 60" dur="10s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="1.5s" repeatCount="indefinite"/>
-                                </circle>
-                                <circle cx="90" cy="90" r="2" fill="url(#rainbow-1)">
-                                    <animateTransform attributeName="transform" type="rotate" values="0 60 60;360 60 60" dur="7s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="2.5s" repeatCount="indefinite"/>
-                                </circle>
-                                <circle cx="30" cy="90" r="2" fill="url(#rainbow-2)">
-                                    <animateTransform attributeName="transform" type="rotate" values="0 60 60;-360 60 60" dur="9s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="1.8s" repeatCount="indefinite"/>
-                                </circle>
-                            </g>
-                        </svg>
-                    </div>
-
-                    <h3 class="service-title">AI Visibility Intelligence & Strategy</h3>
+                    <h3 class="service-title professional-highlight">AI Visibility Intelligence & Strategy</h3>
 
                     <p class="service-solution">Comprehensive AI search visibility assessment and strategic optimization roadmap for businesses ready to dominate AI-powered search results.</p>
 
@@ -2473,153 +2401,7 @@
                 <!-- Service 2: AI-Ready Website -->
                 <div class="service-card website">
 
-                    <div class="service-icon">
-                        <svg viewBox="0 0 120 120" class="animated-icon website-icon">
-                            <defs>
-                                <linearGradient id="cosmic-1" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#FF6B6B">
-                                        <animate attributeName="stop-color" values="#FF6B6B;#4ECDC4;#45B7D1;#96CEB4;#FFEAA7;#DDA0DD;#FF6B6B" dur="5s" repeatCount="indefinite"/>
-                                    </stop>
-                                    <stop offset="50%" style="stop-color:#4ECDC4">
-                                        <animate attributeName="stop-color" values="#4ECDC4;#45B7D1;#96CEB4;#FFEAA7;#DDA0DD;#FF6B6B;#4ECDC4" dur="5s" repeatCount="indefinite"/>
-                                    </stop>
-                                    <stop offset="100%" style="stop-color:#8B5CF6">
-                                        <animate attributeName="stop-color" values="#8B5CF6;#FF6B6B;#4ECDC4;#45B7D1;#96CEB4;#FFEAA7;#8B5CF6" dur="5s" repeatCount="indefinite"/>
-                                    </stop>
-                                </linearGradient>
-                                <linearGradient id="cosmic-2" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#FFEAA7">
-                                        <animate attributeName="stop-color" values="#FFEAA7;#DDA0DD;#FF6B6B;#4ECDC4;#45B7D1;#96CEB4;#FFEAA7" dur="4s" repeatCount="indefinite"/>
-                                    </stop>
-                                    <stop offset="100%" style="stop-color:#96CEB4">
-                                        <animate attributeName="stop-color" values="#96CEB4;#FFEAA7;#DDA0DD;#FF6B6B;#4ECDC4;#45B7D1;#96CEB4" dur="4s" repeatCount="indefinite"/>
-                                    </stop>
-                                </linearGradient>
-                                <radialGradient id="cosmic-glow" cx="50%" cy="50%" r="50%">
-                                    <stop offset="0%" style="stop-color:#FF6B6B;stop-opacity:0.4">
-                                        <animate attributeName="stop-color" values="#FF6B6B;#4ECDC4;#8B5CF6;#FFEAA7;#FF6B6B" dur="6s" repeatCount="indefinite"/>
-                                    </stop>
-                                    <stop offset="100%" style="stop-color:#4ECDC4;stop-opacity:0"/>
-                                </radialGradient>
-                                <filter id="cosmic-glow-filter" x="-50%" y="-50%" width="200%" height="200%">
-                                    <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
-                                    <feMerge>
-                                        <feMergeNode in="coloredBlur"/>
-                                        <feMergeNode in="SourceGraphic"/>
-                                    </feMerge>
-                                </filter>
-                            </defs>
-
-                            <!-- Cosmic background -->
-                            <circle cx="60" cy="60" r="55" fill="url(#cosmic-glow)" opacity="0.5">
-                                <animate attributeName="r" values="55;65;55" dur="4s" repeatCount="indefinite"/>
-                                <animate attributeName="opacity" values="0.5;0.2;0.5" dur="4s" repeatCount="indefinite"/>
-                            </circle>
-
-                            <!-- Central Rocket Ship -->
-                            <g filter="url(#cosmic-glow-filter)" transform="translate(60,60)">
-                                <!-- Rocket Body -->
-                                <ellipse cx="0" cy="0" rx="15" ry="25" fill="url(#cosmic-1)">
-                                    <animate attributeName="ry" values="25;28;25" dur="2s" repeatCount="indefinite"/>
-                                </ellipse>
-
-                                <!-- Rocket Nose -->
-                                <path d="M-10,-25 Q0,-35 10,-25 Z" fill="url(#cosmic-2)">
-                                    <animateTransform attributeName="transform" type="scale" values="1;1.1;1" dur="2s" repeatCount="indefinite"/>
-                                </path>
-
-                                <!-- Rocket Windows -->
-                                <circle cx="0" cy="-10" r="6" fill="rgba(255,255,255,0.9)">
-                                    <animate attributeName="opacity" values="0.9;0.6;0.9" dur="1.5s" repeatCount="indefinite"/>
-                                </circle>
-                                <circle cx="0" cy="-10" r="4" fill="url(#cosmic-1)" opacity="0.7"/>
-
-                                <!-- Rocket Fins -->
-                                <path d="M-15,15 L-25,25 L-15,25 Z" fill="url(#cosmic-2)"/>
-                                <path d="M15,15 L25,25 L15,25 Z" fill="url(#cosmic-2)"/>
-
-                                <!-- Engine Flames -->
-                                <g transform="translate(0,25)">
-                                    <ellipse cx="-5" cy="5" rx="3" ry="8" fill="#FF6B6B" opacity="0.8">
-                                        <animate attributeName="ry" values="8;12;8" dur="0.3s" repeatCount="indefinite"/>
-                                        <animate attributeName="opacity" values="0.8;1;0.8" dur="0.3s" repeatCount="indefinite"/>
-                                    </ellipse>
-                                    <ellipse cx="0" cy="8" rx="4" ry="12" fill="#FFEAA7" opacity="0.9">
-                                        <animate attributeName="ry" values="12;18;12" dur="0.2s" repeatCount="indefinite"/>
-                                        <animate attributeName="opacity" values="0.9;1;0.9" dur="0.2s" repeatCount="indefinite"/>
-                                    </ellipse>
-                                    <ellipse cx="5" cy="5" rx="3" ry="8" fill="#FF6B6B" opacity="0.8">
-                                        <animate attributeName="ry" values="8;12;8" dur="0.4s" repeatCount="indefinite"/>
-                                        <animate attributeName="opacity" values="0.8;1;0.8" dur="0.4s" repeatCount="indefinite"/>
-                                    </ellipse>
-                                </g>
-                            </g>
-
-                            <!-- Orbiting Planets -->
-                            <g>
-                                <!-- Planet 1 -->
-                                <circle cx="25" cy="25" r="6" fill="url(#cosmic-1)">
-                                    <animateTransform attributeName="transform" type="rotate" values="0 60 60;360 60 60" dur="8s" repeatCount="indefinite"/>
-                                    <animate attributeName="r" values="6;8;6" dur="3s" repeatCount="indefinite"/>
-                                </circle>
-
-                                <!-- Planet 2 -->
-                                <circle cx="95" cy="35" r="5" fill="url(#cosmic-2)">
-                                    <animateTransform attributeName="transform" type="rotate" values="0 60 60;-360 60 60" dur="12s" repeatCount="indefinite"/>
-                                    <animate attributeName="r" values="5;7;5" dur="2.5s" repeatCount="indefinite"/>
-                                </circle>
-
-                                <!-- Planet 3 -->
-                                <circle cx="25" cy="95" r="4" fill="url(#cosmic-1)">
-                                    <animateTransform attributeName="transform" type="rotate" values="0 60 60;360 60 60" dur="10s" repeatCount="indefinite"/>
-                                    <animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite"/>
-                                </circle>
-
-                                <!-- Planet 4 -->
-                                <circle cx="95" cy="85" r="7" fill="url(#cosmic-2)">
-                                    <animateTransform attributeName="transform" type="rotate" values="0 60 60;-360 60 60" dur="15s" repeatCount="indefinite"/>
-                                    <animate attributeName="r" values="7;9;7" dur="3.5s" repeatCount="indefinite"/>
-                                </circle>
-                            </g>
-
-                            <!-- Cosmic Stars -->
-                            <g opacity="0.8">
-                                <circle cx="20" cy="50" r="1.5" fill="white">
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="1s" repeatCount="indefinite"/>
-                                </circle>
-                                <circle cx="100" cy="25" r="1" fill="white">
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="1.3s" repeatCount="indefinite"/>
-                                </circle>
-                                <circle cx="15" cy="80" r="1" fill="white">
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="0.8s" repeatCount="indefinite"/>
-                                </circle>
-                                <circle cx="105" cy="70" r="1.5" fill="white">
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="1.1s" repeatCount="indefinite"/>
-                                </circle>
-                                <circle cx="40" cy="15" r="1" fill="white">
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="0.9s" repeatCount="indefinite"/>
-                                </circle>
-                                <circle cx="80" cy="105" r="1" fill="white">
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="1.2s" repeatCount="indefinite"/>
-                                </circle>
-                            </g>
-
-                            <!-- Cosmic Trails -->
-                            <g stroke="url(#cosmic-1)" stroke-width="2" fill="none" opacity="0.6">
-                                <path d="M30,30 Q40,40 50,35">
-                                    <animate attributeName="stroke-dasharray" values="0,20;20,0;0,20" dur="3s" repeatCount="indefinite"/>
-                                </path>
-                                <path d="M90,40 Q80,50 70,45">
-                                    <animate attributeName="stroke-dasharray" values="0,15;15,0;0,15" dur="2.5s" repeatCount="indefinite"/>
-                                </path>
-                                <path d="M30,90 Q40,80 50,85">
-                                    <animate attributeName="stroke-dasharray" values="0,18;18,0;0,18" dur="3.2s" repeatCount="indefinite"/>
-                                </path>
-                            </g>
-                        </svg>
-                    </div>
-
-                    <h3 class="service-title">AI-Optimized Website Development</h3>
+                    <h3 class="service-title professional-highlight">AI-Optimized Website Development</h3>
 
                     <p class="service-solution">Complete website development designed specifically for AI search optimization and maximum visibility across all platforms.</p>
 
