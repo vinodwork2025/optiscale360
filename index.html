@@ -214,13 +214,14 @@
         .banner-icon {
             width: 50px;
             height: 50px;
-            background: rgba(255, 255, 255, 0.2);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
         }
 
         .banner-icon svg {
@@ -407,9 +408,21 @@
         }
 
         .title-icon {
-            width: 24px;
-            height: 24px;
-            color: var(--primary-blue);
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+            box-shadow: 0 2px 10px rgba(79, 172, 254, 0.3);
+        }
+
+        .title-icon svg {
+            width: 20px;
+            height: 20px;
+            color: #ffffff;
         }
 
         .live-indicator {
@@ -593,15 +606,40 @@
             position: absolute;
             top: 1rem;
             right: 1rem;
-            width: 32px;
-            height: 32px;
-            color: rgba(0, 102, 255, 0.6);
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             transition: all 0.3s ease;
+            box-shadow: 0 3px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .metric-icon svg {
+            width: 20px;
+            height: 20px;
+            color: #ffffff;
         }
 
         .metric-card:hover .metric-icon {
-            color: #0066FF;
-            transform: scale(1.1);
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .revenue-card .metric-icon {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            box-shadow: 0 3px 12px rgba(240, 147, 251, 0.3);
+        }
+
+        .visitors-card .metric-icon {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            box-shadow: 0 3px 12px rgba(79, 172, 254, 0.3);
+        }
+
+        .accuracy-card .metric-icon {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            box-shadow: 0 3px 12px rgba(168, 237, 234, 0.3);
         }
 
         .metric-content {
@@ -1178,18 +1216,28 @@
         .service-icon {
             width: 80px;
             height: 80px;
-            background: var(--gradient-primary);
-            border-radius: var(--radius-lg);
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: var(--space-lg);
             position: relative;
             overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Colorful Icon Backgrounds */
+        .service-card:nth-child(1) .service-icon {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .service-card:nth-child(2) .service-icon {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
         }
 
         .service-card.audit .service-icon {
-            background: linear-gradient(135deg, var(--success) 0%, #059669 100%);
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
         }
 
         .service-icon svg {
@@ -1691,13 +1739,32 @@
         .pillar-icon {
             width: 100px;
             height: 100px;
-            background: var(--gradient-primary);
-            border-radius: 50%;
+            border-radius: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto var(--space-lg);
             position: relative;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Colorful Pillar Icons */
+        .pillar-card:nth-child(1) .pillar-icon {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+        }
+
+        .pillar-card:nth-child(2) .pillar-icon {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+
+        .pillar-card:nth-child(3) .pillar-icon {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        }
+
+        .pillar-icon:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
         }
 
         .pillar-icon svg {
