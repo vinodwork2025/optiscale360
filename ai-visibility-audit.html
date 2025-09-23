@@ -709,6 +709,30 @@
             opacity: 0.5;
         }
 
+        .hero-subtitle-line {
+            font-size: calc(1em - 2px);
+            display: block;
+            margin-top: 8px;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-subtitle-line {
+                font-size: calc(1em - 2px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-subtitle-line {
+                font-size: calc(1em - 2px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-subtitle-line {
+                font-size: calc(1em - 2px);
+            }
+        }
+
         .hero-subtitle {
             font-size: 1.1rem;
             color: var(--gray-600);
@@ -2047,7 +2071,8 @@
                     </div>
 
                     <h1 class="hero-title">
-                        Is Your Business Invisible to AI? <span class="hero-highlight" data-text="(Free Analysis Shows What's Missing)">(Free Analysis Shows What's Missing)</span>
+                        Is Your Business Invisible to AI?<br>
+                        <span class="hero-highlight hero-subtitle-line" data-text="(Free Analysis Shows What's Missing)">(Free Analysis Shows What's Missing)</span>
                     </h1>
 
                     <p class="hero-subtitle">
@@ -2149,7 +2174,7 @@
                         </div>
 
                         <button type="submit" class="btn btn-primary btn-xl" style="width: 100%;">
-                            <span class="btn-text">Get My Free $2,997 AI Visibility Report</span>
+                            <span class="btn-text">Get My <s>$2,997</s> Free AI Visibility Report</span>
                             <span class="loading" style="display: none;"></span>
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M5 12h14M12 5l7 7-7 7"/>
