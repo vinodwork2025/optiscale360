@@ -497,6 +497,344 @@
             margin-bottom: var(--space-lg);
         }
 
+        /* ENHANCED DASHBOARD ANIMATIONS */
+        .dashboard-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            overflow: hidden;
+            border-radius: var(--radius-xl);
+        }
+
+        .floating-dots {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .dot {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: linear-gradient(135deg, #0066FF, #00D4FF);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: floatDot 6s ease-in-out infinite;
+        }
+
+        .dot-1 { top: 20%; left: 15%; animation-delay: 0s; }
+        .dot-2 { top: 70%; left: 85%; animation-delay: 1.5s; }
+        .dot-3 { top: 40%; left: 75%; animation-delay: 3s; }
+        .dot-4 { top: 80%; left: 25%; animation-delay: 4.5s; }
+
+        @keyframes floatDot {
+            0%, 100% { transform: translateY(0px) scale(1); opacity: 0.6; }
+            25% { transform: translateY(-10px) scale(1.2); opacity: 0.8; }
+            50% { transform: translateY(-5px) scale(0.8); opacity: 0.4; }
+            75% { transform: translateY(-15px) scale(1.1); opacity: 0.7; }
+        }
+
+        .gradient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.3;
+            animation: orbFloat 8s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #0066FF, #00D4FF);
+            top: -20px;
+            right: -20px;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #10B981, #34D399);
+            bottom: -10px;
+            left: -10px;
+            animation-delay: 4s;
+        }
+
+        @keyframes orbFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(10px, -10px) scale(1.1); }
+            50% { transform: translate(-5px, -20px) scale(0.9); }
+            75% { transform: translate(-10px, 5px) scale(1.05); }
+        }
+
+        /* ENHANCED METRIC CARDS */
+        .metric-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 16px;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 102, 255, 0.15);
+            border-color: rgba(0, 102, 255, 0.3);
+        }
+
+        .metric-icon {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 32px;
+            height: 32px;
+            color: rgba(0, 102, 255, 0.6);
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover .metric-icon {
+            color: #0066FF;
+            transform: scale(1.1);
+        }
+
+        .metric-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #0066FF, #0052CC);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+
+        .metric-change {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #10B981;
+        }
+
+        .metric-change svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* METRIC CARD SPECIFIC STYLES */
+        .revenue-card .metric-chart {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            display: flex;
+            align-items: end;
+            gap: 2px;
+            height: 40px;
+            width: 60px;
+            opacity: 0.4;
+        }
+
+        .chart-bar {
+            flex: 1;
+            background: linear-gradient(to top, #0066FF, #00D4FF);
+            border-radius: 2px 2px 0 0;
+            animation: chartGrow 2s ease-out;
+            animation-delay: calc(var(--i) * 0.2s);
+        }
+
+        @keyframes chartGrow {
+            from { height: 0; }
+        }
+
+        .visitors-card .progress-ring {
+            position: absolute;
+            bottom: 0.5rem;
+            right: 0.5rem;
+            width: 40px;
+            height: 40px;
+            opacity: 0.6;
+        }
+
+        .accuracy-card .accuracy-gauge {
+            position: absolute;
+            bottom: 0.75rem;
+            right: 0.75rem;
+            width: 32px;
+            height: 16px;
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .gauge-fill {
+            height: 100%;
+            width: 94%;
+            background: linear-gradient(90deg, #10B981, #34D399);
+            border-radius: 16px;
+            animation: gaugeFill 2s ease-out;
+        }
+
+        @keyframes gaugeFill {
+            from { width: 0; }
+            to { width: 94%; }
+        }
+
+        /* ENHANCED STATUS INDICATORS */
+        .dashboard-status {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+        }
+
+        .status-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #10B981;
+            animation: statusPulse 2s ease-in-out infinite;
+        }
+
+        .data-pulse {
+            position: absolute;
+            right: -1rem;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(16, 185, 129, 0.3);
+            border-radius: 50%;
+            animation: dataPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes statusPulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.2); }
+        }
+
+        @keyframes dataPulse {
+            0% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.5); opacity: 0.3; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+
+        /* ENHANCED INSIGHTS */
+        .insight-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 0.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .insight-item:hover {
+            transform: translateX(5px);
+            background: rgba(255, 255, 255, 0.8);
+            border-color: rgba(0, 102, 255, 0.2);
+        }
+
+        .insight-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .insight-icon.success {
+            background: linear-gradient(135deg, #10B981, #34D399);
+            color: white;
+        }
+
+        .insight-icon.info {
+            background: linear-gradient(135deg, #0066FF, #00D4FF);
+            color: white;
+        }
+
+        .insight-icon.warning {
+            background: linear-gradient(135deg, #F59E0B, #FCD34D);
+            color: white;
+        }
+
+        .insight-text {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            flex: 1;
+        }
+
+        .insight-trend,
+        .speed-indicator,
+        .revenue-pulse {
+            position: absolute;
+            right: 0.5rem;
+            width: 24px;
+            height: 12px;
+        }
+
+        .trend-line {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #10B981);
+            animation: trendGrow 2s ease-out;
+        }
+
+        .speed-bar {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #0066FF, #00D4FF);
+            animation: speedPulse 1.5s ease-in-out infinite;
+        }
+
+        .revenue-pulse {
+            width: 12px;
+            height: 12px;
+            background: radial-gradient(circle, #F59E0B, transparent);
+            border-radius: 50%;
+            animation: revenuePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes trendGrow {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
+        }
+
+        @keyframes speedPulse {
+            0%, 100% { opacity: 1; transform: scaleX(1); }
+            50% { opacity: 0.6; transform: scaleX(1.2); }
+        }
+
+        @keyframes revenuePulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.5); opacity: 0.4; }
+        }
+
         .chart-header {
             display: flex;
             align-items: center;
@@ -1786,65 +2124,183 @@
                 <div class="hero-visual">
                     <div class="dashboard-container">
                         <div class="analytics-dashboard">
+                            <!-- Animated Background Elements -->
+                            <div class="dashboard-background">
+                                <div class="floating-dots">
+                                    <div class="dot dot-1"></div>
+                                    <div class="dot dot-2"></div>
+                                    <div class="dot dot-3"></div>
+                                    <div class="dot dot-4"></div>
+                                </div>
+                                <div class="gradient-orb orb-1"></div>
+                                <div class="gradient-orb orb-2"></div>
+                            </div>
+
+                            <!-- Enhanced Dashboard Header -->
                             <div class="dashboard-header">
                                 <div class="dashboard-title">
                                     <div class="title-icon">
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                             <path d="M3 3v18h18"/>
                                             <path d="M18.7 8L12 14.3L8.7 11L3 16.7"/>
+                                            <!-- Animated chart line -->
+                                            <path d="M3 16.7L8.7 11L12 14.3L18.7 8" stroke="url(#chartGradient)" stroke-width="3" opacity="0.8">
+                                                <animate attributeName="stroke-dasharray" values="0,50;25,25;50,0;0,50" dur="3s" repeatCount="indefinite"/>
+                                            </path>
                                         </svg>
+                                        <defs>
+                                            <linearGradient id="chartGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                                <stop offset="0%" style="stop-color:#0066FF"/>
+                                                <stop offset="50%" style="stop-color:#00D4FF"/>
+                                                <stop offset="100%" style="stop-color:#0066FF"/>
+                                            </linearGradient>
+                                        </defs>
                                     </div>
-                                    <h3>AI Dashboard Analytics</h3>
+                                    <h3>AI Analytics Dashboard</h3>
                                 </div>
                                 <div class="dashboard-status">
                                     <span class="status-indicator live"></span>
                                     <span>Live Data</span>
+                                    <div class="data-pulse"></div>
                                 </div>
                             </div>
 
+                            <!-- Enhanced Metrics with Animations -->
                             <div class="dashboard-metrics">
-                                <div class="metric-card">
-                                    <div class="metric-value">340K</div>
-                                    <div class="metric-label">Revenue</div>
-                                    <div class="metric-change positive">+24%</div>
+                                <div class="metric-card revenue-card">
+                                    <div class="metric-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                        </svg>
+                                    </div>
+                                    <div class="metric-content">
+                                        <div class="metric-value">$340K</div>
+                                        <div class="metric-label">Revenue</div>
+                                        <div class="metric-change positive">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M18 15l-6-6-6 6"/>
+                                            </svg>
+                                            +24%
+                                        </div>
+                                    </div>
+                                    <div class="metric-chart">
+                                        <div class="chart-bar" style="height: 60%"></div>
+                                        <div class="chart-bar" style="height: 75%"></div>
+                                        <div class="chart-bar" style="height: 90%"></div>
+                                        <div class="chart-bar" style="height: 85%"></div>
+                                        <div class="chart-bar" style="height: 100%"></div>
+                                    </div>
                                 </div>
-                                <div class="metric-card">
-                                    <div class="metric-value">1.2M</div>
-                                    <div class="metric-label">Visitors</div>
-                                    <div class="metric-change positive">+18%</div>
+
+                                <div class="metric-card visitors-card">
+                                    <div class="metric-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                            <circle cx="8.5" cy="7" r="4"/>
+                                            <path d="M20 8v6M23 11l-3 3-3-3"/>
+                                        </svg>
+                                    </div>
+                                    <div class="metric-content">
+                                        <div class="metric-value">1.2M</div>
+                                        <div class="metric-label">Visitors</div>
+                                        <div class="metric-change positive">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M18 15l-6-6-6 6"/>
+                                            </svg>
+                                            +18%
+                                        </div>
+                                    </div>
+                                    <div class="progress-ring">
+                                        <svg viewBox="0 0 36 36">
+                                            <circle cx="18" cy="18" r="16" stroke="#E2E8F0" stroke-width="2" fill="none"/>
+                                            <circle cx="18" cy="18" r="16" stroke="url(#visitorsGradient)" stroke-width="2" fill="none"
+                                                    stroke-dasharray="75 25" stroke-dashoffset="25" transform="rotate(-90 18 18)">
+                                                <animate attributeName="stroke-dasharray" values="0 100;75 25;0 100" dur="4s" repeatCount="indefinite"/>
+                                            </circle>
+                                        </svg>
+                                        <defs>
+                                            <linearGradient id="visitorsGradient">
+                                                <stop offset="0%" style="stop-color:#10B981"/>
+                                                <stop offset="100%" style="stop-color:#34D399"/>
+                                            </linearGradient>
+                                        </defs>
+                                    </div>
                                 </div>
-                                <div class="metric-card">
-                                    <div class="metric-value">94%</div>
-                                    <div class="metric-label">Accuracy</div>
-                                    <div class="metric-change positive">+12%</div>
+
+                                <div class="metric-card accuracy-card">
+                                    <div class="metric-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M9 12l2 2 4-4"/>
+                                            <circle cx="12" cy="12" r="10"/>
+                                        </svg>
+                                    </div>
+                                    <div class="metric-content">
+                                        <div class="metric-value">94%</div>
+                                        <div class="metric-label">AI Accuracy</div>
+                                        <div class="metric-change positive">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M18 15l-6-6-6 6"/>
+                                            </svg>
+                                            +12%
+                                        </div>
+                                    </div>
+                                    <div class="accuracy-gauge">
+                                        <div class="gauge-fill"></div>
+                                        <div class="gauge-indicator"></div>
+                                    </div>
                                 </div>
                             </div>
 
+                            <!-- Enhanced Insights with Icons -->
                             <div class="dashboard-insights">
-                                <div class="insight-item">
+                                <div class="insight-item ai-optimization">
                                     <div class="insight-icon success">
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                             <path d="M20 6L9 17l-5-5"/>
+                                            <circle cx="12" cy="12" r="3" fill="currentColor" opacity="0.2">
+                                                <animate attributeName="r" values="3;5;3" dur="2s" repeatCount="indefinite"/>
+                                            </circle>
                                         </svg>
                                     </div>
-                                    <span class="insight-text">AI optimization: +67% visibility</span>
+                                    <span class="insight-text">AI optimization: +67% visibility boost</span>
+                                    <div class="insight-trend">
+                                        <div class="trend-line"></div>
+                                    </div>
                                 </div>
-                                <div class="insight-item">
+
+                                <div class="insight-item response-time">
                                     <div class="insight-icon info">
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                             <circle cx="12" cy="12" r="10"/>
                                             <path d="M12 6v6l4 2"/>
+                                            <circle cx="12" cy="12" r="2" fill="currentColor">
+                                                <animate attributeName="opacity" values="1;0.5;1" dur="1.5s" repeatCount="indefinite"/>
+                                            </circle>
                                         </svg>
                                     </div>
-                                    <span class="insight-text">Response time: 89ms average</span>
+                                    <span class="insight-text">Lightning-fast: 89ms response time</span>
+                                    <div class="speed-indicator">
+                                        <div class="speed-bar"></div>
+                                    </div>
                                 </div>
-                                <div class="insight-item">
+
+                                <div class="insight-item revenue-attribution">
                                     <div class="insight-icon warning">
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                             <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="url(#lightningGrad)" stroke-width="1" opacity="0.6">
+                                                <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+                                            </path>
                                         </svg>
+                                        <defs>
+                                            <linearGradient id="lightningGrad">
+                                                <stop offset="0%" style="stop-color:#F59E0B"/>
+                                                <stop offset="100%" style="stop-color:#FCD34D"/>
+                                            </linearGradient>
+                                        </defs>
                                     </div>
-                                    <span class="insight-text">Revenue attribution: $340K</span>
+                                    <span class="insight-text">Revenue impact: $340K attributed</span>
+                                    <div class="revenue-pulse"></div>
                                 </div>
                             </div>
                         </div>
@@ -1858,8 +2314,8 @@
     <section class="services-showcase" id="services">
         <div class="showcase-container">
             <div class="showcase-header">
-                <h2>Two Ways We Dominate AI Search For You</h2>
-                <p class="showcase-subtitle">Choose your path to AI visibility dominance</p>
+                <h2>Choose Your Path to AI Search Visibility</h2>
+                <p class="showcase-subtitle">Two strategic approaches designed for different business situations</p>
             </div>
 
             <div class="services-grid">
@@ -1983,18 +2439,18 @@
                         </svg>
                     </div>
 
-                    <h3 class="service-title">AI Visibility Intelligence Report: See Why 73% of Your Customers Choose Competitors in AI Search</h3>
+                    <h3 class="service-title">AI Visibility Intelligence & Strategy</h3>
 
-                    <p class="service-problem">Discover exactly what ChatGPT, Perplexity & Google AI show when customers search for your industry - plus the 3 critical fixes that put you ahead of competitors.</p>
+                    <p class="service-problem">For businesses with existing digital presence</p>
 
-                    <p class="service-solution">🔥 URGENT: Only 12 strategic consultations available this month<br>⚡ Usually $2,997 → FREE consultation + full report for qualified businesses<br>⏰ Schedule before competitors book remaining slots</p>
+                    <p class="service-solution">Comprehensive AI search visibility assessment and strategic optimization roadmap for businesses ready to dominate AI-powered search results.</p>
 
                     <div class="service-features">
-                        <div class="feature-item">✅ Comprehensive AI audit revealing exactly what's broken and how to fix it</div>
-                        <div class="feature-item">✅ All search optimization tactics competitors use to dominate AI platforms</div>
-                        <div class="feature-item">✅ Live competitor analysis showing who's stealing your AI traffic (and their exact strategies)</div>
-                        <div class="feature-item">✅ Platform-specific optimization roadmap for ChatGPT, Perplexity, Google AI & voice search</div>
-                        <div class="feature-item">✅ Priority action plan with 24-hour quick wins delivered during consultation</div>
+                        <div class="feature-item">✅ Complete AI visibility audit across all major platforms</div>
+                        <div class="feature-item">✅ Detailed competitor analysis and positioning strategy</div>
+                        <div class="feature-item">✅ Strategic roadmap with prioritized action items</div>
+                        <div class="feature-item">✅ Platform-specific optimization recommendations</div>
+                        <div class="feature-item">✅ Performance tracking and measurement framework</div>
                     </div>
 
                     <div class="service-investment">
@@ -2149,18 +2605,27 @@
                         </svg>
                     </div>
 
-                    <h3 class="service-title">AI-Ready Website (Free Draft)</h3>
+                    <h3 class="service-title">AI-Optimized Website Development</h3>
 
-                    <p class="service-problem">Your current website can't compete in the AI search era</p>
+                    <p class="service-problem">For businesses needing new or completely rebuilt websites</p>
 
-                    <p class="service-solution">See your complete AI-optimized website built before paying anything</p>
+                    <p class="service-solution">Complete website development designed specifically for AI search optimization and maximum visibility across all platforms.</p>
 
-                    <div class="service-results">Average client pays $4,800 after seeing results</div>
+                    <div class="service-features">
+                        <div class="feature-item">✓ Website architecture designed for maximum AI crawlability</div>
+                        <div class="feature-item">✓ Content strategy that speaks effectively to AI platforms</div>
+                        <div class="feature-item">✓ Technical SEO foundation optimized for AI search</div>
+                        <div class="feature-item">✓ Structured data implementation for rich AI responses</div>
+                        <div class="feature-item">✓ Performance optimization for fast AI platform indexing</div>
+                        <div class="feature-item">✓ Built-in analytics to track AI visibility improvements</div>
+                    </div>
 
-                    <div class="service-investment">Pay what you value after seeing quality</div>
+                    <div class="service-results">Average client saves $5,000+ after seeing quality results</div>
+
+                    <div class="service-investment">Pay what you value after seeing quality work</div>
 
                     <a href="/Free-AI-Ready-Website.html" class="service-cta">
-                        <span>Get My Free Website Draft</span>
+                        <span>Get My Free AI-Ready Website</span>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
                         </svg>
