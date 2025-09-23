@@ -1784,78 +1784,130 @@
             line-height: 1.6;
         }
 
-        /* URGENCY SECTION */
-        .urgency-section {
-            background: var(--pure-white);
+        /* TEAM SECTION */
+        .team-section {
+            background: var(--silver);
             padding: var(--space-3xl) 0;
         }
 
-        .urgency-container {
-            max-width: 800px;
+        .team-container {
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 var(--space-lg);
-            text-align: center;
         }
 
-        .urgency-card {
-            background: var(--gradient-primary);
-            color: var(--pure-white);
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-2xl);
+            margin-top: var(--space-2xl);
+        }
+
+        .team-member {
+            background: var(--pure-white);
             border-radius: var(--radius-xl);
-            padding: var(--space-3xl);
-            position: relative;
-            overflow: hidden;
+            padding: var(--space-xl);
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(226, 232, 240, 0.6);
         }
 
-        .urgency-card::before {
-            content: '';
+        .team-member:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-2xl);
+            border-color: rgba(59, 130, 246, 0.2);
+        }
+
+        .member-avatar {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto var(--space-lg);
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--primary-blue);
+            transition: all 0.3s ease;
+        }
+
+        .member-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .member-overlay {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .urgency-title {
-            font-family: var(--font-primary);
-            font-size: 2.25rem;
-            font-weight: 700;
-            margin-bottom: var(--space-md);
-        }
-
-        .urgency-subtitle {
-            font-size: 1.25rem;
-            opacity: 0.9;
-            margin-bottom: var(--space-xl);
-        }
-
-        .availability-tracker {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: var(--radius-lg);
-            padding: var(--space-lg);
-            margin-bottom: var(--space-xl);
-        }
-
-        .tracker-item {
+            background: rgba(0, 102, 255, 0.9);
             display: flex;
-            justify-content: between;
             align-items: center;
-            margin-bottom: var(--space-md);
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover .member-overlay {
+            opacity: 1;
+        }
+
+        .member-social {
+            display: flex;
+            gap: var(--space-sm);
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .social-link svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .member-info {
+            padding: 0 var(--space-sm);
+        }
+
+        .member-name {
+            font-family: var(--font-primary);
+            font-size: 1.5rem;
             font-weight: 600;
+            color: var(--primary-navy);
+            margin-bottom: var(--space-xs);
         }
 
-        .tracker-item:last-child {
-            margin-bottom: 0;
+        .member-title {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: var(--space-md);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .tracker-value {
-            font-weight: 700;
+        .member-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 0.95rem;
         }
 
         /* FINAL CTA SECTION */
@@ -2130,12 +2182,22 @@
 
             .service-card,
             .testimonial-card,
-            .urgency-card {
+            .team-member {
                 padding: var(--space-lg);
             }
 
             .stats-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-lg);
+            }
+
+            .member-avatar {
+                width: 100px;
+                height: 100px;
             }
 
             .dashboard-container {
@@ -3403,25 +3465,72 @@
         </div>
     </section>
 
-    <!-- URGENCY SECTION -->
-    <section class="urgency-section">
-        <div class="urgency-container">
-            <div class="urgency-card">
-                <h2 class="urgency-title">Limited Capacity - We Only Work With 15 Companies Per Month</h2>
-                <p class="urgency-subtitle">Our hands-on approach means we're selective about partnerships</p>
+    <!-- TEAM SECTION -->
+    <section class="team-section">
+        <div class="team-container">
+            <div class="section-header">
+                <h2 class="section-title">Meet Our Expert Team</h2>
+                <p class="section-subtitle">The AI search specialists helping businesses stay ahead of the curve</p>
+            </div>
 
-                <div class="availability-tracker">
-                    <div class="tracker-item">
-                        <span>Spots filled this month:</span>
-                        <span class="tracker-value">12/15</span>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face&fm=jpg" alt="Alex Chen" loading="lazy">
+                        <div class="member-overlay">
+                            <div class="member-social">
+                                <a href="#" class="social-link" aria-label="LinkedIn">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="tracker-item">
-                        <span>Next availability:</span>
-                        <span class="tracker-value">3 spots remaining</span>
+                    <div class="member-info">
+                        <h3 class="member-name">Alex Chen</h3>
+                        <p class="member-title">AI Search Strategy Director</p>
+                        <p class="member-description">Former Google AI researcher with 8+ years optimizing for search algorithms and AI recommendation systems.</p>
                     </div>
-                    <div class="tracker-item">
-                        <span>Response time:</span>
-                        <span class="tracker-value">Under 2 hours</span>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face&fm=jpg" alt="Sarah Rodriguez" loading="lazy">
+                        <div class="member-overlay">
+                            <div class="member-social">
+                                <a href="#" class="social-link" aria-label="LinkedIn">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Sarah Rodriguez</h3>
+                        <p class="member-title">Technical SEO Lead</p>
+                        <p class="member-description">Expert in technical optimization and structured data implementation for enhanced AI search visibility.</p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face&fm=jpg" alt="Michael Johnson" loading="lazy">
+                        <div class="member-overlay">
+                            <div class="member-social">
+                                <a href="#" class="social-link" aria-label="LinkedIn">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Michael Johnson</h3>
+                        <p class="member-title">Content Strategy Specialist</p>
+                        <p class="member-description">Specializes in creating AI-friendly content that ranks well in both traditional and AI-powered search results.</p>
                     </div>
                 </div>
             </div>
