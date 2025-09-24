@@ -1846,7 +1846,7 @@
             transform: translateX(-50%);
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #667eea;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -1859,19 +1859,19 @@
             border: 3px solid rgba(255, 255, 255, 0.3);
         }
 
-        /* Colorful step numbers with unique gradients */
+        /* Colorful step numbers with solid colors */
         .process-step:nth-child(1) .step-number {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            box-shadow: 0 6px 20px rgba(240, 147, 251, 0.4);
+            background: #f5576c;
+            box-shadow: 0 6px 20px rgba(245, 87, 108, 0.4);
         }
 
         .process-step:nth-child(2) .step-number {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            background: #4facfe;
             box-shadow: 0 6px 20px rgba(79, 172, 254, 0.4);
         }
 
         .process-step:nth-child(3) .step-number {
-            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            background: #a8edea;
             box-shadow: 0 6px 20px rgba(168, 237, 234, 0.4);
         }
 
@@ -1880,22 +1880,6 @@
             box-shadow: 0 10px 30px rgba(102, 126, 234, 0.6);
         }
 
-        .step-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--silver);
-            border-radius: var(--radius-lg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: var(--space-lg) auto var(--space-md);
-        }
-
-        .step-icon svg {
-            width: 40px;
-            height: 40px;
-            color: var(--primary-blue);
-        }
 
         .step-title {
             font-family: var(--font-primary);
@@ -2541,7 +2525,7 @@
                                             <circle cx="18" cy="18" r="16" stroke="#E2E8F0" stroke-width="2" fill="none"/>
                                             <circle cx="18" cy="18" r="16" stroke="url(#visitorsGradient)" stroke-width="2" fill="none"
                                                     stroke-dasharray="75 25" stroke-dashoffset="25" transform="rotate(-90 18 18)">
-                                                <animate attributeName="stroke-dasharray" values="0 100;75 25;0 100" dur="4s" repeatCount="indefinite"/>
+                 attributeName="stroke-dasharray" values="0 100;75 25;0 100" dur="4s" repeatCount="indefinite"/>
                                             </circle>
                                         </svg>
                          id="visitorsGradient">
@@ -2582,7 +2566,7 @@
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                             <path d="M20 6L9 17l-5-5"/>
                                             <circle cx="12" cy="12" r="3" fill="currentColor" opacity="0.2">
-                                                <animate attributeName="r" values="3;5;3" dur="2s" repeatCount="indefinite"/>
+                 attributeName="r" values="3;5;3" dur="2s" repeatCount="indefinite"/>
                                             </circle>
                                         </svg>
                                     </div>
@@ -2598,7 +2582,7 @@
                                             <circle cx="12" cy="12" r="10"/>
                                             <path d="M12 6v6l4 2"/>
                                             <circle cx="12" cy="12" r="2" fill="currentColor">
-                                                <animate attributeName="opacity" values="1;0.5;1" dur="1.5s" repeatCount="indefinite"/>
+                 attributeName="opacity" values="1;0.5;1" dur="1.5s" repeatCount="indefinite"/>
                                             </circle>
                                         </svg>
                                     </div>
@@ -2613,7 +2597,7 @@
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                             <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
                                             <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="url(#lightningGrad)" stroke-width="1" opacity="0.6">
-                                                <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+                 attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
                                             </path>
                                         </svg>
                          id="lightningGrad">
@@ -2830,7 +2814,7 @@
                                     </feMerge>
                                 </filter>
                             <circle cx="40" cy="40" r="35" fill="url(#pillar1-glow)">
-                                <animate attributeName="r" values="35;40;35" dur="4s" repeatCount="indefinite"/>
+ attributeName="r" values="35;40;35" dur="4s" repeatCount="indefinite"/>
                             </circle>
                             <!-- Rocket base -->
                             <g filter="url(#pillar1-filter)">
@@ -2844,55 +2828,49 @@
                                 <!-- Window -->
                                 <circle cx="40" cy="25" r="4" fill="rgba(255,255,255,0.9)" stroke="url(#pillar1-accent)" stroke-width="1"/>
                                 <circle cx="40" cy="25" r="2" fill="url(#pillar1-accent)" opacity="0.8">
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
                                 </circle>
-                            </g>
                             <!-- Exhaust flames -->
                             <g>
                                 <ellipse cx="35" cy="58" rx="3" ry="8" fill="url(#pillar1-accent)" opacity="0.9">
-                                    <animate attributeName="ry" values="8;12;8" dur="0.5s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.9;0.6;0.9" dur="0.5s" repeatCount="indefinite"/>
+     attributeName="ry" values="8;12;8" dur="0.5s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.9;0.6;0.9" dur="0.5s" repeatCount="indefinite"/>
                                 </ellipse>
                                 <ellipse cx="40" cy="60" rx="4" ry="10" fill="url(#pillar1-grad)" opacity="0.8">
-                                    <animate attributeName="ry" values="10;15;10" dur="0.6s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.8;0.5;0.8" dur="0.6s" repeatCount="indefinite"/>
+     attributeName="ry" values="10;15;10" dur="0.6s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.8;0.5;0.8" dur="0.6s" repeatCount="indefinite"/>
                                 </ellipse>
                                 <ellipse cx="45" cy="58" rx="3" ry="8" fill="url(#pillar1-accent)" opacity="0.9">
-                                    <animate attributeName="ry" values="8;12;8" dur="0.7s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.9;0.6;0.9" dur="0.7s" repeatCount="indefinite"/>
+     attributeName="ry" values="8;12;8" dur="0.7s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.9;0.6;0.9" dur="0.7s" repeatCount="indefinite"/>
                                 </ellipse>
-                            </g>
                             <!-- Growth trajectory -->
                             <g opacity="0.7">
                                 <circle cx="20" cy="60" r="2" fill="url(#pillar1-accent)">
-                                    <animate attributeName="r" values="2;4;2" dur="2s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+     attributeName="r" values="2;4;2" dur="2s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
                                 </circle>
                                 <circle cx="25" cy="45" r="2.5" fill="url(#pillar1-grad)">
-                                    <animate attributeName="r" values="2.5;4.5;2.5" dur="2.2s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="2.2s" repeatCount="indefinite"/>
+     attributeName="r" values="2.5;4.5;2.5" dur="2.2s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.7;1;0.7" dur="2.2s" repeatCount="indefinite"/>
                                 </circle>
                                 <circle cx="30" cy="30" r="3" fill="url(#pillar1-accent)">
-                                    <animate attributeName="r" values="3;5;3" dur="2.4s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="2.4s" repeatCount="indefinite"/>
+     attributeName="r" values="3;5;3" dur="2.4s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.7;1;0.7" dur="2.4s" repeatCount="indefinite"/>
                                 </circle>
                                 <!-- Connecting growth line -->
                                 <path d="M20 60 Q25 45 30 30" fill="none" stroke="url(#pillar1-grad)" stroke-width="2" opacity="0.5">
-                                    <animate attributeName="stroke-dasharray" values="0,50;25,25;50,0;0,50" dur="3s" repeatCount="indefinite"/>
+     attributeName="stroke-dasharray" values="0,50;25,25;50,0;0,50" dur="3s" repeatCount="indefinite"/>
                                 </path>
-                            </g>
                             <!-- AI stars -->
                             <g>
                                 <g transform="translate(60,20)">
-                                    <animateTransform attributeName="transform" type="rotate" values="0 0 0;360 0 0" dur="8s" repeatCount="indefinite"/>
+    Transform attributeName="transform" type="rotate" values="0 0 0;360 0 0" dur="8s" repeatCount="indefinite"/>
                                     <path d="M0,-4 L1,0 L4,0 L1.5,2 L2.5,5 L0,3 L-2.5,5 L-1.5,2 L-4,0 L-1,0 Z" fill="url(#pillar1-accent)" opacity="0.8"/>
-                                </g>
-                                <g transform="translate(65,50)">
-                                    <animateTransform attributeName="transform" type="rotate" values="360 0 0;0 0 0" dur="6s" repeatCount="indefinite"/>
+                                    <g transform="translate(65,50)">
+    Transform attributeName="transform" type="rotate" values="360 0 0;0 0 0" dur="6s" repeatCount="indefinite"/>
                                     <path d="M0,-3 L0.8,0 L3,0 L1.2,1.5 L2,4 L0,2.5 L-2,4 L-1.2,1.5 L-3,0 L-0.8,0 Z" fill="url(#pillar1-grad)" opacity="0.8"/>
-                                </g>
-                            </g>
-                    <h3 class="pillar-title">AI Search Growth</h3>
+                        <h3 class="pillar-title">AI Search Growth</h3>
                     <p class="pillar-description">AI-powered search is becoming increasingly popular. Businesses need to adapt their SEO strategies to remain visible in this evolving search landscape.</p>
                 </div>
 
@@ -2919,7 +2897,7 @@
                                     </feMerge>
                                 </filter>
                             <circle cx="40" cy="40" r="35" fill="url(#pillar2-glow)">
-                                <animate attributeName="r" values="35;42;35" dur="4.5s" repeatCount="indefinite"/>
+ attributeName="r" values="35;42;35" dur="4.5s" repeatCount="indefinite"/>
                             </circle>
                             <!-- Chart container -->
                             <g filter="url(#pillar2-filter)">
@@ -2934,76 +2912,68 @@
                                     <line x1="20" y1="20" x2="20" y2="55" stroke="url(#pillar2-grad)" stroke-width="0.5"/>
                                     <line x1="35" y1="20" x2="35" y2="55" stroke="url(#pillar2-grad)" stroke-width="0.5"/>
                                     <line x1="50" y1="20" x2="50" y2="55" stroke="url(#pillar2-grad)" stroke-width="0.5"/>
-                                </g>
-                            </g>
-                            <!-- Evolutionary trend line -->
+                                <!-- Evolutionary trend line -->
                             <g>
                                 <!-- Traditional SEO (declining) -->
                                 <path d="M15 50 Q25 45 35 42" fill="none" stroke="#ff6b6b" stroke-width="3" opacity="0.7">
-                                    <animate attributeName="stroke-dasharray" values="0,30;15,15;30,0;0,30" dur="3s" repeatCount="indefinite"/>
+     attributeName="stroke-dasharray" values="0,30;15,15;30,0;0,30" dur="3s" repeatCount="indefinite"/>
                                 </path>
                                 <!-- AI SEO (rising) -->
                                 <path d="M35 42 Q45 30 55 22 Q60 18 65 15" fill="none" stroke="url(#pillar2-grad)" stroke-width="4">
-                                    <animate attributeName="stroke-dasharray" values="0,40;20,20;40,0;0,40" dur="2.5s" repeatCount="indefinite"/>
+     attributeName="stroke-dasharray" values="0,40;20,20;40,0;0,40" dur="2.5s" repeatCount="indefinite"/>
                                 </path>
-                            </g>
                             <!-- Data points -->
                             <g>
                                 <circle cx="20" cy="48" r="3" fill="#ff6b6b" opacity="0.8">
-                                    <animate attributeName="r" values="3;5;3" dur="2s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+     attributeName="r" values="3;5;3" dur="2s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
                                 </circle>
                                 <circle cx="35" cy="42" r="4" fill="url(#pillar2-accent)">
-                                    <animate attributeName="r" values="4;6;4" dur="2.2s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="2.2s" repeatCount="indefinite"/>
+     attributeName="r" values="4;6;4" dur="2.2s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.8;1;0.8" dur="2.2s" repeatCount="indefinite"/>
                                 </circle>
                                 <circle cx="50" cy="25" r="4" fill="url(#pillar2-grad)">
-                                    <animate attributeName="r" values="4;6;4" dur="1.8s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="1.8s" repeatCount="indefinite"/>
+     attributeName="r" values="4;6;4" dur="1.8s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.8;1;0.8" dur="1.8s" repeatCount="indefinite"/>
                                 </circle>
                                 <circle cx="65" cy="15" r="5" fill="url(#pillar2-accent)">
-                                    <animate attributeName="r" values="5;7;5" dur="2.5s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="2.5s" repeatCount="indefinite"/>
+     attributeName="r" values="5;7;5" dur="2.5s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.8;1;0.8" dur="2.5s" repeatCount="indefinite"/>
                                 </circle>
-                            </g>
                             <!-- Evolution indicators -->
                             <g>
                                 <!-- Traditional to AI transformation -->
                                 <g transform="translate(25,65)">
                                     <rect x="-8" y="-4" width="16" height="8" rx="4" fill="#ff6b6b" opacity="0.6">
-                                        <animate attributeName="opacity" values="0.6;0.3;0.6" dur="3s" repeatCount="indefinite"/>
+         attributeName="opacity" values="0.6;0.3;0.6" dur="3s" repeatCount="indefinite"/>
                                     </rect>
                                     <text x="0" y="2" text-anchor="middle" font-size="6" fill="white" font-family="Arial">OLD</text>
-                                </g>
-                                <!-- Arrow transformation -->
+                                    <!-- Arrow transformation -->
                                 <path d="M33 65 L47 65" stroke="url(#pillar2-grad)" stroke-width="2" marker-end="url(#arrow)">
-                                    <animate attributeName="stroke-dasharray" values="0,14;7,7;14,0;0,14" dur="2s" repeatCount="indefinite"/>
+     attributeName="stroke-dasharray" values="0,14;7,7;14,0;0,14" dur="2s" repeatCount="indefinite"/>
                                 </path>
                                         <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
                                         <path d="M0,0 L0,6 L9,3 z" fill="url(#pillar2-grad)"/>
                                     </marker>
                                     <g transform="translate(55,65)">
                                     <rect x="-8" y="-4" width="16" height="8" rx="4" fill="url(#pillar2-grad)">
-                                        <animate attributeName="opacity" values="1;0.7;1" dur="2s" repeatCount="indefinite"/>
+         attributeName="opacity" values="1;0.7;1" dur="2s" repeatCount="indefinite"/>
                                     </rect>
                                     <text x="0" y="2" text-anchor="middle" font-size="6" fill="white" font-family="Arial">AI</text>
-                                </g>
-                            </g>
-                            <!-- Floating innovation particles -->
+                                <!-- Floating innovation particles -->
                             <g>
                                 <circle cx="15" cy="10" r="1.5" fill="url(#pillar2-accent)" opacity="0.7">
-                                    <animateTransform attributeName="transform" type="translate" values="0,0;3,-2;0,0" dur="4s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="4s" repeatCount="indefinite"/>
+    Transform attributeName="transform" type="translate" values="0,0;3,-2;0,0" dur="4s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.7;1;0.7" dur="4s" repeatCount="indefinite"/>
                                 </circle>
                                 <circle cx="70" cy="25" r="1.5" fill="url(#pillar2-grad)" opacity="0.7">
-                                    <animateTransform attributeName="transform" type="translate" values="0,0;-2,1;0,0" dur="3.5s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="3.5s" repeatCount="indefinite"/>
+    Transform attributeName="transform" type="translate" values="0,0;-2,1;0,0" dur="3.5s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.7;1;0.7" dur="3.5s" repeatCount="indefinite"/>
                                 </circle>
                                 <circle cx="12" cy="45" r="1" fill="url(#pillar2-accent)" opacity="0.7">
-                                    <animateTransform attributeName="transform" type="translate" values="0,0;2,2;0,0" dur="3.8s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="3.8s" repeatCount="indefinite"/>
+    Transform attributeName="transform" type="translate" values="0,0;2,2;0,0" dur="3.8s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.7;1;0.7" dur="3.8s" repeatCount="indefinite"/>
                                 </circle>
-                            </g>
                     <h3 class="pillar-title">SEO Evolution</h3>
                     <p class="pillar-description">Search engines are integrating AI features that change how results are displayed. Traditional SEO strategies need to evolve alongside these technological advances.</p>
                 </div>
@@ -3035,108 +3005,95 @@
                                     </feMerge>
                                 </filter>
                             <circle cx="40" cy="40" r="35" fill="url(#pillar3-glow)">
-                                <animate attributeName="r" values="35;40;35" dur="3.5s" repeatCount="indefinite"/>
+ attributeName="r" values="35;40;35" dur="3.5s" repeatCount="indefinite"/>
                             </circle>
                             <!-- Winner's podium -->
                             <g filter="url(#pillar3-filter)">
                                 <!-- First place (center, tallest) -->
                                 <rect x="30" y="35" width="20" height="25" rx="3" fill="url(#pillar3-gold)">
-                                    <animate attributeName="fill" values="url(#pillar3-gold);url(#pillar3-accent);url(#pillar3-gold)" dur="3s" repeatCount="indefinite"/>
+     attributeName="fill" values="url(#pillar3-gold);url(#pillar3-accent);url(#pillar3-gold)" dur="3s" repeatCount="indefinite"/>
                                 </rect>
                                 <text x="40" y="52" text-anchor="middle" font-size="12" fill="white" font-family="Arial" font-weight="bold">1</text>
                                 <!-- Crown on first place -->
                                 <g transform="translate(40,32)">
                                     <path d="M-6,-3 L-3,-8 L0,-5 L3,-8 L6,-3 L4,0 L-4,0 Z" fill="url(#pillar3-gold)" stroke="#FFA500" stroke-width="1">
-                                        <animate attributeName="fill" values="url(#pillar3-gold);url(#pillar3-accent);url(#pillar3-gold)" dur="2s" repeatCount="indefinite"/>
+         attributeName="fill" values="url(#pillar3-gold);url(#pillar3-accent);url(#pillar3-gold)" dur="2s" repeatCount="indefinite"/>
                                     </path>
                                     <!-- Crown jewels -->
                                     <circle cx="-3" cy="-5" r="1" fill="#FF6B6B"/>
                                     <circle cx="0" cy="-6" r="1.2" fill="#4ECDC4"/>
                                     <circle cx="3" cy="-5" r="1" fill="#FF6B6B"/>
-                                </g>
-
+    
                                 <!-- Second place (left) -->
                                 <rect x="15" y="45" width="15" height="15" rx="2" fill="url(#pillar3-accent)" opacity="0.8">
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="2.5s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.8;1;0.8" dur="2.5s" repeatCount="indefinite"/>
                                 </rect>
                                 <text x="22.5" y="55" text-anchor="middle" font-size="10" fill="white" font-family="Arial" font-weight="bold">2</text>
 
                                 <!-- Third place (right) -->
                                 <rect x="50" y="50" width="15" height="10" rx="2" fill="url(#pillar3-grad)" opacity="0.8">
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="2.8s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.8;1;0.8" dur="2.8s" repeatCount="indefinite"/>
                                 </rect>
                                 <text x="57.5" y="57" text-anchor="middle" font-size="10" fill="white" font-family="Arial" font-weight="bold">3</text>
-                            </g>
 
                             <!-- Early adopter symbols -->
                             <g>
                                 <!-- Speed lines showing early movement -->
                                 <line x1="10" y1="20" x2="25" y2="25" stroke="url(#pillar3-accent)" stroke-width="2" opacity="0.6">
-                                    <animate attributeName="opacity" values="0.6;1;0.6" dur="1s" repeatCount="indefinite"/>
-                                    <animate attributeName="stroke-dasharray" values="0,15;15,0;0,15" dur="1s" repeatCount="indefinite"/>
-                                </line>
+     attributeName="opacity" values="0.6;1;0.6" dur="1s" repeatCount="indefinite"/>
+     attributeName="stroke-dasharray" values="0,15;15,0;0,15" dur="1s" repeatCount="indefinite"/>
                                 <line x1="15" y1="15" x2="30" y2="20" stroke="url(#pillar3-grad)" stroke-width="2" opacity="0.6">
-                                    <animate attributeName="opacity" values="0.6;1;0.6" dur="1.2s" repeatCount="indefinite"/>
-                                    <animate attributeName="stroke-dasharray" values="0,18;18,0;0,18" dur="1.2s" repeatCount="indefinite"/>
-                                </line>
+     attributeName="opacity" values="0.6;1;0.6" dur="1.2s" repeatCount="indefinite"/>
+     attributeName="stroke-dasharray" values="0,18;18,0;0,18" dur="1.2s" repeatCount="indefinite"/>
                                 <line x1="5" y1="25" x2="20" y2="30" stroke="url(#pillar3-accent)" stroke-width="2" opacity="0.6">
-                                    <animate attributeName="opacity" values="0.6;1;0.6" dur="0.8s" repeatCount="indefinite"/>
-                                    <animate attributeName="stroke-dasharray" values="0,15;15,0;0,15" dur="0.8s" repeatCount="indefinite"/>
-                                </line>
-                            </g>
+     attributeName="opacity" values="0.6;1;0.6" dur="0.8s" repeatCount="indefinite"/>
+     attributeName="stroke-dasharray" values="0,15;15,0;0,15" dur="0.8s" repeatCount="indefinite"/>
 
                             <!-- Innovation checkmarks -->
                             <g>
                                 <!-- Early adoption checkmark -->
                                 <g transform="translate(60,20)">
                                     <circle cx="0" cy="0" r="8" fill="url(#pillar3-grad)" opacity="0.9">
-                                        <animate attributeName="r" values="8;10;8" dur="2s" repeatCount="indefinite"/>
+         attributeName="r" values="8;10;8" dur="2s" repeatCount="indefinite"/>
                                     </circle>
                                     <path d="M-3 0 L-1 2 L3 -2" fill="none" stroke="white" stroke-width="2" stroke-linecap="round">
-                                        <animate attributeName="stroke-dasharray" values="0,8;8,0;0,8" dur="2s" repeatCount="indefinite"/>
+         attributeName="stroke-dasharray" values="0,8;8,0;0,8" dur="2s" repeatCount="indefinite"/>
                                     </path>
-                                </g>
-
+    
                                 <!-- Time advantage indicator -->
                                 <g transform="translate(65,55)">
                                     <circle cx="0" cy="0" r="6" fill="url(#pillar3-accent)" opacity="0.8">
-                                        <animate attributeName="r" values="6;8;6" dur="1.8s" repeatCount="indefinite"/>
+         attributeName="r" values="6;8;6" dur="1.8s" repeatCount="indefinite"/>
                                     </circle>
                                     <!-- Clock hand -->
                                     <line x1="0" y1="0" x2="0" y2="-3" stroke="white" stroke-width="1.5">
-                                        <animateTransform attributeName="transform" type="rotate" values="0 0 0;360 0 0" dur="4s" repeatCount="indefinite"/>
-                                    </line>
-                                    <line x1="0" y1="0" x2="2" y2="0" stroke="white" stroke-width="1">
-                                        <animateTransform attributeName="transform" type="rotate" values="0 0 0;720 0 0" dur="4s" repeatCount="indefinite"/>
-                                    </line>
-                                </g>
-                            </g>
-
+        Transform attributeName="transform" type="rotate" values="0 0 0;360 0 0" dur="4s" repeatCount="indefinite"/>
+                                        <line x1="0" y1="0" x2="2" y2="0" stroke="white" stroke-width="1">
+        Transform attributeName="transform" type="rotate" values="0 0 0;720 0 0" dur="4s" repeatCount="indefinite"/>
+        
                             <!-- Competitive advantage arrows -->
                             <g>
                                 <path d="M20 65 L35 50" stroke="url(#pillar3-gold)" stroke-width="3" marker-end="url(#advantage-arrow)" opacity="0.8">
-                                    <animate attributeName="stroke-dasharray" values="0,20;10,10;20,0;0,20" dur="2s" repeatCount="indefinite"/>
+     attributeName="stroke-dasharray" values="0,20;10,10;20,0;0,20" dur="2s" repeatCount="indefinite"/>
                                 </path>
                                         <marker id="advantage-arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
                                         <path d="M0,0 L0,6 L9,3 z" fill="url(#pillar3-gold)"/>
                                     </marker>
-                                </g>
-
+    
                             <!-- Success particles -->
                             <g>
                                 <circle cx="12" cy="12" r="1.5" fill="url(#pillar3-gold)" opacity="0.7">
-                                    <animateTransform attributeName="transform" type="translate" values="0,0;2,-1;0,0" dur="3s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="3s" repeatCount="indefinite"/>
+    Transform attributeName="transform" type="translate" values="0,0;2,-1;0,0" dur="3s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.7;1;0.7" dur="3s" repeatCount="indefinite"/>
                                 </circle>
                                 <circle cx="68" cy="35" r="1" fill="url(#pillar3-accent)" opacity="0.7">
-                                    <animateTransform attributeName="transform" type="translate" values="0,0;-1,2;0,0" dur="2.5s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="2.5s" repeatCount="indefinite"/>
+    Transform attributeName="transform" type="translate" values="0,0;-1,2;0,0" dur="2.5s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.7;1;0.7" dur="2.5s" repeatCount="indefinite"/>
                                 </circle>
                                 <circle cx="15" cy="60" r="1.2" fill="url(#pillar3-grad)" opacity="0.7">
-                                    <animateTransform attributeName="transform" type="translate" values="0,0;1,-2;0,0" dur="3.2s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="3.2s" repeatCount="indefinite"/>
+    Transform attributeName="transform" type="translate" values="0,0;1,-2;0,0" dur="3.2s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.7;1;0.7" dur="3.2s" repeatCount="indefinite"/>
                                 </circle>
-                            </g>
                     <h3 class="pillar-title">Early Adoption Advantage</h3>
                     <p class="pillar-description">Businesses that adapt early to new search technologies often gain competitive advantages. Staying informed and proactive helps maintain market position.</p>
                 </div>
@@ -3160,137 +3117,67 @@
 
                 <div class="process-step">
                     <div class="step-number">2</div>
- id="step2-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#4ECDC4;stop-opacity:1" />
-                                    <stop offset="50%" style="stop-color:#44A08D;stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#093637;stop-opacity:1" />
-                                </linearGradient>
- id="step2-accent" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#26D0CE;stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#1A2980;stop-opacity:1" />
-                                </linearGradient>
- id="step2-lightning" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#FFD93D;stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#FF8E53;stop-opacity:1" />
-                                </linearGradient>
-                                <radialGradient id="step2-glow" cx="50%" cy="50%" r="50%">
-                                    <stop offset="0%" style="stop-color:#4ECDC4;stop-opacity:0.3" />
-                                    <stop offset="100%" style="stop-color:#4ECDC4;stop-opacity:0" />
-                                </radialGradient>
-                                <filter id="step2-filter">
-                                    <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-                                    <feMerge>
-                                        <feMergeNode in="coloredBlur"/>
-                                        <feMergeNode in="SourceGraphic"/>
-                                    </feMerge>
-                                </filter>
-                            <circle cx="40" cy="40" r="35" fill="url(#step2-glow)">
-                                <animate attributeName="r" values="35;42;35" dur="4s" repeatCount="indefinite"/>
-                            </circle>
-                            <!-- Central AI core -->
-                            <g filter="url(#step2-filter)">
-                                <circle cx="40" cy="40" r="12" fill="url(#step2-grad)">
-                                    <animate attributeName="r" values="12;15;12" dur="3s" repeatCount="indefinite"/>
-                                </circle>
-                                <!-- Core inner glow -->
-                                <circle cx="40" cy="40" r="8" fill="url(#step2-accent)" opacity="0.8">
-                                    <animate attributeName="r" values="8;10;8" dur="2s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
-                                </circle>
-                            </g>
-                            <!-- Optimization rays -->
-                            <g>
-                                <!-- Primary rays -->
-                                <line x1="40" y1="10" x2="40" y2="22" stroke="url(#step2-accent)" stroke-width="3" opacity="0.8">
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="1.5s" repeatCount="indefinite"/>
-                                    <animate attributeName="stroke-width" values="3;4;3" dur="1.5s" repeatCount="indefinite"/>
-                                </line>
-                                <line x1="40" y1="58" x2="40" y2="70" stroke="url(#step2-accent)" stroke-width="3" opacity="0.8">
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="1.5s" repeatCount="indefinite" begin="0.3s"/>
-                                    <animate attributeName="stroke-width" values="3;4;3" dur="1.5s" repeatCount="indefinite" begin="0.3s"/>
-                                </line>
-                                <line x1="10" y1="40" x2="22" y2="40" stroke="url(#step2-grad)" stroke-width="3" opacity="0.8">
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="1.5s" repeatCount="indefinite" begin="0.6s"/>
-                                    <animate attributeName="stroke-width" values="3;4;3" dur="1.5s" repeatCount="indefinite" begin="0.6s"/>
-                                </line>
-                                <line x1="58" y1="40" x2="70" y2="40" stroke="url(#step2-grad)" stroke-width="3" opacity="0.8">
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="1.5s" repeatCount="indefinite" begin="0.9s"/>
-                                    <animate attributeName="stroke-width" values="3;4;3" dur="1.5s" repeatCount="indefinite" begin="0.9s"/>
-                                </line>
                                 <!-- Diagonal rays -->
                                 <line x1="18" y1="18" x2="26" y2="26" stroke="url(#step2-accent)" stroke-width="2.5" opacity="0.6">
-                                    <animate attributeName="opacity" values="0.6;0.9;0.6" dur="1.8s" repeatCount="indefinite"/>
-                                </line>
+     attributeName="opacity" values="0.6;0.9;0.6" dur="1.8s" repeatCount="indefinite"/>
                                 <line x1="54" y1="54" x2="62" y2="62" stroke="url(#step2-accent)" stroke-width="2.5" opacity="0.6">
-                                    <animate attributeName="opacity" values="0.6;0.9;0.6" dur="1.8s" repeatCount="indefinite" begin="0.3s"/>
-                                </line>
+     attributeName="opacity" values="0.6;0.9;0.6" dur="1.8s" repeatCount="indefinite" begin="0.3s"/>
                                 <line x1="62" y1="18" x2="54" y2="26" stroke="url(#step2-grad)" stroke-width="2.5" opacity="0.6">
-                                    <animate attributeName="opacity" values="0.6;0.9;0.6" dur="1.8s" repeatCount="indefinite" begin="0.6s"/>
-                                </line>
+     attributeName="opacity" values="0.6;0.9;0.6" dur="1.8s" repeatCount="indefinite" begin="0.6s"/>
                                 <line x1="26" y1="54" x2="18" y2="62" stroke="url(#step2-grad)" stroke-width="2.5" opacity="0.6">
-                                    <animate attributeName="opacity" values="0.6;0.9;0.6" dur="1.8s" repeatCount="indefinite" begin="0.9s"/>
-                                </line>
-                            </g>
+     attributeName="opacity" values="0.6;0.9;0.6" dur="1.8s" repeatCount="indefinite" begin="0.9s"/>
                             <!-- Lightning bolt (optimization power) -->
                             <g transform="translate(55,15)">
                                 <path d="M3 0 L0 8 L5 8 L2 16 L10 6 L5 6 L8 0 Z" fill="url(#step2-lightning)" opacity="0.9">
-                                    <animate attributeName="opacity" values="0.9;1;0.9" dur="1s" repeatCount="indefinite"/>
-                                    <animateTransform attributeName="transform" type="scale" values="1;1.1;1" dur="1s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.9;1;0.9" dur="1s" repeatCount="indefinite"/>
+    Transform attributeName="transform" type="scale" values="1;1.1;1" dur="1s" repeatCount="indefinite"/>
                                 </path>
-                            </g>
                             <!-- Strategy nodes -->
                             <g>
                                 <circle cx="25" cy="25" r="4" fill="url(#step2-accent)" opacity="0.8">
-                                    <animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+     attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
                                 </circle>
                                 <circle cx="55" cy="25" r="4" fill="url(#step2-grad)" opacity="0.8">
-                                    <animate attributeName="r" values="4;6;4" dur="2.2s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="2.2s" repeatCount="indefinite"/>
+     attributeName="r" values="4;6;4" dur="2.2s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.8;1;0.8" dur="2.2s" repeatCount="indefinite"/>
                                 </circle>
                                 <circle cx="25" cy="55" r="4" fill="url(#step2-grad)" opacity="0.8">
-                                    <animate attributeName="r" values="4;6;4" dur="2.1s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="2.1s" repeatCount="indefinite"/>
+     attributeName="r" values="4;6;4" dur="2.1s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.8;1;0.8" dur="2.1s" repeatCount="indefinite"/>
                                 </circle>
                                 <circle cx="55" cy="55" r="4" fill="url(#step2-accent)" opacity="0.8">
-                                    <animate attributeName="r" values="4;6;4" dur="1.9s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="1.9s" repeatCount="indefinite"/>
+     attributeName="r" values="4;6;4" dur="1.9s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.8;1;0.8" dur="1.9s" repeatCount="indefinite"/>
                                 </circle>
-                            </g>
                             <!-- Connection lines to nodes -->
                             <g opacity="0.6">
                                 <line x1="25" y1="25" x2="32" y2="32" stroke="url(#step2-accent)" stroke-width="2">
-                                    <animate attributeName="stroke-dasharray" values="0,10;5,5;10,0;0,10" dur="2s" repeatCount="indefinite"/>
-                                </line>
+     attributeName="stroke-dasharray" values="0,10;5,5;10,0;0,10" dur="2s" repeatCount="indefinite"/>
                                 <line x1="55" y1="25" x2="48" y2="32" stroke="url(#step2-grad)" stroke-width="2">
-                                    <animate attributeName="stroke-dasharray" values="0,10;5,5;10,0;0,10" dur="2.2s" repeatCount="indefinite"/>
-                                </line>
+     attributeName="stroke-dasharray" values="0,10;5,5;10,0;0,10" dur="2.2s" repeatCount="indefinite"/>
                                 <line x1="25" y1="55" x2="32" y2="48" stroke="url(#step2-grad)" stroke-width="2">
-                                    <animate attributeName="stroke-dasharray" values="0,10;5,5;10,0;0,10" dur="2.1s" repeatCount="indefinite"/>
-                                </line>
+     attributeName="stroke-dasharray" values="0,10;5,5;10,0;0,10" dur="2.1s" repeatCount="indefinite"/>
                                 <line x1="55" y1="55" x2="48" y2="48" stroke="url(#step2-accent)" stroke-width="2">
-                                    <animate attributeName="stroke-dasharray" values="0,10;5,5;10,0;0,10" dur="1.9s" repeatCount="indefinite"/>
-                                </line>
-                            </g>
+     attributeName="stroke-dasharray" values="0,10;5,5;10,0;0,10" dur="1.9s" repeatCount="indefinite"/>
                             <!-- Optimization particles -->
                             <g>
                                 <circle cx="12" cy="15" r="1.5" fill="url(#step2-lightning)" opacity="0.7">
-                                    <animateTransform attributeName="transform" type="translate" values="0,0;3,-2;0,0" dur="4s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="4s" repeatCount="indefinite"/>
+    Transform attributeName="transform" type="translate" values="0,0;3,-2;0,0" dur="4s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.7;1;0.7" dur="4s" repeatCount="indefinite"/>
                                 </circle>
                                 <circle cx="68" cy="20" r="1.2" fill="url(#step2-accent)" opacity="0.7">
-                                    <animateTransform attributeName="transform" type="translate" values="0,0;-2,1;0,0" dur="3.5s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="3.5s" repeatCount="indefinite"/>
+    Transform attributeName="transform" type="translate" values="0,0;-2,1;0,0" dur="3.5s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.7;1;0.7" dur="3.5s" repeatCount="indefinite"/>
                                 </circle>
                                 <circle cx="15" cy="65" r="1.5" fill="url(#step2-grad)" opacity="0.7">
-                                    <animateTransform attributeName="transform" type="translate" values="0,0;2,1;0,0" dur="3.8s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="3.8s" repeatCount="indefinite"/>
+    Transform attributeName="transform" type="translate" values="0,0;2,1;0,0" dur="3.8s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.7;1;0.7" dur="3.8s" repeatCount="indefinite"/>
                                 </circle>
                                 <circle cx="70" cy="60" r="1.2" fill="url(#step2-lightning)" opacity="0.7">
-                                    <animateTransform attributeName="transform" type="translate" values="0,0;-1,-2;0,0" dur="4.2s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="4.2s" repeatCount="indefinite"/>
+    Transform attributeName="transform" type="translate" values="0,0;-1,-2;0,0" dur="4.2s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.7;1;0.7" dur="4.2s" repeatCount="indefinite"/>
                                 </circle>
-                            </g>
                     <h3 class="step-title">Strategic AI Optimization</h3>
                     <p class="step-description">Custom implementation of AI visibility strategies that make your business the top recommendation for relevant queries.</p>
                 </div>
@@ -3322,7 +3209,7 @@
                                     </feMerge>
                                 </filter>
                             <circle cx="40" cy="40" r="35" fill="url(#step3-glow)">
-                                <animate attributeName="r" values="35;42;35" dur="4s" repeatCount="indefinite"/>
+ attributeName="r" values="35;42;35" dur="4s" repeatCount="indefinite"/>
                             </circle>
                             <!-- Chart container with growth trajectory -->
                             <g filter="url(#step3-filter)">
@@ -3338,107 +3225,95 @@
                                     <line x1="35" y1="20" x2="35" y2="60" stroke="url(#step3-grad)" stroke-width="0.5"/>
                                     <line x1="50" y1="20" x2="50" y2="60" stroke="url(#step3-grad)" stroke-width="0.5"/>
                                     <line x1="65" y1="20" x2="65" y2="60" stroke="url(#step3-grad)" stroke-width="0.5"/>
-                                </g>
-                            </g>
-                            <!-- Explosive growth trend line -->
+                                <!-- Explosive growth trend line -->
                             <g>
                                 <path d="M15 55 Q25 50 35 40 Q50 25 65 15" fill="none" stroke="url(#step3-grad)" stroke-width="4">
-                                    <animate attributeName="stroke-dasharray" values="0,60;30,30;60,0;0,60" dur="3s" repeatCount="indefinite"/>
+     attributeName="stroke-dasharray" values="0,60;30,30;60,0;0,60" dur="3s" repeatCount="indefinite"/>
                                 </path>
                                 <!-- Acceleration highlight -->
                                 <path d="M45 30 Q55 20 65 15" fill="none" stroke="url(#step3-gold)" stroke-width="3" opacity="0.8">
-                                    <animate attributeName="stroke-dasharray" values="0,25;12,12;25,0;0,25" dur="2s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+     attributeName="stroke-dasharray" values="0,25;12,12;25,0;0,25" dur="2s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
                                 </path>
-                            </g>
                             <!-- Data points showing domination levels -->
                             <g>
                                 <circle cx="20" cy="52" r="3" fill="url(#step3-accent)" opacity="0.8">
-                                    <animate attributeName="r" values="3;5;3" dur="2s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+     attributeName="r" values="3;5;3" dur="2s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
                                 </circle>
                                 <circle cx="35" cy="40" r="4" fill="url(#step3-grad)">
-                                    <animate attributeName="r" values="4;6;4" dur="2.2s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="2.2s" repeatCount="indefinite"/>
+     attributeName="r" values="4;6;4" dur="2.2s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.8;1;0.8" dur="2.2s" repeatCount="indefinite"/>
                                 </circle>
                                 <circle cx="50" cy="25" r="5" fill="url(#step3-gold)">
-                                    <animate attributeName="r" values="5;7;5" dur="1.8s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="1.8s" repeatCount="indefinite"/>
+     attributeName="r" values="5;7;5" dur="1.8s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.8;1;0.8" dur="1.8s" repeatCount="indefinite"/>
                                 </circle>
                                 <circle cx="65" cy="15" r="6" fill="url(#step3-gold)">
-                                    <animate attributeName="r" values="6;8;6" dur="2.5s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="2.5s" repeatCount="indefinite"/>
+     attributeName="r" values="6;8;6" dur="2.5s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.8;1;0.8" dur="2.5s" repeatCount="indefinite"/>
                                 </circle>
-                            </g>
                             <!-- Domination crown -->
                             <g transform="translate(65,8)">
                                 <path d="M-6,-3 L-3,-8 L0,-5 L3,-8 L6,-3 L4,0 L-4,0 Z" fill="url(#step3-gold)" stroke="#FFA500" stroke-width="1">
-                                    <animate attributeName="fill" values="url(#step3-gold);url(#step3-accent);url(#step3-gold)" dur="3s" repeatCount="indefinite"/>
+     attributeName="fill" values="url(#step3-gold);url(#step3-accent);url(#step3-gold)" dur="3s" repeatCount="indefinite"/>
                                 </path>
                                 <!-- Crown jewels -->
                                 <circle cx="-3" cy="-5" r="1" fill="#FF6B6B"/>
                                 <circle cx="0" cy="-6" r="1.2" fill="#4ECDC4"/>
                                 <circle cx="3" cy="-5" r="1" fill="#FF6B6B"/>
-                            </g>
                             <!-- Scaling arrows -->
                             <g>
                                 <!-- Upward scaling arrows -->
                                 <path d="M25 70 L30 65 L35 70" fill="none" stroke="url(#step3-accent)" stroke-width="2" opacity="0.8">
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="1.5s" repeatCount="indefinite"/>
-                                    <animateTransform attributeName="transform" type="translate" values="0,0;0,-2;0,0" dur="1.5s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.8;1;0.8" dur="1.5s" repeatCount="indefinite"/>
+    Transform attributeName="transform" type="translate" values="0,0;0,-2;0,0" dur="1.5s" repeatCount="indefinite"/>
                                 </path>
                                 <path d="M45 70 L50 65 L55 70" fill="none" stroke="url(#step3-grad)" stroke-width="2" opacity="0.8">
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="1.8s" repeatCount="indefinite"/>
-                                    <animateTransform attributeName="transform" type="translate" values="0,0;0,-2;0,0" dur="1.8s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.8;1;0.8" dur="1.8s" repeatCount="indefinite"/>
+    Transform attributeName="transform" type="translate" values="0,0;0,-2;0,0" dur="1.8s" repeatCount="indefinite"/>
                                 </path>
                                 <!-- Success burst -->
                                 <g transform="translate(70,20)">
                                     <g>
-                                        <animateTransform attributeName="transform" type="rotate" values="0 0 0;360 0 0" dur="4s" repeatCount="indefinite"/>
+        Transform attributeName="transform" type="rotate" values="0 0 0;360 0 0" dur="4s" repeatCount="indefinite"/>
                                         <path d="M0,-4 L1,0 L4,0 L1.5,2 L2.5,5 L0,3 L-2.5,5 L-1.5,2 L-4,0 L-1,0 Z" fill="url(#step3-gold)" opacity="0.9">
-                                            <animate attributeName="opacity" values="0.9;1;0.9" dur="2s" repeatCount="indefinite"/>
+             attributeName="opacity" values="0.9;1;0.9" dur="2s" repeatCount="indefinite"/>
                                         </path>
-                                    </g>
-                                </g>
-                            </g>
-                            <!-- Market domination indicators -->
+                                        <!-- Market domination indicators -->
                             <g>
                                 <!-- Platform coverage circles -->
                                 <circle cx="15" cy="10" r="2.5" fill="url(#step3-accent)" opacity="0.7">
-                                    <animate attributeName="r" values="2.5;4;2.5" dur="2s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+     attributeName="r" values="2.5;4;2.5" dur="2s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
                                 </circle>
                                 <circle cx="30" cy="8" r="3" fill="url(#step3-grad)" opacity="0.7">
-                                    <animate attributeName="r" values="3;4.5;3" dur="2.3s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="2.3s" repeatCount="indefinite"/>
+     attributeName="r" values="3;4.5;3" dur="2.3s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.7;1;0.7" dur="2.3s" repeatCount="indefinite"/>
                                 </circle>
                                 <circle cx="50" cy="10" r="2.5" fill="url(#step3-gold)" opacity="0.7">
-                                    <animate attributeName="r" values="2.5;4;2.5" dur="1.9s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="1.9s" repeatCount="indefinite"/>
+     attributeName="r" values="2.5;4;2.5" dur="1.9s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.7;1;0.7" dur="1.9s" repeatCount="indefinite"/>
                                 </circle>
                                 <!-- Connection lines showing network effect -->
                                 <line x1="15" y1="10" x2="30" y2="8" stroke="url(#step3-accent)" stroke-width="1" opacity="0.5">
-                                    <animate attributeName="stroke-dasharray" values="0,20;10,10;20,0;0,20" dur="3s" repeatCount="indefinite"/>
-                                </line>
+     attributeName="stroke-dasharray" values="0,20;10,10;20,0;0,20" dur="3s" repeatCount="indefinite"/>
                                 <line x1="30" y1="8" x2="50" y2="10" stroke="url(#step3-grad)" stroke-width="1" opacity="0.5">
-                                    <animate attributeName="stroke-dasharray" values="0,20;10,10;20,0;0,20" dur="3.2s" repeatCount="indefinite"/>
-                                </line>
-                            </g>
+     attributeName="stroke-dasharray" values="0,20;10,10;20,0;0,20" dur="3.2s" repeatCount="indefinite"/>
                             <!-- Success particles -->
                             <g>
                                 <circle cx="10" cy="65" r="1.5" fill="url(#step3-gold)" opacity="0.7">
-                                    <animateTransform attributeName="transform" type="translate" values="0,0;3,-2;0,0" dur="4s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="4s" repeatCount="indefinite"/>
+    Transform attributeName="transform" type="translate" values="0,0;3,-2;0,0" dur="4s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.7;1;0.7" dur="4s" repeatCount="indefinite"/>
                                 </circle>
                                 <circle cx="75" cy="35" r="1.2" fill="url(#step3-accent)" opacity="0.7">
-                                    <animateTransform attributeName="transform" type="translate" values="0,0;-2,1;0,0" dur="3.5s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="3.5s" repeatCount="indefinite"/>
+    Transform attributeName="transform" type="translate" values="0,0;-2,1;0,0" dur="3.5s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.7;1;0.7" dur="3.5s" repeatCount="indefinite"/>
                                 </circle>
                                 <circle cx="5" cy="30" r="1" fill="url(#step3-grad)" opacity="0.7">
-                                    <animateTransform attributeName="transform" type="translate" values="0,0;2,2;0,0" dur="3.8s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="3.8s" repeatCount="indefinite"/>
+    Transform attributeName="transform" type="translate" values="0,0;2,2;0,0" dur="3.8s" repeatCount="indefinite"/>
+     attributeName="opacity" values="0.7;1;0.7" dur="3.8s" repeatCount="indefinite"/>
                                 </circle>
-                            </g>
                     <h3 class="step-title">Domination & Scaling</h3>
                     <p class="step-description">Monitor results and scale your AI search presence across multiple platforms and query types for maximum market capture.</p>
                 </div>
