@@ -1793,18 +1793,18 @@
         /* PROCESS SECTION */
         .process-section {
             background: var(--pure-white);
-            padding: var(--space-3xl) 0;
+            padding: var(--space-2xl) 0;
         }
 
         .process-container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 var(--space-lg);
         }
 
         .process-header {
             text-align: center;
-            margin-bottom: var(--space-3xl);
+            margin-bottom: var(--space-xl);
         }
 
         .process-header h2 {
@@ -1818,34 +1818,66 @@
         .process-timeline {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: var(--space-xl);
+            gap: var(--space-lg);
             position: relative;
         }
 
         .process-step {
             background: var(--pure-white);
             border-radius: var(--radius-xl);
-            padding: var(--space-xl);
+            padding: var(--space-lg) var(--space-md) var(--space-lg);
             text-align: center;
             position: relative;
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(226, 232, 240, 0.6);
+        }
+
+        .process-step:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+            border-color: rgba(102, 126, 234, 0.3);
         }
 
         .step-number {
             position: absolute;
-            top: -20px;
+            top: -30px;
             left: 50%;
             transform: translateX(-50%);
-            width: 40px;
-            height: 40px;
-            background: var(--gradient-primary);
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--pure-white);
-            font-weight: 700;
-            font-size: 1.1rem;
+            font-weight: 800;
+            font-size: 1.5rem;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Colorful step numbers with unique gradients */
+        .process-step:nth-child(1) .step-number {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            box-shadow: 0 6px 20px rgba(240, 147, 251, 0.4);
+        }
+
+        .process-step:nth-child(2) .step-number {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            box-shadow: 0 6px 20px rgba(79, 172, 254, 0.4);
+        }
+
+        .process-step:nth-child(3) .step-number {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            box-shadow: 0 6px 20px rgba(168, 237, 234, 0.4);
+        }
+
+        .step-number:hover {
+            transform: translateX(-50%) translateY(-3px) scale(1.1);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.6);
         }
 
         .step-icon {
@@ -1867,15 +1899,17 @@
 
         .step-title {
             font-family: var(--font-primary);
-            font-size: 1.5rem;
+            font-size: 1.35rem;
             font-weight: 700;
             color: var(--primary-navy);
-            margin-bottom: var(--space-md);
+            margin-bottom: var(--space-sm);
+            margin-top: var(--space-sm);
         }
 
         .step-description {
             color: var(--text-secondary);
             line-height: 1.6;
+            font-size: 0.95rem;
         }
 
         /* TEAM SECTION */
@@ -2440,7 +2474,7 @@
                                                 <animate attributeName="stroke-dasharray" values="0,50;25,25;50,0;0,50" dur="3s" repeatCount="indefinite"/>
                                             </path>
                                         </svg>
-                                        <defs>
+                                                                 <defs>
                                             <linearGradient id="chartGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                                                 <stop offset="0%" style="stop-color:#0066FF"/>
                                                 <stop offset="50%" style="stop-color:#00D4FF"/>
@@ -2510,13 +2544,11 @@
                                                 <animate attributeName="stroke-dasharray" values="0 100;75 25;0 100" dur="4s" repeatCount="indefinite"/>
                                             </circle>
                                         </svg>
-                                        <defs>
-                                            <linearGradient id="visitorsGradient">
+                         id="visitorsGradient">
                                                 <stop offset="0%" style="stop-color:#10B981"/>
                                                 <stop offset="100%" style="stop-color:#34D399"/>
                                             </linearGradient>
-                                        </defs>
-                                    </div>
+                                                </div>
                                 </div>
 
                                 <div class="metric-card accuracy-card">
@@ -2584,13 +2616,11 @@
                                                 <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
                                             </path>
                                         </svg>
-                                        <defs>
-                                            <linearGradient id="lightningGrad">
+                         id="lightningGrad">
                                                 <stop offset="0%" style="stop-color:#F59E0B"/>
                                                 <stop offset="100%" style="stop-color:#FCD34D"/>
                                             </linearGradient>
-                                        </defs>
-                                    </div>
+                                                </div>
                                     <span class="insight-text">Revenue impact: $340K attributed</span>
                                     <div class="revenue-pulse"></div>
                                 </div>
@@ -2779,14 +2809,12 @@
             <div class="pillars-grid">
                 <div class="pillar-card">
                     <div class="pillar-icon">
-                        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="pillar1-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+ id="pillar1-grad" x1="0%" y1="0%" x2="100%" y2="100%">
                                     <stop offset="0%" style="stop-color:#FF6B6B;stop-opacity:1" />
                                     <stop offset="50%" style="stop-color:#FF8E53;stop-opacity:1" />
                                     <stop offset="100%" style="stop-color:#FF6B35;stop-opacity:1" />
                                 </linearGradient>
-                                <linearGradient id="pillar1-accent" x1="0%" y1="0%" x2="100%" y2="100%">
+ id="pillar1-accent" x1="0%" y1="0%" x2="100%" y2="100%">
                                     <stop offset="0%" style="stop-color:#FFD93D;stop-opacity:1" />
                                     <stop offset="100%" style="stop-color:#FF8E53;stop-opacity:1" />
                                 </linearGradient>
@@ -2801,8 +2829,6 @@
                                         <feMergeNode in="SourceGraphic"/>
                                     </feMerge>
                                 </filter>
-                            </defs>
-                            <!-- Glowing background -->
                             <circle cx="40" cy="40" r="35" fill="url(#pillar1-glow)">
                                 <animate attributeName="r" values="35;40;35" dur="4s" repeatCount="indefinite"/>
                             </circle>
@@ -2866,22 +2892,18 @@
                                     <path d="M0,-3 L0.8,0 L3,0 L1.2,1.5 L2,4 L0,2.5 L-2,4 L-1.2,1.5 L-3,0 L-0.8,0 Z" fill="url(#pillar1-grad)" opacity="0.8"/>
                                 </g>
                             </g>
-                        </svg>
-                    </div>
                     <h3 class="pillar-title">AI Search Growth</h3>
                     <p class="pillar-description">AI-powered search is becoming increasingly popular. Businesses need to adapt their SEO strategies to remain visible in this evolving search landscape.</p>
                 </div>
 
                 <div class="pillar-card">
                     <div class="pillar-icon">
-                        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="pillar2-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+ id="pillar2-grad" x1="0%" y1="0%" x2="100%" y2="100%">
                                     <stop offset="0%" style="stop-color:#4ECDC4;stop-opacity:1" />
                                     <stop offset="50%" style="stop-color:#44A08D;stop-opacity:1" />
                                     <stop offset="100%" style="stop-color:#093637;stop-opacity:1" />
                                 </linearGradient>
-                                <linearGradient id="pillar2-accent" x1="0%" y1="0%" x2="100%" y2="100%">
+ id="pillar2-accent" x1="0%" y1="0%" x2="100%" y2="100%">
                                     <stop offset="0%" style="stop-color:#26D0CE;stop-opacity:1" />
                                     <stop offset="100%" style="stop-color:#1A2980;stop-opacity:1" />
                                 </linearGradient>
@@ -2896,8 +2918,6 @@
                                         <feMergeNode in="SourceGraphic"/>
                                     </feMerge>
                                 </filter>
-                            </defs>
-                            <!-- Glowing background -->
                             <circle cx="40" cy="40" r="35" fill="url(#pillar2-glow)">
                                 <animate attributeName="r" values="35;42;35" dur="4.5s" repeatCount="indefinite"/>
                             </circle>
@@ -2959,12 +2979,10 @@
                                 <path d="M33 65 L47 65" stroke="url(#pillar2-grad)" stroke-width="2" marker-end="url(#arrow)">
                                     <animate attributeName="stroke-dasharray" values="0,14;7,7;14,0;0,14" dur="2s" repeatCount="indefinite"/>
                                 </path>
-                                <defs>
-                                    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+                                        <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
                                         <path d="M0,0 L0,6 L9,3 z" fill="url(#pillar2-grad)"/>
                                     </marker>
-                                </defs>
-                                <g transform="translate(55,65)">
+                                    <g transform="translate(55,65)">
                                     <rect x="-8" y="-4" width="16" height="8" rx="4" fill="url(#pillar2-grad)">
                                         <animate attributeName="opacity" values="1;0.7;1" dur="2s" repeatCount="indefinite"/>
                                     </rect>
@@ -2986,26 +3004,22 @@
                                     <animate attributeName="opacity" values="0.7;1;0.7" dur="3.8s" repeatCount="indefinite"/>
                                 </circle>
                             </g>
-                        </svg>
-                    </div>
                     <h3 class="pillar-title">SEO Evolution</h3>
                     <p class="pillar-description">Search engines are integrating AI features that change how results are displayed. Traditional SEO strategies need to evolve alongside these technological advances.</p>
                 </div>
 
                 <div class="pillar-card">
                     <div class="pillar-icon">
-                        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="pillar3-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+ id="pillar3-grad" x1="0%" y1="0%" x2="100%" y2="100%">
                                     <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
                                     <stop offset="50%" style="stop-color:#764ba2;stop-opacity:1" />
                                     <stop offset="100%" style="stop-color:#f093fb;stop-opacity:1" />
                                 </linearGradient>
-                                <linearGradient id="pillar3-accent" x1="0%" y1="0%" x2="100%" y2="100%">
+ id="pillar3-accent" x1="0%" y1="0%" x2="100%" y2="100%">
                                     <stop offset="0%" style="stop-color:#a8edea;stop-opacity:1" />
                                     <stop offset="100%" style="stop-color:#fed6e3;stop-opacity:1" />
                                 </linearGradient>
-                                <linearGradient id="pillar3-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+ id="pillar3-gold" x1="0%" y1="0%" x2="100%" y2="100%">
                                     <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
                                     <stop offset="100%" style="stop-color:#FFA500;stop-opacity:1" />
                                 </linearGradient>
@@ -3020,8 +3034,6 @@
                                         <feMergeNode in="SourceGraphic"/>
                                     </feMerge>
                                 </filter>
-                            </defs>
-                            <!-- Glowing background -->
                             <circle cx="40" cy="40" r="35" fill="url(#pillar3-glow)">
                                 <animate attributeName="r" values="35;40;35" dur="3.5s" repeatCount="indefinite"/>
                             </circle>
@@ -3105,12 +3117,10 @@
                                 <path d="M20 65 L35 50" stroke="url(#pillar3-gold)" stroke-width="3" marker-end="url(#advantage-arrow)" opacity="0.8">
                                     <animate attributeName="stroke-dasharray" values="0,20;10,10;20,0;0,20" dur="2s" repeatCount="indefinite"/>
                                 </path>
-                                <defs>
-                                    <marker id="advantage-arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+                                        <marker id="advantage-arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
                                         <path d="M0,0 L0,6 L9,3 z" fill="url(#pillar3-gold)"/>
                                     </marker>
-                                </defs>
-                            </g>
+                                </g>
 
                             <!-- Success particles -->
                             <g>
@@ -3127,8 +3137,6 @@
                                     <animate attributeName="opacity" values="0.7;1;0.7" dur="3.2s" repeatCount="indefinite"/>
                                 </circle>
                             </g>
-                        </svg>
-                    </div>
                     <h3 class="pillar-title">Early Adoption Advantage</h3>
                     <p class="pillar-description">Businesses that adapt early to new search technologies often gain competitive advantages. Staying informed and proactive helps maintain market position.</p>
                 </div>
@@ -3146,136 +3154,22 @@
             <div class="process-timeline">
                 <div class="process-step">
                     <div class="step-number">1</div>
-                    <div class="step-icon">
-                        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="step1-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#FF6B6B;stop-opacity:1" />
-                                    <stop offset="50%" style="stop-color:#FF8E53;stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#FF6B35;stop-opacity:1" />
-                                </linearGradient>
-                                <linearGradient id="step1-accent" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#FFD93D;stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#FF8E53;stop-opacity:1" />
-                                </linearGradient>
-                                <radialGradient id="step1-glow" cx="50%" cy="50%" r="50%">
-                                    <stop offset="0%" style="stop-color:#FF6B6B;stop-opacity:0.3" />
-                                    <stop offset="100%" style="stop-color:#FF6B6B;stop-opacity:0" />
-                                </radialGradient>
-                                <filter id="step1-filter">
-                                    <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-                                    <feMerge>
-                                        <feMergeNode in="coloredBlur"/>
-                                        <feMergeNode in="SourceGraphic"/>
-                                    </feMerge>
-                                </filter>
-                            </defs>
-                            <!-- Glowing background -->
-                            <circle cx="40" cy="40" r="35" fill="url(#step1-glow)">
-                                <animate attributeName="r" values="35;40;35" dur="4s" repeatCount="indefinite"/>
-                            </circle>
-                            <!-- Intelligence gathering eye -->
-                            <g filter="url(#step1-filter)">
-                                <!-- Outer eye shape -->
-                                <ellipse cx="40" cy="40" rx="25" ry="15" fill="url(#step1-grad)" opacity="0.9"/>
-                                <!-- Inner eye -->
-                                <ellipse cx="40" cy="40" rx="18" ry="12" fill="rgba(255,255,255,0.9)"/>
-                                <!-- Iris -->
-                                <circle cx="40" cy="40" r="8" fill="url(#step1-accent)">
-                                    <animate attributeName="r" values="8;10;8" dur="3s" repeatCount="indefinite"/>
-                                </circle>
-                                <!-- Pupil -->
-                                <circle cx="40" cy="40" r="4" fill="#2C3E50">
-                                    <animate attributeName="r" values="4;5;4" dur="2s" repeatCount="indefinite"/>
-                                </circle>
-                                <!-- Eye reflection -->
-                                <ellipse cx="37" cy="36" rx="3" ry="4" fill="rgba(255,255,255,0.7)" opacity="0.8">
-                                    <animate attributeName="opacity" values="0.8;0.5;0.8" dur="2s" repeatCount="indefinite"/>
-                                </ellipse>
-                            </g>
-                            <!-- Scanning beams -->
-                            <g opacity="0.7">
-                                <path d="M15 40 Q40 25 65 40 Q40 55 15 40" fill="none" stroke="url(#step1-accent)" stroke-width="2">
-                                    <animate attributeName="stroke-dasharray" values="0,100;50,50;100,0;0,100" dur="3s" repeatCount="indefinite"/>
-                                </path>
-                                <path d="M65 40 Q40 25 15 40 Q40 55 65 40" fill="none" stroke="url(#step1-grad)" stroke-width="2">
-                                    <animate attributeName="stroke-dasharray" values="100,0;50,50;0,100;100,0" dur="3s" repeatCount="indefinite"/>
-                                </path>
-                            </g>
-                            <!-- Data collection points -->
-                            <g>
-                                <circle cx="20" cy="20" r="2" fill="url(#step1-accent)" opacity="0.8">
-                                    <animate attributeName="r" values="2;4;2" dur="1.5s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="1.5s" repeatCount="indefinite"/>
-                                </circle>
-                                <circle cx="60" cy="25" r="2.5" fill="url(#step1-grad)" opacity="0.8">
-                                    <animate attributeName="r" values="2.5;4.5;2.5" dur="1.8s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="1.8s" repeatCount="indefinite"/>
-                                </circle>
-                                <circle cx="65" cy="55" r="2" fill="url(#step1-accent)" opacity="0.8">
-                                    <animate attributeName="r" values="2;4;2" dur="2s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
-                                </circle>
-                                <circle cx="25" cy="60" r="2.5" fill="url(#step1-grad)" opacity="0.8">
-                                    <animate attributeName="r" values="2.5;4.5;2.5" dur="1.7s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="1.7s" repeatCount="indefinite"/>
-                                </circle>
-                            </g>
-                            <!-- Intelligence connections -->
-                            <g opacity="0.6">
-                                <line x1="20" y1="20" x2="35" y2="32" stroke="url(#step1-accent)" stroke-width="1.5">
-                                    <animate attributeName="stroke-dasharray" values="0,20;10,10;20,0;0,20" dur="2s" repeatCount="indefinite"/>
-                                </line>
-                                <line x1="60" y1="25" x2="48" y2="35" stroke="url(#step1-grad)" stroke-width="1.5">
-                                    <animate attributeName="stroke-dasharray" values="0,20;10,10;20,0;0,20" dur="2.2s" repeatCount="indefinite"/>
-                                </line>
-                                <line x1="65" y1="55" x2="48" y2="47" stroke="url(#step1-accent)" stroke-width="1.5">
-                                    <animate attributeName="stroke-dasharray" values="0,20;10,10;20,0;0,20" dur="1.8s" repeatCount="indefinite"/>
-                                </line>
-                                <line x1="25" y1="60" x2="32" y2="47" stroke="url(#step1-grad)" stroke-width="1.5">
-                                    <animate attributeName="stroke-dasharray" values="0,20;10,10;20,0;0,20" dur="2.1s" repeatCount="indefinite"/>
-                                </line>
-                            </g>
-                            <!-- Analysis particles -->
-                            <g>
-                                <circle cx="15" cy="10" r="1" fill="url(#step1-accent)" opacity="0.7">
-                                    <animateTransform attributeName="transform" type="translate" values="0,0;3,-2;0,0" dur="4s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="4s" repeatCount="indefinite"/>
-                                </circle>
-                                <circle cx="70" cy="15" r="1.2" fill="url(#step1-grad)" opacity="0.7">
-                                    <animateTransform attributeName="transform" type="translate" values="0,0;-2,1;0,0" dur="3.5s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="3.5s" repeatCount="indefinite"/>
-                                </circle>
-                                <circle cx="10" cy="65" r="1" fill="url(#step1-accent)" opacity="0.7">
-                                    <animateTransform attributeName="transform" type="translate" values="0,0;2,1;0,0" dur="3.8s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="3.8s" repeatCount="indefinite"/>
-                                </circle>
-                                <circle cx="70" cy="70" r="1.2" fill="url(#step1-grad)" opacity="0.7">
-                                    <animateTransform attributeName="transform" type="translate" values="0,0;-1,-2;0,0" dur="4.2s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="4.2s" repeatCount="indefinite"/>
-                                </circle>
-                            </g>
-                        </svg>
-                    </div>
                     <h3 class="step-title">Deep Intelligence Gathering</h3>
                     <p class="step-description">We analyze your business, competitors, and AI search landscape with our proprietary 47-point assessment system.</p>
                 </div>
 
                 <div class="process-step">
                     <div class="step-number">2</div>
-                    <div class="step-icon">
-                        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="step2-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+ id="step2-grad" x1="0%" y1="0%" x2="100%" y2="100%">
                                     <stop offset="0%" style="stop-color:#4ECDC4;stop-opacity:1" />
                                     <stop offset="50%" style="stop-color:#44A08D;stop-opacity:1" />
                                     <stop offset="100%" style="stop-color:#093637;stop-opacity:1" />
                                 </linearGradient>
-                                <linearGradient id="step2-accent" x1="0%" y1="0%" x2="100%" y2="100%">
+ id="step2-accent" x1="0%" y1="0%" x2="100%" y2="100%">
                                     <stop offset="0%" style="stop-color:#26D0CE;stop-opacity:1" />
                                     <stop offset="100%" style="stop-color:#1A2980;stop-opacity:1" />
                                 </linearGradient>
-                                <linearGradient id="step2-lightning" x1="0%" y1="0%" x2="100%" y2="100%">
+ id="step2-lightning" x1="0%" y1="0%" x2="100%" y2="100%">
                                     <stop offset="0%" style="stop-color:#FFD93D;stop-opacity:1" />
                                     <stop offset="100%" style="stop-color:#FF8E53;stop-opacity:1" />
                                 </linearGradient>
@@ -3290,8 +3184,6 @@
                                         <feMergeNode in="SourceGraphic"/>
                                     </feMerge>
                                 </filter>
-                            </defs>
-                            <!-- Glowing background -->
                             <circle cx="40" cy="40" r="35" fill="url(#step2-glow)">
                                 <animate attributeName="r" values="35;42;35" dur="4s" repeatCount="indefinite"/>
                             </circle>
@@ -3399,27 +3291,22 @@
                                     <animate attributeName="opacity" values="0.7;1;0.7" dur="4.2s" repeatCount="indefinite"/>
                                 </circle>
                             </g>
-                        </svg>
-                    </div>
                     <h3 class="step-title">Strategic AI Optimization</h3>
                     <p class="step-description">Custom implementation of AI visibility strategies that make your business the top recommendation for relevant queries.</p>
                 </div>
 
                 <div class="process-step">
                     <div class="step-number">3</div>
-                    <div class="step-icon">
-                        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="step3-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+ id="step3-grad" x1="0%" y1="0%" x2="100%" y2="100%">
                                     <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
                                     <stop offset="50%" style="stop-color:#764ba2;stop-opacity:1" />
                                     <stop offset="100%" style="stop-color:#f093fb;stop-opacity:1" />
                                 </linearGradient>
-                                <linearGradient id="step3-accent" x1="0%" y1="0%" x2="100%" y2="100%">
+ id="step3-accent" x1="0%" y1="0%" x2="100%" y2="100%">
                                     <stop offset="0%" style="stop-color:#a8edea;stop-opacity:1" />
                                     <stop offset="100%" style="stop-color:#fed6e3;stop-opacity:1" />
                                 </linearGradient>
-                                <linearGradient id="step3-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+ id="step3-gold" x1="0%" y1="0%" x2="100%" y2="100%">
                                     <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
                                     <stop offset="100%" style="stop-color:#FFA500;stop-opacity:1" />
                                 </linearGradient>
@@ -3434,8 +3321,6 @@
                                         <feMergeNode in="SourceGraphic"/>
                                     </feMerge>
                                 </filter>
-                            </defs>
-                            <!-- Glowing background -->
                             <circle cx="40" cy="40" r="35" fill="url(#step3-glow)">
                                 <animate attributeName="r" values="35;42;35" dur="4s" repeatCount="indefinite"/>
                             </circle>
@@ -3554,8 +3439,6 @@
                                     <animate attributeName="opacity" values="0.7;1;0.7" dur="3.8s" repeatCount="indefinite"/>
                                 </circle>
                             </g>
-                        </svg>
-                    </div>
                     <h3 class="step-title">Domination & Scaling</h3>
                     <p class="step-description">Monitor results and scale your AI search presence across multiple platforms and query types for maximum market capture.</p>
                 </div>
