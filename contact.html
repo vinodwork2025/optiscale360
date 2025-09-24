@@ -1158,7 +1158,7 @@
                 });
             });
 
-            // Form submission
+            // Form submission with Lead Manager
             contactForm.addEventListener('submit', function(e) {
                 e.preventDefault();
 
@@ -1170,9 +1170,11 @@
 
                 // Collect form data
                 const formData = new FormData(contactForm);
-                const data = Object.fromEntries(formData.entries());
 
-                // Simulate form submission (replace with actual API call)
+                // Process lead submission using Lead Manager
+                const savedLead = window.LeadManager.processFormSubmission(formData, 'Contact Form');
+
+                // Show success message and reset form
                 setTimeout(() => {
                     // Reset form
                     contactForm.reset();
@@ -1182,13 +1184,17 @@
                     });
 
                     // Show success message
-                    showNotification('Thank you! We\'ve received your message and will get back to you within 24 hours.', 'success');
+                    const message = savedLead
+                        ? 'Thank you! Your information has been saved and your email client opened. We\'ll get back to you within 24 hours.'
+                        : 'Thank you! We\'ve received your message and will get back to you within 24 hours.';
+
+                    showNotification(message, 'success');
 
                     // Reset button
                     submitBtn.disabled = false;
                     submitBtn.classList.remove('loading');
                     submitBtn.textContent = originalText;
-                }, 2000);
+                }, 1000);
             });
 
             // Notification system
@@ -1289,6 +1295,7 @@
             });
         });
     </script>
+    <script src="lead-manager.js"></script>
     <script src="script.js"></script>
     <script src="/components/loader.js">
         // Load Header and Footer Components

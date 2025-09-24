@@ -3934,7 +3934,7 @@
             });
         });
 
-        // Lead Capture Form Handling
+        // Lead Capture Form Handling with Lead Manager
         const leadForm = document.getElementById('leadCaptureForm');
         if (leadForm) {
             leadForm.addEventListener('submit', function(e) {
@@ -3956,13 +3956,18 @@
 
                 // Collect form data
                 const formData = new FormData(leadForm);
-                const data = Object.fromEntries(formData.entries());
 
-                // Simulate form submission (replace with actual API call)
+                // Process lead submission using Lead Manager
+                const savedLead = window.LeadManager.processFormSubmission(formData, 'Free AI-Ready Website');
+
                 setTimeout(() => {
                     // Show success message
                     const successMessage = document.createElement('div');
                     successMessage.className = 'fixed top-20 right-4 bg-green-500 text-white p-6 rounded-2xl shadow-2xl z-50 max-w-md';
+                    const message = savedLead
+                        ? 'Your information has been saved and your email client opened. We\'ll begin work on your FREE website draft within 24 hours.'
+                        : 'We\'ll begin work on your FREE website draft within 24 hours.';
+
                     successMessage.innerHTML = `
                         <div class="flex items-start gap-3">
                             <svg class="w-6 h-6 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -3970,7 +3975,7 @@
                             </svg>
                             <div>
                                 <h4 class="font-bold mb-1">Website Build Started!</h4>
-                                <p class="text-sm">We're beginning work on your FREE website draft. You'll receive an email with project details within 24 hours.</p>
+                                <p class="text-sm">${message}</p>
                             </div>
                         </div>
                     `;
@@ -3988,7 +3993,7 @@
 
                     // Scroll to how it works section
                     document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' });
-                }, 2000);
+                }, 1000);
             });
 
             // Real-time form validation
@@ -4036,5 +4041,8 @@
         loadComponent('footer-placeholder', '/components/footer.html');
     });
     </script>
+
+    <!-- Lead Management System -->
+    <script src="lead-manager.js"></script>
 </body>
 </html>
