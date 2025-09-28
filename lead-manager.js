@@ -286,9 +286,9 @@ class LeadManager {
      * Process form submission (main method to be called by forms)
      * @param {FormData} formData - Form data from submission
      * @param {string} formType - Type of form being submitted
-     * @returns {Object|null} - Saved lead object or null if failed
+     * @returns {Promise<Object|null>} - Saved lead object or null if failed
      */
-    processFormSubmission(formData, formType) {
+    async processFormSubmission(formData, formType) {
         // Convert FormData to object
         const data = Object.fromEntries(formData.entries());
 
@@ -296,8 +296,21 @@ class LeadManager {
         const savedLead = this.saveLead(data, formType);
 
         if (savedLead) {
-            // Open email client
-            this.openEmailClient(data, formType);
+            // Try to send direct email first
+            let emailSent = false;
+            if (window.EmailService && window.EmailService.isConfigured()) {
+                try {
+                    emailSent = await window.EmailService.sendEmail(data, formType);
+                    console.log('Direct email sent:', emailSent);
+                } catch (error) {
+                    console.error('Direct email failed, falling back to mailto:', error);
+                }
+            }
+
+            // Fallback to email client if direct email failed or not configured
+            if (!emailSent) {
+                this.openEmailClient(data, formType);
+            }
 
             // Track conversion event (for analytics)
             this.trackConversion(formType);
