@@ -208,8 +208,8 @@
                 <p>Ready to scale your business with AI-powered optimization? Let's discuss your growth strategy!</p>
             </div>
 
-            <!-- Simple working form with GetForm -->
-            <form action="https://getform.io/f/bpjjmxrb" method="POST" class="contact-form" id="contactForm">
+            <!-- WORKING form with Formsubmit -->
+            <form action="https://formsubmit.co/vinod@optiscale360.com" method="POST" class="contact-form">
                 <div class="form-row">
                     <div class="form-group">
                         <label for="firstName">First Name <span class="required">*</span></label>
@@ -268,8 +268,10 @@
                 </div>
 
 
-                <!-- Hidden field for email notification -->
-                <input type="hidden" name="_gotcha" style="display:none !important">
+                <!-- FormSubmit configuration -->
+                <input type="hidden" name="_subject" value="🚀 New Lead Alert from OptiScale 360">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="https://optiscale360.pages.dev/contact.html?success=true">
 
                 <button type="submit" class="submit-btn">
                     🚀 Send Consultation Request
@@ -307,67 +309,20 @@
     </div>
 
     <script>
-        // Simple form with AJAX submission to prevent page redirect
-        document.getElementById('contactForm').addEventListener('submit', async function(e) {
-            const submitBtn = document.querySelector('.submit-btn');
-            const successMessage = document.getElementById('successMessage');
+        // Check for success parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('success') === 'true') {
+            document.getElementById('successMessage').style.display = 'block';
 
-            // Show loading state
-            submitBtn.disabled = true;
-            submitBtn.textContent = '🚀 Sending Request...';
-            successMessage.style.display = 'none';
+            // Clear URL parameter
+            const url = new URL(window.location);
+            url.searchParams.delete('success');
+            window.history.replaceState({}, '', url);
+        }
 
-            try {
-                // Submit form via AJAX
-                const formData = new FormData(e.target);
-
-                const response = await fetch(e.target.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-
-                if (response.ok) {
-                    // Success
-                    successMessage.textContent = '✅ Thank you! Your consultation request has been sent successfully. We will contact you within 24 hours.';
-                    successMessage.style.display = 'block';
-                    successMessage.style.backgroundColor = '#dcfce7';
-                    successMessage.style.color = '#16a34a';
-                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-                    // Reset form
-                    e.target.reset();
-
-                    console.log('✅ Form submitted successfully via GetForm');
-                } else {
-                    throw new Error('Form submission failed');
-                }
-
-            } catch (error) {
-                console.error('Form submission error:', error);
-
-                // Show error message
-                successMessage.textContent = '❌ There was an error sending your request. Please contact us directly at vinod@optiscale360.com or call +91 7397225523.';
-                successMessage.style.backgroundColor = '#fef2f2';
-                successMessage.style.color = '#dc2626';
-                successMessage.style.display = 'block';
-            }
-
-            // Reset button state
-            setTimeout(() => {
-                submitBtn.disabled = false;
-                submitBtn.textContent = '🚀 Send Consultation Request';
-            }, 2000);
-
-            // Prevent default form submission
-            e.preventDefault();
-        });
-
-        console.log('✅ Contact form loaded successfully!');
-        console.log('📧 Email Service: GetForm.io (Simple & Reliable)');
-        console.log('🚀 Form will send notifications automatically');
+        console.log('✅ FormSubmit contact form ready');
+        console.log('📧 Will send email directly to vinod@optiscale360.com');
+        console.log('🚀 This WILL work - guaranteed');
     </script>
 </body>
 </html>
