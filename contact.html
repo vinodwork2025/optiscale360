@@ -773,152 +773,49 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Stunning Google Form Integration */
-        .google-form-wrapper {
-            position: relative;
-            width: 100%;
-            border-radius: var(--border-radius-2xl);
-            overflow: hidden;
-            background: var(--gradient-card);
-            backdrop-filter: var(--backdrop-blur);
-            border: 1px solid var(--border-light);
-            box-shadow:
-                var(--shadow-xl),
-                0 0 0 1px rgba(255, 255, 255, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        /* Form Message Styles */
+        .form-message {
+            margin-top: var(--space-lg);
+            padding: var(--space-lg);
+            border-radius: var(--border-radius-lg);
+            transition: var(--transition);
         }
 
-        .google-form-wrapper:hover {
-            transform: translateY(-2px);
-            box-shadow:
-                0 25px 50px rgba(0, 102, 255, 0.15),
-                0 15px 35px rgba(0, 0, 0, 0.1),
-                0 0 0 1px rgba(255, 255, 255, 0.15),
-                inset 0 1px 0 rgba(255, 255, 255, 0.25);
+        .form-message.success {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            color: var(--success-color);
         }
 
-        .google-form-wrapper::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-primary);
-            z-index: 2;
+        .form-message.error {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            color: var(--error-color);
         }
 
-        .google-form-wrapper::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background:
-                radial-gradient(circle at 20% 20%, rgba(0, 102, 255, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(0, 200, 150, 0.02) 0%, transparent 50%),
-                radial-gradient(circle at 40% 60%, rgba(124, 58, 237, 0.02) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .google-form-iframe {
-            position: relative;
-            display: block;
-            width: 100%;
-            border: none;
-            background: transparent;
-            z-index: 3;
-            border-radius: var(--border-radius-2xl);
-        }
-
-        /* Custom Form Styling Overlay */
-        .form-style-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            pointer-events: none;
-            z-index: 4;
-            background: linear-gradient(
-                135deg,
-                rgba(255, 255, 255, 0.02) 0%,
-                rgba(248, 250, 252, 0.01) 100%
-            );
-        }
-
-        /* Loading State */
-        .form-loading {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+        .message-content {
             display: flex;
-            flex-direction: column;
             align-items: center;
-            gap: var(--space-lg);
-            z-index: 5;
-            color: var(--text-secondary);
+            gap: var(--space-md);
         }
 
-        .form-loading.hidden {
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
+        .message-icon {
+            flex-shrink: 0;
         }
 
-        .loading-spinner {
-            width: 48px;
-            height: 48px;
-            border: 3px solid var(--border-light);
-            border-top: 3px solid var(--primary-color);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        .loading-text {
-            font-size: var(--font-size-lg);
-            font-weight: 600;
-            color: var(--text-primary);
-            text-align: center;
-        }
-
-        .loading-subtext {
-            font-size: var(--font-size-sm);
-            color: var(--text-secondary);
-            text-align: center;
-            max-width: 300px;
+        .message-text {
+            font-weight: 500;
         }
 
         /* Enhanced Form Footer */
         .form-footer {
             margin-top: var(--space-xl);
-            padding: var(--space-xl);
+            padding: var(--space-lg);
             background: var(--gradient-card);
             backdrop-filter: var(--backdrop-blur);
-            border-radius: var(--border-radius-2xl);
+            border-radius: var(--border-radius-lg);
             border: 1px solid var(--border-light);
-            box-shadow:
-                var(--shadow-lg),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .form-footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg,
-                var(--success-color) 0%,
-                var(--primary-color) 50%,
-                var(--accent-purple) 100%);
+            box-shadow: var(--shadow-sm);
         }
 
         .form-note {
@@ -926,107 +823,18 @@
             align-items: flex-start;
             gap: var(--space-md);
             color: var(--text-secondary);
-            font-size: var(--font-size-base);
-            margin-bottom: var(--space-xl);
-            padding: var(--space-lg);
+            font-size: var(--font-size-sm);
+            margin-bottom: var(--space-lg);
+            padding: var(--space-md);
             background: rgba(16, 185, 129, 0.05);
-            border-radius: var(--border-radius-lg);
-            border-left: 4px solid var(--success-color);
+            border-radius: var(--border-radius);
+            border-left: 3px solid var(--success-color);
         }
 
         .form-note svg {
             color: var(--success-color);
             flex-shrink: 0;
             margin-top: 2px;
-        }
-
-        .alternative-contact {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: var(--space-lg);
-        }
-
-        .alternative-contact > p {
-            color: var(--text-primary);
-            font-size: var(--font-size-lg);
-            font-weight: 600;
-            margin: 0 0 var(--space-md) 0;
-            text-align: center;
-        }
-
-        .contact-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: var(--space-lg);
-        }
-
-        .email-link,
-        .form-link {
-            display: flex;
-            align-items: center;
-            gap: var(--space-md);
-            color: var(--text-primary);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: var(--font-size-base);
-            padding: var(--space-lg) var(--space-xl);
-            border-radius: var(--border-radius-xl);
-            transition: var(--transition);
-            background: var(--gradient-card);
-            border: 2px solid var(--border-light);
-            box-shadow: var(--shadow-sm);
-            text-align: center;
-            justify-content: center;
-            min-height: 72px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .email-link::before,
-        .form-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg,
-                transparent 0%,
-                rgba(0, 102, 255, 0.1) 50%,
-                transparent 100%);
-            transition: left 0.6s ease;
-        }
-
-        .email-link:hover,
-        .form-link:hover {
-            border-color: var(--primary-color);
-            transform: translateY(-3px);
-            box-shadow:
-                var(--shadow-card-hover),
-                0 0 0 1px rgba(0, 102, 255, 0.1);
-        }
-
-        .email-link:hover::before,
-        .form-link:hover::before {
-            left: 100%;
-        }
-
-        .email-link svg,
-        .form-link svg {
-            flex-shrink: 0;
-            color: var(--primary-color);
-        }
-
-        .email-link {
-            background: linear-gradient(135deg,
-                rgba(16, 185, 129, 0.1) 0%,
-                rgba(5, 150, 105, 0.05) 100%);
-        }
-
-        .form-link {
-            background: linear-gradient(135deg,
-                rgba(0, 102, 255, 0.1) 0%,
-                rgba(0, 82, 204, 0.05) 100%);
         }
 
         /* Responsive Design */
@@ -1044,13 +852,6 @@
                 justify-content: center;
             }
 
-            .google-form-iframe {
-                height: 1200px;
-            }
-
-            .contact-options {
-                grid-template-columns: 1fr;
-            }
         }
 
         @media (max-width: 768px) {
@@ -1090,33 +891,13 @@
                 gap: var(--space-sm);
             }
 
-            .google-form-iframe {
-                height: 1000px;
-            }
-
             .form-footer {
-                padding: var(--space-lg);
-            }
-
-            .contact-options {
-                grid-template-columns: 1fr;
-                gap: var(--space-md);
-            }
-
-            .email-link,
-            .form-link {
-                padding: var(--space-md) var(--space-lg);
-                font-size: var(--font-size-sm);
-                min-height: 60px;
+                padding: var(--space-md);
             }
 
             .form-note {
-                padding: var(--space-md);
-                font-size: var(--font-size-sm);
-            }
-
-            .alternative-contact > p {
-                font-size: var(--font-size-base);
+                padding: var(--space-sm);
+                font-size: var(--font-size-xs);
             }
         }
 
@@ -1238,67 +1019,118 @@
                 </div>
 
                 <div class="contact-layout">
-                    <!-- Google Form Container -->
+                    <!-- Contact Form Container -->
                     <div class="contact-form-container">
                         <div class="form-header">
                             <h2>Request Your Free Business Consultation</h2>
                             <p>Get a personalized optimization strategy within 24 hours. Fill out the form below to start your transformation journey.</p>
                         </div>
 
-                        <div class="google-form-wrapper" id="formWrapper">
-                            <!-- Loading State -->
-                            <div class="form-loading" id="formLoading">
-                                <div class="loading-spinner"></div>
-                                <div class="loading-text">Loading Contact Form</div>
-                                <div class="loading-subtext">Preparing your personalized consultation request form...</div>
+                        <!-- Contact Form -->
+                        <form class="contact-form" id="contactForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName">First Name</label>
+                                    <input type="text" id="firstName" name="firstName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name</label>
+                                    <input type="text" id="lastName" name="lastName" required>
+                                </div>
                             </div>
 
-                            <!-- Styling Overlay -->
-                            <div class="form-style-overlay"></div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone">
+                                </div>
+                            </div>
 
-                            <!-- Google Form Iframe -->
-                            <iframe
-                                src="https://docs.google.com/forms/d/e/1FAIpQLSdkO7MFdbTDYd4yEYt21illDE0b1qmRV1T6q1QRTe7QdHJsXA/viewform?embedded=true&hl=en"
-                                width="100%"
-                                height="1400"
-                                frameborder="0"
-                                marginheight="0"
-                                marginwidth="0"
-                                class="google-form-iframe"
-                                id="contactFormIframe"
-                                title="OptiScale 360 Contact Form"
-                                onload="handleFormLoad()"
-                                style="opacity: 0; transition: opacity 0.5s ease;">
-                                Loading Google Form...
-                            </iframe>
-                        </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="company">Company Name</label>
+                                    <input type="text" id="company" name="company">
+                                </div>
+                                <div class="form-group">
+                                    <label for="website">Website URL</label>
+                                    <input type="url" id="website" name="website" placeholder="https://yourwebsite.com">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="service">Service Interest</label>
+                                <select id="service" name="service" required>
+                                    <option value="">Select a service...</option>
+                                    <option value="AI SEO Optimization">AI SEO Optimization</option>
+                                    <option value="Website Development">Website Development</option>
+                                    <option value="Digital Marketing">Digital Marketing</option>
+                                    <option value="Business Analytics">Business Analytics</option>
+                                    <option value="E-commerce Solutions">E-commerce Solutions</option>
+                                    <option value="Cloud Migration">Cloud Migration</option>
+                                    <option value="Process Automation">Process Automation</option>
+                                    <option value="General Consultation">General Consultation</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Tell us about your business goals</label>
+                                <textarea id="message" name="message" rows="4" placeholder="Describe your current challenges and what you'd like to achieve..."></textarea>
+                            </div>
+
+                            <div class="form-group checkbox-group">
+                                <input type="checkbox" id="newsletter" name="newsletter">
+                                <label for="newsletter">Subscribe to our newsletter for AI optimization tips and industry insights</label>
+                            </div>
+
+                            <div class="form-submit">
+                                <button type="submit" class="btn-submit" id="submitBtn">
+                                    Send Consultation Request
+                                </button>
+                            </div>
+
+                            <!-- Success/Error Messages -->
+                            <div class="form-message" id="formMessage" style="display: none;">
+                                <div class="message-content">
+                                    <svg class="message-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <path d="M12 6v6l4 2"/>
+                                    </svg>
+                                    <span class="message-text"></span>
+                                </div>
+                            </div>
+                        </form>
 
                         <div class="form-footer">
-                            <p class="form-note">
+                            <div class="form-note">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <circle cx="12" cy="12" r="10"/>
                                     <path d="M12 6v6l4 2"/>
                                 </svg>
                                 We typically respond within 24 hours. For urgent inquiries, call us directly at +91 7397225523.
-                            </p>
-                            <div class="alternative-contact">
-                                <p>Alternative Contact Methods</p>
-                                <div class="contact-options">
-                                    <a href="mailto:info@optiscale360.com" class="email-link">
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                            <polyline points="22,6 12,13 2,6"/>
-                                        </svg>
-                                        Email Us Directly
-                                    </a>
-                                    <a href="https://forms.gle/sapme8boYyAyAwwm8" target="_blank" class="form-link">
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                                            <polyline points="15,3 21,3 21,9"/>
-                                            <line x1="10" y1="14" x2="21" y2="3"/>
-                                        </svg>
-                                        Open in New Window
-                                    </a>
+                            </div>
+
+                            <div class="consultation-features">
+                                <div class="feature-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="20,6 9,17 4,12"/>
+                                    </svg>
+                                    <span>Free 30-minute consultation</span>
+                                </div>
+                                <div class="feature-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="20,6 9,17 4,12"/>
+                                    </svg>
+                                    <span>Personalized optimization strategy</span>
+                                </div>
+                                <div class="feature-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="20,6 9,17 4,12"/>
+                                    </svg>
+                                    <span>24-hour response guarantee</span>
                                 </div>
                             </div>
                         </div>
@@ -1405,77 +1237,150 @@
     <div id="footer-placeholder"></div>
 
     <script>
-        // Google Form Enhancement and Loading Animation
-        function handleFormLoad() {
-            const formLoading = document.getElementById('formLoading');
-            const iframe = document.getElementById('contactFormIframe');
-
-            // Hide loading animation
-            if (formLoading) {
-                formLoading.classList.add('hidden');
-                setTimeout(() => {
-                    formLoading.style.display = 'none';
-                }, 300);
-            }
-
-            // Show iframe
-            if (iframe) {
-                iframe.style.opacity = '1';
-            }
-
-            console.log('Google Form loaded successfully');
-        }
-
-        // Enhanced Contact Page Functionality
+        // Contact Form Enhancement with EmailJS
         document.addEventListener('DOMContentLoaded', function() {
-            // Add loading timeout fallback
-            setTimeout(() => {
-                const formLoading = document.getElementById('formLoading');
-                const iframe = document.getElementById('contactFormIframe');
+            const contactForm = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const formMessage = document.getElementById('formMessage');
 
-                if (formLoading && !formLoading.classList.contains('hidden')) {
-                    console.log('Form load timeout, showing form anyway');
-                    handleFormLoad();
-                }
-            }, 5000); // 5 second timeout
+            // Form submission handler
+            contactForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
 
-            // Form wrapper enhancements
-            const formWrapper = document.getElementById('formWrapper');
-            if (formWrapper) {
-                // Add subtle animation on scroll
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.style.transform = 'translateY(0)';
-                            entry.target.style.opacity = '1';
+                // Disable submit button and show loading state
+                submitBtn.disabled = true;
+                submitBtn.classList.add('loading');
+                submitBtn.textContent = 'Sending...';
+
+                // Hide any previous messages
+                hideMessage();
+
+                try {
+                    // Get form data
+                    const formData = new FormData(contactForm);
+                    const data = Object.fromEntries(formData.entries());
+
+                    // Convert checkbox to boolean
+                    data.newsletter = formData.has('newsletter');
+
+                    // Send email using EmailJS service
+                    const success = await window.EmailService.sendEmail(data, 'Contact Form');
+
+                    if (success) {
+                        showMessage('success', 'Thank you for your message! We\'ll get back to you within 24 hours.');
+                        contactForm.reset();
+
+                        // Track successful submission
+                        if (typeof gtag !== 'undefined') {
+                            gtag('event', 'form_submit', {
+                                form_type: 'contact',
+                                success: true
+                            });
                         }
-                    });
-                }, {
-                    threshold: 0.1,
-                    rootMargin: '50px'
-                });
-
-                formWrapper.style.transform = 'translateY(20px)';
-                formWrapper.style.transition = 'all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)';
-                observer.observe(formWrapper);
-            }
-
-            // Enhanced contact options with analytics
-            document.querySelectorAll('.email-link, .form-link').forEach(link => {
-                link.addEventListener('click', function() {
-                    // Track contact method usage
-                    const method = this.classList.contains('email-link') ? 'email' : 'external_form';
-                    console.log(`Contact method used: ${method}`);
-
-                    // Optional: Add analytics tracking
-                    if (typeof gtag !== 'undefined') {
-                        gtag('event', 'contact_method_click', {
-                            method: method,
-                            source: 'contact_page'
-                        });
+                    } else {
+                        showMessage('error', 'Email service is currently unavailable. Your default email client will open with a pre-filled message.');
                     }
+
+                } catch (error) {
+                    console.error('Form submission error:', error);
+                    showMessage('error', 'There was an error sending your message. Please try again or contact us directly at info@optiscale360.com');
+                }
+
+                // Re-enable submit button
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('loading');
+                submitBtn.textContent = 'Send Consultation Request';
+            });
+
+            // Form validation enhancements
+            const requiredFields = contactForm.querySelectorAll('[required]');
+            requiredFields.forEach(field => {
+                field.addEventListener('blur', function() {
+                    validateField(this);
                 });
             });
+
+            // Email field specific validation
+            const emailField = document.getElementById('email');
+            emailField.addEventListener('blur', function() {
+                validateEmail(this);
+            });
+
+            // Phone field formatting
+            const phoneField = document.getElementById('phone');
+            phoneField.addEventListener('input', function() {
+                formatPhoneNumber(this);
+            });
+
+            // Website URL formatting
+            const websiteField = document.getElementById('website');
+            websiteField.addEventListener('blur', function() {
+                formatWebsiteURL(this);
+            });
+
+            // Show/hide form messages
+            function showMessage(type, text) {
+                formMessage.className = `form-message ${type}`;
+                formMessage.querySelector('.message-text').textContent = text;
+                formMessage.style.display = 'block';
+
+                // Update icon based on type
+                const icon = formMessage.querySelector('.message-icon');
+                if (type === 'success') {
+                    icon.innerHTML = '<polyline points="20,6 9,17 4,12"/>';
+                } else {
+                    icon.innerHTML = '<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>';
+                }
+
+                // Auto-hide success messages after 10 seconds
+                if (type === 'success') {
+                    setTimeout(() => {
+                        hideMessage();
+                    }, 10000);
+                }
+            }
+
+            function hideMessage() {
+                formMessage.style.display = 'none';
+            }
+
+            // Field validation functions
+            function validateField(field) {
+                if (field.hasAttribute('required') && !field.value.trim()) {
+                    field.style.borderColor = 'var(--error-color)';
+                    return false;
+                } else {
+                    field.style.borderColor = 'var(--success-color)';
+                    return true;
+                }
+            }
+
+            function validateEmail(field) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (field.value && !emailRegex.test(field.value)) {
+                    field.style.borderColor = 'var(--error-color)';
+                    return false;
+                } else if (field.value) {
+                    field.style.borderColor = 'var(--success-color)';
+                    return true;
+                }
+                return validateField(field);
+            }
+
+            function formatPhoneNumber(field) {
+                let value = field.value.replace(/\D/g, '');
+                if (value.length >= 10) {
+                    value = value.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
+                }
+                field.value = value;
+            }
+
+            function formatWebsiteURL(field) {
+                let value = field.value.trim();
+                if (value && !value.startsWith('http://') && !value.startsWith('https://')) {
+                    field.value = 'https://' + value;
+                }
+            }
 
             // Smooth scroll for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1491,31 +1396,25 @@
                 });
             });
 
-            // Add parallax effect to form wrapper
-            const handleScroll = () => {
-                const scrollY = window.scrollY;
-                const formWrapper = document.getElementById('formWrapper');
-                if (formWrapper) {
-                    const rect = formWrapper.getBoundingClientRect();
-                    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-                    if (isVisible) {
-                        const parallaxValue = scrollY * 0.02;
-                        formWrapper.style.transform = `translateY(${parallaxValue}px)`;
-                    }
-                }
-            };
-
-            // Throttled scroll event
-            let ticking = false;
-            window.addEventListener('scroll', () => {
-                if (!ticking) {
-                    requestAnimationFrame(() => {
-                        handleScroll();
-                        ticking = false;
+            // Form animation on scroll
+            const contactFormContainer = document.querySelector('.contact-form-container');
+            if (contactFormContainer) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.transform = 'translateY(0)';
+                            entry.target.style.opacity = '1';
+                        }
                     });
-                    ticking = true;
-                }
-            });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '50px'
+                });
+
+                contactFormContainer.style.transform = 'translateY(20px)';
+                contactFormContainer.style.transition = 'all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)';
+                observer.observe(contactFormContainer);
+            }
         });
     </script>
     <script src="email-service.js"></script>
