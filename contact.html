@@ -282,8 +282,14 @@
 
         Cal.ns.quickcall("inline", {
             elementOrSelector:"#my-cal-inline-quickcall",
-            calLink: "quickcall",
-            layout: "month_view"
+            config: {"layout":"month_view","theme":"auto"},
+            calLink: "optiscale360/quickcall",
+        });
+
+        Cal.ns.quickcall("ui", {
+            "cssVarsPerTheme":{"light":{"cal-brand":"#0a3fa0"}},
+            "hideEventTypeDetails":false,
+            "layout":"month_view"
         });
 
         // Hide loading animation after Cal.com loads
@@ -296,7 +302,9 @@
             console.log('📅 Book your consultation now!');
         }, 3000);
 
-        console.log('🎯 Cal.com quickcall integration ready');
+        console.log('🎯 Cal.com integration ready: optiscale360/quickcall');
+        console.log('🎨 Brand color: #0a3fa0 (OptiScale blue)');
+        console.log('📅 Layout: month_view with auto theme');
     </script>
 </body>
 </html>
