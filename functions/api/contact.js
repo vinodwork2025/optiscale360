@@ -58,28 +58,23 @@ export async function onRequestPost(context) {
     // Prepare email content
     const customerName = `${formData.firstName} ${formData.lastName}`;
 
-    // Send emails using Brevo (formerly SendinBlue) - reliable and free
-    const brevoApiKey = env.BREVO_API_KEY;
-    const brevoEndpoint = 'https://api.brevo.com/v3/smtp/email';
+    // Send emails using Brevo SMTP - much more reliable than API
+    const smtpConfig = {
+      host: 'smtp-relay.brevo.com',
+      port: 587,
+      username: '9812f4002@smtp-brevo.com',
+      password: 'jTM7ha2grpKOB8tn'
+    };
 
     let emailSuccess = false;
     let emailMessage = '';
 
-    if (brevoApiKey) {
-      try {
-        // Send lead notification email
-        const leadEmailPayload = {
-          sender: {
-            name: 'OptiScale 360 Contact Form',
-            email: 'noreply@optiscale360.com'
-          },
-          to: [
-            {
-              email: 'vinod@optiscale360.com',
-              name: 'Vinod'
-            }
-          ],
-          subject: `🚀 New Lead Alert: ${customerName} - ${formData.service}`,
+      // Send lead notification email using SMTP
+      const leadEmailData = {
+        from: `OptiScale 360 Contact Form <${smtpConfig.username}>`,
+        to: 'vinod@optiscale360.com',
+        subject: `🚀 New Lead Alert: ${customerName} - ${formData.service}`,
+        replyTo: formData.email,
           htmlContent: `
 <!DOCTYPE html>
 <html>
