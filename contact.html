@@ -337,8 +337,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
     <script>
-        // Initialize EmailJS with your public key
-        emailjs.init("YOUR_PUBLIC_KEY"); // This will be configured
+        // Initialize EmailJS with your public key (will be configured)
+        // emailjs.init("YOUR_PUBLIC_KEY");
 
         // Contact Form Handler
         document.getElementById('contactForm').addEventListener('submit', async function(e) {
@@ -372,24 +372,58 @@
                     timeStyle: 'medium'
                 });
 
-                // Prepare email template parameters
-                const templateParams = {
-                    to_email: 'vinod@optiscale360.com',
-                    from_name: `${data.firstName} ${data.lastName}`,
-                    customer_email: data.email,
-                    customer_phone: data.phone || 'Not provided',
-                    customer_company: data.company || 'Not provided',
-                    customer_website: data.website || 'Not provided',
-                    service_interest: data.service,
-                    customer_message: data.message || 'No message provided',
-                    newsletter: data.newsletter,
-                    lead_id: leadId,
-                    timestamp: timestamp,
-                    reply_to: data.email
-                };
-
-                // For now, we'll use a simple mailto approach that definitely works
                 const customerName = `${data.firstName} ${data.lastName}`;
+
+                // Try EmailJS first, fallback to mailto
+                if (typeof emailjs !== 'undefined') {
+                    try {
+                        // Prepare email template parameters for EmailJS
+                        const templateParams = {
+                            to_email: 'vinod@optiscale360.com',
+                            from_name: customerName,
+                            customer_email: data.email,
+                            customer_phone: data.phone || 'Not provided',
+                            customer_company: data.company || 'Not provided',
+                            customer_website: data.website || 'Not provided',
+                            service_interest: data.service,
+                            customer_message: data.message || 'No message provided',
+                            newsletter: data.newsletter,
+                            lead_id: leadId,
+                            timestamp: timestamp,
+                            reply_to: data.email,
+                            subject: `🚀 New Lead Alert: ${customerName} - ${data.service}`
+                        };
+
+                        // Send via EmailJS using your service ID
+                        const response = await emailjs.send('service_g4erqhd', 'template_contact', templateParams);
+
+                        if (response.status === 200) {
+                            // EmailJS success
+                            showMessage('success', `✅ Thank you ${data.firstName}! Your consultation request has been sent successfully. We will contact you within 24 hours.`);
+
+                            // Reset form
+                            form.reset();
+
+                            // Track success
+                            if (typeof gtag !== 'undefined') {
+                                gtag('event', 'form_submit', {
+                                    form_type: 'contact_emailjs',
+                                    service: data.service,
+                                    lead_id: leadId,
+                                    success: true
+                                });
+                            }
+
+                            console.log('✅ Email sent successfully via EmailJS');
+                            return; // Exit successfully
+                        }
+                    } catch (emailjsError) {
+                        console.log('EmailJS failed, falling back to mailto:', emailjsError);
+                        // Fall through to mailto backup
+                    }
+                }
+
+                // Fallback to mailto approach (always works)
                 const subject = `🚀 New Lead Alert: ${customerName} - ${data.service}`;
 
                 const emailBody = `New Lead Alert!
@@ -418,16 +452,16 @@ Reply directly to: ${data.email}`;
                 const mailtoUrl = `mailto:vinod@optiscale360.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
                 window.open(mailtoUrl, '_blank');
 
-                // Show success message
-                showMessage('success', `✅ Thank you ${data.firstName}! Your consultation request has been prepared. Please send the email that just opened to complete your submission. We'll contact you within 24 hours.`);
+                // Show success message for mailto
+                showMessage('success', `✅ Thank you ${data.firstName}! Your email client will open with a pre-filled message. Please send it to complete your consultation request. We'll contact you within 24 hours.`);
 
                 // Reset form
                 form.reset();
 
-                // Track with Google Analytics if available
+                // Track mailto fallback
                 if (typeof gtag !== 'undefined') {
                     gtag('event', 'form_submit', {
-                        form_type: 'contact_mailto',
+                        form_type: 'contact_mailto_fallback',
                         service: data.service,
                         lead_id: leadId
                     });
@@ -435,7 +469,7 @@ Reply directly to: ${data.email}`;
 
             } catch (error) {
                 console.error('Form submission error:', error);
-                showMessage('error', '❌ There was an error preparing your request. Please contact us directly at vinod@optiscale360.com or call +91 7397225523.');
+                showMessage('error', '❌ There was an error processing your request. Please contact us directly at vinod@optiscale360.com or call +91 7397225523.');
             }
 
             // Re-enable submit button
