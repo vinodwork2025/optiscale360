@@ -2,7 +2,7 @@ name = "optiscale360-blog"
 compatibility_date = "2024-03-15"
 
 [build]
-command = "node _build.js"
+# command = "node _build.js"  # Temporarily disabled for testing
 publish = "."
 
 # Cloudflare Functions configuration
