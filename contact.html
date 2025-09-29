@@ -208,8 +208,8 @@
                 <p>Ready to scale your business with AI-powered optimization? Let's discuss your growth strategy!</p>
             </div>
 
-            <!-- Professional Ajax contact form -->
-            <form class="contact-form" id="contactForm">
+            <!-- Simple working form with GetForm -->
+            <form action="https://getform.io/f/bpjjmxrb" method="POST" class="contact-form" id="contactForm">
                 <div class="form-row">
                     <div class="form-group">
                         <label for="firstName">First Name <span class="required">*</span></label>
@@ -268,6 +268,9 @@
                 </div>
 
 
+                <!-- Hidden field for email notification -->
+                <input type="hidden" name="_gotcha" style="display:none !important">
+
                 <button type="submit" class="submit-btn">
                     🚀 Send Consultation Request
                 </button>
@@ -303,17 +306,9 @@
         </div>
     </div>
 
-    <!-- EmailJS SDK -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-
     <script>
-        // Initialize EmailJS
-        emailjs.init("USMKsjRNiPjdE0Alg");
-
-        // Professional contact form handler
+        // Simple form with AJAX submission to prevent page redirect
         document.getElementById('contactForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-
             const submitBtn = document.querySelector('.submit-btn');
             const successMessage = document.getElementById('successMessage');
 
@@ -323,56 +318,31 @@
             successMessage.style.display = 'none';
 
             try {
-                // Get form data
+                // Submit form via AJAX
                 const formData = new FormData(e.target);
-                const data = Object.fromEntries(formData.entries());
 
-                // Generate lead ID and timestamp
-                const leadId = `LEAD-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
-                const timestamp = new Date().toLocaleString('en-IN', {
-                    timeZone: 'Asia/Kolkata',
-                    dateStyle: 'full',
-                    timeStyle: 'medium'
+                const response = await fetch(e.target.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
                 });
 
-                const customerName = `${data.firstName} ${data.lastName}`;
-
-                // EmailJS template parameters
-                const templateParams = {
-                    to_name: "Vinod",
-                    to_email: "vinod@optiscale360.com",
-                    from_name: customerName,
-                    customer_email: data.email,
-                    customer_phone: data.phone || 'Not provided',
-                    customer_company: data.company || 'Not provided',
-                    customer_website: data.website || 'Not provided',
-                    service_interest: data.service,
-                    customer_message: data.message || 'No message provided',
-                    newsletter: data.newsletter ? 'Yes' : 'No',
-                    lead_id: leadId,
-                    timestamp: timestamp,
-                    reply_to: data.email
-                };
-
-                // Send via EmailJS
-                const response = await emailjs.send(
-                    'service_g4erqhd',
-                    'template_contact',
-                    templateParams
-                );
-
-                if (response.status === 200) {
+                if (response.ok) {
                     // Success
-                    successMessage.textContent = `✅ Thank you ${data.firstName}! Your consultation request has been sent successfully. We will contact you within 24 hours.`;
+                    successMessage.textContent = '✅ Thank you! Your consultation request has been sent successfully. We will contact you within 24 hours.';
                     successMessage.style.display = 'block';
+                    successMessage.style.backgroundColor = '#dcfce7';
+                    successMessage.style.color = '#16a34a';
                     successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
                     // Reset form
                     e.target.reset();
 
-                    console.log('✅ Email sent successfully via EmailJS');
+                    console.log('✅ Form submitted successfully via GetForm');
                 } else {
-                    throw new Error('EmailJS returned non-200 status');
+                    throw new Error('Form submission failed');
                 }
 
             } catch (error) {
@@ -382,7 +352,6 @@
                 successMessage.textContent = '❌ There was an error sending your request. Please contact us directly at vinod@optiscale360.com or call +91 7397225523.';
                 successMessage.style.backgroundColor = '#fef2f2';
                 successMessage.style.color = '#dc2626';
-                successMessage.style.borderColor = '#fecaca';
                 successMessage.style.display = 'block';
             }
 
@@ -391,12 +360,14 @@
                 submitBtn.disabled = false;
                 submitBtn.textContent = '🚀 Send Consultation Request';
             }, 2000);
+
+            // Prevent default form submission
+            e.preventDefault();
         });
 
         console.log('✅ Contact form loaded successfully!');
-        console.log('📧 Email Service: EmailJS (Professional & Reliable)');
-        console.log('🚀 Form will send emails automatically to vinod@optiscale360.com');
-        console.log('⚡ No mail client opening - pure automatic delivery');
+        console.log('📧 Email Service: GetForm.io (Simple & Reliable)');
+        console.log('🚀 Form will send notifications automatically');
     </script>
 </body>
 </html>
