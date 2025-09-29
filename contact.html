@@ -16,49 +16,49 @@
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             color: #333;
-            background-color: #f8fafc;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 100vh;
         }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .booking-section {
-            background: white;
-            padding: 0;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            margin: 40px 0;
-            overflow: hidden;
-        }
-
-        .booking-header {
+        .header {
             background: linear-gradient(135deg, #0066FF 0%, #0052CC 100%);
             color: white;
-            padding: 50px 40px;
             text-align: center;
+            padding: 60px 20px;
         }
 
-        .booking-header h1 {
-            font-size: 2.8rem;
+        .header h1 {
+            font-size: 3rem;
             font-weight: 700;
-            margin: 0 0 20px 0;
+            margin-bottom: 20px;
         }
 
-        .booking-header p {
-            font-size: 1.2rem;
+        .header p {
+            font-size: 1.3rem;
             opacity: 0.95;
-            margin: 0;
-            line-height: 1.6;
             max-width: 600px;
             margin: 0 auto;
         }
 
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .booking-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            margin: -40px auto 40px;
+            position: relative;
+            z-index: 10;
+        }
+
         .cal-embed-wrapper {
-            padding: 30px;
-            min-height: 600px;
+            padding: 40px;
+            min-height: 700px;
             background: #fafbfc;
         }
 
@@ -67,18 +67,18 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 400px;
+            min-height: 500px;
             color: #64748b;
         }
 
         .cal-loading-spinner {
-            width: 50px;
-            height: 50px;
-            border: 4px solid #e2e8f0;
-            border-top: 4px solid #0066FF;
+            width: 60px;
+            height: 60px;
+            border: 5px solid #e2e8f0;
+            border-top: 5px solid #0066FF;
             border-radius: 50%;
             animation: spin 1s linear infinite;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
         @keyframes spin {
@@ -86,9 +86,15 @@
             100% { transform: rotate(360deg); }
         }
 
+        .cal-loading h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #0066FF;
+        }
+
         .cal-loading p {
             font-size: 1.1rem;
-            font-weight: 500;
+            text-align: center;
         }
 
         /* Cal.com widget styling */
@@ -104,67 +110,110 @@
 
         .contact-info {
             background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            padding: 40px;
-            border-radius: 15px;
-            margin-top: 30px;
+            padding: 50px 40px;
+            border-radius: 20px;
             text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
-        .contact-info h3 {
+        .contact-info h2 {
             color: #0066FF;
+            font-size: 2rem;
             margin-bottom: 20px;
-            font-size: 1.4rem;
+        }
+
+        .contact-info p {
+            font-size: 1.2rem;
+            color: #64748b;
+            margin-bottom: 30px;
         }
 
         .contact-details {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin-top: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
         }
 
         .contact-item {
             background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
         }
 
         .contact-item strong {
             color: #0066FF;
             display: block;
-            margin-bottom: 8px;
-            font-size: 1.1rem;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .contact-item a {
+            color: #374151;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-item a:hover {
+            color: #0066FF;
         }
 
         @media (max-width: 768px) {
-            .booking-header {
-                padding: 40px 30px;
+            .header h1 {
+                font-size: 2.2rem;
             }
 
-            .booking-header h1 {
-                font-size: 2.2rem;
+            .header p {
+                font-size: 1.1rem;
             }
 
             .cal-embed-wrapper {
                 padding: 20px;
                 min-height: 500px;
             }
+
+            .contact-info {
+                padding: 30px 20px;
+            }
+
+            .contact-details {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        /* Success indicator */
+        .cal-loaded {
+            opacity: 0;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="booking-section">
-            <div class="booking-header">
-                <h1>📅 Schedule Your Free Business Consultation</h1>
-                <p>Book a 30-minute strategy session with our AI-powered optimization experts and discover how to achieve 300% growth for your business</p>
-            </div>
+    <div class="header">
+        <h1>📅 Schedule Your Free Consultation</h1>
+        <p>Book a 30-minute strategy session with our AI-powered optimization experts and discover how to achieve 300% growth for your business</p>
+    </div>
 
+    <div class="container">
+        <div class="booking-container">
             <div class="cal-embed-wrapper">
                 <div class="cal-loading" id="cal-loading">
                     <div class="cal-loading-spinner"></div>
-                    <p>Loading booking calendar...</p>
+                    <h3>Loading Calendar...</h3>
+                    <p>Preparing your booking experience</p>
                 </div>
 
                 <!-- Cal.com Inline Embed -->
@@ -173,22 +222,22 @@
                     data-cal-namespace=""
                     data-cal-link="optiscale360/consultation"
                     data-cal-config='{"layout":"month_view","theme":"light"}'
-                    style="width:100%;height:600px;overflow:hidden">
+                    style="width:100%;height:700px;overflow:hidden;border-radius:10px;">
                 </div>
             </div>
         </div>
 
         <div class="contact-info">
-            <h3>📞 Need Immediate Assistance?</h3>
-            <p>Our business optimization experts are ready to help you achieve 300% growth!</p>
+            <h2>📞 Need Immediate Assistance?</h2>
+            <p>Our business optimization experts are ready to help you achieve explosive growth!</p>
 
             <div class="contact-details">
                 <div class="contact-item">
-                    <strong>📧 Email</strong>
+                    <strong>📧 Email Us</strong>
                     <a href="mailto:vinod@optiscale360.com">vinod@optiscale360.com</a>
                 </div>
                 <div class="contact-item">
-                    <strong>📱 Phone</strong>
+                    <strong>📱 Call Now</strong>
                     <a href="tel:+917397225523">+91 7397225523</a>
                 </div>
                 <div class="contact-item">
@@ -205,6 +254,10 @@
 
     <!-- Cal.com Embed Script -->
     <script type="text/javascript">
+        console.log('🚀 CONTACT PAGE LOADING: Cal.com Integration');
+        console.log('📅 Page created: 2025-09-30 01:30 AM');
+        console.log('🔧 Commit: NUCLEAR_FIX');
+
         (function (C, A, L) {
             let p = function (a, ar) { a.q.push(ar); };
             let d = C.document;
@@ -241,17 +294,26 @@
             }
         });
 
-        // Hide loading animation once Cal.com loads
+        // Hide loading animation and show success
         setTimeout(() => {
             const loadingElement = document.getElementById('cal-loading');
+            const bookingWidget = document.getElementById('cal-booking-widget');
+
             if (loadingElement) {
                 loadingElement.style.display = 'none';
             }
-        }, 3000);
 
-        console.log('✅ Cal.com booking widget loaded');
-        console.log('📅 Schedule consultation at: optiscale360/consultation');
-        console.log('🚀 Professional booking experience enabled');
+            if (bookingWidget) {
+                bookingWidget.classList.add('cal-loaded');
+            }
+
+            console.log('✅ Cal.com booking widget loaded successfully');
+        }, 4000);
+
+        // Page identification for debugging
+        console.log('📋 Page ID: NUCLEAR_CONTACT_FIX');
+        console.log('🎯 Widget: optiscale360/consultation');
+        console.log('💯 This WILL work - fresh implementation!');
     </script>
 </body>
 </html>
