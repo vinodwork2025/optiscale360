@@ -43,7 +43,7 @@ This guide explains how to set up Brevo (formerly SendinBlue) for reliable email
    - Go to **Settings** → **Environment Variables**
    - Click **Add variable**
    - **Name**: `BREVO_API_KEY`
-   - **Value**: Your Brevo API key (from Step 2)
+   - **Value**: Your Brevo API key (starts with `xkeysib-`)
    - **Environment**: Production ✅
    - Click **Save**
 
