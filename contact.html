@@ -308,8 +308,15 @@
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
     <script>
-        // Initialize EmailJS
-        emailjs.init("USMKsjRNiPjdE0Alg");
+        // Wait for EmailJS to load and initialize
+        window.addEventListener('load', function() {
+            if (typeof emailjs !== 'undefined') {
+                emailjs.init("USMKsjRNiPjdE0Alg");
+                console.log('✅ EmailJS initialized successfully');
+            } else {
+                console.error('❌ EmailJS library failed to load');
+            }
+        });
 
         // Contact form handler
         document.getElementById('contactForm').addEventListener('submit', async function(e) {
@@ -324,6 +331,11 @@
             successMessage.style.display = 'none';
 
             try {
+                // Check if EmailJS is available
+                if (typeof emailjs === 'undefined') {
+                    throw new Error('EmailJS library not loaded. Please refresh the page and try again.');
+                }
+
                 // Get form data
                 const formData = new FormData(e.target);
                 const data = Object.fromEntries(formData.entries());
@@ -351,16 +363,24 @@
                 };
 
                 console.log('🚀 Sending email with EmailJS...');
+                console.log('Service ID:', 'service_g4erqhd');
+                console.log('Template ID:', 'template_contact');
                 console.log('Template params:', templateParams);
 
-                // Send via EmailJS
-                const response = await emailjs.send(
+                // Add timeout to prevent hanging
+                const emailPromise = emailjs.send(
                     'service_g4erqhd',
                     'template_contact',
                     templateParams
                 );
 
-                console.log('EmailJS response:', response);
+                const timeoutPromise = new Promise((_, reject) => {
+                    setTimeout(() => reject(new Error('EmailJS timeout after 15 seconds')), 15000);
+                });
+
+                console.log('Waiting for EmailJS response...');
+                const response = await Promise.race([emailPromise, timeoutPromise]);
+                console.log('EmailJS response received:', response);
 
                 if (response.status === 200) {
                     // Success!
@@ -381,9 +401,24 @@
 
             } catch (error) {
                 console.error('❌ Form submission error:', error);
+                console.log('Error details:', {
+                    message: error.message,
+                    status: error.status,
+                    text: error.text,
+                    name: error.name
+                });
 
-                // Show error message
-                successMessage.textContent = '❌ There was an error sending your request. Please contact us directly at vinod@optiscale360.com or call +91 7397225523.';
+                // Show detailed error message for debugging
+                let errorMessage = '❌ Error: ' + error.message;
+                if (error.status) {
+                    errorMessage += ` (Status: ${error.status})`;
+                }
+                if (error.text) {
+                    errorMessage += `<br>Details: ${error.text}`;
+                }
+                errorMessage += '<br>Please contact us directly at vinod@optiscale360.com or call +91 7397225523.';
+
+                successMessage.innerHTML = errorMessage;
                 successMessage.style.backgroundColor = '#fef2f2';
                 successMessage.style.color = '#dc2626';
                 successMessage.style.borderColor = '#fecaca';
