@@ -333,29 +333,7 @@
         </div>
     </div>
 
-    <!-- EmailJS SDK -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
     <script>
-        // Initialize EmailJS when ready
-        let emailjsReady = false;
-
-        // Initialize EmailJS after DOM and library are loaded
-        window.addEventListener('load', function() {
-            if (typeof emailjs !== 'undefined') {
-                try {
-                    emailjs.init("USMKsjRNiPjdE0Alg");
-                    emailjsReady = true;
-                    console.log('✅ EmailJS initialized successfully');
-                } catch (error) {
-                    console.log('❌ EmailJS initialization failed:', error);
-                    emailjsReady = false;
-                }
-            } else {
-                console.log('❌ EmailJS library not loaded');
-                emailjsReady = false;
-            }
-        });
 
         // Contact Form Handler
         document.getElementById('contactForm').addEventListener('submit', async function(e) {
@@ -391,55 +369,56 @@
 
                 const customerName = `${data.firstName} ${data.lastName}`;
 
-                // Try EmailJS first, fallback to mailto
-                if (emailjsReady && typeof emailjs !== 'undefined') {
-                    try {
-                        // Prepare email template parameters for EmailJS
-                        const templateParams = {
-                            from_name: customerName,
-                            customer_email: data.email,
-                            customer_phone: data.phone || 'Not provided',
-                            customer_company: data.company || 'Not provided',
-                            customer_website: data.website || 'Not provided',
-                            service_interest: data.service,
-                            customer_message: data.message || 'No message provided',
-                            newsletter: data.newsletter,
-                            lead_id: leadId,
-                            timestamp: timestamp,
-                            reply_to: data.email
-                        };
+                // Try Cloudflare Function with Brevo email service
+                try {
+                    console.log('🚀 Attempting to send email via Cloudflare Function...');
 
-                        console.log('🚀 Attempting to send email via EmailJS...');
+                    const apiResponse = await fetch('/api/contact', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            firstName: data.firstName,
+                            lastName: data.lastName,
+                            email: data.email,
+                            phone: data.phone,
+                            company: data.company,
+                            website: data.website,
+                            service: data.service,
+                            message: data.message,
+                            newsletter: data.newsletter
+                        })
+                    });
 
-                        // Send via EmailJS using your service ID
-                        const response = await emailjs.send('service_g4erqhd', 'template_contact', templateParams);
+                    const result = await apiResponse.json();
 
-                        if (response.status === 200) {
-                            // EmailJS success
-                            showMessage('success', `✅ Thank you ${data.firstName}! Your consultation request has been sent successfully. We will contact you within 24 hours.`);
+                    if (result.success) {
+                        // API success
+                        showMessage('success', `✅ ${result.message}`);
 
-                            // Reset form
-                            form.reset();
+                        // Reset form
+                        form.reset();
 
-                            // Track success
-                            if (typeof gtag !== 'undefined') {
-                                gtag('event', 'form_submit', {
-                                    form_type: 'contact_emailjs',
-                                    service: data.service,
-                                    lead_id: leadId,
-                                    success: true
-                                });
-                            }
-
-                            console.log('✅ Email sent successfully via EmailJS');
-                            return; // Exit successfully
+                        // Track success
+                        if (typeof gtag !== 'undefined') {
+                            gtag('event', 'form_submit', {
+                                form_type: 'contact_brevo_api',
+                                service: data.service,
+                                lead_id: result.leadId,
+                                success: true
+                            });
                         }
-                    } catch (emailjsError) {
-                        console.log('❌ EmailJS failed, falling back to mailto:', emailjsError);
+
+                        console.log('✅ Email sent successfully via Brevo API:', result.emailStatus);
+                        return; // Exit successfully
+                    } else {
+                        console.log('❌ API failed, falling back to mailto:', result.error);
                         // Fall through to mailto backup
                     }
-                } else {
-                    console.log('⚠️ EmailJS not ready, using mailto fallback');
+                } catch (apiError) {
+                    console.log('❌ API request failed, falling back to mailto:', apiError);
+                    // Fall through to mailto backup
                 }
 
                 // Fallback to mailto approach (always works)
@@ -560,10 +539,9 @@ Reply directly to: ${data.email}`;
         });
 
         console.log('✅ Contact form loaded successfully!');
-        console.log('📧 EmailJS Service ID: service_g4erqhd');
-        console.log('🔑 EmailJS Public Key: USMKsjRNiPjdE0Alg');
-        console.log('📝 Required Template ID: template_contact');
-        console.log('🚀 Form will try EmailJS first, then fallback to mailto if needed');
+        console.log('📧 Email Service: Brevo API via Cloudflare Function');
+        console.log('🔑 API Endpoint: /api/contact');
+        console.log('🚀 Form will try Brevo API first, then fallback to mailto if needed');
     </script>
 </body>
 </html>

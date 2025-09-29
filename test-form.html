@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form Test</title>
+</head>
+<body>
+    <h1>Contact Form Test</h1>
+    <p>This will automatically submit a test form to verify email delivery...</p>
+
+    <div id="status">Testing...</div>
+
+    <script>
+        // Test the contact form by submitting mock data
+        async function testContactForm() {
+            const statusDiv = document.getElementById('status');
+
+            try {
+                statusDiv.innerHTML = '🚀 Opening contact form and submitting test data...';
+
+                // Open the contact form
+                const contactWindow = window.open('contact.html', '_blank');
+
+                // Wait for the page to load
+                setTimeout(async () => {
+                    try {
+                        // Fill the form with test data
+                        const form = contactWindow.document.getElementById('contactForm');
+
+                        if (form) {
+                            // Fill all required fields
+                            contactWindow.document.getElementById('firstName').value = 'John';
+                            contactWindow.document.getElementById('lastName').value = 'TestUser';
+                            contactWindow.document.getElementById('email').value = 'john.test@example.com';
+                            contactWindow.document.getElementById('phone').value = '+91 9876543210';
+                            contactWindow.document.getElementById('company').value = 'Test Company Ltd';
+                            contactWindow.document.getElementById('website').value = 'https://testcompany.com';
+                            contactWindow.document.getElementById('service').value = 'AI SEO Optimization';
+                            contactWindow.document.getElementById('message').value = 'This is a test submission from Claude Code to verify email delivery is working properly. Please ignore this test lead.';
+                            contactWindow.document.getElementById('newsletter').checked = true;
+
+                            statusDiv.innerHTML = '✅ Form filled with test data. Check the contact form window and submit manually to test.';
+
+                            // Note: We don't auto-submit to avoid spam, user should click submit
+                        } else {
+                            statusDiv.innerHTML = '❌ Could not find contact form. Please submit manually.';
+                        }
+                    } catch (error) {
+                        statusDiv.innerHTML = `❌ Error filling form: ${error.message}. Please fill and submit manually.`;
+                    }
+                }, 3000);
+
+            } catch (error) {
+                statusDiv.innerHTML = `❌ Error: ${error.message}`;
+            }
+        }
+
+        // Start test when page loads
+        window.addEventListener('load', testContactForm);
+    </script>
+</body>
+</html>
