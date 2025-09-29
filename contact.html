@@ -337,8 +337,25 @@
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
     <script>
-        // Initialize EmailJS with your public key
-        emailjs.init("USMKsjRNiPjdE0Alg");
+        // Initialize EmailJS when ready
+        let emailjsReady = false;
+
+        // Initialize EmailJS after DOM and library are loaded
+        window.addEventListener('load', function() {
+            if (typeof emailjs !== 'undefined') {
+                try {
+                    emailjs.init("USMKsjRNiPjdE0Alg");
+                    emailjsReady = true;
+                    console.log('✅ EmailJS initialized successfully');
+                } catch (error) {
+                    console.log('❌ EmailJS initialization failed:', error);
+                    emailjsReady = false;
+                }
+            } else {
+                console.log('❌ EmailJS library not loaded');
+                emailjsReady = false;
+            }
+        });
 
         // Contact Form Handler
         document.getElementById('contactForm').addEventListener('submit', async function(e) {
@@ -375,11 +392,10 @@
                 const customerName = `${data.firstName} ${data.lastName}`;
 
                 // Try EmailJS first, fallback to mailto
-                if (typeof emailjs !== 'undefined') {
+                if (emailjsReady && typeof emailjs !== 'undefined') {
                     try {
                         // Prepare email template parameters for EmailJS
                         const templateParams = {
-                            to_email: 'vinod@optiscale360.com',
                             from_name: customerName,
                             customer_email: data.email,
                             customer_phone: data.phone || 'Not provided',
@@ -390,9 +406,10 @@
                             newsletter: data.newsletter,
                             lead_id: leadId,
                             timestamp: timestamp,
-                            reply_to: data.email,
-                            subject: `🚀 New Lead Alert: ${customerName} - ${data.service}`
+                            reply_to: data.email
                         };
+
+                        console.log('🚀 Attempting to send email via EmailJS...');
 
                         // Send via EmailJS using your service ID
                         const response = await emailjs.send('service_g4erqhd', 'template_contact', templateParams);
@@ -418,9 +435,11 @@
                             return; // Exit successfully
                         }
                     } catch (emailjsError) {
-                        console.log('EmailJS failed, falling back to mailto:', emailjsError);
+                        console.log('❌ EmailJS failed, falling back to mailto:', emailjsError);
                         // Fall through to mailto backup
                     }
+                } else {
+                    console.log('⚠️ EmailJS not ready, using mailto fallback');
                 }
 
                 // Fallback to mailto approach (always works)
@@ -541,8 +560,10 @@ Reply directly to: ${data.email}`;
         });
 
         console.log('✅ Contact form loaded successfully!');
-        console.log('📧 Form will open your email client with a pre-filled message');
-        console.log('🚀 This approach ensures 100% reliability');
+        console.log('📧 EmailJS Service ID: service_g4erqhd');
+        console.log('🔑 EmailJS Public Key: USMKsjRNiPjdE0Alg');
+        console.log('📝 Required Template ID: template_contact');
+        console.log('🚀 Form will try EmailJS first, then fallback to mailto if needed');
     </script>
 </body>
 </html>
