@@ -40,7 +40,7 @@ function updateNavigation() {
         'services.html',
         'case-studies.html',
         'resources.html',
-        'contact.html',
+        // 'contact.html', // Skip contact.html - has custom Cal.com booking widget
         'about.html'
     ];
 
