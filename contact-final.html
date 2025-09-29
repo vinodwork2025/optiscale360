@@ -198,125 +198,82 @@
             text-align: center;
             display: none;
         }
-
-        /* Cal.com Booking Widget Styles */
-        .cal-booking-container {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
-
-        .booking-header {
-            background: linear-gradient(135deg, #0066FF 0%, #0052CC 100%);
-            color: white;
-            padding: 40px;
-            text-align: center;
-        }
-
-        .booking-header h2 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin: 0 0 15px 0;
-        }
-
-        .booking-header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            margin: 0;
-            line-height: 1.6;
-        }
-
-        .cal-embed-wrapper {
-            padding: 20px;
-            min-height: 600px;
-            position: relative;
-        }
-
-        /* Style the Cal.com iframe */
-        .cal-embed-wrapper iframe {
-            border-radius: 15px !important;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
-        }
-
-        /* Custom loading animation */
-        .cal-loading {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 400px;
-            color: #64748b;
-        }
-
-        .cal-loading-spinner {
-            width: 40px;
-            height: 40px;
-            border: 3px solid #e2e8f0;
-            border-top: 3px solid #0066FF;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-bottom: 20px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Responsive design for Cal.com widget */
-        @media (max-width: 768px) {
-            .booking-header {
-                padding: 30px 20px;
-            }
-
-            .booking-header h2 {
-                font-size: 1.8rem;
-            }
-
-            .cal-embed-wrapper {
-                padding: 15px;
-                min-height: 500px;
-            }
-        }
-
-        /* Override Cal.com default styles to match our theme */
-        [data-cal-namespace] {
-            --cal-brand-color: #0066FF !important;
-            --cal-brand-text-color: white !important;
-            --cal-bg: #fafbfc !important;
-            --cal-border-subtle: #e2e8f0 !important;
-            --cal-text: #374151 !important;
-            --cal-text-emphasis: #111827 !important;
-            --cal-text-subtle: #64748b !important;
-        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="contact-form-section">
-            <!-- Cal.com Booking Widget -->
-            <div class="cal-booking-container">
-                <div class="booking-header">
-                    <h2>📅 Schedule Your Free Business Consultation</h2>
-                    <p>Book a 30-minute strategy session with our AI-powered optimization experts and discover how to achieve 300% growth for your business</p>
-                </div>
+            <div class="form-header">
+                <h1>🚀 Get Your Free Business Consultation</h1>
+                <p>Ready to scale your business with AI-powered optimization? Let's discuss your growth strategy!</p>
+            </div>
 
-                <div class="cal-embed-wrapper">
-                    <div class="cal-loading" id="cal-loading">
-                        <div class="cal-loading-spinner"></div>
-                        <p>Loading booking calendar...</p>
+            <!-- Simple working form using EmailTo -->
+            <form action="mailto:vinod@optiscale360.com" method="post" enctype="text/plain" class="contact-form" id="contactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name <span class="required">*</span></label>
+                        <input type="text" id="firstName" name="firstName" required>
                     </div>
-
-                    <!-- Cal.com Inline Embed -->
-                    <div
-                        id="cal-booking-widget"
-                        data-cal-namespace=""
-                        data-cal-link="optiscale360/consultation"
-                        data-cal-config='{"layout":"month_view","theme":"light"}'
-                        style="width:100%;height:100%;overflow:scroll">
+                    <div class="form-group">
+                        <label for="lastName">Last Name <span class="required">*</span></label>
+                        <input type="text" id="lastName" name="lastName" required>
                     </div>
                 </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+91 9876543210">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="company">Company Name</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    <div class="form-group">
+                        <label for="website">Website URL</label>
+                        <input type="url" id="website" name="website" placeholder="https://yourwebsite.com">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="service">Service Interest <span class="required">*</span></label>
+                    <select id="service" name="service" required>
+                        <option value="">Select a service...</option>
+                        <option value="AI SEO Optimization">AI SEO Optimization</option>
+                        <option value="Business Process Automation">Business Process Automation</option>
+                        <option value="Digital Marketing Strategy">Digital Marketing Strategy</option>
+                        <option value="Website Development & Optimization">Website Development & Optimization</option>
+                        <option value="Data Analytics & Insights">Data Analytics & Insights</option>
+                        <option value="Custom Business Solutions">Custom Business Solutions</option>
+                        <option value="General Consultation">General Consultation</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Tell us about your business goals</label>
+                    <textarea id="message" name="message" placeholder="Describe your current challenges and what you'd like to achieve..."></textarea>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="newsletter" name="newsletter" value="yes">
+                    <label for="newsletter">Subscribe to our newsletter for business optimization tips and insights</label>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    🚀 Send Consultation Request
+                </button>
+            </form>
+
+            <div class="success-message" id="successMessage">
+                ✅ Thank you! Your consultation request has been sent successfully. We will contact you within 24 hours.
             </div>
         </div>
 
@@ -345,39 +302,10 @@
         </div>
     </div>
 
-    <!-- Cal.com Embed Script -->
-    <script type="text/javascript">
-        (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-        Cal("init", {origin:"https://cal.com"});
-
-        // Initialize the booking widget
-        Cal("inline", {
-            elementOrSelector: "#cal-booking-widget",
-            calLink: "optiscale360/consultation",
-            layout: "month_view",
-            config: {
-                "layout": "month_view",
-                "theme": "light"
-            }
-        });
-
-        // Hide loading animation once Cal.com loads
-        Cal("ui", {
-            "hideEventTypeDetails": false,
-            "layout": "month_view"
-        });
-
-        // Custom loading handler
-        setTimeout(() => {
-            const loadingElement = document.getElementById('cal-loading');
-            if (loadingElement) {
-                loadingElement.style.display = 'none';
-            }
-        }, 3000);
-
-        console.log('✅ Cal.com booking widget loaded');
-        console.log('📅 Schedule consultation at: optiscale360/consultation');
-        console.log('🚀 Professional booking experience enabled');
+    <script>
+        console.log('✅ Simple mailto contact form loaded');
+        console.log('📧 Form will use your default email client');
+        console.log('🚀 This approach always works');
     </script>
 </body>
 </html>
