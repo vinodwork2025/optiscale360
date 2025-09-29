@@ -208,8 +208,8 @@
                 <p>Ready to scale your business with AI-powered optimization? Let's discuss your growth strategy!</p>
             </div>
 
-            <!-- WORKING form with Formsubmit -->
-            <form action="https://formsubmit.co/vinod@optiscale360.com" method="POST" class="contact-form">
+            <!-- EmailJS contact form -->
+            <form id="contactForm" class="contact-form">
                 <div class="form-row">
                     <div class="form-group">
                         <label for="firstName">First Name <span class="required">*</span></label>
@@ -268,10 +268,6 @@
                 </div>
 
 
-                <!-- FormSubmit configuration -->
-                <input type="hidden" name="_subject" value="🚀 New Lead Alert from OptiScale 360">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="https://optiscale360.pages.dev/contact.html?success=true">
 
                 <button type="submit" class="submit-btn">
                     🚀 Send Consultation Request
@@ -308,21 +304,104 @@
         </div>
     </div>
 
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
     <script>
-        // Check for success parameter
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('success') === 'true') {
-            document.getElementById('successMessage').style.display = 'block';
+        // Initialize EmailJS
+        emailjs.init("USMKsjRNiPjdE0Alg");
 
-            // Clear URL parameter
-            const url = new URL(window.location);
-            url.searchParams.delete('success');
-            window.history.replaceState({}, '', url);
-        }
+        // Contact form handler
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
 
-        console.log('✅ FormSubmit contact form ready');
-        console.log('📧 Will send email directly to vinod@optiscale360.com');
-        console.log('🚀 This WILL work - guaranteed');
+            const submitBtn = document.querySelector('.submit-btn');
+            const successMessage = document.getElementById('successMessage');
+
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = '🚀 Sending Request...';
+            successMessage.style.display = 'none';
+
+            try {
+                // Get form data
+                const formData = new FormData(e.target);
+                const data = Object.fromEntries(formData.entries());
+
+                // Generate lead ID and timestamp
+                const leadId = `LEAD-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+                const timestamp = new Date().toLocaleString('en-IN', {
+                    timeZone: 'Asia/Kolkata',
+                    dateStyle: 'full',
+                    timeStyle: 'medium'
+                });
+
+                // Prepare template parameters that match your EmailJS template
+                const templateParams = {
+                    from_name: `${data.firstName} ${data.lastName}`,
+                    customer_email: data.email,
+                    customer_phone: data.phone || 'Not provided',
+                    customer_company: data.company || 'Not provided',
+                    customer_website: data.website || 'Not provided',
+                    service_interest: data.service,
+                    customer_message: data.message || 'No message provided',
+                    newsletter: data.newsletter ? 'Yes' : 'No',
+                    lead_id: leadId,
+                    timestamp: timestamp
+                };
+
+                console.log('🚀 Sending email with EmailJS...');
+                console.log('Template params:', templateParams);
+
+                // Send via EmailJS
+                const response = await emailjs.send(
+                    'service_g4erqhd',
+                    'template_contact',
+                    templateParams
+                );
+
+                console.log('EmailJS response:', response);
+
+                if (response.status === 200) {
+                    // Success!
+                    successMessage.textContent = `✅ Thank you ${data.firstName}! Your consultation request has been sent successfully. We will contact you within 24 hours.`;
+                    successMessage.style.backgroundColor = '#dcfce7';
+                    successMessage.style.color = '#16a34a';
+                    successMessage.style.borderColor = '#bbf7d0';
+                    successMessage.style.display = 'block';
+                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                    // Reset form
+                    e.target.reset();
+
+                    console.log('✅ Email sent successfully via EmailJS!');
+                } else {
+                    throw new Error(`EmailJS failed with status: ${response.status}`);
+                }
+
+            } catch (error) {
+                console.error('❌ Form submission error:', error);
+
+                // Show error message
+                successMessage.textContent = '❌ There was an error sending your request. Please contact us directly at vinod@optiscale360.com or call +91 7397225523.';
+                successMessage.style.backgroundColor = '#fef2f2';
+                successMessage.style.color = '#dc2626';
+                successMessage.style.borderColor = '#fecaca';
+                successMessage.style.display = 'block';
+            }
+
+            // Reset button
+            setTimeout(() => {
+                submitBtn.disabled = false;
+                submitBtn.textContent = '🚀 Send Consultation Request';
+            }, 2000);
+        });
+
+        console.log('✅ EmailJS contact form loaded');
+        console.log('📧 Service ID: service_g4erqhd');
+        console.log('📝 Template ID: template_contact');
+        console.log('🔑 Public Key: USMKsjRNiPjdE0Alg');
+        console.log('🚀 Ready to send emails to vinod@optiscale360.com');
     </script>
 </body>
 </html>
