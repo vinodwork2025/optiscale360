@@ -1237,20 +1237,20 @@
     <div id="footer-placeholder"></div>
 
     <script>
-        // Contact Form Enhancement with EmailJS
+        // Contact Form Enhancement with Cloudflare Worker + Resend
         document.addEventListener('DOMContentLoaded', function() {
             const contactForm = document.getElementById('contactForm');
             const submitBtn = document.getElementById('submitBtn');
             const formMessage = document.getElementById('formMessage');
 
-            // Form submission handler
+            // Advanced Form submission handler with backend API
             contactForm.addEventListener('submit', async function(e) {
                 e.preventDefault();
 
                 // Disable submit button and show loading state
                 submitBtn.disabled = true;
                 submitBtn.classList.add('loading');
-                submitBtn.textContent = 'Sending...';
+                submitBtn.textContent = 'Sending Request...';
 
                 // Hide any previous messages
                 hideMessage();
@@ -1263,33 +1263,92 @@
                     // Convert checkbox to boolean
                     data.newsletter = formData.has('newsletter');
 
-                    // Send email using EmailJS service
-                    const success = await window.EmailService.sendEmail(data, 'Contact Form');
+                    // Validate required fields on client side
+                    const requiredFields = ['firstName', 'lastName', 'email', 'service'];
+                    const missingFields = requiredFields.filter(field => !data[field]);
 
-                    if (success) {
-                        showMessage('success', 'Thank you for your message! We\'ll get back to you within 24 hours.');
-                        contactForm.reset();
+                    if (missingFields.length > 0) {
+                        throw new Error(`Please fill in all required fields: ${missingFields.join(', ')}`);
+                    }
+
+                    // Validate email format
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(data.email)) {
+                        throw new Error('Please enter a valid email address');
+                    }
+
+                    // Submit to Cloudflare Worker
+                    const response = await fetch('/api/contact', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data)
+                    });
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        // Show success message
+                        showMessage('success', result.message || 'Thank you! We\'ve received your consultation request and will contact you within 24 hours.');
+
+                        // Reset form after delay
+                        setTimeout(() => {
+                            contactForm.reset();
+                            resetFieldStyles();
+                        }, 2000);
 
                         // Track successful submission
                         if (typeof gtag !== 'undefined') {
                             gtag('event', 'form_submit', {
-                                form_type: 'contact',
-                                success: true
+                                form_type: 'contact_api',
+                                success: true,
+                                service: data.service,
+                                lead_id: result.leadId
                             });
                         }
+
+                        // Optional: Show additional success actions
+                        setTimeout(() => {
+                            showSuccessActions();
+                        }, 3000);
+
                     } else {
-                        showMessage('error', 'Email service is currently unavailable. Your default email client will open with a pre-filled message.');
+                        throw new Error(result.error || 'Failed to send your request. Please try again.');
                     }
 
                 } catch (error) {
                     console.error('Form submission error:', error);
-                    showMessage('error', 'There was an error sending your message. Please try again or contact us directly at info@optiscale360.com');
+
+                    let errorMessage = error.message;
+
+                    // Provide helpful error messages based on error type
+                    if (error.name === 'TypeError' && error.message.includes('fetch')) {
+                        errorMessage = 'Connection error. Please check your internet connection and try again.';
+                    } else if (error.message.includes('400')) {
+                        errorMessage = 'Please check your form data and try again.';
+                    } else if (error.message.includes('500')) {
+                        errorMessage = 'Server error. Please contact us directly at vinod@optiscale360.com or call +91 7397225523.';
+                    }
+
+                    showMessage('error', errorMessage);
+
+                    // Track failed submission
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'form_submit', {
+                            form_type: 'contact_api',
+                            success: false,
+                            error: error.message
+                        });
+                    }
                 }
 
                 // Re-enable submit button
-                submitBtn.disabled = false;
-                submitBtn.classList.remove('loading');
-                submitBtn.textContent = 'Send Consultation Request';
+                setTimeout(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('loading');
+                    submitBtn.textContent = 'Send Consultation Request';
+                }, 1500);
             });
 
             // Form validation enhancements
@@ -1382,6 +1441,130 @@
                 }
             }
 
+            // Reset form field styles
+            function resetFieldStyles() {
+                const fields = contactForm.querySelectorAll('input, select, textarea');
+                fields.forEach(field => {
+                    field.style.borderColor = '';
+                });
+            }
+
+            // Show success actions after form submission
+            function showSuccessActions() {
+                // Create success overlay with additional actions
+                const successOverlay = document.createElement('div');
+                successOverlay.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0, 0, 0, 0.8);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 10000;
+                    animation: fadeIn 0.3s ease-out;
+                `;
+
+                successOverlay.innerHTML = `
+                    <div style="
+                        background: white;
+                        padding: 2rem;
+                        border-radius: 1rem;
+                        text-align: center;
+                        max-width: 500px;
+                        margin: 1rem;
+                        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+                    ">
+                        <div style="
+                            width: 80px;
+                            height: 80px;
+                            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+                            border-radius: 50%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            margin: 0 auto 1.5rem;
+                            color: white;
+                            font-size: 2rem;
+                        ">✓</div>
+
+                        <h2 style="color: #0066FF; margin-bottom: 1rem;">Request Sent Successfully!</h2>
+                        <p style="color: #64748b; margin-bottom: 1.5rem; line-height: 1.6;">
+                            Thank you for your interest in OptiScale 360! We'll contact you within 24 hours with a personalized optimization strategy.
+                        </p>
+
+                        <div style="display: grid; gap: 1rem; margin-bottom: 1.5rem;">
+                            <a href="tel:+917397225523" style="
+                                display: inline-flex;
+                                align-items: center;
+                                gap: 0.5rem;
+                                padding: 0.75rem 1.5rem;
+                                background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+                                color: white;
+                                text-decoration: none;
+                                border-radius: 0.5rem;
+                                font-weight: 600;
+                                justify-content: center;
+                            ">
+                                📞 Call Us Now for Immediate Help
+                            </a>
+                            <a href="https://optiscale360.pages.dev/services.html" style="
+                                display: inline-flex;
+                                align-items: center;
+                                gap: 0.5rem;
+                                padding: 0.75rem 1.5rem;
+                                background: transparent;
+                                color: #0066FF;
+                                text-decoration: none;
+                                border: 2px solid #0066FF;
+                                border-radius: 0.5rem;
+                                font-weight: 600;
+                                justify-content: center;
+                            ">
+                                🔍 Explore Our Services
+                            </a>
+                        </div>
+
+                        <button onclick="this.parentElement.parentElement.remove()" style="
+                            background: none;
+                            border: none;
+                            color: #64748b;
+                            cursor: pointer;
+                            text-decoration: underline;
+                            font-size: 0.9rem;
+                        ">Close</button>
+                    </div>
+                `;
+
+                document.body.appendChild(successOverlay);
+
+                // Add fade-in animation
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes fadeIn {
+                        from { opacity: 0; transform: scale(0.9); }
+                        to { opacity: 1; transform: scale(1); }
+                    }
+                `;
+                document.head.appendChild(style);
+
+                // Auto-close after 15 seconds
+                setTimeout(() => {
+                    if (successOverlay.parentElement) {
+                        successOverlay.remove();
+                    }
+                }, 15000);
+
+                // Close on outside click
+                successOverlay.addEventListener('click', function(e) {
+                    if (e.target === successOverlay) {
+                        successOverlay.remove();
+                    }
+                });
+            }
+
             // Smooth scroll for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
@@ -1417,7 +1600,6 @@
             }
         });
     </script>
-    <script src="email-service.js"></script>
     <script src="lead-manager.js"></script>
     <script src="script.js"></script>
     <script src="/components/loader.js">

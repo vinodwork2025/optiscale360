@@ -5,6 +5,10 @@ compatibility_date = "2024-03-15"
 command = "node _build.js"
 publish = "."
 
+# Cloudflare Functions configuration
+[functions]
+# Contact form API endpoint will be available at /api/contact
+
 [[redirects]]
 from = "/blog"
 to = "/blog/"
@@ -17,6 +21,13 @@ status = 301
 
 [env.production.vars]
 ENVIRONMENT = "production"
+# GMAIL_USER = "vinod@optiscale360.com"  # Add via Cloudflare Dashboard
+# GMAIL_APP_PASSWORD = "your-gmail-app-password"  # Add via Cloudflare Dashboard
+
+[env.preview.vars]
+ENVIRONMENT = "preview"
+# GMAIL_USER = "vinod@optiscale360.com"  # Add via Cloudflare Dashboard
+# GMAIL_APP_PASSWORD = "your-gmail-app-password"  # Add via Cloudflare Dashboard
 
 # Static files configuration
 [site]
