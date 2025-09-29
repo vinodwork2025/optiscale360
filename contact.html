@@ -210,19 +210,36 @@
     <div class="container">
         <div class="booking-container">
             <div class="cal-embed-wrapper">
-                <div class="cal-loading" id="cal-loading">
-                    <div class="cal-loading-spinner"></div>
-                    <h3>Loading Calendar...</h3>
-                    <p>Preparing your booking experience</p>
-                </div>
+                <div id="booking-setup-message" style="text-align: center; padding: 60px 40px;">
+                    <div style="background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%); padding: 40px; border-radius: 15px; margin-bottom: 30px;">
+                        <h3 style="color: #856404; margin-bottom: 20px; font-size: 1.8rem;">📅 Calendar Setup in Progress</h3>
+                        <p style="color: #856404; font-size: 1.2rem; line-height: 1.6;">
+                            We're setting up your professional booking calendar.<br>
+                            In the meantime, please contact us directly to schedule your consultation.
+                        </p>
+                    </div>
 
-                <!-- Cal.com Inline Embed -->
-                <div
-                    id="cal-booking-widget"
-                    data-cal-namespace=""
-                    data-cal-link="optiscale360/consultation"
-                    data-cal-config='{"layout":"month_view","theme":"light"}'
-                    style="width:100%;height:700px;overflow:hidden;border-radius:10px;">
+                    <div style="background: linear-gradient(135deg, #0066FF 0%, #0052CC 100%); color: white; padding: 40px; border-radius: 15px;">
+                        <h4 style="margin-bottom: 20px; font-size: 1.5rem;">📞 Schedule Your Free Consultation Now</h4>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
+                            <div>
+                                <strong style="display: block; margin-bottom: 10px;">📧 Email</strong>
+                                <a href="mailto:vinod@optiscale360.com?subject=Free Consultation Request&body=Hi, I would like to schedule a free 30-minute consultation to discuss AI-powered optimization for my business."
+                                   style="color: #e0f2fe; text-decoration: none; font-weight: 500;">
+                                   vinod@optiscale360.com
+                                </a>
+                            </div>
+                            <div>
+                                <strong style="display: block; margin-bottom: 10px;">📱 WhatsApp</strong>
+                                <a href="https://wa.me/917397225523?text=Hi, I would like to schedule a free consultation for AI-powered business optimization"
+                                   target="_blank"
+                                   style="color: #e0f2fe; text-decoration: none; font-weight: 500;">
+                                   +91 7397225523
+                                </a>
+                            </div>
+                        </div>
+                        <p style="margin-top: 20px; opacity: 0.9;">Response guaranteed within 2 hours during business hours!</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -252,68 +269,30 @@
         </div>
     </div>
 
-    <!-- Cal.com Embed Script -->
     <script type="text/javascript">
-        console.log('🚀 CONTACT PAGE LOADING: Cal.com Integration');
-        console.log('📅 Page created: 2025-09-30 01:30 AM');
-        console.log('🔧 Commit: NUCLEAR_FIX');
+        console.log('🚀 CONTACT PAGE LOADED: Professional Booking Experience');
+        console.log('📞 Direct contact methods available');
+        console.log('📧 Email: vinod@optiscale360.com');
+        console.log('📱 WhatsApp: +91 7397225523');
+        console.log('✅ Contact page ready for consultations!');
 
-        (function (C, A, L) {
-            let p = function (a, ar) { a.q.push(ar); };
-            let d = C.document;
-            C.Cal = C.Cal || function () {
-                let cal = C.Cal;
-                let ar = arguments;
-                if (!cal.loaded) {
-                    cal.ns = {};
-                    cal.q = cal.q || [];
-                    d.head.appendChild(d.createElement("script")).src = A;
-                    cal.loaded = true;
-                }
-                if (ar[0] === L) {
-                    const api = function () { p(api, arguments); };
-                    const namespace = ar[1];
-                    api.q = api.q || [];
-                    typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar);
-                    return;
-                }
-                p(cal, ar);
-            };
-        })(window, "https://app.cal.com/embed/embed.js", "init");
+        // Add click tracking for contact methods
+        document.addEventListener('DOMContentLoaded', function() {
+            const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
+            const whatsappLinks = document.querySelectorAll('a[href^="https://wa.me/"]');
 
-        Cal("init", {origin:"https://cal.com"});
+            emailLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    console.log('📧 Email contact initiated');
+                });
+            });
 
-        // Initialize the booking widget
-        Cal("inline", {
-            elementOrSelector: "#cal-booking-widget",
-            calLink: "optiscale360/consultation",
-            layout: "month_view",
-            config: {
-                "layout": "month_view",
-                "theme": "light"
-            }
+            whatsappLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    console.log('📱 WhatsApp contact initiated');
+                });
+            });
         });
-
-        // Hide loading animation and show success
-        setTimeout(() => {
-            const loadingElement = document.getElementById('cal-loading');
-            const bookingWidget = document.getElementById('cal-booking-widget');
-
-            if (loadingElement) {
-                loadingElement.style.display = 'none';
-            }
-
-            if (bookingWidget) {
-                bookingWidget.classList.add('cal-loaded');
-            }
-
-            console.log('✅ Cal.com booking widget loaded successfully');
-        }, 4000);
-
-        // Page identification for debugging
-        console.log('📋 Page ID: NUCLEAR_CONTACT_FIX');
-        console.log('🎯 Widget: optiscale360/consultation');
-        console.log('💯 This WILL work - fresh implementation!');
     </script>
 </body>
 </html>
