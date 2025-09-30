@@ -2351,12 +2351,20 @@
                     <div class="success-message" id="successMessage">
                         <h3>🎉 Thank You!</h3>
                         <p>Your request has been received! We'll send your AI visibility audit results within 24 hours.</p>
-                        <button onclick="openCalModal()" class="btn-schedule">
-                            📅 Schedule Your Review Call Now
-                        </button>
-                        <p style="font-size: 0.95rem; margin-top: 16px; margin-bottom: 0; opacity: 0.9;">
-                            Let's discuss your results and create your action plan together.
+                        <p style="font-size: 1.1rem; margin-top: 16px; margin-bottom: 24px; font-weight: 600;">
+                            📅 Schedule Your Review Call Below
                         </p>
+                    </div>
+
+                    <!-- Inline Cal.com Embed -->
+                    <div id="calInlineEmbed" style="display: none; margin-top: 32px; background: white; padding: 24px; border-radius: 16px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);">
+                        <iframe
+                            src="https://cal.com/optiscale360/ai-visibility-intelligence-report-review-call?embed=true&theme=light"
+                            style="width: 100%; height: 700px; border: none; border-radius: 8px;"
+                            frameborder="0"
+                            allow="camera; microphone; clipboard-read; clipboard-write; geolocation"
+                            allowfullscreen>
+                        </iframe>
                     </div>
 
                     <div class="trust-indicators">
@@ -2878,6 +2886,9 @@
                         setTimeout(() => {
                             successMessage.style.opacity = '1';
                             console.log('✅ Success message faded in');
+
+                            // Show inline calendar after success message appears
+                            showCalendarInline();
                         }, 50);
                     } else {
                         console.error('❌ Success message element not found!');
@@ -3397,56 +3408,18 @@
         loadComponent('footer-placeholder', '/components/footer.html');
     });
 
-    // Cal.com Modal Functions
-    function openCalModal() {
-        const modal = document.getElementById('calModal');
-        if (modal) {
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
+    // Show inline Cal.com embed after form submission
+    function showCalendarInline() {
+        const calEmbed = document.getElementById('calInlineEmbed');
+        if (calEmbed) {
+            calEmbed.style.display = 'block';
+            // Smooth scroll to calendar
+            setTimeout(() => {
+                calEmbed.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 300);
         }
     }
-
-    function closeCalModal() {
-        const modal = document.getElementById('calModal');
-        if (modal) {
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-    }
-
-    // Close modal when clicking outside
-    document.addEventListener('click', function(e) {
-        const modal = document.getElementById('calModal');
-        if (e.target === modal) {
-            closeCalModal();
-        }
-    });
-
-    // Close modal on Escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            closeCalModal();
-        }
-    });
     </script>
 
-    <!-- Cal.com Modal -->
-    <div id="calModal" class="cal-modal-overlay">
-        <div class="cal-modal-container">
-            <div class="cal-modal-header">
-                <h3 class="cal-modal-title">Schedule Your AI Visibility Review Call</h3>
-                <button onclick="closeCalModal()" class="cal-modal-close" aria-label="Close modal">
-                    ×
-                </button>
-            </div>
-            <iframe
-                src="https://cal.com/optiscale360/ai-visibility-intelligence-report-review-call?embed=true&theme=light"
-                class="cal-modal-iframe"
-                frameborder="0"
-                allow="camera; microphone; clipboard-read; clipboard-write; geolocation"
-                allowfullscreen>
-            </iframe>
-        </div>
-    </div>
 </body>
 </html>
