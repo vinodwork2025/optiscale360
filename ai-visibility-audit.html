@@ -24,10 +24,12 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 
     <!-- EmailJS -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js?v=2025"></script>
     <script type="text/javascript">
         (function(){
+            // EmailJS Public Key
             emailjs.init("F25NFcVlXeUqES9qL");
+            console.log("✅ EmailJS initialized with key: F25NFcVlXeUqES9qL");
         })();
     </script>
 
@@ -2814,6 +2816,7 @@
             };
 
             console.log('📧 Sending email via EmailJS:', leadData);
+            console.log('📧 Using Service ID: service_g4erqhd, Template ID: template_4au5yft');
 
             // Send email using EmailJS
             emailjs.send('service_g4erqhd', 'template_4au5yft', {
@@ -2866,6 +2869,8 @@
                 }
             }, function(error) {
                 console.error('❌ EmailJS error:', error);
+                console.error('❌ Error details:', JSON.stringify(error));
+                alert('Error sending email: ' + (error.text || error.message || 'Unknown error'));
 
                 // Reset form state
                 form.style.transform = 'scale(1)';
@@ -2999,6 +3004,7 @@
             };
 
             console.log('📧 Sending exit intent email via EmailJS:', leadData);
+            console.log('📧 Using Service ID: service_g4erqhd, Template ID: template_4au5yft');
 
             // Send email using EmailJS
             emailjs.send('service_g4erqhd', 'template_4au5yft', {
@@ -3036,9 +3042,10 @@
                 }
             }, function(error) {
                 console.error('❌ EmailJS error:', error);
+                console.error('❌ Error details:', JSON.stringify(error));
 
                 resetLoading();
-                alert('❌ Something went wrong. Please try again or contact us directly at vinod@optiscale360.com');
+                alert('❌ Error: ' + (error.text || error.message || 'Something went wrong') + '. Please contact us at vinod@optiscale360.com');
                 closeExitPopup();
             });
         }
