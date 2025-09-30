@@ -2758,7 +2758,10 @@
             const form = event.target;
             const button = form.querySelector('button[type="submit"]');
             const formContainer = form.closest('.hero-form');
-            const successMessage = formContainer.querySelector('.success-message') || document.getElementById('successMessage');
+            const successMessage = formContainer ? formContainer.querySelector('.success-message') : document.getElementById('successMessage');
+
+            console.log('🔍 Form container:', formContainer);
+            console.log('🔍 Success message element:', successMessage);
 
             // Validate form with visual feedback
             if (!validateForm(form)) {
@@ -2825,7 +2828,10 @@
 
                 setTimeout(() => {
                     form.style.display = 'none';
+                    console.log('✅ Form hidden');
+
                     if (successMessage) {
+                        console.log('✨ Showing success message...');
                         successMessage.style.display = 'block';
                         successMessage.style.opacity = '0';
                         successMessage.style.transition = 'opacity 0.5s ease';
@@ -2833,7 +2839,10 @@
                         // Trigger fade in
                         setTimeout(() => {
                             successMessage.style.opacity = '1';
+                            console.log('✅ Success message faded in');
                         }, 50);
+                    } else {
+                        console.error('❌ Success message element not found!');
                     }
 
                     // Add confetti effect
@@ -2843,6 +2852,7 @@
                     if (successMessage) {
                         setTimeout(() => {
                             successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            console.log('✅ Scrolled to success message');
                         }, 100);
                     }
                 }, 300);
