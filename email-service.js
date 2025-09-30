@@ -124,10 +124,12 @@ class EmailService {
             email: formData.email || '',
             phone: formData.phone || '',
             company: formData.company || '',
+            current_website: formData.currentWebsite || formData.website || '',
             website: formData.website || formData.currentWebsite || '',
             service: formData.service || '',
             business_type: formData.businessType || '',
             message: formData.message || formData.projectGoals || '',
+            newsletter: formData.newsletter ? true : false,
         };
     }
 
