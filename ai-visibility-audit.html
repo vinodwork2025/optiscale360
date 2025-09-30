@@ -1203,6 +1203,79 @@
         }
 
         /* Cal.com Modal Styles */
+        .cal-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(8px);
+            z-index: 10000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .cal-modal-overlay.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cal-modal-container {
+            position: relative;
+            width: 95%;
+            max-width: 1000px;
+            height: 90vh;
+            max-height: 800px;
+            background: var(--white);
+            border-radius: var(--border-radius-2xl);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            animation: modalSlideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .cal-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #1e40af 100%);
+            color: var(--white);
+        }
+
+        .cal-modal-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .cal-modal-close {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 24px;
+            line-height: 1;
+        }
+
+        .cal-modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .cal-modal-iframe {
+            width: 100%;
+            height: calc(100% - 70px);
+            border: none;
+        }
 
         @keyframes fadeIn {
             from {
@@ -3324,21 +3397,30 @@
         loadComponent('footer-placeholder', '/components/footer.html');
     });
 
-    // Cal.com Modal Function - Triggers native Cal.com popup
+    // Cal.com Modal Functions
     function openCalModal() {
-        if (typeof Cal !== 'undefined' && Cal.ns && Cal.ns["ai-visibility-intelligence-report-review-call"]) {
-            Cal.ns["ai-visibility-intelligence-report-review-call"]("modal", {
-                calLink: "optiscale360/ai-visibility-intelligence-report-review-call"
-            });
-        } else {
-            // Fallback to direct link if Cal.com hasn't loaded yet
-            window.open('https://cal.com/optiscale360/ai-visibility-intelligence-report-review-call', '_blank');
+        const modal = document.getElementById('calModal');
+        if (modal) {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
     }
 
     function closeCalModal() {
-        // No longer needed with Cal.com native modal
+        const modal = document.getElementById('calModal');
+        if (modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
     }
+
+    // Close modal when clicking outside
+    document.addEventListener('click', function(e) {
+        const modal = document.getElementById('calModal');
+        if (e.target === modal) {
+            closeCalModal();
+        }
+    });
 
     // Close modal on Escape key
     document.addEventListener('keydown', function(e) {
@@ -3348,17 +3430,22 @@
     });
     </script>
 
-    <!-- Cal.com Popup Embed -->
-    <script type="text/javascript">
-      (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-      Cal("init", "ai-visibility-intelligence-report-review-call", {origin:"https://app.cal.com"});
-
-      Cal.ns["ai-visibility-intelligence-report-review-call"]("ui", {
-        "theme":"light",
-        "styles":{"branding":{"brandColor":"#0066FF"}},
-        "hideEventTypeDetails":false,
-        "layout":"month_view"
-      });
-    </script>
+    <!-- Cal.com Modal -->
+    <div id="calModal" class="cal-modal-overlay">
+        <div class="cal-modal-container">
+            <div class="cal-modal-header">
+                <h3 class="cal-modal-title">Schedule Your AI Visibility Review Call</h3>
+                <button onclick="closeCalModal()" class="cal-modal-close" aria-label="Close modal">
+                    ×
+                </button>
+            </div>
+            <iframe
+                src="https://cal.com/optiscale360/ai-visibility-intelligence-report-review-call"
+                class="cal-modal-iframe"
+                frameborder="0"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
 </body>
 </html>
