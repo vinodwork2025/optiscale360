@@ -16,6 +16,27 @@ marked.use(markedHighlight({
     }
 }));
 
+// Configure marked to handle custom heading IDs
+marked.use({
+    renderer: {
+        heading(text, level) {
+            // Check if text contains custom ID syntax {#custom-id}
+            const customIdMatch = text.match(/^(.+?)\s+\{#([a-z0-9-]+)\}$/);
+            let actualText = text;
+            let id;
+
+            if (customIdMatch) {
+                actualText = customIdMatch[1].trim();
+                id = customIdMatch[2];
+            } else {
+                id = actualText.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+            }
+
+            return `<h${level} id="${id}">${actualText}</h${level}>\n`;
+        }
+    }
+});
+
 const BLOG_DIR = path.join(__dirname, 'blog');
 const POSTS_DIR = path.join(BLOG_DIR, 'posts');
 const SITE_URL = 'https://optiscale360.pages.dev';
@@ -327,14 +348,15 @@ function generatePostHTML(post) {
 
 // Generate table of contents from markdown content
 function generateTableOfContents(content) {
-    const headingRegex = /^(#{2,4})\s+(.+)$/gm;
+    const headingRegex = /^(#{2,4})\s+(.+?)(?:\s+\{#([a-z0-9-]+)\})?$/gm;
     const headings = [];
     let match;
 
     while ((match = headingRegex.exec(content)) !== null) {
         const level = match[1].length;
-        const title = match[2];
-        const id = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+        let title = match[2].trim();
+        // Use custom ID if provided, otherwise generate from title
+        const id = match[3] || title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
         headings.push({ level, title, id });
     }
 
