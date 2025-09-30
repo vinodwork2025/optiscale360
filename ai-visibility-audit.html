@@ -2763,7 +2763,7 @@
         }
 
         // Enhanced form handling with premium effects
-        function handleFormSubmit(event) {
+        async function handleFormSubmit(event) {
             event.preventDefault();
 
             const form = event.target;
@@ -2788,35 +2788,94 @@
             form.style.opacity = '0.8';
             form.style.transition = 'all 0.3s ease';
 
-            // Simulate form submission with premium feedback
-            setTimeout(() => {
+            // Collect form data
+            const formData = new FormData(form);
+            const leadData = {
+                firstName: formData.get('firstName'),
+                lastName: formData.get('lastName'),
+                email: formData.get('email'),
+                company: formData.get('company'),
+                website: formData.get('website'),
+                phone: formData.get('phone'),
+                source: 'AI Visibility Audit Page',
+                formId: form.id,
+                timestamp: new Date().toISOString(),
+                userAgent: navigator.userAgent,
+                referrer: document.referrer || 'Direct',
+                pageUrl: window.location.href
+            };
+
+            console.log('🚀 Sending lead to Make.com:', leadData);
+
+            try {
+                // Send to Make.com webhook
+                const response = await fetch('https://hook.eu2.make.com/4nh2o1crozlud21brjxbsq85u7rbxvgq', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(leadData)
+                });
+
+                if (response.ok) {
+                    console.log('✅ Lead sent successfully to Make.com');
+
+                    // Reset form state
+                    form.style.transform = 'scale(1)';
+                    form.style.opacity = '1';
+                    resetLoading();
+
+                    // Show success with animation
+                    form.style.animation = 'fadeOut 0.5s ease-in-out forwards';
+
+                    setTimeout(() => {
+                        form.style.display = 'none';
+                        if (successMessage) {
+                            successMessage.style.display = 'block';
+                            successMessage.classList.add('animate-bounce-in');
+                        }
+
+                        // Add confetti effect
+                        createConfetti();
+
+                        // Scroll to success message
+                        if (successMessage) {
+                            successMessage.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }, 500);
+
+                    // Track conversion
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'conversion', {
+                            'send_to': 'AW-CONVERSION_ID/CONVERSION_LABEL',
+                            'event_label': 'ai_visibility_audit_lead'
+                        });
+                    }
+
+                } else {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+
+            } catch (error) {
+                console.error('❌ Error sending lead to Make.com:', error);
+
                 // Reset form state
                 form.style.transform = 'scale(1)';
                 form.style.opacity = '1';
                 resetLoading();
 
-                // Show success with animation
-                form.style.animation = 'fadeOut 0.5s ease-in-out forwards';
+                // Show error message
+                button.textContent = '❌ Error - Please Try Again';
+                button.style.background = '#ef4444';
 
                 setTimeout(() => {
-                    form.style.display = 'none';
-                    successMessage.style.display = 'block';
-                    successMessage.classList.add('animate-bounce-in');
+                    button.innerHTML = '🎯 Get My Free AI Visibility Check Now';
+                    button.style.background = '';
+                }, 3000);
 
-                    // Add confetti effect
-                    createConfetti();
-
-                    // Scroll to success message
-                    successMessage.scrollIntoView({ behavior: 'smooth' });
-                }, 500);
-
-                // Track conversion
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'conversion', {
-                        'send_to': 'AW-CONVERSION_ID/CONVERSION_LABEL'
-                    });
-                }
-            }, 2000);
+                // Optionally show error to user
+                alert('There was an issue submitting your request. Please try again or contact us directly.');
+            }
         }
 
         // Attach form handlers
@@ -2914,7 +2973,7 @@
         resetExitIntentTimer();
 
         // Exit popup form submission
-        function handleExitPopupSubmit(event) {
+        async function handleExitPopupSubmit(event) {
             event.preventDefault();
 
             const form = event.target;
@@ -2923,24 +2982,70 @@
             // Show loading state
             const resetLoading = showPremiumLoading(button);
 
-            // Track exit popup conversion
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'exit_intent_conversion', {
-                    'event_category': 'conversion',
-                    'event_label': 'exit_popup_form'
-                });
-            }
+            // Collect form data
+            const formData = new FormData(form);
+            const leadData = {
+                firstName: formData.get('firstName'),
+                lastName: formData.get('lastName'),
+                email: formData.get('email'),
+                company: formData.get('company'),
+                website: formData.get('website'),
+                phone: formData.get('phone'),
+                source: 'AI Visibility Audit Page - Exit Intent',
+                formId: 'exitPopupForm',
+                timestamp: new Date().toISOString(),
+                userAgent: navigator.userAgent,
+                referrer: document.referrer || 'Direct',
+                pageUrl: window.location.href
+            };
 
-            setTimeout(() => {
+            console.log('🚀 Sending exit intent lead to Make.com:', leadData);
+
+            try {
+                // Send to Make.com webhook
+                const response = await fetch('https://hook.eu2.make.com/4nh2o1crozlud21brjxbsq85u7rbxvgq', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(leadData)
+                });
+
+                if (response.ok) {
+                    console.log('✅ Exit intent lead sent successfully to Make.com');
+
+                    resetLoading();
+                    closeExitPopup();
+
+                    // Show success message
+                    alert('🎉 Success! We\'ll send your AI visibility audit results within 24 hours.');
+
+                    // Scroll to main form
+                    document.getElementById('leadForm').scrollIntoView({ behavior: 'smooth' });
+
+                    // Track exit popup conversion
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'exit_intent_conversion', {
+                            'event_category': 'conversion',
+                            'event_label': 'exit_popup_form'
+                        });
+                    }
+
+                } else {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+
+            } catch (error) {
+                console.error('❌ Error sending exit intent lead to Make.com:', error);
                 resetLoading();
+
+                // Show error message but still close popup
+                alert('⚠️ There was an issue submitting your request. Please try the main form below.');
                 closeExitPopup();
 
-                // Show success message
-                alert('🎉 Success! We\'ll send your AI visibility audit results within 24 hours.');
-
-                // Scroll to main form
+                // Scroll to main form as fallback
                 document.getElementById('leadForm').scrollIntoView({ behavior: 'smooth' });
-            }, 2000);
+            }
         }
 
         // Close popup when clicking outside
