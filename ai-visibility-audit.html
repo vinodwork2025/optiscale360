@@ -1851,38 +1851,113 @@
             opacity: 0.8;
         }
 
-        /* Final CTA Section */
-        .final-cta {
-            background: var(--white);
-            padding: 120px 0;
-            text-align: center;
+        /* Newsletter Section */
+        .newsletter-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #1e40af 100%);
+            padding: 80px 0;
         }
 
-        .cta-content {
-            max-width: 800px;
-            margin: 0 auto;
+        .newsletter-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
         }
 
-        .cta-title {
+        .newsletter-text {
+            color: var(--white);
+        }
+
+        .newsletter-title {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 800;
-            color: var(--gray-900);
-            margin-bottom: 24px;
+            color: var(--white);
+            margin-bottom: 16px;
             line-height: 1.2;
         }
 
-        .cta-highlight {
-            background: var(--gradient-primary);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .newsletter-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 32px;
+            line-height: 1.6;
         }
 
-        .cta-subtitle {
-            font-size: 1.25rem;
+        .newsletter-benefits {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .newsletter-benefits li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .newsletter-benefits svg {
+            flex-shrink: 0;
+            color: #10b981;
+        }
+
+        .newsletter-form-wrapper {
+            background: var(--white);
+            padding: 40px;
+            border-radius: var(--border-radius-2xl);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .newsletter-privacy {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+            text-align: center;
+            margin: 0;
+        }
+
+        .newsletter-success {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .newsletter-success svg {
+            color: var(--success-color);
+            margin-bottom: 20px;
+        }
+
+        .newsletter-success h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 12px;
+        }
+
+        .newsletter-success p {
+            font-size: 1rem;
             color: var(--gray-600);
-            margin-bottom: 48px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 968px) {
+            .newsletter-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .newsletter-title {
+                font-size: 2rem;
+            }
         }
 
         /* Sticky CTA */
@@ -2574,54 +2649,63 @@
         </div>
     </section>
 
-    <!-- Final CTA Section -->
-    <section class="final-cta">
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
         <div class="container">
-            <div class="cta-content">
-                <h2 class="cta-title">Don't Let Competitors Capture Your <span class="cta-highlight">AI Search Market Share</span></h2>
-                <p class="cta-subtitle">Get your free AI visibility check now. 15 minutes could change how customers find your business.</p>
-
-                <div class="hero-form" style="margin: 48px auto 0; max-width: 600px;">
-                    <form id="finalForm" action="#" method="POST">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <input type="text" name="firstName" placeholder="First Name" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" name="lastName" placeholder="Last Name" class="form-control" required>
-                            </div>
+            <div class="newsletter-content">
+                <div class="newsletter-text">
+                    <h2 class="newsletter-title">Stay Ahead of AI Search Trends</h2>
+                    <p class="newsletter-subtitle">Get weekly insights on AI visibility, SEO strategies, and how to ensure your business stays discoverable in the age of AI assistants.</p>
+                    <ul class="newsletter-benefits">
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            Weekly AI visibility tips
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            Latest AI search trends
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            Exclusive case studies
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            No spam, unsubscribe anytime
+                        </li>
+                    </ul>
+                </div>
+                <div class="newsletter-form-wrapper">
+                    <form id="newsletterForm" class="newsletter-form">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Your Name" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" name="email" placeholder="Business Email" class="form-control" required>
+                            <input type="email" name="email" placeholder="Your Email Address" class="form-control" required>
                         </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <input type="text" name="company" placeholder="Company Name" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="url" name="website" placeholder="Company Website" class="form-control" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" name="phone" placeholder="Phone Number" class="form-control" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-xl" style="width: 100%;">
-                            Get My Free AI Visibility Check Now
+                        <button type="submit" class="btn btn-primary btn-xl">
+                            Subscribe to Newsletter
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M5 12h14M12 5l7 7-7 7"/>
                             </svg>
                         </button>
+                        <p class="newsletter-privacy">We respect your privacy. Unsubscribe at any time.</p>
                     </form>
-
-                    <div class="success-message" style="display: none;">
-                        <h3>🎉 Thank You!</h3>
-                        <p>Your request has been received! We'll send your AI visibility audit results within 24 hours.</p>
-                        <button onclick="openCalModal()" class="btn-schedule">
-                            📅 Schedule Your Review Call Now
-                        </button>
-                        <p style="font-size: 0.95rem; margin-top: 16px; margin-bottom: 0; opacity: 0.9;">
-                            Let's discuss your results and create your action plan together.
-                        </p>
+                    <div class="newsletter-success" style="display: none;">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                        <h3>You're Subscribed!</h3>
+                        <p>Check your inbox for a confirmation email. We'll send you valuable AI visibility insights every week.</p>
                     </div>
                 </div>
             </div>
@@ -2632,6 +2716,9 @@
     <div class="sticky-cta" id="stickyCta">
         <a href="#leadForm" class="btn btn-primary">Get Free AI Check</a>
     </div>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
 
     <script>
         // Performance optimization
@@ -2825,7 +2912,32 @@
 
         // Attach form handlers
         document.getElementById('auditForm').addEventListener('submit', handleFormSubmit);
-        document.getElementById('finalForm').addEventListener('submit', handleFormSubmit);
+
+        // Newsletter form handler
+        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const form = e.target;
+            const button = form.querySelector('button[type="submit"]');
+            const originalText = button.innerHTML;
+
+            // Show loading state
+            button.innerHTML = '<div class="premium-spinner"></div> Subscribing...';
+            button.disabled = true;
+
+            // Simulate newsletter submission (integrate with your email service)
+            setTimeout(() => {
+                form.style.display = 'none';
+                document.querySelector('.newsletter-success').style.display = 'block';
+
+                // Track newsletter subscription
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'newsletter_subscription', {
+                        'event_category': 'engagement'
+                    });
+                }
+            }, 1500);
+        });
 
         // Countdown timer
         function updateCountdown() {
