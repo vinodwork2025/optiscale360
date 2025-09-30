@@ -42,7 +42,7 @@ Cache-Control = "public, max-age=300, must-revalidate"
 [[headers]]
 for = "/ai-visibility-audit.html"
 [headers.values]
-Cache-Control = "public, max-age=60, must-revalidate"
+Cache-Control = "no-cache, no-store, must-revalidate"
 
 # Cache headers for blog content
 [[headers]]
