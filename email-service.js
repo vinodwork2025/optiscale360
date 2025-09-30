@@ -20,22 +20,32 @@ class EmailService {
      */
     async init() {
         try {
+            console.log('Starting EmailJS initialization...');
+            console.log('Service ID:', this.serviceId);
+            console.log('Public Key:', this.publicKey);
+
             // Load EmailJS SDK if not already loaded
             if (typeof emailjs === 'undefined') {
+                console.log('Loading EmailJS SDK from CDN...');
                 await this.loadEmailJS();
+                console.log('EmailJS SDK loaded successfully');
+            } else {
+                console.log('EmailJS SDK already loaded');
             }
 
             // Initialize with public key
             if (this.publicKey !== 'YOUR_PUBLIC_KEY_HERE') {
                 emailjs.init(this.publicKey);
                 this.initialized = true;
-                console.log('EmailJS initialized successfully');
+                console.log('✅ EmailJS initialized successfully');
+                console.log('Ready to send emails to:', this.fallbackEmail);
             } else {
-                console.warn('EmailJS not configured - using fallback method');
+                console.warn('⚠️ EmailJS not configured - using fallback method');
                 this.initialized = false;
             }
         } catch (error) {
-            console.error('Failed to initialize EmailJS:', error);
+            console.error('❌ Failed to initialize EmailJS:', error);
+            console.error('Error details:', error.message, error.stack);
             this.initialized = false;
         }
     }
@@ -60,33 +70,50 @@ class EmailService {
      * @returns {Promise<boolean>} - Success status
      */
     async sendEmail(formData, formType) {
+        console.log('📧 Attempting to send email via EmailJS...');
+        console.log('Form Type:', formType);
+        console.log('Form Data:', formData);
+
         // Wait for initialization to complete if still in progress
         if (this.initPromise) {
+            console.log('Waiting for EmailJS initialization...');
             await this.initPromise;
         }
 
         if (!this.initialized) {
-            console.log('EmailJS not initialized, falling back to mailto');
+            console.log('❌ EmailJS not initialized, falling back to mailto');
             this.fallbackToMailto(formData, formType);
             return false;
         }
 
         try {
             const templateParams = this.formatEmailTemplate(formData, formType);
+            const templateId = this.getTemplateId(formType);
+
+            console.log('📤 Sending email with params:');
+            console.log('  Service ID:', this.serviceId);
+            console.log('  Template ID:', templateId);
+            console.log('  Template Params:', templateParams);
 
             // Send email using EmailJS
             const response = await emailjs.send(
                 this.serviceId,
-                this.getTemplateId(formType),
+                templateId,
                 templateParams
             );
 
-            console.log('Email sent successfully:', response);
+            console.log('✅ Email sent successfully!');
+            console.log('Response:', response);
             return true;
         } catch (error) {
-            console.error('Failed to send email via EmailJS:', error);
+            console.error('❌ Failed to send email via EmailJS');
+            console.error('Error:', error);
+            console.error('Error message:', error.message);
+            console.error('Error text:', error.text);
+            console.error('Full error:', JSON.stringify(error, null, 2));
 
             // Fallback to mailto
+            console.log('Falling back to mailto...');
             this.fallbackToMailto(formData, formType);
             return false;
         }
