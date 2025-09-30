@@ -27,7 +27,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
         (function(){
-            emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+            emailjs.init("F25NFcVlXeUqES9qL");
         })();
     </script>
 
@@ -2816,17 +2816,19 @@
             console.log('📧 Sending email via EmailJS:', leadData);
 
             // Send email using EmailJS
-            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
+            emailjs.send('service_g4erqhd', 'template_4au5yft', {
                 to_email: 'vinod@optiscale360.com',
-                from_name: leadData.firstName,
-                from_email: leadData.email,
+                from_name: leadData.firstName + ' ' + leadData.lastName,
+                first_name: leadData.firstName,
+                last_name: leadData.lastName,
+                email: leadData.email,
                 company: leadData.company,
                 website: leadData.website,
                 phone: leadData.phone,
                 source: leadData.source,
                 timestamp: leadData.timestamp,
                 referrer: leadData.referrer,
-                form_id: leadData.formId
+                form_type: 'AI Visibility Audit Request - ' + leadData.formId
             })
             .then(function(response) {
                 console.log('✅ Email sent successfully!', response.status, response.text);
@@ -2999,17 +3001,19 @@
             console.log('📧 Sending exit intent email via EmailJS:', leadData);
 
             // Send email using EmailJS
-            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
+            emailjs.send('service_g4erqhd', 'template_4au5yft', {
                 to_email: 'vinod@optiscale360.com',
-                from_name: leadData.firstName,
-                from_email: leadData.email,
+                from_name: leadData.firstName + ' ' + leadData.lastName,
+                first_name: leadData.firstName,
+                last_name: leadData.lastName,
+                email: leadData.email,
                 company: leadData.company,
                 website: leadData.website,
                 phone: leadData.phone,
                 source: leadData.source,
                 timestamp: leadData.timestamp,
                 referrer: leadData.referrer,
-                form_id: 'exitPopupForm'
+                form_type: 'AI Visibility Audit Request - Exit Popup'
             })
             .then(function(response) {
                 console.log('✅ Exit intent email sent successfully!', response.status, response.text);
