@@ -373,7 +373,8 @@ function generateBlogIndex(posts) {
         category: post.frontmatter.category || 'SEO Strategy',
         tags: post.frontmatter.tags || ['SEO'],
         author: post.frontmatter.author || AUTHOR.name,
-        readingTime: post.readingTime
+        readingTime: post.readingTime,
+        image: post.frontmatter.image || `${SITE_URL}/360_logo.svg`
     }));
 
     // Create categories and tags from real data

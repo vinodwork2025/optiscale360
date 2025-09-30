@@ -6,6 +6,7 @@ category: "Technical SEO"
 tags: ["Technical SEO", "SEO Audit", "AI Tools", "Site Speed", "Core Web Vitals"]
 author: "Jennifer Chen"
 readingTime: "10 min read"
+image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200&h=630&fit=crop"
 ---
 
 # AI Technical SEO Audit Guide: Fix Critical Issues 10x Faster

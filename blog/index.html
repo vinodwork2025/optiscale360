@@ -1064,7 +1064,8 @@
                               "Content Strategy"
                     ],
                     "author": "Sarah Mitchell",
-                    "readingTime": "11 min read"
+                    "readingTime": "11 min read",
+                    "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=630&fit=crop"
           },
           {
                     "slug": "ai-keyword-research-tools-guide",
@@ -1080,7 +1081,8 @@
                               "Keyword Strategy"
                     ],
                     "author": "Marcus Rodriguez",
-                    "readingTime": "13 min read"
+                    "readingTime": "13 min read",
+                    "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop"
           },
           {
                     "slug": "ai-seo-complete-guide-2025",
@@ -1097,7 +1099,8 @@
                               "Digital Marketing"
                     ],
                     "author": "OptiScale 360 Team",
-                    "readingTime": "7 min read"
+                    "readingTime": "7 min read",
+                    "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=630&fit=crop"
           },
           {
                     "slug": "ai-technical-seo-audit-guide",
@@ -1113,7 +1116,8 @@
                               "Core Web Vitals"
                     ],
                     "author": "Jennifer Chen",
-                    "readingTime": "9 min read"
+                    "readingTime": "9 min read",
+                    "image": "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200&h=630&fit=crop"
           }
 ];
         }
@@ -1161,7 +1165,7 @@
 
             carouselTrack.innerHTML = latestPosts.map(post => `
                 <article class="carousel-post">
-                    <div class="carousel-post-image"></div>
+                    <div class="carousel-post-image" style="background-image: url('${post.image || '/360_logo.svg'}')"></div>
                     <div class="carousel-post-content">
                         <span class="carousel-post-category">${post.category}</span>
                         <h3 class="carousel-post-title">
@@ -1198,7 +1202,7 @@
 
             magazineGrid.innerHTML = postsToShow.map(post => `
                 <article class="magazine-post-card">
-                    <div class="magazine-post-image">
+                    <div class="magazine-post-image" style="background-image: url('${post.image || '/360_logo.svg'}')">
                         <div class="magazine-post-category-overlay">${post.category}</div>
                     </div>
                     <div class="magazine-post-content">

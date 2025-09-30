@@ -6,6 +6,7 @@ category: "Keyword Research"
 tags: ["Keyword Research", "AI Tools", "SEO Tools", "Search Intent", "Keyword Strategy"]
 author: "Marcus Rodriguez"
 readingTime: "11 min read"
+image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop"
 ---
 
 # AI Keyword Research Tools Guide: Find High-Value Keywords in Minutes, Not Hours

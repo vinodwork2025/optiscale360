@@ -6,6 +6,7 @@ category: "SEO Strategy"
 tags: ["AI SEO", "Artificial Intelligence", "Machine Learning SEO", "Search Optimization", "SEO Strategy", "Digital Marketing"]
 author: "OptiScale 360 Team"
 readingTime: "15 min read"
+image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=630&fit=crop"
 ---
 
 # AI SEO Complete Guide 2025: How Artificial Intelligence is Revolutionizing Search Optimization
