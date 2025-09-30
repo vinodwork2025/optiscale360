@@ -9,8 +9,10 @@ class EmailService {
         this.publicKey = 'F25NFcVlXeUqES9qL';  // EmailJS public key
         this.initialized = false;
         this.fallbackEmail = 'vinod@optiscale360.com';
+        this.initPromise = null;
 
-        this.init();
+        // Start initialization immediately
+        this.initPromise = this.init();
     }
 
     /**
@@ -58,6 +60,11 @@ class EmailService {
      * @returns {Promise<boolean>} - Success status
      */
     async sendEmail(formData, formType) {
+        // Wait for initialization to complete if still in progress
+        if (this.initPromise) {
+            await this.initPromise;
+        }
+
         if (!this.initialized) {
             console.log('EmailJS not initialized, falling back to mailto');
             this.fallbackToMailto(formData, formType);
