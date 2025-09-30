@@ -2701,6 +2701,17 @@
                             </svg>
                         </button>
                     </form>
+
+                    <div class="success-message" style="display: none;">
+                        <h3>🎉 Thank You!</h3>
+                        <p>Your request has been received! We'll send your AI visibility audit results within 24 hours.</p>
+                        <a href="https://cal.com/optiscale360/quickcall" target="_blank" class="btn-schedule">
+                            📅 Schedule Your Review Call Now
+                        </a>
+                        <p style="font-size: 0.95rem; margin-top: 16px; margin-bottom: 0; opacity: 0.9;">
+                            Let's discuss your results and create your action plan together.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2816,7 +2827,8 @@
 
             const form = event.target;
             const button = form.querySelector('button[type="submit"]');
-            const successMessage = form.parentNode.querySelector('.success-message') || document.getElementById('successMessage');
+            const formContainer = form.closest('.hero-form');
+            const successMessage = formContainer.querySelector('.success-message') || document.getElementById('successMessage');
 
             // Validate form with visual feedback
             if (!validateForm(form)) {
@@ -2875,28 +2887,35 @@
                 console.log('✅ Email sent successfully!', response.status, response.text);
 
                 // Reset form state
-                form.style.transform = 'scale(1)';
-                form.style.opacity = '1';
                 resetLoading();
 
-                // Show success with animation
-                form.style.animation = 'fadeOut 0.5s ease-in-out forwards';
+                // Hide form and show success message
+                form.style.opacity = '0';
+                form.style.transition = 'opacity 0.3s ease';
 
                 setTimeout(() => {
                     form.style.display = 'none';
                     if (successMessage) {
                         successMessage.style.display = 'block';
-                        successMessage.classList.add('animate-bounce-in');
+                        successMessage.style.opacity = '0';
+                        successMessage.style.transition = 'opacity 0.5s ease';
+
+                        // Trigger fade in
+                        setTimeout(() => {
+                            successMessage.style.opacity = '1';
+                        }, 50);
                     }
 
                     // Add confetti effect
                     createConfetti();
 
-                    // Scroll to success message
+                    // Smooth scroll to success message
                     if (successMessage) {
-                        successMessage.scrollIntoView({ behavior: 'smooth' });
+                        setTimeout(() => {
+                            successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }, 100);
                     }
-                }, 500);
+                }, 300);
 
                 // Track conversion
                 if (typeof gtag !== 'undefined') {
