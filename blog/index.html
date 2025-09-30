@@ -223,37 +223,7 @@
             color: var(--text-muted);
         }
 
-        /* Next-Gen Magazine Hero Section */
-        .magazine-hero {
-            padding: var(--space-4xl) 0 var(--space-5xl);
-            background:
-                var(--gradient-hero),
-                linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 50%, #E2E8F0 100%);
-            border-bottom: 1px solid var(--border-light);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .magazine-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background:
-                radial-gradient(circle at 20% 20%, rgba(0, 102, 255, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(0, 200, 150, 0.06) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        .magazine-hero-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 var(--space-lg);
-            text-align: center;
-        }
-
+        /* Magazine Title (used in responsive styles) */
         .magazine-title {
             font-family: var(--font-family-heading);
             font-size: clamp(var(--font-size-3xl), 5vw, var(--font-size-5xl));
@@ -270,10 +240,7 @@
             z-index: 1;
         }
 
-        .magazine-subtitle {
-            font-size: var(--font-size-xl);
-            color: var(--text-secondary);
-            font-weight: 400;
+        /* Magazine subtitle removed - no longer needed */
             line-height: 1.6;
             max-width: 600px;
             margin: 0 auto;
@@ -995,14 +962,6 @@
         }
 
         @media (max-width: 768px) {
-            .magazine-hero {
-                padding: var(--space-lg) 0;
-            }
-
-            .magazine-title {
-                font-size: 2rem;
-            }
-
             .hero-grid-section {
                 padding: 60px 0 80px;
             }
@@ -1222,14 +1181,6 @@
 <body>
     <!-- Global Header -->
     <div id="header-placeholder"></div>
-
-    <!-- Magazine Hero Section -->
-    <section class="magazine-hero">
-        <div class="magazine-hero-content">
-            <h1 class="magazine-title">AI SEO Insights & Strategies</h1>
-            <p class="magazine-subtitle">Discover cutting-edge AI SEO strategies, expert case studies, and actionable insights to boost your organic traffic by 300%</p>
-        </div>
-    </section>
 
     <!-- Modern Hero Grid Section -->
     <section class="hero-grid-section">
