@@ -1179,13 +1179,114 @@
             font-weight: 700;
             font-size: 1.1rem;
             text-decoration: none;
+            border: none;
+            cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
         .success-message .btn-schedule:hover {
-            transform: translateY(-2px);
+            transform: translateY(-2px) scale(1.05);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .success-message .btn-schedule:active {
+            transform: translateY(0) scale(1.02);
+        }
+
+        /* Cal.com Modal Styles */
+        .cal-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(8px);
+            z-index: 10000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .cal-modal-overlay.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cal-modal-container {
+            position: relative;
+            width: 95%;
+            max-width: 1000px;
+            height: 90vh;
+            max-height: 800px;
+            background: var(--white);
+            border-radius: var(--border-radius-2xl);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            animation: modalSlideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .cal-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #1e40af 100%);
+            color: var(--white);
+        }
+
+        .cal-modal-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .cal-modal-close {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 24px;
+            line-height: 1;
+        }
+
+        .cal-modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .cal-modal-iframe {
+            width: 100%;
+            height: calc(100% - 70px);
+            border: none;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes modalSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
         /* Social Proof Section */
@@ -2302,9 +2403,9 @@
                     <div class="success-message" id="successMessage">
                         <h3>🎉 Thank You!</h3>
                         <p>Your request has been received! We'll send your AI visibility audit results within 24 hours.</p>
-                        <a href="https://cal.com/optiscale360/quickcall" target="_blank" class="btn-schedule">
+                        <button onclick="openCalModal()" class="btn-schedule">
                             📅 Schedule Your Review Call Now
-                        </a>
+                        </button>
                         <p style="font-size: 0.95rem; margin-top: 16px; margin-bottom: 0; opacity: 0.9;">
                             Let's discuss your results and create your action plan together.
                         </p>
@@ -2705,9 +2806,9 @@
                     <div class="success-message" style="display: none;">
                         <h3>🎉 Thank You!</h3>
                         <p>Your request has been received! We'll send your AI visibility audit results within 24 hours.</p>
-                        <a href="https://cal.com/optiscale360/quickcall" target="_blank" class="btn-schedule">
+                        <button onclick="openCalModal()" class="btn-schedule">
                             📅 Schedule Your Review Call Now
-                        </a>
+                        </button>
                         <p style="font-size: 0.95rem; margin-top: 16px; margin-bottom: 0; opacity: 0.9;">
                             Let's discuss your results and create your action plan together.
                         </p>
@@ -3089,12 +3190,12 @@
                     <div style="text-align: center; padding: 20px;">
                         <h3 style="color: var(--success-color); margin-bottom: 12px;">🎉 Thank You!</h3>
                         <p style="margin-bottom: 20px;">We'll send your AI visibility audit results within 24 hours.</p>
-                        <a href="https://cal.com/optiscale360/quickcall" target="_blank"
+                        <button onclick="openCalModal(); this.closest('div').parentElement.remove();"
                            style="display: inline-block; background: var(--success-color); color: white;
-                                  padding: 12px 24px; border-radius: 50px; text-decoration: none;
-                                  font-weight: 600; margin-bottom: 12px;">
+                                  padding: 12px 24px; border-radius: 50px; border: none;
+                                  font-weight: 600; margin-bottom: 12px; cursor: pointer; font-size: 1rem;">
                             📅 Schedule Your Review Call Now
-                        </a>
+                        </button>
                         <p style="font-size: 0.9rem; color: var(--gray-600);">Let's discuss your results together.</p>
                     </div>
                 `;
@@ -3102,7 +3203,7 @@
                 // Create and show modal-style success message
                 const successDiv = document.createElement('div');
                 successDiv.innerHTML = successHTML;
-                successDiv.style.cssText = 'position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 40px; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); z-index: 10001; max-width: 500px;';
+                successDiv.style.cssText = 'position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 40px; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); z-index: 10001; max-width: 500px; animation: modalSlideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);';
                 document.body.appendChild(successDiv);
 
                 setTimeout(() => {
@@ -3554,6 +3655,56 @@
         loadComponent('header-placeholder', '/components/header.html');
         loadComponent('footer-placeholder', '/components/footer.html');
     });
+
+    // Cal.com Modal Functions
+    function openCalModal() {
+        const modal = document.getElementById('calModal');
+        if (modal) {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+    }
+
+    function closeCalModal() {
+        const modal = document.getElementById('calModal');
+        if (modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+    }
+
+    // Close modal when clicking outside
+    document.addEventListener('click', function(e) {
+        const modal = document.getElementById('calModal');
+        if (e.target === modal) {
+            closeCalModal();
+        }
+    });
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeCalModal();
+        }
+    });
     </script>
+
+    <!-- Cal.com Modal -->
+    <div id="calModal" class="cal-modal-overlay">
+        <div class="cal-modal-container">
+            <div class="cal-modal-header">
+                <h3 class="cal-modal-title">Schedule Your AI Visibility Review Call</h3>
+                <button onclick="closeCalModal()" class="cal-modal-close" aria-label="Close modal">
+                    ×
+                </button>
+            </div>
+            <iframe
+                src="https://cal.com/optiscale360/quickcall?embed=true"
+                class="cal-modal-iframe"
+                frameborder="0"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
 </body>
 </html>
