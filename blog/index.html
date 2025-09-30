@@ -281,20 +281,267 @@
             z-index: 1;
         }
 
-        /* Latest Posts Carousel */
-        .latest-carousel-section {
-            padding: var(--space-2xl) 0;
-            background: var(--bg-primary);
+        /* Modern Hero Grid Section */
+        .hero-grid-section {
+            position: relative;
+            padding: 80px 0 100px;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0a0e27 100%);
+            overflow: hidden;
         }
 
-        .carousel-header {
+        .hero-grid-background {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .gradient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .gradient-orb.orb-1 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, #0066FF, transparent);
+            top: -200px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .gradient-orb.orb-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #8B5CF6, transparent);
+            top: 100px;
+            right: -150px;
+            animation-delay: 7s;
+        }
+
+        .gradient-orb.orb-3 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, #EC4899, transparent);
+            bottom: -100px;
+            left: 40%;
+            animation-delay: 14s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        .grid-pattern {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0, 102, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 102, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .hero-grid-container {
+            position: relative;
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 var(--space-lg);
+            z-index: 1;
+        }
+
+        .hero-grid-header {
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+        }
+
+        .hero-grid-title {
+            font-family: var(--font-family-heading);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            color: white;
+            margin-bottom: var(--space-md);
+            letter-spacing: -0.03em;
+        }
+
+        .title-highlight {
+            background: linear-gradient(135deg, #0066FF, #8B5CF6, #EC4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(20deg); }
+        }
+
+        .hero-grid-subtitle {
+            font-size: var(--font-size-lg);
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .hero-grid-layout {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: var(--space-lg);
+            margin-top: var(--space-2xl);
+        }
+
+        /* Featured Large Card */
+        .hero-card-featured {
+            grid-column: span 8;
+            grid-row: span 2;
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            height: 600px;
+        }
+
+        .hero-card-featured:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 102, 255, 0.5);
+            box-shadow: 0 30px 60px rgba(0, 102, 255, 0.3);
+        }
+
+        .hero-card-featured::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(139, 92, 246, 0.1));
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .hero-card-featured:hover::before {
+            opacity: 1;
+        }
+
+        .hero-card-image {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hero-card-featured:hover .hero-card-image {
+            transform: scale(1.05);
+        }
+
+        .hero-card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10, 14, 39, 0.95) 0%, transparent 100%);
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 40px;
+        }
+
+        .hero-card-category {
+            display: inline-flex;
             align-items: center;
-            margin-bottom: var(--space-xl);
+            gap: 8px;
+            background: rgba(0, 102, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 102, 255, 0.3);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #60a5fa;
+            margin-bottom: 16px;
+            width: fit-content;
+        }
+
+        .hero-card-title {
+            font-family: var(--font-family-heading);
+            font-size: clamp(1.75rem, 3vw, 2.5rem);
+            font-weight: 800;
+            color: white;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-card-description {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .hero-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .hero-card-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Small Cards */
+        .hero-card-small {
+            grid-column: span 4;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            height: 285px;
+        }
+
+        .hero-card-small:hover {
+            transform: translateY(-4px);
+            border-color: rgba(139, 92, 246, 0.5);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.3);
+        }
+
+        .hero-card-small .hero-card-overlay {
+            padding: 24px;
+        }
+
+        .hero-card-small .hero-card-title {
+            font-size: 1.25rem;
+            -webkit-line-clamp: 2;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .hero-card-small .hero-card-description {
+            font-size: 0.9rem;
+            -webkit-line-clamp: 2;
         }
 
         .section-title {
@@ -730,8 +977,15 @@
                 display: none;
             }
 
-            .carousel-post {
-                min-width: 300px;
+            .hero-grid-layout {
+                grid-template-columns: 1fr;
+                gap: var(--space-md);
+            }
+
+            .hero-card-featured,
+            .hero-card-small {
+                grid-column: span 1;
+                height: 400px;
             }
 
             .posts-grid-magazine {
@@ -749,12 +1003,29 @@
                 font-size: 2rem;
             }
 
-            .carousel-post {
-                min-width: 280px;
+            .hero-grid-section {
+                padding: 60px 0 80px;
             }
 
-            .carousel-post-content {
-                padding: var(--space-md);
+            .hero-grid-title {
+                font-size: 2rem;
+            }
+
+            .hero-card-featured,
+            .hero-card-small {
+                height: 350px;
+            }
+
+            .hero-card-overlay {
+                padding: 24px;
+            }
+
+            .hero-card-title {
+                font-size: 1.5rem;
+            }
+
+            .hero-card-small .hero-card-title {
+                font-size: 1.1rem;
             }
 
             .posts-grid-magazine {
@@ -960,29 +1231,25 @@
         </div>
     </section>
 
-    <!-- Latest Posts Carousel -->
-    <section class="latest-carousel-section">
-        <div class="carousel-header">
-            <h2 class="section-title">Latest Articles</h2>
-            <div class="carousel-nav">
-                <button class="carousel-btn" id="prevBtn" onclick="moveCarousel(-1)">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M15 18l-6-6 6-6"/>
-                    </svg>
-                </button>
-                <button class="carousel-btn" id="nextBtn" onclick="moveCarousel(1)">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M9 18l6-6-6-6"/>
-                    </svg>
-                </button>
-            </div>
+    <!-- Modern Hero Grid Section -->
+    <section class="hero-grid-section">
+        <div class="hero-grid-background">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="gradient-orb orb-3"></div>
+            <div class="grid-pattern"></div>
         </div>
 
-        <div class="carousel-container">
-            <div class="carousel-wrapper">
-                <div class="carousel-track" id="carouselTrack">
-                    <!-- Carousel posts will be loaded here -->
-                </div>
+        <div class="hero-grid-container">
+            <div class="hero-grid-header">
+                <h2 class="hero-grid-title">
+                    <span class="title-highlight">Latest</span> Insights
+                </h2>
+                <p class="hero-grid-subtitle">Discover cutting-edge AI SEO strategies and techniques</p>
+            </div>
+
+            <div class="hero-grid-layout" id="heroGrid">
+                <!-- Hero grid posts will be loaded here -->
             </div>
         </div>
     </section>
@@ -1043,7 +1310,7 @@
             }
 
             filteredPosts = [...allPosts];
-            renderCarousel();
+            renderHeroGrid();
             renderMagazinePosts();
         }
 
@@ -1156,29 +1423,67 @@
             renderMagazinePosts();
         }
 
-        // Render carousel
-        function renderCarousel() {
-            const carouselTrack = document.getElementById('carouselTrack');
-            if (!carouselTrack) return;
+        // Render hero grid
+        function renderHeroGrid() {
+            const heroGrid = document.getElementById('heroGrid');
+            if (!heroGrid) return;
 
-            const latestPosts = allPosts.slice(0, 4); // Show first 4 posts
+            const latestPosts = allPosts.slice(0, 3); // Show first 3 posts
 
-            carouselTrack.innerHTML = latestPosts.map(post => `
-                <article class="carousel-post">
-                    <div class="carousel-post-image" style="background-image: url('${post.image || '/360_logo.svg'}')"></div>
-                    <div class="carousel-post-content">
-                        <span class="carousel-post-category">${post.category}</span>
-                        <h3 class="carousel-post-title">
-                            <a href="/blog/${post.slug}/">${post.title}</a>
-                        </h3>
-                        <p class="carousel-post-excerpt">${post.description}</p>
-                        <div class="carousel-post-meta">
-                            <span>${new Date(post.date).toLocaleDateString()}</span>
-                            <span>${post.readingTime}</span>
+            if (latestPosts.length === 0) return;
+
+            const featured = latestPosts[0];
+            const smallCards = latestPosts.slice(1);
+
+            heroGrid.innerHTML = `
+                <a href="/blog/${featured.slug}/" class="hero-card-featured">
+                    <div class="hero-card-image" style="background-image: url('${featured.image || '/360_logo.svg'}')"></div>
+                    <div class="hero-card-overlay">
+                        <div class="hero-card-category">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                            ${featured.category}
+                        </div>
+                        <h3 class="hero-card-title">${featured.title}</h3>
+                        <p class="hero-card-description">${featured.description}</p>
+                        <div class="hero-card-meta">
+                            <span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                </svg>
+                                ${new Date(featured.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                            </span>
+                            <span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12 6 12 12 16 14"/>
+                                </svg>
+                                ${featured.readingTime}
+                            </span>
                         </div>
                     </div>
-                </article>
-            `).join('');
+                </a>
+                ${smallCards.map(post => `
+                    <a href="/blog/${post.slug}/" class="hero-card-small">
+                        <div class="hero-card-image" style="background-image: url('${post.image || '/360_logo.svg'}')"></div>
+                        <div class="hero-card-overlay">
+                            <div class="hero-card-category">
+                                ${post.category}
+                            </div>
+                            <h3 class="hero-card-title">${post.title}</h3>
+                            <div class="hero-card-meta">
+                                <span>${new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
+                                <span>${post.readingTime}</span>
+                            </div>
+                        </div>
+                    </a>
+                `).join('')}
+            `;
         }
 
         // Render magazine posts
