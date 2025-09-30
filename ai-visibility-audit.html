@@ -3103,6 +3103,7 @@
         function closeExitPopup() {
             const popup = document.getElementById('exitPopup');
             popup.classList.remove('show');
+            popup.style.display = 'none'; // Ensure it's fully hidden
 
             // Track popup close
             if (typeof gtag !== 'undefined') {
@@ -3110,6 +3111,7 @@
                     'event_category': 'engagement'
                 });
             }
+            console.log('✅ Exit popup closed');
         }
 
         // Enhanced exit intent detection
@@ -3181,14 +3183,18 @@
             })
             .then(function(response) {
                 console.log('✅ Exit intent email sent successfully!', response.status, response.text);
+                console.log('🔄 Starting success message display sequence...');
 
                 resetLoading();
 
                 // Close exit popup first
+                console.log('🚪 Closing exit popup...');
                 closeExitPopup();
 
                 // Wait a moment for popup to close, then show success message
+                console.log('⏳ Waiting 300ms before showing success message...');
                 setTimeout(() => {
+                    console.log('✨ Now creating success message...');
                     // Show success message with booking link
                     const successHTML = `
                         <div style="text-align: center; padding: 20px;">
@@ -3223,9 +3229,13 @@
 
                     document.body.appendChild(backdrop);
                     document.body.appendChild(successDiv);
+                    console.log('✅ Success message and backdrop added to DOM');
+                    console.log('📍 Success div z-index:', successDiv.style.zIndex);
+                    console.log('📍 Backdrop z-index:', backdrop.style.zIndex);
 
                     // Auto-remove after 12 seconds
                     setTimeout(() => {
+                        console.log('⏰ Auto-removing success message after 12 seconds');
                         if (backdrop.parentNode) backdrop.remove();
                         if (successDiv.parentNode) successDiv.remove();
                     }, 12000);
