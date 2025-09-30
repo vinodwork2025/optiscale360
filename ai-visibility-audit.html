@@ -23,6 +23,14 @@
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+        })();
+    </script>
+
     <style>
         :root {
             --primary-color: #2563eb;
@@ -2805,39 +2813,66 @@
                 pageUrl: window.location.href
             };
 
-            console.log('✅ Form submitted:', leadData);
+            console.log('📧 Sending email via EmailJS:', leadData);
 
-            // Reset form state
-            form.style.transform = 'scale(1)';
-            form.style.opacity = '1';
-            resetLoading();
+            // Send email using EmailJS
+            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
+                to_email: 'vinod@optiscale360.com',
+                from_name: leadData.firstName,
+                from_email: leadData.email,
+                company: leadData.company,
+                website: leadData.website,
+                phone: leadData.phone,
+                source: leadData.source,
+                timestamp: leadData.timestamp,
+                referrer: leadData.referrer,
+                form_id: leadData.formId
+            })
+            .then(function(response) {
+                console.log('✅ Email sent successfully!', response.status, response.text);
 
-            // Show success with animation
-            form.style.animation = 'fadeOut 0.5s ease-in-out forwards';
+                // Reset form state
+                form.style.transform = 'scale(1)';
+                form.style.opacity = '1';
+                resetLoading();
 
-            setTimeout(() => {
-                form.style.display = 'none';
-                if (successMessage) {
-                    successMessage.style.display = 'block';
-                    successMessage.classList.add('animate-bounce-in');
+                // Show success with animation
+                form.style.animation = 'fadeOut 0.5s ease-in-out forwards';
+
+                setTimeout(() => {
+                    form.style.display = 'none';
+                    if (successMessage) {
+                        successMessage.style.display = 'block';
+                        successMessage.classList.add('animate-bounce-in');
+                    }
+
+                    // Add confetti effect
+                    createConfetti();
+
+                    // Scroll to success message
+                    if (successMessage) {
+                        successMessage.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }, 500);
+
+                // Track conversion
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'conversion', {
+                        'send_to': 'AW-CONVERSION_ID/CONVERSION_LABEL',
+                        'event_label': 'ai_visibility_audit_lead'
+                    });
                 }
+            }, function(error) {
+                console.error('❌ EmailJS error:', error);
 
-                // Add confetti effect
-                createConfetti();
+                // Reset form state
+                form.style.transform = 'scale(1)';
+                form.style.opacity = '1';
+                resetLoading();
 
-                // Scroll to success message
-                if (successMessage) {
-                    successMessage.scrollIntoView({ behavior: 'smooth' });
-                }
-            }, 500);
-
-            // Track conversion
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'conversion', {
-                    'send_to': 'AW-CONVERSION_ID/CONVERSION_LABEL',
-                    'event_label': 'ai_visibility_audit_lead'
-                });
-            }
+                // Show error message
+                alert('❌ Something went wrong. Please try again or contact us directly at vinod@optiscale360.com');
+            });
         }
 
         // Attach form handlers
@@ -2961,24 +2996,47 @@
                 pageUrl: window.location.href
             };
 
-            console.log('✅ Exit form submitted:', leadData);
+            console.log('📧 Sending exit intent email via EmailJS:', leadData);
 
-            resetLoading();
-            closeExitPopup();
+            // Send email using EmailJS
+            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
+                to_email: 'vinod@optiscale360.com',
+                from_name: leadData.firstName,
+                from_email: leadData.email,
+                company: leadData.company,
+                website: leadData.website,
+                phone: leadData.phone,
+                source: leadData.source,
+                timestamp: leadData.timestamp,
+                referrer: leadData.referrer,
+                form_id: 'exitPopupForm'
+            })
+            .then(function(response) {
+                console.log('✅ Exit intent email sent successfully!', response.status, response.text);
 
-            // Show success message
-            alert('🎉 Success! We\'ll send your AI visibility audit results within 24 hours.');
+                resetLoading();
+                closeExitPopup();
 
-            // Scroll to main form
-            document.getElementById('leadForm').scrollIntoView({ behavior: 'smooth' });
+                // Show success message
+                alert('🎉 Success! We\'ll send your AI visibility audit results within 24 hours.');
 
-            // Track exit popup conversion
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'exit_intent_conversion', {
-                    'event_category': 'conversion',
-                    'event_label': 'exit_popup_form'
-                });
-            }
+                // Scroll to main form
+                document.getElementById('leadForm').scrollIntoView({ behavior: 'smooth' });
+
+                // Track exit popup conversion
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'exit_intent_conversion', {
+                        'event_category': 'conversion',
+                        'event_label': 'exit_popup_form'
+                    });
+                }
+            }, function(error) {
+                console.error('❌ EmailJS error:', error);
+
+                resetLoading();
+                alert('❌ Something went wrong. Please try again or contact us directly at vinod@optiscale360.com');
+                closeExitPopup();
+            });
         }
 
         // Close popup when clicking outside
