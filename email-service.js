@@ -5,10 +5,10 @@
 
 class EmailService {
     constructor() {
-        this.serviceId = 'service_optiscale360';  // You'll need to configure this
-        this.publicKey = 'YOUR_PUBLIC_KEY_HERE';  // You'll need to get this from EmailJS
+        this.serviceId = 'service_g4erqhd';  // EmailJS service ID
+        this.publicKey = 'YOUR_PUBLIC_KEY_HERE';  // Get from EmailJS dashboard -> Integration
         this.initialized = false;
-        this.fallbackEmail = 'info@optiscale360.com';
+        this.fallbackEmail = 'vinod@optiscale360.com';
 
         this.init();
     }
@@ -138,13 +138,13 @@ class EmailService {
      */
     getTemplateId(formType) {
         const templates = {
-            'Contact Form': 'template_contact_form',
-            'Free AI-Ready Website': 'template_website_request',
-            'Newsletter Signup': 'template_newsletter',
-            'Consultation Request': 'template_consultation'
+            'Contact Form': 'template_contact',
+            'Free AI-Ready Website': 'template_contact',
+            'Newsletter Signup': 'template_contact',
+            'Consultation Request': 'template_contact'
         };
 
-        return templates[formType] || 'template_default';
+        return templates[formType] || 'template_contact';
     }
 
     /**
