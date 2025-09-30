@@ -1150,11 +1150,42 @@
             display: none;
             background: linear-gradient(135deg, var(--success-color) 0%, #059669 100%);
             color: var(--white);
-            padding: 24px;
+            padding: 32px;
             border-radius: var(--border-radius-xl);
             text-align: center;
             font-weight: 600;
             margin-top: 20px;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .success-message h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .success-message p {
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .success-message .btn-schedule {
+            display: inline-block;
+            background: var(--white);
+            color: var(--success-color);
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .success-message .btn-schedule:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
         }
 
         /* Social Proof Section */
@@ -2269,7 +2300,14 @@
                     </form>
 
                     <div class="success-message" id="successMessage">
-                        🎉 Success! We'll send your AI visibility audit results within 24 hours.
+                        <h3>🎉 Thank You!</h3>
+                        <p>Your request has been received! We'll send your AI visibility audit results within 24 hours.</p>
+                        <a href="https://cal.com/optiscale360/quickcall" target="_blank" class="btn-schedule">
+                            📅 Schedule Your Review Call Now
+                        </a>
+                        <p style="font-size: 0.95rem; margin-top: 16px; margin-bottom: 0; opacity: 0.9;">
+                            Let's discuss your results and create your action plan together.
+                        </p>
                     </div>
 
                     <div class="trust-indicators">
@@ -3027,11 +3065,31 @@
                 resetLoading();
                 closeExitPopup();
 
-                // Show success message
-                alert('🎉 Success! We\'ll send your AI visibility audit results within 24 hours.');
+                // Show success message with booking link
+                const successHTML = `
+                    <div style="text-align: center; padding: 20px;">
+                        <h3 style="color: var(--success-color); margin-bottom: 12px;">🎉 Thank You!</h3>
+                        <p style="margin-bottom: 20px;">We'll send your AI visibility audit results within 24 hours.</p>
+                        <a href="https://cal.com/optiscale360/quickcall" target="_blank"
+                           style="display: inline-block; background: var(--success-color); color: white;
+                                  padding: 12px 24px; border-radius: 50px; text-decoration: none;
+                                  font-weight: 600; margin-bottom: 12px;">
+                            📅 Schedule Your Review Call Now
+                        </a>
+                        <p style="font-size: 0.9rem; color: var(--gray-600);">Let's discuss your results together.</p>
+                    </div>
+                `;
 
-                // Scroll to main form
-                document.getElementById('leadForm').scrollIntoView({ behavior: 'smooth' });
+                // Create and show modal-style success message
+                const successDiv = document.createElement('div');
+                successDiv.innerHTML = successHTML;
+                successDiv.style.cssText = 'position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 40px; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); z-index: 10001; max-width: 500px;';
+                document.body.appendChild(successDiv);
+
+                setTimeout(() => {
+                    successDiv.remove();
+                    document.getElementById('leadForm').scrollIntoView({ behavior: 'smooth' });
+                }, 8000);
 
                 // Track exit popup conversion
                 if (typeof gtag !== 'undefined') {
