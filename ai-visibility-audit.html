@@ -2807,61 +2807,36 @@
 
             console.log('✅ Form submitted:', leadData);
 
-                    // Reset form state
-                    form.style.transform = 'scale(1)';
-                    form.style.opacity = '1';
-                    resetLoading();
+            // Reset form state
+            form.style.transform = 'scale(1)';
+            form.style.opacity = '1';
+            resetLoading();
 
-                    // Show success with animation
-                    form.style.animation = 'fadeOut 0.5s ease-in-out forwards';
+            // Show success with animation
+            form.style.animation = 'fadeOut 0.5s ease-in-out forwards';
 
-                    setTimeout(() => {
-                        form.style.display = 'none';
-                        if (successMessage) {
-                            successMessage.style.display = 'block';
-                            successMessage.classList.add('animate-bounce-in');
-                        }
-
-                        // Add confetti effect
-                        createConfetti();
-
-                        // Scroll to success message
-                        if (successMessage) {
-                            successMessage.scrollIntoView({ behavior: 'smooth' });
-                        }
-                    }, 500);
-
-                    // Track conversion
-                    if (typeof gtag !== 'undefined') {
-                        gtag('event', 'conversion', {
-                            'send_to': 'AW-CONVERSION_ID/CONVERSION_LABEL',
-                            'event_label': 'ai_visibility_audit_lead'
-                        });
-                    }
-
-                } else {
-                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+            setTimeout(() => {
+                form.style.display = 'none';
+                if (successMessage) {
+                    successMessage.style.display = 'block';
+                    successMessage.classList.add('animate-bounce-in');
                 }
 
-            } catch (error) {
-                console.error('❌ Error sending lead to Make.com:', error);
+                // Add confetti effect
+                createConfetti();
 
-                // Reset form state
-                form.style.transform = 'scale(1)';
-                form.style.opacity = '1';
-                resetLoading();
+                // Scroll to success message
+                if (successMessage) {
+                    successMessage.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 500);
 
-                // Show error message
-                button.textContent = '❌ Error - Please Try Again';
-                button.style.background = '#ef4444';
-
-                setTimeout(() => {
-                    button.innerHTML = '🎯 Get My Free AI Visibility Check Now';
-                    button.style.background = '';
-                }, 3000);
-
-                // Optionally show error to user
-                alert('There was an issue submitting your request. Please try again or contact us directly.');
+            // Track conversion
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'conversion', {
+                    'send_to': 'AW-CONVERSION_ID/CONVERSION_LABEL',
+                    'event_label': 'ai_visibility_audit_lead'
+                });
             }
         }
 
@@ -2988,37 +2963,21 @@
 
             console.log('✅ Exit form submitted:', leadData);
 
-                    resetLoading();
-                    closeExitPopup();
+            resetLoading();
+            closeExitPopup();
 
-                    // Show success message
-                    alert('🎉 Success! We\'ll send your AI visibility audit results within 24 hours.');
+            // Show success message
+            alert('🎉 Success! We\'ll send your AI visibility audit results within 24 hours.');
 
-                    // Scroll to main form
-                    document.getElementById('leadForm').scrollIntoView({ behavior: 'smooth' });
+            // Scroll to main form
+            document.getElementById('leadForm').scrollIntoView({ behavior: 'smooth' });
 
-                    // Track exit popup conversion
-                    if (typeof gtag !== 'undefined') {
-                        gtag('event', 'exit_intent_conversion', {
-                            'event_category': 'conversion',
-                            'event_label': 'exit_popup_form'
-                        });
-                    }
-
-                } else {
-                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-                }
-
-            } catch (error) {
-                console.error('❌ Error sending exit intent lead to Make.com:', error);
-                resetLoading();
-
-                // Show error message but still close popup
-                alert('⚠️ There was an issue submitting your request. Please try the main form below.');
-                closeExitPopup();
-
-                // Scroll to main form as fallback
-                document.getElementById('leadForm').scrollIntoView({ behavior: 'smooth' });
+            // Track exit popup conversion
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'exit_intent_conversion', {
+                    'event_category': 'conversion',
+                    'event_label': 'exit_popup_form'
+                });
             }
         }
 
