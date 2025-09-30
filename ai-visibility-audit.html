@@ -3399,8 +3399,11 @@
 
     // Cal.com Modal Functions
     function openCalModal() {
-        // Open Cal.com booking in new tab - most reliable method
-        window.open('https://cal.com/optiscale360/ai-visibility-intelligence-report-review-call', '_blank');
+        const modal = document.getElementById('calModal');
+        if (modal) {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
     }
 
     function closeCalModal() {
@@ -3427,5 +3430,23 @@
     });
     </script>
 
+    <!-- Cal.com Modal -->
+    <div id="calModal" class="cal-modal-overlay">
+        <div class="cal-modal-container">
+            <div class="cal-modal-header">
+                <h3 class="cal-modal-title">Schedule Your AI Visibility Review Call</h3>
+                <button onclick="closeCalModal()" class="cal-modal-close" aria-label="Close modal">
+                    ×
+                </button>
+            </div>
+            <iframe
+                src="https://cal.com/optiscale360/ai-visibility-intelligence-report-review-call?embed=true&theme=light"
+                class="cal-modal-iframe"
+                frameborder="0"
+                allow="camera; microphone; clipboard-read; clipboard-write; geolocation"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
 </body>
 </html>
