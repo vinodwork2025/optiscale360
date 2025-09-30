@@ -6,7 +6,7 @@
 class EmailService {
     constructor() {
         this.serviceId = 'service_g4erqhd';  // EmailJS service ID
-        this.publicKey = 'YOUR_PUBLIC_KEY_HERE';  // Get from EmailJS dashboard -> Integration
+        this.publicKey = 'F25NFcVlXeUqES9qL';  // EmailJS public key
         this.initialized = false;
         this.fallbackEmail = 'vinod@optiscale360.com';
 
@@ -139,7 +139,7 @@ class EmailService {
     getTemplateId(formType) {
         const templates = {
             'Contact Form': 'template_contact',
-            'Free AI-Ready Website': 'template_contact',
+            'Free AI-Ready Website': 'template_freeaiwebsite',
             'Newsletter Signup': 'template_contact',
             'Consultation Request': 'template_contact'
         };
