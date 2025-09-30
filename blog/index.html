@@ -252,8 +252,7 @@
         .hero-grid-section {
             position: relative;
             padding: 80px 0 100px;
-            background: #0a0f1e;
-            background: linear-gradient(135deg, #050a14 0%, #0a0f1e 50%, #050a14 100%);
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0a0e27 100%);
             overflow: hidden;
         }
 
@@ -266,35 +265,35 @@
         .gradient-orb {
             position: absolute;
             border-radius: 50%;
-            filter: blur(120px);
-            opacity: 0.2;
+            filter: blur(80px);
+            opacity: 0.3;
             animation: float 20s ease-in-out infinite;
         }
 
         .gradient-orb.orb-1 {
-            width: 650px;
-            height: 650px;
-            background: radial-gradient(circle, #1e40af, transparent);
-            top: -300px;
-            left: -200px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, #0066FF, transparent);
+            top: -200px;
+            left: -100px;
             animation-delay: 0s;
         }
 
         .gradient-orb.orb-2 {
-            width: 550px;
-            height: 550px;
-            background: radial-gradient(circle, #7e22ce, transparent);
-            top: 0px;
-            right: -250px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #8B5CF6, transparent);
+            top: 100px;
+            right: -150px;
             animation-delay: 7s;
         }
 
         .gradient-orb.orb-3 {
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, #be185d, transparent);
-            bottom: -200px;
-            left: 30%;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, #EC4899, transparent);
+            bottom: -100px;
+            left: 40%;
             animation-delay: 14s;
         }
 
@@ -308,11 +307,10 @@
             position: absolute;
             inset: 0;
             background-image:
-                linear-gradient(rgba(30, 64, 175, 0.06) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(30, 64, 175, 0.06) 1px, transparent 1px);
+                linear-gradient(rgba(0, 102, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 102, 255, 0.1) 1px, transparent 1px);
             background-size: 50px 50px;
             animation: gridMove 20s linear infinite;
-            opacity: 0.4;
         }
 
         @keyframes gridMove {
@@ -337,32 +335,29 @@
             font-family: var(--font-family-heading);
             font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 800;
-            color: #ffffff;
+            color: white;
             margin-bottom: var(--space-md);
             letter-spacing: -0.03em;
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 40px rgba(59, 130, 246, 0.3);
         }
 
         .title-highlight {
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+            background: linear-gradient(135deg, #0066FF, #8B5CF6, #EC4899);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             animation: gradientShift 3s ease infinite;
-            filter: drop-shadow(0 0 30px rgba(59, 130, 246, 0.5));
         }
 
         @keyframes gradientShift {
-            0%, 100% { filter: drop-shadow(0 0 30px rgba(59, 130, 246, 0.5)) hue-rotate(0deg); }
-            50% { filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.5)) hue-rotate(20deg); }
+            0%, 100% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(20deg); }
         }
 
         .hero-grid-subtitle {
             font-size: var(--font-size-lg);
-            color: #e2e8f0;
+            color: rgba(255, 255, 255, 0.7);
             max-width: 600px;
             margin: 0 auto;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
 
         .hero-grid-layout {
