@@ -3183,33 +3183,53 @@
                 console.log('✅ Exit intent email sent successfully!', response.status, response.text);
 
                 resetLoading();
+
+                // Close exit popup first
                 closeExitPopup();
 
-                // Show success message with booking link
-                const successHTML = `
-                    <div style="text-align: center; padding: 20px;">
-                        <h3 style="color: var(--success-color); margin-bottom: 12px;">🎉 Thank You!</h3>
-                        <p style="margin-bottom: 20px;">We'll send your AI visibility audit results within 24 hours.</p>
-                        <button onclick="openCalModal(); this.closest('div').parentElement.remove();"
-                           style="display: inline-block; background: var(--success-color); color: white;
-                                  padding: 12px 24px; border-radius: 50px; border: none;
-                                  font-weight: 600; margin-bottom: 12px; cursor: pointer; font-size: 1rem;">
-                            📅 Schedule Your Review Call Now
-                        </button>
-                        <p style="font-size: 0.9rem; color: var(--gray-600);">Let's discuss your results together.</p>
-                    </div>
-                `;
-
-                // Create and show modal-style success message
-                const successDiv = document.createElement('div');
-                successDiv.innerHTML = successHTML;
-                successDiv.style.cssText = 'position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 40px; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); z-index: 10001; max-width: 500px; animation: modalSlideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);';
-                document.body.appendChild(successDiv);
-
+                // Wait a moment for popup to close, then show success message
                 setTimeout(() => {
-                    successDiv.remove();
-                    document.getElementById('leadForm').scrollIntoView({ behavior: 'smooth' });
-                }, 8000);
+                    // Show success message with booking link
+                    const successHTML = `
+                        <div style="text-align: center; padding: 20px;">
+                            <h3 style="color: #10b981; margin-bottom: 12px; font-weight: 700;">🎉 Thank You!</h3>
+                            <p style="margin-bottom: 20px; color: #374151; font-size: 1.1rem;">We'll send your AI visibility audit results within 24 hours.</p>
+                            <button onclick="openCalModal(); setTimeout(() => { this.closest('div').parentElement.remove(); document.querySelector('.exitPopupBackdrop')?.remove(); }, 100);"
+                               onmouseover="this.style.transform='translateY(-2px) scale(1.05)'; this.style.boxShadow='0 6px 20px rgba(16, 185, 129, 0.4)';"
+                               onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 4px 12px rgba(16, 185, 129, 0.3)';"
+                               style="display: inline-block; background: #10b981; color: white;
+                                      padding: 14px 28px; border-radius: 50px; border: none;
+                                      font-weight: 600; margin-bottom: 12px; cursor: pointer; font-size: 1.05rem;
+                                      transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);">
+                                📅 Schedule Your Review Call Now
+                            </button>
+                            <p style="font-size: 0.95rem; color: #6b7280; margin: 0;">Let's discuss your results and action plan together.</p>
+                        </div>
+                    `;
+
+                    // Create and show modal-style success message
+                    const successDiv = document.createElement('div');
+                    successDiv.innerHTML = successHTML;
+                    successDiv.style.cssText = 'position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 40px; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.4); z-index: 10002; max-width: 500px; animation: modalSlideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);';
+
+                    // Add backdrop
+                    const backdrop = document.createElement('div');
+                    backdrop.className = 'exitPopupBackdrop';
+                    backdrop.style.cssText = 'position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(4px); z-index: 10001; animation: fadeIn 0.3s ease;';
+                    backdrop.onclick = () => {
+                        backdrop.remove();
+                        successDiv.remove();
+                    };
+
+                    document.body.appendChild(backdrop);
+                    document.body.appendChild(successDiv);
+
+                    // Auto-remove after 12 seconds
+                    setTimeout(() => {
+                        if (backdrop.parentNode) backdrop.remove();
+                        if (successDiv.parentNode) successDiv.remove();
+                    }, 12000);
+                }, 300);
 
                 // Track exit popup conversion
                 if (typeof gtag !== 'undefined') {
