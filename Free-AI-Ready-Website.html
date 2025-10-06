@@ -2685,6 +2685,95 @@
                 padding: 0.75rem !important;
             }
         }
+
+        /* ==========================================
+           VIDEO BACKGROUND HERO SECTION STYLES
+           ========================================== */
+
+        /* Video Background Styling */
+        .hero-video-background {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        /* Ensure video fills container properly */
+        @supports (object-fit: cover) {
+            .hero-video-background {
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                transform: none;
+            }
+        }
+
+        /* Fade-in animation for hero content */
+        .hero-content-animate {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-visual-animate {
+            animation: fadeInRight 1s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Glass morphism effect for feature cards */
+        .bg-white\/10 {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .bg-white\/95 {
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+
+        /* Responsive video background */
+        @media (max-width: 768px) {
+            .hero-video-background {
+                min-width: 100%;
+                min-height: 100%;
+            }
+
+            /* Adjust overlay for mobile */
+            section .absolute.inset-0.bg-gradient-to-r {
+                background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6));
+            }
+        }
+
+        /* Performance optimization */
+        .hero-video-background {
+            will-change: transform;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
     </style>
 </head>
 <body class="antialiased bg-white">
@@ -2693,91 +2782,131 @@
     <div id="header-placeholder"></div>
 
     <main class="pt-20">
-        <!-- Next-Gen Hero Section -->
-        <section class="relative min-h-[80vh] flex items-center justify-center overflow-hidden py-12 hero-3d-container">
-            <!-- Dynamic Light Background -->
-            <div class="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50"></div>
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.15)_0%,transparent_50%)]"></div>
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(139,92,246,0.15)_0%,transparent_50%)]"></div>
-            
-            <!-- 3D Floating Geometric Shapes -->
-            <div class="absolute inset-0 hero-shapes-container">
-                <div class="geometric-shape shape-cube shape-1"></div>
-                <div class="geometric-shape shape-pyramid shape-2"></div>
-                <div class="geometric-shape shape-sphere shape-3"></div>
-                <div class="geometric-shape shape-torus shape-4"></div>
-                <div class="geometric-shape shape-crystal shape-5"></div>
-                <div class="geometric-shape shape-helix shape-6"></div>
-            </div>
-            
-            <!-- 3D Particle System -->
-            <div class="absolute inset-0 particles-container">
-                <div class="particle particle-1"></div>
-                <div class="particle particle-2"></div>
-                <div class="particle particle-3"></div>
-                <div class="particle particle-4"></div>
-                <div class="particle particle-5"></div>
-                <div class="particle particle-6"></div>
-                <div class="particle particle-7"></div>
-                <div class="particle particle-8"></div>
-                <div class="particle particle-9"></div>
-                <div class="particle particle-10"></div>
-            </div>
-            
-            <!-- Advanced Grid Pattern with 3D Depth -->
-            <div class="absolute inset-0 opacity-20 grid-3d">
-                <div class="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.15)_1px,transparent_1px)] bg-[size:40px_40px] grid-layer-1"></div>
-                <div class="absolute inset-0 bg-[linear-gradient(rgba(139,92,246,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(139,92,246,0.1)_1px,transparent_1px)] bg-[size:60px_60px] grid-layer-2"></div>
-            </div>
-            
-            <!-- 3D Floating Energy Orbs -->
-            <div class="floating-orb orb-1"></div>
-            <div class="floating-orb orb-2"></div>
-            <div class="floating-orb orb-3"></div>
-            <div class="floating-orb orb-4"></div>
-            <div class="floating-orb orb-5"></div>
+        <!-- Video Background Hero Section -->
+        <section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
+            <!-- Video Background -->
+            <div class="absolute inset-0 w-full h-full">
+                <video
+                    id="heroVideo"
+                    class="hero-video-background"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    preload="auto"
+                >
+                    <source src="assets/videos/AI_ready_video.mp4" type="video/mp4">
+                </video>
 
-            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
-                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Video Overlay for Contrast -->
+                <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/60"></div>
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30"></div>
+            </div>
+
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 w-full py-16">
+                <div class="grid lg:grid-cols-2 gap-8 items-start">
                     <!-- Left Content -->
-                    <div class="text-gray-800 space-y-8 hero-content-animate">
-                        <div class="inline-flex items-center bg-white/80 backdrop-blur-lg rounded-full px-6 py-3 text-sm font-semibold border border-blue-200 shadow-lg">
-                            <div class="w-2 h-2 bg-green-500 rounded-full mr-3 animate-pulse"></div>
-                            <span class="text-green-700">Revolutionary Pay-What-You-Value Model</span>
+                    <div class="text-white space-y-6 hero-content-animate">
+                        <div class="inline-flex items-center bg-white/95 backdrop-blur-md rounded-full px-5 py-2.5 text-sm font-semibold shadow-lg">
+                            <div class="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+                            <span class="text-gray-700">Revolutionary Pay-What-You-Value Model</span>
                         </div>
-                        
-                        <h1 class="text-3xl lg:text-5xl font-black leading-tight mb-6">
-                            <span class="text-gray-900">Get Your</span>
-                            <span class="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 animate-gradient-x">
+
+                        <h1 class="text-4xl lg:text-5xl font-black leading-tight">
+                            <span class="text-white drop-shadow-lg">Get Your</span>
+                            <span class="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 drop-shadow-2xl">
                                 AI-Ready Website
                             </span>
-                            <span class="text-gray-900">Built FREE</span>
+                            <span class="text-white drop-shadow-lg">Built FREE</span>
                         </h1>
-                        
-                        <p class="text-lg lg:text-xl leading-relaxed text-gray-700 mb-8">
-                            <span class="text-gray-900 font-semibold">100% risk-free development.</span> We build your complete website draft at no cost. You review it, then pay what you believe it's worth.
+
+                        <p class="text-lg leading-relaxed text-white/90 drop-shadow-md">
+                            <span class="text-white font-semibold">100% risk-free development.</span> We build your complete website draft at no cost. You review it, then pay what you believe it's worth.
                         </p>
-                        
-                        <!-- Lead Capture Form -->
-                        <div class="bg-white/80 backdrop-blur-lg rounded-2xl p-6 lg:p-8 shadow-2xl border border-blue-200">
-                            <div class="text-center mb-6">
-                                <h3 class="text-2xl font-bold text-gray-900 mb-2">Start Your FREE Website Build</h3>
-                                <p class="text-gray-600">Fill out the form below and we'll begin creating your AI-ready website draft immediately.</p>
+
+                        <!-- Feature Highlights Below Subheading -->
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
+                            <!-- Feature 1 -->
+                            <div class="bg-white/10 backdrop-blur-md rounded-lg p-4 border border-white/20">
+                                <div class="flex items-center gap-3">
+                                    <div class="bg-blue-500/20 rounded-lg p-2">
+                                        <svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-blue-300">
+                                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-white font-semibold text-sm">AI Optimized</h3>
+                                        <p class="text-white/60 text-xs">Smart & Fast</p>
+                                    </div>
+                                </div>
                             </div>
 
-                            <form id="leadCaptureForm" class="space-y-4">
+                            <!-- Feature 2 -->
+                            <div class="bg-white/10 backdrop-blur-md rounded-lg p-4 border border-white/20">
+                                <div class="flex items-center gap-3">
+                                    <div class="bg-green-500/20 rounded-lg p-2">
+                                        <svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-green-300">
+                                            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-white font-semibold text-sm">User Ready</h3>
+                                        <p class="text-white/60 text-xs">Perfect UX</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Feature 3 -->
+                            <div class="bg-white/10 backdrop-blur-md rounded-lg p-4 border border-white/20">
+                                <div class="flex items-center gap-3">
+                                    <div class="bg-purple-500/20 rounded-lg p-2">
+                                        <svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-purple-300">
+                                            <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-white font-semibold text-sm">Responsive</h3>
+                                        <p class="text-white/60 text-xs">All Devices</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Secondary CTA -->
+                        <div class="pt-2">
+                            <a href="#how-it-works" class="group inline-flex items-center gap-2 text-white/80 hover:text-white font-medium text-base transition-all duration-300">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"/>
+                                </svg>
+                                <span>Learn How Our Process Works</span>
+                                <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Side - Lead Capture Form -->
+                    <div class="hero-visual-animate">
+                        <div class="bg-white/95 backdrop-blur-xl rounded-2xl p-6 lg:p-7 shadow-2xl border border-white/20">
+                            <div class="mb-5">
+                                <h3 class="text-xl font-bold text-gray-900 mb-2">Start Your FREE Website Build</h3>
+                                <p class="text-gray-600 text-sm">Fill out the form and we'll begin creating your AI-ready website draft.</p>
+                            </div>
+
+                            <form id="leadCaptureForm" class="space-y-3.5">
                                 <!-- Name Fields -->
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div class="space-y-2">
                                         <label for="firstName" class="block text-sm font-semibold text-gray-700">First Name *</label>
                                         <input type="text" id="firstName" name="firstName" required
-                                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-0 transition-colors duration-300 bg-white/70 backdrop-blur-sm"
+                                            class="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors text-sm"
                                             placeholder="John">
                                     </div>
                                     <div class="space-y-2">
                                         <label for="lastName" class="block text-sm font-semibold text-gray-700">Last Name *</label>
                                         <input type="text" id="lastName" name="lastName" required
-                                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-0 transition-colors duration-300 bg-white/70 backdrop-blur-sm"
+                                            class="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors text-sm"
                                             placeholder="Doe">
                                     </div>
                                 </div>
@@ -2787,13 +2916,13 @@
                                     <div class="space-y-2">
                                         <label for="email" class="block text-sm font-semibold text-gray-700">Email Address *</label>
                                         <input type="email" id="email" name="email" required
-                                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-0 transition-colors duration-300 bg-white/70 backdrop-blur-sm"
+                                            class="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors text-sm"
                                             placeholder="john@company.com">
                                     </div>
                                     <div class="space-y-2">
                                         <label for="phone" class="block text-sm font-semibold text-gray-700">Phone Number</label>
                                         <input type="tel" id="phone" name="phone"
-                                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-0 transition-colors duration-300 bg-white/70 backdrop-blur-sm"
+                                            class="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors text-sm"
                                             placeholder="+1 (555) 123-4567">
                                     </div>
                                 </div>
@@ -2803,13 +2932,13 @@
                                     <div class="space-y-2">
                                         <label for="company" class="block text-sm font-semibold text-gray-700">Company Name *</label>
                                         <input type="text" id="company" name="company" required
-                                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-0 transition-colors duration-300 bg-white/70 backdrop-blur-sm"
+                                            class="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors text-sm"
                                             placeholder="Your Company Ltd.">
                                     </div>
                                     <div class="space-y-2">
                                         <label for="currentWebsite" class="block text-sm font-semibold text-gray-700">Current Website</label>
                                         <input type="url" id="currentWebsite" name="currentWebsite"
-                                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-0 transition-colors duration-300 bg-white/70 backdrop-blur-sm"
+                                            class="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors text-sm"
                                             placeholder="https://yoursite.com (if any)">
                                     </div>
                                 </div>
@@ -2818,7 +2947,7 @@
                                 <div class="space-y-2">
                                     <label for="businessType" class="block text-sm font-semibold text-gray-700">Business Type *</label>
                                     <select id="businessType" name="businessType" required
-                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-0 transition-colors duration-300 bg-white/70 backdrop-blur-sm">
+                                        class="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors text-sm">
                                         <option value="">Select your business type</option>
                                         <option value="ecommerce">E-commerce / Online Store</option>
                                         <option value="saas">SaaS / Software</option>
@@ -2848,184 +2977,32 @@
                                 </div>
 
                                 <!-- Submit Button -->
-                                <button type="submit" class="w-full group relative bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold text-lg px-8 py-4 rounded-xl shadow-2xl hover:shadow-blue-500/25 transform hover:scale-[1.02] transition-all duration-300 overflow-hidden">
+                                <button type="submit" class="w-full group relative bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold text-base px-6 py-3 rounded-lg shadow-xl hover:shadow-blue-500/25 transform hover:scale-[1.01] transition-all duration-300 overflow-hidden">
                                     <div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                                    <div class="relative z-10 flex items-center justify-center gap-3">
-                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <div class="relative z-10 flex items-center justify-center gap-2">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                                         </svg>
                                         <span>Start Building My FREE Website</span>
-                                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                                        </svg>
                                     </div>
                                 </button>
 
                                 <!-- Trust Indicators -->
-                                <div class="flex items-center justify-center gap-6 pt-4 text-sm text-gray-600 font-medium">
-                                    <span class="flex items-center gap-2">
-                                        <div class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
+                                <div class="flex items-center justify-center gap-4 pt-3 text-xs text-gray-600 font-medium flex-wrap">
+                                    <span class="flex items-center gap-1.5">
+                                        <div class="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
                                         100% FREE Draft
                                     </span>
-                                    <span class="flex items-center gap-2">
-                                        <div class="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></div>
+                                    <span class="flex items-center gap-1.5">
+                                        <div class="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
                                         No Upfront Cost
                                     </span>
-                                    <span class="flex items-center gap-2">
-                                        <div class="w-1.5 h-1.5 bg-purple-500 rounded-full animate-pulse"></div>
+                                    <span class="flex items-center gap-1.5">
+                                        <div class="w-1.5 h-1.5 bg-purple-500 rounded-full"></div>
                                         You Set The Price
                                     </span>
                                 </div>
                             </form>
-                        </div>
-
-                        <!-- Secondary CTA -->
-                        <div class="text-center">
-                            <a href="#how-it-works" class="group inline-flex items-center gap-3 text-gray-700 hover:text-blue-700 font-semibold text-lg transition-all duration-300">
-                                <svg class="w-6 h-6 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"/>
-                                </svg>
-                                <span>Learn How Our Process Works</span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Right Visual - Futuristic Isometric Devices -->
-                    <div class="relative hero-visual-animate">
-                        <!-- Main Device Container -->
-                        <div class="relative flex items-center justify-center h-[600px]">
-                            <!-- Orbiting Icons Container -->
-                            <div class="absolute inset-0 orbiting-container">
-                                <!-- Rocket Icon -->
-                                <div class="orbit-icon rocket-orbit">
-                                    <div class="orbit-icon-inner bg-gradient-to-br from-orange-400 to-red-500">
-                                        <svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-white">
-                                            <path d="M12 2L2 22l4-8 8-8 8 8 4-8L12 2z"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                                
-                                <!-- Growth Arrow Icon -->
-                                <div class="orbit-icon growth-orbit">
-                                    <div class="orbit-icon-inner bg-gradient-to-br from-green-400 to-emerald-500">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="w-5 h-5 text-white" stroke-width="2">
-                                            <path d="M22 7L13.5 15.5L8.5 10.5L2 17"/>
-                                            <path d="M16 7L22 7L22 13"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                                
-                                <!-- Handshake Icon -->
-                                <div class="orbit-icon handshake-orbit">
-                                    <div class="orbit-icon-inner bg-gradient-to-br from-blue-400 to-purple-500">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="w-5 h-5 text-white" stroke-width="2">
-                                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Isometric Device Setup -->
-                            <div class="relative device-stage">
-                                <!-- Desktop Device -->
-                                <div class="desktop-device">
-                                    <div class="desktop-screen">
-                                        <!-- AI Nodes on Screen -->
-                                        <div class="ai-nodes-overlay">
-                                            <div class="ai-node node-1 bg-blue-400"></div>
-                                            <div class="ai-node node-2 bg-purple-400"></div>
-                                            <div class="ai-node node-3 bg-green-400"></div>
-                                            <div class="ai-node node-4 bg-pink-400"></div>
-                                        </div>
-                                        
-                                        <!-- Screen Content -->
-                                        <div class="screen-content">
-                                            <div class="content-header">
-                                                <div class="header-dots">
-                                                    <div class="dot red"></div>
-                                                    <div class="dot yellow"></div>
-                                                    <div class="dot green"></div>
-                                                </div>
-                                            </div>
-                                            <div class="content-body">
-                                                <div class="content-line long"></div>
-                                                <div class="content-line medium"></div>
-                                                <div class="content-line short"></div>
-                                                <div class="content-blocks">
-                                                    <div class="content-block"></div>
-                                                    <div class="content-block"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="desktop-base"></div>
-                                </div>
-                                
-                                <!-- Mobile Device -->
-                                <div class="mobile-device">
-                                    <div class="mobile-screen">
-                                        <!-- AI Pulse Effect -->
-                                        <div class="ai-pulse-center">
-                                            <div class="pulse-ring"></div>
-                                            <div class="pulse-ring"></div>
-                                            <div class="pulse-ring"></div>
-                                            <div class="pulse-core"></div>
-                                        </div>
-                                        
-                                        <!-- Mobile Content -->
-                                        <div class="mobile-content">
-                                            <div class="mobile-header"></div>
-                                            <div class="mobile-nav">
-                                                <div class="nav-item active"></div>
-                                                <div class="nav-item"></div>
-                                                <div class="nav-item"></div>
-                                            </div>
-                                            <div class="mobile-cards">
-                                                <div class="mobile-card"></div>
-                                                <div class="mobile-card"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <!-- Connecting Lines/Rays -->
-                                <div class="connection-rays">
-                                    <div class="ray ray-1"></div>
-                                    <div class="ray ray-2"></div>
-                                    <div class="ray ray-3"></div>
-                                    <div class="ray ray-4"></div>
-                                </div>
-                                
-                                <!-- Floating Data Points -->
-                                <div class="floating-data">
-                                    <div class="data-point data-1">
-                                        <div class="data-icon">
-                                            <svg viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
-                                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                            </svg>
-                                        </div>
-                                        <span class="data-text">AI Optimized</span>
-                                    </div>
-                                    
-                                    <div class="data-point data-2">
-                                        <div class="data-icon">
-                                            <svg viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
-                                                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
-                                            </svg>
-                                        </div>
-                                        <span class="data-text">User Ready</span>
-                                    </div>
-                                    
-                                    <div class="data-point data-3">
-                                        <div class="data-icon">
-                                            <svg viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
-                                                <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
-                                            </svg>
-                                        </div>
-                                        <span class="data-text">Responsive</span>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -3033,8 +3010,8 @@
             
             <!-- Scroll Indicator -->
             <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
-                <div class="animate-bounce bg-white/80 backdrop-blur-lg rounded-full p-3 shadow-lg border border-blue-200">
-                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="animate-bounce bg-white/10 backdrop-blur-md rounded-full p-3 shadow-lg border border-white/20">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
                     </svg>
                 </div>
@@ -4084,5 +4061,91 @@
       Cal.ns.discoverycall("ui", {"cssVarsPerTheme":{"light":{"cal-brand":"#0e2f7e"},"dark":{"cal-brand":"#fafafa"}},"hideEventTypeDetails":false,"layout":"month_view"});
     </script>
     <!-- Cal floating-popup embed code ends -->
+
+    <!-- Video Hero Performance Optimization Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const heroVideo = document.getElementById('heroVideo');
+
+            if (!heroVideo) return;
+
+            // Intersection Observer for lazy loading optimization
+            const videoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Ensure video plays when in view
+                        heroVideo.play().catch(err => {
+                            console.log('Autoplay prevented:', err);
+                        });
+                    } else {
+                        // Pause when out of view to save resources
+                        heroVideo.pause();
+                    }
+                });
+            }, {
+                threshold: 0.5,
+                rootMargin: '0px'
+            });
+
+            videoObserver.observe(heroVideo);
+
+            // Performance: Reduce quality on slow connections
+            if ('connection' in navigator) {
+                const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+                if (connection && connection.effectiveType) {
+                    // On slow connections (2g, slow-2g), reduce video quality
+                    if (connection.effectiveType === '2g' || connection.effectiveType === 'slow-2g') {
+                        heroVideo.playbackRate = 0.8; // Slightly slower playback
+                    }
+                }
+            }
+
+            // Preload video on user interaction (for better performance)
+            let preloadTriggered = false;
+            const preloadVideo = () => {
+                if (!preloadTriggered) {
+                    heroVideo.preload = 'auto';
+                    preloadTriggered = true;
+                    // Remove listeners after first trigger
+                    document.removeEventListener('mousemove', preloadVideo);
+                    document.removeEventListener('touchstart', preloadVideo);
+                }
+            };
+
+            // Trigger preload on first user interaction
+            document.addEventListener('mousemove', preloadVideo, { once: true });
+            document.addEventListener('touchstart', preloadVideo, { once: true });
+
+            // Error handling
+            heroVideo.addEventListener('error', function(e) {
+                console.error('Video loading error:', e);
+                // Fallback: hide video and show placeholder
+                heroVideo.style.display = 'none';
+            });
+
+            // Performance monitoring
+            heroVideo.addEventListener('loadeddata', function() {
+                console.log('Hero video loaded successfully');
+            });
+
+            // Optimize playback
+            heroVideo.addEventListener('canplay', function() {
+                // Video is ready to play
+                heroVideo.classList.add('video-loaded');
+            });
+
+            // Accessibility: Pause video when user prefers reduced motion
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                heroVideo.pause();
+                heroVideo.removeAttribute('autoplay');
+            }
+
+            // Performance: Reduce frame rate on low-end devices
+            if ('deviceMemory' in navigator && navigator.deviceMemory < 4) {
+                // For devices with less than 4GB RAM
+                heroVideo.style.transform = 'translateZ(0)'; // Hardware acceleration
+            }
+        });
+    </script>
 </body>
 </html>

@@ -12,7 +12,10 @@
       "Read(//c/c/Users/warrior/optiscale360/**)",
       "Bash(python:*)",
       "Bash(sed:*)",
-      "WebFetch(domain:optiscale360.pages.dev)"
+      "WebFetch(domain:optiscale360.pages.dev)",
+      "Bash(npm run build:blog:*)",
+      "Bash(ls:*)",
+      "Bash(start \"C:\\Users\\Warrior\\optiscale360\\Free-AI-Ready-Website.html\")"
     ],
     "deny": [],
     "ask": []
