@@ -274,7 +274,7 @@
             position: relative;
             overflow: hidden;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
         }
 
         .hero::before {
@@ -313,7 +313,11 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: var(--space-lg);
-            align-items: center;
+            align-items: flex-start;
+        }
+
+        .hero-left {
+            padding-top: 2rem;
         }
 
         .hero-left h1 {
