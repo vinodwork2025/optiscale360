@@ -33,9 +33,14 @@
     <meta name="twitter:creator" content="@optiscale360">
     <meta name="twitter:site" content="@optiscale360">
 
+    <!-- Optimized Font Loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
+
+    <!-- Resource Hints for Performance -->
+    <link rel="dns-prefetch" href="https://app.cal.com">
     <style>
         /* PREMIUM AUTHORITY DESIGN SYSTEM */
         :root {
@@ -3458,31 +3463,40 @@
             });
         });
 
-        // Load Header and Footer Components
+        // Optimized Header and Footer Component Loading
         async function loadComponent(placeholderId, componentPath) {
             try {
                 const response = await fetch(componentPath);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                 const html = await response.text();
-                document.getElementById(placeholderId).innerHTML = html;
+                const placeholder = document.getElementById(placeholderId);
+                if (placeholder) placeholder.innerHTML = html;
             } catch (error) {
                 console.error(`Error loading ${componentPath}:`, error);
             }
         }
 
-        // Load components when DOM is ready
+        // Load components when DOM is ready - parallel loading for performance
         document.addEventListener('DOMContentLoaded', function() {
-            loadComponent('header-placeholder', '/components/header.html');
-            loadComponent('footer-placeholder', '/components/footer.html');
+            Promise.all([
+                loadComponent('header-placeholder', '/components/header.html'),
+                loadComponent('footer-placeholder', '/components/footer.html')
+            ]).catch(err => console.error('Component loading error:', err));
         });
     </script>
 
-    <!-- Cal floating-popup embed code begins -->
+    <!-- Cal floating-popup embed code begins - Deferred for performance -->
     <script type="text/javascript">
-      (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-    Cal("init", "discoverycall", {origin:"https://app.cal.com"});
+      // Defer Cal.com loading until after page load
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+          Cal("init", "discoverycall", {origin:"https://app.cal.com"});
 
-      Cal.ns.discoverycall("floatingButton", {"calLink":"optiscale360/discoverycall","config":{"layout":"month_view"},"buttonColor":"#8320cc","buttonPosition":"bottom-right","buttonText":"Book A Call"});
-      Cal.ns.discoverycall("ui", {"cssVarsPerTheme":{"light":{"cal-brand":"#0e2f7e"},"dark":{"cal-brand":"#fafafa"}},"hideEventTypeDetails":false,"layout":"month_view"});
+          Cal.ns.discoverycall("floatingButton", {"calLink":"optiscale360/discoverycall","config":{"layout":"month_view"},"buttonColor":"#8320cc","buttonPosition":"bottom-right","buttonText":"Book A Call"});
+          Cal.ns.discoverycall("ui", {"cssVarsPerTheme":{"light":{"cal-brand":"#0e2f7e"},"dark":{"cal-brand":"#fafafa"}},"hideEventTypeDetails":false,"layout":"month_view"});
+        }, 1000); // Delay Cal.com by 1 second after page load
+      });
     </script>
     <!-- Cal floating-popup embed code ends -->
 

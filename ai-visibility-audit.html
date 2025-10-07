@@ -16,22 +16,26 @@
     <meta property="og:url" content="https://optiscale360.pages.dev/ai-visibility-audit.html">
     <meta property="og:image" content="https://optiscale360.pages.dev/360_logo.svg">
 
-    <!-- Fonts -->
+    <!-- Optimized Font Loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
+
+    <!-- Resource Hints -->
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 
-    <!-- EmailJS -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js?v=2025"></script>
+    <!-- EmailJS - Deferred -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js?v=2025" defer></script>
     <script type="text/javascript">
-        (function(){
+        window.addEventListener('DOMContentLoaded', function(){
             // EmailJS Public Key
             emailjs.init("F25NFcVlXeUqES9qL");
             console.log("✅ EmailJS initialized with key: F25NFcVlXeUqES9qL");
-        })();
+        });
     </script>
 
     <style>

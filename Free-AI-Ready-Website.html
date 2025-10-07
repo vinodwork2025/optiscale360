@@ -29,26 +29,31 @@
     <link rel="icon" type="image/webp" href="favicon.webp">
     <link rel="apple-touch-icon" href="apple-touch-icon.webp">
     
-    <!-- Fonts -->
+    <!-- Optimized Font Loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"></noscript>
 
-    <!-- EmailJS -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <!-- Resource Hints -->
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+
+    <!-- EmailJS - Deferred -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
     <script type="text/javascript">
-        (function(){
+        window.addEventListener('DOMContentLoaded', function(){
             // EmailJS Public Key
             emailjs.init("F25NFcVlXeUqES9qL");
             console.log("✅ EmailJS initialized for Free AI Website form");
-        })();
+        });
     </script>
 
     <!-- Existing Styles -->
     <link rel="stylesheet" href="styles.css">
-    
-    <!-- TailwindCSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- TailwindCSS - Deferred -->
+    <script src="https://cdn.tailwindcss.com" defer></script>
     <script>
         tailwind.config = {
             theme: {
