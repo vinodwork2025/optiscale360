@@ -145,9 +145,28 @@
     
     <style>
         /* Fix header gradient overlay conflict from styles.css */
+        /* Remove all pseudo-elements that could create color bands */
         .header::before,
-        .optiscale-header::before {
+        .header::after,
+        .optiscale-header::before,
+        .optiscale-header::after,
+        header::before,
+        header::after,
+        header.optiscale-header::before,
+        header.optiscale-header::after,
+        body::before,
+        body::after {
             display: none !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+            content: none !important;
+        }
+
+        /* Ensure header has clean background */
+        .optiscale-header,
+        header.optiscale-header,
+        .header {
+            background: transparent !important;
         }
 
         /* Enhanced animations and effects */
