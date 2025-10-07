@@ -156,35 +156,9 @@
         "category": "Professional Web Development Services"
     }
     </script>
-    
+
     <style>
-        /* Force clean white header - no gradients, no color bands */
-        .header-backdrop {
-            background: #ffffff !important;
-            background-image: none !important;
-            background-clip: padding-box !important;
-        }
-
-        .optiscale-header,
-        header.optiscale-header,
-        .header {
-            background: transparent !important;
-        }
-
-        /* Remove any pseudo-elements that might add gradients */
-        .header::before,
-        .header::after,
-        .optiscale-header::before,
-        .optiscale-header::after,
-        header::before,
-        header::after,
-        .header-backdrop::before,
-        .header-backdrop::after {
-            display: none !important;
-            content: none !important;
-        }
-
-        /* Enhanced animations and effects */
+        /* Page-specific animations and effects */
         .hero-gradient-bg {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             background-size: 300% 300%;
@@ -4142,10 +4116,12 @@
         }
     }
 
-    // Load components when DOM is ready
+    // Load components when DOM is ready - parallel loading for performance
     document.addEventListener('DOMContentLoaded', function() {
-        loadComponent('header-placeholder', '/components/header.html');
-        loadComponent('footer-placeholder', '/components/footer.html');
+        Promise.all([
+            loadComponent('header-placeholder', '/components/header.html'),
+            loadComponent('footer-placeholder', '/components/footer.html')
+        ]).catch(err => console.error('Component loading error:', err));
     });
     </script>
 
