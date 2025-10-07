@@ -1,20 +1,36 @@
+# Robots.txt for OptiScale Advisors
+# AI Search Optimization & SEO Consulting Services
+# https://optiscaleadvisors.com/
+
+# Allow all major search engines and AI crawlers
 User-agent: *
 Allow: /
 
-# Optimize for search engines
-Sitemap: https://optiscale360.pages.dev/sitemap.xml
-
-# Block unnecessary files
-Disallow: /node_modules/
+# Block development, admin, and backup files
+Disallow: /admin/
+Disallow: /test-*
+Disallow: /contact-test*
+Disallow: /contact-backup*
+Disallow: /contact-working*
+Disallow: /emergency-contact.html
+Disallow: /index_*
+Disallow: /landing-page*
+Disallow: /blog-admin*
+Disallow: /blog-editor*
 Disallow: /.git/
-Disallow: /package.json
-Disallow: /package-lock.json
+Disallow: /.claude/
+Disallow: /node_modules/
+Disallow: /studio/
+Disallow: /components/
 Disallow: /*.js$
 Disallow: /*.log$
+Disallow: /*_backup.html
+Disallow: /*_working.html
 
-# Allow important blog content
+# Allow important content and assets
 Allow: /blog/
 Allow: /blog/posts/
+Allow: /assets/
 Allow: /*.html$
 Allow: /*.css$
 Allow: /*.svg$
@@ -22,3 +38,36 @@ Allow: /*.png$
 Allow: /*.jpg$
 Allow: /*.jpeg$
 Allow: /*.webp$
+
+# AI Crawler specific rules
+User-agent: GPTBot
+Allow: /
+Allow: /blog/
+
+User-agent: ChatGPT-User
+Allow: /
+Allow: /blog/
+
+User-agent: Claude-Web
+Allow: /
+Allow: /blog/
+
+User-agent: PerplexityBot
+Allow: /
+Allow: /blog/
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Sitemap locations
+Sitemap: https://optiscaleadvisors.com/sitemap.xml
+Sitemap: https://optiscale360.pages.dev/sitemap.xml
+Sitemap: https://optiscaleadvisors.com/blog/feed.xml
+
+# Last updated: 2025-10-07
