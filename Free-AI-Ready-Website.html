@@ -162,11 +162,20 @@
             content: none !important;
         }
 
-        /* Ensure header has clean background */
+        /* Fix the header-backdrop element that creates the color band */
+        .header-backdrop {
+            display: none !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+        }
+
+        /* Ensure header has clean solid white background instead */
         .optiscale-header,
         header.optiscale-header,
         .header {
-            background: transparent !important;
+            background: rgba(255, 255, 255, 0.98) !important;
+            backdrop-filter: blur(24px) !important;
+            border-bottom: 1px solid rgba(226, 232, 240, 0.6) !important;
         }
 
         /* Enhanced animations and effects */
