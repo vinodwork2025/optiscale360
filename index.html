@@ -1917,11 +1917,11 @@
         }
 
         .team-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
             margin-top: var(--space-lg);
-            max-width: 1000px;
+            max-width: 1200px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -1929,29 +1929,31 @@
         .team-member {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.95) 100%);
             border-radius: 16px;
-            padding: 1.25rem 1.5rem;
+            padding: 1.5rem;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 1.5rem;
+            text-align: center;
+            gap: 1rem;
             border: 1px solid rgba(226, 232, 240, 0.5);
             transition: all 0.3s ease;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
         }
 
         .team-member:hover {
-            transform: translateX(8px);
-            box-shadow: 0 4px 16px rgba(0, 102, 255, 0.12);
-            border-color: rgba(0, 102, 255, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 8px 24px rgba(0, 102, 255, 0.15);
+            border-color: rgba(0, 102, 255, 0.3);
         }
 
         .member-avatar {
             position: relative;
-            width: 80px;
-            height: 80px;
+            width: 90px;
+            height: 90px;
             flex-shrink: 0;
-            border-radius: 12px;
+            border-radius: 50%;
             overflow: hidden;
-            border: 2px solid rgba(0, 102, 255, 0.15);
+            border: 3px solid rgba(0, 102, 255, 0.2);
             transition: all 0.3s ease;
         }
 
@@ -1962,8 +1964,8 @@
         }
 
         .team-member:hover .member-avatar {
-            border-color: rgba(0, 102, 255, 0.4);
-            transform: scale(1.05);
+            border-color: rgba(0, 102, 255, 0.5);
+            transform: scale(1.08);
         }
 
         .member-overlay {
@@ -1979,19 +1981,18 @@
         }
 
         .member-info {
-            flex: 1;
             display: flex;
-            align-items: center;
-            gap: 2rem;
+            flex-direction: column;
+            gap: 0.5rem;
         }
 
         .member-details {
-            flex: 0 0 240px;
+            margin-bottom: 0.5rem;
         }
 
         .member-name {
             font-family: var(--font-primary);
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             font-weight: 600;
             color: var(--primary-navy);
             margin-bottom: 0.25rem;
@@ -2007,9 +2008,8 @@
 
         .member-description {
             color: var(--text-secondary);
-            line-height: 1.5;
-            font-size: 0.9rem;
-            flex: 1;
+            line-height: 1.6;
+            font-size: 0.875rem;
         }
 
         /* FINAL CTA SECTION */
@@ -2346,10 +2346,7 @@
             .service-card,
             .testimonial-card,
             .team-member {
-                padding: 1rem;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
+                padding: 1.25rem;
             }
 
             .team-member:hover {
@@ -2361,22 +2358,13 @@
             }
 
             .team-grid {
+                grid-template-columns: 1fr;
                 gap: 1rem;
             }
 
             .member-avatar {
-                width: 60px;
-                height: 60px;
-            }
-
-            .member-info {
-                flex-direction: column;
-                gap: 0.75rem;
-                align-items: flex-start;
-            }
-
-            .member-details {
-                flex: none;
+                width: 80px;
+                height: 80px;
             }
 
             .member-description {
