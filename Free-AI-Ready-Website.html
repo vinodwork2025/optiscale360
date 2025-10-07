@@ -33,7 +33,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
+
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            // EmailJS Public Key
+            emailjs.init("F25NFcVlXeUqES9qL");
+            console.log("✅ EmailJS initialized for Free AI Website form");
+        })();
+    </script>
+
     <!-- Existing Styles -->
     <link rel="stylesheet" href="styles.css">
     
@@ -3934,6 +3944,52 @@
                 try {
                     // Collect form data
                     const formData = new FormData(leadForm);
+
+                    // Prepare lead data
+                    const leadData = {
+                        firstName: formData.get('firstName'),
+                        lastName: formData.get('lastName'),
+                        email: formData.get('email'),
+                        phone: formData.get('phone') || 'Not provided',
+                        company: formData.get('company'),
+                        currentWebsite: formData.get('currentWebsite') || 'None',
+                        businessType: formData.get('businessType'),
+                        projectGoals: formData.get('projectGoals'),
+                        newsletter: formData.get('newsletter') ? 'Yes' : 'No',
+                        timestamp: new Date().toLocaleString('en-US', {
+                            dateStyle: 'full',
+                            timeStyle: 'long',
+                            timeZone: 'America/New_York'
+                        }),
+                        source: document.referrer ? new URL(document.referrer).hostname : 'Direct',
+                        referrer: document.referrer || 'Direct',
+                        pageUrl: window.location.href
+                    };
+
+                    console.log('📧 Sending email via EmailJS:', leadData);
+                    console.log('📧 Using Service ID: service_g4erqhd, Template ID: template_freewebsite');
+
+                    // Send email using EmailJS
+                    await emailjs.send('service_g4erqhd', 'template_freewebsite', {
+                        to_email: 'vinod@optiscale360.com',
+                        from_name: leadData.firstName + ' ' + leadData.lastName,
+                        first_name: leadData.firstName,
+                        last_name: leadData.lastName,
+                        email: leadData.email,
+                        phone: leadData.phone,
+                        company: leadData.company,
+                        current_website: leadData.currentWebsite,
+                        business_type: leadData.businessType,
+                        project_goals: leadData.projectGoals,
+                        newsletter: leadData.newsletter,
+                        form_type: 'Free AI-Ready Website Request',
+                        timestamp: leadData.timestamp,
+                        source: leadData.source,
+                        referrer: leadData.referrer,
+                        page_url: leadData.pageUrl
+                    });
+
+                    console.log('✅ Email sent successfully via EmailJS!');
 
                     // Process lead submission using Lead Manager (now async)
                     const savedLead = await window.LeadManager.processFormSubmission(formData, 'Free AI-Ready Website');
