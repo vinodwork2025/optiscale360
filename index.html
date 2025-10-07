@@ -1617,6 +1617,18 @@
             animation: shimmer 1.5s ease-in-out;
         }
 
+        .testimonial-rating {
+            display: flex;
+            gap: 4px;
+            margin-bottom: var(--space-md);
+        }
+
+        .testimonial-rating .star {
+            color: #FFB800;
+            font-size: 1.25rem;
+            line-height: 1;
+        }
+
         .testimonial-content {
             font-size: 1.1rem;
             line-height: 1.6;
@@ -1632,11 +1644,7 @@
         }
 
         .author-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: var(--silver-dark);
-            overflow: hidden;
+            display: none;
         }
 
         .author-info h4 {
@@ -2769,13 +2777,17 @@
             <div class="testimonials-grid">
                 <div class="testimonial-card">
                     <div class="testimonial-accent"></div>
+                    <div class="testimonial-rating">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
                     <div class="testimonial-content">
                         "The report showed us exactly where we were missing. Our company was not showing up when people searched on ChatGPT. Now we get calls from people who found us through AI search."
                     </div>
                     <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=60&h=60&fit=crop&crop=face" alt="Rajesh Kumar">
-                        </div>
                         <div class="author-info">
                             <h4>Rajesh Kumar</h4>
                             <div class="author-title">Founder, TechServe Solutions</div>
@@ -2785,13 +2797,17 @@
 
                 <div class="testimonial-card">
                     <div class="testimonial-accent"></div>
+                    <div class="testimonial-rating">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
                     <div class="testimonial-content">
                         "They built our website for free first. We tested it for two weeks. It brought us 15 new customer inquiries. Then we paid them. This is how business should work."
                     </div>
                     <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=60&h=60&fit=crop&crop=face" alt="Priya Sharma">
-                        </div>
                         <div class="author-info">
                             <h4>Priya Sharma</h4>
                             <div class="author-title">Director, EduBright Academy</div>
@@ -2801,13 +2817,17 @@
 
                 <div class="testimonial-card">
                     <div class="testimonial-accent"></div>
+                    <div class="testimonial-rating">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
                     <div class="testimonial-content">
                         "The report told us our competitors were showing up and we were not. We fixed what they said to fix. Now when someone asks AI about interior designers in Mumbai, our name comes up."
                     </div>
                     <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face" alt="Arjun Mehta">
-                        </div>
                         <div class="author-info">
                             <h4>Arjun Mehta</h4>
                             <div class="author-title">Owner, DesignCraft Interiors</div>
