@@ -114,13 +114,15 @@
     padding: 0 2rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     height: 84px;
     z-index: 10;
 }
 
 /* ===== BRAND LOGO ===== */
 .brand-logo {
+    position: absolute;
+    left: 2rem;
     display: flex;
     align-items: center;
     text-decoration: none;
@@ -131,7 +133,7 @@
 .logo-image {
     height: 100%;
     width: auto;
-    max-height: 70px;
+    max-height: 80px;
     object-fit: contain;
 }
 
@@ -139,7 +141,6 @@
 
 /* ===== NAVIGATION CENTER ===== */
 .nav-center {
-    flex: 1;
     display: flex;
     justify-content: center;
 }
@@ -197,6 +198,8 @@
 
 /* ===== PREMIUM CTA BUTTON ===== */
 .nav-actions {
+    position: absolute;
+    right: 2rem;
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -420,6 +423,15 @@
 
     .nav-container {
         padding: 0 1.5rem;
+        justify-content: space-between;
+    }
+
+    .brand-logo {
+        position: static;
+    }
+
+    .nav-actions {
+        position: static;
     }
 }
 
@@ -429,10 +441,18 @@
         height: 72px;
     }
 
+    .brand-logo {
+        left: 1rem;
+    }
+
+    .nav-actions {
+        right: 1rem;
+    }
+
     /* Brand text removed - logo only */
 
     .logo-image {
-        max-height: 55px;
+        max-height: 63px;
     }
 
     .premium-cta {
@@ -450,10 +470,18 @@
         height: 64px;
     }
 
+    .brand-logo {
+        left: 1rem;
+    }
+
+    .nav-actions {
+        right: 1rem;
+    }
+
     /* Brand text removed - logo only */
 
     .logo-image {
-        max-height: 48px;
+        max-height: 55px;
     }
 
     .premium-cta {
