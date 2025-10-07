@@ -1917,36 +1917,41 @@
         }
 
         .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--space-xl);
-            margin-top: var(--space-xl);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: var(--space-lg);
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .team-member {
-            background: var(--pure-white);
-            border-radius: var(--radius-xl);
-            padding: var(--space-xl);
-            text-align: center;
-            box-shadow: var(--shadow-lg);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(226, 232, 240, 0.6);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.95) 100%);
+            border-radius: 16px;
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            border: 1px solid rgba(226, 232, 240, 0.5);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
         }
 
         .team-member:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-2xl);
-            border-color: rgba(59, 130, 246, 0.2);
+            transform: translateX(8px);
+            box-shadow: 0 4px 16px rgba(0, 102, 255, 0.12);
+            border-color: rgba(0, 102, 255, 0.2);
         }
 
         .member-avatar {
             position: relative;
-            width: 120px;
-            height: 120px;
-            margin: 0 auto var(--space-lg);
-            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            flex-shrink: 0;
+            border-radius: 12px;
             overflow: hidden;
-            border: 4px solid var(--primary-blue);
+            border: 2px solid rgba(0, 102, 255, 0.15);
             transition: all 0.3s ease;
         }
 
@@ -1954,80 +1959,57 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: all 0.3s ease;
+        }
+
+        .team-member:hover .member-avatar {
+            border-color: rgba(0, 102, 255, 0.4);
+            transform: scale(1.05);
         }
 
         .member-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 102, 255, 0.9);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-
-        .team-member:hover .member-overlay {
-            opacity: 1;
+            display: none;
         }
 
         .member-social {
-            display: flex;
-            gap: var(--space-sm);
+            display: none;
         }
 
         .social-link {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-link:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.1);
-        }
-
-        .social-link svg {
-            width: 20px;
-            height: 20px;
+            display: none;
         }
 
         .member-info {
-            padding: 0 var(--space-sm);
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .member-details {
+            flex: 0 0 240px;
         }
 
         .member-name {
             font-family: var(--font-primary);
-            font-size: 1.5rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: var(--primary-navy);
-            margin-bottom: var(--space-xs);
+            margin-bottom: 0.25rem;
         }
 
         .member-title {
             color: var(--primary-blue);
-            font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: var(--space-md);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            margin: 0;
+            letter-spacing: 0.3px;
         }
 
         .member-description {
             color: var(--text-secondary);
-            line-height: 1.6;
-            font-size: 0.95rem;
+            line-height: 1.5;
+            font-size: 0.9rem;
+            flex: 1;
         }
 
         /* FINAL CTA SECTION */
@@ -2364,7 +2346,14 @@
             .service-card,
             .testimonial-card,
             .team-member {
-                padding: var(--space-lg);
+                padding: 1rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .team-member:hover {
+                transform: translateY(-4px);
             }
 
             .stats-grid {
@@ -2372,13 +2361,26 @@
             }
 
             .team-grid {
-                grid-template-columns: 1fr;
-                gap: var(--space-lg);
+                gap: 1rem;
             }
 
             .member-avatar {
-                width: 100px;
-                height: 100px;
+                width: 60px;
+                height: 60px;
+            }
+
+            .member-info {
+                flex-direction: column;
+                gap: 0.75rem;
+                align-items: flex-start;
+            }
+
+            .member-details {
+                flex: none;
+            }
+
+            .member-description {
+                font-size: 0.85rem;
             }
 
             .dashboard-container {
@@ -2936,19 +2938,12 @@
                 <div class="team-member">
                     <div class="member-avatar">
                         <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop&crop=face&fm=jpg" alt="Vinod Kumar" loading="lazy">
-                        <div class="member-overlay">
-                            <div class="member-social">
-                                <a href="#" class="social-link" aria-label="LinkedIn">
-                                    <svg viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
                     </div>
                     <div class="member-info">
-                        <h3 class="member-name">Vinod Kumar</h3>
-                        <p class="member-title">Founder & Technical Director</p>
+                        <div class="member-details">
+                            <h3 class="member-name">Vinod Kumar</h3>
+                            <p class="member-title">Founder & Technical Director</p>
+                        </div>
                         <p class="member-description">18+ years driving business growth through digital transformation. Scaled multiple businesses from startup to market leaders across India and international markets.</p>
                     </div>
                 </div>
@@ -2956,19 +2951,12 @@
                 <div class="team-member">
                     <div class="member-avatar">
                         <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face&fm=jpg" alt="Aditya Patel" loading="lazy">
-                        <div class="member-overlay">
-                            <div class="member-social">
-                                <a href="#" class="social-link" aria-label="LinkedIn">
-                                    <svg viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
                     </div>
                     <div class="member-info">
-                        <h3 class="member-name">Aditya Patel</h3>
-                        <p class="member-title">AI Search Strategy Director</p>
+                        <div class="member-details">
+                            <h3 class="member-name">Aditya Patel</h3>
+                            <p class="member-title">AI Search Strategy Director</p>
+                        </div>
                         <p class="member-description">10+ years at Google India and Microsoft, specializing in search algorithms and AI-powered recommendation systems. Led AI search optimization for Fortune 500 clients.</p>
                     </div>
                 </div>
@@ -2976,19 +2964,12 @@
                 <div class="team-member">
                     <div class="member-avatar">
                         <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop&crop=face&fm=jpg" alt="Sneha Reddy" loading="lazy">
-                        <div class="member-overlay">
-                            <div class="member-social">
-                                <a href="#" class="social-link" aria-label="LinkedIn">
-                                    <svg viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
                     </div>
                     <div class="member-info">
-                        <h3 class="member-name">Sneha Reddy</h3>
-                        <p class="member-title">Technical SEO Lead</p>
+                        <div class="member-details">
+                            <h3 class="member-name">Sneha Reddy</h3>
+                            <p class="member-title">Technical SEO Lead</p>
+                        </div>
                         <p class="member-description">12+ years at Amazon Web Services and Flipkart, building scalable technical infrastructure. Expert in structured data and AI platform optimization for enterprise clients.</p>
                     </div>
                 </div>
@@ -2996,19 +2977,12 @@
                 <div class="team-member">
                     <div class="member-avatar">
                         <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&h=150&fit=crop&crop=face&fm=jpg" alt="Karthik Menon" loading="lazy">
-                        <div class="member-overlay">
-                            <div class="member-social">
-                                <a href="#" class="social-link" aria-label="LinkedIn">
-                                    <svg viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
                     </div>
                     <div class="member-info">
-                        <h3 class="member-name">Karthik Menon</h3>
-                        <p class="member-title">Content Strategy & AI Integration</p>
+                        <div class="member-details">
+                            <h3 class="member-name">Karthik Menon</h3>
+                            <p class="member-title">Content Strategy & AI Integration</p>
+                        </div>
                         <p class="member-description">9+ years at IBM and Infosys, leading content operations for global brands. Specializes in creating AI-optimized content that drives business results across platforms.</p>
                     </div>
                 </div>
