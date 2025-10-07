@@ -615,7 +615,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 80px;
-            align-items: center;
+            align-items: flex-start;
         }
 
         @media (max-width: 1024px) {
@@ -638,8 +638,20 @@
             }
         }
 
+        .hero-form {
+            order: -1;
+            padding-top: 6rem;
+        }
+
         .hero-text {
             max-width: 600px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-form {
+                order: 0;
+                padding-top: 3rem;
+            }
         }
 
         .hero-badge {
@@ -2275,7 +2287,7 @@
 
                 <div class="hero-form animate-fade-in-right" id="leadForm">
                     <div class="form-header">
-                        <h3 class="form-title">Get My Free AI Visibility Analysis</h3>
+                        <h3 class="form-title">Get My Business Visibility Intelligence Report</h3>
                         <p class="form-subtitle">Your competitors may already be improving their AI visibility. Understand where you stand so you can take action.</p>
                     </div>
 
