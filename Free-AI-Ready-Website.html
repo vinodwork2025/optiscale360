@@ -144,6 +144,12 @@
     </script>
     
     <style>
+        /* Fix header gradient overlay conflict from styles.css */
+        .header::before,
+        .optiscale-header::before {
+            display: none !important;
+        }
+
         /* Enhanced animations and effects */
         .hero-gradient-bg {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
