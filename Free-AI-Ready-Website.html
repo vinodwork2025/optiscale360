@@ -2904,7 +2904,7 @@
                                 <p class="text-gray-600 text-sm">Fill out the form and we'll begin creating your AI-ready website draft.</p>
                             </div>
 
-                            <form id="leadCaptureForm" class="space-y-3.5">
+                            <form id="leadCaptureForm" class="space-y-3.5" onsubmit="return false;">
                                 <!-- Name Fields -->
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div class="space-y-2">
@@ -3926,6 +3926,7 @@
         if (leadForm) {
             leadForm.addEventListener('submit', async function(e) {
                 e.preventDefault();
+                e.stopPropagation();
 
                 const submitBtn = leadForm.querySelector('button[type="submit"]');
                 const originalText = submitBtn.innerHTML;
@@ -3991,43 +3992,45 @@
 
                     console.log('✅ Email sent successfully via EmailJS!');
 
-                    // Process lead submission using Lead Manager (now async)
-                    const savedLead = await window.LeadManager.processFormSubmission(formData, 'Free AI-Ready Website');
+                    // Try to process with Lead Manager if available (optional)
+                    try {
+                        if (window.LeadManager && typeof window.LeadManager.processFormSubmission === 'function') {
+                            await window.LeadManager.processFormSubmission(formData, 'Free AI-Ready Website');
+                        }
+                    } catch (leadManagerError) {
+                        console.warn('Lead Manager not available:', leadManagerError);
+                    }
 
-                    setTimeout(() => {
-                        // Show success message
-                        const successMessage = document.createElement('div');
-                        successMessage.className = 'fixed top-20 right-4 bg-green-500 text-white p-6 rounded-2xl shadow-2xl z-50 max-w-md';
-                        const message = savedLead
-                            ? 'Your request has been sent directly to our team. We\'ll begin work on your FREE website draft within 24 hours.'
-                            : 'We\'ll begin work on your FREE website draft within 24 hours.';
-
-                        successMessage.innerHTML = `
-                            <div class="flex items-start gap-3">
-                                <svg class="w-6 h-6 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                </svg>
-                                <div>
-                                    <h4 class="font-bold mb-1">Website Build Started!</h4>
-                                    <p class="text-sm">${message}</p>
-                                </div>
+                    // Show success message
+                    const successMessage = document.createElement('div');
+                    successMessage.className = 'fixed top-20 right-4 bg-green-500 text-white p-6 rounded-2xl shadow-2xl z-50 max-w-md animate-slide-in';
+                    successMessage.innerHTML = `
+                        <div class="flex items-start gap-3">
+                            <svg class="w-6 h-6 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <div>
+                                <h4 class="font-bold mb-1">✨ Website Build Started!</h4>
+                                <p class="text-sm">Your request has been sent! We'll begin work on your FREE website draft within 24 hours and send you an email with next steps.</p>
                             </div>
-                        `;
-                        document.body.appendChild(successMessage);
+                        </div>
+                    `;
+                    document.body.appendChild(successMessage);
 
-                        // Auto-remove message
-                        setTimeout(() => {
-                            successMessage.remove();
-                        }, 5000);
+                    // Auto-remove message
+                    setTimeout(() => {
+                        successMessage.style.opacity = '0';
+                        successMessage.style.transform = 'translateX(400px)';
+                        setTimeout(() => successMessage.remove(), 300);
+                    }, 6000);
 
-                        // Reset form
-                        leadForm.reset();
-                        submitBtn.disabled = false;
-                        submitBtn.innerHTML = originalText;
+                    // Reset form
+                    leadForm.reset();
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalText;
 
-                        // Scroll to how it works section
-                        document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' });
-                    }, 1000);
+                    // Scroll to top of form smoothly
+                    leadForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 } catch (error) {
                     console.error('Form submission error:', error);
 
@@ -4056,6 +4059,8 @@
                     submitBtn.disabled = false;
                     submitBtn.innerHTML = originalText;
                 }
+
+                return false;
             });
 
             // Real-time form validation
