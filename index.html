@@ -3338,5 +3338,35 @@
       Cal.ns.discoverycall("ui", {"cssVarsPerTheme":{"light":{"cal-brand":"#0e2f7e"},"dark":{"cal-brand":"#fafafa"}},"hideEventTypeDetails":false,"layout":"month_view"});
     </script>
     <!-- Cal floating-popup embed code ends -->
+
+    <!-- Floating Button Responsive Styles -->
+    <style>
+        /* Optimize Cal.com floating button for all screen sizes */
+        @media (max-width: 768px) {
+            [data-cal-namespace="discoverycall"] button {
+                padding: 0.65rem 1rem !important;
+                font-size: 0.85rem !important;
+                max-width: 180px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            [data-cal-namespace="discoverycall"] button {
+                padding: 0.5rem 0.75rem !important;
+                font-size: 0.75rem !important;
+                max-width: 140px !important;
+                bottom: 16px !important;
+                right: 12px !important;
+            }
+        }
+
+        @media (max-width: 360px) {
+            [data-cal-namespace="discoverycall"] button {
+                padding: 0.45rem 0.65rem !important;
+                font-size: 0.7rem !important;
+                max-width: 120px !important;
+            }
+        }
+    </style>
 </body>
 </html>
