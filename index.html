@@ -407,6 +407,69 @@
             box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
         }
 
+        .hero-cta {
+            margin-top: var(--space-lg);
+            animation: fadeInUp 0.8s ease-out 0.8s both;
+        }
+
+        .hero-cta-content {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1rem 1.5rem;
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.08) 0%, rgba(0, 182, 212, 0.08) 100%);
+            border-radius: 50px;
+            border: 1px solid rgba(0, 102, 255, 0.15);
+            max-width: fit-content;
+            transition: all 0.3s ease;
+        }
+
+        .hero-cta-content:hover {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.12) 0%, rgba(0, 182, 212, 0.12) 100%);
+            border-color: rgba(0, 102, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 102, 255, 0.15);
+        }
+
+        .hero-cta-text {
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .hero-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #0066FF 0%, #0052CC 100%);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .hero-cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 102, 255, 0.4);
+            text-decoration: none;
+            color: white;
+        }
+
+        .hero-cta-btn svg {
+            transition: transform 0.3s ease;
+        }
+
+        .hero-cta-btn:hover svg {
+            transform: translateX(3px);
+        }
+
 
         .hero-visual {
             position: relative;
@@ -2314,6 +2377,22 @@
                 font-size: 1.05rem;
             }
 
+            .hero-cta-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+                padding: 0.75rem 1rem;
+            }
+
+            .hero-cta-text {
+                font-size: 0.9rem;
+            }
+
+            .hero-cta-btn {
+                font-size: 0.85rem;
+                padding: 0.5rem 1.25rem;
+            }
+
             .hero-visual {
                 margin-bottom: 0;
                 padding-top: 2rem;
@@ -2560,6 +2639,18 @@
                         <div class="hero-badge">SEO Specialists</div>
                         <div class="hero-badge">AI Search Focus</div>
                         <div class="hero-badge">Data-Driven Results</div>
+                    </div>
+
+                    <div class="hero-cta">
+                        <div class="hero-cta-content">
+                            <p class="hero-cta-text">Want to know where you stand? Let's talk.</p>
+                            <a href="#" class="hero-cta-btn" data-cal-namespace="discoverycall" data-cal-link="optiscale360/discoverycall" data-cal-config='{"layout":"month_view"}'>
+                                <span>Get Your Free 15-Min Strategy Call</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
 
                 </div>
@@ -2822,18 +2913,6 @@
                 </div>
             </div>
 
-            <div class="consultation-cta">
-                <div class="consultation-content">
-                    <p class="consultation-text">Not sure which approach fits your business best?</p>
-                    <a href="#" class="consultation-btn" data-cal-namespace="discoverycall" data-cal-link="optiscale360/discoverycall" data-cal-config='{"layout":"month_view"}'>
-                        <span>Schedule a Free 15-Min Consultation</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </a>
-                    <p class="consultation-subtext">We'll recommend the best path for your specific situation</p>
-                </div>
-            </div>
         </div>
     </section>
 
