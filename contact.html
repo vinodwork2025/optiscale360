@@ -3,318 +3,734 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - OptiScale 360</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="cache-control" content="no-cache, no-store, must-revalidate">
+    <meta name="pragma" content="no-cache">
+    <meta name="expires" content="0">
+    <title>Contact Us | OptiScale 360 - AI Search & SEO Consulting</title>
+    <meta name="description" content="Get in touch with OptiScale 360 for AI search optimization and SEO consulting. Serving businesses globally with expert digital visibility solutions.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("F25NFcVlXeUqES9qL");
+            console.log("✅ EmailJS initialized for Contact form");
+        })();
+    </script>
+
     <style>
+        :root {
+            --primary-navy: #0A0E27;
+            --primary-blue: #0066FF;
+            --pure-white: #FFFFFF;
+            --silver: #F8FAFC;
+            --silver-dark: #E2E8F0;
+            --text-primary: #0F1419;
+            --text-secondary: #3C4553;
+            --text-muted: #5C6B7F;
+            --gradient-primary: linear-gradient(135deg, #0066FF 0%, #0052CC 100%);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --font-primary: 'Space Grotesk', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-secondary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: var(--font-secondary);
+            color: var(--text-primary);
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            min-height: 100vh;
+            background: var(--silver);
+            padding-top: 84px;
         }
 
-        .header {
-            background: linear-gradient(135deg, #0066FF 0%, #0052CC 100%);
-            color: white;
+        /* Hero Section */
+        .contact-hero {
+            background: var(--gradient-primary);
+            padding: 80px 20px;
             text-align: center;
-            padding: 60px 20px;
-        }
-
-        .header h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .header p {
-            font-size: 1.3rem;
-            opacity: 0.95;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        .booking-container {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            position: relative;
             overflow: hidden;
-            margin: -40px auto 40px;
+        }
+
+        .contact-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.4;
+        }
+
+        .contact-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-hero h1 {
+            font-family: var(--font-primary);
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--pure-white);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .contact-hero p {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 30px;
+        }
+
+        /* Main Container */
+        .contact-container {
+            max-width: 1400px;
+            margin: -60px auto 0;
+            padding: 0 20px 80px;
             position: relative;
             z-index: 10;
         }
 
-        .cal-embed-wrapper {
-            padding: 40px;
-            min-height: 700px;
-            background: #fafbfc;
-        }
-
-        .cal-loading {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 500px;
-            color: #64748b;
-        }
-
-        .cal-loading-spinner {
-            width: 60px;
-            height: 60px;
-            border: 5px solid #e2e8f0;
-            border-top: 5px solid #0066FF;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-bottom: 30px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .cal-loading h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: #0066FF;
-        }
-
-        .cal-loading p {
-            font-size: 1.1rem;
-            text-align: center;
-        }
-
-        /* Cal.com widget styling */
-        [data-cal-namespace] {
-            --cal-brand-color: #0066FF !important;
-            --cal-brand-text-color: white !important;
-            --cal-bg: #ffffff !important;
-            --cal-border-subtle: #e2e8f0 !important;
-            --cal-text: #374151 !important;
-            --cal-text-emphasis: #111827 !important;
-            --cal-text-subtle: #64748b !important;
-        }
-
-        .contact-info {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            padding: 50px 40px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .contact-info h2 {
-            color: #0066FF;
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-
-        .contact-info p {
-            font-size: 1.2rem;
-            color: #64748b;
-            margin-bottom: 30px;
-        }
-
-        .contact-details {
+        /* Grid Layout */
+        .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        /* Contact Form Card */
+        .contact-form-card {
+            background: var(--pure-white);
+            border-radius: 24px;
+            padding: 48px;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .contact-form-card h2 {
+            font-family: var(--font-primary);
+            font-size: 2rem;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .contact-form-card p {
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid var(--silver-dark);
+            border-radius: 12px;
+            font-family: var(--font-secondary);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 4px rgba(0, 102, 255, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 140px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: var(--gradient-primary);
+            color: var(--pure-white);
+            padding: 16px 32px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: var(--font-secondary);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(0, 102, 255, 0.3);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* Contact Info Card */
+        .contact-info-card {
+            background: var(--pure-white);
+            border-radius: 24px;
+            padding: 48px;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .contact-info-card h2 {
+            font-family: var(--font-primary);
+            font-size: 2rem;
+            color: var(--text-primary);
+            margin-bottom: 32px;
         }
 
         .contact-item {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 32px;
         }
 
-        .contact-item:hover {
-            transform: translateY(-5px);
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1) 0%, rgba(0, 82, 204, 0.1) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
         }
 
-        .contact-item strong {
-            color: #0066FF;
-            display: block;
-            margin-bottom: 10px;
-            font-size: 1.2rem;
+        .contact-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--primary-blue);
         }
 
-        .contact-item a {
-            color: #374151;
+        .contact-details h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+
+        .contact-details p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .contact-details a {
+            color: var(--primary-blue);
             text-decoration: none;
-            font-weight: 500;
+            transition: color 0.3s ease;
         }
 
-        .contact-item a:hover {
-            color: #0066FF;
+        .contact-details a:hover {
+            color: #0052CC;
+        }
+
+        /* Service Areas Section */
+        .service-areas {
+            background: var(--pure-white);
+            border-radius: 24px;
+            padding: 48px;
+            box-shadow: var(--shadow-xl);
+            margin-bottom: 40px;
+        }
+
+        .service-areas h2 {
+            font-family: var(--font-primary);
+            font-size: 2rem;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .service-areas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .service-area-item {
+            text-align: center;
+            padding: 24px;
+            background: var(--silver);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .service-area-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-area-item svg {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 12px;
+            stroke: var(--primary-blue);
+        }
+
+        .service-area-item h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+
+        .service-area-item p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Map Section */
+        .map-section {
+            background: var(--pure-white);
+            border-radius: 24px;
+            padding: 48px;
+            box-shadow: var(--shadow-xl);
+            overflow: hidden;
+        }
+
+        .map-section h2 {
+            font-family: var(--font-primary);
+            font-size: 2rem;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .map-wrapper {
+            border-radius: 16px;
+            overflow: hidden;
+            height: 450px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Success Message */
+        .success-message {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: #10b981;
+            color: white;
+            padding: 20px 24px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(16, 185, 129, 0.3);
+            z-index: 10000;
+            display: none;
+            max-width: 400px;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .contact-form-card,
+            .contact-info-card,
+            .service-areas,
+            .map-section {
+                padding: 32px 24px;
+            }
         }
 
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2.2rem;
+            body {
+                padding-top: 72px;
             }
 
-            .header p {
+            .contact-hero {
+                padding: 60px 20px;
+            }
+
+            .contact-hero h1 {
+                font-size: 2rem;
+            }
+
+            .contact-hero p {
                 font-size: 1.1rem;
             }
 
-            .cal-embed-wrapper {
-                padding: 20px;
-                min-height: 500px;
+            .service-areas-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding-top: 60px;
             }
 
-            .contact-info {
-                padding: 30px 20px;
+            .contact-hero h1 {
+                font-size: 1.75rem;
             }
 
-            .contact-details {
+            .service-areas-grid {
                 grid-template-columns: 1fr;
-                gap: 20px;
-            }
-        }
-
-        /* Success indicator */
-        .cal-loaded {
-            opacity: 0;
-            animation: fadeIn 0.5s ease forwards;
-        }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
             }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>📅 Schedule Your Free Consultation</h1>
-        <p>Book a 30-minute strategy session with our AI-powered optimization experts and discover how to achieve 300% growth for your business</p>
-    </div>
+    <!-- Header Component -->
+    <div id="header-placeholder"></div>
 
-    <div class="container">
-        <div class="booking-container">
-            <div class="cal-embed-wrapper">
-                <div class="cal-loading" id="cal-loading">
-                    <div class="cal-loading-spinner"></div>
-                    <h3>Loading Your Booking Calendar...</h3>
-                    <p>Preparing your consultation booking experience</p>
+    <!-- Hero Section -->
+    <section class="contact-hero">
+        <div class="contact-hero-content">
+            <h1>Get In Touch</h1>
+            <p>Ready to boost your business visibility? Let's discuss how OptiScale 360 can help you dominate AI search results and grow your online presence.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="contact-container">
+        <!-- Contact Form & Info Grid -->
+        <div class="contact-grid">
+            <!-- Contact Form -->
+            <div class="contact-form-card">
+                <h2>Send Us a Message</h2>
+                <p>Fill out the form below and we'll get back to you within 24 hours.</p>
+
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required placeholder="John Doe">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="john@company.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+1 (555) 123-4567">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company">Company Name</label>
+                        <input type="text" id="company" name="company" placeholder="Your Company Ltd.">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="service">Service Interested In *</label>
+                        <select id="service" name="service" required>
+                            <option value="">Select a service...</option>
+                            <option value="AI Visibility Audit">AI Visibility Intelligence Report</option>
+                            <option value="Free AI Website">Free AI-Ready Website</option>
+                            <option value="SEO Consulting">SEO Consulting</option>
+                            <option value="AI Search Optimization">AI Search Optimization</option>
+                            <option value="Other">Other / General Inquiry</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" required placeholder="Tell us about your project or inquiry..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="contact-info-card">
+                <h2>Contact Information</h2>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Email</h3>
+                        <p><a href="mailto:vinod@optiscale360.com">vinod@optiscale360.com</a></p>
+                    </div>
                 </div>
 
-                <!-- Cal.com Inline Embed -->
-                <div style="width:100%;height:700px;overflow:scroll;border-radius:15px;background:#fafbfc;" id="my-cal-inline-quickcall"></div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                        </svg>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Phone</h3>
+                        <p>Available upon request</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Location</h3>
+                        <p>Serving businesses globally with a focus on North America, Europe, and Asia-Pacific regions</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Business Hours</h3>
+                        <p>Monday - Friday: 9:00 AM - 6:00 PM EST<br>
+                        Saturday - Sunday: Closed</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+                        </svg>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Website</h3>
+                        <p><a href="https://optiscale360.pages.dev" target="_blank">optiscale360.pages.dev</a></p>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="contact-info">
-            <h2>📞 Need Immediate Assistance?</h2>
-            <p>Our business optimization experts are ready to help you achieve explosive growth!</p>
+        <!-- Service Areas -->
+        <div class="service-areas">
+            <h2>Areas We Serve</h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 16px;">
+                OptiScale 360 provides AI search optimization and SEO consulting services to businesses worldwide
+            </p>
 
-            <div class="contact-details">
-                <div class="contact-item">
-                    <strong>📧 Email Us</strong>
-                    <a href="mailto:vinod@optiscale360.com">vinod@optiscale360.com</a>
+            <div class="service-areas-grid">
+                <div class="service-area-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <h3>Global Services</h3>
+                    <p>Worldwide coverage</p>
                 </div>
-                <div class="contact-item">
-                    <strong>📱 Call Now</strong>
-                    <a href="tel:+917397225523">+91 7397225523</a>
+
+                <div class="service-area-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                    </svg>
+                    <h3>North America</h3>
+                    <p>USA & Canada</p>
                 </div>
-                <div class="contact-item">
-                    <strong>🕒 Business Hours</strong>
-                    Monday - Friday<br>9 AM - 6 PM IST
+
+                <div class="service-area-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                    </svg>
+                    <h3>Europe</h3>
+                    <p>UK, Germany & more</p>
                 </div>
-                <div class="contact-item">
-                    <strong>📍 Location</strong>
-                    Hosur, Tamil Nadu<br>India
+
+                <div class="service-area-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <h3>Asia-Pacific</h3>
+                    <p>India, Australia & more</p>
                 </div>
+            </div>
+        </div>
+
+        <!-- Map Section -->
+        <div class="map-section">
+            <h2>Find Us on Google</h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 24px;">
+                Visit our <a href="https://maps.app.goo.gl/your-google-business-profile-link" target="_blank" style="color: var(--primary-blue); font-weight: 600;">Google Business Profile</a> for reviews and updates
+            </p>
+
+            <div class="map-wrapper">
+                <!-- Replace with your actual Google Maps embed code -->
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.2412648750455!2d-73.98731668459395!3d40.74844097932847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
             </div>
         </div>
     </div>
 
-    <!-- Cal.com Inline Embed Script -->
-    <script type="text/javascript">
-        console.log('🚀 CONTACT PAGE LOADING: Cal.com Integration');
-        console.log('📅 Initializing booking calendar...');
+    <!-- Success Message -->
+    <div id="successMessage" class="success-message">
+        <h4 style="font-weight: 600; margin-bottom: 8px;">✓ Message Sent Successfully!</h4>
+        <p style="margin: 0;">Thank you for reaching out. We'll get back to you within 24 hours.</p>
+    </div>
 
-        (function (C, A, L) {
-            let p = function (a, ar) { a.q.push(ar); };
-            let d = C.document;
-            C.Cal = C.Cal || function () {
-                let cal = C.Cal;
-                let ar = arguments;
-                if (!cal.loaded) {
-                    cal.ns = {};
-                    cal.q = cal.q || [];
-                    d.head.appendChild(d.createElement("script")).src = A;
-                    cal.loaded = true;
-                }
-                if (ar[0] === L) {
-                    const api = function () { p(api, arguments); };
-                    const namespace = ar[1];
-                    api.q = api.q || [];
-                    if(typeof namespace === "string"){
-                        cal.ns[namespace] = cal.ns[namespace] || api;
-                        p(cal.ns[namespace], ar);
-                        p(cal, ["initNamespace", namespace]);
-                    } else p(cal, ar);
-                    return;
-                }
-                p(cal, ar);
-            };
-        })(window, "https://app.cal.com/embed/embed.js", "init");
+    <!-- Footer Component -->
+    <div id="footer-placeholder"></div>
 
-        Cal("init", "quickcall", {origin:"https://app.cal.com"});
-
-        Cal.ns.quickcall("inline", {
-            elementOrSelector:"#my-cal-inline-quickcall",
-            config: {"layout":"month_view","theme":"auto"},
-            calLink: "optiscale360/quickcall",
-        });
-
-        Cal.ns.quickcall("ui", {
-            "cssVarsPerTheme":{"light":{"cal-brand":"#0a3fa0"}},
-            "hideEventTypeDetails":false,
-            "layout":"month_view"
-        });
-
-        // Hide loading animation after Cal.com loads
-        setTimeout(() => {
-            const loadingElement = document.getElementById('cal-loading');
-            if (loadingElement) {
-                loadingElement.style.display = 'none';
+    <script>
+        // Load Header and Footer Components
+        async function loadComponent(placeholderId, componentPath) {
+            try {
+                const response = await fetch(componentPath);
+                const html = await response.text();
+                document.getElementById(placeholderId).innerHTML = html;
+            } catch (error) {
+                console.error(`Error loading ${componentPath}:`, error);
             }
-            console.log('✅ Cal.com booking calendar loaded successfully!');
-            console.log('📅 Book your consultation now!');
-        }, 3000);
+        }
 
-        console.log('🎯 Cal.com integration ready: optiscale360/quickcall');
-        console.log('🎨 Brand color: #0a3fa0 (OptiScale blue)');
-        console.log('📅 Layout: month_view with auto theme');
+        document.addEventListener('DOMContentLoaded', function() {
+            loadComponent('header-placeholder', '/components/header.html');
+            loadComponent('footer-placeholder', '/components/footer.html');
+        });
+
+        // Contact Form Handling
+        const contactForm = document.getElementById('contactForm');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                const submitBtn = contactForm.querySelector('.submit-btn');
+                const originalText = submitBtn.textContent;
+
+                // Show loading state
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending...';
+
+                try {
+                    // Collect form data
+                    const formData = new FormData(contactForm);
+
+                    const leadData = {
+                        name: formData.get('name'),
+                        email: formData.get('email'),
+                        phone: formData.get('phone') || 'Not provided',
+                        company: formData.get('company') || 'Not provided',
+                        service: formData.get('service'),
+                        message: formData.get('message'),
+                        timestamp: new Date().toLocaleString('en-US', {
+                            dateStyle: 'full',
+                            timeStyle: 'long',
+                            timeZone: 'America/New_York'
+                        }),
+                        source: document.referrer ? new URL(document.referrer).hostname : 'Direct',
+                        referrer: document.referrer || 'Direct',
+                        pageUrl: window.location.href
+                    };
+
+                    console.log('📧 Sending email via EmailJS:', leadData);
+
+                    // Send email using EmailJS - using the same template as AI Visibility for now
+                    await emailjs.send('service_g4erqhd', 'template_4au5yft', {
+                        to_email: 'vinod@optiscale360.com',
+                        from_name: leadData.name,
+                        first_name: leadData.name.split(' ')[0],
+                        last_name: leadData.name.split(' ').slice(1).join(' ') || '',
+                        email: leadData.email,
+                        phone: leadData.phone,
+                        company: leadData.company,
+                        website: leadData.service,
+                        form_type: 'Contact Form - ' + leadData.service,
+                        timestamp: leadData.timestamp,
+                        source: leadData.source,
+                        referrer: leadData.referrer,
+                        message: leadData.message
+                    });
+
+                    console.log('✅ Email sent successfully!');
+
+                    // Show success message
+                    const successMessage = document.getElementById('successMessage');
+                    successMessage.classList.add('show');
+
+                    // Auto-hide after 5 seconds
+                    setTimeout(() => {
+                        successMessage.classList.remove('show');
+                    }, 5000);
+
+                    // Reset form
+                    contactForm.reset();
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalText;
+
+                } catch (error) {
+                    console.error('Form submission error:', error);
+                    alert('There was an error sending your message. Please try again or email us directly at vinod@optiscale360.com');
+
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalText;
+                }
+
+                return false;
+            });
+        }
     </script>
-
-    <!-- Cal floating-popup embed code begins -->
-    <script type="text/javascript">
-      (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-    Cal("init", "discoverycall", {origin:"https://app.cal.com"});
-
-      Cal.ns.discoverycall("floatingButton", {"calLink":"optiscale360/discoverycall","config":{"layout":"month_view"},"buttonColor":"#8320cc","buttonPosition":"bottom-right","buttonText":"Schedule A Discovery Call"});
-      Cal.ns.discoverycall("ui", {"cssVarsPerTheme":{"light":{"cal-brand":"#0e2f7e"},"dark":{"cal-brand":"#fafafa"}},"hideEventTypeDetails":false,"layout":"month_view"});
-    </script>
-    <!-- Cal floating-popup embed code ends -->
 </body>
 </html>
