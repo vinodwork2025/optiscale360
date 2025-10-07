@@ -319,6 +319,18 @@
         .hero-left {
             padding-top: 3rem;
             padding-left: 5rem;
+            animation: fadeInLeft 0.8s ease-out;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         .hero-left h1 {
@@ -328,6 +340,18 @@
             line-height: 1.15;
             margin-bottom: var(--space-sm);
             letter-spacing: -0.02em;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero-left h1 .highlight {
@@ -335,6 +359,13 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            animation: gradientShift 3s ease infinite;
+            background-size: 200% 200%;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
         .hero-subtitle {
@@ -343,6 +374,7 @@
             color: var(--text-secondary);
             margin-bottom: var(--space-sm);
             max-width: 90%;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
         }
 
         .hero-badges {
@@ -361,12 +393,18 @@
             font-size: 0.95rem;
             font-weight: 500;
             color: var(--primary-blue);
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out calc(0.6s + var(--badge-delay, 0s)) both;
         }
+
+        .hero-badge:nth-child(1) { --badge-delay: 0s; }
+        .hero-badge:nth-child(2) { --badge-delay: 0.1s; }
+        .hero-badge:nth-child(3) { --badge-delay: 0.2s; }
 
         .hero-badge:hover {
             background: rgba(59, 130, 246, 0.12);
-            transform: translateY(-1px);
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
         }
 
 
@@ -375,16 +413,38 @@
             display: flex;
             align-items: flex-start;
             justify-content: center;
-            padding-top: 0;
-            margin-bottom: calc(-0.25 * 480px * 0.75);
+            padding-top: 4rem;
+            margin-bottom: calc(-0.25 * 480px * 0.825);
+            animation: fadeInRight 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         .dashboard-container {
             position: relative;
             width: 100%;
             max-width: 480px;
-            transform: scale(0.75);
+            transform: scale(0.825);
             transform-origin: top center;
+            animation: floatDashboard 6s ease-in-out infinite;
+        }
+
+        @keyframes floatDashboard {
+            0%, 100% {
+                transform: scale(0.825) translateY(0);
+            }
+            50% {
+                transform: scale(0.825) translateY(-10px);
+            }
         }
 
         .analytics-dashboard {
@@ -2256,11 +2316,21 @@
 
             .hero-visual {
                 margin-bottom: 0;
+                padding-top: 2rem;
             }
 
             .dashboard-container {
                 transform: scale(0.9);
                 max-width: 100%;
+            }
+
+            @keyframes floatDashboard {
+                0%, 100% {
+                    transform: scale(0.9) translateY(0);
+                }
+                50% {
+                    transform: scale(0.9) translateY(-10px);
+                }
             }
 
             .services-grid {
