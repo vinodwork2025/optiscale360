@@ -15,7 +15,9 @@
       "WebFetch(domain:optiscale360.pages.dev)",
       "Bash(npm run build:blog:*)",
       "Bash(ls:*)",
-      "Bash(start \"C:\\Users\\Warrior\\optiscale360\\Free-AI-Ready-Website.html\")"
+      "Bash(start \"C:\\Users\\Warrior\\optiscale360\\Free-AI-Ready-Website.html\")",
+      "Bash(start \"C:\\Users\\Warrior\\optiscale360\\index.html\")",
+      "Bash(git checkout:*)"
     ],
     "deny": [],
     "ask": []

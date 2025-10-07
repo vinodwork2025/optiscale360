@@ -40,10 +40,10 @@ marked.use({
 const BLOG_DIR = path.join(__dirname, 'blog');
 const POSTS_DIR = path.join(BLOG_DIR, 'posts');
 const SITE_URL = 'https://optiscale360.pages.dev';
-const SITE_NAME = 'OptiScale 360';
+const SITE_NAME = 'OptiScale Advisors';
 const AUTHOR = {
-    name: 'OptiScale 360 Team',
-    email: 'info@optiscale360.com',
+    name: 'OptiScale Advisors Team',
+    email: 'info@optiscaleadvisors.com',
     url: 'https://optiscale360.pages.dev/about'
 };
 
@@ -438,7 +438,7 @@ function generateRSSFeed(posts) {
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
     <title>${SITE_NAME} Blog</title>
-    <description>AI SEO insights and strategies from OptiScale 360</description>
+    <description>AI SEO insights and strategies from OptiScale Advisors</description>
     <link>${SITE_URL}/blog/</link>
     <language>en-us</language>
     <lastBuildDate>${buildDate}</lastBuildDate>
