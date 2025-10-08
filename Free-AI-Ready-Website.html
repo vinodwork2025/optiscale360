@@ -166,30 +166,37 @@
             display: none !important;
         }
 
-        /* Ensure header component renders correctly */
+        /* Ensure header component renders correctly - NO BACKGROUNDS, NO SHADOWS */
         .optiscale-header {
             position: fixed !important;
             top: 0 !important;
             left: 0 !important;
             right: 0 !important;
             z-index: 9999 !important;
+            background: transparent !important;
+            box-shadow: none !important;
+            border: none !important;
+        }
+
+        .optiscale-header.scrolled {
+            background: transparent !important;
+            box-shadow: none !important;
         }
 
         .optiscale-header .header-backdrop {
-            background: transparent !important;
-            background-image: none !important;
-            backdrop-filter: none !important;
-            border-bottom: none !important;
+            display: none !important;
         }
 
         .optiscale-header .nav-container {
             max-width: 1440px !important;
             height: 84px !important;
             background: transparent !important;
+            box-shadow: none !important;
         }
 
         .optiscale-header .brand-logo {
             background: transparent !important;
+            box-shadow: none !important;
         }
 
         .optiscale-header .brand-logo .logo-image {
@@ -201,6 +208,11 @@
 
         .optiscale-header .nav-menu {
             background: rgba(255, 255, 255, 0.95) !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        .optiscale-header .premium-cta {
+            box-shadow: 0 2px 8px rgba(0, 102, 255, 0.2) !important;
         }
 
         /* Page-specific animations and effects */
