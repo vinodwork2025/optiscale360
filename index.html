@@ -2979,16 +2979,18 @@
                                 <div class="insight-item revenue-attribution">
                                     <div class="insight-icon warning">
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <defs>
+                                                <linearGradient id="lightningGrad">
+                                                    <stop offset="0%" style="stop-color:#F59E0B"/>
+                                                    <stop offset="100%" style="stop-color:#FCD34D"/>
+                                                </linearGradient>
+                                            </defs>
                                             <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
                                             <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="url(#lightningGrad)" stroke-width="1" opacity="0.6">
-                 attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+                                                <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
                                             </path>
                                         </svg>
-                         id="lightningGrad">
-                                                <stop offset="0%" style="stop-color:#F59E0B"/>
-                                                <stop offset="100%" style="stop-color:#FCD34D"/>
-                                            </linearGradient>
-                                                </div>
+                                    </div>
                                     <span class="insight-text">Revenue impact: $340K attributed</span>
                                     <div class="revenue-pulse"></div>
                                 </div>
