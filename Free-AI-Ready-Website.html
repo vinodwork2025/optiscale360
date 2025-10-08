@@ -158,6 +158,22 @@
     </script>
 
     <style>
+        /* Override global header styles to prevent color band */
+        .header,
+        .header::before,
+        .optiscale-header,
+        .optiscale-header::before {
+            background: transparent !important;
+            background-image: none !important;
+            backdrop-filter: none !important;
+        }
+
+        /* Ensure header backdrop uses component styles only */
+        .header-backdrop {
+            background: rgba(255, 255, 255, 0.98) !important;
+            backdrop-filter: blur(20px) !important;
+        }
+
         /* Page-specific animations and effects */
         .hero-gradient-bg {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
