@@ -58,6 +58,9 @@
         });
     </script>
 
+    <!-- Global Styles - Load BEFORE Tailwind -->
+    <link rel="stylesheet" href="styles.css">
+
     <!-- TailwindCSS - Deferred -->
     <script src="https://cdn.tailwindcss.com" defer></script>
     <script>
@@ -155,6 +158,39 @@
     </script>
 
     <style>
+        /* Critical: Override global .header styles to prevent component conflicts */
+        .header,
+        .header::before,
+        .header::after {
+            all: initial !important;
+            display: none !important;
+        }
+
+        /* Ensure header component renders correctly */
+        .optiscale-header {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            z-index: 9999 !important;
+        }
+
+        .optiscale-header .header-backdrop {
+            background: rgba(255, 255, 255, 0.98) !important;
+            backdrop-filter: blur(24px) saturate(180%) !important;
+        }
+
+        .optiscale-header .nav-container {
+            max-width: 1440px !important;
+            height: 84px !important;
+        }
+
+        .optiscale-header .brand-logo .logo-image {
+            height: 100% !important;
+            max-height: 80px !important;
+            display: block !important;
+        }
+
         /* Page-specific animations and effects */
         .hero-gradient-bg {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
