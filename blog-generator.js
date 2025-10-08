@@ -78,7 +78,7 @@ function getAllPosts() {
       .sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
 }
 
-// Estimate reading time
+// Estimate reading time and word count
 function estimateReadingTime(content) {
     const wordsPerMinute = 200;
     const wordCount = content.split(/\s+/).length;
@@ -86,19 +86,38 @@ function estimateReadingTime(content) {
     return `${minutes} min read`;
 }
 
+function getWordCount(content) {
+    return content.split(/\s+/).length;
+}
+
 // Generate JSON-LD structured data
 function generateJSONLD(post, type = 'BlogPosting') {
+    const wordCount = getWordCount(post.content);
+
+    // Enhanced Author schema with social profiles
+    const authorSchema = {
+        "@type": "Person",
+        "name": post.frontmatter.author || AUTHOR.name,
+        "url": AUTHOR.url,
+        "email": AUTHOR.email,
+        "jobTitle": "SEO Consultant",
+        "worksFor": {
+            "@type": "Organization",
+            "name": SITE_NAME
+        },
+        "sameAs": [
+            "https://twitter.com/optiscale360",
+            "https://linkedin.com/company/optiscale360"
+        ]
+    };
+
     const baseSchema = {
         "@context": "https://schema.org",
         "@type": type,
         "headline": post.frontmatter.title,
         "description": post.frontmatter.description,
         "image": post.frontmatter.image || `${SITE_URL}/360_logo.svg`,
-        "author": {
-            "@type": "Person",
-            "name": post.frontmatter.author || AUTHOR.name,
-            "url": AUTHOR.url
-        },
+        "author": authorSchema,
         "publisher": {
             "@type": "Organization",
             "name": SITE_NAME,
@@ -112,6 +131,16 @@ function generateJSONLD(post, type = 'BlogPosting') {
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": `${SITE_URL}/blog/${post.slug}/`
+        },
+        "wordCount": wordCount,
+        "articleSection": post.frontmatter.category || "SEO Strategy",
+        "articleBody": post.content.substring(0, 500) + "...",
+        "keywords": (post.frontmatter.tags || []).join(', '),
+        "inLanguage": "en-US",
+        "isAccessibleForFree": true,
+        "speakable": {
+            "@type": "SpeakableSpecification",
+            "cssSelector": [".blog-post-title", ".blog-post-excerpt", ".blog-content h2", ".blog-content h3"]
         }
     };
 
@@ -163,6 +192,60 @@ function generateJSONLD(post, type = 'BlogPosting') {
             },
             "areaServed": "Worldwide",
             "serviceType": post.frontmatter.serviceType || "SEO Consulting"
+        });
+    }
+
+    // Review/Rating schema for tool reviews
+    if (post.frontmatter.reviews && post.frontmatter.reviews.length > 0) {
+        post.frontmatter.reviews.forEach(review => {
+            schemas.push({
+                "@context": "https://schema.org",
+                "@type": "Review",
+                "itemReviewed": {
+                    "@type": review.itemType || "SoftwareApplication",
+                    "name": review.itemName,
+                    "description": review.itemDescription || "",
+                    "url": review.itemUrl || ""
+                },
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": review.rating,
+                    "bestRating": "5",
+                    "worstRating": "1"
+                },
+                "author": authorSchema,
+                "reviewBody": review.body || ""
+            });
+        });
+    }
+
+    // VideoObject schema for posts with video content
+    if (post.frontmatter.video) {
+        schemas.push({
+            "@context": "https://schema.org",
+            "@type": "VideoObject",
+            "name": post.frontmatter.video.title || post.frontmatter.title,
+            "description": post.frontmatter.video.description || post.frontmatter.description,
+            "thumbnailUrl": post.frontmatter.video.thumbnail || post.frontmatter.image,
+            "uploadDate": post.frontmatter.video.uploadDate || post.frontmatter.date,
+            "duration": post.frontmatter.video.duration || "PT10M",
+            "contentUrl": post.frontmatter.video.url || "",
+            "embedUrl": post.frontmatter.video.embedUrl || ""
+        });
+    }
+
+    // ItemList schema for list-based posts (e.g., "Top 10 Tools")
+    if (post.frontmatter.listItems && post.frontmatter.listItems.length > 0) {
+        schemas.push({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "itemListElement": post.frontmatter.listItems.map((item, index) => ({
+                "@type": "ListItem",
+                "position": index + 1,
+                "name": item.name,
+                "description": item.description || "",
+                "url": item.url || ""
+            }))
         });
     }
 
