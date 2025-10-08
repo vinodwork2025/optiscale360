@@ -70,4 +70,4 @@ Sitemap: https://optiscaleadvisors.com/sitemap.xml
 Sitemap: https://optiscale360.pages.dev/sitemap.xml
 Sitemap: https://optiscaleadvisors.com/blog/feed.xml
 
-# Last updated: 2025-10-07
+# Last updated: 2025-10-08
