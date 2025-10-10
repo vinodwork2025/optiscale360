@@ -1,55 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <!-- Main Pages -->
     <url>
         <loc>https://optiscaleadvisors.com/</loc>
-        <lastmod>2025-10-07</lastmod>
+        <lastmod>2025-10-10</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
 
     <url>
         <loc>https://optiscaleadvisors.com/about.html</loc>
-        <lastmod>2025-10-07</lastmod>
+        <lastmod>2025-10-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
         <loc>https://optiscaleadvisors.com/services.html</loc>
-        <lastmod>2025-10-07</lastmod>
+        <lastmod>2025-10-10</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
         <loc>https://optiscaleadvisors.com/case-studies.html</loc>
-        <lastmod>2025-10-07</lastmod>
+        <lastmod>2025-10-10</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
         <loc>https://optiscaleadvisors.com/contact.html</loc>
-        <lastmod>2025-10-07</lastmod>
+        <lastmod>2025-10-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://optiscaleadvisors.com/resources.html</loc>
+        <lastmod>2025-10-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://optiscaleadvisors.com/booking.html</loc>
+        <lastmod>2025-10-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
     </url>
 
     <!-- Landing Pages -->
     <url>
         <loc>https://optiscaleadvisors.com/Free-AI-Ready-Website.html</loc>
-        <lastmod>2025-10-07</lastmod>
+        <lastmod>2025-10-10</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
         <loc>https://optiscaleadvisors.com/ai-visibility-audit.html</loc>
-        <lastmod>2025-10-07</lastmod>
+        <lastmod>2025-10-10</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -57,7 +69,7 @@
     <!-- Blog Pages -->
     <url>
         <loc>https://optiscaleadvisors.com/blog/</loc>
-        <lastmod>2025-10-07</lastmod>
+        <lastmod>2025-10-10</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.9</priority>
     </url>
@@ -65,29 +77,66 @@
     <!-- Active Blog Posts -->
     <url>
         <loc>https://optiscaleadvisors.com/blog/ai-seo-complete-guide-2025/</loc>
-        <lastmod>2025-10-07</lastmod>
+        <lastmod>2025-10-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
         <loc>https://optiscaleadvisors.com/blog/ai-keyword-research-tools-guide/</loc>
-        <lastmod>2025-10-07</lastmod>
+        <lastmod>2025-10-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
         <loc>https://optiscaleadvisors.com/blog/ai-content-optimization-strategies/</loc>
-        <lastmod>2025-10-07</lastmod>
+        <lastmod>2025-10-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
         <loc>https://optiscaleadvisors.com/blog/ai-technical-seo-audit-guide/</loc>
-        <lastmod>2025-10-07</lastmod>
+        <lastmod>2025-10-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
+
+    <!-- Legal Pages -->
+    <url>
+        <loc>https://optiscaleadvisors.com/privacy-policy.html</loc>
+        <lastmod>2025-10-10</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+    <url>
+        <loc>https://optiscaleadvisors.com/terms-of-service.html</loc>
+        <lastmod>2025-10-10</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+    <url>
+        <loc>https://optiscaleadvisors.com/cookie-policy.html</loc>
+        <lastmod>2025-10-10</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+    <url>
+        <loc>https://optiscaleadvisors.com/disclaimer.html</loc>
+        <lastmod>2025-10-10</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+    <url>
+        <loc>https://optiscaleadvisors.com/copyright-policy.html</loc>
+        <lastmod>2025-10-10</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
 </urlset>
