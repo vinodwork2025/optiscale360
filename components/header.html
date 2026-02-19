@@ -11,8 +11,8 @@
                     <span class="link-text">Home</span>
                     <div class="link-indicator"></div>
                 </a>
-                <a href="/case-studies.html" class="nav-link">
-                    <span class="link-text">Case Studies</span>
+                <a href="/how-it-works.html" class="nav-link">
+                    <span class="link-text">How It Works</span>
                     <div class="link-indicator"></div>
                 </a>
                 <a href="/blog/" class="nav-link">
@@ -27,12 +27,15 @@
         </div>
 
         <div class="nav-actions">
-            <a href="/Free-AI-Ready-Website.html" class="premium-cta">
+            <a href="https://cal.com/optiscale360/discoverycall" class="premium-cta">
                 <div class="cta-content">
                     <svg class="cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                        <line x1="16" y1="2" x2="16" y2="6"/>
+                        <line x1="8" y1="2" x2="8" y2="6"/>
+                        <line x1="3" y1="10" x2="21" y2="10"/>
                     </svg>
-                    <span class="cta-text">Free AI-Ready Website</span>
+                    <span class="cta-text">Book Free Call</span>
                 </div>
                 <div class="cta-shimmer"></div>
             </a>
@@ -51,13 +54,13 @@
     <div class="mobile-menu-overlay">
         <div class="mobile-menu-content">
             <div class="mobile-nav-links">
-                <a href="/services.html" class="mobile-nav-link">Services</a>
-                <a href="/case-studies.html" class="mobile-nav-link">Case Studies</a>
+                <a href="/" class="mobile-nav-link">Home</a>
+                <a href="/how-it-works.html" class="mobile-nav-link">How It Works</a>
                 <a href="/blog/" class="mobile-nav-link">Blog</a>
                 <a href="/about.html" class="mobile-nav-link">About</a>
                 <a href="/contact.html" class="mobile-nav-link">Contact</a>
             </div>
-            <a href="/Free-AI-Ready-Website.html" class="mobile-cta">Free AI-Ready Website</a>
+            <a href="https://cal.com/optiscale360/discoverycall" class="mobile-cta">Book Free Call</a>
         </div>
     </div>
 </header>
@@ -66,8 +69,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<!-- Updated: Force deployment -->
 
 <style>
 /* ===== OPTISCALE ADVISORS PREMIUM HEADER ===== */
@@ -132,8 +133,6 @@
     max-height: 80px;
     object-fit: contain;
 }
-
-/* Brand text styles removed - using logo only */
 
 /* ===== NAVIGATION CENTER ===== */
 .nav-center {
@@ -445,8 +444,6 @@
         right: 1rem;
     }
 
-    /* Brand text removed - logo only */
-
     .logo-image {
         max-height: 50px;
     }
@@ -478,8 +475,6 @@
     .nav-actions {
         right: 0.75rem;
     }
-
-    /* Brand text removed - logo only */
 
     .logo-image {
         max-height: 40px;
@@ -573,7 +568,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     if (mobileMenuOverlay) {
-        // Close menu when clicking overlay
         mobileMenuOverlay.addEventListener('click', function(e) {
             if (e.target === mobileMenuOverlay) {
                 closeMobileMenu();
@@ -581,26 +575,22 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Close menu when clicking nav links
     mobileNavLinks.forEach(link => {
         link.addEventListener('click', closeMobileMenu);
     });
 
-    // Close menu on escape key
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && isMenuOpen) {
             closeMobileMenu();
         }
     });
 
-    // Handle resize events
     window.addEventListener('resize', function() {
         if (window.innerWidth > 1024 && isMenuOpen) {
             closeMobileMenu();
         }
     });
 
-    // Initialize scroll state
     handleScroll();
 });
 </script>
