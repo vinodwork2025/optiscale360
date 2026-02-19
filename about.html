@@ -22,12 +22,16 @@
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
 
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="main.css">
+    <script src="https://unpkg.com/lucide@latest" defer></script>
     <style>
         :root {
-            --primary-navy:#0A0E27;--primary-blue:#0066FF;--pure-white:#FFFFFF;
+            --primary-navy:#0F172A;--primary-blue:#1E40AF;--primary-blue-light:#3B82F6;--pure-white:#FFFFFF;
             --silver:#F8FAFC;--silver-dark:#E2E8F0;
-            --text-primary:#0F1419;--text-secondary:#3C4553;--text-muted:#5C6B7F;
-            --gradient-primary:linear-gradient(135deg,#0066FF 0%,#0052CC 100%);
+            --accent-amber:#F59E0B;--accent-amber-light:#FBBF24;
+            --text-primary:#0F172A;--text-secondary:#475569;--text-muted:#94A3B8;
+            --gradient-primary:linear-gradient(135deg,#1E3A8A 0%,#1E40AF 50%,#3B82F6 100%);
+            --gradient-accent:linear-gradient(135deg,#F59E0B,#FBBF24);
             --font-primary:'Space Grotesk','Inter',-apple-system,sans-serif;
             --font-secondary:'Inter',-apple-system,sans-serif;
             --shadow-md:0 10px 15px -3px rgba(0,0,0,0.1);
@@ -39,7 +43,8 @@
         .container{max-width:800px;margin:0 auto;padding:0 2rem}
         .container-wide{max-width:1000px;margin:0 auto;padding:0 2rem}
 
-        .page-hero{background:var(--gradient-primary);padding:5rem 0 4rem;text-align:center;color:var(--pure-white)}
+        .page-hero{background:var(--gradient-primary);padding:7rem 0 5rem;text-align:center;color:var(--pure-white);position:relative;overflow:hidden}
+        .page-hero > .container{position:relative;z-index:2}
         .page-hero h1{font-family:var(--font-primary);font-size:2.5rem;font-weight:800;line-height:1.2;letter-spacing:-0.02em}
 
         .section{padding:4rem 0}
@@ -48,25 +53,38 @@
         .story p{color:var(--text-secondary);font-size:1.1rem;line-height:1.9;margin-bottom:1.5rem}
         .story .placeholder-text{background:#FEF3C7;border:1px solid #F59E0B;border-radius:8px;padding:1rem 1.25rem;color:#92400E;font-size:1rem}
 
+        .pull-quote{position:relative;padding:24px 32px;margin:32px 0;border-left:4px solid var(--accent-amber);background:#FFFBEB;border-radius:0 12px 12px 0;font-size:1.15rem;font-style:italic;color:var(--text-primary);line-height:1.7}
+
+        .decorative-divider{text-align:center;padding:2rem 0}
+        .decorative-divider span{display:inline-block;width:60px;height:3px;background:var(--gradient-accent);border-radius:3px}
+
+        .section-title-about{font-family:var(--font-primary);font-size:1.75rem;font-weight:700;color:var(--primary-navy);text-align:center;margin-bottom:0.5rem;position:relative;display:inline-block;width:100%}
+        .section-title-about::after{content:'';display:block;width:50px;height:3px;background:var(--gradient-accent);border-radius:3px;margin:8px auto 0}
+
         .services-row{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:2rem}
-        .service-mini{background:var(--pure-white);border:1px solid var(--silver-dark);border-radius:var(--radius-lg);padding:2rem;transition:all 0.3s ease}
-        .service-mini:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+        .service-mini{background:var(--pure-white);border:1px solid var(--silver-dark);border-radius:var(--radius-lg);padding:2rem;transition:all 0.3s cubic-bezier(0.22,1,0.36,1);position:relative;overflow:hidden}
+        .service-mini::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(135deg,#3B82F6,#F59E0B)}
+        .service-mini:hover{transform:translateY(-4px) scale(1.02);box-shadow:var(--shadow-md)}
+        .service-mini .icon-container{margin-bottom:0.75rem}
         .service-mini h3{font-family:var(--font-primary);font-size:1.15rem;font-weight:700;color:var(--primary-navy);margin-bottom:0.25rem}
         .service-mini .mini-price{color:var(--primary-blue);font-weight:700;font-family:var(--font-primary);margin-bottom:0.75rem}
         .service-mini p{color:var(--text-secondary);font-size:0.95rem;line-height:1.7;margin-bottom:1rem}
-        .service-mini a{color:var(--primary-blue);text-decoration:none;font-weight:600}
+        .service-mini a{color:var(--primary-blue-light);text-decoration:none;font-weight:600}
         .service-mini a:hover{text-decoration:underline}
 
-        .cta-section{background:var(--gradient-primary);padding:4rem 0;text-align:center;color:var(--pure-white)}
+        .cta-section{background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 100%);padding:4rem 0;text-align:center;color:var(--pure-white);position:relative;overflow:hidden}
+        .cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(245,158,11,0.08) 0%,transparent 60%);pointer-events:none}
+        .cta-section > .container{position:relative;z-index:1}
         .cta-section h2{font-family:var(--font-primary);font-size:2rem;font-weight:700;margin-bottom:1.5rem;color:var(--pure-white)}
-        .btn-white{display:inline-block;background:var(--pure-white);color:var(--primary-blue);padding:1rem 2rem;border-radius:50px;text-decoration:none;font-weight:600;transition:all 0.3s ease}
-        .btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,0.2)}
+        .btn-white{display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:var(--primary-navy);padding:1rem 2rem;border-radius:50px;text-decoration:none;font-weight:700;transition:all 0.3s ease;box-shadow:0 4px 12px rgba(245,158,11,0.3)}
+        .btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(245,158,11,0.4)}
         .whatsapp-note{margin-top:1rem;font-size:0.95rem;color:rgba(255,255,255,0.8)}
         .whatsapp-note a{color:var(--pure-white);text-decoration:none}
 
         @media(max-width:768px){
             .page-hero h1{font-size:1.75rem}
             .services-row{grid-template-columns:1fr}
+            .pull-quote{padding:16px 20px;font-size:1.05rem}
         }
     </style>
 </head>
@@ -74,38 +92,55 @@
     <div id="header-placeholder"></div>
 
     <section class="page-hero">
+        <div class="hero-orb hero-orb--amber hero-orb--md float" style="top:-20px;right:10%;"></div>
+        <div class="hero-orb hero-orb--blue hero-orb--lg float-slow float-delay-1" style="bottom:-50px;left:-40px;"></div>
         <div class="container">
             <h1>Who We Are and Why We Started This</h1>
         </div>
     </section>
 
+    <div class="section-divider">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,0 C480,60 960,60 1440,0 L1440,60 L0,60 Z" fill="#FFFFFF"/></svg>
+    </div>
+
     <section class="section">
         <div class="container story">
-            <p>My name is Vinod Kumar. I started OptiScale Advisors because I saw a specific problem that most agencies were ignoring.</p>
+            <p class="animate-on-scroll">My name is Vinod Kumar. I started OptiScale Advisors because I saw a specific problem that most agencies were ignoring.</p>
 
-            <p>I spent years in business consulting, helping companies grow through strategy and operations. When AI search tools like ChatGPT and Perplexity started gaining millions of users, I began testing how they recommended businesses. The results surprised me. Well-established companies with strong reputations were completely absent from AI search results, while smaller competitors with better-structured websites were getting recommended instead.</p>
+            <p class="animate-on-scroll">I spent years in business consulting, helping companies grow through strategy and operations. When AI search tools like ChatGPT and Perplexity started gaining millions of users, I began testing how they recommended businesses. The results surprised me.</p>
 
-            <p>Most businesses I spoke to had no idea whether they appeared on ChatGPT or Perplexity. They were spending money on traditional SEO and social media, but a growing number of their potential customers were starting their search on AI tools — and nobody was telling them they were invisible to those tools.</p>
+            <div class="pull-quote animate-on-scroll from-left">Well-established companies with strong reputations were completely absent from AI search results, while smaller competitors with better-structured websites were getting recommended instead.</div>
 
-            <p>I started OptiScale Advisors to fix that. We audit AI search visibility and we build websites designed to generate leads and appear in AI recommendations. That is the entire focus.</p>
+            <p class="animate-on-scroll">Most businesses I spoke to had no idea whether they appeared on ChatGPT or Perplexity. They were spending money on traditional SEO and social media, but a growing number of their potential customers were starting their search on AI tools — and nobody was telling them they were invisible to those tools.</p>
 
-            <p>We are a small, focused operation based in Bengaluru. We work with a limited number of clients each month so every project gets our full attention. We do not outsource. We do not overpromise.</p>
+            <p class="animate-on-scroll">I started OptiScale Advisors to fix that. We audit AI search visibility and we build websites designed to generate leads and appear in AI recommendations. That is the entire focus.</p>
 
-            <p>If you want to know where your business stands on AI search, book a free 15-minute call. I will tell you honestly whether we can help.</p>
+            <div class="pull-quote animate-on-scroll from-left">We are a small, focused operation based in Bengaluru. We work with a limited number of clients each month so every project gets our full attention. We do not outsource. We do not overpromise.</div>
+
+            <p class="animate-on-scroll">If you want to know where your business stands on AI search, book a free 15-minute call. I will tell you honestly whether we can help.</p>
         </div>
     </section>
 
+    <!-- Decorative Divider -->
+    <div class="decorative-divider"><span></span></div>
+
+    <div class="section-divider">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,0 C480,60 960,60 1440,0 L1440,60 L0,60 Z" fill="#F8FAFC"/></svg>
+    </div>
+
     <section class="section section-alt">
         <div class="container-wide">
-            <h2 style="font-family:var(--font-primary);font-size:1.75rem;font-weight:700;color:var(--primary-navy);text-align:center;margin-bottom:0.5rem">What We Do</h2>
-            <div class="services-row">
-                <div class="service-mini">
+            <h2 class="section-title-about">What We Do</h2>
+            <div class="services-row stagger-children">
+                <div class="service-mini card-hover animate-on-scroll">
+                    <div class="icon-container"><i data-lucide="search"></i></div>
                     <h3>AI Visibility Audit</h3>
                     <div class="mini-price">&#8377;15,000</div>
                     <p>We test your business across ChatGPT, Perplexity, Google AI, Bing, and Gemini and show you exactly where you stand.</p>
                     <a href="/ai-visibility-audit.html">Learn more &rarr;</a>
                 </div>
-                <div class="service-mini">
+                <div class="service-mini card-hover animate-on-scroll">
+                    <div class="icon-container"><i data-lucide="globe"></i></div>
                     <h3>AI-Ready Website</h3>
                     <div class="mini-price">Starting &#8377;50,000</div>
                     <p>We build websites that AI engines understand and recommend. Schema-rich. Fast. Built to generate leads.</p>
@@ -115,10 +150,14 @@
         </div>
     </section>
 
+    <div class="section-divider" style="background:#F8FAFC;">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,0 C480,60 960,60 1440,0 L1440,60 L0,60 Z" fill="#0F172A"/></svg>
+    </div>
+
     <section class="cta-section">
         <div class="container">
             <h2>Book a Free 15-Min Call</h2>
-            <a href="https://cal.com/optiscale360/discoverycall" class="btn-white">Book Now</a>
+            <a href="https://cal.com/optiscale360/discoverycall" class="btn-white"><i data-lucide="calendar" style="width:18px;height:18px;"></i> Book Now</a>
             <p class="whatsapp-note">Or <a href="https://wa.me/919663088484">WhatsApp us: +91 96630 88484</a></p>
         </div>
     </section>
@@ -129,5 +168,6 @@
     fetch('/components/header.html').then(function(r){return r.text()}).then(function(html){document.getElementById('header-placeholder').innerHTML=html;document.getElementById('header-placeholder').querySelectorAll('script').forEach(function(s){var ns=document.createElement('script');ns.textContent=s.textContent;document.head.appendChild(ns)})});
     fetch('/components/footer.html').then(function(r){return r.text()}).then(function(html){document.getElementById('footer-placeholder').innerHTML=html});
     </script>
+    <script src="/js/animations.js"></script>
 </body>
 </html>

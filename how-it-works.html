@@ -23,12 +23,16 @@
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
 
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="main.css">
+    <script src="https://unpkg.com/lucide@latest" defer></script>
     <style>
         :root {
-            --primary-navy:#0A0E27;--primary-blue:#0066FF;--pure-white:#FFFFFF;
+            --primary-navy:#0F172A;--primary-blue:#1E40AF;--primary-blue-light:#3B82F6;--pure-white:#FFFFFF;
             --silver:#F8FAFC;--silver-dark:#E2E8F0;--success:#10B981;
-            --text-primary:#0F1419;--text-secondary:#3C4553;--text-muted:#5C6B7F;
-            --gradient-primary:linear-gradient(135deg,#0066FF 0%,#0052CC 100%);
+            --accent-amber:#F59E0B;--accent-amber-light:#FBBF24;
+            --text-primary:#0F172A;--text-secondary:#475569;--text-muted:#94A3B8;
+            --gradient-primary:linear-gradient(135deg,#1E3A8A 0%,#1E40AF 50%,#3B82F6 100%);
+            --gradient-accent:linear-gradient(135deg,#F59E0B,#FBBF24);
             --font-primary:'Space Grotesk','Inter',-apple-system,sans-serif;
             --font-secondary:'Inter',-apple-system,sans-serif;
             --shadow-md:0 10px 15px -3px rgba(0,0,0,0.1);
@@ -39,39 +43,48 @@
         body{font-family:var(--font-secondary);color:var(--text-primary);line-height:1.6;background:var(--pure-white)}
         .container{max-width:1000px;margin:0 auto;padding:0 2rem}
 
-        .page-hero{background:var(--gradient-primary);padding:5rem 0 4rem;text-align:center;color:var(--pure-white)}
+        .page-hero{background:var(--gradient-primary);padding:7rem 0 5rem;text-align:center;color:var(--pure-white);position:relative;overflow:hidden}
+        .page-hero > .container{position:relative;z-index:2}
         .page-hero h1{font-family:var(--font-primary);font-size:2.5rem;font-weight:800;line-height:1.2;letter-spacing:-0.02em}
         .page-hero p{font-size:1.1rem;opacity:0.9;max-width:650px;margin:1.5rem auto 0;line-height:1.7}
 
         .section{padding:4rem 0}
         .section-alt{background:var(--silver)}
-        .section-title{font-family:var(--font-primary);font-size:2rem;font-weight:700;color:var(--primary-navy);margin-bottom:2rem;text-align:center;letter-spacing:-0.02em}
+        .section-title{font-family:var(--font-primary);font-size:2rem;font-weight:700;color:var(--primary-navy);margin-bottom:2rem;text-align:center;letter-spacing:-0.02em;position:relative;display:inline-block;width:100%}
+        .section-title::after{content:'';display:block;width:50px;height:3px;background:var(--gradient-accent);border-radius:3px;margin:8px auto 0}
 
-        .step-card{display:flex;gap:1.5rem;padding:2rem 0;border-bottom:1px solid var(--silver-dark)}
-        .step-card:last-child{border-bottom:none}
-        .step-num{display:flex;align-items:center;justify-content:center;width:52px;height:52px;background:var(--gradient-primary);color:var(--pure-white);border-radius:50%;font-family:var(--font-primary);font-weight:700;font-size:1.25rem;flex-shrink:0}
+        .steps-wrapper{position:relative;padding-left:8px}
+        .steps-wrapper::before{content:'';position:absolute;top:26px;bottom:26px;left:33px;width:2px;background:linear-gradient(180deg,#3B82F6,#F59E0B);opacity:0.3}
+        .step-card{display:flex;gap:1.5rem;padding:2rem 0;position:relative}
+        .step-num{display:flex;align-items:center;justify-content:center;width:52px;height:52px;background:var(--gradient-primary);color:var(--pure-white);border-radius:50%;font-family:var(--font-primary);font-weight:700;font-size:1.25rem;flex-shrink:0;position:relative;z-index:1;box-shadow:0 4px 12px rgba(30,64,175,0.3)}
+        .step-num i{width:24px;height:24px}
         .step-body h3{font-family:var(--font-primary);font-size:1.25rem;font-weight:700;color:var(--primary-navy);margin-bottom:0.5rem}
         .step-body p{color:var(--text-secondary);line-height:1.8}
 
         .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem}
-        .service-summary{background:var(--pure-white);border:1px solid var(--silver-dark);border-radius:var(--radius-lg);padding:2rem;text-align:center;transition:all 0.3s ease}
-        .service-summary:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+        .service-summary{background:var(--pure-white);border:1px solid var(--silver-dark);border-radius:var(--radius-lg);padding:2rem;text-align:center;transition:all 0.3s cubic-bezier(0.22,1,0.36,1);position:relative;overflow:hidden}
+        .service-summary::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(135deg,#3B82F6,#F59E0B)}
+        .service-summary:hover{transform:translateY(-4px) scale(1.02);box-shadow:var(--shadow-md)}
+        .service-summary .icon-container{margin:0 auto 0.75rem}
         .service-summary h3{font-family:var(--font-primary);font-size:1.1rem;font-weight:700;color:var(--primary-navy);margin-bottom:0.5rem}
         .service-summary .service-price{font-family:var(--font-primary);font-weight:700;color:var(--primary-blue);margin-bottom:0.5rem}
         .service-summary p{color:var(--text-secondary);font-size:0.95rem;margin-bottom:1rem;line-height:1.6}
-        .service-summary a{color:var(--primary-blue);text-decoration:none;font-weight:600;font-size:0.95rem}
+        .service-summary a{color:var(--primary-blue-light);text-decoration:none;font-weight:600;font-size:0.95rem}
         .service-summary a:hover{text-decoration:underline}
 
-        .cta-section{background:var(--gradient-primary);padding:4rem 0;text-align:center;color:var(--pure-white)}
+        .cta-section{background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 100%);padding:4rem 0;text-align:center;color:var(--pure-white);position:relative;overflow:hidden}
+        .cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(245,158,11,0.08) 0%,transparent 60%);pointer-events:none}
+        .cta-section > .container{position:relative;z-index:1}
         .cta-section h2{font-family:var(--font-primary);font-size:2rem;font-weight:700;margin-bottom:1rem;color:var(--pure-white)}
         .cta-section p{opacity:0.9;margin-bottom:1.5rem;max-width:600px;margin-left:auto;margin-right:auto}
-        .btn-white{display:inline-block;background:var(--pure-white);color:var(--primary-blue);padding:1rem 2rem;border-radius:50px;text-decoration:none;font-weight:600;transition:all 0.3s ease}
-        .btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,0.2)}
+        .btn-white{display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:var(--primary-navy);padding:1rem 2rem;border-radius:50px;text-decoration:none;font-weight:700;transition:all 0.3s ease;box-shadow:0 4px 12px rgba(245,158,11,0.3)}
+        .btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(245,158,11,0.4)}
 
         @media(max-width:768px){
             .page-hero h1{font-size:1.75rem}
             .services-grid{grid-template-columns:1fr}
             .step-card{flex-direction:column;align-items:flex-start}
+            .steps-wrapper::before{display:none}
         }
     </style>
 </head>
@@ -79,62 +92,77 @@
     <div id="header-placeholder"></div>
 
     <section class="page-hero">
+        <div class="hero-orb hero-orb--amber hero-orb--md float" style="top:-30px;right:8%;"></div>
+        <div class="hero-orb hero-orb--blue hero-orb--lg float-slow float-delay-1" style="bottom:-40px;left:-50px;"></div>
         <div class="container">
             <h1>How We Work — No Jargon, No Surprises</h1>
             <p>Every engagement starts the same way: we find out where you stand. Then we show you exactly what is broken. Then we fix it. Here is what that looks like in practice.</p>
         </div>
     </section>
 
+    <div class="section-divider">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,0 C480,60 960,60 1440,0 L1440,60 L0,60 Z" fill="#FFFFFF"/></svg>
+    </div>
+
     <section class="section">
         <div class="container">
-            <div class="step-card">
-                <div class="step-num">1</div>
-                <div class="step-body">
-                    <h3>Book a Free 15-Minute Call</h3>
-                    <p>Tell us about your business. We ask about your services, your target customers, and your main competitors. We tell you honestly whether the audit makes sense for you right now or whether you should start somewhere else. No pitch. No pressure.</p>
+            <div class="steps-wrapper">
+                <div class="step-card animate-on-scroll">
+                    <div class="step-num"><i data-lucide="phone"></i></div>
+                    <div class="step-body">
+                        <h3>Book a Free 15-Minute Call</h3>
+                        <p>Tell us about your business. We ask about your services, your target customers, and your main competitors. We tell you honestly whether the audit makes sense for you right now or whether you should start somewhere else. No pitch. No pressure.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="step-card">
-                <div class="step-num">2</div>
-                <div class="step-body">
-                    <h3>We Run Your Audit (48 hours)</h3>
-                    <p>We test your business across ChatGPT, Perplexity, Google AI, Bing, and Gemini. We check your website's technical health, content structure, schema markup, and competitor positioning. You get a detailed report with your AI visibility score and a prioritised fix list.</p>
+                <div class="step-card animate-on-scroll">
+                    <div class="step-num"><i data-lucide="scan-search"></i></div>
+                    <div class="step-body">
+                        <h3>We Run Your Audit (48 hours)</h3>
+                        <p>We test your business across ChatGPT, Perplexity, Google AI, Bing, and Gemini. We check your website's technical health, content structure, schema markup, and competitor positioning. You get a detailed report with your AI visibility score and a prioritised fix list.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="step-card">
-                <div class="step-num">3</div>
-                <div class="step-body">
-                    <h3>We Walk Through the Findings (45 minutes)</h3>
-                    <p>We book a video call and go through every finding with you. You will see your competitor's name appearing where yours should be. You will leave the call with a clear picture of your AI search problem and the specific fixes that will solve it.</p>
+                <div class="step-card animate-on-scroll">
+                    <div class="step-num"><i data-lucide="presentation"></i></div>
+                    <div class="step-body">
+                        <h3>We Walk Through the Findings (45 minutes)</h3>
+                        <p>We book a video call and go through every finding with you. You will see your competitor's name appearing where yours should be. You will leave the call with a clear picture of your AI search problem and the specific fixes that will solve it.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="step-card">
-                <div class="step-num">4</div>
-                <div class="step-body">
-                    <h3>You Decide What Happens Next</h3>
-                    <p>Some clients take the roadmap and implement fixes themselves. Most ask us to do it — whether that means a new website, schema implementation, content restructuring, or a combination. Either way, you leave with real data and a real plan.</p>
+                <div class="step-card animate-on-scroll">
+                    <div class="step-num"><i data-lucide="map"></i></div>
+                    <div class="step-body">
+                        <h3>You Decide What Happens Next</h3>
+                        <p>Some clients take the roadmap and implement fixes themselves. Most ask us to do it — whether that means a new website, schema implementation, content restructuring, or a combination. Either way, you leave with real data and a real plan.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <div class="section-divider">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,0 C480,60 960,60 1440,0 L1440,60 L0,60 Z" fill="#F8FAFC"/></svg>
+    </div>
+
     <section class="section section-alt">
         <div class="container">
             <h2 class="section-title">What We Can Do For You</h2>
-            <div class="services-grid">
-                <div class="service-summary">
+            <div class="services-grid stagger-children">
+                <div class="service-summary card-hover animate-on-scroll">
+                    <div class="icon-container"><i data-lucide="search"></i></div>
                     <h3>AI Visibility Audit</h3>
                     <div class="service-price">&#8377;15,000</div>
                     <p>Find out exactly where you stand.</p>
                     <a href="/ai-visibility-audit.html">Book My Audit &rarr;</a>
                 </div>
-                <div class="service-summary">
+                <div class="service-summary card-hover animate-on-scroll">
+                    <div class="icon-container"><i data-lucide="globe"></i></div>
                     <h3>AI-Ready Website</h3>
                     <div class="service-price">from &#8377;50,000</div>
                     <p>A site that AI engines recommend.</p>
                     <a href="/Free-AI-Ready-Website.html">Get My Website &rarr;</a>
                 </div>
-                <div class="service-summary">
+                <div class="service-summary card-hover animate-on-scroll">
+                    <div class="icon-container"><i data-lucide="bar-chart-3"></i></div>
                     <h3>Monthly Monitoring</h3>
                     <div class="service-price">&#8377;20,000/month</div>
                     <p>Stay ahead as AI search evolves.</p>
@@ -144,11 +172,15 @@
         </div>
     </section>
 
+    <div class="section-divider" style="background:#F8FAFC;">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,0 C480,60 960,60 1440,0 L1440,60 L0,60 Z" fill="#0F172A"/></svg>
+    </div>
+
     <section class="cta-section">
         <div class="container">
             <h2>Ready to Start?</h2>
             <p>Book a free 15-minute call. We will tell you exactly what makes sense for your business.</p>
-            <a href="https://cal.com/optiscale360/discoverycall" class="btn-white">Book Free 15-Min Call</a>
+            <a href="https://cal.com/optiscale360/discoverycall" class="btn-white"><i data-lucide="calendar" style="width:18px;height:18px;"></i> Book Free 15-Min Call</a>
         </div>
     </section>
 
@@ -158,5 +190,6 @@
     fetch('/components/header.html').then(function(r){return r.text()}).then(function(html){document.getElementById('header-placeholder').innerHTML=html;document.getElementById('header-placeholder').querySelectorAll('script').forEach(function(s){var ns=document.createElement('script');ns.textContent=s.textContent;document.head.appendChild(ns)})});
     fetch('/components/footer.html').then(function(r){return r.text()}).then(function(html){document.getElementById('footer-placeholder').innerHTML=html});
     </script>
+    <script src="/js/animations.js"></script>
 </body>
 </html>

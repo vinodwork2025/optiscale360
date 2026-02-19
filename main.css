@@ -1,0 +1,622 @@
+/* ============================================
+   OptiScale360 — Main Design System
+   ============================================ */
+
+/* --- Design Tokens --- */
+:root {
+    /* Primary Blues */
+    --primary:          #1E40AF;
+    --primary-light:    #3B82F6;
+    --primary-dark:     #1E3A8A;
+
+    /* Warm Amber Accent */
+    --accent:           #F59E0B;
+    --accent-light:     #FBBF24;
+    --accent-dark:      #D97706;
+
+    /* Status */
+    --success:          #10B981;
+
+    /* Navy / Dark */
+    --navy:             #0F172A;
+    --navy-light:       #1E293B;
+
+    /* Surfaces */
+    --surface:          #FFFFFF;
+    --surface-alt:      #F8FAFC;
+    --surface-warm:     #FFFBEB;
+
+    /* Borders */
+    --border:           #E2E8F0;
+    --border-accent:    rgba(59,130,246,0.2);
+
+    /* Text */
+    --text-primary:     #0F172A;
+    --text-secondary:   #475569;
+    --text-muted:       #94A3B8;
+
+    /* Gradients */
+    --gradient-hero:    linear-gradient(135deg, #1E3A8A 0%, #1E40AF 50%, #3B82F6 100%);
+    --gradient-cta:     linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%);
+    --gradient-accent:  linear-gradient(135deg, #F59E0B, #FBBF24);
+    --gradient-card-border: linear-gradient(135deg, #3B82F6, #F59E0B);
+
+    /* Shadows */
+    --shadow-sm:  0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md:  0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg:  0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl:  0 20px 25px -5px rgb(0 0 0 / 0.1), 0 10px 10px -5px rgb(0 0 0 / 0.1);
+    --shadow-glow:          0 0 20px rgba(30, 64, 175, 0.2);
+    --shadow-glow-accent:   0 0 25px rgba(245, 158, 11, 0.25);
+
+    /* Transitions */
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ============================================
+   Animation System
+   ============================================ */
+
+/* Scroll-triggered entrance */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+}
+.animate-on-scroll.animate-in {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+.animate-on-scroll.from-left {
+    transform: translateX(-30px);
+}
+.animate-on-scroll.from-left.animate-in {
+    transform: translateX(0);
+}
+.animate-on-scroll.from-right {
+    transform: translateX(30px);
+}
+.animate-on-scroll.from-right.animate-in {
+    transform: translateX(0);
+}
+.animate-on-scroll.scale-in {
+    transform: scale(0.95);
+    opacity: 0;
+}
+.animate-on-scroll.scale-in.animate-in {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Staggered children */
+.stagger-children > .animate-on-scroll:nth-child(1) { transition-delay: 0s; }
+.stagger-children > .animate-on-scroll:nth-child(2) { transition-delay: 0.1s; }
+.stagger-children > .animate-on-scroll:nth-child(3) { transition-delay: 0.15s; }
+.stagger-children > .animate-on-scroll:nth-child(4) { transition-delay: 0.2s; }
+.stagger-children > .animate-on-scroll:nth-child(5) { transition-delay: 0.25s; }
+.stagger-children > .animate-on-scroll:nth-child(6) { transition-delay: 0.3s; }
+
+/* Floating animation for decorative elements */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-12px); }
+}
+@keyframes float-slow {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50%      { transform: translateY(-8px) rotate(2deg); }
+}
+@keyframes pulse-glow {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50%      { opacity: 1;   transform: scale(1.05); }
+}
+@keyframes shimmer {
+    0%   { background-position: -200% center; }
+    100% { background-position: 200% center; }
+}
+
+.float          { animation: float 6s ease-in-out infinite; }
+.float-slow     { animation: float-slow 8s ease-in-out infinite; }
+.float-delay-1  { animation-delay: 1s; }
+.float-delay-2  { animation-delay: 2s; }
+.float-delay-3  { animation-delay: 3s; }
+
+/* ============================================
+   Hero Sections
+   ============================================ */
+
+.page-hero {
+    position: relative;
+    overflow: hidden;
+    background: var(--gradient-hero);
+    color: #fff;
+}
+
+/* Mesh overlay with warm accent touches */
+.page-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 20% 50%, rgba(251,191,36,0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(59,130,246,0.15) 0%, transparent 40%),
+        radial-gradient(circle at 60% 80%, rgba(245,158,11,0.08) 0%, transparent 45%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Subtle dot-grid pattern */
+.page-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.12) 1px, transparent 1px);
+    background-size: 24px 24px;
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.page-hero > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Floating decorative orbs */
+.hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+    pointer-events: none;
+    z-index: 1;
+}
+.hero-orb--blue {
+    background: rgba(59, 130, 246, 0.25);
+}
+.hero-orb--amber {
+    background: rgba(251, 191, 36, 0.15);
+}
+.hero-orb--lg {
+    width: 300px;
+    height: 300px;
+}
+.hero-orb--md {
+    width: 180px;
+    height: 180px;
+}
+.hero-orb--sm {
+    width: 100px;
+    height: 100px;
+}
+
+/* ============================================
+   Section Dividers
+   ============================================ */
+
+.section-divider {
+    line-height: 0;
+    overflow: hidden;
+    margin-top: -1px;
+}
+.section-divider svg {
+    display: block;
+    width: 100%;
+    height: 50px;
+}
+.section-divider--flip {
+    transform: scaleY(-1);
+    margin-top: 0;
+    margin-bottom: -1px;
+}
+
+/* ============================================
+   Section Title Accent Underline
+   ============================================ */
+
+.section-title-accent {
+    position: relative;
+    display: inline-block;
+}
+.section-title-accent::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--gradient-accent);
+    border-radius: 3px;
+}
+
+/* ============================================
+   Cards — Enhanced Treatments
+   ============================================ */
+
+/* Gradient top border */
+.card-gradient-border {
+    position: relative;
+    overflow: hidden;
+}
+.card-gradient-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-card-border);
+    z-index: 1;
+}
+
+/* Enhanced hover state */
+.card-hover {
+    transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+}
+.card-hover:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: var(--shadow-xl);
+}
+
+/* Glass card variant */
+.card-glass {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* ============================================
+   Icon Containers
+   ============================================ */
+
+.icon-container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(30, 64, 175, 0.1), rgba(59, 130, 246, 0.15));
+    color: var(--primary);
+    flex-shrink: 0;
+    transition: all 0.3s var(--ease-out);
+}
+.icon-container svg,
+.icon-container i {
+    width: 28px;
+    height: 28px;
+}
+.icon-container--accent {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(251, 191, 36, 0.18));
+    color: var(--accent-dark);
+}
+.icon-container--white {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+}
+.icon-container--sm {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+}
+.icon-container--sm svg,
+.icon-container--sm i {
+    width: 20px;
+    height: 20px;
+}
+.icon-container--lg {
+    width: 72px;
+    height: 72px;
+    border-radius: 18px;
+}
+.icon-container--lg svg,
+.icon-container--lg i {
+    width: 36px;
+    height: 36px;
+}
+
+/* Card hover → icon shift */
+.card-hover:hover .icon-container {
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: #fff;
+    transform: scale(1.08);
+}
+
+/* ============================================
+   Connecting Line (Process Steps)
+   ============================================ */
+
+.steps-connected {
+    position: relative;
+}
+.steps-connected::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 35px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--primary-light), var(--accent));
+    opacity: 0.3;
+    z-index: 0;
+}
+.steps-connected--horizontal::before {
+    top: 35px;
+    left: 0;
+    right: 0;
+    bottom: auto;
+    width: auto;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-light), var(--accent));
+}
+
+/* Step number circles */
+.step-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--gradient-hero);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.1rem;
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+}
+.step-circle svg,
+.step-circle i {
+    width: 24px;
+    height: 24px;
+}
+
+/* ============================================
+   Buttons — Enhanced
+   ============================================ */
+
+.btn-primary-new {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    background: var(--gradient-hero);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s var(--ease-out);
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+}
+.btn-primary-new:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(30, 64, 175, 0.4);
+}
+
+.btn-accent {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    background: var(--gradient-accent);
+    color: var(--navy);
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s var(--ease-out);
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+.btn-accent:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(245, 158, 11, 0.4);
+}
+
+/* ============================================
+   Pricing Card Glow
+   ============================================ */
+
+.pricing-glow {
+    position: relative;
+}
+.pricing-glow::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, var(--primary-light), var(--accent));
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s var(--ease-out);
+    filter: blur(8px);
+}
+.pricing-glow:hover::after,
+.pricing-glow.featured::after {
+    opacity: 1;
+}
+
+/* Badge for "Most Popular" etc */
+.badge-popular {
+    display: inline-block;
+    padding: 4px 14px;
+    background: var(--gradient-accent);
+    color: var(--navy);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 50px;
+}
+
+/* ============================================
+   Investment / CTA Boxes — Amber Accent
+   ============================================ */
+
+.investment-box {
+    position: relative;
+    border: 2px solid var(--accent);
+    border-radius: 16px;
+    overflow: hidden;
+}
+.investment-box::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(245,158,11,0.06), rgba(251,191,36,0.03));
+    pointer-events: none;
+}
+.investment-box::after {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 24px;
+    background: rgba(245, 158, 11, 0.08);
+    filter: blur(20px);
+    z-index: -1;
+}
+
+/* ============================================
+   Pull-Quote (About page)
+   ============================================ */
+
+.pull-quote {
+    position: relative;
+    padding: 24px 32px;
+    margin: 32px 0;
+    border-left: 4px solid var(--accent);
+    background: var(--surface-warm);
+    border-radius: 0 12px 12px 0;
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--text-primary);
+    line-height: 1.7;
+}
+
+/* ============================================
+   Form Focus Enhancement
+   ============================================ */
+
+.input-enhanced {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.input-enhanced:focus {
+    border-color: var(--primary-light) !important;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15), var(--shadow-md) !important;
+    outline: none;
+}
+
+/* ============================================
+   Background Patterns
+   ============================================ */
+
+.bg-dots {
+    background-image: radial-gradient(circle, var(--border) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.bg-surface-alt {
+    background-color: var(--surface-alt);
+}
+
+.bg-surface-warm {
+    background-color: var(--surface-warm);
+}
+
+.bg-navy {
+    background: var(--gradient-cta);
+    color: #fff;
+}
+
+/* ============================================
+   Testimonial Enhancement
+   ============================================ */
+
+.quote-mark {
+    font-size: 4rem;
+    line-height: 1;
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: Georgia, serif;
+    margin-bottom: -12px;
+    display: block;
+}
+
+/* ============================================
+   FAQ Chevron (replaces + character)
+   ============================================ */
+
+.faq-chevron {
+    transition: transform 0.3s var(--ease-out);
+    color: var(--primary);
+}
+.faq-item.active .faq-chevron {
+    transform: rotate(180deg);
+}
+
+/* ============================================
+   Counter Animation
+   ============================================ */
+
+.counter-value {
+    display: inline-block;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+
+@media (max-width: 768px) {
+    .hero-orb--lg { width: 180px; height: 180px; }
+    .hero-orb--md { width: 120px; height: 120px; }
+    .hero-orb--sm { width: 70px; height: 70px; }
+
+    .section-divider svg { height: 30px; }
+
+    .steps-connected::before {
+        left: 28px;
+    }
+    .step-circle {
+        width: 44px;
+        height: 44px;
+        font-size: 0.95rem;
+    }
+
+    .icon-container {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+    }
+    .icon-container svg,
+    .icon-container i {
+        width: 24px;
+        height: 24px;
+    }
+
+    .icon-container--lg {
+        width: 56px;
+        height: 56px;
+    }
+
+    .pull-quote {
+        padding: 16px 20px;
+        font-size: 1.05rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .animate-on-scroll {
+        transform: translateY(20px);
+    }
+    .animate-on-scroll.from-left { transform: translateX(-20px); }
+    .animate-on-scroll.from-right { transform: translateX(20px); }
+}

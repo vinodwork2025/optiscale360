@@ -53,18 +53,23 @@
     </script>
 
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="main.css">
+    <script src="https://unpkg.com/lucide@latest" defer></script>
     <style>
         :root {
-            --primary-navy: #0A0E27;
-            --primary-blue: #0066FF;
+            --primary-navy: #0F172A;
+            --primary-blue: #1E40AF;
+            --primary-blue-light: #3B82F6;
             --pure-white: #FFFFFF;
             --silver: #F8FAFC;
             --silver-dark: #E2E8F0;
             --success: #10B981;
-            --text-primary: #0F1419;
-            --text-secondary: #3C4553;
-            --text-muted: #5C6B7F;
-            --gradient-primary: linear-gradient(135deg, #0066FF 0%, #0052CC 100%);
+            --accent-amber: #F59E0B;
+            --text-primary: #0F172A;
+            --text-secondary: #475569;
+            --text-muted: #94A3B8;
+            --gradient-primary: linear-gradient(135deg, #1E3A8A 0%, #1E40AF 50%, #3B82F6 100%);
+            --gradient-accent: linear-gradient(135deg, #F59E0B, #FBBF24);
             --font-primary: 'Space Grotesk', 'Inter', -apple-system, sans-serif;
             --font-secondary: 'Inter', -apple-system, sans-serif;
             --shadow-md: 0 10px 15px -3px rgba(0,0,0,0.1);
@@ -79,10 +84,13 @@
 
         .page-hero {
             background: var(--gradient-primary);
-            padding: 5rem 0 4rem;
+            padding: 7rem 0 5rem;
             text-align: center;
             color: var(--pure-white);
+            position: relative;
+            overflow: hidden;
         }
+        .page-hero > .container { position: relative; z-index: 2; }
         .page-hero h1 {
             font-family: var(--font-primary);
             font-size: 2.5rem;
@@ -91,6 +99,13 @@
             max-width: 750px;
             margin: 0 auto;
             letter-spacing: -0.02em;
+        }
+        .page-hero .hero-sub {
+            font-size: 1.15rem;
+            opacity: 0.85;
+            max-width: 600px;
+            margin: 1rem auto 0;
+            line-height: 1.7;
         }
 
         .section { padding: 4rem 0; }
@@ -102,34 +117,68 @@
             color: var(--primary-navy);
             margin-bottom: 2rem;
             letter-spacing: -0.02em;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--gradient-accent);
+            border-radius: 3px;
+            margin-top: 8px;
         }
         .prose p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.25rem; font-size: 1.05rem; }
 
+        .deliverables-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+        }
         .deliverable {
             display: flex;
             gap: 1rem;
-            padding: 1.25rem 0;
-            border-bottom: 1px solid var(--silver-dark);
+            padding: 1.25rem;
+            background: var(--pure-white);
+            border-radius: 12px;
+            border: 1px solid var(--silver-dark);
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
         }
-        .deliverable:last-child { border-bottom: none; }
+        .deliverable:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
         .deliverable-check {
-            color: var(--success);
-            font-weight: 700;
-            font-size: 1.25rem;
             flex-shrink: 0;
-            line-height: 1.5;
         }
         .deliverable-text { color: var(--text-secondary); line-height: 1.7; }
         .deliverable-text strong { color: var(--text-primary); }
+        @media (max-width: 768px) {
+            .deliverables-grid { grid-template-columns: 1fr; }
+        }
 
-        .process-steps { counter-reset: step; }
+        .process-steps {
+            counter-reset: step;
+            position: relative;
+            padding-left: 8px;
+        }
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 22px;
+            bottom: 22px;
+            left: 29px;
+            width: 2px;
+            background: linear-gradient(180deg, #3B82F6, #F59E0B);
+            opacity: 0.3;
+        }
         .process-item {
             display: flex;
             gap: 1.5rem;
             padding: 1.5rem 0;
-            border-bottom: 1px solid var(--silver-dark);
+            position: relative;
         }
-        .process-item:last-child { border-bottom: none; }
         .process-num {
             display: flex;
             align-items: center;
@@ -143,7 +192,11 @@
             font-weight: 700;
             font-size: 1.1rem;
             flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
         }
+        .process-num i { width: 20px; height: 20px; }
         .process-content h3 {
             font-family: var(--font-primary);
             font-size: 1.15rem;
@@ -155,12 +208,30 @@
 
         .investment-box {
             background: var(--pure-white);
-            border: 2px solid var(--primary-blue);
+            border: 2px solid var(--accent-amber);
             border-radius: var(--radius-lg);
             padding: 2.5rem;
             text-align: center;
             max-width: 600px;
             margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .investment-box::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(245,158,11,0.06), rgba(251,191,36,0.03));
+            pointer-events: none;
+        }
+        .investment-box::after {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            border-radius: 30px;
+            background: rgba(245, 158, 11, 0.08);
+            filter: blur(20px);
+            z-index: -1;
         }
         .investment-price {
             font-family: var(--font-primary);
@@ -173,7 +244,9 @@
         .investment-note { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem; }
 
         .btn-primary {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             background: var(--gradient-primary);
             color: var(--pure-white);
             padding: 1rem 2rem;
@@ -182,35 +255,58 @@
             font-weight: 600;
             font-size: 1.05rem;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
         }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,102,255,0.3); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(30,64,175,0.4); }
+        .investment-box .btn-primary {
+            background: var(--gradient-accent);
+            color: var(--primary-navy);
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+        }
+        .investment-box .btn-primary:hover {
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+        }
         .whatsapp-note { color: var(--text-muted); font-size: 0.95rem; margin-top: 1rem; }
-        .whatsapp-note a { color: var(--primary-blue); text-decoration: none; }
+        .whatsapp-note a { color: var(--primary-blue-light); text-decoration: none; }
 
         .cta-section {
-            background: var(--gradient-primary);
+            background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%);
             padding: 4rem 0;
             text-align: center;
             color: var(--pure-white);
+            position: relative;
+            overflow: hidden;
         }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(245,158,11,0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .cta-section > .container { position: relative; z-index: 1; }
         .cta-section h2 { font-family: var(--font-primary); font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--pure-white); }
         .btn-white {
-            display: inline-block;
-            background: var(--pure-white);
-            color: var(--primary-blue);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--gradient-accent);
+            color: var(--primary-navy);
             padding: 1rem 2rem;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
         }
-        .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
+        .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(245,158,11,0.4); }
 
         .faq-item { background: var(--pure-white); border: 1px solid var(--silver-dark); border-radius: var(--radius-md); margin-bottom: 0.75rem; overflow: hidden; }
         .faq-question { padding: 1.25rem 1.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; color: var(--primary-navy); font-size: 1.05rem; background: none; border: none; width: 100%; text-align: left; font-family: var(--font-secondary); }
         .faq-question:hover { background: var(--silver); }
         .faq-icon { font-size: 1.25rem; transition: transform 0.3s ease; flex-shrink: 0; margin-left: 1rem; }
-        .faq-item.active .faq-icon { transform: rotate(45deg); }
+        .faq-item.active .faq-icon { transform: rotate(180deg); }
         .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
         .faq-item.active .faq-answer { max-height: 300px; }
         .faq-answer-inner { padding: 0 1.5rem 1.25rem; color: var(--text-secondary); line-height: 1.7; }
@@ -227,10 +323,18 @@
     <div id="header-placeholder"></div>
 
     <section class="page-hero">
+        <div class="hero-orb hero-orb--amber hero-orb--md float" style="top:-30px;right:5%;"></div>
+        <div class="hero-orb hero-orb--blue hero-orb--lg float-slow float-delay-1" style="bottom:-40px;left:-60px;"></div>
+        <div class="hero-orb hero-orb--blue hero-orb--sm float float-delay-2" style="top:30%;left:15%;"></div>
         <div class="container">
             <h1>Find Out Exactly Where Your Business Stands on AI Search — In 48 Hours</h1>
+            <p class="hero-sub">Complete audit across ChatGPT, Perplexity, Google AI, Bing &amp; Gemini with a prioritised fix roadmap.</p>
         </div>
     </section>
+
+    <div class="section-divider">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,0 C480,60 960,60 1440,0 L1440,60 L0,60 Z" fill="#FFFFFF"/></svg>
+    </div>
 
     <!-- THE PROBLEM -->
     <section class="section">
@@ -245,37 +349,39 @@
     <section class="section section-alt">
         <div class="container">
             <h2 class="section-title">What's Included in the Audit</h2>
-            <div class="deliverable">
-                <span class="deliverable-check">&#10003;</span>
-                <div class="deliverable-text"><strong>AI Visibility Score across 5 platforms</strong> — ChatGPT, Perplexity, Google AI Overviews, Bing Chat, Gemini. One consolidated score showing your overall AI search presence.</div>
-            </div>
-            <div class="deliverable">
-                <span class="deliverable-check">&#10003;</span>
-                <div class="deliverable-text"><strong>10 Live Query Tests</strong> — we run 10 searches that your potential customers would actually type. We show you what came up, who appeared, and whether you were cited.</div>
-            </div>
-            <div class="deliverable">
-                <span class="deliverable-check">&#10003;</span>
-                <div class="deliverable-text"><strong>Competitor Positioning Map</strong> — we identify which competitors are appearing in AI results instead of you and what they are doing that you are not.</div>
-            </div>
-            <div class="deliverable">
-                <span class="deliverable-check">&#10003;</span>
-                <div class="deliverable-text"><strong>Technical Website Health Check</strong> — page speed, mobile score, schema markup presence, crawlability, indexation. The technical factors that affect whether AI platforms can read your site.</div>
-            </div>
-            <div class="deliverable">
-                <span class="deliverable-check">&#10003;</span>
-                <div class="deliverable-text"><strong>Content Readiness Analysis</strong> — is your content structured in a way AI engines can extract and use? We check fact density, FAQ presence, and entity clarity.</div>
-            </div>
-            <div class="deliverable">
-                <span class="deliverable-check">&#10003;</span>
-                <div class="deliverable-text"><strong>Google Business Profile Assessment</strong> — a fully optimised GBP is a major signal for local AI search. We check yours and tell you what is missing.</div>
-            </div>
-            <div class="deliverable">
-                <span class="deliverable-check">&#10003;</span>
-                <div class="deliverable-text"><strong>Prioritised Action Roadmap</strong> — not a list of 50 things to fix. A clear sequence: what to fix first, what to fix second, and why.</div>
-            </div>
-            <div class="deliverable">
-                <span class="deliverable-check">&#10003;</span>
-                <div class="deliverable-text"><strong>45-Minute Video Walkthrough</strong> — we go through every finding with you on a video call. You will see your competitor's name appearing where yours should be. You will leave the call knowing exactly what to do.</div>
+            <div class="deliverables-grid stagger-children">
+                <div class="deliverable animate-on-scroll">
+                    <div class="deliverable-check"><div class="icon-container icon-container--sm"><i data-lucide="bar-chart-3"></i></div></div>
+                    <div class="deliverable-text"><strong>AI Visibility Score across 5 platforms</strong> — ChatGPT, Perplexity, Google AI Overviews, Bing Chat, Gemini. One consolidated score showing your overall AI search presence.</div>
+                </div>
+                <div class="deliverable animate-on-scroll">
+                    <div class="deliverable-check"><div class="icon-container icon-container--sm"><i data-lucide="search"></i></div></div>
+                    <div class="deliverable-text"><strong>10 Live Query Tests</strong> — we run 10 searches that your potential customers would actually type. We show you what came up, who appeared, and whether you were cited.</div>
+                </div>
+                <div class="deliverable animate-on-scroll">
+                    <div class="deliverable-check"><div class="icon-container icon-container--sm"><i data-lucide="users"></i></div></div>
+                    <div class="deliverable-text"><strong>Competitor Positioning Map</strong> — we identify which competitors are appearing in AI results instead of you and what they are doing that you are not.</div>
+                </div>
+                <div class="deliverable animate-on-scroll">
+                    <div class="deliverable-check"><div class="icon-container icon-container--sm"><i data-lucide="activity"></i></div></div>
+                    <div class="deliverable-text"><strong>Technical Website Health Check</strong> — page speed, mobile score, schema markup presence, crawlability, indexation. The technical factors that affect whether AI platforms can read your site.</div>
+                </div>
+                <div class="deliverable animate-on-scroll">
+                    <div class="deliverable-check"><div class="icon-container icon-container--sm"><i data-lucide="file-text"></i></div></div>
+                    <div class="deliverable-text"><strong>Content Readiness Analysis</strong> — is your content structured in a way AI engines can extract and use? We check fact density, FAQ presence, and entity clarity.</div>
+                </div>
+                <div class="deliverable animate-on-scroll">
+                    <div class="deliverable-check"><div class="icon-container icon-container--sm"><i data-lucide="map-pin"></i></div></div>
+                    <div class="deliverable-text"><strong>Google Business Profile Assessment</strong> — a fully optimised GBP is a major signal for local AI search. We check yours and tell you what is missing.</div>
+                </div>
+                <div class="deliverable animate-on-scroll">
+                    <div class="deliverable-check"><div class="icon-container icon-container--sm"><i data-lucide="list-ordered"></i></div></div>
+                    <div class="deliverable-text"><strong>Prioritised Action Roadmap</strong> — not a list of 50 things to fix. A clear sequence: what to fix first, what to fix second, and why.</div>
+                </div>
+                <div class="deliverable animate-on-scroll">
+                    <div class="deliverable-check"><div class="icon-container icon-container--sm"><i data-lucide="video"></i></div></div>
+                    <div class="deliverable-text"><strong>45-Minute Video Walkthrough</strong> — we go through every finding with you on a video call. You will see your competitor's name appearing where yours should be. You will leave the call knowing exactly what to do.</div>
+                </div>
             </div>
         </div>
     </section>
@@ -285,29 +391,29 @@
         <div class="container">
             <h2 class="section-title">How the Audit Works</h2>
             <div class="process-steps">
-                <div class="process-item">
-                    <div class="process-num">1</div>
+                <div class="process-item animate-on-scroll">
+                    <div class="process-num"><i data-lucide="clipboard-list"></i></div>
                     <div class="process-content">
                         <h3>You Answer 6 Questions (15 minutes)</h3>
                         <p>We send you a short intake form. We need your website URL, your top 3 services, your target city, a description of your ideal customer, and your main competitor. That is it.</p>
                     </div>
                 </div>
-                <div class="process-item">
-                    <div class="process-num">2</div>
+                <div class="process-item animate-on-scroll">
+                    <div class="process-num"><i data-lucide="scan-search"></i></div>
                     <div class="process-content">
                         <h3>We Run the Audit (48 hours)</h3>
                         <p>We run your business through our full audit process: 10 AI query tests across 5 platforms, technical website scan, competitor analysis, GBP check, and content analysis. We document everything with screenshots and data.</p>
                     </div>
                 </div>
-                <div class="process-item">
-                    <div class="process-num">3</div>
+                <div class="process-item animate-on-scroll">
+                    <div class="process-num"><i data-lucide="file-check"></i></div>
                     <div class="process-content">
                         <h3>We Deliver Your Report</h3>
                         <p>You receive a detailed PDF report with your AI visibility score, findings across every audit area, competitor comparison, and your prioritised action roadmap.</p>
                     </div>
                 </div>
-                <div class="process-item">
-                    <div class="process-num">4</div>
+                <div class="process-item animate-on-scroll">
+                    <div class="process-num"><i data-lucide="presentation"></i></div>
                     <div class="process-content">
                         <h3>We Walk Through It Together (45 minutes)</h3>
                         <p>We book a video call and go through every finding. No jargon. Plain English. You will understand exactly what is causing your AI search invisibility and what to fix first.</p>
@@ -331,20 +437,30 @@
         </div>
     </section>
 
+    <!-- Section Divider -->
+    <div class="section-divider" style="background:#F8FAFC;">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,0 C480,60 960,60 1440,0 L1440,60 L0,60 Z" fill="#FFFFFF"/></svg>
+    </div>
+
     <!-- FAQ -->
     <section class="section">
         <div class="container">
             <h2 class="section-title">Common Questions</h2>
             <div class="faq-item">
-                <button class="faq-question">Can I implement the fixes myself after getting the audit?<span class="faq-icon">+</span></button>
+                <button class="faq-question">Can I implement the fixes myself after getting the audit?<span class="faq-icon faq-chevron"><i data-lucide="chevron-down" style="width:20px;height:20px;"></i></span></button>
                 <div class="faq-answer"><div class="faq-answer-inner">Yes. The audit report includes a clear, prioritised roadmap that you or your existing developer can follow. Many fixes — like updating your Google Business Profile or adding FAQ sections — you can do yourself. For technical work like implementing a full schema strategy — we can do that for you as a separate engagement.</div></div>
             </div>
             <div class="faq-item">
-                <button class="faq-question">Do you guarantee I will appear on AI search after implementing the fixes?<span class="faq-icon">+</span></button>
+                <button class="faq-question">Do you guarantee I will appear on AI search after implementing the fixes?<span class="faq-icon faq-chevron"><i data-lucide="chevron-down" style="width:20px;height:20px;"></i></span></button>
                 <div class="faq-answer"><div class="faq-answer-inner">No honest agency can guarantee exact AI search placement — the platforms make their own decisions. What we guarantee is that we will identify every fixable reason you are currently invisible and give you a clear, specific plan to address each one.</div></div>
             </div>
         </div>
     </section>
+
+    <!-- Section Divider -->
+    <div class="section-divider">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,0 C480,60 960,60 1440,0 L1440,60 L0,60 Z" fill="#0F172A"/></svg>
+    </div>
 
     <!-- BOTTOM CTA -->
     <section class="cta-section">
@@ -363,5 +479,6 @@
     <script>
     document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('.faq-question').forEach(function(btn){btn.addEventListener('click',function(){var item=this.parentElement;var active=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(function(el){el.classList.remove('active')});if(!active)item.classList.add('active')})})});
     </script>
+    <script src="/js/animations.js"></script>
 </body>
 </html>

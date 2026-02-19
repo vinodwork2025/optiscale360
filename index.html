@@ -145,20 +145,26 @@
     </script>
 
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="main.css">
+    <script src="https://unpkg.com/lucide@latest" defer></script>
     <style>
         :root {
-            --primary-navy: #0A0E27;
-            --primary-blue: #0066FF;
-            --primary-blue-dark: #0052CC;
+            --primary-navy: #0F172A;
+            --primary-blue: #1E40AF;
+            --primary-blue-dark: #1E3A8A;
+            --primary-blue-light: #3B82F6;
             --pure-white: #FFFFFF;
             --silver: #F8FAFC;
             --silver-dark: #E2E8F0;
             --success: #10B981;
-            --text-primary: #0F1419;
-            --text-secondary: #3C4553;
-            --text-muted: #5C6B7F;
-            --gradient-primary: linear-gradient(135deg, #0066FF 0%, #0052CC 100%);
-            --gradient-hero: linear-gradient(135deg, #FAFBFF 0%, #F1F5F9 50%, #E2E8F0 100%);
+            --accent-amber: #F59E0B;
+            --accent-amber-light: #FBBF24;
+            --text-primary: #0F172A;
+            --text-secondary: #475569;
+            --text-muted: #94A3B8;
+            --gradient-primary: linear-gradient(135deg, #1E3A8A 0%, #1E40AF 50%, #3B82F6 100%);
+            --gradient-hero: linear-gradient(135deg, #1E3A8A 0%, #1E40AF 50%, #3B82F6 100%);
+            --gradient-accent: linear-gradient(135deg, #F59E0B, #FBBF24);
             --font-primary: 'Space Grotesk', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             --font-secondary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
@@ -177,9 +183,35 @@
         /* HERO */
         .hero {
             background: var(--gradient-hero);
-            padding: 6rem 0 5rem;
+            padding: 8rem 0 6rem;
             text-align: center;
             position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(251,191,36,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(59,130,246,0.15) 0%, transparent 40%),
+                radial-gradient(circle at 60% 80%, rgba(245,158,11,0.08) 0%, transparent 45%);
+            pointer-events: none;
+            z-index: 1;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.12) 1px, transparent 1px);
+            background-size: 24px 24px;
+            opacity: 0.4;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .hero > .container {
+            position: relative;
+            z-index: 2;
         }
         .hero h1 {
             font-family: var(--font-primary);
@@ -188,7 +220,7 @@
             line-height: 1.2;
             margin-bottom: 1.5rem;
             letter-spacing: -0.02em;
-            color: var(--primary-navy);
+            color: #FFFFFF;
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
@@ -196,7 +228,7 @@
         .hero-subtitle {
             font-size: 1.2rem;
             line-height: 1.7;
-            color: var(--text-secondary);
+            color: rgba(255,255,255,0.85);
             max-width: 700px;
             margin: 0 auto 2.5rem;
         }
@@ -207,36 +239,41 @@
             flex-wrap: wrap;
         }
         .btn-primary {
-            display: inline-block;
-            background: var(--gradient-primary);
-            color: var(--pure-white);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--gradient-accent);
+            color: var(--primary-navy);
             padding: 1rem 2rem;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 1.05rem;
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
         }
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 102, 255, 0.3);
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
         }
         .btn-outline {
             display: inline-block;
             background: transparent;
-            color: var(--primary-blue);
+            color: var(--primary-blue-light);
             padding: 1rem 2rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
             font-size: 1.05rem;
-            border: 2px solid var(--primary-blue);
+            border: 2px solid rgba(255,255,255,0.4);
             transition: all 0.3s ease;
+            color: #fff;
         }
         .btn-outline:hover {
-            background: rgba(0, 102, 255, 0.05);
+            background: rgba(255,255,255,0.1);
+            border-color: #fff;
             transform: translateY(-2px);
         }
 
@@ -251,6 +288,18 @@
             margin-bottom: 1rem;
             color: var(--primary-navy);
             letter-spacing: -0.02em;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--gradient-accent);
+            border-radius: 3px;
+            margin: 10px auto 0;
         }
         .section-subtitle {
             text-align: center;
@@ -263,7 +312,7 @@
         /* SERVICES STEPS */
         .step-label {
             display: inline-block;
-            background: rgba(0, 102, 255, 0.1);
+            background: linear-gradient(135deg, rgba(30,64,175,0.1), rgba(59,130,246,0.15));
             color: var(--primary-blue);
             padding: 0.4rem 1rem;
             border-radius: 50px;
@@ -279,10 +328,22 @@
             box-shadow: var(--shadow-md);
             border: 1px solid var(--silver-dark);
             margin-bottom: 2rem;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(135deg, #3B82F6, #F59E0B);
+            z-index: 1;
         }
         .service-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-4px) scale(1.01);
             box-shadow: var(--shadow-lg);
         }
         .service-card h3 {
@@ -314,6 +375,14 @@
             position: absolute;
             left: 0;
         }
+        .service-card .btn-primary {
+            background: var(--gradient-primary);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+        }
+        .service-card .btn-primary:hover {
+            box-shadow: 0 8px 25px rgba(30, 64, 175, 0.4);
+        }
         .price-tag {
             font-family: var(--font-primary);
             font-size: 1.25rem;
@@ -337,6 +406,19 @@
             max-width: 700px;
             margin: 0 auto;
             border: 1px solid var(--silver-dark);
+            border-left: 4px solid var(--accent-amber);
+            position: relative;
+        }
+        .testimonial-placeholder .quote-mark {
+            font-size: 4rem;
+            line-height: 1;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: Georgia, serif;
+            margin-bottom: -8px;
+            display: block;
         }
         .testimonial-placeholder p {
             color: var(--text-secondary);
@@ -355,6 +437,23 @@
             border-radius: var(--radius-lg);
             padding: 2rem;
             border: 1px solid var(--silver-dark);
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .why-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(135deg, #3B82F6, #F59E0B);
+        }
+        .why-card:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: var(--shadow-lg);
+        }
+        .why-card .icon-container {
+            margin-bottom: 1rem;
         }
         .why-card h3 {
             font-family: var(--font-primary);
@@ -382,8 +481,8 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 48px;
-            height: 48px;
+            width: 56px;
+            height: 56px;
             background: var(--gradient-primary);
             color: var(--pure-white);
             border-radius: 50%;
@@ -391,6 +490,11 @@
             font-size: 1.25rem;
             font-weight: 700;
             margin-bottom: 1.25rem;
+            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+        }
+        .step-number i {
+            width: 24px;
+            height: 24px;
         }
         .process-step h3 {
             font-family: var(--font-primary);
@@ -407,10 +511,25 @@
 
         /* CTA SECTION */
         .cta-section {
-            background: var(--gradient-primary);
+            background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%);
             padding: 5rem 0;
             text-align: center;
             color: var(--pure-white);
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 30% 50%, rgba(245,158,11,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(59,130,246,0.1) 0%, transparent 40%);
+            pointer-events: none;
+        }
+        .cta-section > .container {
+            position: relative;
+            z-index: 1;
         }
         .cta-section h2 {
             font-family: var(--font-primary);
@@ -428,19 +547,22 @@
             margin-right: auto;
         }
         .btn-white {
-            display: inline-block;
-            background: var(--pure-white);
-            color: var(--primary-blue);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--gradient-accent);
+            color: var(--primary-navy);
             padding: 1rem 2rem;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 1.05rem;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
         }
         .btn-white:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
         }
         .btn-outline-white {
             display: inline-block;
@@ -491,7 +613,7 @@
             flex-shrink: 0;
             margin-left: 1rem;
         }
-        .faq-item.active .faq-icon { transform: rotate(45deg); }
+        .faq-item.active .faq-icon { transform: rotate(180deg); }
         .faq-answer {
             max-height: 0;
             overflow: hidden;
@@ -525,15 +647,23 @@
 
     <!-- HERO -->
     <section class="hero">
+        <div class="hero-orb hero-orb--amber hero-orb--lg float" style="top:-60px;right:-80px;"></div>
+        <div class="hero-orb hero-orb--blue hero-orb--md float-slow float-delay-1" style="bottom:20px;left:-40px;"></div>
+        <div class="hero-orb hero-orb--blue hero-orb--sm float float-delay-2" style="top:40%;right:10%;"></div>
         <div class="container">
             <h1>Is Your Business Invisible to ChatGPT, Perplexity &amp; Google AI? We Find Out — Then Fix It.</h1>
             <p class="hero-subtitle">We audit your AI search visibility, build websites that AI engines actually recommend, and track your results every month. Based in Bengaluru. Working across India.</p>
             <div class="hero-ctas">
-                <a href="https://cal.com/optiscale360/discoverycall" class="btn-primary">Get My Free AI Visibility Check</a>
+                <a href="https://cal.com/optiscale360/discoverycall" class="btn-primary"><i data-lucide="calendar" style="width:18px;height:18px;"></i> Get My Free AI Visibility Check</a>
                 <a href="/how-it-works.html" class="btn-outline">See How It Works</a>
             </div>
         </div>
     </section>
+
+    <!-- Section Divider -->
+    <div class="section-divider">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,0 C480,60 960,60 1440,0 L1440,60 L0,60 Z" fill="#FFFFFF"/></svg>
+    </div>
 
     <!-- SERVICES: TWO WAYS WE HELP -->
     <section class="section" id="services">
@@ -542,8 +672,11 @@
             <p class="section-subtitle">A clear path from diagnosis to results.</p>
 
             <!-- Step 1 -->
-            <div class="service-card">
-                <span class="step-label">Step 1 — Find the Problem</span>
+            <div class="service-card animate-on-scroll">
+                <div style="display:flex;align-items:center;gap:16px;margin-bottom:1rem;">
+                    <div class="icon-container"><i data-lucide="search"></i></div>
+                    <span class="step-label" style="margin-bottom:0;">Step 1 — Find the Problem</span>
+                </div>
                 <h3>AI Visibility Audit Report</h3>
                 <p>Most businesses are losing customers to AI search without knowing it. We test your business across ChatGPT, Perplexity, Google AI Overviews, Bing, and Gemini. We show you exactly where you appear, where you do not, and what your competitors are doing differently.</p>
                 <ul class="check-list">
@@ -561,8 +694,11 @@
             </div>
 
             <!-- Step 2 -->
-            <div class="service-card">
-                <span class="step-label">Step 2 — Fix the Foundation</span>
+            <div class="service-card animate-on-scroll">
+                <div style="display:flex;align-items:center;gap:16px;margin-bottom:1rem;">
+                    <div class="icon-container"><i data-lucide="globe"></i></div>
+                    <span class="step-label" style="margin-bottom:0;">Step 2 — Fix the Foundation</span>
+                </div>
                 <h3>AI-Ready Lead-Gen Website</h3>
                 <p>Your website is the biggest factor in whether AI engines recommend you. We build fully structured, AI-optimised websites designed to generate enquiries — not just look good. Fast. Mobile-first. Schema-rich. Built to convert visitors into customers.</p>
                 <ul class="check-list">
@@ -580,8 +716,11 @@
             </div>
 
             <!-- Step 3 -->
-            <div class="service-card">
-                <span class="step-label">Step 3 — Stay Ahead</span>
+            <div class="service-card animate-on-scroll">
+                <div style="display:flex;align-items:center;gap:16px;margin-bottom:1rem;">
+                    <div class="icon-container"><i data-lucide="bar-chart-3"></i></div>
+                    <span class="step-label" style="margin-bottom:0;">Step 3 — Stay Ahead</span>
+                </div>
                 <h3>Monthly AI Visibility Monitoring</h3>
                 <p>AI search changes every month. Competitors optimise. Rankings shift. We monitor your visibility across all 5 platforms monthly, track competitor movements, and make adjustments to keep you ahead.</p>
                 <ul class="check-list">
@@ -597,30 +736,44 @@
         </div>
     </section>
 
+    <!-- Section Divider -->
+    <div class="section-divider">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,0 C480,60 960,60 1440,0 L1440,60 L0,60 Z" fill="#F8FAFC"/></svg>
+    </div>
+
     <!-- TESTIMONIALS -->
     <section class="section section-alt">
         <div class="container">
             <h2 class="section-title">What Our Clients Say</h2>
-            <div class="testimonial-placeholder">
+            <div class="testimonial-placeholder animate-on-scroll scale-in">
+                <span class="quote-mark">&ldquo;</span>
                 <p>We are a new company. We do not have testimonials yet because we have not completed enough client engagements to have case studies. We would rather show you zero testimonials than fake ones. If you want to be one of our first clients and get founding-client pricing, reach out. You will get our full attention, real work, and documented results.</p>
             </div>
         </div>
     </section>
 
+    <!-- Section Divider -->
+    <div class="section-divider" style="background:#F8FAFC;">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,0 C480,60 960,60 1440,0 L1440,60 L0,60 Z" fill="#FFFFFF"/></svg>
+    </div>
+
     <!-- WHY AI SEARCH -->
     <section class="section">
         <div class="container">
             <h2 class="section-title">Why AI Search Visibility Matters Right Now</h2>
-            <div class="why-grid">
-                <div class="why-card">
+            <div class="why-grid stagger-children">
+                <div class="why-card card-hover animate-on-scroll">
+                    <div class="icon-container icon-container--lg" style="margin-bottom:1rem;"><i data-lucide="bot"></i></div>
                     <h3>AI Search Is Growing Fast</h3>
                     <p>ChatGPT, Perplexity, and Google AI Overviews now handle hundreds of millions of searches every day. When someone asks an AI tool to recommend a service, it gives them a direct answer — usually 3 to 5 businesses. If you are not in that list, you do not exist to that customer.</p>
                 </div>
-                <div class="why-card">
+                <div class="why-card card-hover animate-on-scroll">
+                    <div class="icon-container icon-container--lg" style="margin-bottom:1rem;"><i data-lucide="trending-up"></i></div>
                     <h3>Traditional SEO Is No Longer Enough</h3>
                     <p>Google rankings still matter. But AI search uses different signals — structured data, entity recognition, content clarity, and authority signals that most SEO agencies are not optimising for yet. Businesses that adapt now will have a significant head start.</p>
                 </div>
-                <div class="why-card">
+                <div class="why-card card-hover animate-on-scroll">
+                    <div class="icon-container icon-container--lg" style="margin-bottom:1rem;"><i data-lucide="target"></i></div>
                     <h3>Early Action Creates Lasting Advantage</h3>
                     <p>AI search is still early. Most of your competitors have not optimised for it. The businesses that get their AI visibility right in the next 12 months will dominate their category for years. This is a short window.</p>
                 </div>
@@ -628,29 +781,39 @@
         </div>
     </section>
 
+    <!-- Section Divider -->
+    <div class="section-divider">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,0 C480,60 960,60 1440,0 L1440,60 L0,60 Z" fill="#F8FAFC"/></svg>
+    </div>
+
     <!-- OUR PROCESS -->
     <section class="section section-alt">
         <div class="container">
             <h2 class="section-title">How We Work</h2>
-            <div class="process-grid">
-                <div class="process-step">
-                    <div class="step-number">1</div>
+            <div class="process-grid stagger-children">
+                <div class="process-step animate-on-scroll">
+                    <div class="step-number"><i data-lucide="clipboard-check"></i></div>
                     <h3>We Audit Your Current Visibility</h3>
                     <p>We run your business through 10 real queries across ChatGPT, Perplexity, Google AI, Bing, and Gemini. We capture exactly what shows up, what does not, and who your competitors are in the AI search results.</p>
                 </div>
-                <div class="process-step">
-                    <div class="step-number">2</div>
+                <div class="process-step animate-on-scroll">
+                    <div class="step-number"><i data-lucide="wrench"></i></div>
                     <h3>We Show You What Is Broken and Why</h3>
                     <p>You get a clear report with your AI visibility score, a competitor map, and a prioritised list of fixes. We walk through it with you on a 45-minute video call. No jargon. Just clear findings.</p>
                 </div>
-                <div class="process-step">
-                    <div class="step-number">3</div>
+                <div class="process-step animate-on-scroll">
+                    <div class="step-number"><i data-lucide="rocket"></i></div>
                     <h3>We Fix It and Track the Results</h3>
                     <p>Whether we rebuild your website, implement schema, or optimise your content — we track every change and measure impact. You see exactly what improved and by how much.</p>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Section Divider -->
+    <div class="section-divider" style="background:#F8FAFC;">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,0 C480,60 960,60 1440,0 L1440,60 L0,60 Z" fill="#0F172A"/></svg>
+    </div>
 
     <!-- FINAL CTA -->
     <section class="cta-section">
@@ -664,6 +827,11 @@
         </div>
     </section>
 
+    <!-- Section Divider -->
+    <div class="section-divider">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,0 C480,60 960,60 1440,0 L1440,60 L0,60 Z" fill="#F8FAFC"/></svg>
+    </div>
+
     <!-- FAQ -->
     <section class="faq-section section-alt" id="faq">
         <div class="container">
@@ -672,7 +840,7 @@
             <div class="faq-item">
                 <button class="faq-question">
                     What is AI search visibility and why does it matter for my business?
-                    <span class="faq-icon">+</span>
+                    <span class="faq-icon faq-chevron"><i data-lucide="chevron-down" style="width:20px;height:20px;"></i></span>
                 </button>
                 <div class="faq-answer">
                     <div class="faq-answer-inner">AI search visibility means whether your business appears when someone asks ChatGPT, Perplexity, or Google AI to recommend a service like yours. These platforms are becoming the first place people search. If you are not appearing there, you are losing customers before they ever reach your website.</div>
@@ -682,7 +850,7 @@
             <div class="faq-item">
                 <button class="faq-question">
                     How do I know if my business shows up on ChatGPT or Perplexity?
-                    <span class="faq-icon">+</span>
+                    <span class="faq-icon faq-chevron"><i data-lucide="chevron-down" style="width:20px;height:20px;"></i></span>
                 </button>
                 <div class="faq-answer">
                     <div class="faq-answer-inner">The simplest way is to open ChatGPT or Perplexity right now and type: 'best [your service] in [your city]'. If your business does not appear, you have an AI visibility problem. Our audit gives you a complete picture across 5 platforms with detailed reasons why you are or are not appearing.</div>
@@ -692,7 +860,7 @@
             <div class="faq-item">
                 <button class="faq-question">
                     What is the difference between AI search optimisation and regular SEO?
-                    <span class="faq-icon">+</span>
+                    <span class="faq-icon faq-chevron"><i data-lucide="chevron-down" style="width:20px;height:20px;"></i></span>
                 </button>
                 <div class="faq-answer">
                     <div class="faq-answer-inner">Regular SEO optimises your website for Google's ranking algorithm — mainly links, keywords, and page authority. AI search optimisation focuses on different signals: structured data (schema markup), entity recognition, content clarity, and FAQ architecture that AI engines can extract and cite. You need both, but most agencies only do one.</div>
@@ -702,7 +870,7 @@
             <div class="faq-item">
                 <button class="faq-question">
                     What is included in the AI Visibility Audit Report?
-                    <span class="faq-icon">+</span>
+                    <span class="faq-icon faq-chevron"><i data-lucide="chevron-down" style="width:20px;height:20px;"></i></span>
                 </button>
                 <div class="faq-answer">
                     <div class="faq-answer-inner">The audit includes: your AI visibility score across ChatGPT, Perplexity, Google AI, Bing, and Gemini; 10 live query tests showing who appears instead of you; a technical website health check; a competitor positioning map; and a prioritised fix list. Delivered in 48 hours with a 45-minute video walkthrough.</div>
@@ -712,7 +880,7 @@
             <div class="faq-item">
                 <button class="faq-question">
                     How is an AI-ready website different from a regular website?
-                    <span class="faq-icon">+</span>
+                    <span class="faq-icon faq-chevron"><i data-lucide="chevron-down" style="width:20px;height:20px;"></i></span>
                 </button>
                 <div class="faq-answer">
                     <div class="faq-answer-inner">An AI-ready website is built with schema markup so AI engines understand your business, FAQ sections structured around real customer questions, fast load times, mobile-first design, and content written in a format that AI platforms can extract and cite. A regular website is built for humans to read. An AI-ready website is built for both humans and AI engines.</div>
@@ -722,7 +890,7 @@
             <div class="faq-item">
                 <button class="faq-question">
                     Do I need the audit before getting a website built?
-                    <span class="faq-icon">+</span>
+                    <span class="faq-icon faq-chevron"><i data-lucide="chevron-down" style="width:20px;height:20px;"></i></span>
                 </button>
                 <div class="faq-answer">
                     <div class="faq-answer-inner">Not always. If you have an existing website and want to understand your current AI search position first, start with the audit. If you are starting fresh or already know your website is the core problem, go straight to the website. Either way, we will tell you honestly which makes more sense for your specific situation on the free 15-minute call.</div>
@@ -766,5 +934,8 @@
         });
     });
     </script>
+
+    <!-- Animations & Icons -->
+    <script src="/js/animations.js"></script>
 </body>
 </html>

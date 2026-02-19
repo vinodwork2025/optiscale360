@@ -30,12 +30,16 @@
     </script>
 
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="main.css">
+    <script src="https://unpkg.com/lucide@latest" defer></script>
     <style>
         :root {
-            --primary-navy:#0A0E27;--primary-blue:#0066FF;--pure-white:#FFFFFF;
+            --primary-navy:#0F172A;--primary-blue:#1E40AF;--primary-blue-light:#3B82F6;--pure-white:#FFFFFF;
             --silver:#F8FAFC;--silver-dark:#E2E8F0;
-            --text-primary:#0F1419;--text-secondary:#3C4553;--text-muted:#5C6B7F;
-            --gradient-primary:linear-gradient(135deg,#0066FF 0%,#0052CC 100%);
+            --accent-amber:#F59E0B;
+            --text-primary:#0F172A;--text-secondary:#475569;--text-muted:#94A3B8;
+            --gradient-primary:linear-gradient(135deg,#1E3A8A 0%,#1E40AF 50%,#3B82F6 100%);
+            --gradient-accent:linear-gradient(135deg,#F59E0B,#FBBF24);
             --font-primary:'Space Grotesk','Inter',-apple-system,sans-serif;
             --font-secondary:'Inter',-apple-system,sans-serif;
             --shadow-lg:0 10px 15px -3px rgba(0,0,0,0.1),0 4px 6px -2px rgba(0,0,0,0.05);
@@ -45,7 +49,7 @@
         html{scroll-behavior:smooth}
         body{font-family:var(--font-secondary);color:var(--text-primary);line-height:1.6;background:var(--silver)}
 
-        .contact-hero{background:var(--gradient-primary);padding:5rem 1.5rem 4rem;text-align:center;color:var(--pure-white);position:relative;overflow:hidden}
+        .contact-hero{background:var(--gradient-primary);padding:7rem 1.5rem 5rem;text-align:center;color:var(--pure-white);position:relative;overflow:hidden}
         .contact-hero h1{font-family:var(--font-primary);font-size:2.5rem;font-weight:700;margin-bottom:1rem;line-height:1.2}
         .contact-hero p{font-size:1.1rem;opacity:0.9;max-width:600px;margin:0 auto}
 
@@ -60,11 +64,11 @@
         .form-group{margin-bottom:1.25rem}
         .form-group label{display:block;font-weight:600;color:var(--text-primary);margin-bottom:0.5rem;font-size:0.95rem}
         .form-group input,.form-group textarea,.form-group select{width:100%;padding:0.85rem 1rem;border:2px solid var(--silver-dark);border-radius:12px;font-family:var(--font-secondary);font-size:1rem;transition:all 0.3s ease}
-        .form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--primary-blue);box-shadow:0 0 0 4px rgba(0,102,255,0.1)}
+        .form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--primary-blue-light);box-shadow:0 0 0 4px rgba(59,130,246,0.15),0 4px 6px -1px rgba(0,0,0,0.1)}
         .form-group textarea{resize:vertical;min-height:100px}
 
-        .submit-btn{width:100%;background:var(--gradient-primary);color:var(--pure-white);padding:1rem;border:none;border-radius:12px;font-size:1.05rem;font-weight:600;cursor:pointer;transition:all 0.3s ease;font-family:var(--font-secondary)}
-        .submit-btn:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(0,102,255,0.3)}
+        .submit-btn{width:100%;background:var(--gradient-primary);color:var(--pure-white);padding:1rem;border:none;border-radius:12px;font-size:1.05rem;font-weight:600;cursor:pointer;transition:all 0.3s ease;font-family:var(--font-secondary);box-shadow:0 4px 12px rgba(30,64,175,0.3)}
+        .submit-btn:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(30,64,175,0.4)}
         .submit-btn:disabled{opacity:0.6;cursor:not-allowed;transform:none}
 
         .form-note{color:var(--text-muted);font-size:0.9rem;margin-top:1.25rem;line-height:1.6}
@@ -74,15 +78,16 @@
         .contact-info-card h2{font-family:var(--font-primary);font-size:1.75rem;color:var(--text-primary);margin-bottom:2rem}
 
         .contact-item{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.75rem}
-        .contact-icon{width:44px;height:44px;background:linear-gradient(135deg,rgba(0,102,255,0.1) 0%,rgba(0,82,204,0.1) 100%);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .contact-icon{width:44px;height:44px;background:linear-gradient(135deg,rgba(30,64,175,0.1),rgba(59,130,246,0.15));border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.3s ease}
         .contact-icon svg{width:22px;height:22px;stroke:var(--primary-blue)}
+        .contact-item:hover .contact-icon{background:linear-gradient(135deg,var(--primary-blue),var(--primary-blue-light));} .contact-item:hover .contact-icon svg{stroke:#fff}
         .contact-details h3{font-size:1rem;font-weight:600;color:var(--text-primary);margin-bottom:0.25rem}
         .contact-details p{color:var(--text-secondary);line-height:1.6}
         .contact-details a{color:var(--primary-blue);text-decoration:none;transition:color 0.3s ease}
         .contact-details a:hover{color:#0052CC}
 
-        .book-call-btn{display:block;width:100%;text-align:center;background:var(--gradient-primary);color:var(--pure-white);padding:1rem;border-radius:12px;text-decoration:none;font-weight:600;font-size:1.05rem;transition:all 0.3s ease;margin-top:2rem}
-        .book-call-btn:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(0,102,255,0.3)}
+        .book-call-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;text-align:center;background:var(--gradient-accent);color:var(--primary-navy);padding:1rem;border-radius:12px;text-decoration:none;font-weight:700;font-size:1.05rem;transition:all 0.3s ease;margin-top:2rem;box-shadow:0 4px 12px rgba(245,158,11,0.3)}
+        .book-call-btn:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(245,158,11,0.4)}
 
         .success-message{position:fixed;top:100px;right:20px;background:#10b981;color:white;padding:1.25rem 1.5rem;border-radius:12px;box-shadow:0 10px 40px rgba(16,185,129,0.3);z-index:10000;display:none;max-width:400px;animation:slideIn 0.3s ease}
         @keyframes slideIn{from{transform:translateX(400px);opacity:0}to{transform:translateX(0);opacity:1}}
@@ -99,14 +104,18 @@
     <div id="header-placeholder"></div>
 
     <section class="contact-hero">
-        <h1>Get in Touch</h1>
-        <p>We work with businesses across India. Currently focused on Bengaluru and surrounding areas. Remote engagements across India welcome.</p>
+        <div class="hero-orb hero-orb--amber hero-orb--md float" style="top:-20px;left:8%;"></div>
+        <div class="hero-orb hero-orb--blue hero-orb--lg float-slow float-delay-1" style="bottom:-40px;right:-50px;"></div>
+        <div style="position:relative;z-index:2;">
+            <h1>Get in Touch</h1>
+            <p>We work with businesses across India. Currently focused on Bengaluru and surrounding areas. Remote engagements across India welcome.</p>
+        </div>
     </section>
 
     <div class="contact-container">
         <div class="contact-grid">
             <!-- Contact Form -->
-            <div class="contact-form-card">
+            <div class="contact-form-card animate-on-scroll from-left">
                 <h2>Send Us a Message</h2>
                 <p>Fill out the form below and we will get back to you within 24 hours.</p>
 
@@ -147,7 +156,7 @@
             </div>
 
             <!-- Contact Info -->
-            <div class="contact-info-card">
+            <div class="contact-info-card animate-on-scroll from-right">
                 <h2>Contact Information</h2>
 
                 <div class="contact-item">
@@ -190,7 +199,7 @@
                     </div>
                 </div>
 
-                <a href="https://cal.com/optiscale360/discoverycall" class="book-call-btn">Book a Free 15-Min Call</a>
+                <a href="https://cal.com/optiscale360/discoverycall" class="book-call-btn"><i data-lucide="calendar" style="width:18px;height:18px;"></i> Book a Free 15-Min Call</a>
             </div>
         </div>
     </div>
@@ -280,5 +289,6 @@
         });
     }
     </script>
+    <script src="/js/animations.js"></script>
 </body>
 </html>
