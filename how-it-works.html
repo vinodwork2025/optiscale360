@@ -43,14 +43,14 @@
         body{font-family:var(--font-secondary);color:var(--text-primary);line-height:1.6;background:var(--pure-white)}
         .container{max-width:1000px;margin:0 auto;padding:0 2rem}
 
-        .page-hero{background:var(--gradient-primary);padding:7rem 0 5rem;text-align:center;color:var(--pure-white);position:relative;overflow:hidden}
+        .page-hero{background:var(--gradient-primary);padding:4rem 0 2.5rem;text-align:center;color:var(--pure-white);position:relative;overflow:hidden}
         .page-hero > .container{position:relative;z-index:2}
-        .page-hero h1{font-family:var(--font-primary);font-size:2.5rem;font-weight:800;line-height:1.2;letter-spacing:-0.02em}
-        .page-hero p{font-size:1.1rem;opacity:0.9;max-width:650px;margin:1.5rem auto 0;line-height:1.7}
+        .page-hero h1{font-family:var(--font-primary);font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:800;line-height:1.15;letter-spacing:-0.03em}
+        .page-hero p{font-size:1.05rem;opacity:0.9;max-width:650px;margin:1rem auto 0;line-height:1.7}
 
-        .section{padding:4rem 0}
+        .section{padding:3.5rem 0}
         .section-alt{background:var(--silver)}
-        .section-title{font-family:var(--font-primary);font-size:2rem;font-weight:700;color:var(--primary-navy);margin-bottom:2rem;text-align:center;letter-spacing:-0.02em;position:relative;display:inline-block;width:100%}
+        .section-title{font-family:var(--font-primary);font-size:clamp(1.5rem,3vw,2rem);font-weight:700;color:var(--primary-navy);margin-bottom:2rem;text-align:center;letter-spacing:-0.03em;line-height:1.15;position:relative;display:inline-block;width:100%}
         .section-title::after{content:'';display:block;width:50px;height:3px;background:var(--gradient-accent);border-radius:3px;margin:8px auto 0}
 
         .steps-wrapper{position:relative;padding-left:8px}
@@ -72,7 +72,7 @@
         .service-summary a{color:var(--primary-blue-light);text-decoration:none;font-weight:600;font-size:0.95rem}
         .service-summary a:hover{text-decoration:underline}
 
-        .cta-section{background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 100%);padding:4rem 0;text-align:center;color:var(--pure-white);position:relative;overflow:hidden}
+        .cta-section{background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 100%);padding:3.5rem 0;text-align:center;color:var(--pure-white);position:relative;overflow:hidden}
         .cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(245,158,11,0.08) 0%,transparent 60%);pointer-events:none}
         .cta-section > .container{position:relative;z-index:1}
         .cta-section h2{font-family:var(--font-primary);font-size:2rem;font-weight:700;margin-bottom:1rem;color:var(--pure-white)}
@@ -95,8 +95,8 @@
         <div class="hero-orb hero-orb--amber hero-orb--md float" style="top:-30px;right:8%;"></div>
         <div class="hero-orb hero-orb--blue hero-orb--lg float-slow float-delay-1" style="bottom:-40px;left:-50px;"></div>
         <div class="container">
-            <h1>How We Work — No Jargon, No Surprises</h1>
-            <p>Every engagement starts the same way: we find out where you stand. Then we show you exactly what is broken. Then we fix it. Here is what that looks like in practice.</p>
+            <h1>How We Work — <span class="gradient-text">No Jargon, No Surprises</span></h1>
+            <p><span data-counter="4" data-suffix=" Simple Steps" class="counter-value" style="font-weight:700;">4 Simple Steps</span> — we find out where you stand, show you what is broken, then fix it. Here is what that looks like in practice.</p>
         </div>
     </section>
 
@@ -147,21 +147,21 @@
         <div class="container">
             <h2 class="section-title">What We Can Do For You</h2>
             <div class="services-grid stagger-children">
-                <div class="service-summary card-hover animate-on-scroll">
+                <div class="service-summary card-hover card-glow animate-on-scroll">
                     <div class="icon-container"><i data-lucide="search"></i></div>
                     <h3>AI Visibility Audit</h3>
                     <div class="service-price">&#8377;15,000</div>
                     <p>Find out exactly where you stand.</p>
                     <a href="/ai-visibility-audit.html">Book My Audit &rarr;</a>
                 </div>
-                <div class="service-summary card-hover animate-on-scroll">
+                <div class="service-summary card-hover card-glow animate-on-scroll">
                     <div class="icon-container"><i data-lucide="globe"></i></div>
                     <h3>AI-Ready Website</h3>
                     <div class="service-price">from &#8377;50,000</div>
                     <p>A site that AI engines recommend.</p>
                     <a href="/Free-AI-Ready-Website.html">Get My Website &rarr;</a>
                 </div>
-                <div class="service-summary card-hover animate-on-scroll">
+                <div class="service-summary card-hover card-glow animate-on-scroll">
                     <div class="icon-container"><i data-lucide="bar-chart-3"></i></div>
                     <h3>Monthly Monitoring</h3>
                     <div class="service-price">&#8377;20,000/month</div>
@@ -177,6 +177,7 @@
     </div>
 
     <section class="cta-section">
+        <canvas class="constellation-canvas"></canvas>
         <div class="container">
             <h2>Ready to Start?</h2>
             <p>Book a free 15-minute call. We will tell you exactly what makes sense for your business.</p>

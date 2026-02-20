@@ -84,8 +84,7 @@
 
         .page-hero {
             background: var(--gradient-primary);
-            padding: 7rem 0 5rem;
-            text-align: center;
+            padding: 4rem 0 2.5rem;
             color: var(--pure-white);
             position: relative;
             overflow: hidden;
@@ -93,30 +92,28 @@
         .page-hero > .container { position: relative; z-index: 2; }
         .page-hero h1 {
             font-family: var(--font-primary);
-            font-size: 2.5rem;
+            font-size: clamp(1.75rem, 3.5vw, 2.5rem);
             font-weight: 800;
-            line-height: 1.2;
-            max-width: 750px;
-            margin: 0 auto;
-            letter-spacing: -0.02em;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
         }
         .page-hero .hero-sub {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             opacity: 0.85;
-            max-width: 600px;
-            margin: 1rem auto 0;
+            margin: 1rem 0 0;
             line-height: 1.7;
         }
 
-        .section { padding: 4rem 0; }
+        .section { padding: 3.5rem 0; }
         .section-alt { background: var(--silver); }
         .section-title {
             font-family: var(--font-primary);
-            font-size: 2rem;
+            font-size: clamp(1.5rem, 3vw, 2rem);
             font-weight: 700;
             color: var(--primary-navy);
             margin-bottom: 2rem;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
             position: relative;
             display: inline-block;
         }
@@ -144,6 +141,8 @@
             border-radius: 12px;
             border: 1px solid var(--silver-dark);
             transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            --mouse-x: 50%;
+            --mouse-y: 50%;
         }
         .deliverable:hover {
             transform: translateY(-2px);
@@ -327,8 +326,24 @@
         <div class="hero-orb hero-orb--blue hero-orb--lg float-slow float-delay-1" style="bottom:-40px;left:-60px;"></div>
         <div class="hero-orb hero-orb--blue hero-orb--sm float float-delay-2" style="top:30%;left:15%;"></div>
         <div class="container">
-            <h1>Find Out Exactly Where Your Business Stands on AI Search — In 48 Hours</h1>
-            <p class="hero-sub">Complete audit across ChatGPT, Perplexity, Google AI, Bing &amp; Gemini with a prioritised fix roadmap.</p>
+            <div class="hero-split">
+                <div class="hero-split-content hero-stagger">
+                    <h1>Find Out Exactly Where Your Business Stands on <span class="gradient-text">AI Search</span> — In 48 Hours</h1>
+                    <p class="hero-sub">Complete audit across ChatGPT, Perplexity, Google AI, Bing &amp; Gemini with a prioritised fix roadmap.</p>
+                </div>
+                <div class="hero-split-visual hero-stagger" style="animation-delay:0.3s;">
+                    <div class="hero-report-card">
+                        <div class="report-card-title">Audit Report Preview</div>
+                        <ul class="report-checklist">
+                            <li><span class="report-check-icon">&#10003;</span> AI Visibility Score: 5 Platforms</li>
+                            <li><span class="report-check-icon">&#10003;</span> 10 Live Query Tests</li>
+                            <li><span class="report-check-icon">&#10003;</span> Competitor Positioning Map</li>
+                            <li><span class="report-check-icon">&#10003;</span> Technical Health Check</li>
+                            <li><span class="report-check-icon">&#10003;</span> Prioritised Fix Roadmap</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -464,6 +479,7 @@
 
     <!-- BOTTOM CTA -->
     <section class="cta-section">
+        <canvas class="constellation-canvas"></canvas>
         <div class="container">
             <h2>Ready to See Where Your Business Stands?</h2>
             <a href="https://cal.com/optiscale360/discoverycall" class="btn-white">Book Free 15-Min Check</a>
@@ -475,9 +491,6 @@
     <script>
     fetch('/components/header.html').then(function(r){return r.text()}).then(function(html){document.getElementById('header-placeholder').innerHTML=html;document.getElementById('header-placeholder').querySelectorAll('script').forEach(function(s){var ns=document.createElement('script');ns.textContent=s.textContent;document.head.appendChild(ns)})});
     fetch('/components/footer.html').then(function(r){return r.text()}).then(function(html){document.getElementById('footer-placeholder').innerHTML=html});
-    </script>
-    <script>
-    document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('.faq-question').forEach(function(btn){btn.addEventListener('click',function(){var item=this.parentElement;var active=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(function(el){el.classList.remove('active')});if(!active)item.classList.add('active')})})});
     </script>
     <script src="/js/animations.js"></script>
 </body>

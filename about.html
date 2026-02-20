@@ -43,11 +43,11 @@
         .container{max-width:800px;margin:0 auto;padding:0 2rem}
         .container-wide{max-width:1000px;margin:0 auto;padding:0 2rem}
 
-        .page-hero{background:var(--gradient-primary);padding:7rem 0 5rem;text-align:center;color:var(--pure-white);position:relative;overflow:hidden}
+        .page-hero{background:var(--gradient-primary);padding:4rem 0 2.5rem;text-align:center;color:var(--pure-white);position:relative;overflow:hidden}
         .page-hero > .container{position:relative;z-index:2}
-        .page-hero h1{font-family:var(--font-primary);font-size:2.5rem;font-weight:800;line-height:1.2;letter-spacing:-0.02em}
+        .page-hero h1{font-family:var(--font-primary);font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:800;line-height:1.15;letter-spacing:-0.03em}
 
-        .section{padding:4rem 0}
+        .section{padding:3.5rem 0}
         .section-alt{background:var(--silver)}
 
         .story p{color:var(--text-secondary);font-size:1.1rem;line-height:1.9;margin-bottom:1.5rem}
@@ -72,7 +72,7 @@
         .service-mini a{color:var(--primary-blue-light);text-decoration:none;font-weight:600}
         .service-mini a:hover{text-decoration:underline}
 
-        .cta-section{background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 100%);padding:4rem 0;text-align:center;color:var(--pure-white);position:relative;overflow:hidden}
+        .cta-section{background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 100%);padding:3.5rem 0;text-align:center;color:var(--pure-white);position:relative;overflow:hidden}
         .cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(245,158,11,0.08) 0%,transparent 60%);pointer-events:none}
         .cta-section > .container{position:relative;z-index:1}
         .cta-section h2{font-family:var(--font-primary);font-size:2rem;font-weight:700;margin-bottom:1.5rem;color:var(--pure-white)}
@@ -95,7 +95,7 @@
         <div class="hero-orb hero-orb--amber hero-orb--md float" style="top:-20px;right:10%;"></div>
         <div class="hero-orb hero-orb--blue hero-orb--lg float-slow float-delay-1" style="bottom:-50px;left:-40px;"></div>
         <div class="container">
-            <h1>Who We Are and Why We Started This</h1>
+            <h1>Who We Are and <span class="gradient-text">Why We Started This</span></h1>
         </div>
     </section>
 
@@ -132,14 +132,14 @@
         <div class="container-wide">
             <h2 class="section-title-about">What We Do</h2>
             <div class="services-row stagger-children">
-                <div class="service-mini card-hover animate-on-scroll">
+                <div class="service-mini card-hover card-glow animate-on-scroll">
                     <div class="icon-container"><i data-lucide="search"></i></div>
                     <h3>AI Visibility Audit</h3>
                     <div class="mini-price">&#8377;15,000</div>
                     <p>We test your business across ChatGPT, Perplexity, Google AI, Bing, and Gemini and show you exactly where you stand.</p>
                     <a href="/ai-visibility-audit.html">Learn more &rarr;</a>
                 </div>
-                <div class="service-mini card-hover animate-on-scroll">
+                <div class="service-mini card-hover card-glow animate-on-scroll">
                     <div class="icon-container"><i data-lucide="globe"></i></div>
                     <h3>AI-Ready Website</h3>
                     <div class="mini-price">Starting &#8377;50,000</div>
@@ -155,6 +155,7 @@
     </div>
 
     <section class="cta-section">
+        <canvas class="constellation-canvas"></canvas>
         <div class="container">
             <h2>Book a Free 15-Min Call</h2>
             <a href="https://cal.com/optiscale360/discoverycall" class="btn-white"><i data-lucide="calendar" style="width:18px;height:18px;"></i> Book Now</a>

@@ -183,8 +183,7 @@
         /* HERO */
         .hero {
             background: var(--gradient-hero);
-            padding: 8rem 0 6rem;
-            text-align: center;
+            padding: 4rem 0 2rem;
             position: relative;
             overflow: hidden;
         }
@@ -215,27 +214,22 @@
         }
         .hero h1 {
             font-family: var(--font-primary);
-            font-size: 2.75rem;
+            font-size: clamp(2rem, 4vw, 2.75rem);
             font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.02em;
+            line-height: 1.15;
+            margin-bottom: 1.25rem;
+            letter-spacing: -0.03em;
             color: #FFFFFF;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
         }
         .hero-subtitle {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             line-height: 1.7;
             color: rgba(255,255,255,0.85);
-            max-width: 700px;
-            margin: 0 auto 2.5rem;
+            margin: 0 0 1.75rem;
         }
         .hero-ctas {
             display: flex;
             gap: 1rem;
-            justify-content: center;
             flex-wrap: wrap;
         }
         .btn-primary {
@@ -278,16 +272,17 @@
         }
 
         /* SECTIONS */
-        .section { padding: 5rem 0; }
+        .section { padding: 3.5rem 0; }
         .section-alt { background: var(--silver); }
         .section-title {
             font-family: var(--font-primary);
-            font-size: 2.25rem;
+            font-size: clamp(1.75rem, 3.5vw, 2.25rem);
             font-weight: 700;
             text-align: center;
             margin-bottom: 1rem;
             color: var(--primary-navy);
-            letter-spacing: -0.02em;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
             position: relative;
             display: inline-block;
             width: 100%;
@@ -512,7 +507,7 @@
         /* CTA SECTION */
         .cta-section {
             background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%);
-            padding: 5rem 0;
+            padding: 3.5rem 0;
             text-align: center;
             color: var(--pure-white);
             position: relative;
@@ -582,7 +577,7 @@
         }
 
         /* FAQ ACCORDION */
-        .faq-section { padding: 5rem 0; }
+        .faq-section { padding: 3.5rem 0; }
         .faq-item {
             background: var(--pure-white);
             border: 1px solid var(--silver-dark);
@@ -630,11 +625,10 @@
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            .hero-subtitle { font-size: 1.05rem; }
+            .hero { padding: 3rem 0 1.5rem; }
+            .hero-subtitle { font-size: 1rem; }
             .hero-ctas { flex-direction: column; align-items: center; }
             .why-grid, .process-grid { grid-template-columns: 1fr; }
-            .section-title { font-size: 1.75rem; }
             .service-card { padding: 1.5rem; }
             .cta-section h2 { font-size: 1.75rem; }
             .cta-section .hero-ctas { flex-direction: column; align-items: center; }
@@ -651,11 +645,63 @@
         <div class="hero-orb hero-orb--blue hero-orb--md float-slow float-delay-1" style="bottom:20px;left:-40px;"></div>
         <div class="hero-orb hero-orb--blue hero-orb--sm float float-delay-2" style="top:40%;right:10%;"></div>
         <div class="container">
-            <h1>Is Your Business Invisible to ChatGPT, Perplexity &amp; Google AI? We Find Out — Then Fix It.</h1>
-            <p class="hero-subtitle">We audit your AI search visibility, build websites that AI engines actually recommend, and track your results every month. Based in Bengaluru. Working across India.</p>
-            <div class="hero-ctas">
-                <a href="https://cal.com/optiscale360/discoverycall" class="btn-primary"><i data-lucide="calendar" style="width:18px;height:18px;"></i> Get My Free AI Visibility Check</a>
-                <a href="/how-it-works.html" class="btn-outline">See How It Works</a>
+            <div class="hero-split">
+                <div class="hero-split-content hero-stagger">
+                    <h1>Is Your Business <span class="gradient-text">Invisible to ChatGPT</span>, Perplexity &amp; Google AI?</h1>
+                    <p class="hero-subtitle">We audit your AI search visibility, build websites that AI engines actually recommend, and track your results every month.</p>
+                    <div class="hero-ctas">
+                        <a href="https://cal.com/optiscale360/discoverycall" class="btn-primary"><i data-lucide="calendar" style="width:18px;height:18px;"></i> Get My Free AI Visibility Check</a>
+                        <a href="/how-it-works.html" class="btn-outline">See How It Works</a>
+                    </div>
+                    <div class="hero-trust-row">
+                        <div class="hero-trust-item"><i data-lucide="layers" style="width:16px;height:16px;"></i> 5+ AI Platforms</div>
+                        <div class="hero-trust-item"><i data-lucide="clock" style="width:16px;height:16px;"></i> 48hr Delivery</div>
+                        <div class="hero-trust-item"><i data-lucide="shield-check" style="width:16px;height:16px;"></i> 100% Satisfaction</div>
+                    </div>
+                </div>
+                <div class="hero-split-visual hero-stagger" style="animation-delay:0.3s;">
+                    <div class="hero-score-card">
+                        <div class="hero-mini-badge hero-mini-badge--top">Live Score</div>
+                        <div class="hero-mini-badge hero-mini-badge--bottom">5 Platforms</div>
+                        <div class="score-card-title">AI Visibility Score</div>
+                        <div class="score-ring-container">
+                            <div class="score-ring-wrap">
+                                <svg viewBox="0 0 100 100">
+                                    <defs>
+                                        <linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#3B82F6"/>
+                                            <stop offset="100%" style="stop-color:#F59E0B"/>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle class="score-ring-bg" cx="50" cy="50" r="45"/>
+                                    <circle class="score-ring-fill" cx="50" cy="50" r="45"/>
+                                </svg>
+                                <div class="score-ring-value" data-score="72">0</div>
+                            </div>
+                        </div>
+                        <div class="platform-bars">
+                            <div class="platform-bar">
+                                <span class="platform-bar-name">ChatGPT</span>
+                                <div class="platform-bar-track"><div class="platform-bar-fill" data-width="68%"></div></div>
+                                <span class="platform-bar-pct">68%</span>
+                            </div>
+                            <div class="platform-bar">
+                                <span class="platform-bar-name">Perplexity</span>
+                                <div class="platform-bar-track"><div class="platform-bar-fill" data-width="85%"></div></div>
+                                <span class="platform-bar-pct">85%</span>
+                            </div>
+                            <div class="platform-bar">
+                                <span class="platform-bar-name">Google AI</span>
+                                <div class="platform-bar-track"><div class="platform-bar-fill" data-width="45%"></div></div>
+                                <span class="platform-bar-pct">45%</span>
+                            </div>
+                        </div>
+                        <div class="score-card-alert">
+                            <i data-lucide="zap" style="width:16px;height:16px;"></i>
+                            3 Critical Fixes Found
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -672,7 +718,7 @@
             <p class="section-subtitle">A clear path from diagnosis to results.</p>
 
             <!-- Step 1 -->
-            <div class="service-card animate-on-scroll">
+            <div class="service-card card-glow animate-on-scroll">
                 <div style="display:flex;align-items:center;gap:16px;margin-bottom:1rem;">
                     <div class="icon-container"><i data-lucide="search"></i></div>
                     <span class="step-label" style="margin-bottom:0;">Step 1 — Find the Problem</span>
@@ -694,7 +740,7 @@
             </div>
 
             <!-- Step 2 -->
-            <div class="service-card animate-on-scroll">
+            <div class="service-card card-glow animate-on-scroll">
                 <div style="display:flex;align-items:center;gap:16px;margin-bottom:1rem;">
                     <div class="icon-container"><i data-lucide="globe"></i></div>
                     <span class="step-label" style="margin-bottom:0;">Step 2 — Fix the Foundation</span>
@@ -716,7 +762,7 @@
             </div>
 
             <!-- Step 3 -->
-            <div class="service-card animate-on-scroll">
+            <div class="service-card card-glow animate-on-scroll">
                 <div style="display:flex;align-items:center;gap:16px;margin-bottom:1rem;">
                     <div class="icon-container"><i data-lucide="bar-chart-3"></i></div>
                     <span class="step-label" style="margin-bottom:0;">Step 3 — Stay Ahead</span>
@@ -760,19 +806,19 @@
     <!-- WHY AI SEARCH -->
     <section class="section">
         <div class="container">
-            <h2 class="section-title">Why AI Search Visibility Matters Right Now</h2>
+            <h2 class="section-title">Why <span class="gradient-text">AI Search Visibility</span> Matters Right Now</h2>
             <div class="why-grid stagger-children">
-                <div class="why-card card-hover animate-on-scroll">
+                <div class="why-card card-glass card-hover card-glow animate-on-scroll">
                     <div class="icon-container icon-container--lg" style="margin-bottom:1rem;"><i data-lucide="bot"></i></div>
                     <h3>AI Search Is Growing Fast</h3>
                     <p>ChatGPT, Perplexity, and Google AI Overviews now handle hundreds of millions of searches every day. When someone asks an AI tool to recommend a service, it gives them a direct answer — usually 3 to 5 businesses. If you are not in that list, you do not exist to that customer.</p>
                 </div>
-                <div class="why-card card-hover animate-on-scroll">
+                <div class="why-card card-glass card-hover card-glow animate-on-scroll">
                     <div class="icon-container icon-container--lg" style="margin-bottom:1rem;"><i data-lucide="trending-up"></i></div>
                     <h3>Traditional SEO Is No Longer Enough</h3>
                     <p>Google rankings still matter. But AI search uses different signals — structured data, entity recognition, content clarity, and authority signals that most SEO agencies are not optimising for yet. Businesses that adapt now will have a significant head start.</p>
                 </div>
-                <div class="why-card card-hover animate-on-scroll">
+                <div class="why-card card-glass card-hover card-glow animate-on-scroll">
                     <div class="icon-container icon-container--lg" style="margin-bottom:1rem;"><i data-lucide="target"></i></div>
                     <h3>Early Action Creates Lasting Advantage</h3>
                     <p>AI search is still early. Most of your competitors have not optimised for it. The businesses that get their AI visibility right in the next 12 months will dominate their category for years. This is a short window.</p>
@@ -817,6 +863,7 @@
 
     <!-- FINAL CTA -->
     <section class="cta-section">
+        <canvas class="constellation-canvas"></canvas>
         <div class="container">
             <h2>Ready to See Where Your Business Stands?</h2>
             <p>Takes 15 minutes. No commitment. We will show you exactly how visible your business is on AI search right now.</p>
@@ -919,20 +966,6 @@
       .then(function(html) {
         document.getElementById('footer-placeholder').innerHTML = html;
       });
-    </script>
-
-    <!-- FAQ Accordion -->
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('.faq-question').forEach(function(btn) {
-            btn.addEventListener('click', function() {
-                var item = this.parentElement;
-                var isActive = item.classList.contains('active');
-                document.querySelectorAll('.faq-item').forEach(function(el) { el.classList.remove('active'); });
-                if (!isActive) { item.classList.add('active'); }
-            });
-        });
-    });
     </script>
 
     <!-- Animations & Icons -->

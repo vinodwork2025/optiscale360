@@ -1,5 +1,5 @@
 /* ============================================
-   OptiScale360 — Main Design System
+   OptiScale360 — Main Design System (10x Upgrade)
    ============================================ */
 
 /* --- Design Tokens --- */
@@ -54,6 +54,17 @@
 }
 
 /* ============================================
+   Gradient Text Utility
+   ============================================ */
+
+.gradient-text {
+    background: linear-gradient(135deg, #3B82F6, #F59E0B);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ============================================
    Animation System
    ============================================ */
 
@@ -95,6 +106,28 @@
 .stagger-children > .animate-on-scroll:nth-child(4) { transition-delay: 0.2s; }
 .stagger-children > .animate-on-scroll:nth-child(5) { transition-delay: 0.25s; }
 .stagger-children > .animate-on-scroll:nth-child(6) { transition-delay: 0.3s; }
+.stagger-children > .animate-on-scroll:nth-child(7) { transition-delay: 0.35s; }
+.stagger-children > .animate-on-scroll:nth-child(8) { transition-delay: 0.4s; }
+
+/* Hero entrance stagger */
+.hero-stagger > * {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: heroFadeIn 0.6s var(--ease-out) forwards;
+}
+.hero-stagger > *:nth-child(1) { animation-delay: 0.1s; }
+.hero-stagger > *:nth-child(2) { animation-delay: 0.2s; }
+.hero-stagger > *:nth-child(3) { animation-delay: 0.3s; }
+.hero-stagger > *:nth-child(4) { animation-delay: 0.4s; }
+.hero-stagger > *:nth-child(5) { animation-delay: 0.5s; }
+.hero-stagger > *:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes heroFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 /* Floating animation for decorative elements */
 @keyframes float {
@@ -112,6 +145,19 @@
 @keyframes shimmer {
     0%   { background-position: -200% center; }
     100% { background-position: 200% center; }
+}
+@keyframes pulse-badge {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); }
+    50%      { box-shadow: 0 0 0 8px rgba(245, 158, 11, 0); }
+}
+@keyframes rotate-border {
+    to { --border-angle: 360deg; }
+}
+@keyframes scoreRingFill {
+    from { stroke-dashoffset: 283; }
+}
+@keyframes barFill {
+    from { width: 0; }
 }
 
 .float          { animation: float 6s ease-in-out infinite; }
@@ -189,6 +235,334 @@
 }
 
 /* ============================================
+   Split-Layout Hero
+   ============================================ */
+
+.hero-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+.hero-split-content {
+    text-align: left;
+}
+.hero-split-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ============================================
+   Hero Visual — AI Audit Score Card
+   ============================================ */
+
+.hero-score-card {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 1.75rem;
+    width: 100%;
+    max-width: 340px;
+    color: #fff;
+    position: relative;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}
+.hero-score-card::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 21px;
+    background: linear-gradient(135deg, rgba(59,130,246,0.3), rgba(245,158,11,0.3));
+    z-index: -1;
+    filter: blur(1px);
+}
+.score-card-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.8;
+    margin-bottom: 1.25rem;
+}
+.score-ring-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+}
+.score-ring-wrap {
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+.score-ring-wrap svg {
+    width: 100px;
+    height: 100px;
+    transform: rotate(-90deg);
+}
+.score-ring-bg {
+    fill: none;
+    stroke: rgba(255,255,255,0.15);
+    stroke-width: 8;
+}
+.score-ring-fill {
+    fill: none;
+    stroke: url(#scoreGradient);
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 283;
+    stroke-dashoffset: 283;
+    transition: stroke-dashoffset 1.5s var(--ease-out);
+}
+.score-ring-fill.animated {
+    stroke-dashoffset: 80;
+}
+.score-ring-value {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+}
+.platform-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-bottom: 1.25rem;
+}
+.platform-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+}
+.platform-bar-name {
+    width: 75px;
+    flex-shrink: 0;
+    opacity: 0.85;
+    font-weight: 500;
+}
+.platform-bar-track {
+    flex: 1;
+    height: 6px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 3px;
+    overflow: hidden;
+}
+.platform-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: linear-gradient(90deg, #3B82F6, #FBBF24);
+    width: 0;
+    transition: width 1.2s var(--ease-out);
+}
+.platform-bar-pct {
+    width: 32px;
+    text-align: right;
+    font-weight: 600;
+    font-size: 0.75rem;
+    opacity: 0.9;
+}
+.score-card-alert {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 0.8rem;
+    background: rgba(245, 158, 11, 0.15);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #FBBF24;
+}
+.score-card-alert i {
+    width: 16px;
+    height: 16px;
+}
+
+/* Floating mini badges */
+.hero-mini-badge {
+    position: absolute;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+    padding: 0.4rem 0.7rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    white-space: nowrap;
+    color: #fff;
+}
+.hero-mini-badge--top {
+    top: -12px;
+    right: -16px;
+    animation: float 4s ease-in-out infinite;
+}
+.hero-mini-badge--bottom {
+    bottom: -10px;
+    left: -16px;
+    animation: float-slow 5s ease-in-out infinite;
+    animation-delay: 1s;
+}
+
+/* Trust indicators row */
+.hero-trust-row {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+.hero-trust-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    opacity: 0.8;
+    font-weight: 500;
+}
+.hero-trust-item i {
+    width: 16px;
+    height: 16px;
+    color: var(--accent-light);
+}
+
+/* ============================================
+   Hero Visual — Report Preview Card (Audit page)
+   ============================================ */
+
+.hero-report-card {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 1.75rem;
+    width: 100%;
+    max-width: 320px;
+    color: #fff;
+    position: relative;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}
+.report-card-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.8;
+    margin-bottom: 1rem;
+}
+.report-checklist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.report-checklist li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+    font-size: 0.85rem;
+    opacity: 0;
+    animation: heroFadeIn 0.5s var(--ease-out) forwards;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.report-checklist li:last-child { border-bottom: none; }
+.report-checklist li:nth-child(1) { animation-delay: 0.6s; }
+.report-checklist li:nth-child(2) { animation-delay: 0.8s; }
+.report-checklist li:nth-child(3) { animation-delay: 1.0s; }
+.report-checklist li:nth-child(4) { animation-delay: 1.2s; }
+.report-checklist li:nth-child(5) { animation-delay: 1.4s; }
+.report-check-icon {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: rgba(16, 185, 129, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #10B981;
+    font-size: 0.7rem;
+}
+
+/* ============================================
+   Hero Visual — Browser Mockup (Website page)
+   ============================================ */
+
+.hero-browser-card {
+    width: 100%;
+    max-width: 340px;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    border: 1px solid rgba(255,255,255,0.15);
+}
+.browser-bar {
+    background: rgba(255,255,255,0.12);
+    padding: 0.5rem 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.browser-dots {
+    display: flex;
+    gap: 5px;
+}
+.browser-dots span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    opacity: 0.7;
+}
+.browser-dots span:nth-child(1) { background: #EF4444; }
+.browser-dots span:nth-child(2) { background: #F59E0B; }
+.browser-dots span:nth-child(3) { background: #10B981; }
+.browser-address {
+    flex: 1;
+    background: rgba(255,255,255,0.1);
+    border-radius: 6px;
+    padding: 0.25rem 0.6rem;
+    font-size: 0.7rem;
+    opacity: 0.7;
+    font-family: monospace;
+}
+.browser-body {
+    background: rgba(255,255,255,0.08);
+    padding: 1.25rem;
+}
+.browser-skeleton-line {
+    height: 8px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 4px;
+    margin-bottom: 0.6rem;
+}
+.browser-skeleton-line.short { width: 60%; }
+.browser-skeleton-line.medium { width: 80%; }
+.browser-skeleton-block {
+    height: 50px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 8px;
+    margin-bottom: 0.6rem;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+.browser-skeleton-btn {
+    display: inline-block;
+    width: 80px;
+    height: 24px;
+    background: linear-gradient(135deg, rgba(245,158,11,0.4), rgba(251,191,36,0.4));
+    border-radius: 12px;
+    margin-top: 0.3rem;
+}
+
+/* ============================================
    Section Dividers
    ============================================ */
 
@@ -222,10 +596,23 @@
     bottom: -8px;
     left: 50%;
     transform: translateX(-50%);
-    width: 60px;
+    width: 0;
     height: 3px;
     background: var(--gradient-accent);
     border-radius: 3px;
+    transition: width 0.6s var(--ease-out);
+}
+.section-title-accent.animate-in::after {
+    width: 60px;
+}
+
+/* Animated section title underline */
+.section-title-animated::after {
+    width: 0;
+    transition: width 0.6s var(--ease-out) 0.2s;
+}
+.section-title-animated.animate-in::after {
+    width: 60px;
 }
 
 /* ============================================
@@ -257,12 +644,85 @@
     box-shadow: var(--shadow-xl);
 }
 
-/* Glass card variant */
+/* Glass card variant v2 */
 .card-glass {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Mouse-tracking glow effect */
+.card-glow {
+    --mouse-x: 50%;
+    --mouse-y: 50%;
+    position: relative;
+    overflow: hidden;
+}
+.card-glow::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        300px circle at var(--mouse-x) var(--mouse-y),
+        rgba(59, 130, 246, 0.1),
+        transparent 60%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+.card-glow:hover::after {
+    opacity: 1;
+}
+.card-glow > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Animated gradient border */
+.card-animated-border {
+    position: relative;
+    background: var(--surface);
+    z-index: 0;
+}
+.card-animated-border::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: conic-gradient(
+        from var(--border-angle, 0deg),
+        #3B82F6, #F59E0B, #10B981, #3B82F6
+    );
+    z-index: -2;
+    animation: rotate-border 4s linear infinite;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+.card-animated-border:hover::before {
+    opacity: 1;
+}
+.card-animated-border::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--surface);
+    z-index: -1;
+}
+
+/* Support for @property -- progressive enhancement */
+@supports (background: conic-gradient(from 0deg, red, blue)) {
+    @property --border-angle {
+        syntax: '<angle>';
+        initial-value: 0deg;
+        inherits: false;
+    }
 }
 
 /* ============================================
@@ -315,11 +775,11 @@
     height: 36px;
 }
 
-/* Card hover → icon shift */
+/* Card hover → icon shift + rotation */
 .card-hover:hover .icon-container {
     background: linear-gradient(135deg, var(--primary), var(--primary-light));
     color: #fff;
-    transform: scale(1.08);
+    transform: scale(1.08) rotate(8deg);
 }
 
 /* ============================================
@@ -374,7 +834,7 @@
 }
 
 /* ============================================
-   Buttons — Enhanced
+   Buttons — Enhanced with bounce
    ============================================ */
 
 .btn-primary-new {
@@ -394,7 +854,7 @@
     box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
 }
 .btn-primary-new:hover {
-    transform: translateY(-2px);
+    transform: translateY(-2px) scale(1.03);
     box-shadow: 0 8px 20px rgba(30, 64, 175, 0.4);
 }
 
@@ -415,8 +875,30 @@
     box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
 }
 .btn-accent:hover {
-    transform: translateY(-2px);
+    transform: translateY(-2px) scale(1.03);
     box-shadow: 0 8px 20px rgba(245, 158, 11, 0.4);
+}
+
+/* ============================================
+   Enhanced Link Underline
+   ============================================ */
+
+.link-underline {
+    position: relative;
+    text-decoration: none;
+}
+.link-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: currentColor;
+    transition: width 0.3s var(--ease-out);
+}
+.link-underline:hover::after {
+    width: 100%;
 }
 
 /* ============================================
@@ -453,6 +935,7 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
     border-radius: 50px;
+    animation: pulse-badge 2s ease-in-out infinite;
 }
 
 /* ============================================
@@ -562,6 +1045,21 @@
     transform: rotate(180deg);
 }
 
+/* Smooth FAQ height animation */
+.faq-answer {
+    overflow: hidden;
+    transition: max-height 0.4s var(--ease-out), padding 0.3s ease;
+}
+.faq-answer-inner {
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s;
+}
+.faq-item.active .faq-answer-inner {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* ============================================
    Counter Animation
    ============================================ */
@@ -569,6 +1067,27 @@
 .counter-value {
     display: inline-block;
     font-variant-numeric: tabular-nums;
+}
+
+/* ============================================
+   Constellation Canvas
+   ============================================ */
+
+.constellation-canvas {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+}
+
+/* ============================================
+   Typography Refinements
+   ============================================ */
+
+.heading-tight {
+    line-height: 1.15;
+    letter-spacing: -0.03em;
 }
 
 /* ============================================
@@ -611,6 +1130,23 @@
         padding: 16px 20px;
         font-size: 1.05rem;
     }
+
+    /* Split hero → stack */
+    .hero-split {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .hero-split-content {
+        text-align: center;
+    }
+    .hero-trust-row {
+        justify-content: center;
+    }
+    .hero-score-card,
+    .hero-report-card,
+    .hero-browser-card {
+        margin: 0 auto;
+    }
 }
 
 @media (max-width: 480px) {
@@ -619,4 +1155,6 @@
     }
     .animate-on-scroll.from-left { transform: translateX(-20px); }
     .animate-on-scroll.from-right { transform: translateX(20px); }
+
+    .hero-mini-badge { display: none; }
 }

@@ -59,13 +59,13 @@
         html{scroll-behavior:smooth}
         body{font-family:var(--font-secondary);color:var(--text-primary);line-height:1.6;background:var(--pure-white)}
         .container{max-width:1100px;margin:0 auto;padding:0 2rem}
-        .page-hero{background:var(--gradient-primary);padding:7rem 0 5rem;text-align:center;color:var(--pure-white);position:relative;overflow:hidden}
+        .page-hero{background:var(--gradient-primary);padding:4rem 0 2.5rem;color:var(--pure-white);position:relative;overflow:hidden}
         .page-hero > .container{position:relative;z-index:2}
-        .page-hero h1{font-family:var(--font-primary);font-size:2.5rem;font-weight:800;line-height:1.2;max-width:750px;margin:0 auto;letter-spacing:-0.02em}
-        .page-hero .hero-sub{font-size:1.15rem;opacity:0.85;max-width:600px;margin:1rem auto 0;line-height:1.7}
-        .section{padding:4rem 0}
+        .page-hero h1{font-family:var(--font-primary);font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:800;line-height:1.15;letter-spacing:-0.03em}
+        .page-hero .hero-sub{font-size:1.1rem;opacity:0.85;margin:1rem 0 0;line-height:1.7}
+        .section{padding:3.5rem 0}
         .section-alt{background:var(--silver)}
-        .section-title{font-family:var(--font-primary);font-size:2rem;font-weight:700;color:var(--primary-navy);margin-bottom:2rem;letter-spacing:-0.02em;position:relative;display:inline-block}
+        .section-title{font-family:var(--font-primary);font-size:clamp(1.5rem,3vw,2rem);font-weight:700;color:var(--primary-navy);margin-bottom:2rem;letter-spacing:-0.03em;line-height:1.15;position:relative;display:inline-block}
         .section-title::after{content:'';display:block;width:50px;height:3px;background:var(--gradient-accent);border-radius:3px;margin-top:8px}
         .section-title-center{text-align:center;width:100%}
         .section-title-center::after{margin-left:auto;margin-right:auto}
@@ -96,7 +96,8 @@
         .pricing-card li{padding:0.35rem 0;color:var(--text-secondary);font-size:0.9rem;position:relative;padding-left:1.3rem}
         .pricing-card li::before{content:'\2713';color:var(--success);font-weight:700;position:absolute;left:0;font-size:0.85rem}
         .pricing-card .best-for{font-size:0.85rem;color:var(--text-muted);font-style:italic;margin-top:auto}
-        .featured-badge{display:inline-block;background:var(--gradient-accent);color:var(--primary-navy);padding:0.3rem 0.8rem;border-radius:50px;font-size:0.75rem;font-weight:700;margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.05em}
+        .featured-badge{display:inline-block;background:var(--gradient-accent);color:var(--primary-navy);padding:0.3rem 0.8rem;border-radius:50px;font-size:0.75rem;font-weight:700;margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.05em;animation:pulse-badge 2s ease-in-out infinite}
+        @keyframes pulse-badge{0%,100%{box-shadow:0 0 0 0 rgba(245,158,11,0.4)}50%{box-shadow:0 0 0 8px rgba(245,158,11,0)}}
 
         .prototype-box{background:var(--pure-white);border:2px solid var(--accent-amber);border-radius:var(--radius-lg);padding:2.5rem;text-align:center;max-width:700px;margin:2rem auto 0;position:relative;overflow:hidden}
         .prototype-box::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(245,158,11,0.06),rgba(251,191,36,0.03));pointer-events:none}
@@ -143,8 +144,29 @@
         <div class="hero-orb hero-orb--blue hero-orb--lg float-slow float-delay-1" style="bottom:-50px;right:-60px;"></div>
         <div class="hero-orb hero-orb--blue hero-orb--sm float float-delay-2" style="top:40%;right:12%;"></div>
         <div class="container">
-            <h1>A Website That Generates Leads — And Gets Recommended by AI Search</h1>
-            <p class="hero-sub">Schema-rich, mobile-first, blazing-fast websites built for AI search visibility and lead generation.</p>
+            <div class="hero-split">
+                <div class="hero-split-content hero-stagger">
+                    <h1>A Website That <span class="gradient-text">Generates Leads</span> — And Gets Recommended by AI Search</h1>
+                    <p class="hero-sub">Schema-rich, mobile-first, blazing-fast websites built for AI search visibility and lead generation.</p>
+                </div>
+                <div class="hero-split-visual hero-stagger" style="animation-delay:0.3s;">
+                    <div class="hero-browser-card">
+                        <div class="browser-bar">
+                            <div class="browser-dots"><span></span><span></span><span></span></div>
+                            <div class="browser-address">yourbusiness.com</div>
+                        </div>
+                        <div class="browser-body">
+                            <div class="browser-skeleton-line short"></div>
+                            <div class="browser-skeleton-line"></div>
+                            <div class="browser-skeleton-line medium"></div>
+                            <div class="browser-skeleton-block"></div>
+                            <div class="browser-skeleton-line short"></div>
+                            <div class="browser-skeleton-line medium"></div>
+                            <div class="browser-skeleton-btn"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
     <div class="section-divider">
@@ -165,32 +187,32 @@
         <div class="container">
             <h2 class="section-title">What We Build Into Every Website</h2>
             <div class="feature-grid stagger-children">
-                <div class="feature-item card-hover animate-on-scroll">
+                <div class="feature-item card-hover card-glow animate-on-scroll">
                     <div class="icon-container" style="margin-bottom:0.75rem"><i data-lucide="code-2"></i></div>
                     <h3>Schema Markup</h3>
                     <p>We add structured data to every page. This tells AI engines exactly who you are, what you do, where you are, and what customers say about you. Without schema, AI engines guess — and usually ignore you.</p>
                 </div>
-                <div class="feature-item card-hover animate-on-scroll">
+                <div class="feature-item card-hover card-glow animate-on-scroll">
                     <div class="icon-container" style="margin-bottom:0.75rem"><i data-lucide="layers"></i></div>
                     <h3>FAQ Architecture</h3>
                     <p>We research the real questions your customers type into search and AI tools. Then we build FAQ sections into your pages that answer those questions directly. This is one of the most reliable ways to get your content cited by AI platforms.</p>
                 </div>
-                <div class="feature-item card-hover animate-on-scroll">
+                <div class="feature-item card-hover card-glow animate-on-scroll">
                     <div class="icon-container" style="margin-bottom:0.75rem"><i data-lucide="zap"></i></div>
                     <h3>Speed Under 2 Seconds</h3>
                     <p>Page speed is a ranking factor for both Google and AI indexing. Every site we build scores above 90 on Google PageSpeed. We test on both mobile and desktop before launch.</p>
                 </div>
-                <div class="feature-item card-hover animate-on-scroll">
+                <div class="feature-item card-hover card-glow animate-on-scroll">
                     <div class="icon-container" style="margin-bottom:0.75rem"><i data-lucide="smartphone"></i></div>
                     <h3>Mobile-First Design</h3>
                     <p>Over 70% of searches in India happen on mobile. Every site we build is designed for mobile screens first, then scaled up to desktop. Not the other way around.</p>
                 </div>
-                <div class="feature-item card-hover animate-on-scroll">
+                <div class="feature-item card-hover card-glow animate-on-scroll">
                     <div class="icon-container" style="margin-bottom:0.75rem"><i data-lucide="search"></i></div>
                     <h3>Google Business Profile</h3>
                     <p>We set up and optimise your Google Business Profile — a major signal for local AI search results. Most businesses have incomplete or outdated profiles that hurt their visibility.</p>
                 </div>
-                <div class="feature-item card-hover animate-on-scroll">
+                <div class="feature-item card-hover card-glow animate-on-scroll">
                     <div class="icon-container" style="margin-bottom:0.75rem"><i data-lucide="shield-check"></i></div>
                     <h3>Analytics and Tracking</h3>
                     <p>Every site includes Google Analytics 4 and Search Console setup so you can see exactly where your traffic comes from and how visitors behave.</p>
@@ -309,6 +331,7 @@
 
     <!-- BOTTOM CTA -->
     <section class="cta-section">
+        <canvas class="constellation-canvas"></canvas>
         <div class="container">
             <h2>Ready to Get Started?</h2>
             <p>Book a free 15-minute call. We will tell you what makes sense for your business.</p>
@@ -322,9 +345,6 @@
     <script>
     fetch('/components/header.html').then(function(r){return r.text()}).then(function(html){document.getElementById('header-placeholder').innerHTML=html;document.getElementById('header-placeholder').querySelectorAll('script').forEach(function(s){var ns=document.createElement('script');ns.textContent=s.textContent;document.head.appendChild(ns)})});
     fetch('/components/footer.html').then(function(r){return r.text()}).then(function(html){document.getElementById('footer-placeholder').innerHTML=html});
-    </script>
-    <script>
-    document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('.faq-question').forEach(function(btn){btn.addEventListener('click',function(){var item=this.parentElement;var active=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(function(el){el.classList.remove('active')});if(!active)item.classList.add('active')})})});
     </script>
     <script src="/js/animations.js"></script>
 </body>
