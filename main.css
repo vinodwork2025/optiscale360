@@ -63,6 +63,13 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
+/* On dark/hero backgrounds, use a brighter gradient */
+.hero .gradient-text,
+.page-hero .gradient-text {
+    background: linear-gradient(135deg, #FBBF24, #F59E0B);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
 
 /* ============================================
    Animation System
@@ -113,7 +120,10 @@
 .hero-stagger > * {
     opacity: 0;
     transform: translateY(20px);
-    animation: heroFadeIn 0.6s var(--ease-out) forwards;
+    animation-name: heroFadeIn;
+    animation-duration: 0.6s;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    animation-fill-mode: forwards;
 }
 .hero-stagger > *:nth-child(1) { animation-delay: 0.1s; }
 .hero-stagger > *:nth-child(2) { animation-delay: 0.2s; }
@@ -273,11 +283,12 @@
 .hero-score-card::before {
     content: '';
     position: absolute;
-    inset: -1px;
-    border-radius: 21px;
-    background: linear-gradient(135deg, rgba(59,130,246,0.3), rgba(245,158,11,0.3));
+    inset: -2px;
+    border-radius: 22px;
+    background: linear-gradient(135deg, rgba(59,130,246,0.4), rgba(245,158,11,0.4));
     z-index: -1;
-    filter: blur(1px);
+    filter: blur(6px);
+    pointer-events: none;
 }
 .score-card-title {
     font-family: 'Space Grotesk', sans-serif;
