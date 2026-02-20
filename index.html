@@ -358,17 +358,28 @@
             margin-bottom: 1.5rem;
         }
         .check-list li {
-            padding: 0.4rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.5rem 0;
             color: var(--text-secondary);
-            position: relative;
-            padding-left: 1.5rem;
+            line-height: 1.6;
+            font-size: 1rem;
         }
         .check-list li::before {
             content: '\2713';
-            color: var(--success);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10B981, #059669);
+            color: #fff;
+            font-size: 0.7rem;
             font-weight: 700;
-            position: absolute;
-            left: 0;
+            flex-shrink: 0;
+            margin-top: 2px;
         }
         .service-card .btn-primary {
             background: var(--gradient-primary);
@@ -660,7 +671,7 @@
                     </div>
                 </div>
                 <div class="hero-split-visual">
-                    <div class="hero-score-card" style="opacity:0;animation:heroFadeIn 0.7s cubic-bezier(0.22,1,0.36,1) 0.5s forwards;">
+                    <div class="hero-score-card" style="animation:heroFadeIn 0.8s cubic-bezier(0.22,1,0.36,1) 0.3s both;">
                         <div class="hero-mini-badge hero-mini-badge--top">Live Score</div>
                         <div class="hero-mini-badge hero-mini-badge--bottom">5 Platforms</div>
                         <div class="score-card-title">AI Visibility Score</div>
