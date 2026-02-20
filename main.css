@@ -245,14 +245,33 @@
 }
 
 /* ============================================
+   Hero Layout Overrides
+   (styles.css sets .hero to min-height:100vh and
+    .hero .container to a 2-column grid — undo those)
+   ============================================ */
+
+.hero {
+    min-height: auto;
+}
+.hero .container {
+    display: block;
+    grid-template-columns: none;
+    min-height: auto;
+}
+.page-hero .container {
+    display: block;
+}
+
+/* ============================================
    Split-Layout Hero
    ============================================ */
 
 .hero-split {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 2rem;
     align-items: center;
+    width: 100%;
 }
 .hero-split-content {
     text-align: left;
@@ -261,6 +280,76 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* ============================================
+   Dark Section Text Color Overrides
+   Fix: styles.css sets h1-h6 to color: var(--text-primary) (#1a1a1a)
+   and p to color: var(--text-secondary) globally.
+   These overrides ensure white/light text on ALL dark backgrounds.
+   ============================================ */
+
+/* Hero (index.html) */
+.hero h1, .hero h2, .hero h3, .hero h4, .hero h5, .hero h6,
+.hero p, .hero span, .hero div, .hero li, .hero a, .hero label, .hero small {
+    color: #FFFFFF;
+}
+
+/* Page hero (sub-pages) */
+.page-hero h1, .page-hero h2, .page-hero h3, .page-hero h4, .page-hero h5, .page-hero h6,
+.page-hero p, .page-hero span, .page-hero div, .page-hero li, .page-hero a, .page-hero label, .page-hero small {
+    color: #FFFFFF;
+}
+
+/* Contact hero */
+.contact-hero h1, .contact-hero h2, .contact-hero h3,
+.contact-hero p, .contact-hero span, .contact-hero div, .contact-hero a {
+    color: #FFFFFF;
+}
+
+/* CTA sections (all pages) */
+.cta-section h1, .cta-section h2, .cta-section h3, .cta-section h4,
+.cta-section p, .cta-section span, .cta-section div,
+.cta-section li, .cta-section a, .cta-section small {
+    color: #FFFFFF;
+}
+
+/* bg-navy dark sections */
+.bg-navy h1, .bg-navy h2, .bg-navy h3, .bg-navy h4,
+.bg-navy p, .bg-navy span, .bg-navy div, .bg-navy li, .bg-navy a {
+    color: #FFFFFF;
+}
+
+/* Footer (dark background — protect from global dark text rules) */
+.optiscale-footer h1, .optiscale-footer h2, .optiscale-footer h3,
+.optiscale-footer h4, .optiscale-footer h5, .optiscale-footer h6 {
+    color: #FFFFFF;
+}
+.optiscale-footer p {
+    color: #94A3B8;
+}
+
+/* Subtitles — slightly transparent for visual hierarchy */
+.hero .hero-subtitle,
+.page-hero .hero-sub {
+    color: rgba(255, 255, 255, 0.85);
+}
+.hero .hero-trust-item {
+    color: rgba(255, 255, 255, 0.8);
+}
+.cta-section p {
+    color: rgba(255, 255, 255, 0.9);
+}
+/* CTA buttons keep their own text colors */
+.cta-section .btn-white,
+.cta-section .btn-accent {
+    color: var(--navy);
+}
+.cta-section .btn-outline-white {
+    color: #FFFFFF;
+}
+.cta-section .btn-primary {
+    color: #FFFFFF;
 }
 
 /* ============================================
@@ -275,7 +364,7 @@
     border-radius: 20px;
     padding: 1.75rem;
     width: 100%;
-    max-width: 340px;
+    max-width: 380px;
     color: #fff;
     position: relative;
     box-shadow: 0 8px 32px rgba(0,0,0,0.2);
