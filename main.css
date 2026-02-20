@@ -246,20 +246,25 @@
 
 /* ============================================
    Hero Layout Overrides
-   (styles.css sets .hero to min-height:100vh and
-    .hero .container to a 2-column grid — undo those)
+   styles.css forces: .hero { min-height:100vh; display:flex }
+   and .hero .container { display:grid; grid-template-columns:1fr 1fr; min-height:80vh }
+   We MUST use !important to beat those rules reliably.
    ============================================ */
 
 .hero {
-    min-height: auto;
+    min-height: auto !important;
+    display: block !important;
 }
-.hero .container {
-    display: block;
-    grid-template-columns: none;
-    min-height: auto;
+.hero .container,
+.hero > .container {
+    display: block !important;
+    grid-template-columns: none !important;
+    min-height: auto !important;
+    max-width: 1200px;
 }
-.page-hero .container {
-    display: block;
+.page-hero .container,
+.page-hero > .container {
+    display: block !important;
 }
 
 /* ============================================
@@ -267,14 +272,16 @@
    ============================================ */
 
 .hero-split {
-    display: grid;
-    grid-template-columns: 1.3fr 1fr;
-    gap: 2rem;
+    display: grid !important;
+    grid-template-columns: 1.2fr 0.8fr !important;
+    gap: 3rem !important;
     align-items: center;
     width: 100%;
+    max-width: 100%;
 }
 .hero-split-content {
     text-align: left;
+    max-width: none;
 }
 .hero-split-visual {
     display: flex;
@@ -284,72 +291,102 @@
 
 /* ============================================
    Dark Section Text Color Overrides
-   Fix: styles.css sets h1-h6 to color: var(--text-primary) (#1a1a1a)
-   and p to color: var(--text-secondary) globally.
-   These overrides ensure white/light text on ALL dark backgrounds.
+   styles.css forces: h1-h6 { color: var(--text-primary) } (#0F172A dark)
+   and p { color: var(--text-secondary) } (#475569 dark)
+   These global rules make text invisible on dark backgrounds.
+   We use !important to guarantee white text on ALL dark sections.
    ============================================ */
 
-/* Hero (index.html) */
-.hero h1, .hero h2, .hero h3, .hero h4, .hero h5, .hero h6,
-.hero p, .hero span, .hero div, .hero li, .hero a, .hero label, .hero small {
-    color: #FFFFFF;
+/* --- HERO (homepage index.html) --- */
+.hero h1, .hero h2, .hero h3, .hero h4, .hero h5, .hero h6 {
+    color: #FFFFFF !important;
+}
+.hero p, .hero span, .hero div, .hero li, .hero a,
+.hero label, .hero small {
+    color: #FFFFFF !important;
 }
 
-/* Page hero (sub-pages) */
-.page-hero h1, .page-hero h2, .page-hero h3, .page-hero h4, .page-hero h5, .page-hero h6,
-.page-hero p, .page-hero span, .page-hero div, .page-hero li, .page-hero a, .page-hero label, .page-hero small {
-    color: #FFFFFF;
+/* --- PAGE HERO (sub-pages: audit, website, how-it-works, about) --- */
+.page-hero h1, .page-hero h2, .page-hero h3, .page-hero h4, .page-hero h5, .page-hero h6 {
+    color: #FFFFFF !important;
+}
+.page-hero p, .page-hero span, .page-hero div, .page-hero li, .page-hero a,
+.page-hero label, .page-hero small {
+    color: #FFFFFF !important;
 }
 
-/* Contact hero */
-.contact-hero h1, .contact-hero h2, .contact-hero h3,
+/* --- CONTACT HERO --- */
+.contact-hero h1, .contact-hero h2, .contact-hero h3 {
+    color: #FFFFFF !important;
+}
 .contact-hero p, .contact-hero span, .contact-hero div, .contact-hero a {
-    color: #FFFFFF;
+    color: #FFFFFF !important;
 }
 
-/* CTA sections (all pages) */
-.cta-section h1, .cta-section h2, .cta-section h3, .cta-section h4,
+/* --- CTA SECTIONS (all pages — dark navy gradient) --- */
+.cta-section h1, .cta-section h2, .cta-section h3, .cta-section h4 {
+    color: #FFFFFF !important;
+}
 .cta-section p, .cta-section span, .cta-section div,
 .cta-section li, .cta-section a, .cta-section small {
-    color: #FFFFFF;
+    color: #FFFFFF !important;
 }
 
-/* bg-navy dark sections */
-.bg-navy h1, .bg-navy h2, .bg-navy h3, .bg-navy h4,
+/* --- BG-NAVY dark sections --- */
+.bg-navy h1, .bg-navy h2, .bg-navy h3, .bg-navy h4 {
+    color: #FFFFFF !important;
+}
 .bg-navy p, .bg-navy span, .bg-navy div, .bg-navy li, .bg-navy a {
-    color: #FFFFFF;
+    color: #FFFFFF !important;
 }
 
-/* Footer (dark background — protect from global dark text rules) */
+/* --- FOOTER (dark navy gradient background) --- */
 .optiscale-footer h1, .optiscale-footer h2, .optiscale-footer h3,
 .optiscale-footer h4, .optiscale-footer h5, .optiscale-footer h6 {
-    color: #FFFFFF;
+    color: #FFFFFF !important;
 }
 .optiscale-footer p {
-    color: #94A3B8;
+    color: #94A3B8 !important;
 }
 
-/* Subtitles — slightly transparent for visual hierarchy */
-.hero .hero-subtitle,
+/* --- Subtitles — slightly transparent for visual hierarchy --- */
+.hero .hero-subtitle {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
 .page-hero .hero-sub {
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(255, 255, 255, 0.9) !important;
 }
 .hero .hero-trust-item {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.85) !important;
 }
 .cta-section p {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.9) !important;
 }
-/* CTA buttons keep their own text colors */
+
+/* --- Buttons in dark sections keep their own text colors --- */
+.hero .btn-primary,
 .cta-section .btn-white,
-.cta-section .btn-accent {
-    color: var(--navy);
+.cta-section .btn-accent,
+.hero .btn-primary {
+    color: var(--navy) !important;
 }
+.hero .btn-outline,
 .cta-section .btn-outline-white {
-    color: #FFFFFF;
+    color: #FFFFFF !important;
 }
 .cta-section .btn-primary {
-    color: #FFFFFF;
+    color: #FFFFFF !important;
+}
+
+/* --- Score card alert stays amber --- */
+.hero .score-card-alert {
+    color: #FBBF24 !important;
+}
+
+/* --- Gradient text retains its special rendering --- */
+.hero .gradient-text,
+.page-hero .gradient-text {
+    -webkit-text-fill-color: transparent !important;
 }
 
 /* ============================================
@@ -357,27 +394,30 @@
    ============================================ */
 
 .hero-score-card {
-    background: rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
     border-radius: 20px;
-    padding: 1.75rem;
+    padding: 2rem;
     width: 100%;
-    max-width: 380px;
-    color: #fff;
+    max-width: 400px;
+    color: #fff !important;
     position: relative;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.25),
+        0 0 0 1px rgba(255, 255, 255, 0.1) inset;
 }
 .hero-score-card::before {
     content: '';
     position: absolute;
-    inset: -2px;
-    border-radius: 22px;
-    background: linear-gradient(135deg, rgba(59,130,246,0.4), rgba(245,158,11,0.4));
+    inset: -3px;
+    border-radius: 23px;
+    background: linear-gradient(135deg, rgba(59,130,246,0.5), rgba(245,158,11,0.5));
     z-index: -1;
-    filter: blur(6px);
+    filter: blur(8px);
     pointer-events: none;
+    opacity: 0.7;
 }
 .score-card-title {
     font-family: 'Space Grotesk', sans-serif;
@@ -1231,10 +1271,10 @@
         font-size: 1.05rem;
     }
 
-    /* Split hero → stack */
+    /* Split hero → stack on mobile */
     .hero-split {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
     }
     .hero-split-content {
         text-align: center;
