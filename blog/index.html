@@ -36,27 +36,105 @@
     <link rel="stylesheet" href="../main.css">
     <script src="https://unpkg.com/lucide@latest" defer></script>
     <style>
-        .blog-hero{background:linear-gradient(135deg,#1E3A8A 0%,#1E40AF 50%,#3B82F6 100%);padding:4rem 0 2.5rem;text-align:center;color:#fff}
-        .blog-hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:800;letter-spacing:-0.03em}
-        .blog-hero p{font-size:1.05rem;opacity:0.9;max-width:650px;margin:1rem auto 0;line-height:1.7}
-        .blog-container{max-width:1000px;margin:0 auto;padding:3rem 2rem}
-        .blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2rem}
-        .blog-card{background:#fff;border-radius:1rem;overflow:hidden;box-shadow:0 4px 6px -1px rgba(0,0,0,0.1);transition:transform 0.2s,box-shadow 0.2s}
-        .blog-card:hover{transform:translateY(-4px);box-shadow:0 10px 25px -5px rgba(0,0,0,0.15)}
-        .blog-card-img{width:100%;height:200px;background:linear-gradient(135deg,#EEF2FF,#E0E7FF);display:flex;align-items:center;justify-content:center}
-        .blog-card-img i{width:48px;height:48px;color:#1E40AF;opacity:0.5}
-        .blog-card-body{padding:1.5rem}
-        .blog-card-date{font-size:0.8rem;color:#94A3B8;margin-bottom:0.5rem}
-        .blog-card-title{font-family:'Space Grotesk',sans-serif;font-size:1.15rem;font-weight:700;color:#0F172A;line-height:1.4;margin-bottom:0.75rem}
-        .blog-card-excerpt{font-size:0.9rem;color:#475569;line-height:1.6;margin-bottom:1rem}
-        .blog-card-link{color:#1E40AF;font-weight:600;font-size:0.9rem;text-decoration:none}
-        .blog-card-link:hover{text-decoration:underline}
-        .blog-footer{background:#0F172A;color:#fff;padding:3rem 0;text-align:center;margin-top:3rem}
-        .blog-footer p{opacity:0.7;font-size:0.9rem}
-        .blog-footer a{color:#3B82F6}
+        .blog-hero {
+            background: linear-gradient(135deg, #1E3A8A 0%, #1E40AF 50%, #3B82F6 100%);
+            padding: 4rem 0 2.5rem;
+            text-align: center;
+        }
+        .blog-hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: #FFFFFF !important;
+        }
+        .blog-hero p {
+            font-size: 1.05rem;
+            max-width: 650px;
+            margin: 1rem auto 0;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9) !important;
+        }
+        .blog-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        .blog-section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0F172A;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid #E2E8F0;
+        }
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .blog-card {
+            background: #fff;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .blog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.15);
+        }
+        .blog-card-img {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, #EEF2FF, #E0E7FF);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .blog-card-img i {
+            width: 48px;
+            height: 48px;
+            color: #1E40AF;
+            opacity: 0.5;
+        }
+        .blog-card-img.alt-gradient {
+            background: linear-gradient(135deg, #F0FDF4, #DCFCE7);
+        }
+        .blog-card-img.alt-gradient i {
+            color: #059669;
+        }
+        .blog-card-body { padding: 1.5rem; }
+        .blog-card-date { font-size: 0.8rem; color: #94A3B8; margin-bottom: 0.5rem; }
+        .blog-card-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #0F172A;
+            line-height: 1.4;
+            margin-bottom: 0.75rem;
+        }
+        .blog-card-excerpt {
+            font-size: 0.9rem;
+            color: #475569;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        .blog-card-link {
+            color: #1E40AF;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+        }
+        .blog-card-link:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
+    <!-- HEADER -->
+    <div id="header-placeholder"></div>
+
     <section class="blog-hero">
         <div style="max-width:1000px;margin:0 auto;padding:0 2rem;">
             <h1>AI Search Visibility — Insights and Guides for Indian Businesses</h1>
@@ -65,12 +143,14 @@
     </section>
 
     <div class="blog-container">
+
+        <h2 class="blog-section-title">Latest Guides</h2>
         <div class="blog-grid">
             <article class="blog-card">
                 <div class="blog-card-img"><i data-lucide="search"></i></div>
                 <div class="blog-card-body">
                     <div class="blog-card-date">February 2026</div>
-                    <h2 class="blog-card-title">How to Check If Your Business Appears on ChatGPT Search (Free 5-Minute Test)</h2>
+                    <h3 class="blog-card-title">How to Check If Your Business Appears on ChatGPT Search (Free 5-Minute Test)</h3>
                     <p class="blog-card-excerpt">Step-by-step guide to testing your business visibility on ChatGPT, Perplexity, and Google AI. A free method any business owner can do right now.</p>
                     <a href="/blog/how-to-check-if-your-business-appears-on-chatgpt.html" class="blog-card-link">Read the guide &#8594;</a>
                 </div>
@@ -79,7 +159,7 @@
                 <div class="blog-card-img"><i data-lucide="zap"></i></div>
                 <div class="blog-card-body">
                     <div class="blog-card-date">February 2026</div>
-                    <h2 class="blog-card-title">What Is GEO (Generative Engine Optimization)? Explained for Business Owners</h2>
+                    <h3 class="blog-card-title">What Is GEO (Generative Engine Optimization)? Explained for Business Owners</h3>
                     <p class="blog-card-excerpt">GEO means optimising your business to appear in AI-generated answers. Here is what it means and why Indian businesses need it now.</p>
                     <a href="/blog/what-is-geo-generative-engine-optimization.html" class="blog-card-link">Read the guide &#8594;</a>
                 </div>
@@ -88,7 +168,7 @@
                 <div class="blog-card-img"><i data-lucide="eye-off"></i></div>
                 <div class="blog-card-body">
                     <div class="blog-card-date">February 2026</div>
-                    <h2 class="blog-card-title">Why Your Business Is Not Showing on ChatGPT — 7 Reasons and How to Fix Each</h2>
+                    <h3 class="blog-card-title">Why Your Business Is Not Showing on ChatGPT — 7 Reasons and How to Fix Each</h3>
                     <p class="blog-card-excerpt">The 7 most common reasons businesses do not appear on ChatGPT or Perplexity, and the specific fixes for each problem.</p>
                     <a href="/blog/why-your-business-is-not-showing-on-chatgpt.html" class="blog-card-link">Read the guide &#8594;</a>
                 </div>
@@ -97,20 +177,77 @@
                 <div class="blog-card-img"><i data-lucide="git-compare"></i></div>
                 <div class="blog-card-body">
                     <div class="blog-card-date">February 2026</div>
-                    <h2 class="blog-card-title">GEO vs SEO — The Difference Every Indian Business Owner Needs to Know</h2>
+                    <h3 class="blog-card-title">GEO vs SEO — The Difference Every Indian Business Owner Needs to Know</h3>
                     <p class="blog-card-excerpt">SEO gets you on Google. GEO gets you recommended by ChatGPT and Perplexity. Here is the difference and why you need both.</p>
                     <a href="/blog/geo-vs-seo-difference-explained.html" class="blog-card-link">Read the guide &#8594;</a>
                 </div>
             </article>
         </div>
+
+        <h2 class="blog-section-title">AI SEO Deep Dives</h2>
+        <div class="blog-grid">
+            <article class="blog-card">
+                <div class="blog-card-img alt-gradient"><i data-lucide="book-open"></i></div>
+                <div class="blog-card-body">
+                    <div class="blog-card-date">October 2024</div>
+                    <h3 class="blog-card-title">AI SEO Complete Guide 2025: How Artificial Intelligence is Revolutionizing Search Optimization</h3>
+                    <p class="blog-card-excerpt">A comprehensive guide to how AI is transforming search engine optimization and what it means for your business strategy.</p>
+                    <a href="/blog/ai-seo-complete-guide-2025/" class="blog-card-link">Read the guide &#8594;</a>
+                </div>
+            </article>
+            <article class="blog-card">
+                <div class="blog-card-img alt-gradient"><i data-lucide="key"></i></div>
+                <div class="blog-card-body">
+                    <div class="blog-card-date">October 2024</div>
+                    <h3 class="blog-card-title">AI Keyword Research Tools Guide: Find High-Value Keywords in Minutes, Not Hours</h3>
+                    <p class="blog-card-excerpt">Learn how to use AI-powered tools to discover high-value keywords faster and more effectively than traditional methods.</p>
+                    <a href="/blog/ai-keyword-research-tools-guide/" class="blog-card-link">Read the guide &#8594;</a>
+                </div>
+            </article>
+            <article class="blog-card">
+                <div class="blog-card-img alt-gradient"><i data-lucide="file-text"></i></div>
+                <div class="blog-card-body">
+                    <div class="blog-card-date">October 2024</div>
+                    <h3 class="blog-card-title">AI Content Optimization Strategies: 7 Proven Techniques to Rank Higher</h3>
+                    <p class="blog-card-excerpt">Seven proven AI-powered content optimization techniques that can help your pages rank higher in search results.</p>
+                    <a href="/blog/ai-content-optimization-strategies/" class="blog-card-link">Read the guide &#8594;</a>
+                </div>
+            </article>
+            <article class="blog-card">
+                <div class="blog-card-img alt-gradient"><i data-lucide="settings"></i></div>
+                <div class="blog-card-body">
+                    <div class="blog-card-date">October 2024</div>
+                    <h3 class="blog-card-title">AI Technical SEO Audit Guide: Fix Critical Issues 10x Faster</h3>
+                    <p class="blog-card-excerpt">How to use AI tools to run technical SEO audits, identify critical issues, and fix them significantly faster.</p>
+                    <a href="/blog/ai-technical-seo-audit-guide/" class="blog-card-link">Read the guide &#8594;</a>
+                </div>
+            </article>
+        </div>
+
     </div>
 
-    <footer class="blog-footer">
-        <div style="max-width:1000px;margin:0 auto;padding:0 2rem;">
-            <p>&copy; 2025 OptiScale Advisors. Bengaluru, India. All rights reserved.</p>
-            <p style="margin-top:0.5rem;"><a href="/">Home</a> | <a href="/ai-visibility-audit.html">AI Visibility Audit</a> | <a href="/ai-ready-website.html">AI-Ready Website</a> | <a href="/contact.html">Contact</a></p>
-        </div>
-    </footer>
+    <!-- FOOTER -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Component Loading -->
+    <script>
+    fetch('/components/header.html')
+      .then(function(r) { return r.text(); })
+      .then(function(html) {
+        document.getElementById('header-placeholder').innerHTML = html;
+        document.getElementById('header-placeholder').querySelectorAll('script').forEach(function(s) {
+          var ns = document.createElement('script');
+          ns.textContent = s.textContent;
+          document.head.appendChild(ns);
+        });
+      });
+    fetch('/components/footer.html')
+      .then(function(r) { return r.text(); })
+      .then(function(html) {
+        document.getElementById('footer-placeholder').innerHTML = html;
+      });
+    </script>
+
     <script>document.addEventListener('DOMContentLoaded',function(){if(typeof lucide!=='undefined')lucide.createIcons()});</script>
 </body>
 </html>
