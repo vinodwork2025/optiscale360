@@ -1,2 +1,2 @@
-# Redirects configuration for Cloudflare Pages
-# Clean URLs are handled by Cloudflare Pages automatically
+/Free-AI-Ready-Website    /ai-ready-website.html    301
+/Free-AI-Ready-Website.html    /ai-ready-website.html    301
