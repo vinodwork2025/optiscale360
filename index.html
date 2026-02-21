@@ -271,6 +271,72 @@
             transform: translateY(-2px);
         }
 
+        /* HERO PLATFORMS CARD */
+        .hero-platforms-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 400px;
+            color: #fff;
+            text-align: center;
+        }
+        .platforms-card-title {
+            font-family: var(--font-primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+        }
+        .platforms-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+        .platform-icon-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .platform-icon-item span {
+            font-size: 0.8rem;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+        .platform-icon-circle {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .platform-icon-item:hover .platform-icon-circle {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        .platforms-card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            opacity: 0.85;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
         /* SECTIONS */
         .section { padding: 3.5rem 0; }
         .section-alt { background: var(--silver); }
@@ -670,45 +736,33 @@
                     </div>
                 </div>
                 <div class="hero-split-visual">
-                    <div class="hero-score-card" style="animation:heroFadeIn 0.8s cubic-bezier(0.22,1,0.36,1) 0.3s both;">
-                        <div class="hero-mini-badge hero-mini-badge--top">Live Score</div>
-                        <div class="hero-mini-badge hero-mini-badge--bottom">5 Platforms</div>
-                        <div class="score-card-title">AI Visibility Score</div>
-                        <div class="score-ring-container">
-                            <div class="score-ring-wrap">
-                                <svg viewBox="0 0 100 100">
-                                    <defs>
-                                        <linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                            <stop offset="0%" style="stop-color:#3B82F6"/>
-                                            <stop offset="100%" style="stop-color:#F59E0B"/>
-                                        </linearGradient>
-                                    </defs>
-                                    <circle class="score-ring-bg" cx="50" cy="50" r="45"/>
-                                    <circle class="score-ring-fill" cx="50" cy="50" r="45"/>
-                                </svg>
-                                <div class="score-ring-value" data-score="72">0</div>
+                    <div class="hero-platforms-card" style="animation:heroFadeIn 0.8s cubic-bezier(0.22,1,0.36,1) 0.3s both;">
+                        <div class="platforms-card-title">We Test Your Visibility On</div>
+                        <div class="platforms-grid">
+                            <div class="platform-icon-item">
+                                <div class="platform-icon-circle"><i data-lucide="message-circle" style="width:28px;height:28px;"></i></div>
+                                <span>ChatGPT</span>
+                            </div>
+                            <div class="platform-icon-item">
+                                <div class="platform-icon-circle"><i data-lucide="compass" style="width:28px;height:28px;"></i></div>
+                                <span>Perplexity</span>
+                            </div>
+                            <div class="platform-icon-item">
+                                <div class="platform-icon-circle"><i data-lucide="sparkles" style="width:28px;height:28px;"></i></div>
+                                <span>Google AI</span>
+                            </div>
+                            <div class="platform-icon-item">
+                                <div class="platform-icon-circle"><i data-lucide="search" style="width:28px;height:28px;"></i></div>
+                                <span>Bing</span>
+                            </div>
+                            <div class="platform-icon-item">
+                                <div class="platform-icon-circle"><i data-lucide="gem" style="width:28px;height:28px;"></i></div>
+                                <span>Gemini</span>
                             </div>
                         </div>
-                        <div class="platform-bars">
-                            <div class="platform-bar">
-                                <span class="platform-bar-name">ChatGPT</span>
-                                <div class="platform-bar-track"><div class="platform-bar-fill" data-width="68%"></div></div>
-                                <span class="platform-bar-pct">68%</span>
-                            </div>
-                            <div class="platform-bar">
-                                <span class="platform-bar-name">Perplexity</span>
-                                <div class="platform-bar-track"><div class="platform-bar-fill" data-width="85%"></div></div>
-                                <span class="platform-bar-pct">85%</span>
-                            </div>
-                            <div class="platform-bar">
-                                <span class="platform-bar-name">Google AI</span>
-                                <div class="platform-bar-track"><div class="platform-bar-fill" data-width="45%"></div></div>
-                                <span class="platform-bar-pct">45%</span>
-                            </div>
-                        </div>
-                        <div class="score-card-alert">
-                            <i data-lucide="zap" style="width:16px;height:16px;"></i>
-                            3 Critical Fixes Found
+                        <div class="platforms-card-footer">
+                            <i data-lucide="check-circle" style="width:16px;height:16px;color:#10B981;"></i>
+                            Full audit report delivered in 48 hours
                         </div>
                     </div>
                 </div>
