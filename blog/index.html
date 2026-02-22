@@ -89,22 +89,12 @@
         .blog-card-img {
             width: 100%;
             height: 180px;
-            background: linear-gradient(135deg, #EEF2FF, #E0E7FF);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            overflow: hidden;
         }
-        .blog-card-img i {
-            width: 48px;
-            height: 48px;
-            color: #1E40AF;
-            opacity: 0.5;
-        }
-        .blog-card-img.alt-gradient {
-            background: linear-gradient(135deg, #F0FDF4, #DCFCE7);
-        }
-        .blog-card-img.alt-gradient i {
-            color: #059669;
+        .blog-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         .blog-card-body { padding: 1.5rem; }
         .blog-card-date { font-size: 0.8rem; color: #94A3B8; margin-bottom: 0.5rem; }
@@ -147,7 +137,7 @@
         <h2 class="blog-section-title">Latest Guides</h2>
         <div class="blog-grid">
             <article class="blog-card">
-                <div class="blog-card-img"><i data-lucide="search"></i></div>
+                <div class="blog-card-img"><img src="/images/blog/chatgpt-business-visibility.jpg" alt="Business owner testing their company visibility on ChatGPT AI search" width="600" height="340" loading="lazy"></div>
                 <div class="blog-card-body">
                     <div class="blog-card-date">February 2026</div>
                     <h3 class="blog-card-title">How to Check If Your Business Appears on ChatGPT Search (Free 5-Minute Test)</h3>
@@ -156,7 +146,7 @@
                 </div>
             </article>
             <article class="blog-card">
-                <div class="blog-card-img"><i data-lucide="zap"></i></div>
+                <div class="blog-card-img"><img src="/images/blog/geo-generative-engine-optimization.jpg" alt="Neural network visualization representing generative engine optimization for AI search" width="600" height="340" loading="lazy"></div>
                 <div class="blog-card-body">
                     <div class="blog-card-date">February 2026</div>
                     <h3 class="blog-card-title">What Is GEO (Generative Engine Optimization)? Explained for Business Owners</h3>
@@ -165,7 +155,7 @@
                 </div>
             </article>
             <article class="blog-card">
-                <div class="blog-card-img"><i data-lucide="eye-off"></i></div>
+                <div class="blog-card-img"><img src="/images/blog/why-not-showing-chatgpt.jpg" alt="Digital data stream representing why businesses are invisible on AI search platforms" width="600" height="340" loading="lazy"></div>
                 <div class="blog-card-body">
                     <div class="blog-card-date">February 2026</div>
                     <h3 class="blog-card-title">Why Your Business Is Not Showing on ChatGPT — 7 Reasons and How to Fix Each</h3>
@@ -174,7 +164,7 @@
                 </div>
             </article>
             <article class="blog-card">
-                <div class="blog-card-img"><i data-lucide="git-compare"></i></div>
+                <div class="blog-card-img"><img src="/images/blog/geo-vs-seo-comparison.jpg" alt="Analytics dashboard comparing GEO and SEO search optimization strategies" width="600" height="340" loading="lazy"></div>
                 <div class="blog-card-body">
                     <div class="blog-card-date">February 2026</div>
                     <h3 class="blog-card-title">GEO vs SEO — The Difference Every Indian Business Owner Needs to Know</h3>
@@ -187,7 +177,7 @@
         <h2 class="blog-section-title">AI SEO Deep Dives</h2>
         <div class="blog-grid">
             <article class="blog-card">
-                <div class="blog-card-img alt-gradient"><i data-lucide="book-open"></i></div>
+                <div class="blog-card-img"><img src="/images/blog/ai-seo-complete-guide.jpg" alt="AI-powered search engine optimization technology and machine learning concept" width="600" height="340" loading="lazy"></div>
                 <div class="blog-card-body">
                     <div class="blog-card-date">October 2024</div>
                     <h3 class="blog-card-title">AI SEO Complete Guide 2025: How Artificial Intelligence is Revolutionizing Search Optimization</h3>
@@ -196,7 +186,7 @@
                 </div>
             </article>
             <article class="blog-card">
-                <div class="blog-card-img alt-gradient"><i data-lucide="key"></i></div>
+                <div class="blog-card-img"><img src="/images/blog/ai-keyword-research-tools.jpg" alt="Digital marketing analytics dashboard showing AI keyword research data" width="600" height="340" loading="lazy"></div>
                 <div class="blog-card-body">
                     <div class="blog-card-date">October 2024</div>
                     <h3 class="blog-card-title">AI Keyword Research Tools Guide: Find High-Value Keywords in Minutes, Not Hours</h3>
@@ -205,7 +195,7 @@
                 </div>
             </article>
             <article class="blog-card">
-                <div class="blog-card-img alt-gradient"><i data-lucide="file-text"></i></div>
+                <div class="blog-card-img"><img src="/images/blog/ai-content-optimization.jpg" alt="Data visualization dashboard for AI content optimization and performance tracking" width="600" height="340" loading="lazy"></div>
                 <div class="blog-card-body">
                     <div class="blog-card-date">October 2024</div>
                     <h3 class="blog-card-title">AI Content Optimization Strategies: 7 Proven Techniques to Rank Higher</h3>
@@ -214,7 +204,7 @@
                 </div>
             </article>
             <article class="blog-card">
-                <div class="blog-card-img alt-gradient"><i data-lucide="settings"></i></div>
+                <div class="blog-card-img"><img src="/images/blog/ai-technical-seo-audit.jpg" alt="Technical SEO audit code analysis and website performance diagnostics" width="600" height="340" loading="lazy"></div>
                 <div class="blog-card-body">
                     <div class="blog-card-date">October 2024</div>
                     <h3 class="blog-card-title">AI Technical SEO Audit Guide: Fix Critical Issues 10x Faster</h3>
