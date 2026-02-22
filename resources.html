@@ -44,6 +44,8 @@
     </style>
 </head>
 <body>
+    <div id="header-placeholder"></div>
+
     <section class="res-hero">
         <div style="max-width:1000px;margin:0 auto;padding:0 2rem;">
             <h1>10 Things to Check If Your Business Is Invisible on AI Search</h1>
@@ -71,12 +73,25 @@
             <p style="margin-top:1rem;font-size:0.9rem;">Or WhatsApp us: <a href="https://wa.me/917397225523" style="color:#FBBF24;">+91 73972 25523</a></p>
         </div>
     </div>
-    <footer class="res-footer">
-        <div style="max-width:1000px;margin:0 auto;padding:0 2rem;">
-            <p>&copy; 2025 OptiScale Advisors. Bengaluru, India. All rights reserved.</p>
-            <p style="margin-top:0.5rem;"><a href="/">Home</a> | <a href="/ai-visibility-audit.html">AI Visibility Audit</a> | <a href="/ai-ready-website.html">AI-Ready Website</a> | <a href="/contact.html">Contact</a></p>
-        </div>
-    </footer>
+    <div id="footer-placeholder"></div>
+
     <script>document.addEventListener('DOMContentLoaded',function(){if(typeof lucide!=='undefined')lucide.createIcons()});</script>
+    <script>
+    fetch('/components/header.html')
+      .then(function(r) { return r.text(); })
+      .then(function(html) {
+        document.getElementById('header-placeholder').innerHTML = html;
+        document.getElementById('header-placeholder').querySelectorAll('script').forEach(function(s) {
+          var ns = document.createElement('script');
+          ns.textContent = s.textContent;
+          document.head.appendChild(ns);
+        });
+      });
+    fetch('/components/footer.html')
+      .then(function(r) { return r.text(); })
+      .then(function(html) {
+        document.getElementById('footer-placeholder').innerHTML = html;
+      });
+    </script>
 </body>
 </html>
