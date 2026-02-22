@@ -55,489 +55,97 @@
     </script>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <a href="../index.html">
-                        <img src="../images/logo.webp" alt="OptiScale Advisors" class="logo-img">
-                    </a>
-                </div>
-                
-                <nav class="nav" id="nav">
-                    <ul class="nav-list">
-                        <li class="nav-item">
-                            <a href="../index.html" class="nav-link">Home</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a href="../services.html" class="nav-link dropdown-trigger" aria-expanded="false">
-                                Services <span class="dropdown-arrow">▼</span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="../services/operations-scaling.html" class="dropdown-link">Operations Scaling</a></li>
-                                <li><a href="../services/ai-llm-seo.html" class="dropdown-link">AI & LLM SEO</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="about.html" class="nav-link active">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../blog.html" class="nav-link">Blog</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../contact.html" class="nav-link">Contact</a>
-                        </li>
-                    </ul>
-                </nav>
-                
-                <div class="header-cta">
-                    <a href="../contact.html?source=header" class="btn-primary">Get Started</a>
-                </div>
-                
-                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle mobile menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </div>
-    </header>
+    <div id="header-placeholder"></div>
 
     <main>
         <!-- Hero Section -->
-        <section class="about-hero">
-            <div class="container">
-                <div class="about-hero-content">
-                    <h1 class="about-hero-title">Meet Vinod and the Team</h1>
-                    <p class="about-hero-subtitle">
-                        Passionate operations experts dedicated to helping startups scale efficiently 
-                        through proven methodologies and cutting-edge AI solutions.
-                    </p>
-                    <div class="hero-stats">
-                        <div class="stat">
-                            <span class="stat-number">15+</span>
-                            <span class="stat-label">Years Experience</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">200+</span>
-                            <span class="stat-label">Companies Scaled</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">$50M+</span>
-                            <span class="stat-label">Revenue Generated</span>
-                        </div>
-                    </div>
-                </div>
+        <section class="about-hero" style="background:linear-gradient(135deg,#1E3A8A 0%,#1E40AF 50%,#3B82F6 100%);padding:4rem 0 2.5rem;color:#fff;text-align:center;">
+            <div class="container" style="max-width:900px;margin:0 auto;padding:0 2rem;">
+                <h1 style="font-family:'Inter',sans-serif;font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:800;line-height:1.2;color:#fff;">About OptiScale Advisors</h1>
+                <p style="font-size:1.1rem;opacity:0.9;max-width:650px;margin:1rem auto 0;line-height:1.7;color:#fff;">
+                    We help Indian businesses get found on ChatGPT, Perplexity, and Google AI. Based in Bengaluru, founded by Vinod Kumar.
+                </p>
             </div>
         </section>
 
-        <!-- Vinod's Bio Section -->
-        <section class="founder-bio">
-            <div class="container">
-                <div class="bio-content">
-                    <div class="bio-image-container">
-                        <img src="../images/vinod-headshot.webp" alt="Vinod Kumar - Founder & Lead Operations Consultant" class="bio-image">
-                        <div class="bio-decorative-element"></div>
-                    </div>
-                    <div class="bio-text">
-                        <h2 class="bio-title">Vinod's Story</h2>
-                        <div class="bio-description">
-                            <p>
-                                With over 15 years of hands-on experience in operations optimization, Vinod has been the driving force 
-                                behind OptiScale Advisors' mission to help startups scale without breaking. His journey began at 
-                                Stanford, where he studied Industrial Engineering with a focus on process optimization.
-                            </p>
-                            <p>
-                                After cutting his teeth at fast-growing startups like Airbnb and Stripe during their hyper-growth phases, 
-                                Vinod witnessed firsthand the operational challenges that can make or break a scaling company. He saw brilliant 
-                                founders struggle with inefficient processes, team coordination issues, and the overwhelming complexity 
-                                of rapid growth.
-                            </p>
-                            <p>
-                                This experience led him to develop the OptiScale methodology - a systematic approach to operations 
-                                scaling that combines proven business principles with AI-powered automation. Today, he leads a team 
-                                of specialists who share his passion for turning operational chaos into competitive advantage.
-                            </p>
-                            <div class="bio-credentials">
-                                <div class="credential">
-                                    <span class="credential-label">Education:</span>
-                                    <span class="credential-value">Stanford University - Industrial Engineering</span>
-                                </div>
-                                <div class="credential">
-                                    <span class="credential-label">Certifications:</span>
-                                    <span class="credential-value">Lean Six Sigma Black Belt, AI Strategy Certificate (MIT)</span>
-                                </div>
-                                <div class="credential">
-                                    <span class="credential-label">Speaking:</span>
-                                    <span class="credential-value">TechCrunch Disrupt, SaaS Summit, AI Conference</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <!-- Founder Section -->
+        <section style="max-width:800px;margin:0 auto;padding:3rem 2rem;">
+            <h2 style="font-family:'Inter',sans-serif;font-size:1.5rem;font-weight:700;color:#0F172A;margin-bottom:1rem;">Why OptiScale Advisors Exists</h2>
+            <p style="color:#475569;line-height:1.8;margin-bottom:1rem;">
+                AI search is changing how people find businesses. Hundreds of millions of people now ask ChatGPT, Perplexity, and Google AI for recommendations instead of scrolling through ten blue links. When someone asks "who is the best CA firm in Bengaluru?" or "top web developer near me", the AI gives a direct answer — naming specific businesses.
+            </p>
+            <p style="color:#475569;line-height:1.8;margin-bottom:1rem;">
+                Most Indian businesses are invisible on these platforms. Their websites lack the structured data AI engines need. Their content does not answer the questions people are asking. Their business information is inconsistent across the web. The result: their competitors get recommended instead.
+            </p>
+            <p style="color:#475569;line-height:1.8;margin-bottom:1.5rem;">
+                OptiScale Advisors was founded in 2024 to solve this problem. We audit your AI search visibility across all five major platforms, fix the issues that are keeping you invisible, and build AI-ready websites that get you recommended.
+            </p>
+
+            <h2 style="font-family:'Inter',sans-serif;font-size:1.5rem;font-weight:700;color:#0F172A;margin:2.5rem 0 1rem;">About Vinod Kumar, Founder</h2>
+            <p style="color:#475569;line-height:1.8;margin-bottom:1rem;">
+                Vinod Kumar is the founder of OptiScale Advisors. He is based in Bengaluru, Karnataka, and works with small and medium businesses across India.
+            </p>
+            <p style="color:#475569;line-height:1.8;margin-bottom:1rem;">
+                Vinod's background is in business operations and digital strategy. After years of watching businesses invest in traditional SEO while missing the shift to AI-powered search, he built OptiScale Advisors to focus specifically on helping businesses get found on the AI platforms where customers are increasingly searching.
+            </p>
+            <p style="color:#475569;line-height:1.8;margin-bottom:1.5rem;">
+                His approach is practical and results-focused: test your visibility, identify the gaps, fix what matters most, and measure the results. No jargon, no fluff — just clear audits, honest recommendations, and measurable outcomes.
+            </p>
+
+            <h2 style="font-family:'Inter',sans-serif;font-size:1.5rem;font-weight:700;color:#0F172A;margin:2.5rem 0 1rem;">What We Do</h2>
+            <div style="display:grid;gap:1.5rem;margin-bottom:2rem;">
+                <div style="background:#F8FAFC;border-radius:0.75rem;padding:1.5rem;">
+                    <h3 style="font-family:'Inter',sans-serif;font-size:1.1rem;font-weight:700;color:#0F172A;margin-bottom:0.5rem;">AI Visibility Audit</h3>
+                    <p style="color:#475569;line-height:1.7;font-size:0.95rem;">We test your business across ChatGPT, Perplexity, Google AI Overviews, Bing, and Gemini using 10 real customer queries. You get a full report with screenshots, competitor analysis, and a prioritised fix roadmap — delivered in 48 hours.</p>
+                    <p style="margin-top:0.5rem;"><a href="/ai-visibility-audit.html" style="color:#1E40AF;font-weight:600;">Learn more about our AI Visibility Audit</a></p>
+                </div>
+                <div style="background:#F8FAFC;border-radius:0.75rem;padding:1.5rem;">
+                    <h3 style="font-family:'Inter',sans-serif;font-size:1.1rem;font-weight:700;color:#0F172A;margin-bottom:0.5rem;">AI-Ready Website Development</h3>
+                    <p style="color:#475569;line-height:1.7;font-size:0.95rem;">We build lead-generation websites with schema markup, structured content, fast load times, and everything AI engines need to understand and recommend your business.</p>
+                    <p style="margin-top:0.5rem;"><a href="/ai-ready-website.html" style="color:#1E40AF;font-weight:600;">Learn more about AI-Ready Websites</a></p>
+                </div>
+                <div style="background:#F8FAFC;border-radius:0.75rem;padding:1.5rem;">
+                    <h3 style="font-family:'Inter',sans-serif;font-size:1.1rem;font-weight:700;color:#0F172A;margin-bottom:0.5rem;">Monthly AI Search Monitoring</h3>
+                    <p style="color:#475569;line-height:1.7;font-size:0.95rem;">Ongoing monitoring of your AI search visibility with monthly reports, competitor tracking, and continuous optimisation to keep you visible as AI platforms evolve.</p>
                 </div>
             </div>
-        </section>
 
-        <!-- Timeline Section -->
-        <section class="timeline-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Our Journey</h2>
-                    <p class="section-subtitle">Key milestones that shaped OptiScale Advisors</p>
-                </div>
-                
-                <div class="timeline">
-                    <div class="timeline-item" data-year="2008">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h3 class="timeline-title">The Beginning</h3>
-                            <p class="timeline-desc">
-                                Vinod starts his career at a Series A startup, learning the fundamentals 
-                                of operations scaling and process optimization.
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item" data-year="2012">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h3 class="timeline-title">Airbnb Growth</h3>
-                            <p class="timeline-desc">
-                                Joins Airbnb's operations team during rapid international expansion, 
-                                managing scaling challenges across 50+ countries.
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item" data-year="2016">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h3 class="timeline-title">Stripe Systems</h3>
-                            <p class="timeline-desc">
-                                Leads process automation initiatives at Stripe, implementing AI-driven 
-                                solutions that reduce operational overhead by 40%.
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item" data-year="2019">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h3 class="timeline-title">OptiScale Founded</h3>
-                            <p class="timeline-desc">
-                                Launches OptiScale Advisors to help startups avoid the operational 
-                                pitfalls he witnessed during his corporate journey.
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item" data-year="2021">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h3 class="timeline-title">AI Integration</h3>
-                            <p class="timeline-desc">
-                                Pioneers AI-powered operations consulting, helping 50+ startups 
-                                implement intelligent automation systems.
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item" data-year="2024">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h3 class="timeline-title">Industry Recognition</h3>
-                            <p class="timeline-desc">
-                                Recognized as "Top Operations Consultant" by TechCrunch, with 200+ 
-                                successfully scaled companies in portfolio.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+            <h2 style="font-family:'Inter',sans-serif;font-size:1.5rem;font-weight:700;color:#0F172A;margin:2.5rem 0 1rem;">Contact Us</h2>
+            <div style="background:#F8FAFC;border-radius:0.75rem;padding:1.5rem;">
+                <p style="color:#475569;line-height:1.8;margin-bottom:0.5rem;"><strong style="color:#0F172A;">OptiScale Advisors</strong></p>
+                <p style="color:#475569;line-height:1.8;margin-bottom:0.25rem;">Bengaluru, Karnataka, India</p>
+                <p style="color:#475569;line-height:1.8;margin-bottom:0.25rem;">Phone: <a href="tel:+917397225523" style="color:#1E40AF;">+91 73972 25523</a></p>
+                <p style="color:#475569;line-height:1.8;margin-bottom:0.25rem;">Email: <a href="mailto:info@optiscaleadvisors.com" style="color:#1E40AF;">info@optiscaleadvisors.com</a></p>
+                <p style="color:#475569;line-height:1.8;">WhatsApp: <a href="https://wa.me/917397225523" style="color:#1E40AF;">+91 73972 25523</a></p>
             </div>
-        </section>
 
-        <!-- Mission & Values -->
-        <section class="mission-section">
-            <div class="container">
-                <div class="mission-content">
-                    <div class="mission-text">
-                        <h2 class="mission-title">Our Mission</h2>
-                        <p class="mission-description">
-                            We believe every startup deserves to scale without operational chaos. Our mission is to 
-                            provide the systems, processes, and AI-powered solutions that turn growth challenges 
-                            into competitive advantages.
-                        </p>
-                        
-                        <div class="values-list">
-                            <div class="value-item">
-                                <div class="value-icon">🎯</div>
-                                <div class="value-content">
-                                    <h3 class="value-title">Results-Driven</h3>
-                                    <p class="value-desc">Every recommendation is backed by data and measurable outcomes.</p>
-                                </div>
-                            </div>
-                            
-                            <div class="value-item">
-                                <div class="value-icon">🚀</div>
-                                <div class="value-content">
-                                    <h3 class="value-title">Innovation-First</h3>
-                                    <p class="value-desc">We leverage the latest AI and automation technologies for maximum impact.</p>
-                                </div>
-                            </div>
-                            
-                            <div class="value-item">
-                                <div class="value-icon">🤝</div>
-                                <div class="value-content">
-                                    <h3 class="value-title">Partnership Approach</h3>
-                                    <p class="value-desc">We work alongside your team as trusted advisors, not external consultants.</p>
-                                </div>
-                            </div>
-                            
-                            <div class="value-item">
-                                <div class="value-icon">📈</div>
-                                <div class="value-content">
-                                    <h3 class="value-title">Sustainable Growth</h3>
-                                    <p class="value-desc">Our solutions are built for long-term success, not quick fixes.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="mission-visual">
-                        <div class="mission-graphic">
-                            <div class="graphic-element startup-chaos">
-                                <span>Startup Chaos</span>
-                            </div>
-                            <div class="graphic-arrow">➡️</div>
-                            <div class="graphic-element optimized-ops">
-                                <span>Optimized Operations</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Social Proof & Awards -->
-        <section class="awards-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Recognition & Awards</h2>
-                    <p class="section-subtitle">Industry recognition for operational excellence</p>
-                </div>
-                
-                <div class="awards-grid">
-                    <div class="award-item">
-                        <div class="award-logo">
-                            <img src="../images/awards/techcrunch-logo.webp" alt="TechCrunch" class="award-image">
-                        </div>
-                        <div class="award-content">
-                            <h3 class="award-title">Top Operations Consultant 2023</h3>
-                            <p class="award-desc">Recognized for innovative approaches to startup scaling</p>
-                            <span class="award-year">TechCrunch</span>
-                        </div>
-                    </div>
-                    
-                    <div class="award-item">
-                        <div class="award-logo">
-                            <img src="../images/awards/venturebeat-logo.webp" alt="VentureBeat" class="award-image">
-                        </div>
-                        <div class="award-content">
-                            <h3 class="award-title">Startup Advisor of the Year 2022</h3>
-                            <p class="award-desc">Honored for exceptional results in operations optimization</p>
-                            <span class="award-year">VentureBeat</span>
-                        </div>
-                    </div>
-                    
-                    <div class="award-item">
-                        <div class="award-logo">
-                            <img src="../images/awards/forbes-logo.webp" alt="Forbes" class="award-image">
-                        </div>
-                        <div class="award-content">
-                            <h3 class="award-title">AI Innovation Leader 2024</h3>
-                            <p class="award-desc">Leading the integration of AI in business operations</p>
-                            <span class="award-year">Forbes</span>
-                        </div>
-                    </div>
-                    
-                    <div class="award-item">
-                        <div class="award-logo">
-                            <img src="../images/awards/mit-logo.webp" alt="MIT" class="award-image">
-                        </div>
-                        <div class="award-content">
-                            <h3 class="award-title">AI Strategy Certificate</h3>
-                            <p class="award-desc">Advanced certification in AI implementation strategies</p>
-                            <span class="award-year">MIT Sloan</span>
-                        </div>
-                    </div>
-                    
-                    <div class="award-item">
-                        <div class="award-logo">
-                            <img src="../images/awards/lean-six-sigma-logo.webp" alt="Lean Six Sigma" class="award-image">
-                        </div>
-                        <div class="award-content">
-                            <h3 class="award-title">Black Belt Certification</h3>
-                            <p class="award-desc">Expert-level process optimization methodology</p>
-                            <span class="award-year">Lean Six Sigma</span>
-                        </div>
-                    </div>
-                    
-                    <div class="award-item">
-                        <div class="award-logo">
-                            <img src="../images/awards/product-hunt-logo.webp" alt="Product Hunt" class="award-image">
-                        </div>
-                        <div class="award-content">
-                            <h3 class="award-title">#1 Product of the Day</h3>
-                            <p class="award-desc">OptiScale Methodology featured as top product</p>
-                            <span class="award-year">Product Hunt</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Team Section -->
-        <section class="team-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Meet the Team</h2>
-                    <p class="section-subtitle">Experts who make scaling possible</p>
-                </div>
-                
-                <div class="team-grid">
-                    <div class="team-member">
-                        <div class="member-image">
-                            <img src="../images/team/sarah-ops.webp" alt="Sarah Chen - Operations Specialist" class="member-photo">
-                        </div>
-                        <div class="member-info">
-                            <h3 class="member-name">Sarah Chen</h3>
-                            <p class="member-role">Senior Operations Specialist</p>
-                            <p class="member-bio">Former operations lead at Uber with 8+ years in process automation and team scaling.</p>
-                            <div class="member-social">
-                                <a href="#" aria-label="Sarah's LinkedIn">💼</a>
-                                <a href="#" aria-label="Sarah's Twitter">🐦</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="team-member">
-                        <div class="member-image">
-                            <img src="../images/team/marcus-ai.webp" alt="Marcus Rodriguez - AI Consultant" class="member-photo">
-                        </div>
-                        <div class="member-info">
-                            <h3 class="member-name">Marcus Rodriguez</h3>
-                            <p class="member-role">AI & Automation Consultant</p>
-                            <p class="member-bio">Machine learning engineer turned consultant, specializing in AI-powered business solutions.</p>
-                            <div class="member-social">
-                                <a href="#" aria-label="Marcus's LinkedIn">💼</a>
-                                <a href="#" aria-label="Marcus's GitHub">🔗</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="team-member">
-                        <div class="member-image">
-                            <img src="../images/team/emily-seo.webp" alt="Emily Park - SEO Strategist" class="member-photo">
-                        </div>
-                        <div class="member-info">
-                            <h3 class="member-name">Emily Park</h3>
-                            <p class="member-role">AI SEO Strategist</p>
-                            <p class="member-bio">Digital marketing expert with deep expertise in AIEO, GEO, and LLM SEO strategies.</p>
-                            <div class="member-social">
-                                <a href="#" aria-label="Emily's LinkedIn">💼</a>
-                                <a href="#" aria-label="Emily's Twitter">🐦</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA Section -->
-        <section class="about-cta">
-            <div class="container">
-                <div class="cta-content">
-                    <h2 class="cta-title">Ready to Scale Your Operations?</h2>
-                    <p class="cta-subtitle">
-                        Let's discuss how OptiScale can help your startup grow efficiently without operational headaches.
-                    </p>
-                    <div class="cta-buttons">
-                        <a href="../contact.html?source=about" class="btn-primary large">Schedule Consultation</a>
-                        <a href="../services.html" class="btn-secondary large">View Our Services</a>
-                    </div>
-                </div>
+            <!-- CTA -->
+            <div style="background:linear-gradient(135deg,#1E3A8A,#1E40AF);border-radius:1rem;padding:2rem;text-align:center;color:#fff;margin:2.5rem 0;">
+                <h3 style="font-family:'Inter',sans-serif;font-size:1.3rem;margin-bottom:0.75rem;color:#fff;">Not Sure If Your Business Is Visible on AI Search?</h3>
+                <p style="opacity:0.9;margin-bottom:1rem;color:#fff;">Book a free 15-minute check and we will tell you where you stand.</p>
+                <a href="/ai-visibility-audit.html" style="display:inline-block;background:#F59E0B;color:#0F172A;padding:0.75rem 1.75rem;border-radius:0.5rem;font-weight:700;text-decoration:none;">Book My AI Visibility Audit</a>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-logo">
-                        <img src="../images/logo.webp" alt="OptiScale Advisors" class="footer-logo-img">
-                    </div>
-                    <p class="footer-desc">
-                        Helping startups scale operations efficiently through proven methodologies and AI-powered solutions.
-                    </p>
-                    <div class="footer-contact">
-                        <p>📧 hello@optiscaleadvisors.com</p>
-                        <p>📞 (555) 123-4567</p>
-                        <p>📍 San Francisco, CA</p>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h3 class="footer-title">Services</h3>
-                    <ul class="footer-links">
-                        <li><a href="../services/operations-scaling.html">Operations Scaling</a></li>
-                        <li><a href="../services/ai-llm-seo.html">AI & LLM SEO</a></li>
-                        <li><a href="../services.html">All Services</a></li>
-                        <li><a href="../contact.html">Get Quote</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3 class="footer-title">Company</h3>
-                    <ul class="footer-links">
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="../blog.html">Blog</a></li>
-                        <li><a href="../case-studies.html">Case Studies</a></li>
-                        <li><a href="../careers.html">Careers</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3 class="footer-title">Stay Updated</h3>
-                    <p class="newsletter-desc">Get insights on operations scaling and AI trends</p>
-                    <form class="newsletter-form" id="newsletter-form">
-                        <input type="email" placeholder="Your email address" required>
-                        <button type="submit">Subscribe</button>
-                    </form>
-                    <div class="footer-social">
-                        <a href="#" aria-label="LinkedIn">💼</a>
-                        <a href="#" aria-label="Twitter">🐦</a>
-                        <a href="#" aria-label="YouTube">📺</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <div class="footer-legal">
-                    <p>&copy; 2024 OptiScale Advisors. All rights reserved.</p>
-                    <div class="legal-links">
-                        <a href="../privacy.html">Privacy Policy</a>
-                        <a href="../terms.html">Terms of Service</a>
-                        <a href="../cookies.html">Cookie Policy</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <div id="footer-placeholder"></div>
 
-    <script src="../script.js"></script>
-    <script src="../about-interactions.js"></script>
+    <script>
+    fetch('/components/header.html')
+      .then(function(r) { return r.text(); })
+      .then(function(html) {
+        document.getElementById('header-placeholder').innerHTML = html;
+        document.getElementById('header-placeholder').querySelectorAll('script').forEach(function(s) {
+          var ns = document.createElement('script');
+          ns.textContent = s.textContent;
+          document.head.appendChild(ns);
+        });
+      });
+    fetch('/components/footer.html')
+      .then(function(r) { return r.text(); })
+      .then(function(html) {
+        document.getElementById('footer-placeholder').innerHTML = html;
+      });
+    </script>
 </body>
 </html>
