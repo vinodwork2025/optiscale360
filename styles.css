@@ -1,7 +1,11 @@
 /* Optiscale Advisors - Astro-Inspired Modern Design */
 
+/* Body padding for fixed header - prevents CLS */
+body { padding-top: 84px; }
+@media (max-width: 768px) { body { padding-top: 72px; } }
+@media (max-width: 480px) { body { padding-top: 60px; } }
+
 /* CRITICAL BLOG STYLES - STUNNING PROFESSIONAL DESIGN */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Merriweather:wght@300;400;700;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 .blog-post-main {
     padding: 120px 0 5rem 0 !important;

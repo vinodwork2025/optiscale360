@@ -177,7 +177,7 @@
 
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="main.css">
-    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <!-- Lucide icons inlined for performance -->
     <style>
         :root {
             --primary-navy: #0F172A;
@@ -206,7 +206,9 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; font-size: 16px; }
-        body { font-family: var(--font-secondary); color: var(--text-primary); line-height: 1.6; background: var(--pure-white); overflow-x: hidden; }
+        body { font-family: var(--font-secondary); color: var(--text-primary); line-height: 1.6; background: var(--pure-white); overflow-x: hidden; padding-top: 84px; }
+        @media (max-width: 768px) { body { padding-top: 72px; } }
+        @media (max-width: 480px) { body { padding-top: 60px; } }
         img { max-width: 100%; height: auto; }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
@@ -757,13 +759,13 @@
                     <h1>Is Your Business <span class="gradient-text">Invisible to ChatGPT</span>, Perplexity &amp; Google AI?</h1>
                     <p class="hero-subtitle">We audit your AI search visibility, build websites that AI engines actually recommend, and track your results every month.</p>
                     <div class="hero-ctas">
-                        <a href="https://cal.com/optiscale360/discoverycall" class="btn-primary"><i data-lucide="calendar" style="width:18px;height:18px;"></i> Get My Free AI Visibility Check</a>
+                        <a href="https://cal.com/optiscale360/discoverycall" class="btn-primary"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg> Get My Free AI Visibility Check</a>
                         <a href="/how-it-works" class="btn-outline">See How It Works</a>
                     </div>
                     <div class="hero-trust-row">
-                        <div class="hero-trust-item"><i data-lucide="layers" style="width:16px;height:16px;"></i> 5 AI Platforms Tested</div>
-                        <div class="hero-trust-item"><i data-lucide="clock" style="width:16px;height:16px;"></i> 48-Hour Report</div>
-                        <div class="hero-trust-item"><i data-lucide="user" style="width:16px;height:16px;"></i> Real Business Owner on Every Call</div>
+                        <div class="hero-trust-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"/><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"/></svg> 5 AI Platforms Tested</div>
+                        <div class="hero-trust-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 48-Hour Report</div>
+                        <div class="hero-trust-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Real Business Owner on Every Call</div>
                     </div>
                 </div>
                 <div class="hero-split-visual">
@@ -771,28 +773,28 @@
                         <div class="platforms-card-title">We Test Your Visibility On</div>
                         <div class="platforms-grid">
                             <div class="platform-icon-item">
-                                <div class="platform-icon-circle"><i data-lucide="message-circle" style="width:28px;height:28px;"></i></div>
+                                <div class="platform-icon-circle"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/></svg></div>
                                 <span>ChatGPT</span>
                             </div>
                             <div class="platform-icon-item">
-                                <div class="platform-icon-circle"><i data-lucide="compass" style="width:28px;height:28px;"></i></div>
+                                <div class="platform-icon-circle"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"/></svg></div>
                                 <span>Perplexity</span>
                             </div>
                             <div class="platform-icon-item">
-                                <div class="platform-icon-circle"><i data-lucide="sparkles" style="width:28px;height:28px;"></i></div>
+                                <div class="platform-icon-circle"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></svg></div>
                                 <span>Google AI</span>
                             </div>
                             <div class="platform-icon-item">
-                                <div class="platform-icon-circle"><i data-lucide="search" style="width:28px;height:28px;"></i></div>
+                                <div class="platform-icon-circle"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg></div>
                                 <span>Bing</span>
                             </div>
                             <div class="platform-icon-item">
-                                <div class="platform-icon-circle"><i data-lucide="gem" style="width:28px;height:28px;"></i></div>
+                                <div class="platform-icon-circle"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 3 8 9l4 13 4-13-2.5-6"/><path d="M17 3a2 2 0 0 1 1.6.8l3 4a2 2 0 0 1 .013 2.382l-7.99 10.986a2 2 0 0 1-3.247 0l-7.99-10.986A2 2 0 0 1 2.4 7.8l2.998-3.997A2 2 0 0 1 7 3z"/><path d="M2 9h20"/></svg></div>
                                 <span>Gemini</span>
                             </div>
                         </div>
                         <div class="platforms-card-footer">
-                            <i data-lucide="check-circle" style="width:16px;height:16px;color:#10B981;"></i>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>
                             Full audit report delivered in 48 hours
                         </div>
                     </div>
@@ -824,7 +826,7 @@
             <!-- Step 1 -->
             <div class="service-card card-glow animate-on-scroll">
                 <div style="display:flex;align-items:center;gap:16px;margin-bottom:1rem;">
-                    <div class="icon-container"><i data-lucide="search"></i></div>
+                    <div class="icon-container"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg></div>
                     <span class="step-label" style="margin-bottom:0;">Step 1 — Find the Problem</span>
                 </div>
                 <h3>AI Visibility Audit Report</h3>
@@ -847,7 +849,7 @@
             <!-- Step 2 -->
             <div class="service-card card-glow animate-on-scroll">
                 <div style="display:flex;align-items:center;gap:16px;margin-bottom:1rem;">
-                    <div class="icon-container"><i data-lucide="globe"></i></div>
+                    <div class="icon-container"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></div>
                     <span class="step-label" style="margin-bottom:0;">Step 2 — Fix the Foundation</span>
                 </div>
                 <h3>AI-Ready Lead-Gen Website</h3>
@@ -870,7 +872,7 @@
             <!-- Step 3 -->
             <div class="service-card card-glow animate-on-scroll">
                 <div style="display:flex;align-items:center;gap:16px;margin-bottom:1rem;">
-                    <div class="icon-container"><i data-lucide="bar-chart-3"></i></div>
+                    <div class="icon-container"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></div>
                     <span class="step-label" style="margin-bottom:0;">Step 3 — Stay Ahead</span>
                 </div>
                 <h3>Monthly AI Visibility Monitoring</h3>
@@ -915,17 +917,17 @@
             <h2 class="section-title">Why <span class="gradient-text">AI Search Visibility</span> Matters Right Now</h2>
             <div class="why-grid stagger-children">
                 <div class="why-card card-glass card-hover card-glow animate-on-scroll">
-                    <div class="icon-container icon-container--lg" style="margin-bottom:1rem;"><i data-lucide="bot"></i></div>
+                    <div class="icon-container icon-container--lg" style="margin-bottom:1rem;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg></div>
                     <h3>AI Search Is Growing Fast</h3>
                     <p>ChatGPT, Perplexity, and Google AI Overviews now handle hundreds of millions of searches every day. When someone asks an AI tool to recommend a service, it gives them a direct answer — usually 3 to 5 businesses. If you are not in that list, you do not exist to that customer.</p>
                 </div>
                 <div class="why-card card-glass card-hover card-glow animate-on-scroll">
-                    <div class="icon-container icon-container--lg" style="margin-bottom:1rem;"><i data-lucide="trending-up"></i></div>
+                    <div class="icon-container icon-container--lg" style="margin-bottom:1rem;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 7h6v6"/><path d="m22 7-8.5 8.5-5-5L2 17"/></svg></div>
                     <h3>Traditional SEO Is No Longer Enough</h3>
                     <p>Google rankings still matter. But AI search uses different signals — structured data, entity recognition, content clarity, and authority signals that most SEO agencies are not optimising for yet. Businesses that adapt now will have a significant head start.</p>
                 </div>
                 <div class="why-card card-glass card-hover card-glow animate-on-scroll">
-                    <div class="icon-container icon-container--lg" style="margin-bottom:1rem;"><i data-lucide="target"></i></div>
+                    <div class="icon-container icon-container--lg" style="margin-bottom:1rem;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
                     <h3>Early Action Creates Lasting Advantage</h3>
                     <p>AI search is still early. Most of your competitors have not optimised for it. The businesses that get their AI visibility right in the next 12 months will dominate their category for years. This is a short window.</p>
                 </div>
@@ -945,17 +947,17 @@
             <h2 class="section-title">How We Work</h2>
             <div class="process-grid stagger-children">
                 <div class="process-step animate-on-scroll">
-                    <div class="step-number"><i data-lucide="clipboard-check"></i></div>
+                    <div class="step-number"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg></div>
                     <h3>We Audit Your Current Visibility</h3>
                     <p>We run your business through 10 real queries across ChatGPT, Perplexity, Google AI, Bing, and Gemini. We capture exactly what shows up, what does not, and who your competitors are in the AI search results.</p>
                 </div>
                 <div class="process-step animate-on-scroll">
-                    <div class="step-number"><i data-lucide="wrench"></i></div>
+                    <div class="step-number"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z"/></svg></div>
                     <h3>We Show You What Is Broken and Why</h3>
                     <p>You get a clear report with your AI visibility score, a competitor map, and a prioritised list of fixes. We walk through it with you on a 45-minute video call. No jargon. Just clear findings.</p>
                 </div>
                 <div class="process-step animate-on-scroll">
-                    <div class="step-number"><i data-lucide="rocket"></i></div>
+                    <div class="step-number"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09"/><path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05"/></svg></div>
                     <h3>We Fix It and Track the Results</h3>
                     <p>Whether we rebuild your website, implement schema, or optimise your content — we track every change and measure impact. You see exactly what improved and by how much.</p>
                 </div>
@@ -994,7 +996,7 @@
             <div class="faq-item">
                 <button class="faq-question">
                     What is AI search visibility and why does it matter for my business?
-                    <span class="faq-icon faq-chevron"><i data-lucide="chevron-down" style="width:20px;height:20px;"></i></span>
+                    <span class="faq-icon faq-chevron"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
                 </button>
                 <div class="faq-answer">
                     <div class="faq-answer-inner">AI search visibility means whether your business appears when someone asks ChatGPT, Perplexity, or Google AI to recommend a service like yours. These platforms are becoming the first place people search. If you are not appearing there, you are losing customers before they ever reach your website.</div>
@@ -1004,7 +1006,7 @@
             <div class="faq-item">
                 <button class="faq-question">
                     How do I know if my business shows up on ChatGPT or Perplexity?
-                    <span class="faq-icon faq-chevron"><i data-lucide="chevron-down" style="width:20px;height:20px;"></i></span>
+                    <span class="faq-icon faq-chevron"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
                 </button>
                 <div class="faq-answer">
                     <div class="faq-answer-inner">The simplest way is to open ChatGPT or Perplexity right now and type: 'best [your service] in [your city]'. If your business does not appear, you have an AI visibility problem. Our audit gives you a complete picture across 5 platforms with detailed reasons why you are or are not appearing.</div>
@@ -1014,7 +1016,7 @@
             <div class="faq-item">
                 <button class="faq-question">
                     What is the difference between AI search optimisation and regular SEO?
-                    <span class="faq-icon faq-chevron"><i data-lucide="chevron-down" style="width:20px;height:20px;"></i></span>
+                    <span class="faq-icon faq-chevron"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
                 </button>
                 <div class="faq-answer">
                     <div class="faq-answer-inner">Regular SEO optimises your website for Google's ranking algorithm — mainly links, keywords, and page authority. AI search optimisation focuses on different signals: structured data (schema markup), entity recognition, content clarity, and FAQ architecture that AI engines can extract and cite. You need both, but most agencies only do one.</div>
@@ -1024,7 +1026,7 @@
             <div class="faq-item">
                 <button class="faq-question">
                     What is included in the AI Visibility Audit Report?
-                    <span class="faq-icon faq-chevron"><i data-lucide="chevron-down" style="width:20px;height:20px;"></i></span>
+                    <span class="faq-icon faq-chevron"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
                 </button>
                 <div class="faq-answer">
                     <div class="faq-answer-inner">The audit includes: your AI visibility score across ChatGPT, Perplexity, Google AI, Bing, and Gemini; 10 live query tests showing who appears instead of you; a technical website health check; a competitor positioning map; and a prioritised fix list. Delivered in 48 hours with a 45-minute video walkthrough.</div>
@@ -1034,7 +1036,7 @@
             <div class="faq-item">
                 <button class="faq-question">
                     How is an AI-ready website different from a regular website?
-                    <span class="faq-icon faq-chevron"><i data-lucide="chevron-down" style="width:20px;height:20px;"></i></span>
+                    <span class="faq-icon faq-chevron"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
                 </button>
                 <div class="faq-answer">
                     <div class="faq-answer-inner">An AI-ready website is built with schema markup so AI engines understand your business, FAQ sections structured around real customer questions, fast load times, mobile-first design, and content written in a format that AI platforms can extract and cite. A regular website is built for humans to read. An AI-ready website is built for both humans and AI engines.</div>
@@ -1044,7 +1046,7 @@
             <div class="faq-item">
                 <button class="faq-question">
                     Do I need the audit before getting a website built?
-                    <span class="faq-icon faq-chevron"><i data-lucide="chevron-down" style="width:20px;height:20px;"></i></span>
+                    <span class="faq-icon faq-chevron"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
                 </button>
                 <div class="faq-answer">
                     <div class="faq-answer-inner">Not always. If you have an existing website and want to understand your current AI search position first, start with the audit. If you are starting fresh or already know your website is the core problem, go straight to the website. Either way, we will tell you honestly which makes more sense for your specific situation on the free 15-minute call.</div>
