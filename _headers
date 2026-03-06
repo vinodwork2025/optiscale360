@@ -6,6 +6,16 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
 
+# HTML pages — always serve fresh
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/blog/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/blog/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
 # Enable ES6 modules
 /*.js
   Content-Type: application/javascript
