@@ -1,2 +1,41 @@
-/Free-AI-Ready-Website    /ai-ready-website    301
-/Free-AI-Ready-Website.html    /ai-ready-website    301
+# Clean URL redirects — strip .html extension
+/index.html                         /                          301
+/about.html                         /about                     301
+/services.html                      /services                  301
+/contact.html                       /contact                   301
+/how-it-works.html                  /how-it-works              301
+/ai-visibility-audit.html           /ai-visibility-audit       301
+/ai-ready-website.html              /ai-ready-website          301
+/case-studies.html                  /case-studies              301
+/resources.html                     /resources                 301
+/press.html                         /press                     301
+/privacy-policy.html                /privacy-policy            301
+/terms-of-service.html              /terms-of-service          301
+/copyright-policy.html              /copyright-policy          301
+/disclaimer.html                    /disclaimer                301
+/cookie-policy.html                 /cookie-policy             301
+/blog/index.html                    /blog/                     301
+
+# Legacy pages
+/Free-AI-Ready-Website              /ai-ready-website          301
+/Free-AI-Ready-Website.html         /ai-ready-website          301
+
+# Admin / test pages — redirect to home
+/admin                              /                          301
+/admin.html                         /                          301
+/admin-local                        /                          301
+/admin-local.html                   /                          301
+/blog-admin                         /blog/                     301
+/blog-admin.html                    /blog/                     301
+/blog-admin-enhanced                /blog/                     301
+/blog-admin-enhanced.html           /blog/                     301
+
+# Old booking page
+/booking                            /contact                   301
+/booking.html                       /contact                   301
+
+# Old landing pages
+/landing-page                       /                          301
+/landing-page.html                  /                          301
+/landing-page-new                   /                          301
+/landing-page-new.html              /                          301
