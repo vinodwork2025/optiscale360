@@ -30,6 +30,9 @@
         </div>
 
         <div class="nav-actions">
+            <a href="https://riskfreesites.com" target="_blank" rel="noopener" class="rfs-nav-cta">
+                <span class="cta-text">Free Website Preview</span>
+            </a>
             <a href="https://cal.com/optiscale360/discoverycall" class="premium-cta">
                 <div class="cta-content">
                     <svg class="cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -64,6 +67,7 @@
                 <a href="/contact" class="mobile-nav-link">Contact</a>
             </div>
             <a href="https://cal.com/optiscale360/discoverycall" class="mobile-cta">Book Free Call</a>
+            <a href="https://riskfreesites.com" target="_blank" rel="noopener" class="mobile-cta mobile-cta--amber" style="margin-top:0.75rem;">Free Website Preview →</a>
         </div>
     </div>
 </header>
@@ -187,6 +191,37 @@
 
 .nav-link:hover .link-indicator {
     transform: translateX(-50%) scaleX(1);
+}
+
+/* ===== RISKFREESITES SECONDARY CTA ===== */
+.rfs-nav-cta {
+    display: flex;
+    align-items: center;
+    padding: 0.9rem 1.5rem;
+    background: linear-gradient(135deg, #F59E0B, #FBBF24);
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #0F172A;
+    letter-spacing: -0.01em;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 4px 6px rgba(245, 158, 11, 0.25);
+    white-space: nowrap;
+}
+
+.rfs-nav-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(245, 158, 11, 0.4);
+}
+
+.mobile-cta--amber {
+    background: linear-gradient(135deg, #F59E0B, #FBBF24) !important;
+    color: #0F172A !important;
+}
+
+.mobile-cta--amber:hover {
+    box-shadow: 0 8px 25px rgba(245, 158, 11, 0.35) !important;
 }
 
 /* ===== PREMIUM CTA BUTTON ===== */
@@ -444,6 +479,10 @@
 
     .logo-image {
         max-height: 50px;
+    }
+
+    .rfs-nav-cta {
+        display: none;
     }
 
     .premium-cta {

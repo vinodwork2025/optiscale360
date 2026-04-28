@@ -734,6 +734,37 @@
             line-height: 1.7;
         }
 
+        /* RISKFREESITES BANNER */
+        .rfs-banner-grid {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 3rem;
+            align-items: center;
+        }
+        .rfs-trust-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            min-width: 220px;
+        }
+        .rfs-trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: rgba(255,255,255,0.9);
+            font-size: 0.95rem;
+        }
+        .rfs-trust-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(16,185,129,0.2);
+            flex-shrink: 0;
+        }
+
         /* RESPONSIVE */
         @media (max-width: 768px) {
             .hero { padding: 3rem 0 1.5rem; }
@@ -743,6 +774,8 @@
             .service-card { padding: 1.5rem; }
             .cta-section h2 { font-size: 1.75rem; }
             .cta-section .hero-ctas { flex-direction: column; align-items: center; }
+            .rfs-banner-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .rfs-trust-list { flex-direction: row; flex-wrap: wrap; min-width: unset; }
         }
     </style>
 </head>
@@ -866,7 +899,7 @@
                     <li>90-day performance tracking after launch</li>
                 </ul>
                 <p class="price-tag">Investment: Starting &#8377;50,000</p>
-                <p class="price-note">For our first 5 clients: we build a working prototype at no upfront cost. You review it. You pay only when you are satisfied. No risk.</p>
+                <p class="price-note">For our first 5 clients: we build a working prototype at no upfront cost. You review it. You pay only when you are satisfied. No risk. <a href="https://riskfreesites.com" target="_blank" rel="noopener" style="color:var(--primary-blue);text-decoration:underline;">See the full risk-free offer at riskfreesites.com →</a></p>
                 <a href="/ai-ready-website" class="btn-primary">Get My AI-Ready Website</a>
                 <p style="margin-top:1rem;"><a href="/ai-ready-website" style="color:#1E40AF;text-decoration:underline;">See our packages and pricing →</a></p>
             </div>
@@ -888,6 +921,35 @@
                 </ul>
                 <p class="price-tag">Investment: &#8377;20,000/month</p>
                 <a href="/contact" class="btn-primary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- RISKFREESITES PARTNER BANNER -->
+    <section style="background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 60%,#1E40AF 100%);padding:3rem 0;position:relative;overflow:hidden;">
+        <div style="position:absolute;inset:0;background:radial-gradient(circle at 80% 50%,rgba(245,158,11,0.08) 0%,transparent 50%),radial-gradient(circle at 20% 30%,rgba(59,130,246,0.1) 0%,transparent 40%);pointer-events:none;"></div>
+        <div class="container" style="position:relative;z-index:1;">
+            <div class="rfs-banner-grid">
+                <div>
+                    <span style="display:inline-block;background:rgba(245,158,11,0.15);color:#FBBF24;padding:0.35rem 1rem;border-radius:50px;font-size:0.8rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1rem;border:1px solid rgba(245,158,11,0.25);">Risk-Free Website Offer</span>
+                    <h2 style="font-family:var(--font-primary);font-size:clamp(1.4rem,3vw,2rem);font-weight:700;color:#fff;margin-bottom:0.75rem;line-height:1.2;">Need a Website? See It Before You Pay a Rupee.</h2>
+                    <p style="color:rgba(255,255,255,0.8);font-size:1.05rem;line-height:1.7;margin-bottom:1.5rem;max-width:520px;">We build your complete AI-ready website first. You review every page. You pay only when you are fully satisfied. No upfront cost. No pressure.</p>
+                    <a href="https://riskfreesites.com" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#F59E0B,#FBBF24);color:#0F172A;padding:0.9rem 1.75rem;border-radius:50px;text-decoration:none;font-weight:700;font-size:1rem;transition:all 0.3s ease;box-shadow:0 4px 12px rgba(245,158,11,0.35);">See How It Works at riskfreesites.com →</a>
+                </div>
+                <div class="rfs-trust-list">
+                    <div class="rfs-trust-item">
+                        <span class="rfs-trust-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+                        See the full website before paying
+                    </div>
+                    <div class="rfs-trust-item">
+                        <span class="rfs-trust-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+                        Zero upfront cost
+                    </div>
+                    <div class="rfs-trust-item">
+                        <span class="rfs-trust-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+                        Built AI-ready from day one
+                    </div>
+                </div>
             </div>
         </div>
     </section>
