@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Google tag (gtag.js) -->
@@ -42,163 +42,176 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
 
-    <!-- Structured Data: ProfessionalService -->
+    <!-- Structured Data -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "OptiScale Advisors",
-      "description": "AI search visibility audit and AI-ready lead generation websites for small and medium businesses across India. Based in Hosur, Tamil Nadu.",
-      "url": "https://optiscaleadvisors.com",
-      "telephone": "+91-73972-25523",
-      "email": "info@optiscaleadvisors.com",
-      "founder": {
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "OptiScale Advisors",
+        "url": "https://optiscaleadvisors.com",
+        "logo": "https://optiscaleadvisors.com/images/og-homepage.jpg",
+        "description": "AI search visibility audit and AI-ready website services for small and medium businesses across India. Based in Hosur, Tamil Nadu.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "No.13, Rayakota Road",
+          "addressLocality": "Hosur",
+          "addressRegion": "Tamil Nadu",
+          "postalCode": "635109",
+          "addressCountry": "IN"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+91-73972-25523",
+          "contactType": "customer service",
+          "availableLanguage": ["English", "Tamil", "Hindi"]
+        },
+        "areaServed": ["Hosur", "Bengaluru", "India"],
+        "sameAs": ["https://www.linkedin.com/in/vinod-websites/"],
+        "founder": {
+          "@type": "Person",
+          "name": "Vinod Kumar",
+          "jobTitle": "Founder",
+          "url": "https://optiscaleadvisors.com/about",
+          "sameAs": "https://www.linkedin.com/in/vinod-websites/"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "OptiScale Advisors",
+        "url": "https://optiscaleadvisors.com",
+        "telephone": "+91-73972-25523",
+        "email": "vinod@optiscaleadvisors.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "No.13, Rayakota Road",
+          "addressLocality": "Hosur",
+          "addressRegion": "Tamil Nadu",
+          "postalCode": "635109",
+          "addressCountry": "IN"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 12.7409,
+          "longitude": 77.8253
+        },
+        "priceRange": "₹₹",
+        "areaServed": ["Hosur", "Bengaluru", "India"],
+        "description": "We audit your AI search visibility and build websites that AI engines recommend. Based in Hosur, Tamil Nadu. Serving businesses across India.",
+        "knowsAbout": ["AI search visibility", "GEO optimization", "Schema markup", "AI-ready websites", "SEO audits"]
+      },
+      {
+        "@context": "https://schema.org",
         "@type": "Person",
-        "name": "Vinod Kumar"
+        "name": "Vinod Kumar",
+        "jobTitle": "Founder",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "OptiScale Advisors"
+        },
+        "url": "https://optiscaleadvisors.com/about",
+        "sameAs": "https://www.linkedin.com/in/vinod-websites/",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Hosur",
+          "addressRegion": "Tamil Nadu",
+          "addressCountry": "IN"
+        },
+        "knowsAbout": ["AI search visibility", "GEO optimization", "Website development", "SEO", "Schema markup"]
       },
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "13, Rayakotta Rd, Old Rayakottah Hudco",
-        "addressLocality": "Hosur",
-        "addressRegion": "Tamil Nadu",
-        "postalCode": "635109",
-        "addressCountry": "IN"
-      },
-      "areaServed": {
-        "@type": "Country",
-        "name": "India"
-      },
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Services",
+      {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "OptiScale Advisors Services",
         "itemListElement": [
           {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "AI Visibility Audit Report",
-              "url": "https://optiscaleadvisors.com/ai-visibility-audit",
-              "description": "Complete audit of business visibility across ChatGPT, Perplexity, Google AI, Bing, and Gemini. Delivered in 48 hours.",
-              "offers": {
-                "@type": "Offer",
-                "price": "15000",
-                "priceCurrency": "INR"
-              }
+            "@type": "Service",
+            "position": 1,
+            "name": "AI Visibility Audit Report",
+            "url": "https://optiscaleadvisors.com/ai-visibility-audit",
+            "description": "Complete AI search visibility audit across ChatGPT, Perplexity, Google AI, Bing, and Gemini. Includes 10 live query tests, competitor analysis, and a prioritised fix roadmap.",
+            "provider": {"@type": "Organization", "name": "OptiScale Advisors"},
+            "areaServed": "India",
+            "offers": {"@type": "Offer", "price": "15000", "priceCurrency": "INR"}
+          },
+          {
+            "@type": "Service",
+            "position": 2,
+            "name": "AI-Ready Lead-Gen Website",
+            "url": "https://optiscaleadvisors.com/ai-ready-website",
+            "description": "Schema-rich, mobile-first websites built for AI search visibility and lead generation. Includes GBP setup, Analytics, and 90-day performance tracking.",
+            "provider": {"@type": "Organization", "name": "OptiScale Advisors"},
+            "areaServed": "India",
+            "offers": {"@type": "Offer", "price": "50000", "priceCurrency": "INR"}
+          },
+          {
+            "@type": "Service",
+            "position": 3,
+            "name": "Monthly AI Visibility Monitoring",
+            "url": "https://optiscaleadvisors.com/contact",
+            "description": "Monthly AI visibility checks across all 5 platforms, competitor tracking, one content optimisation per month, and a monthly report.",
+            "provider": {"@type": "Organization", "name": "OptiScale Advisors"},
+            "areaServed": "India",
+            "offers": {"@type": "Offer", "price": "20000", "priceCurrency": "INR"}
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is AI search visibility and why does it matter for my business?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "AI search visibility means whether your business appears when someone asks ChatGPT, Perplexity, or Google AI to recommend a service like yours. These platforms are becoming the first place people search. If you are not appearing there, you are losing customers before they ever reach your website."
             }
           },
           {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "AI-Ready Lead Generation Website",
-              "url": "https://optiscaleadvisors.com/ai-ready-website",
-              "description": "Complete website development optimised for AI search visibility and lead generation.",
-              "offers": {
-                "@type": "Offer",
-                "price": "50000",
-                "priceCurrency": "INR"
-              }
+            "@type": "Question",
+            "name": "How do I know if my business shows up on ChatGPT or Perplexity?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The simplest way is to open ChatGPT or Perplexity right now and type: best [your service] in [your city]. If your business does not appear, you have an AI visibility problem. Our audit gives you a complete picture across 5 platforms with detailed reasons why you are or are not appearing."
             }
           },
           {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Monthly AI Visibility Monitoring",
-              "url": "https://optiscaleadvisors.com/contact",
-              "description": "Monthly AI search visibility monitoring across 5 platforms with competitor tracking and monthly reports.",
-              "offers": {
-                "@type": "Offer",
-                "price": "20000",
-                "priceCurrency": "INR"
-              }
+            "@type": "Question",
+            "name": "What is the difference between AI search optimisation and regular SEO?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Regular SEO optimises your website for Google's ranking algorithm — mainly links, keywords, and page authority. AI search optimisation focuses on different signals: structured data (schema markup), entity recognition, content clarity, and FAQ architecture that AI engines can extract and cite. You need both, but most agencies only do one."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is included in the AI Visibility Audit Report?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The audit includes: your AI visibility score across ChatGPT, Perplexity, Google AI, Bing, and Gemini; 10 live query tests showing who appears instead of you; a technical website health check; a competitor positioning map; and a prioritised fix list. Delivered in 48 hours with a 45-minute video walkthrough."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is an AI-ready website different from a regular website?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "An AI-ready website is built with schema markup so AI engines understand your business, FAQ sections structured around real customer questions, fast load times, mobile-first design, and content written in a format that AI platforms can extract and cite. A regular website is built for humans to read. An AI-ready website is built for both humans and AI engines."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need the audit before getting a website built?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Not always. If you have an existing website and want to understand your current AI search position first, start with the audit. If you are starting fresh or already know your website is the core problem, go straight to the website. Either way, we will tell you honestly which makes more sense for your specific situation on the free 15-minute call."
             }
           }
         ]
       }
-    }
-    </script>
-
-    <!-- Structured Data: FAQ -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is AI search visibility and why does it matter for my business?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "AI search visibility means whether your business appears when someone asks ChatGPT, Perplexity, or Google AI to recommend a service like yours. These platforms are becoming the first place people search. If you are not appearing there, you are losing customers before they ever reach your website."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How do I know if my business shows up on ChatGPT or Perplexity?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Open ChatGPT or Perplexity and type: best [your service] in [your city]. If your business does not appear, you have an AI visibility problem. Our audit gives you a complete picture across 5 platforms with detailed reasons why you are or are not appearing."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is the difference between AI search optimisation and regular SEO?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Regular SEO optimises for Google's ranking algorithm using links, keywords, and page authority. AI search optimisation focuses on structured data, entity recognition, content clarity, and FAQ architecture that AI engines can extract and cite."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is included in the AI Visibility Audit Report?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The audit includes your AI visibility score across ChatGPT, Perplexity, Google AI, Bing, and Gemini; 10 live query tests; a technical website health check; a competitor positioning map; and a prioritised fix list. Delivered in 48 hours with a 45-minute video walkthrough."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How is an AI-ready website different from a regular website?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "An AI-ready website is built with schema markup, FAQ sections structured around real customer questions, fast load times, mobile-first design, and content written in a format that AI platforms can extract and cite."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do I need the audit before getting a website built?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Not always. If you have an existing website and want to understand your AI search position first, start with the audit. If you are starting fresh or know your website is the core problem, go straight to the website. We will tell you honestly which makes more sense on the free 15-minute call."
-          }
-        }
-      ]
-    }
-    </script>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "OptiScale Advisors",
-      "url": "https://optiscaleadvisors.com",
-      "logo": "https://optiscaleadvisors.com/assets/images/optiscale-logo-transparent.png",
-      "description": "AI search visibility audit and AI-ready website development for small and medium businesses across India.",
-      "telephone": "+91-73972-25523",
-      "email": "info@optiscaleadvisors.com",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "13, Rayakotta Rd, Old Rayakottah Hudco",
-        "addressLocality": "Hosur",
-        "addressRegion": "Tamil Nadu",
-        "postalCode": "635109",
-        "addressCountry": "IN"
-      },
-      "founder": {"@type": "Person", "name": "Vinod Kumar"},
-      "areaServed": {"@type": "Country", "name": "India"},
-      "sameAs": ["https://www.linkedin.com/company/optiscaleadvisors"]
-    }
+    ]
     </script>
 
     <link rel="stylesheet" href="styles.css">
