@@ -107,3 +107,11 @@ Thumbs.db
 # Build outputs
 build/
 dist/
+# Backup and test HTML files — keep locally, don't deploy
+index_backup.html
+index_gradient_backup.html
+index_original_structure.html
+index_stunning.html
+VERIFY-DEPLOYMENT.html
+deployment-test-2.html
+test-deploy.html

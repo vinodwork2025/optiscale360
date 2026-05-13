@@ -39,3 +39,40 @@
 /landing-page.html                  /                          301
 /landing-page-new                   /                          301
 /landing-page-new.html              /                          301
+
+# Resource sub-pages → parent (old design, no canonical)
+/resources/best-practices           /resources                 301
+/resources/best-practices.html      /resources                 301
+/resources/webinars-training        /resources                 301
+/resources/webinars-training.html   /resources                 301
+/resources/business-templates       /resources                 301
+/resources/business-templates.html  /resources                 301
+/resources/industry-insights        /resources                 301
+/resources/industry-insights.html   /resources                 301
+/resources/roi-calculator           /resources                 301
+/resources/roi-calculator.html      /resources                 301
+/resources/support-center           /resources                 301
+/resources/support-center.html      /resources                 301
+
+# Deleted blog pages → blog index
+/blog.html                          /blog/                     301
+/blog                               /blog/                     301
+/blog-enhanced                      /blog/                     301
+/blog-enhanced.html                 /blog/                     301
+/blog/post-template                 /blog/                     301
+/blog/post-template.html            /blog/                     301
+/blog/test-publish                  /blog/                     301
+/blog/github-config                 /blog/                     301
+
+# Deleted blog posts → blog index
+/blog/ai-seo-ultimate-guide/        /blog/                     301
+/blog/case-study-ecommerce-seo-success/ /blog/                 301
+/blog/local-seo-guide-2024/         /blog/                     301
+/blog/seo-content/                  /blog/                     301
+/blog/staff-augmentation/           /blog/                     301
+/blog/this-is-a-test-post/          /blog/                     301
+/blog/posts/ai-powered-seo-complete-guide-2025 /blog/          301
+/blog/posts/ai-tools-small-business-2025       /blog/          301
+/blog/posts/business-automation-ai-tools       /blog/          301
+/blog/posts/seo-ai-optimization-guide          /blog/          301
+/blog/posts/website-performance-optimization-2024 /blog/       301

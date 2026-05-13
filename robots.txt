@@ -3,6 +3,16 @@ Allow: /
 Disallow: /cdn-cgi/
 Disallow: /admin/
 Disallow: /private/
+Disallow: /components/
+Disallow: /admin.html
+Disallow: /admin-local.html
+Disallow: /blog-admin.html
+Disallow: /blog-admin-enhanced.html
+Disallow: /blog-editor-rich.html
+Disallow: /blog-editor-working.html
+Disallow: /emergency-contact.html
+Disallow: /studio/
+Disallow: /studio-optiscale360/
 
 User-agent: Googlebot
 Allow: /
