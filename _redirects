@@ -22,7 +22,7 @@
 
 # Legacy pages redirected per Phase 3 plan
 /services                           /                          301
-/case-studies                       /blog/                     301
+/case-studies                       /case-studies/design-intend/   301
 
 # Admin / test pages — redirect to home
 /admin                              /                          301
