@@ -18,8 +18,8 @@
     --success:          #10B981;
 
     /* Dark surfaces */
-    --navy:             #111111;
-    --navy-light:       #1A1A1A;
+    --navy:             #1B2D4F;
+    --navy-light:       #2D4272;
 
     /* Light surfaces */
     --surface:          #FFFFFF;
@@ -31,8 +31,8 @@
     --border-strong:    rgba(0,0,0,0.14);
 
     /* Text */
-    --text-primary:     #111111;
-    --text-secondary:   #454545;
+    --text-primary:     #1B2D4F;
+    --text-secondary:   #374151;
     --text-muted:       #787878;
 
     /* Typography */

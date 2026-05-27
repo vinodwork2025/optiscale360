@@ -136,43 +136,43 @@
     <style>
         * { margin:0; padding:0; box-sizing:border-box; }
         html { scroll-behavior:smooth; }
-        body { font-family:'DM Sans',system-ui,sans-serif; color:#111111; line-height:1.6; background:#FFFFFF; }
+        body { font-family:'DM Sans',system-ui,sans-serif; color:#1B2D4F; line-height:1.6; background:#FFFFFF; }
         .container { max-width:900px; margin:0 auto; padding:0 2rem; }
         .container-wide { max-width:1100px; margin:0 auto; padding:0 2rem; }
 
         .page-hero { background:#FFFFFF; padding:4.5rem 0 3rem; border-bottom:1px solid rgba(0,0,0,0.06); }
-        .page-hero h1 { font-family:'Plus Jakarta Sans',system-ui,sans-serif; font-size:clamp(1.75rem,3.5vw,2.5rem); font-weight:800; line-height:1.1; letter-spacing:-0.04em; color:#111111; }
-        .page-hero .hero-sub { font-size:1.05rem; color:#454545; margin:1rem 0 0; line-height:1.7; max-width:600px; }
+        .page-hero h1 { font-family:'Plus Jakarta Sans',system-ui,sans-serif; font-size:clamp(1.75rem,3.5vw,2.5rem); font-weight:800; line-height:1.1; letter-spacing:-0.04em; color:#1B2D4F; }
+        .page-hero .hero-sub { font-size:1.05rem; color:#374151; margin:1rem 0 0; line-height:1.7; max-width:600px; }
 
         .section { padding:4.5rem 0; }
         .section-alt { background:#FAFAF8; }
-        .section-title { font-family:'Plus Jakarta Sans',system-ui,sans-serif; font-size:clamp(1.5rem,3vw,2rem); font-weight:800; color:#111111; margin-bottom:2rem; letter-spacing:-0.04em; line-height:1.1; position:relative; display:inline-block; }
+        .section-title { font-family:'Plus Jakarta Sans',system-ui,sans-serif; font-size:clamp(1.5rem,3vw,2rem); font-weight:800; color:#1B2D4F; margin-bottom:2rem; letter-spacing:-0.04em; line-height:1.1; position:relative; display:inline-block; }
         .section-title::after { content:''; display:block; width:40px; height:2px; background:#0E7C7B; border-radius:2px; margin-top:8px; }
-        .prose p { color:#454545; line-height:1.8; margin-bottom:1.25rem; font-size:1.05rem; }
+        .prose p { color:#374151; line-height:1.8; margin-bottom:1.25rem; font-size:1.05rem; }
 
         .deliverables-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.25rem; }
         .deliverable { display:flex; gap:1rem; padding:1.25rem; background:#FFFFFF; border-radius:8px; border:1px solid rgba(0,0,0,0.08); transition:transform 0.25s ease,box-shadow 0.25s ease; }
         .deliverable:hover { transform:translateY(-2px); box-shadow:0 4px 12px rgba(0,0,0,0.08); }
         .deliverable-check { flex-shrink:0; }
-        .deliverable-text { color:#454545; line-height:1.7; }
-        .deliverable-text strong { color:#111111; }
+        .deliverable-text { color:#374151; line-height:1.7; }
+        .deliverable-text strong { color:#1B2D4F; }
         @media (max-width:768px) { .deliverables-grid { grid-template-columns:1fr; } }
 
         .process-steps { position:relative; padding-left:8px; }
         .process-steps::before { content:''; position:absolute; top:22px; bottom:22px; left:29px; width:1px; background:rgba(0,0,0,0.12); }
         .process-item { display:flex; gap:1.5rem; padding:1.5rem 0; position:relative; }
-        .process-num { display:flex; align-items:center; justify-content:center; width:44px; height:44px; background:#111111; color:#FFFFFF; border-radius:50%; font-family:'Plus Jakarta Sans',system-ui,sans-serif; font-weight:700; font-size:1rem; flex-shrink:0; position:relative; z-index:1; }
+        .process-num { display:flex; align-items:center; justify-content:center; width:44px; height:44px; background:#1B2D4F; color:#FFFFFF; border-radius:50%; font-family:'Plus Jakarta Sans',system-ui,sans-serif; font-weight:700; font-size:1rem; flex-shrink:0; position:relative; z-index:1; }
         .process-num i { width:20px; height:20px; }
-        .process-content h3 { font-family:'Plus Jakarta Sans',system-ui,sans-serif; font-size:1.1rem; font-weight:700; color:#111111; margin-bottom:0.5rem; letter-spacing:-0.02em; }
-        .process-content p { color:#454545; line-height:1.7; font-size:0.93rem; }
+        .process-content h3 { font-family:'Plus Jakarta Sans',system-ui,sans-serif; font-size:1.1rem; font-weight:700; color:#1B2D4F; margin-bottom:0.5rem; letter-spacing:-0.02em; }
+        .process-content p { color:#374151; line-height:1.7; font-size:0.93rem; }
 
         .investment-box { background:#FFFFFF; border:1px solid rgba(0,0,0,0.12); border-radius:12px; padding:2.5rem; text-align:center; max-width:600px; margin:0 auto; position:relative; overflow:hidden; }
         .investment-box::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:#0E7C7B; }
-        .investment-price { font-family:'Plus Jakarta Sans',system-ui,sans-serif; font-size:2.5rem; font-weight:800; color:#111111; margin-bottom:0.5rem; letter-spacing:-0.04em; }
-        .investment-desc { color:#454545; margin-bottom:0.75rem; font-size:1.05rem; }
+        .investment-price { font-family:'Plus Jakarta Sans',system-ui,sans-serif; font-size:2.5rem; font-weight:800; color:#1B2D4F; margin-bottom:0.5rem; letter-spacing:-0.04em; }
+        .investment-desc { color:#374151; margin-bottom:0.75rem; font-size:1.05rem; }
         .investment-note { color:#787878; font-size:0.93rem; line-height:1.7; margin-bottom:1.5rem; }
 
-        .btn-primary { display:inline-flex; align-items:center; gap:8px; background:#111111; color:#FFFFFF; padding:0.8rem 1.6rem; border-radius:6px; text-decoration:none; font-family:'DM Sans',system-ui,sans-serif; font-weight:600; font-size:0.95rem; transition:background 0.2s ease,transform 0.15s ease; border:none; cursor:pointer; letter-spacing:-0.01em; }
+        .btn-primary { display:inline-flex; align-items:center; gap:8px; background:#1B2D4F; color:#FFFFFF; padding:0.8rem 1.6rem; border-radius:6px; text-decoration:none; font-family:'DM Sans',system-ui,sans-serif; font-weight:600; font-size:0.95rem; transition:background 0.2s ease,transform 0.15s ease; border:none; cursor:pointer; letter-spacing:-0.01em; }
         .btn-primary:hover { background:#1A1A1A; }
         .btn-primary:active { transform:scale(0.98); }
         .investment-box .btn-primary { background:#0E7C7B; }
@@ -180,19 +180,19 @@
         .whatsapp-note { color:#787878; font-size:0.93rem; margin-top:1rem; }
         .whatsapp-note a { color:#0E7C7B; text-decoration:none; }
 
-        .cta-section { background:#111111; padding:4.5rem 0; text-align:center; }
+        .cta-section { background:#1B2D4F; padding:4.5rem 0; text-align:center; }
         .cta-section h2 { font-family:'Plus Jakarta Sans',system-ui,sans-serif; font-size:clamp(1.75rem,3vw,2.25rem); font-weight:800; margin-bottom:1.5rem; color:#FFFFFF; letter-spacing:-0.04em; }
-        .btn-white { display:inline-flex; align-items:center; gap:8px; background:#FFFFFF; color:#111111; padding:0.8rem 1.6rem; border-radius:6px; text-decoration:none; font-family:'DM Sans',system-ui,sans-serif; font-weight:600; font-size:0.95rem; transition:background 0.2s ease; letter-spacing:-0.01em; }
+        .btn-white { display:inline-flex; align-items:center; gap:8px; background:#FFFFFF; color:#1B2D4F; padding:0.8rem 1.6rem; border-radius:6px; text-decoration:none; font-family:'DM Sans',system-ui,sans-serif; font-weight:600; font-size:0.95rem; transition:background 0.2s ease; letter-spacing:-0.01em; }
         .btn-white:hover { background:#F5F5F3; }
 
         .faq-item { border-bottom:1px solid rgba(0,0,0,0.08); }
-        .faq-question { padding:1.25rem 0; cursor:pointer; display:flex; justify-content:space-between; align-items:center; font-family:'Plus Jakarta Sans',system-ui,sans-serif; font-weight:600; color:#111111; font-size:0.97rem; background:none; border:none; width:100%; text-align:left; transition:color 0.2s ease; gap:1rem; letter-spacing:-0.01em; }
+        .faq-question { padding:1.25rem 0; cursor:pointer; display:flex; justify-content:space-between; align-items:center; font-family:'Plus Jakarta Sans',system-ui,sans-serif; font-weight:600; color:#1B2D4F; font-size:0.97rem; background:none; border:none; width:100%; text-align:left; transition:color 0.2s ease; gap:1rem; letter-spacing:-0.01em; }
         .faq-question:hover { color:#0E7C7B; }
         .faq-icon { flex-shrink:0; color:#0E7C7B; transition:transform 0.3s cubic-bezier(0.22,1,0.36,1); margin-left:0.5rem; }
         .faq-item.active .faq-icon { transform:rotate(180deg); }
         .faq-answer { max-height:0; overflow:hidden; transition:max-height 0.35s cubic-bezier(0.22,1,0.36,1); }
         .faq-item.active .faq-answer { max-height:400px; }
-        .faq-answer-inner { padding:0 0 1.25rem; color:#454545; line-height:1.75; font-size:0.93rem; }
+        .faq-answer-inner { padding:0 0 1.25rem; color:#374151; line-height:1.75; font-size:0.93rem; }
 
         @media (max-width:768px) {
             .page-hero h1 { font-size:1.75rem; }
@@ -362,7 +362,7 @@
 
     <!-- Section Divider -->
     <div class="section-divider">
-        <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,0 C480,60 960,60 1440,0 L1440,60 L0,60 Z" fill="#111111"/></svg>
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,0 C480,60 960,60 1440,0 L1440,60 L0,60 Z" fill="#1B2D4F"/></svg>
     </div>
 
     <!-- BOTTOM CTA -->
