@@ -3,6 +3,11 @@
    Light theme · Teal accent · No gradients
    ============================================ */
 
+/* Header offset — matches header.html height */
+body { padding-top: 72px; }
+@media (max-width: 768px) { body { padding-top: 60px; } }
+@media (max-width: 480px) { body { padding-top: 56px; } }
+
 /* --- Design Tokens --- */
 :root {
     /* Teal — single accent color */
