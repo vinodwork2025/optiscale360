@@ -174,1089 +174,235 @@
 
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="main.css">
-
+    <script src="https://unpkg.com/lucide@latest" defer></script>
     <style>
-        /* ── TOKENS ─────────────────────────────────────────────────── */
         :root {
-            --navy:    #0F172A;
-            --cream:   #F6F4EF;
-            --amber:   #D97706;
-            --amber-d: #B45309;
-            --blue:    #2563EB;
-            --white:   #FFFFFF;
-            --border:  #E5E2DC;
-            --text:    #1C1917;
-            --muted:   #6B7280;
-            --green:   #059669;
-            --red:     #DC2626;
-            --fh: 'Space Grotesk', 'Inter', sans-serif;
-            --fb: 'Inter', sans-serif;
+            --primary-navy: #0F172A; --primary-blue: #1E40AF; --primary-blue-light: #3B82F6; --pure-white: #FFFFFF;
+            --silver: #F8FAFC; --silver-dark: #E2E8F0; --success: #10B981;
+            --accent-amber: #F59E0B; --accent-amber-light: #FBBF24;
+            --text-primary: #0F172A; --text-secondary: #475569; --text-muted: #94A3B8;
+            --gradient-primary: linear-gradient(135deg, #1E3A8A 0%, #1E40AF 50%, #3B82F6 100%);
+            --gradient-accent: linear-gradient(135deg, #F59E0B, #FBBF24);
+            --font-primary: 'Space Grotesk','Inter',-apple-system,sans-serif;
+            --font-secondary: 'Inter',-apple-system,sans-serif;
+            --shadow-md: 0 10px 15px -3px rgba(0,0,0,0.1);
+            --shadow-lg: 0 25px 50px -12px rgba(0,0,0,0.15);
+            --radius-md: 1rem; --radius-lg: 1.5rem;
         }
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{font-family:var(--font-secondary);color:var(--text-primary);line-height:1.6;background:var(--pure-white)}
+        .container{max-width:1100px;margin:0 auto;padding:0 2rem}
+        .page-hero{background:var(--gradient-primary);padding:4rem 0 2.5rem;color:var(--pure-white);position:relative;overflow:hidden}
+        .page-hero > .container{position:relative;z-index:2}
+        .page-hero h1{font-family:var(--font-primary);font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:800;line-height:1.15;letter-spacing:-0.03em}
+        .page-hero .hero-sub{font-size:1.1rem;opacity:0.85;margin:1rem 0 0;line-height:1.7}
+        .hero-badges{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.25rem}
+        .hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:50px;padding:5px 14px;font-size:0.82rem;font-weight:600;color:rgba(255,255,255,0.92)}
+        .hero-price-row{margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
+        .hero-price-block{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:0.75rem 1.25rem}
+        .hero-price-label{font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:3px}
+        .hero-price-value{font-family:var(--font-primary);font-size:1.1rem;font-weight:700;color:#fff}
+        .hero-cta-row{display:flex;flex-wrap:wrap;gap:0.75rem;align-items:center;margin-top:1.75rem}
+        .tz-note{font-size:0.8rem;color:rgba(255,255,255,0.6);margin-top:0.75rem}
+        .section{padding:3.5rem 0}
+        .section-alt{background:var(--silver)}
+        .section-title{font-family:var(--font-primary);font-size:clamp(1.5rem,3vw,2rem);font-weight:700;color:var(--primary-navy);margin-bottom:2rem;letter-spacing:-0.03em;line-height:1.15;position:relative;display:inline-block}
+        .section-title::after{content:'';display:block;width:50px;height:3px;background:var(--gradient-accent);border-radius:3px;margin-top:8px}
+        .section-title-center{text-align:center;width:100%}
+        .section-title-center::after{margin-left:auto;margin-right:auto}
+        .prose p{color:var(--text-secondary);line-height:1.8;margin-bottom:1.25rem;font-size:1.05rem}
 
-        /* ── RESET ──────────────────────────────────────────────────── */
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: var(--fb);
-            color: var(--text);
-            line-height: 1.65;
-            background: var(--white);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        .container { max-width: 1120px; margin: 0 auto; padding: 0 2.5rem; }
-        a { color: inherit; }
+        /* Steps */
+        .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2.5rem}
+        .step-card{background:var(--pure-white);border:1px solid var(--silver-dark);border-radius:var(--radius-md);padding:2rem 1.75rem;text-align:center;position:relative;overflow:hidden}
+        .step-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--gradient-primary)}
+        .step-number{font-family:var(--font-primary);font-size:2.5rem;font-weight:800;color:var(--silver-dark);line-height:1;margin-bottom:0.75rem}
+        .step-card h3{font-family:var(--font-primary);font-size:1.05rem;font-weight:700;color:var(--primary-navy);margin-bottom:0.5rem}
+        .step-card p{font-size:0.92rem;color:var(--text-secondary);line-height:1.7}
+        .step-card.highlight-step::before{background:var(--gradient-accent)}
+        .step-card.highlight-step .step-number{color:var(--accent-amber);opacity:0.4}
 
-        /* ── KEYFRAMES ──────────────────────────────────────────────── */
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to   { opacity: 1; transform: none; }
-        }
-        @keyframes scrollLine {
-            0%   { top: -100%; }
-            100% { top: 200%; }
-        }
+        /* Pricing tiers */
+        .pricing-grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:2rem;max-width:760px;margin-left:auto;margin-right:auto}
+        .pricing-card{background:var(--pure-white);border:1px solid var(--silver-dark);border-radius:var(--radius-lg);padding:2rem;position:relative;overflow:hidden}
+        .pricing-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(135deg,#3B82F6,#F59E0B);opacity:0.5}
+        .pricing-card.featured{border-color:var(--accent-amber);box-shadow:0 0 0 2px var(--accent-amber)}
+        .pricing-card.featured::before{opacity:1;height:4px}
+        .pricing-card .card-name{font-family:var(--font-primary);font-size:0.85rem;font-weight:700;color:var(--primary-blue);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.5rem}
+        .pricing-card .card-price-inr{font-family:var(--font-primary);font-size:2rem;font-weight:800;color:var(--primary-navy);line-height:1}
+        .pricing-card .card-price-usd{font-family:var(--font-primary);font-size:1rem;font-weight:600;color:var(--text-muted);margin:4px 0 1.25rem}
+        .pricing-card ul{list-style:none;margin-bottom:1.25rem}
+        .pricing-card li{padding:0.3rem 0;color:var(--text-secondary);font-size:0.9rem;position:relative;padding-left:1.3rem}
+        .pricing-card li::before{content:'\2713';color:var(--success);font-weight:700;position:absolute;left:0;font-size:0.85rem}
+        .intl-note{font-size:0.8rem;color:var(--text-muted);margin-top:0.5rem;font-style:italic}
 
-        /* ── ANIMATE ON SCROLL ──────────────────────────────────────── */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(16px);
-            transition: opacity 0.55s ease, transform 0.55s ease;
-        }
-        .animate-on-scroll.animate-in { opacity: 1; transform: none; }
+        /* Compare table */
+        .compare-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:2rem}
+        .compare-table{width:100%;min-width:680px;border-collapse:separate;border-spacing:0}
+        .compare-table th{padding:14px 18px;font-size:12px;font-weight:700;text-align:center;border-bottom:2px solid var(--silver-dark)}
+        .compare-table th.highlight{background:var(--primary-navy);color:#fff;border-radius:12px 12px 0 0;font-family:var(--font-primary)}
+        .compare-table th.col-label{text-align:left;color:var(--text-muted);font-size:11px;letter-spacing:0.08em;text-transform:uppercase}
+        .compare-table td{padding:14px 18px;font-size:13px;text-align:center;border-bottom:1px solid var(--silver-dark);color:var(--text-secondary);vertical-align:middle}
+        .compare-table td.highlight{background:#fafbff;border-left:1px solid var(--silver-dark);border-right:1px solid var(--silver-dark)}
+        .compare-table td.col-label{text-align:left;font-weight:600;color:var(--text-primary);font-size:13px}
+        .compare-table tr:last-child td.highlight{border-radius:0 0 12px 12px;border-bottom:1px solid var(--silver-dark)}
+        .yes{color:#16a34a;font-weight:700}
+        .no{color:#dc2626;font-weight:700}
+        .chk{display:inline-flex;width:20px;height:20px;border-radius:50%;background:#f0fdf4;align-items:center;justify-content:center}
+        .crs{display:inline-flex;width:20px;height:20px;border-radius:50%;background:#fef2f2;align-items:center;justify-content:center}
+        .dsh{display:inline-flex;width:20px;height:20px;border-radius:50%;background:#fffbeb;align-items:center;justify-content:center}
 
-        /* ── SECTION SHELLS ─────────────────────────────────────────── */
-        .sec       { padding: 6rem 0; }
-        .sec-white { background: var(--white); }
-        .sec-cream { background: var(--cream); }
-        .sec-navy  { background: var(--navy); }
+        /* AI-optimised section */
+        .ai-box{background:linear-gradient(135deg,#EFF6FF,#F0FDF4);border:1px solid #BFDBFE;border-radius:var(--radius-lg);padding:2.5rem;margin-top:2rem}
+        .ai-box h3{font-family:var(--font-primary);font-size:1.15rem;font-weight:700;color:var(--primary-navy);margin-bottom:0.75rem}
+        .ai-box p{color:var(--text-secondary);line-height:1.75;font-size:0.95rem;margin-bottom:0.75rem}
 
-        /* ── TYPOGRAPHY ─────────────────────────────────────────────── */
-        .label {
-            display: block;
-            font-size: 0.67rem;
-            font-weight: 700;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--amber);
-            margin-bottom: 1rem;
-        }
-        .label-white { color: rgba(255,255,255,0.38); }
-        .sec-h2 {
-            font-family: var(--fh);
-            font-size: clamp(1.85rem, 3.5vw, 2.6rem);
-            font-weight: 700;
-            line-height: 1.12;
-            letter-spacing: -0.025em;
-            color: var(--navy);
-        }
-        .sec-h2-white { color: var(--white); }
-        .sec-lead {
-            font-size: 1rem;
-            color: var(--muted);
-            line-height: 1.8;
-            max-width: 62ch;
-            margin-top: 0.75rem;
-        }
+        /* Case study */
+        .cs-strip{background:var(--pure-white);border:1px solid var(--silver-dark);border-radius:var(--radius-lg);padding:2rem 2.5rem;margin-top:2rem;display:flex;gap:2rem;align-items:flex-start}
+        .cs-strip-badge{background:var(--gradient-primary);color:#fff;border-radius:8px;padding:0.5rem 1rem;font-family:var(--font-primary);font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap;flex-shrink:0}
+        .cs-strip-body h4{font-family:var(--font-primary);font-size:1rem;font-weight:700;color:var(--primary-navy);margin-bottom:0.5rem}
+        .cs-strip-body p{font-size:0.9rem;color:var(--text-secondary);line-height:1.7;margin-bottom:0.75rem}
+        .cs-strip-body ul{list-style:none;display:flex;flex-wrap:wrap;gap:0.4rem}
+        .cs-strip-body li{font-size:0.8rem;background:var(--silver);border-radius:50px;padding:3px 12px;color:var(--text-secondary)}
 
-        /* ── ANIMATED LINK UNDERLINE ────────────────────────────────── */
-        .a-line {
-            display: inline;
-            text-decoration: none;
-            background-image: linear-gradient(currentColor, currentColor);
-            background-size: 0 1.5px;
-            background-position: 0 100%;
-            background-repeat: no-repeat;
-            transition: background-size 0.3s ease;
-        }
-        .a-line:hover { background-size: 100% 1.5px; }
+        /* Form */
+        .form-section{background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 100%);padding:4rem 0;position:relative;overflow:hidden}
+        .form-section::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(245,158,11,0.07) 0%,transparent 60%);pointer-events:none}
+        .form-section > .container{position:relative;z-index:1}
+        .form-card{background:#fff;border-radius:var(--radius-lg);padding:2.5rem;max-width:640px;margin:0 auto}
+        .form-card h2{font-family:var(--font-primary);font-size:1.5rem;font-weight:700;color:var(--primary-navy);margin-bottom:0.4rem}
+        .form-card .form-sub{font-size:0.9rem;color:var(--text-muted);margin-bottom:1.75rem}
+        .form-group{margin-bottom:1.25rem}
+        .form-group label{display:block;font-size:0.85rem;font-weight:600;color:var(--text-primary);margin-bottom:0.4rem}
+        .form-group input,.form-group select{width:100%;padding:0.75rem 1rem;border:1.5px solid var(--silver-dark);border-radius:10px;font-size:0.95rem;font-family:var(--font-secondary);color:var(--text-primary);background:#fff;transition:border-color 0.2s}
+        .form-group input:focus,.form-group select:focus{outline:none;border-color:var(--primary-blue)}
+        .form-group .optional{font-weight:400;color:var(--text-muted);font-size:0.8rem;margin-left:4px}
+        .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+        .intl-retainer-note{display:none;background:#FFF7ED;border:1px solid #FED7AA;border-radius:8px;padding:0.75rem 1rem;font-size:0.82rem;color:#92400E;margin-top:0.75rem;line-height:1.6}
+        .intl-retainer-note.visible{display:block}
+        .form-submit{width:100%;padding:1rem;background:var(--gradient-primary);color:#fff;border:none;border-radius:10px;font-size:1rem;font-weight:700;font-family:var(--font-primary);cursor:pointer;transition:opacity 0.2s}
+        .form-submit:hover{opacity:0.9}
+        .form-submit:disabled{opacity:0.6;cursor:not-allowed}
+        .form-success{display:none;text-align:center;padding:2rem 0}
+        .form-success h3{font-family:var(--font-primary);font-size:1.25rem;font-weight:700;color:var(--primary-navy);margin-bottom:0.5rem}
+        .form-success p{color:var(--text-secondary);font-size:0.95rem}
 
-        /* ── BUTTONS ────────────────────────────────────────────────── */
-        .btn-amber {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: var(--amber);
-            color: var(--navy);
-            padding: 0.875rem 1.75rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-family: var(--fh);
-            font-weight: 700;
-            font-size: 0.9rem;
-            letter-spacing: 0.01em;
-            transition: background 0.15s, transform 0.15s;
-        }
-        .btn-amber .arr { display: inline-block; transition: transform 0.2s ease; }
-        .btn-amber:hover { background: var(--amber-d); transform: translateY(-1px); }
-        .btn-amber:hover .arr { transform: translateX(4px); }
+        /* FAQ */
+        .faq-item{background:var(--pure-white);border:1px solid var(--silver-dark);border-radius:var(--radius-md);margin-bottom:0.75rem;overflow:hidden}
+        .faq-question{padding:1.25rem 1.5rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:600;color:var(--primary-navy);font-size:1rem;background:none;border:none;width:100%;text-align:left;font-family:var(--font-secondary)}
+        .faq-question:hover{background:var(--silver)}
+        .faq-icon{font-size:1.25rem;transition:transform 0.3s ease;flex-shrink:0;margin-left:1rem}
+        .faq-item.active .faq-icon{transform:rotate(180deg)}
+        .faq-answer{max-height:0;overflow:hidden;transition:max-height 0.3s ease}
+        .faq-item.active .faq-answer{max-height:300px}
+        .faq-answer-inner{padding:0 1.5rem 1.25rem;color:var(--text-secondary);line-height:1.7}
 
-        .btn-ghost {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: transparent;
-            color: rgba(255,255,255,0.62);
-            padding: 0.875rem 1.5rem;
-            border-radius: 4px;
-            border: 1px solid rgba(255,255,255,0.2);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: border-color 0.15s, color 0.15s;
-        }
-        .btn-ghost:hover { border-color: rgba(255,255,255,0.5); color: var(--white); }
+        /* CTA bottom */
+        .cta-section{background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 100%);padding:4rem 0;text-align:center;color:var(--pure-white);position:relative;overflow:hidden}
+        .cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(245,158,11,0.08) 0%,transparent 60%);pointer-events:none}
+        .cta-section > .container{position:relative;z-index:1}
+        .cta-section h2{font-family:var(--font-primary);font-size:2rem;font-weight:700;margin-bottom:1rem;color:var(--pure-white)}
+        .cta-section p{opacity:0.9;margin-bottom:1.5rem}
+        .btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--gradient-primary);color:var(--pure-white);padding:1rem 2rem;border-radius:50px;text-decoration:none;font-weight:600;font-size:1.05rem;transition:all 0.3s ease;box-shadow:0 4px 12px rgba(30,64,175,0.3)}
+        .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(30,64,175,0.4)}
+        .btn-white{display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:var(--primary-navy);padding:1rem 2rem;border-radius:50px;text-decoration:none;font-weight:700;transition:all 0.3s ease;box-shadow:0 4px 12px rgba(245,158,11,0.3)}
+        .btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(245,158,11,0.4)}
+        .whatsapp-note{color:var(--text-muted);font-size:0.95rem;margin-top:1rem}
+        .whatsapp-note a{color:var(--primary-blue-light);text-decoration:none}
 
-        .btn-blue {
-            display: block;
-            text-align: center;
-            background: var(--blue);
-            color: var(--white);
-            padding: 0.875rem 1.5rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-family: var(--fh);
-            font-weight: 700;
-            font-size: 0.875rem;
-            transition: background 0.15s, transform 0.15s;
-        }
-        .btn-blue:hover { background: #1D4ED8; transform: translateY(-1px); }
+        .section-divider svg{display:block}
 
-        .btn-outline {
-            display: block;
-            text-align: center;
-            background: transparent;
-            color: var(--navy);
-            border: 1.5px solid var(--border);
-            padding: 0.875rem 1.5rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-family: var(--fh);
-            font-weight: 700;
-            font-size: 0.875rem;
-            transition: border-color 0.15s, background 0.15s;
-        }
-        .btn-outline:hover { border-color: var(--navy); background: var(--cream); }
-
-        /* ═══════════════════════════════════════════════════════════
-           HERO — SPLIT VIEWPORT
-        ═══════════════════════════════════════════════════════════ */
-        .rfsd-hero {
-            display: grid;
-            grid-template-columns: 58fr 42fr;
-            min-height: 86vh;
-        }
-
-        .hero-left {
-            background: var(--navy);
-            padding: 6.5rem 4.5rem 3.5rem;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
-        .hero-eyebrow {
-            font-size: 0.67rem;
-            font-weight: 700;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.28);
-            position: absolute;
-            top: 6.5rem;
-            left: 4.5rem;
-            animation: fadeUp 0.5s ease both;
-        }
-        .hero-content { margin-top: auto; }
-        .hero-h1 {
-            font-family: var(--fh);
-            font-size: clamp(2.8rem, 5.5vw, 5.2rem);
-            font-weight: 700;
-            line-height: 1.0;
-            letter-spacing: -0.04em;
-            color: var(--white);
-            margin-bottom: 1.75rem;
-            animation: fadeUp 0.5s ease 0.1s both;
-        }
-        .hero-h1 em { font-style: normal; color: var(--amber); }
-        .hero-sub {
-            font-size: 1rem;
-            color: rgba(255,255,255,0.5);
-            line-height: 1.75;
-            max-width: 46ch;
-            margin-bottom: 2rem;
-            animation: fadeUp 0.5s ease 0.2s both;
-        }
-        .hero-ctas {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            margin-bottom: 1.75rem;
-            animation: fadeUp 0.5s ease 0.3s both;
-        }
-        .hero-tz {
-            font-size: 0.7rem;
-            color: rgba(255,255,255,0.2);
-            letter-spacing: 0.04em;
-            animation: fadeUp 0.5s ease 0.4s both;
-        }
-
-        /* Scroll indicator */
-        .scroll-cue {
-            position: absolute;
-            bottom: 3rem;
-            right: 3rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            animation: fadeUp 0.5s ease 0.9s both;
-        }
-        .scroll-cue-line {
-            width: 1px;
-            height: 48px;
-            background: rgba(255,255,255,0.1);
-            position: relative;
-            overflow: hidden;
-        }
-        .scroll-cue-line::after {
-            content: '';
-            position: absolute;
-            top: -100%;
-            left: 0;
-            width: 100%;
-            height: 60%;
-            background: rgba(255,255,255,0.45);
-            animation: scrollLine 2.4s ease infinite;
-        }
-        .scroll-cue-text {
-            font-size: 0.58rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.2);
-            font-weight: 600;
-        }
-
-        /* Right panel — spec sheet */
-        .hero-right {
-            background: var(--cream);
-            border-left: 1px solid var(--border);
-            padding: 6.5rem 4rem 3.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-        }
-        .spec-row {
-            padding: 1.5rem 0;
-            border-top: 1px solid rgba(0,0,0,0.08);
-        }
-        .spec-label {
-            font-size: 0.63rem;
-            font-weight: 700;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--amber);
-            margin-bottom: 0.35rem;
-        }
-        .spec-val {
-            font-family: var(--fh);
-            font-size: 1.65rem;
-            font-weight: 700;
-            color: var(--navy);
-            letter-spacing: -0.025em;
-            line-height: 1;
-        }
-        .spec-list {
-            list-style: none;
-            padding: 1.5rem 0;
-            border-top: 1px solid rgba(0,0,0,0.08);
-            border-bottom: 1px solid rgba(0,0,0,0.08);
-            margin-bottom: 1.75rem;
-        }
-        .spec-list li {
-            font-size: 0.875rem;
-            color: #4A4845;
-            padding: 0.3rem 0;
-            display: flex;
-            gap: 0.65rem;
-            align-items: center;
-            line-height: 1.4;
-        }
-        .spec-list li::before {
-            content: '—';
-            color: var(--amber);
-            font-weight: 700;
-            flex-shrink: 0;
-        }
-        .spec-apply {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            font-family: var(--fh);
-            font-size: 0.875rem;
-            font-weight: 700;
-            color: var(--navy);
-            text-decoration: none;
-            transition: gap 0.2s ease;
-        }
-        .spec-apply:hover { gap: 9px; }
-
-        /* ═══════════════════════════════════════════════════════════
-           PROBLEM — EDITORIAL
-        ═══════════════════════════════════════════════════════════ */
-        .problem-opener {
-            font-family: var(--fh);
-            font-size: clamp(1.9rem, 3.8vw, 3rem);
-            font-weight: 700;
-            color: var(--navy);
-            line-height: 1.12;
-            letter-spacing: -0.025em;
-            max-width: 22ch;
-            padding-bottom: 2.5rem;
-            border-bottom: 1px solid var(--border);
-            margin-bottom: 2.5rem;
-        }
-        .problem-cols {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4.5rem;
-        }
-        .problem-cols p {
-            font-size: 1rem;
-            color: var(--muted);
-            line-height: 1.82;
-        }
-        .problem-cols p + p { margin-top: 1rem; }
-
-        /* ═══════════════════════════════════════════════════════════
-           PROCESS — EDITORIAL BORDERED LIST
-        ═══════════════════════════════════════════════════════════ */
-        .process-intro { margin-bottom: 2.5rem; }
-        .process-item {
-            display: grid;
-            grid-template-columns: 72px 1fr;
-            gap: 2rem;
-            padding: 2.25rem 0;
-            border-top: 1px solid var(--border);
-            align-items: start;
-        }
-        .process-item:last-child { border-bottom: 1px solid var(--border); }
-        .process-num {
-            font-family: var(--fh);
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            color: var(--amber);
-            padding-top: 4px;
-        }
-        .process-title {
-            font-family: var(--fh);
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--navy);
-            letter-spacing: -0.02em;
-            margin-bottom: 0.5rem;
-            line-height: 1.25;
-        }
-        .process-desc {
-            font-size: 0.9rem;
-            color: var(--muted);
-            line-height: 1.72;
-            max-width: 56ch;
-        }
-
-        /* ═══════════════════════════════════════════════════════════
-           PRICING
-        ═══════════════════════════════════════════════════════════ */
-        .pricing-intro { margin-bottom: 3rem; }
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            max-width: 840px;
-        }
-        .pricing-card {
-            border: 1px solid var(--border);
-            border-radius: 5px;
-            padding: 2.25rem;
-            background: var(--white);
-        }
-        .pricing-card.featured {
-            border-top: 3px solid var(--amber);
-            border-color: rgba(217,119,6,0.2);
-            border-top-color: var(--amber);
-        }
-        .plan-name {
-            font-size: 0.63rem;
-            font-weight: 700;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--muted);
-            margin-bottom: 1.25rem;
-        }
-        .plan-inr {
-            font-family: var(--fh);
-            font-size: 2.1rem;
-            font-weight: 800;
-            color: var(--navy);
-            letter-spacing: -0.03em;
-            line-height: 1;
-        }
-        .plan-usd {
-            font-size: 0.875rem;
-            color: var(--muted);
-            margin-top: 0.3rem;
-            margin-bottom: 1.5rem;
-        }
-        .plan-rule { height: 1px; background: var(--border); margin: 1.5rem 0; }
-        .plan-features {
-            list-style: none;
-            margin-bottom: 1.5rem;
-        }
-        .plan-features li {
-            display: flex;
-            gap: 0.65rem;
-            align-items: flex-start;
-            font-size: 0.875rem;
-            color: var(--text);
-            padding: 0.3rem 0;
-            line-height: 1.4;
-        }
-        .plan-features li::before {
-            content: '✓';
-            color: var(--green);
-            font-weight: 700;
-            flex-shrink: 0;
-            margin-top: 1px;
-        }
-        .plan-note {
-            font-size: 0.78rem;
-            color: var(--muted);
-            line-height: 1.65;
-            margin-bottom: 1.5rem;
-            font-style: italic;
-        }
-        .pricing-foot {
-            margin-top: 1.75rem;
-            font-size: 0.875rem;
-            color: var(--muted);
-        }
-        .pricing-foot a { color: var(--blue); text-decoration: none; font-weight: 600; }
-        .pricing-foot a:hover { text-decoration: underline; }
-
-        /* ═══════════════════════════════════════════════════════════
-           COMPARE TABLE
-        ═══════════════════════════════════════════════════════════ */
-        .compare-intro { margin-bottom: 3rem; }
-        .compare-shell {
-            border: 1px solid var(--border);
-            border-radius: 5px;
-            overflow: hidden;
-        }
-        .compare-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-        .compare-table {
-            width: 100%;
-            min-width: 680px;
-            border-collapse: collapse;
-            background: var(--white);
-        }
-        .compare-table thead tr { border-bottom: 2px solid var(--border); }
-        .compare-table th {
-            padding: 0.875rem 1rem;
-            font-family: var(--fh);
-            font-size: 0.78rem;
-            font-weight: 700;
-            text-align: center;
-            color: var(--muted);
-            background: var(--white);
-        }
-        .compare-table th.th-f {
-            text-align: left;
-            font-size: 0.63rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            width: 28%;
-            position: sticky;
-            left: 0;
-            background: var(--white);
-            z-index: 1;
-        }
-        .compare-table th.th-us {
-            background: var(--navy);
-            color: var(--white);
-        }
-        .compare-table td {
-            padding: 0.875rem 1rem;
-            font-size: 0.875rem;
-            text-align: center;
-            color: var(--muted);
-            border-top: 1px solid #F0EDE8;
-            vertical-align: middle;
-        }
-        .compare-table td.td-f {
-            text-align: left;
-            font-weight: 600;
-            color: var(--navy);
-            position: sticky;
-            left: 0;
-            background: var(--white);
-            z-index: 1;
-        }
-        .compare-table td.td-us {
-            background: #FEF9F0;
-            color: var(--navy);
-            font-weight: 600;
-        }
-        .ct-yes { color: var(--green); font-weight: 700; }
-        .ct-no  { color: var(--red);   font-weight: 700; }
-        .ct-meh { color: var(--amber); font-weight: 600; }
-        .compare-foot {
-            margin-top: 1rem;
-            font-size: 0.82rem;
-            color: var(--muted);
-        }
-        .compare-foot a { color: var(--blue); text-decoration: none; font-weight: 600; }
-        .compare-foot a:hover { text-decoration: underline; }
-
-        /* ═══════════════════════════════════════════════════════════
-           AI SECTION — EDITORIAL 4-COL GRID
-        ═══════════════════════════════════════════════════════════ */
-        .ai-top { max-width: 800px; margin-bottom: 4rem; }
-        .ai-heading {
-            font-family: var(--fh);
-            font-size: clamp(1.85rem, 3.5vw, 2.6rem);
-            font-weight: 700;
-            color: var(--white);
-            line-height: 1.15;
-            letter-spacing: -0.025em;
-            margin-bottom: 1.25rem;
-        }
-        .ai-body {
-            font-size: 1rem;
-            color: rgba(255,255,255,0.5);
-            line-height: 1.82;
-            max-width: 64ch;
-        }
-        .ai-body a { color: #93C5FD; text-decoration: none; font-weight: 600; }
-        .ai-body a:hover { text-decoration: underline; }
-        .ai-cols-4 {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-        .ai-col {
-            padding: 2rem 2rem 2rem 0;
-            border-right: 1px solid rgba(255,255,255,0.08);
-        }
-        .ai-col:first-child { padding-left: 0; }
-        .ai-col:last-child  { border-right: none; }
-        .ai-col h4 {
-            font-family: var(--fh);
-            font-size: 0.875rem;
-            font-weight: 700;
-            color: var(--white);
-            margin-bottom: 0.5rem;
-        }
-        .ai-col p {
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.4);
-            line-height: 1.65;
-        }
-
-        /* ═══════════════════════════════════════════════════════════
-           CASE STUDY — EDITORIAL CARD
-        ═══════════════════════════════════════════════════════════ */
-        .cs-card {
-            display: grid;
-            grid-template-columns: 240px 1fr;
-            gap: 5rem;
-            align-items: start;
-            margin-top: 3rem;
-            padding-top: 2.5rem;
-            border-top: 3px solid var(--amber);
-        }
-        .cs-name {
-            font-family: var(--fh);
-            font-size: clamp(2.5rem, 4vw, 3.75rem);
-            font-weight: 800;
-            color: var(--navy);
-            line-height: 0.95;
-            letter-spacing: -0.04em;
-            margin-bottom: 1rem;
-        }
-        .cs-sub {
-            font-size: 0.82rem;
-            color: var(--muted);
-            line-height: 1.55;
-        }
-        .cs-metrics {
-            display: flex;
-            gap: 2.5rem;
-            flex-wrap: wrap;
-            margin-bottom: 1.75rem;
-            padding-bottom: 1.75rem;
-            border-bottom: 1px solid var(--border);
-        }
-        .cs-n {
-            font-family: var(--fh);
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--navy);
-            display: block;
-            line-height: 1;
-            letter-spacing: -0.03em;
-        }
-        .cs-l {
-            font-size: 0.7rem;
-            color: var(--muted);
-            display: block;
-            margin-top: 0.25rem;
-        }
-        .cs-body {
-            font-size: 0.9rem;
-            color: var(--muted);
-            line-height: 1.8;
-            margin-bottom: 1.25rem;
-        }
-        .cs-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem; }
-        .cs-tag {
-            font-size: 0.7rem;
-            background: #EFF6FF;
-            color: var(--blue);
-            padding: 3px 9px;
-            border-radius: 3px;
-            font-weight: 600;
-        }
-        .cs-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 0.875rem;
-            font-weight: 700;
-            color: var(--navy);
-            text-decoration: none;
-            transition: gap 0.2s ease;
-        }
-        .cs-link:hover { gap: 9px; }
-
-        /* ═══════════════════════════════════════════════════════════
-           APPLY FORM — FLAT UNDERLINE INPUTS
-        ═══════════════════════════════════════════════════════════ */
-        .apply-layout {
-            display: grid;
-            grid-template-columns: 1fr 340px;
-            gap: 7rem;
-            align-items: start;
-        }
-        .form-heading {
-            font-family: var(--fh);
-            font-size: 1.85rem;
-            font-weight: 700;
-            color: var(--navy);
-            letter-spacing: -0.025em;
-            line-height: 1.1;
-            margin-bottom: 0.4rem;
-        }
-        .form-sub {
-            font-size: 0.9rem;
-            color: var(--muted);
-            margin-bottom: 2.5rem;
-        }
-        .form-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-        .fg { margin-bottom: 1.5rem; }
-        .fg label {
-            display: block;
-            font-size: 0.62rem;
-            font-weight: 700;
-            letter-spacing: 0.13em;
-            text-transform: uppercase;
-            color: var(--muted);
-            margin-bottom: 0.5rem;
-        }
-        .fg input,
-        .fg select {
-            display: block;
-            width: 100%;
-            padding: 0.6rem 0;
-            border: none;
-            border-bottom: 1.5px solid var(--border);
-            border-radius: 0;
-            font-size: 0.95rem;
-            font-family: var(--fb);
-            color: var(--navy);
-            background: transparent;
-            transition: border-bottom-color 0.2s;
-            -webkit-appearance: none;
-        }
-        .fg select {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B7280' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 0 center;
-            padding-right: 1.25rem;
-            cursor: pointer;
-        }
-        .fg input:focus, .fg select:focus {
-            outline: none;
-            border-bottom-color: var(--navy);
-        }
-        .fg input::placeholder { color: rgba(107,114,128,0.55); font-size: 0.9rem; }
-        .optional { font-weight: 400; color: var(--muted); font-size: 0.78rem; text-transform: none; letter-spacing: 0; }
-        .intl-retainer-note {
-            display: none;
-            background: #EFF6FF;
-            border: 1px solid #BFDBFE;
-            border-radius: 4px;
-            padding: 0.875rem 1rem;
-            font-size: 0.82rem;
-            color: #1D4ED8;
-            line-height: 1.65;
-            margin-bottom: 1.5rem;
-        }
-        .intl-retainer-note.visible { display: block; }
-        .form-submit-btn {
-            display: block;
-            width: 100%;
-            background: var(--amber);
-            color: var(--navy);
-            border: none;
-            padding: 0.95rem;
-            border-radius: 4px;
-            font-family: var(--fh);
-            font-weight: 700;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: background 0.15s;
-            margin-bottom: 0.75rem;
-        }
-        .form-submit-btn:hover     { background: var(--amber-d); }
-        .form-submit-btn:disabled  { background: var(--border); color: var(--muted); cursor: not-allowed; }
-        .form-disclaimer { font-size: 0.78rem; color: var(--muted); }
-        .form-success {
-            display: none;
-            text-align: center;
-            padding: 3rem 1rem;
-        }
-        .form-success-icon { font-size: 2rem; color: var(--green); margin-bottom: 0.75rem; }
-        .form-success h3   { font-family: var(--fh); font-size: 1.4rem; color: var(--navy); margin-bottom: 0.5rem; }
-        .form-success p    { color: var(--muted); font-size: 0.9rem; }
-
-        .form-aside { padding-top: 5.5rem; }
-        .form-aside-label {
-            font-size: 0.62rem;
-            font-weight: 700;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--amber);
-            display: block;
-            margin-bottom: 0.75rem;
-        }
-        .form-aside-heading {
-            font-family: var(--fh);
-            font-size: 1.45rem;
-            font-weight: 700;
-            color: var(--navy);
-            line-height: 1.2;
-            letter-spacing: -0.02em;
-            margin-bottom: 2rem;
-        }
-        .trust-list { list-style: none; }
-        .trust-list li {
-            font-size: 0.875rem;
-            color: var(--muted);
-            padding: 0.875rem 0;
-            border-bottom: 1px solid var(--border);
-            line-height: 1.55;
-        }
-        .trust-list li:first-child { border-top: 1px solid var(--border); }
-        .trust-list strong { color: var(--navy); }
-        .form-contact {
-            margin-top: 1.75rem;
-            font-size: 0.875rem;
-            color: var(--muted);
-            line-height: 1.72;
-        }
-        .form-contact a { color: var(--blue); text-decoration: none; font-weight: 600; }
-        .form-contact a:hover { text-decoration: underline; }
-
-        /* ═══════════════════════════════════════════════════════════
-           FAQ
-        ═══════════════════════════════════════════════════════════ */
-        .faq-intro { margin-bottom: 2.5rem; }
-        .faq-item  { border-bottom: 1px solid var(--border); }
-        .faq-q {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            background: none;
-            border: none;
-            text-align: left;
-            padding: 1.25rem 0;
-            font-family: var(--fb);
-            font-size: 0.975rem;
-            font-weight: 600;
-            color: var(--navy);
-            cursor: pointer;
-            gap: 1rem;
-            transition: color 0.15s;
-        }
-        .faq-q:hover { color: var(--amber); }
-        .faq-ico {
-            flex-shrink: 0;
-            width: 20px;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.25s ease;
-            color: var(--muted);
-        }
-        .faq-item.active .faq-ico { transform: rotate(180deg); color: var(--amber); }
-        .faq-item.active .faq-q   { color: var(--amber); }
-        .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.32s ease; }
-        .faq-item.active .faq-a { max-height: 400px; }
-        .faq-inner {
-            padding: 0 0 1.25rem;
-            font-size: 0.9rem;
-            color: var(--muted);
-            line-height: 1.8;
-        }
-        .faq-inner a { color: var(--blue); }
-
-        /* ═══════════════════════════════════════════════════════════
-           RELATED
-        ═══════════════════════════════════════════════════════════ */
-        .related-grid {
-            display: grid;
-            grid-template-columns: repeat(3,1fr);
-            gap: 1.25rem;
-            margin-top: 2.5rem;
-        }
-        .related-card {
-            display: block;
-            border: 1px solid var(--border);
-            border-radius: 5px;
-            padding: 1.75rem;
-            text-decoration: none;
-            background: var(--white);
-            transition: border-color 0.15s, transform 0.2s;
-        }
-        .related-card:hover { border-color: var(--navy); transform: translateY(-2px); }
-        .rc-tag {
-            font-size: 0.62rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--amber);
-            margin-bottom: 0.6rem;
-            display: block;
-        }
-        .rc-title {
-            font-family: var(--fh);
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--navy);
-            margin-bottom: 0.5rem;
-            line-height: 1.3;
-        }
-        .rc-desc {
-            font-size: 0.85rem;
-            color: var(--muted);
-            line-height: 1.6;
-            margin-bottom: 1.1rem;
-        }
-        .rc-arr {
-            font-size: 0.82rem;
-            font-weight: 700;
-            color: var(--navy);
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            transition: gap 0.2s ease;
-        }
-        .related-card:hover .rc-arr { gap: 8px; }
-
-        /* ═══════════════════════════════════════════════════════════
-           BOTTOM CTA
-        ═══════════════════════════════════════════════════════════ */
-        .bottom-cta {
-            background: var(--navy);
-            padding: 7.5rem 0;
-            text-align: center;
-        }
-        .bottom-cta h2 {
-            font-family: var(--fh);
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 700;
-            color: var(--white);
-            letter-spacing: -0.03em;
-            line-height: 1.1;
-            margin-bottom: 0.75rem;
-        }
-        .bottom-cta p {
-            font-size: 1rem;
-            color: rgba(255,255,255,0.42);
-            margin-bottom: 2.25rem;
-        }
-        .bottom-cta-note {
-            margin-top: 1.5rem;
-            font-size: 0.82rem;
-            color: rgba(255,255,255,0.25);
-        }
-        .bottom-cta-note a { color: rgba(255,255,255,0.48); text-decoration: none; }
-        .bottom-cta-note a:hover { color: rgba(255,255,255,0.85); }
-
-        /* ═══════════════════════════════════════════════════════════
-           RESPONSIVE
-        ═══════════════════════════════════════════════════════════ */
-        @media (max-width: 1080px) {
-            .ai-cols-4 { grid-template-columns: 1fr 1fr; }
-            .ai-col:nth-child(2) { border-right: none; }
-            .ai-col:nth-child(3) { padding-left: 0; }
-        }
-        @media (max-width: 900px) {
-            .rfsd-hero    { grid-template-columns: 1fr; min-height: auto; }
-            .hero-left    { min-height: 80vh; }
-            .hero-right   { border-left: none; border-top: 1px solid var(--border); }
-            .scroll-cue   { display: none; }
-            .problem-cols { grid-template-columns: 1fr; gap: 1.5rem; }
-            .cs-card      { grid-template-columns: 1fr; gap: 2.5rem; }
-            .apply-layout { grid-template-columns: 1fr; gap: 3rem; }
-            .form-aside   { padding-top: 0; }
-        }
-        @media (max-width: 768px) {
-            .sec           { padding: 4.5rem 0; }
-            .hero-left     { padding: 5.5rem 2rem 3rem; min-height: 75vh; }
-            .hero-right    { padding: 2.5rem 2rem 3rem; }
-            .hero-eyebrow  { top: 5.5rem; left: 2rem; }
-            .pricing-grid  { grid-template-columns: 1fr; }
-            .related-grid  { grid-template-columns: 1fr; }
-            .form-row2     { grid-template-columns: 1fr; gap: 0; }
-            .ai-cols-4     { grid-template-columns: 1fr 1fr; }
-            .cs-metrics    { gap: 1.5rem; }
-        }
-        @media (max-width: 480px) {
-            .container     { padding: 0 1.25rem; }
-            .hero-h1       { font-size: 2.4rem; }
-            .problem-opener { font-size: 1.75rem; }
-            .ai-cols-4     { grid-template-columns: 1fr; }
-            .ai-col        { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 1.5rem 0; }
-            .ai-col:last-child { border-bottom: none; }
+        @media(max-width:768px){
+            .page-hero h1{font-size:1.75rem}
+            .steps-grid{grid-template-columns:1fr}
+            .pricing-grid-2{grid-template-columns:1fr}
+            .cs-strip{flex-direction:column}
+            .form-row{grid-template-columns:1fr}
         }
     </style>
 </head>
 <body>
     <div id="header-placeholder"></div>
 
-    <!-- ── HERO ─────────────────────────────────────────────────────── -->
-    <section class="rfsd-hero">
-        <div class="hero-left">
-            <span class="hero-eyebrow">Risk-Free Website Design &mdash; OptiScale Advisors</span>
-            <div class="hero-content">
-                <h1 class="hero-h1">
-                    We build your<br>
-                    website. You<br>
-                    pay only if<br>
-                    you <em>love&nbsp;it.</em>
-                </h1>
-                <p class="hero-sub">
-                    See your finished site in 48 hours. Approve it and pay. Don&rsquo;t approve &mdash; walk away free, nothing owed.
-                </p>
-                <div class="hero-ctas">
-                    <a href="#apply" class="btn-amber">Apply for a Demo <span class="arr">&rarr;</span></a>
-                    <a href="https://wa.me/917397225523" target="_blank" rel="noopener" class="btn-ghost">WhatsApp</a>
+    <!-- HERO -->
+    <section class="page-hero">
+        <div class="hero-orb hero-orb--amber hero-orb--md float" style="top:-20px;left:5%;"></div>
+        <div class="hero-orb hero-orb--blue hero-orb--lg float-slow float-delay-1" style="bottom:-50px;right:-60px;"></div>
+        <div class="container">
+            <div class="hero-badges">
+                <span class="hero-badge">&#10003; Built before you pay</span>
+                <span class="hero-badge">&#10003; 48-hour first demo</span>
+                <span class="hero-badge">&#10003; AI-optimised by default</span>
+            </div>
+            <h1 style="margin-top:1.25rem;">Risk-Free Website Design<br><span style="background:var(--gradient-accent);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Built Before You Pay</span></h1>
+            <p style="font-size:0.78rem;color:rgba(255,255,255,0.5);margin:0.5rem 0 0;font-family:'Space Grotesk',sans-serif;letter-spacing:0.01em;">Last updated: 2026-05-27</p>
+            <p class="hero-sub">You see your finished website in 48 hours. If you approve it, you pay and we publish. If not, you walk away free with no charge.</p>
+            <div class="hero-price-row">
+                <div class="hero-price-block">
+                    <div class="hero-price-label">India</div>
+                    <div class="hero-price-value">&#8377;20,000 &ndash; &#8377;50,000</div>
                 </div>
-                <p class="hero-tz">IST &middot; GMT &middot; EST &middot; PST &ensp;&mdash;&ensp; Updated 2026-05-27</p>
+                <div class="hero-price-block">
+                    <div class="hero-price-label">International (US &middot; UK &middot; CA &middot; AU)</div>
+                    <div class="hero-price-value">USD 600 &ndash; USD 1,500</div>
+                </div>
             </div>
-            <div class="scroll-cue" aria-hidden="true">
-                <span class="scroll-cue-line"></span>
-                <span class="scroll-cue-text">Scroll</span>
+            <div class="hero-cta-row">
+                <a href="#apply" class="btn-white">Apply for a Demo</a>
+                <a href="https://wa.me/917397225523" target="_blank" rel="noopener" class="btn-primary" style="background:rgba(255,255,255,0.12);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,0.2);">WhatsApp Us</a>
             </div>
+            <p class="tz-note">Available across IST, GMT, EST, and PST</p>
         </div>
-        <div class="hero-right">
-            <div class="hero-spec">
-                <div class="spec-row">
-                    <div class="spec-label">India</div>
-                    <div class="spec-val">&#8377;20,000 &ndash; &#8377;50,000</div>
-                </div>
-                <div class="spec-row">
-                    <div class="spec-label">International</div>
-                    <div class="spec-val">USD 600 &ndash; 1,500</div>
-                </div>
-                <ul class="spec-list">
-                    <li>48-hour first demo</li>
-                    <li>&#8377;0 upfront for Indian clients</li>
-                    <li>Walk away free if you don&rsquo;t approve</li>
-                    <li>AI-optimised by default</li>
-                </ul>
-                <a href="#apply" class="spec-apply">Apply now &rarr;</a>
-            </div>
+    </section>
+    <div class="section-divider">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,0 C480,60 960,60 1440,0 L1440,60 L0,60 Z" fill="#FFFFFF"/></svg>
+    </div>
+
+    <!-- THE PROBLEM -->
+    <section class="section">
+        <div class="container prose">
+            <p>Most businesses get burned on websites. They pay a freelancer upfront and wait weeks for a result that looks nothing like what they imagined. Or they pay an agency a deposit and sign a contract before seeing a single page. The money is gone before the work is done.</p>
+            <p>The risk-free model flips this. You fill in a short form. We build your website. You see the real, finished site within 48 hours. If it works for you, you pay and we publish it. If it does not, you walk away. No charge. No awkward conversations. No lost money.</p>
+            <p>Every website we build is AI-optimised by default. That means schema markup, structured content, and fast load times so your site shows up when customers ask ChatGPT, Perplexity, or Google AI for businesses like yours.</p>
         </div>
     </section>
 
-    <!-- ── THE PROBLEM ───────────────────────────────────────────────── -->
-    <section class="sec sec-white">
+    <!-- 3 STEPS -->
+    <section class="section section-alt">
         <div class="container">
-            <div class="animate-on-scroll">
-                <p class="problem-opener">Most website projects end before they really begin.</p>
-                <div class="problem-cols">
-                    <div>
-                        <p>You pay a deposit. You wait weeks. You receive something that looks nothing like what you imagined. By the time you see anything, the money is already gone and the arguments start. The freelancer disappears. The agency sends a revision counter.</p>
-                        <p>Every website project involves one party holding the risk. Historically, that party has been you.</p>
-                    </div>
-                    <div>
-                        <p>The risk-free model inverts everything. You fill in a short form. We build a real, working website for your business. You see the finished site in 48 hours &mdash; and only then decide if you want it. If you do, you pay. If not, you walk away free. Zero charge. Zero awkwardness. Zero follow-up.</p>
-                        <p>Every site is AI-optimised by default: schema markup, structured content, fast load times &mdash; built to appear when customers search on ChatGPT, Perplexity, or Google AI.</p>
-                    </div>
+            <h2 class="section-title section-title-center">How It Works</h2>
+            <div class="steps-grid stagger-children">
+                <div class="step-card animate-on-scroll">
+                    <div class="step-number">01</div>
+                    <h3>Apply via the form</h3>
+                    <p>Takes 2 minutes. Tell us your business name, industry, and what you need. No card required for Indian clients.</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ── HOW IT WORKS ──────────────────────────────────────────────── -->
-    <section class="sec sec-cream">
-        <div class="container">
-            <div class="process-intro animate-on-scroll">
-                <span class="label">How it works</span>
-                <h2 class="sec-h2">Three steps. No surprises.</h2>
-            </div>
-            <div class="process-item animate-on-scroll">
-                <span class="process-num">01</span>
-                <div>
-                    <h3 class="process-title">Apply via the form</h3>
-                    <p class="process-desc">Takes 2 minutes. Tell us your business name, industry, and what you need. No card required for Indian clients.</p>
+                <div class="step-card highlight-step animate-on-scroll">
+                    <div class="step-number">02</div>
+                    <h3>We build your website in 48 hours</h3>
+                    <p>We design a real, working website for your business. Custom, not a template. You get a private preview link.</p>
                 </div>
-            </div>
-            <div class="process-item animate-on-scroll">
-                <span class="process-num">02</span>
-                <div>
-                    <h3 class="process-title">We build your website in 48 hours</h3>
-                    <p class="process-desc">We design a real, working website for your business. Custom, not a template. You get a private preview link by email.</p>
-                </div>
-            </div>
-            <div class="process-item animate-on-scroll">
-                <span class="process-num">03</span>
-                <div>
-                    <h3 class="process-title">Approve and pay, or walk away free</h3>
-                    <p class="process-desc">You see the finished site. If you want it, pay the agreed price and we publish. If not &mdash; no charge, no follow-up. Zero.</p>
+                <div class="step-card animate-on-scroll">
+                    <div class="step-number">03</div>
+                    <h3>Approve and pay, or walk away free</h3>
+                    <p>You see the finished site. If you want it, you pay the agreed price and we publish. If not, no charge.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ── PRICING ───────────────────────────────────────────────────── -->
-    <section class="sec sec-white">
+    <!-- PRICING -->
+    <section class="section">
         <div class="container">
-            <div class="pricing-intro animate-on-scroll">
-                <span class="label">Pricing</span>
-                <h2 class="sec-h2">What it costs</h2>
-                <p class="sec-lead">GST extra where applicable for Indian clients. International clients: no GST.</p>
-            </div>
-            <div class="pricing-grid">
+            <h2 class="section-title section-title-center">What It Costs</h2>
+            <p style="text-align:center;color:var(--text-muted);margin-bottom:0;font-size:0.9rem;">GST extra where applicable for Indian clients. International clients: no GST.</p>
+            <div class="pricing-grid-2">
                 <div class="pricing-card animate-on-scroll">
-                    <div class="plan-name">Landing Page</div>
-                    <div class="plan-inr">&#8377;20,000</div>
-                    <div class="plan-usd">/ USD 600</div>
-                    <div class="plan-rule"></div>
-                    <ul class="plan-features">
+                    <div class="card-name">Landing Page</div>
+                    <div class="card-price-inr">&#8377;20,000</div>
+                    <div class="card-price-usd">/ USD 600</div>
+                    <ul>
                         <li>1 focused page</li>
                         <li>Hero section with clear CTA</li>
                         <li>Services or offer section</li>
@@ -1265,16 +411,14 @@
                         <li>Mobile-first design</li>
                         <li>Fast load time (PageSpeed 90+)</li>
                     </ul>
-                    <p class="plan-note">International: refundable USD 49 holding retainer at application. Credited to invoice if you proceed.</p>
-                    <div class="plan-rule"></div>
-                    <a href="#apply" class="btn-outline">Apply for This Plan</a>
+                    <p class="intl-note">International: refundable USD 49 holding retainer at application. Credited to invoice if you proceed.</p>
                 </div>
                 <div class="pricing-card featured animate-on-scroll">
-                    <div class="plan-name">Full Website</div>
-                    <div class="plan-inr">&#8377;50,000</div>
-                    <div class="plan-usd">/ USD 1,500</div>
-                    <div class="plan-rule"></div>
-                    <ul class="plan-features">
+                    <span style="display:inline-block;background:var(--gradient-accent);color:var(--primary-navy);padding:0.25rem 0.75rem;border-radius:50px;font-size:0.72rem;font-weight:700;margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.05em;">Most Popular</span>
+                    <div class="card-name">Full Website</div>
+                    <div class="card-price-inr">&#8377;50,000</div>
+                    <div class="card-price-usd">/ USD 1,500</div>
+                    <ul>
                         <li>4 to 8 pages</li>
                         <li>Home, About, Services, Contact</li>
                         <li>Portfolio section if you have projects</li>
@@ -1284,361 +428,339 @@
                         <li>Google Analytics 4 setup</li>
                         <li>Google Search Console setup</li>
                     </ul>
-                    <p class="plan-note">International: refundable USD 49 holding retainer at application. Credited to invoice if you proceed.</p>
-                    <div class="plan-rule"></div>
-                    <a href="#apply" class="btn-blue">Apply for This Plan</a>
+                    <p class="intl-note">International: refundable USD 49 holding retainer at application. Credited to invoice if you proceed.</p>
                 </div>
             </div>
-            <p class="pricing-foot animate-on-scroll">Need more pages, blog articles, or ongoing monitoring? See the <a href="/ai-ready-website">AI-Ready Lead-Gen Website</a> for the full engagement.</p>
+            <p style="text-align:center;margin-top:2rem;font-size:0.9rem;color:var(--text-secondary);">Need more pages, blog articles, or ongoing monitoring? See the <a href="/ai-ready-website" style="color:var(--primary-blue);">AI-Ready Lead-Gen Website</a> for the full engagement.</p>
         </div>
     </section>
 
-    <!-- ── COMPARE ───────────────────────────────────────────────────── -->
-    <section class="sec sec-cream">
+    <!-- COMPARE TABLE -->
+    <section class="section section-alt">
         <div class="container">
-            <div class="compare-intro animate-on-scroll">
-                <h2 class="sec-h2">Before you spend money on a website,<br>know what you&rsquo;re getting into.</h2>
+            <h2 class="section-title section-title-center">How We Compare</h2>
+            <p style="text-align:center;color:var(--text-secondary);max-width:52ch;margin:0 auto 0;font-size:0.95rem;">Before you spend money on a website, know exactly what you are getting into.</p>
+            <div class="compare-wrap">
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th class="col-label" style="width:28%;"></th>
+                            <th class="highlight" style="width:18%;">OptiScale<br>Risk-Free</th>
+                            <th style="width:18%;color:var(--text-primary);">DIY Builders<br><span style="font-size:11px;font-weight:500;color:var(--text-muted);">Wix, Squarespace</span></th>
+                            <th style="width:18%;color:var(--text-primary);">Freelancer</th>
+                            <th style="width:18%;color:var(--text-primary);">Web Agency</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="col-label">Upfront cost</td>
+                            <td class="highlight"><span class="yes">&#8377;0 (India)<br><span style="font-size:11px;font-weight:500;">USD 49 refundable (Intl)</span></span></td>
+                            <td>&#8377;0<br><span style="font-size:11px;color:var(--text-muted);">then monthly fees</span></td>
+                            <td>&#8377;5,000 to &#8377;50,000+</td>
+                            <td>&#8377;30,000 to &#8377;1,50,000+</td>
+                        </tr>
+                        <tr>
+                            <td class="col-label">See it before you pay</td>
+                            <td class="highlight">
+                                <span class="chk"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            </td>
+                            <td><span style="font-size:12px;color:var(--text-muted);">You build it yourself</span></td>
+                            <td>
+                                <span class="crs"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+                            </td>
+                            <td>
+                                <span class="crs"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-label">Custom design (not a template)</td>
+                            <td class="highlight">
+                                <span class="chk"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            </td>
+                            <td>
+                                <span class="crs"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+                            </td>
+                            <td>
+                                <span class="chk"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            </td>
+                            <td>
+                                <span class="chk"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-label">Time until you see a result</td>
+                            <td class="highlight"><span class="yes">48 hours</span></td>
+                            <td>Days to weeks</td>
+                            <td>2 to 6 weeks</td>
+                            <td>4 to 12 weeks</td>
+                        </tr>
+                        <tr>
+                            <td class="col-label">We do the work</td>
+                            <td class="highlight">
+                                <span class="chk"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                                <span style="display:block;font-size:11px;color:#16a34a;margin-top:2px;">We build it</span>
+                            </td>
+                            <td>
+                                <span class="crs"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+                                <span style="display:block;font-size:11px;color:#dc2626;margin-top:2px;">You build it</span>
+                            </td>
+                            <td>
+                                <span class="chk"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                                <span style="display:block;font-size:11px;color:#16a34a;margin-top:2px;">They build it</span>
+                            </td>
+                            <td>
+                                <span class="chk"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                                <span style="display:block;font-size:11px;color:#16a34a;margin-top:2px;">They build it</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-label">Risk if you do not like it</td>
+                            <td class="highlight"><span class="yes">None. Walk away free.</span></td>
+                            <td>Monthly fees wasted</td>
+                            <td>Deposit lost</td>
+                            <td>Thousands lost</td>
+                        </tr>
+                        <tr>
+                            <td class="col-label">AI-optimised by default</td>
+                            <td class="highlight">
+                                <span class="chk"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            </td>
+                            <td>
+                                <span class="crs"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+                            </td>
+                            <td>
+                                <span class="dsh"><svg width="9" height="2" viewBox="0 0 10 2" fill="none"><rect width="10" height="2" rx="1" fill="#d97706"/></svg></span>
+                                <span style="display:block;font-size:11px;color:#d97706;margin-top:2px;">Varies</span>
+                            </td>
+                            <td>
+                                <span class="dsh"><svg width="9" height="2" viewBox="0 0 10 2" fill="none"><rect width="10" height="2" rx="1" fill="#d97706"/></svg></span>
+                                <span style="display:block;font-size:11px;color:#d97706;margin-top:2px;">Extra cost</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-label">Contract required</td>
+                            <td class="highlight">
+                                <span class="crs" style="background:rgba(255,255,255,0.8);"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+                                <span style="display:block;font-size:11px;color:var(--text-muted);margin-top:2px;">No contract</span>
+                            </td>
+                            <td>
+                                <span class="crs"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+                                <span style="display:block;font-size:11px;color:#dc2626;margin-top:2px;">Monthly plan</span>
+                            </td>
+                            <td>
+                                <span class="crs"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+                                <span style="display:block;font-size:11px;color:#dc2626;margin-top:2px;">Signed agreement</span>
+                            </td>
+                            <td>
+                                <span class="crs"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+                                <span style="display:block;font-size:11px;color:#dc2626;margin-top:2px;">Full contract</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <div class="compare-shell animate-on-scroll">
-                <div class="compare-scroll">
-                    <table class="compare-table">
-                        <thead>
-                            <tr>
-                                <th class="th-f"></th>
-                                <th class="th-us">OptiScale<br>Risk-Free</th>
-                                <th>DIY Builders<br><span style="font-size:0.72rem;font-weight:400;">Wix, Squarespace</span></th>
-                                <th>Freelancer</th>
-                                <th>Web Agency</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="td-f">Upfront cost</td>
-                                <td class="td-us ct-yes">&#8377;0 for India<br><span style="font-size:0.78rem;">USD 49 refundable (Intl)</span></td>
-                                <td>&#8377;0 then<br>monthly fees</td>
-                                <td>&#8377;5,000 &ndash; &#8377;50,000+</td>
-                                <td>&#8377;30,000 &ndash; &#8377;1,50,000+</td>
-                            </tr>
-                            <tr>
-                                <td class="td-f">See it before you pay</td>
-                                <td class="td-us ct-yes">&#10003;</td>
-                                <td style="font-size:0.82rem;">You build it yourself</td>
-                                <td class="ct-no">&#10007;</td>
-                                <td class="ct-no">&#10007;</td>
-                            </tr>
-                            <tr>
-                                <td class="td-f">Custom design (not a template)</td>
-                                <td class="td-us ct-yes">&#10003;</td>
-                                <td class="ct-no">&#10007;</td>
-                                <td class="ct-yes">&#10003;</td>
-                                <td class="ct-yes">&#10003;</td>
-                            </tr>
-                            <tr>
-                                <td class="td-f">Time until you see a result</td>
-                                <td class="td-us ct-yes">48 hours</td>
-                                <td>Days to weeks</td>
-                                <td>2 to 6 weeks</td>
-                                <td>4 to 12 weeks</td>
-                            </tr>
-                            <tr>
-                                <td class="td-f">We do all the work</td>
-                                <td class="td-us ct-yes">&#10003;</td>
-                                <td class="ct-no">You build it</td>
-                                <td class="ct-yes">&#10003;</td>
-                                <td class="ct-yes">&#10003;</td>
-                            </tr>
-                            <tr>
-                                <td class="td-f">Risk if you don&rsquo;t like it</td>
-                                <td class="td-us ct-yes">None. Walk away free.</td>
-                                <td class="ct-meh">Monthly fees wasted</td>
-                                <td class="ct-no">Deposit lost</td>
-                                <td class="ct-no">Thousands lost</td>
-                            </tr>
-                            <tr>
-                                <td class="td-f">AI-optimised by default</td>
-                                <td class="td-us ct-yes">&#10003;</td>
-                                <td class="ct-no">&#10007;</td>
-                                <td class="ct-meh">Varies</td>
-                                <td class="ct-meh">Extra cost</td>
-                            </tr>
-                            <tr>
-                                <td class="td-f">Contract required</td>
-                                <td class="td-us" style="color:var(--green);font-weight:600;">No contract</td>
-                                <td style="color:var(--red);font-size:0.82rem;">Monthly plan</td>
-                                <td style="color:var(--red);font-size:0.82rem;">Signed agreement</td>
-                                <td style="color:var(--red);font-size:0.82rem;">Full contract</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <p class="compare-foot animate-on-scroll">Full breakdown: <a href="/compare">OptiScale Risk-Free vs all alternatives &rarr;</a></p>
+            <p style="text-align:center;font-size:12px;color:var(--text-muted);margin-top:10px;">Scroll to see all columns on smaller screens.</p>
+            <p style="text-align:center;margin-top:1.5rem;font-size:0.9rem;color:var(--text-secondary);">See the full comparison: <a href="/compare" style="color:var(--primary-blue);">OptiScale Risk-Free vs all alternatives &rarr;</a></p>
         </div>
     </section>
 
-    <!-- ── AI OPTIMISED ──────────────────────────────────────────────── -->
-    <section class="sec sec-navy">
+    <!-- AI OPTIMISED BY DEFAULT -->
+    <section class="section">
         <div class="container">
-            <div class="ai-top animate-on-scroll">
-                <span class="label label-white">AI-Optimised by Default</span>
-                <h2 class="ai-heading">Every website we build is designed to be found on ChatGPT, Perplexity, and Google AI.</h2>
-                <p class="ai-body">
-                    Most website designers do not think about AI search at all. We build it in by default because that is what we do for every client. Schema markup, structured content, and a fast load time are all real signals for AI citation &mdash; and we include all three as standard. <a href="/ai-visibility-audit">See the AI Visibility Audit &rarr;</a>
-                </p>
-            </div>
-            <div class="ai-cols-4 animate-on-scroll">
-                <div class="ai-col">
-                    <h4>Schema Markup</h4>
-                    <p>Structured JSON-LD on every page so AI engines read your business correctly &mdash; name, location, services, pricing.</p>
-                </div>
-                <div class="ai-col">
-                    <h4>Structured Content</h4>
-                    <p>FAQ sections and clear service copy that directly answer the queries your customers type into AI tools.</p>
-                </div>
-                <div class="ai-col">
-                    <h4>Fast Load Time</h4>
-                    <p>PageSpeed 90+ by default &mdash; a real signal for both Google ranking and AI crawler access frequency.</p>
-                </div>
-                <div class="ai-col">
-                    <h4>AI Citation Ready</h4>
-                    <p>Content structured for ChatGPT, Perplexity, Gemini, and Bing Copilot to surface and cite.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ── CASE STUDY ────────────────────────────────────────────────── -->
-    <section class="sec sec-white">
-        <div class="container">
-            <span class="label animate-on-scroll">Delivered on the Risk-Free Model</span>
-            <div class="cs-card animate-on-scroll">
-                <div>
-                    <h2 class="cs-name">Design<br>Intend</h2>
-                    <p class="cs-sub">12-year architecture<br>practice, Hosur, Tamil Nadu</p>
-                </div>
-                <div>
-                    <div class="cs-metrics">
-                        <div>
-                            <span class="cs-n">36</span>
-                            <span class="cs-l">pages delivered</span>
-                        </div>
-                        <div>
-                            <span class="cs-n">2,289</span>
-                            <span class="cs-l">canonical refs corrected</span>
-                        </div>
-                        <div>
-                            <span class="cs-n">48h</span>
-                            <span class="cs-l">delivery window</span>
-                        </div>
-                        <div>
-                            <span class="cs-n">&#8377;0</span>
-                            <span class="cs-l">paid before approval</span>
-                        </div>
-                    </div>
-                    <p class="cs-body">Design Intend had no digital presence. No website, no Google Business Profile, no schema. We built and delivered their complete AI-optimised website using the same risk-free model described on this page. The engagement is part of the same operator family as OptiScale Advisors and is shared here as a documented example of the methodology at work.</p>
-                    <div class="cs-tags">
-                        <span class="cs-tag">Complete website rebuild</span>
-                        <span class="cs-tag">Kishore Farmhouse, Jamna Auto Industries</span>
-                        <span class="cs-tag">Author page with Person schema</span>
-                        <span class="cs-tag">LocalBusiness + CreativeWork + BreadcrumbList</span>
-                        <span class="cs-tag">Sitemap and robots.txt rebuilt for AI crawlers</span>
-                    </div>
-                    <a href="/case-studies/design-intend/" class="cs-link">Read the full case study &rarr;</a>
-                </div>
+            <h2 class="section-title">AI-Optimised by Default</h2>
+            <div class="ai-box">
+                <h3>What "AI-optimised" means in practice</h3>
+                <p>Every website we build includes schema markup — the structured data that tells ChatGPT, Perplexity, Google AI Overviews, and Gemini exactly what your business does, where you are, and who your customers are. Without schema, AI engines guess. With it, they can recommend you directly.</p>
+                <p>We also structure the content on every page so it answers the questions your customers ask AI search tools. FAQ sections, clear service descriptions, and a fast load time (PageSpeed 90+) all contribute to AI citation probability.</p>
+                <p>Most website designers do not think about AI search at all. OptiScale builds it in by default because that is what we do for every client.</p>
+                <p style="margin-bottom:0;">Want to understand your current AI visibility before building a new site? <a href="/ai-visibility-audit" style="color:var(--primary-blue);font-weight:600;">See the AI Visibility Audit &#8594;</a></p>
             </div>
         </div>
     </section>
 
-    <!-- ── APPLICATION FORM ──────────────────────────────────────────── -->
-    <section class="sec sec-cream" id="apply">
+    <!-- DESIGN INTEND CASE STUDY -->
+    <section class="section section-alt">
         <div class="container">
-            <div class="apply-layout">
-                <div>
-                    <div id="form-success" class="form-success">
-                        <div class="form-success-icon">&#10003;</div>
-                        <h3>Application received.</h3>
-                        <p>We will have your website demo ready within 48 hours. Check your email for a confirmation.</p>
-                    </div>
-                    <form id="rfsd-form" novalidate>
-                        <h2 class="form-heading">Apply for a Demo</h2>
-                        <p class="form-sub">See your finished website in 48 hours. Takes 2 minutes to apply.</p>
-                        <div class="form-row2">
-                            <div class="fg">
-                                <label for="rfsd-name">Your name <span style="color:var(--red)">*</span></label>
-                                <input type="text" id="rfsd-name" name="name" autocomplete="name" required placeholder="Ravi Kumar">
-                            </div>
-                            <div class="fg">
-                                <label for="rfsd-business">Business name <span style="color:var(--red)">*</span></label>
-                                <input type="text" id="rfsd-business" name="business" required placeholder="Kumar Dental Clinic">
-                            </div>
-                        </div>
-                        <div class="fg">
-                            <label for="rfsd-email">Email address <span style="color:var(--red)">*</span></label>
-                            <input type="email" id="rfsd-email" name="email" autocomplete="email" required placeholder="ravi@yourbusiness.com">
-                        </div>
-                        <div class="form-row2">
-                            <div class="fg">
-                                <label for="rfsd-industry">Industry <span style="color:var(--red)">*</span></label>
-                                <select id="rfsd-industry" name="industry" required>
-                                    <option value="">Select industry</option>
-                                    <option>Interior Design / Architecture</option>
-                                    <option>Doctor / Clinic / Healthcare</option>
-                                    <option>Law Firm / Legal Services</option>
-                                    <option>Chartered Accountant / Finance</option>
-                                    <option>Real Estate</option>
-                                    <option>Consultant / Coach</option>
-                                    <option>Digital Marketing Agency</option>
-                                    <option>Retail / E-commerce</option>
-                                    <option>Restaurant / Food</option>
-                                    <option>Education / Training</option>
-                                    <option>Other</option>
-                                </select>
-                            </div>
-                            <div class="fg">
-                                <label for="rfsd-country">Country <span style="color:var(--red)">*</span></label>
-                                <select id="rfsd-country" name="country" required>
-                                    <option value="">Select country</option>
-                                    <option value="India">India</option>
-                                    <option value="USA">United States</option>
-                                    <option value="UK">United Kingdom</option>
-                                    <option value="Canada">Canada</option>
-                                    <option value="Australia">Australia</option>
-                                    <option value="Singapore">Singapore</option>
-                                    <option value="Other">Other</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div id="intl-retainer-note" class="intl-retainer-note">
-                            <strong>International clients:</strong> A refundable USD 49 holding retainer will be requested by email after your application. This is refunded in full if we do not deliver your demo within 48 hours, and credited toward your invoice if you proceed.
-                        </div>
-                        <div class="fg">
-                            <label for="rfsd-whatsapp">WhatsApp <span class="optional">(optional, faster for updates)</span></label>
-                            <input type="tel" id="rfsd-whatsapp" name="whatsapp" autocomplete="tel" placeholder="+91 73972 25523">
-                        </div>
-                        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-                        <button type="submit" class="form-submit-btn" id="rfsd-submit">Apply for My Demo &rarr;</button>
-                        <p class="form-disclaimer">No spam. No cold calls. Your information is only used to build your website demo.</p>
-                    </form>
-                </div>
-                <div class="form-aside animate-on-scroll">
-                    <span class="form-aside-label">No card. No contract.</span>
-                    <p class="form-aside-heading">Your demo is built before a single rupee changes hands.</p>
-                    <ul class="trust-list">
-                        <li><strong>48-hour demo</strong> from the moment your application is received</li>
-                        <li><strong>&#8377;0 upfront</strong> for Indian clients &mdash; zero</li>
-                        <li><strong>USD 49 refundable retainer</strong> for international clients, credited to invoice</li>
-                        <li><strong>Walk away free</strong> if you don&rsquo;t approve &mdash; no questions</li>
-                        <li><strong>AI schema markup</strong> included by default on every page</li>
-                        <li>India &middot; USA &middot; UK &middot; Canada &middot; Australia &middot; Singapore</li>
+            <h2 class="section-title">Delivered: Design Intend</h2>
+            <div class="cs-strip animate-on-scroll">
+                <div class="cs-strip-badge">Delivered Client</div>
+                <div class="cs-strip-body">
+                    <h4>Design Intend &mdash; 12-year architecture practice, Hosur, Tamil Nadu</h4>
+                    <p>Design Intend had no digital presence. No website, no Google Business Profile, no schema. We built and delivered their complete AI-optimised website using the same risk-free model described on this page. The engagement is part of the same operator family as OptiScale Advisors and is shared here as a documented example of the methodology at work.</p>
+                    <ul>
+                        <li>Complete website rebuild</li>
+                        <li>Project pages: Kishore Farmhouse, Jamna Auto Industries</li>
+                        <li>Author page for Ar. Chittrarasan with Person schema</li>
+                        <li>2,289 canonical references corrected across 47 files</li>
+                        <li>LocalBusiness, CreativeWork, BreadcrumbList schema</li>
+                        <li>Sitemap and robots.txt rebuilt for AI crawler access</li>
                     </ul>
-                    <p class="form-contact">
-                        Prefer to talk first? <a href="https://wa.me/917397225523" target="_blank" rel="noopener">WhatsApp us directly</a> or <a href="https://cal.com/optiscale360/discoverycall" target="_blank" rel="noopener">book a free 15-minute call</a>. Available across IST, GMT, EST, and PST.
-                    </p>
+                    <p style="margin-top:0.75rem;margin-bottom:0;font-size:0.85rem;"><a href="/case-studies/design-intend/" style="color:var(--primary-blue);font-weight:600;">Read the full case study &#8594;</a></p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ── FAQ ───────────────────────────────────────────────────────── -->
-    <section class="sec sec-white">
-        <div class="container" style="max-width:780px;">
-            <div class="faq-intro animate-on-scroll">
-                <span class="label">Common Questions</span>
-                <h2 class="sec-h2">Everything you need to know.</h2>
-            </div>
-            <div class="faq-item">
-                <button class="faq-q">
-                    What does &ldquo;approval&rdquo; mean exactly?
-                    <span class="faq-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
-                </button>
-                <div class="faq-a"><div class="faq-inner">You see the finished site in 48 hours. If you approve it, you pay the agreed price and we publish it. If you do not approve it, you walk away free. No charge. No follow-up. No questions.</div></div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-q">
-                    What if I do not approve the demo?
-                    <span class="faq-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
-                </button>
-                <div class="faq-a"><div class="faq-inner">You walk away. No charge, no awkward calls, no pressure. For Indian clients there is nothing to refund because nothing was paid. For international clients the USD 49 holding retainer is refunded in full.</div></div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-q">
-                    How does the 48-hour timeline work?
-                    <span class="faq-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
-                </button>
-                <div class="faq-a"><div class="faq-inner">Once your application is received, we build a real working website and send you a private preview link within 48 hours. The clock starts when the form is submitted and we confirm receipt. If we miss the 48-hour window, international clients receive a full refund of the holding retainer.</div></div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-q">
-                    Landing Page vs Full Website &mdash; what is the difference?
-                    <span class="faq-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
-                </button>
-                <div class="faq-a"><div class="faq-inner">A Landing Page is one focused page: hero section, services, contact form, AI-optimised schema. It converts visitors into enquiries. A Full Website is 4 to 8 pages: home, about, services, contact, blog setup, and portfolio if you have projects to show. Both are AI-optimised by default.</div></div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-q">
-                    How is this different from the AI-Ready Lead-Gen Website?
-                    <span class="faq-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
-                </button>
-                <div class="faq-a"><div class="faq-inner">The Risk-Free Website Design is for businesses that need a website fast and want to see it before paying. The <a href="/ai-ready-website">AI-Ready Lead-Gen Website</a> is a deeper engagement: discovery call, competitor analysis, 5 to 12 pages, blog articles written, 90 days of monitoring. If you want the full strategic build, that is the right choice.</div></div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-q">
-                    Do you work with my industry?
-                    <span class="faq-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
-                </button>
-                <div class="faq-a"><div class="faq-inner">We work with service-based businesses of all types: interior designers, doctors and clinics, law firms, chartered accountants, real estate agents, consultants, coaches, and digital agencies. If you serve clients and need a website that brings them in, apply and we will confirm.</div></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ── RELATED ───────────────────────────────────────────────────── -->
-    <section class="sec sec-cream">
+    <!-- APPLICATION FORM -->
+    <section class="form-section" id="apply">
         <div class="container">
-            <h2 class="sec-h2 animate-on-scroll">More from OptiScale</h2>
-            <div class="related-grid">
-                <a href="/ai-visibility-audit" class="related-card animate-on-scroll">
-                    <span class="rc-tag">AI Visibility Audit</span>
-                    <div class="rc-title">Not sure if your site appears on AI platforms?</div>
-                    <div class="rc-desc">&#8377;15,000 / USD 199 &mdash; 48-hour report across 5 AI platforms.</div>
-                    <span class="rc-arr">Learn more &rarr;</span>
+            <div style="text-align:center;margin-bottom:2rem;">
+                <p style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:0.75rem;">Apply for a Demo</p>
+                <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:700;color:#fff;margin-bottom:0.5rem;">See Your Website in 48 Hours</h2>
+                <p style="color:rgba(255,255,255,0.65);font-size:0.95rem;">Takes 2 minutes. No card required for Indian clients.</p>
+                <p style="color:rgba(255,255,255,0.45);font-size:0.8rem;margin-top:0.4rem;">Available across IST, GMT, EST, and PST</p>
+            </div>
+            <div class="form-card">
+                <div class="form-success" id="form-success">
+                    <div style="font-size:2.5rem;margin-bottom:0.75rem;">&#10003;</div>
+                    <h3>Application received.</h3>
+                    <p>We will have your website demo ready within 48 hours. Check your email for a confirmation.</p>
+                </div>
+                <form id="rfsd-form" novalidate>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="rfsd-name">Your name <span style="color:#dc2626">*</span></label>
+                            <input type="text" id="rfsd-name" name="name" autocomplete="name" required placeholder="Ravi Kumar">
+                        </div>
+                        <div class="form-group">
+                            <label for="rfsd-business">Business name <span style="color:#dc2626">*</span></label>
+                            <input type="text" id="rfsd-business" name="business" required placeholder="Kumar Dental Clinic">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="rfsd-email">Email address <span style="color:#dc2626">*</span></label>
+                        <input type="email" id="rfsd-email" name="email" autocomplete="email" required placeholder="ravi@yourbusiness.com">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="rfsd-industry">Industry <span style="color:#dc2626">*</span></label>
+                            <select id="rfsd-industry" name="industry" required>
+                                <option value="">Select your industry</option>
+                                <option>Interior Design / Architecture</option>
+                                <option>Doctor / Clinic / Healthcare</option>
+                                <option>Law Firm / Legal Services</option>
+                                <option>Chartered Accountant / Finance</option>
+                                <option>Real Estate</option>
+                                <option>Consultant / Coach</option>
+                                <option>Digital Marketing Agency</option>
+                                <option>Retail / E-commerce</option>
+                                <option>Restaurant / Food</option>
+                                <option>Education / Training</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="rfsd-country">Country <span style="color:#dc2626">*</span></label>
+                            <select id="rfsd-country" name="country" required>
+                                <option value="">Select your country</option>
+                                <option value="India">India</option>
+                                <option value="USA">United States</option>
+                                <option value="UK">United Kingdom</option>
+                                <option value="Canada">Canada</option>
+                                <option value="Australia">Australia</option>
+                                <option value="Singapore">Singapore</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="intl-retainer-note" class="intl-retainer-note">
+                        <strong>International clients:</strong> A refundable USD 49 holding retainer will be requested by email after your application. This is refunded in full if we do not deliver your demo within 48 hours, and credited toward your invoice if you proceed.
+                    </div>
+                    <div class="form-group">
+                        <label for="rfsd-whatsapp">WhatsApp number <span class="optional">(optional, but faster for updates)</span></label>
+                        <input type="tel" id="rfsd-whatsapp" name="whatsapp" autocomplete="tel" placeholder="+91 73972 25523">
+                    </div>
+                    <!-- Honeypot -->
+                    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+                    <button type="submit" class="form-submit" id="rfsd-submit">Apply for My Demo &#8594;</button>
+                    <p style="text-align:center;font-size:0.78rem;color:var(--text-muted);margin-top:0.75rem;">No spam. No cold calls. Your info is only used to build your website demo.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+        <div class="container" style="max-width:760px;">
+            <h2 class="section-title section-title-center">Common Questions</h2>
+            <div style="margin-top:0.5rem;">
+
+                <div class="faq-item">
+                    <button class="faq-question">What does "approval" mean exactly? <span class="faq-icon">&#8964;</span></button>
+                    <div class="faq-answer"><div class="faq-answer-inner">You see the finished site in 48 hours. If you approve it, you pay the agreed price and we publish it. If you do not approve it, you walk away free. No charge. No follow-up. No questions.</div></div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">What if I do not approve the demo? <span class="faq-icon">&#8964;</span></button>
+                    <div class="faq-answer"><div class="faq-answer-inner">You walk away. No charge, no awkward calls, no pressure. For Indian clients there is nothing to refund because nothing was paid. For international clients the USD 49 holding retainer is refunded in full.</div></div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">How does the 48-hour timeline work? <span class="faq-icon">&#8964;</span></button>
+                    <div class="faq-answer"><div class="faq-answer-inner">Once your application is received, we build your website and send a private preview link within 48 hours. The clock starts when the form is submitted and we confirm receipt. If we miss the 48-hour window, international clients receive a full refund of the holding retainer.</div></div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">Landing Page vs Full Website &mdash; what is the difference? <span class="faq-icon">&#8964;</span></button>
+                    <div class="faq-answer"><div class="faq-answer-inner">A Landing Page is one focused page: hero section, services, contact form, AI-optimised schema. It converts visitors into enquiries. A Full Website is 4 to 8 pages: home, about, services, contact, blog setup, and portfolio if you have projects to show. Both are AI-optimised by default.</div></div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">How is this different from the AI-Ready Lead-Gen Website? <span class="faq-icon">&#8964;</span></button>
+                    <div class="faq-answer"><div class="faq-answer-inner">The Risk-Free Website Design is for businesses that need a website fast and want to see it before paying. The <a href="/ai-ready-website">AI-Ready Lead-Gen Website</a> is a deeper engagement: discovery call, competitor analysis, 5 to 12 pages, blog articles written, 90 days of monitoring. If you want the full strategic build, that is the right choice.</div></div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">Do you work with my industry? <span class="faq-icon">&#8964;</span></button>
+                    <div class="faq-answer"><div class="faq-answer-inner">We work with service-based businesses of all types: interior designers, doctors and clinics, law firms, chartered accountants, real estate agents, consultants, coaches, and digital agencies. If you serve clients and need a website that brings them in, apply and we will confirm.</div></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERNAL LINKS -->
+    <section class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Related Services</h2>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;margin-top:0.5rem;">
+                <a href="/ai-visibility-audit" style="display:block;background:#fff;border:1px solid var(--silver-dark);border-radius:var(--radius-md);padding:1.5rem;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow='none'">
+                    <div style="font-family:'Space Grotesk',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--primary-blue);margin-bottom:0.5rem;">AI Visibility Audit</div>
+                    <div style="font-weight:600;color:var(--primary-navy);margin-bottom:0.4rem;">Not sure if your site is visible on AI platforms?</div>
+                    <div style="font-size:0.88rem;color:var(--text-secondary);">&#8377;15,000 / USD 199 &mdash; 48-hour report across 5 AI platforms &#8594;</div>
                 </a>
-                <a href="/ai-ready-website" class="related-card animate-on-scroll">
-                    <span class="rc-tag">AI-Ready Lead-Gen Website</span>
-                    <div class="rc-title">Want the full strategic website build?</div>
-                    <div class="rc-desc">Starting &#8377;50,000 / USD 1,500 &mdash; 5 to 12 pages with 90-day monitoring.</div>
-                    <span class="rc-arr">Learn more &rarr;</span>
+                <a href="/ai-ready-website" style="display:block;background:#fff;border:1px solid var(--silver-dark);border-radius:var(--radius-md);padding:1.5rem;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow='none'">
+                    <div style="font-family:'Space Grotesk',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--primary-blue);margin-bottom:0.5rem;">AI-Ready Lead-Gen Website</div>
+                    <div style="font-weight:600;color:var(--primary-navy);margin-bottom:0.4rem;">Want the full strategic website build?</div>
+                    <div style="font-size:0.88rem;color:var(--text-secondary);">Starting &#8377;50,000 / USD 1,500 &mdash; 5 to 12 pages with 90-day monitoring &#8594;</div>
                 </a>
-                <a href="/compare" class="related-card animate-on-scroll">
-                    <span class="rc-tag">Full Comparison</span>
-                    <div class="rc-title">OptiScale vs DIY vs Freelancer vs Agency</div>
-                    <div class="rc-desc">See all options side by side before you decide.</div>
-                    <span class="rc-arr">See comparison &rarr;</span>
+                <a href="/compare" style="display:block;background:#fff;border:1px solid var(--silver-dark);border-radius:var(--radius-md);padding:1.5rem;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow='none'">
+                    <div style="font-family:'Space Grotesk',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--primary-blue);margin-bottom:0.5rem;">Full Comparison</div>
+                    <div style="font-weight:600;color:var(--primary-navy);margin-bottom:0.4rem;">OptiScale vs DIY vs Freelancer vs Agency</div>
+                    <div style="font-size:0.88rem;color:var(--text-secondary);">See all options side by side before you decide &#8594;</div>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- ── BOTTOM CTA ────────────────────────────────────────────────── -->
-    <section class="bottom-cta">
+    <!-- BOTTOM CTA -->
+    <section class="cta-section">
         <div class="container">
             <h2>Ready to see your website?</h2>
             <p>Apply in 2 minutes. Your demo will be ready in 48 hours.</p>
-            <a href="#apply" class="btn-amber">Apply for a Demo <span class="arr">&rarr;</span></a>
-            <p class="bottom-cta-note">
-                <a href="https://wa.me/917397225523" target="_blank" rel="noopener">WhatsApp us</a> &nbsp;&middot;&nbsp;
-                <a href="https://cal.com/optiscale360/discoverycall" target="_blank" rel="noopener">Book a free 15-minute call</a>
-                &nbsp;&mdash;&nbsp; IST &middot; GMT &middot; EST &middot; PST
-            </p>
+            <a href="#apply" class="btn-white">Apply for a Demo</a>
+            <p class="whatsapp-note" style="margin-top:1.25rem;">Prefer to talk first? <a href="https://wa.me/917397225523" target="_blank" rel="noopener">WhatsApp us directly</a> or <a href="https://cal.com/optiscale360/discoverycall" target="_blank" rel="noopener">book a free 15-minute call</a>.</p>
+            <p style="color:rgba(255,255,255,0.4);font-size:0.8rem;margin-top:0.75rem;">Available across IST, GMT, EST, and PST</p>
         </div>
     </section>
 
     <div id="footer-placeholder"></div>
 
     <script src="/components/loader.js" defer></script>
-
+    <script src="https://unpkg.com/lucide@latest" defer></script>
     <script>
         // FAQ accordion
-        document.querySelectorAll('.faq-q').forEach(function(btn) {
+        document.querySelectorAll('.faq-question').forEach(function(btn) {
             btn.addEventListener('click', function() {
                 var item = this.closest('.faq-item');
                 var wasActive = item.classList.contains('active');
@@ -1647,15 +769,14 @@
             });
         });
 
-        // International retainer note
+        // Country change: show international retainer note
         document.getElementById('rfsd-country').addEventListener('change', function() {
             var note = document.getElementById('intl-retainer-note');
             note.classList.toggle('visible', this.value !== 'India' && this.value !== '');
         });
 
-        // Form submission
+        // Form submission via fetch (no-cors, same pattern as RiskFreeSites)
         var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzJpwnqEMskxZPzCvNuwegu34M4giL4p0u5WD6v93wBiQxjgUMapfd2E110XtXRjLSo/exec';
-
         document.getElementById('rfsd-form').addEventListener('submit', function(e) {
             e.preventDefault();
             var btn = document.getElementById('rfsd-submit');
@@ -1663,17 +784,15 @@
             btn.disabled = true;
             btn.textContent = 'Sending...';
             var formData = new FormData(this);
-            if (formData.get('_gotcha')) {
-                btn.disabled = false;
-                btn.textContent = 'Apply for My Demo →';
-                return;
-            }
+            // Honeypot check
+            if (formData.get('_gotcha')) { btn.disabled = false; btn.textContent = 'Apply for My Demo →'; return; }
             fetch(SCRIPT_URL, { method: 'POST', body: formData, mode: 'no-cors' })
                 .then(function() {
                     document.getElementById('rfsd-form').style.display = 'none';
                     document.getElementById('form-success').style.display = 'block';
                 })
                 .catch(function() {
+                    // Show success anyway — no-cors means we cannot read the response
                     document.getElementById('rfsd-form').style.display = 'none';
                     document.getElementById('form-success').style.display = 'block';
                 });
@@ -1682,16 +801,9 @@
         // Animate on scroll
         if ('IntersectionObserver' in window) {
             var obs = new IntersectionObserver(function(entries) {
-                entries.forEach(function(e) {
-                    if (e.isIntersecting) {
-                        e.target.classList.add('animate-in');
-                        obs.unobserve(e.target);
-                    }
-                });
+                entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('animate-in'); obs.unobserve(e.target); } });
             }, { threshold: 0.1 });
             document.querySelectorAll('.animate-on-scroll').forEach(function(el) { obs.observe(el); });
-        } else {
-            document.querySelectorAll('.animate-on-scroll').forEach(function(el) { el.classList.add('animate-in'); });
         }
     </script>
 </body>
