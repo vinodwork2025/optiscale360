@@ -73,11 +73,12 @@
 /* ===== OPTISCALE ADVISORS FOOTER ===== */
 
 .optiscale-footer {
-    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
-    color: #E2E8F0;
+    background: #111111;
+    color: rgba(255,255,255,0.7);
     margin-top: 0;
-    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'DM Sans', system-ui, sans-serif;
     position: relative;
+    border-top: 1px solid rgba(255,255,255,0.06);
 }
 .optiscale-footer::before {
     content: '';
@@ -85,8 +86,8 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #3B82F6, #F59E0B, #3B82F6);
+    height: 2px;
+    background: #0E7C7B;
 }
 
 .footer-container {
@@ -100,8 +101,8 @@
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 3rem;
-    padding: 2.5rem 0;
-    border-bottom: 1px solid rgba(226, 232, 240, 0.1);
+    padding: 3rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
 /* ===== BRAND SECTION ===== */
@@ -120,21 +121,21 @@
 
 .footer-logo {
     width: auto;
-    height: 48px;
-    max-width: 180px;
+    height: 40px;
+    max-width: 160px;
 }
 
 .brand-tagline {
-    color: #94A3B8;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    max-width: 280px;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.88rem;
+    line-height: 1.6;
+    max-width: 260px;
     margin: 0;
 }
 
 .brand-location {
-    color: #64748B;
-    font-size: 0.85rem;
+    color: rgba(255,255,255,0.35);
+    font-size: 0.82rem;
     margin: 0;
 }
 
@@ -146,11 +147,12 @@
 }
 
 .link-group h4 {
-    color: #FFFFFF;
-    font-size: 0.9rem;
+    color: rgba(255,255,255,0.9);
+    font-size: 0.82rem;
     font-weight: 600;
-    margin: 0 0 1rem 0;
-    letter-spacing: -0.01em;
+    margin: 0 0 0.875rem 0;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
 }
 
 .link-group ul {
@@ -168,17 +170,16 @@
 
 .link-group ul li a,
 .link-group ul li span {
-    color: #94A3B8;
+    color: rgba(255,255,255,0.5);
     text-decoration: none;
     font-size: 0.85rem;
     line-height: 1.4;
-    transition: all 0.3s ease;
+    transition: color 0.2s ease;
     display: block;
 }
 
 .link-group ul li a:hover {
-    color: #FBBF24;
-    transform: translateX(4px);
+    color: rgba(255,255,255,0.9);
 }
 
 .footer-cta-btn {
@@ -186,20 +187,21 @@
     align-items: center;
     gap: 6px;
     margin-top: 1rem;
-    padding: 0.6rem 1.2rem;
-    background: linear-gradient(135deg, #F59E0B, #FBBF24);
-    color: #0F172A;
+    padding: 0.55rem 1.1rem;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.85);
     text-decoration: none;
-    font-weight: 700;
+    font-weight: 500;
     font-size: 0.85rem;
-    border-radius: 50px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2);
+    border-radius: 6px;
+    transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
 }
 
 .footer-cta-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+    border-color: rgba(255,255,255,0.4);
+    color: #FFFFFF;
+    background: rgba(255,255,255,0.06);
 }
 
 /* ===== FOOTER BOTTOM ===== */
@@ -216,8 +218,8 @@
 }
 
 .copyright {
-    color: #64748B;
-    font-size: 0.85rem;
+    color: rgba(255,255,255,0.3);
+    font-size: 0.82rem;
     margin: 0;
 }
 
@@ -227,30 +229,30 @@
 }
 
 .legal-links a {
-    color: #64748B;
+    color: rgba(255,255,255,0.35);
     text-decoration: none;
-    font-size: 0.85rem;
-    transition: color 0.3s ease;
+    font-size: 0.82rem;
+    transition: color 0.2s ease;
 }
 
 .legal-links a:hover {
-    color: #FBBF24;
+    color: rgba(255,255,255,0.7);
 }
 
 .security-badge {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    color: #64748B;
-    font-size: 0.8rem;
+    gap: 0.4rem;
+    color: rgba(255,255,255,0.3);
+    font-size: 0.78rem;
 }
 
 .security-badge svg {
-    width: 14px;
-    height: 14px;
+    width: 13px;
+    height: 13px;
 }
 
-/* ===== RESPONSIVE DESIGN ===== */
+/* ===== RESPONSIVE ===== */
 
 @media (max-width: 1024px) {
     .footer-content {
