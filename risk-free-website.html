@@ -174,235 +174,1601 @@
 
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="main.css">
-    <script src="https://unpkg.com/lucide@latest" defer></script>
+
     <style>
+        /* ============================================================
+           DESIGN SYSTEM
+        ============================================================ */
         :root {
-            --primary-navy: #0F172A; --primary-blue: #1E40AF; --primary-blue-light: #3B82F6; --pure-white: #FFFFFF;
-            --silver: #F8FAFC; --silver-dark: #E2E8F0; --success: #10B981;
-            --accent-amber: #F59E0B; --accent-amber-light: #FBBF24;
-            --text-primary: #0F172A; --text-secondary: #475569; --text-muted: #94A3B8;
-            --gradient-primary: linear-gradient(135deg, #1E3A8A 0%, #1E40AF 50%, #3B82F6 100%);
-            --gradient-accent: linear-gradient(135deg, #F59E0B, #FBBF24);
-            --font-primary: 'Space Grotesk','Inter',-apple-system,sans-serif;
-            --font-secondary: 'Inter',-apple-system,sans-serif;
-            --shadow-md: 0 10px 15px -3px rgba(0,0,0,0.1);
-            --shadow-lg: 0 25px 50px -12px rgba(0,0,0,0.15);
-            --radius-md: 1rem; --radius-lg: 1.5rem;
+            --navy:     #0F172A;
+            --navy-800: #1E293B;
+            --navy-700: #334155;
+            --blue:     #2563EB;
+            --blue-600: #1D4ED8;
+            --blue-50:  #EFF6FF;
+            --amber:    #D97706;
+            --amber-600:#B45309;
+            --amber-50: #FFFBEB;
+            --amber-100:#FEF3C7;
+            --white:    #FFFFFF;
+            --gray-50:  #F8FAFC;
+            --gray-100: #F1F5F9;
+            --gray-200: #E2E8F0;
+            --gray-400: #94A3B8;
+            --gray-500: #64748B;
+            --gray-600: #475569;
+            --green:    #059669;
+            --red:      #DC2626;
+            --font-d:   'Space Grotesk', 'Inter', sans-serif;
+            --font-b:   'Inter', sans-serif;
         }
-        *{margin:0;padding:0;box-sizing:border-box}
-        html{scroll-behavior:smooth}
-        body{font-family:var(--font-secondary);color:var(--text-primary);line-height:1.6;background:var(--pure-white)}
-        .container{max-width:1100px;margin:0 auto;padding:0 2rem}
-        .page-hero{background:var(--gradient-primary);padding:4rem 0 2.5rem;color:var(--pure-white);position:relative;overflow:hidden}
-        .page-hero > .container{position:relative;z-index:2}
-        .page-hero h1{font-family:var(--font-primary);font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:800;line-height:1.15;letter-spacing:-0.03em}
-        .page-hero .hero-sub{font-size:1.1rem;opacity:0.85;margin:1rem 0 0;line-height:1.7}
-        .hero-badges{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.25rem}
-        .hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:50px;padding:5px 14px;font-size:0.82rem;font-weight:600;color:rgba(255,255,255,0.92)}
-        .hero-price-row{margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
-        .hero-price-block{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:0.75rem 1.25rem}
-        .hero-price-label{font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:3px}
-        .hero-price-value{font-family:var(--font-primary);font-size:1.1rem;font-weight:700;color:#fff}
-        .hero-cta-row{display:flex;flex-wrap:wrap;gap:0.75rem;align-items:center;margin-top:1.75rem}
-        .tz-note{font-size:0.8rem;color:rgba(255,255,255,0.6);margin-top:0.75rem}
-        .section{padding:3.5rem 0}
-        .section-alt{background:var(--silver)}
-        .section-title{font-family:var(--font-primary);font-size:clamp(1.5rem,3vw,2rem);font-weight:700;color:var(--primary-navy);margin-bottom:2rem;letter-spacing:-0.03em;line-height:1.15;position:relative;display:inline-block}
-        .section-title::after{content:'';display:block;width:50px;height:3px;background:var(--gradient-accent);border-radius:3px;margin-top:8px}
-        .section-title-center{text-align:center;width:100%}
-        .section-title-center::after{margin-left:auto;margin-right:auto}
-        .prose p{color:var(--text-secondary);line-height:1.8;margin-bottom:1.25rem;font-size:1.05rem}
 
-        /* Steps */
-        .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2.5rem}
-        .step-card{background:var(--pure-white);border:1px solid var(--silver-dark);border-radius:var(--radius-md);padding:2rem 1.75rem;text-align:center;position:relative;overflow:hidden}
-        .step-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--gradient-primary)}
-        .step-number{font-family:var(--font-primary);font-size:2.5rem;font-weight:800;color:var(--silver-dark);line-height:1;margin-bottom:0.75rem}
-        .step-card h3{font-family:var(--font-primary);font-size:1.05rem;font-weight:700;color:var(--primary-navy);margin-bottom:0.5rem}
-        .step-card p{font-size:0.92rem;color:var(--text-secondary);line-height:1.7}
-        .step-card.highlight-step::before{background:var(--gradient-accent)}
-        .step-card.highlight-step .step-number{color:var(--accent-amber);opacity:0.4}
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-b);
+            color: var(--navy-800);
+            line-height: 1.6;
+            background: var(--white);
+            -webkit-font-smoothing: antialiased;
+        }
+        .container { max-width: 1120px; margin: 0 auto; padding: 0 2rem; }
+        a { color: inherit; }
 
-        /* Pricing tiers */
-        .pricing-grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:2rem;max-width:760px;margin-left:auto;margin-right:auto}
-        .pricing-card{background:var(--pure-white);border:1px solid var(--silver-dark);border-radius:var(--radius-lg);padding:2rem;position:relative;overflow:hidden}
-        .pricing-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(135deg,#3B82F6,#F59E0B);opacity:0.5}
-        .pricing-card.featured{border-color:var(--accent-amber);box-shadow:0 0 0 2px var(--accent-amber)}
-        .pricing-card.featured::before{opacity:1;height:4px}
-        .pricing-card .card-name{font-family:var(--font-primary);font-size:0.85rem;font-weight:700;color:var(--primary-blue);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.5rem}
-        .pricing-card .card-price-inr{font-family:var(--font-primary);font-size:2rem;font-weight:800;color:var(--primary-navy);line-height:1}
-        .pricing-card .card-price-usd{font-family:var(--font-primary);font-size:1rem;font-weight:600;color:var(--text-muted);margin:4px 0 1.25rem}
-        .pricing-card ul{list-style:none;margin-bottom:1.25rem}
-        .pricing-card li{padding:0.3rem 0;color:var(--text-secondary);font-size:0.9rem;position:relative;padding-left:1.3rem}
-        .pricing-card li::before{content:'\2713';color:var(--success);font-weight:700;position:absolute;left:0;font-size:0.85rem}
-        .intl-note{font-size:0.8rem;color:var(--text-muted);margin-top:0.5rem;font-style:italic}
+        /* ============================================================
+           KEYFRAMES
+        ============================================================ */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50%       { transform: translateY(-10px); }
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50%       { opacity: 0.4; }
+        }
 
-        /* Compare table */
-        .compare-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:2rem}
-        .compare-table{width:100%;min-width:680px;border-collapse:separate;border-spacing:0}
-        .compare-table th{padding:14px 18px;font-size:12px;font-weight:700;text-align:center;border-bottom:2px solid var(--silver-dark)}
-        .compare-table th.highlight{background:var(--primary-navy);color:#fff;border-radius:12px 12px 0 0;font-family:var(--font-primary)}
-        .compare-table th.col-label{text-align:left;color:var(--text-muted);font-size:11px;letter-spacing:0.08em;text-transform:uppercase}
-        .compare-table td{padding:14px 18px;font-size:13px;text-align:center;border-bottom:1px solid var(--silver-dark);color:var(--text-secondary);vertical-align:middle}
-        .compare-table td.highlight{background:#fafbff;border-left:1px solid var(--silver-dark);border-right:1px solid var(--silver-dark)}
-        .compare-table td.col-label{text-align:left;font-weight:600;color:var(--text-primary);font-size:13px}
-        .compare-table tr:last-child td.highlight{border-radius:0 0 12px 12px;border-bottom:1px solid var(--silver-dark)}
-        .yes{color:#16a34a;font-weight:700}
-        .no{color:#dc2626;font-weight:700}
-        .chk{display:inline-flex;width:20px;height:20px;border-radius:50%;background:#f0fdf4;align-items:center;justify-content:center}
-        .crs{display:inline-flex;width:20px;height:20px;border-radius:50%;background:#fef2f2;align-items:center;justify-content:center}
-        .dsh{display:inline-flex;width:20px;height:20px;border-radius:50%;background:#fffbeb;align-items:center;justify-content:center}
+        /* ============================================================
+           ANIMATE ON SCROLL  (matches main.css: .animate-on-scroll.animate-in)
+        ============================================================ */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.55s ease, transform 0.55s ease;
+        }
+        .animate-on-scroll.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-        /* AI-optimised section */
-        .ai-box{background:linear-gradient(135deg,#EFF6FF,#F0FDF4);border:1px solid #BFDBFE;border-radius:var(--radius-lg);padding:2.5rem;margin-top:2rem}
-        .ai-box h3{font-family:var(--font-primary);font-size:1.15rem;font-weight:700;color:var(--primary-navy);margin-bottom:0.75rem}
-        .ai-box p{color:var(--text-secondary);line-height:1.75;font-size:0.95rem;margin-bottom:0.75rem}
+        /* ============================================================
+           HERO
+        ============================================================ */
+        .rfsd-hero {
+            background: var(--navy);
+            padding: 6rem 0 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        /* CSS grid-dot pattern overlay */
+        .rfsd-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+            background-size: 32px 32px;
+            pointer-events: none;
+        }
+        .rfsd-hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1px;
+            background: var(--navy-800);
+        }
 
-        /* Case study */
-        .cs-strip{background:var(--pure-white);border:1px solid var(--silver-dark);border-radius:var(--radius-lg);padding:2rem 2.5rem;margin-top:2rem;display:flex;gap:2rem;align-items:flex-start}
-        .cs-strip-badge{background:var(--gradient-primary);color:#fff;border-radius:8px;padding:0.5rem 1rem;font-family:var(--font-primary);font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap;flex-shrink:0}
-        .cs-strip-body h4{font-family:var(--font-primary);font-size:1rem;font-weight:700;color:var(--primary-navy);margin-bottom:0.5rem}
-        .cs-strip-body p{font-size:0.9rem;color:var(--text-secondary);line-height:1.7;margin-bottom:0.75rem}
-        .cs-strip-body ul{list-style:none;display:flex;flex-wrap:wrap;gap:0.4rem}
-        .cs-strip-body li{font-size:0.8rem;background:var(--silver);border-radius:50px;padding:3px 12px;color:var(--text-secondary)}
+        .hero-inner {
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
 
-        /* Form */
-        .form-section{background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 100%);padding:4rem 0;position:relative;overflow:hidden}
-        .form-section::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(245,158,11,0.07) 0%,transparent 60%);pointer-events:none}
-        .form-section > .container{position:relative;z-index:1}
-        .form-card{background:#fff;border-radius:var(--radius-lg);padding:2.5rem;max-width:640px;margin:0 auto}
-        .form-card h2{font-family:var(--font-primary);font-size:1.5rem;font-weight:700;color:var(--primary-navy);margin-bottom:0.4rem}
-        .form-card .form-sub{font-size:0.9rem;color:var(--text-muted);margin-bottom:1.75rem}
-        .form-group{margin-bottom:1.25rem}
-        .form-group label{display:block;font-size:0.85rem;font-weight:600;color:var(--text-primary);margin-bottom:0.4rem}
-        .form-group input,.form-group select{width:100%;padding:0.75rem 1rem;border:1.5px solid var(--silver-dark);border-radius:10px;font-size:0.95rem;font-family:var(--font-secondary);color:var(--text-primary);background:#fff;transition:border-color 0.2s}
-        .form-group input:focus,.form-group select:focus{outline:none;border-color:var(--primary-blue)}
-        .form-group .optional{font-weight:400;color:var(--text-muted);font-size:0.8rem;margin-left:4px}
-        .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-        .intl-retainer-note{display:none;background:#FFF7ED;border:1px solid #FED7AA;border-radius:8px;padding:0.75rem 1rem;font-size:0.82rem;color:#92400E;margin-top:0.75rem;line-height:1.6}
-        .intl-retainer-note.visible{display:block}
-        .form-submit{width:100%;padding:1rem;background:var(--gradient-primary);color:#fff;border:none;border-radius:10px;font-size:1rem;font-weight:700;font-family:var(--font-primary);cursor:pointer;transition:opacity 0.2s}
-        .form-submit:hover{opacity:0.9}
-        .form-submit:disabled{opacity:0.6;cursor:not-allowed}
-        .form-success{display:none;text-align:center;padding:2rem 0}
-        .form-success h3{font-family:var(--font-primary);font-size:1.25rem;font-weight:700;color:var(--primary-navy);margin-bottom:0.5rem}
-        .form-success p{color:var(--text-secondary);font-size:0.95rem}
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(37,99,235,0.18);
+            border: 1px solid rgba(37,99,235,0.35);
+            border-radius: 4px;
+            padding: 5px 12px;
+            font-family: var(--font-d);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #93C5FD;
+            margin-bottom: 1.5rem;
+            animation: fadeUp 0.5s ease 0.05s both;
+        }
+        .hero-eyebrow-dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: #93C5FD;
+        }
 
-        /* FAQ */
-        .faq-item{background:var(--pure-white);border:1px solid var(--silver-dark);border-radius:var(--radius-md);margin-bottom:0.75rem;overflow:hidden}
-        .faq-question{padding:1.25rem 1.5rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:600;color:var(--primary-navy);font-size:1rem;background:none;border:none;width:100%;text-align:left;font-family:var(--font-secondary)}
-        .faq-question:hover{background:var(--silver)}
-        .faq-icon{font-size:1.25rem;transition:transform 0.3s ease;flex-shrink:0;margin-left:1rem}
-        .faq-item.active .faq-icon{transform:rotate(180deg)}
-        .faq-answer{max-height:0;overflow:hidden;transition:max-height 0.3s ease}
-        .faq-item.active .faq-answer{max-height:300px}
-        .faq-answer-inner{padding:0 1.5rem 1.25rem;color:var(--text-secondary);line-height:1.7}
+        .hero-h1 {
+            font-family: var(--font-d);
+            font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            animation: fadeUp 0.6s ease 0.1s both;
+        }
+        .hero-h1 em {
+            font-style: normal;
+            color: var(--amber);
+        }
 
-        /* CTA bottom */
-        .cta-section{background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 100%);padding:4rem 0;text-align:center;color:var(--pure-white);position:relative;overflow:hidden}
-        .cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(245,158,11,0.08) 0%,transparent 60%);pointer-events:none}
-        .cta-section > .container{position:relative;z-index:1}
-        .cta-section h2{font-family:var(--font-primary);font-size:2rem;font-weight:700;margin-bottom:1rem;color:var(--pure-white)}
-        .cta-section p{opacity:0.9;margin-bottom:1.5rem}
-        .btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--gradient-primary);color:var(--pure-white);padding:1rem 2rem;border-radius:50px;text-decoration:none;font-weight:600;font-size:1.05rem;transition:all 0.3s ease;box-shadow:0 4px 12px rgba(30,64,175,0.3)}
-        .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(30,64,175,0.4)}
-        .btn-white{display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:var(--primary-navy);padding:1rem 2rem;border-radius:50px;text-decoration:none;font-weight:700;transition:all 0.3s ease;box-shadow:0 4px 12px rgba(245,158,11,0.3)}
-        .btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(245,158,11,0.4)}
-        .whatsapp-note{color:var(--text-muted);font-size:0.95rem;margin-top:1rem}
-        .whatsapp-note a{color:var(--primary-blue-light);text-decoration:none}
+        .hero-sub {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.65);
+            line-height: 1.75;
+            max-width: 48ch;
+            margin-bottom: 2rem;
+            animation: fadeUp 0.6s ease 0.2s both;
+        }
 
-        .section-divider svg{display:block}
+        .hero-price-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            animation: fadeUp 0.6s ease 0.3s both;
+        }
+        .hero-price-block {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 0.75rem 1.25rem;
+        }
+        .hero-price-label {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 4px;
+        }
+        .hero-price-value {
+            font-family: var(--font-d);
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--white);
+        }
 
-        @media(max-width:768px){
-            .page-hero h1{font-size:1.75rem}
-            .steps-grid{grid-template-columns:1fr}
-            .pricing-grid-2{grid-template-columns:1fr}
-            .cs-strip{flex-direction:column}
-            .form-row{grid-template-columns:1fr}
+        .hero-ctas {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.75rem;
+            animation: fadeUp 0.6s ease 0.4s both;
+        }
+        .btn-amber {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--amber);
+            color: var(--navy);
+            padding: 0.875rem 1.75rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-family: var(--font-d);
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+        }
+        .btn-amber:hover {
+            background: var(--amber-600);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 24px rgba(217,119,6,0.35);
+        }
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: rgba(255,255,255,0.75);
+            padding: 0.875rem 1.5rem;
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.18);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: border-color 0.2s, color 0.2s, transform 0.2s;
+        }
+        .btn-ghost:hover {
+            border-color: rgba(255,255,255,0.4);
+            color: var(--white);
+            transform: translateY(-1px);
+        }
+
+        .hero-tz {
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.3);
+            margin-top: 1.25rem;
+            animation: fadeUp 0.6s ease 0.5s both;
+        }
+
+        /* Browser mockup */
+        .browser-mock-wrap {
+            position: relative;
+            animation: fadeUp 0.7s ease 0.25s both;
+        }
+        .browser-mock {
+            background: var(--navy-800);
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 32px 80px rgba(0,0,0,0.5);
+            overflow: hidden;
+            animation: float 5s ease-in-out infinite;
+        }
+        .bm-chrome {
+            background: var(--navy-700);
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .bm-dots {
+            display: flex;
+            gap: 5px;
+            flex-shrink: 0;
+        }
+        .bm-dot {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+        }
+        .bm-dot-red   { background: #FF5F57; }
+        .bm-dot-yel   { background: #FEBC2E; }
+        .bm-dot-grn   { background: #28C840; }
+        .bm-url {
+            flex: 1;
+            background: rgba(255,255,255,0.07);
+            border-radius: 5px;
+            padding: 5px 10px;
+            font-size: 0.68rem;
+            color: rgba(255,255,255,0.35);
+            font-family: var(--font-b);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .bm-body {
+            padding: 0;
+        }
+        /* mini nav */
+        .bm-nav {
+            background: var(--navy);
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .bm-nav-logo {
+            display: flex;
+            gap: 3px;
+            align-items: center;
+        }
+        .bm-nav-logo-dot {
+            width: 14px; height: 14px;
+            border-radius: 3px;
+            background: var(--blue);
+        }
+        .bm-nav-logo-text {
+            font-size: 0.6rem;
+            font-weight: 700;
+            color: rgba(255,255,255,0.6);
+            font-family: var(--font-d);
+            letter-spacing: 0.04em;
+        }
+        .bm-nav-links {
+            display: flex;
+            gap: 10px;
+        }
+        .bm-nav-link {
+            width: 28px; height: 5px;
+            border-radius: 2px;
+            background: rgba(255,255,255,0.12);
+        }
+        .bm-nav-btn {
+            width: 40px; height: 16px;
+            border-radius: 3px;
+            background: var(--blue);
+            opacity: 0.8;
+        }
+
+        /* mini hero area */
+        .bm-hero-area {
+            background: var(--navy);
+            padding: 18px 14px 14px;
+        }
+        .bm-hero-tag {
+            width: 70px; height: 8px;
+            border-radius: 2px;
+            background: rgba(37,99,235,0.4);
+            margin-bottom: 10px;
+        }
+        .bm-hero-h {
+            width: 88%; height: 12px;
+            border-radius: 2px;
+            background: rgba(255,255,255,0.55);
+            margin-bottom: 6px;
+        }
+        .bm-hero-h2 {
+            width: 65%; height: 12px;
+            border-radius: 2px;
+            background: rgba(255,255,255,0.55);
+            margin-bottom: 14px;
+        }
+        .bm-hero-sub {
+            width: 95%; height: 6px;
+            border-radius: 2px;
+            background: rgba(255,255,255,0.2);
+            margin-bottom: 5px;
+        }
+        .bm-hero-sub2 {
+            width: 80%; height: 6px;
+            border-radius: 2px;
+            background: rgba(255,255,255,0.2);
+            margin-bottom: 14px;
+        }
+        .bm-hero-btns {
+            display: flex;
+            gap: 6px;
+        }
+        .bm-btn-a {
+            width: 60px; height: 18px;
+            border-radius: 3px;
+            background: var(--amber);
+            opacity: 0.85;
+        }
+        .bm-btn-b {
+            width: 50px; height: 18px;
+            border-radius: 3px;
+            background: rgba(255,255,255,0.12);
+        }
+
+        /* mini cards area */
+        .bm-cards {
+            background: var(--gray-50);
+            padding: 12px 14px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+        .bm-card {
+            background: var(--white);
+            border-radius: 6px;
+            padding: 10px;
+            border: 1px solid var(--gray-200);
+        }
+        .bm-card-icon {
+            width: 18px; height: 18px;
+            border-radius: 4px;
+            background: var(--blue-50);
+            margin-bottom: 7px;
+        }
+        .bm-card-line {
+            height: 5px;
+            border-radius: 2px;
+            background: var(--gray-200);
+            margin-bottom: 4px;
+        }
+        .bm-card-line-short {
+            width: 60%;
+            height: 5px;
+            border-radius: 2px;
+            background: var(--gray-100);
+        }
+
+        /* badges floating on mockup */
+        .bm-badge-live {
+            position: absolute;
+            top: -14px;
+            right: -14px;
+            background: var(--navy-800);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 8px;
+            padding: 7px 12px;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.8);
+            font-family: var(--font-d);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+        }
+        .bm-live-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--green);
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+        .bm-badge-timer {
+            position: absolute;
+            bottom: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--navy-800);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 8px;
+            padding: 8px 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.85);
+            font-family: var(--font-d);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+            white-space: nowrap;
+        }
+        .bm-timer-icon {
+            font-size: 1rem;
+        }
+
+        /* ============================================================
+           STATS BAR
+        ============================================================ */
+        .rfsd-stats {
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .stats-inner {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+        .stat-item {
+            padding: 2.5rem 2rem;
+            border-right: 1px solid var(--gray-200);
+            text-align: center;
+        }
+        .stat-item:last-child { border-right: none; }
+        .stat-value {
+            font-family: var(--font-d);
+            font-size: clamp(2rem, 3.5vw, 2.75rem);
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.4rem;
+        }
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+            font-weight: 500;
+        }
+
+        /* ============================================================
+           SECTION SHELLS
+        ============================================================ */
+        .sec { padding: 6rem 0; }
+        .sec-gray { background: var(--gray-50); }
+        .sec-navy { background: var(--navy); }
+        .sec-white { background: var(--white); }
+
+        /* ============================================================
+           EYEBROW LABEL
+        ============================================================ */
+        .eyebrow {
+            font-family: var(--font-d);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--blue);
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .eyebrow-amber { color: var(--amber); }
+
+        /* ============================================================
+           SECTION HEADINGS
+        ============================================================ */
+        .sec-h2 {
+            font-family: var(--font-d);
+            font-size: clamp(1.75rem, 3vw, 2.5rem);
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+        }
+        .sec-h2-white { color: var(--white); }
+        .sec-lead {
+            font-size: 1.05rem;
+            color: var(--gray-600);
+            line-height: 1.8;
+            max-width: 60ch;
+        }
+
+        /* ============================================================
+           THE PROBLEM (two-col)
+        ============================================================ */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: start;
+        }
+        .problem-text .sec-lead { margin-top: 1.25rem; }
+        .problem-text .sec-lead + .sec-lead { margin-top: 1rem; }
+
+        .contrast-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .contrast-card {
+            border-radius: 8px;
+            padding: 1.25rem 1.5rem;
+            border: 1px solid var(--gray-200);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .contrast-card:hover {
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+            border-color: var(--gray-400);
+        }
+        .contrast-card-label {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        .contrast-card-label.before { color: var(--red); }
+        .contrast-card-label.after  { color: var(--green); }
+        .contrast-card-label.result { color: var(--blue); }
+        .contrast-card p {
+            font-size: 0.92rem;
+            color: var(--gray-600);
+            line-height: 1.65;
+        }
+        .contrast-card.after-card {
+            background: #F0FDF8;
+            border-color: #A7F3D0;
+        }
+        .contrast-card.result-card {
+            background: var(--blue-50);
+            border-color: #BFDBFE;
+        }
+
+        /* ============================================================
+           HOW IT WORKS (3 steps)
+        ============================================================ */
+        .steps-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-top: 3.5rem;
+        }
+        .step-panel {
+            padding: 2.5rem 2rem;
+            border: 1px solid var(--gray-200);
+            border-right: none;
+            background: var(--white);
+            position: relative;
+            transition: box-shadow 0.2s;
+        }
+        .step-panel:first-child { border-radius: 8px 0 0 8px; }
+        .step-panel:last-child  { border-radius: 0 8px 8px 0; border-right: 1px solid var(--gray-200); }
+        .step-panel.step-featured {
+            border-top: 3px solid var(--blue);
+            background: var(--white);
+            box-shadow: 0 8px 32px rgba(37,99,235,0.1);
+        }
+        .step-number {
+            font-family: var(--font-d);
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--gray-100);
+            line-height: 1;
+            margin-bottom: 1.25rem;
+            letter-spacing: -0.04em;
+        }
+        .step-panel.step-featured .step-number { color: var(--blue-50); }
+        .step-title {
+            font-family: var(--font-d);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.6rem;
+            line-height: 1.3;
+        }
+        .step-desc {
+            font-size: 0.9rem;
+            color: var(--gray-500);
+            line-height: 1.7;
+        }
+
+        /* ============================================================
+           PRICING
+        ============================================================ */
+        .pricing-header {
+            margin-bottom: 2.5rem;
+        }
+        .pricing-header .sec-lead { margin-top: 0.75rem; }
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            max-width: 860px;
+        }
+        .pricing-card {
+            border-radius: 10px;
+            border: 1px solid var(--gray-200);
+            padding: 2rem 2rem 2.25rem;
+            background: var(--white);
+            transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+        }
+        .pricing-card:hover {
+            box-shadow: 0 8px 32px rgba(0,0,0,0.07);
+            transform: translateY(-2px);
+        }
+        .pricing-card.featured-card {
+            border-color: var(--blue);
+            border-width: 2px;
+            position: relative;
+        }
+        .featured-badge {
+            display: inline-block;
+            background: var(--blue);
+            color: var(--white);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+        .pricing-card-name {
+            font-family: var(--font-d);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--gray-500);
+            margin-bottom: 0.75rem;
+        }
+        .pricing-inr {
+            font-family: var(--font-d);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1;
+            letter-spacing: -0.03em;
+        }
+        .pricing-usd {
+            font-size: 0.9rem;
+            color: var(--gray-400);
+            font-weight: 500;
+            margin: 0.35rem 0 1.5rem;
+        }
+        .pricing-divider {
+            height: 1px;
+            background: var(--gray-100);
+            margin: 1.25rem 0;
+        }
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 1.75rem;
+        }
+        .pricing-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            padding: 0.35rem 0;
+        }
+        .pricing-features li::before {
+            content: '';
+            display: block;
+            width: 16px;
+            height: 16px;
+            min-width: 16px;
+            border-radius: 50%;
+            background: #D1FAE5;
+            background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='20 6 9 17 4 12' stroke='%23059669' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 10px;
+            margin-top: 2px;
+        }
+        .pricing-note {
+            font-size: 0.78rem;
+            color: var(--gray-400);
+            font-style: italic;
+        }
+        .btn-blue {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--blue);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-family: var(--font-d);
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+            justify-content: center;
+        }
+        .btn-blue:hover {
+            background: var(--blue-600);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(37,99,235,0.3);
+        }
+        .btn-outline-blue {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: var(--blue);
+            border: 1.5px solid var(--blue);
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-family: var(--font-d);
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+            width: 100%;
+            justify-content: center;
+        }
+        .btn-outline-blue:hover {
+            background: var(--blue-50);
+            transform: translateY(-1px);
+        }
+        .pricing-footnote {
+            margin-top: 1.75rem;
+            font-size: 0.875rem;
+            color: var(--gray-500);
+        }
+        .pricing-footnote a { color: var(--blue); text-decoration: none; }
+        .pricing-footnote a:hover { text-decoration: underline; }
+
+        /* ============================================================
+           COMPARE TABLE
+        ============================================================ */
+        .compare-shell {
+            background: var(--white);
+            border-radius: 12px;
+            border: 1px solid var(--gray-200);
+            overflow: hidden;
+            margin-top: 3rem;
+        }
+        .compare-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        .compare-table {
+            width: 100%;
+            min-width: 700px;
+            border-collapse: collapse;
+        }
+        .compare-table thead tr {
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .compare-table th {
+            padding: 1rem 1.25rem;
+            font-family: var(--font-d);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-align: center;
+            color: var(--gray-500);
+        }
+        .compare-table th.th-feature {
+            text-align: left;
+            color: var(--gray-400);
+            font-size: 0.68rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            width: 28%;
+        }
+        .compare-table th.th-us {
+            background: var(--navy);
+            color: var(--white);
+            font-size: 0.78rem;
+        }
+        .compare-table td {
+            padding: 0.9rem 1.25rem;
+            font-size: 0.875rem;
+            text-align: center;
+            color: var(--gray-500);
+            border-top: 1px solid var(--gray-100);
+            vertical-align: middle;
+        }
+        .compare-table td.td-feature {
+            text-align: left;
+            font-weight: 600;
+            color: var(--navy-800);
+            font-size: 0.875rem;
+        }
+        .compare-table td.td-us {
+            background: var(--blue-50);
+            color: var(--navy);
+            font-weight: 600;
+        }
+        .compare-table tr:last-child td.td-us {
+            /* nothing special */
+        }
+        .ct-yes  { color: var(--green); font-weight: 700; }
+        .ct-no   { color: var(--red);   font-weight: 700; }
+        .ct-meh  { color: var(--amber); font-weight: 600; }
+        .ct-icon-yes {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px; height: 22px;
+            border-radius: 50%;
+            background: #D1FAE5;
+        }
+        .ct-icon-no {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px; height: 22px;
+            border-radius: 50%;
+            background: #FEE2E2;
+        }
+        .ct-icon-meh {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px; height: 22px;
+            border-radius: 50%;
+            background: var(--amber-100);
+        }
+        .compare-scroll-note {
+            font-size: 0.75rem;
+            color: var(--gray-400);
+            text-align: center;
+            margin-top: 0.75rem;
+        }
+
+        /* ============================================================
+           AI SECTION (navy bg, 2 col)
+        ============================================================ */
+        .ai-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+        .ai-text .sec-h2-white { margin-bottom: 1.25rem; }
+        .ai-text p {
+            font-size: 0.975rem;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        .ai-text a {
+            color: #93C5FD;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .ai-text a:hover { text-decoration: underline; }
+
+        .ai-tiles {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        .ai-tile {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.09);
+            border-radius: 8px;
+            padding: 1.25rem 1.25rem 1.5rem;
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .ai-tile:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(255,255,255,0.18);
+        }
+        .ai-tile-icon {
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+        .ai-tile-title {
+            font-family: var(--font-d);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.35rem;
+        }
+        .ai-tile-desc {
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.45);
+            line-height: 1.6;
+        }
+
+        /* ============================================================
+           CASE STUDY
+        ============================================================ */
+        .cs-card {
+            background: var(--amber-50);
+            border: 1px solid var(--amber-100);
+            border-left: 4px solid var(--amber);
+            border-radius: 10px;
+            padding: 2.5rem 2.5rem 2.5rem 2rem;
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 3rem;
+            align-items: start;
+            margin-top: 2.5rem;
+            transition: box-shadow 0.2s;
+        }
+        .cs-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.07); }
+        .cs-stats { }
+        .cs-stat {
+            margin-bottom: 1.75rem;
+        }
+        .cs-stat-value {
+            font-family: var(--font-d);
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--amber-600);
+            letter-spacing: -0.03em;
+            line-height: 1;
+        }
+        .cs-stat-label {
+            font-size: 0.82rem;
+            color: var(--gray-500);
+            margin-top: 0.25rem;
+        }
+        .cs-badge {
+            display: inline-block;
+            background: var(--amber);
+            color: var(--white);
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+        .cs-narrative h4 {
+            font-family: var(--font-d);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+        .cs-narrative p {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            line-height: 1.75;
+            margin-bottom: 0.75rem;
+        }
+        .cs-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 0.5rem;
+        }
+        .cs-tag {
+            font-size: 0.75rem;
+            background: var(--amber-100);
+            color: var(--amber-600);
+            border-radius: 4px;
+            padding: 3px 10px;
+            font-weight: 500;
+        }
+        .cs-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--blue);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-top: 1rem;
+        }
+        .cs-link:hover { text-decoration: underline; }
+
+        /* ============================================================
+           APPLICATION FORM
+        ============================================================ */
+        .form-section-bg {
+            background: var(--gray-50);
+        }
+        .form-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 2.5rem 2.5rem 2.75rem;
+            max-width: 640px;
+        }
+        .form-header { margin-bottom: 2rem; }
+        .form-header h2 {
+            font-family: var(--font-d);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.35rem;
+        }
+        .form-header p {
+            font-size: 0.875rem;
+            color: var(--gray-400);
+        }
+        .form-group { margin-bottom: 1.25rem; }
+        .form-group label {
+            display: block;
+            font-size: 0.83rem;
+            font-weight: 600;
+            color: var(--navy-800);
+            margin-bottom: 0.4rem;
+        }
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1.5px solid var(--gray-200);
+            border-radius: 7px;
+            font-size: 0.9rem;
+            font-family: var(--font-b);
+            color: var(--navy-800);
+            background: var(--white);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--blue);
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+        }
+        .form-group .optional {
+            font-weight: 400;
+            color: var(--gray-400);
+            font-size: 0.78rem;
+            margin-left: 4px;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        .intl-retainer-note {
+            display: none;
+            background: #FFF7ED;
+            border: 1px solid #FED7AA;
+            border-radius: 7px;
+            padding: 0.875rem 1rem;
+            font-size: 0.82rem;
+            color: #92400E;
+            margin-top: 0.75rem;
+            line-height: 1.6;
+        }
+        .intl-retainer-note.visible { display: block; }
+        .form-submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--navy);
+            color: var(--white);
+            border: none;
+            border-radius: 7px;
+            font-size: 0.975rem;
+            font-weight: 700;
+            font-family: var(--font-d);
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+            margin-top: 0.5rem;
+        }
+        .form-submit-btn:hover {
+            background: var(--navy-800);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(15,23,42,0.3);
+        }
+        .form-submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+        .form-success-icon {
+            width: 52px; height: 52px;
+            border-radius: 50%;
+            background: #D1FAE5;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .form-success h3 {
+            font-family: var(--font-d);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+        .form-success p {
+            font-size: 0.9rem;
+            color: var(--gray-500);
+            line-height: 1.6;
+        }
+        .form-disclaimer {
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--gray-400);
+            margin-top: 0.875rem;
+        }
+
+        .form-aside {
+            padding-top: 0.5rem;
+        }
+        .form-aside-heading {
+            font-family: var(--font-d);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1.25;
+            margin-bottom: 1.25rem;
+        }
+        .form-trust-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        .form-trust-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            padding: 0.6rem 0;
+            border-bottom: 1px solid var(--gray-100);
+            line-height: 1.5;
+        }
+        .form-trust-list li:last-child { border-bottom: none; }
+        .form-trust-list .icon {
+            font-size: 1rem;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+        .form-whatsapp {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            line-height: 1.6;
+        }
+        .form-whatsapp a {
+            color: var(--blue);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .form-whatsapp a:hover { text-decoration: underline; }
+
+        .apply-layout {
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 5rem;
+            align-items: start;
+        }
+
+        /* ============================================================
+           FAQ
+        ============================================================ */
+        .faq-list { margin-top: 2.5rem; }
+        .faq-item {
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .faq-item:first-child { border-top: 1px solid var(--gray-200); }
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 1.25rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            font-family: var(--font-b);
+            font-size: 0.975rem;
+            font-weight: 600;
+            color: var(--navy);
+            transition: color 0.2s;
+        }
+        .faq-question:hover { color: var(--blue); }
+        .faq-icon {
+            flex-shrink: 0;
+            width: 24px; height: 24px;
+            border-radius: 50%;
+            background: var(--blue-50);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.25s ease, background 0.2s;
+        }
+        .faq-icon svg {
+            display: block;
+            transition: transform 0.25s ease;
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+            background: var(--blue);
+        }
+        .faq-item.active .faq-icon svg path { stroke: white; }
+        .faq-item.active .faq-question { color: var(--blue); }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .faq-item.active .faq-answer { max-height: 400px; }
+        .faq-answer-inner {
+            padding: 0 0 1.25rem;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            line-height: 1.75;
+        }
+        .faq-answer-inner a { color: var(--blue); }
+
+        /* ============================================================
+           RELATED SERVICES
+        ============================================================ */
+        .related-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            margin-top: 2.5rem;
+        }
+        .related-card {
+            display: block;
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            padding: 1.5rem 1.5rem 1.75rem;
+            text-decoration: none;
+            transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+        }
+        .related-card:hover {
+            border-color: var(--blue);
+            box-shadow: 0 4px 20px rgba(37,99,235,0.1);
+            transform: translateY(-2px);
+        }
+        .related-card-tag {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            color: var(--blue);
+            margin-bottom: 0.6rem;
+            display: block;
+        }
+        .related-card-title {
+            font-family: var(--font-d);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+        .related-card-desc {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            line-height: 1.6;
+        }
+        .related-card-arrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--blue);
+            margin-top: 1rem;
+        }
+
+        /* ============================================================
+           BOTTOM CTA (navy)
+        ============================================================ */
+        .bottom-cta {
+            background: var(--navy);
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        .bottom-cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+            background-size: 32px 32px;
+            pointer-events: none;
+        }
+        .bottom-cta-inner {
+            position: relative;
+            z-index: 2;
+        }
+        .bottom-cta h2 {
+            font-family: var(--font-d);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+        .bottom-cta p {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.55);
+            margin-bottom: 2rem;
+        }
+        .bottom-cta-note {
+            margin-top: 1.5rem;
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.35);
+        }
+        .bottom-cta-note a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+        }
+        .bottom-cta-note a:hover { color: rgba(255,255,255,0.85); }
+
+        /* ============================================================
+           RESPONSIVE
+        ============================================================ */
+        @media (max-width: 1024px) {
+            .hero-inner       { grid-template-columns: 1fr; gap: 3rem; }
+            .browser-mock-wrap{ display: none; }
+            .problem-grid     { grid-template-columns: 1fr; gap: 3rem; }
+            .ai-grid          { grid-template-columns: 1fr; gap: 3rem; }
+            .apply-layout     { grid-template-columns: 1fr; gap: 3rem; }
+        }
+        @media (max-width: 768px) {
+            .sec { padding: 4rem 0; }
+            .stats-inner      { grid-template-columns: 1fr; }
+            .stat-item        { border-right: none; border-bottom: 1px solid var(--gray-200); }
+            .stat-item:last-child { border-bottom: none; }
+            .steps-row        { grid-template-columns: 1fr; }
+            .step-panel       { border-right: 1px solid var(--gray-200); border-bottom: none; border-radius: 0; }
+            .step-panel:first-child  { border-radius: 8px 8px 0 0; }
+            .step-panel:last-child   { border-radius: 0 0 8px 8px; border-bottom: 1px solid var(--gray-200); }
+            .pricing-cards    { grid-template-columns: 1fr; }
+            .cs-card          { grid-template-columns: 1fr; gap: 2rem; }
+            .related-cards    { grid-template-columns: 1fr; }
+            .form-row         { grid-template-columns: 1fr; }
+            .ai-tiles         { grid-template-columns: 1fr; }
+            .hero-h1          { font-size: 2.2rem; }
         }
     </style>
 </head>
 <body>
     <div id="header-placeholder"></div>
 
-    <!-- HERO -->
-    <section class="page-hero">
-        <div class="hero-orb hero-orb--amber hero-orb--md float" style="top:-20px;left:5%;"></div>
-        <div class="hero-orb hero-orb--blue hero-orb--lg float-slow float-delay-1" style="bottom:-50px;right:-60px;"></div>
+    <!-- ============================================================
+         1. HERO
+    ============================================================ -->
+    <section class="rfsd-hero">
         <div class="container">
-            <div class="hero-badges">
-                <span class="hero-badge">&#10003; Built before you pay</span>
-                <span class="hero-badge">&#10003; 48-hour first demo</span>
-                <span class="hero-badge">&#10003; AI-optimised by default</span>
-            </div>
-            <h1 style="margin-top:1.25rem;">Risk-Free Website Design<br><span style="background:var(--gradient-accent);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Built Before You Pay</span></h1>
-            <p style="font-size:0.78rem;color:rgba(255,255,255,0.5);margin:0.5rem 0 0;font-family:'Space Grotesk',sans-serif;letter-spacing:0.01em;">Last updated: 2026-05-27</p>
-            <p class="hero-sub">You see your finished website in 48 hours. If you approve it, you pay and we publish. If not, you walk away free with no charge.</p>
-            <div class="hero-price-row">
-                <div class="hero-price-block">
-                    <div class="hero-price-label">India</div>
-                    <div class="hero-price-value">&#8377;20,000 &ndash; &#8377;50,000</div>
+            <div class="hero-inner">
+                <!-- LEFT: TEXT -->
+                <div class="hero-text">
+                    <div class="hero-eyebrow">
+                        <span class="hero-eyebrow-dot"></span>
+                        Risk-Free Website Design
+                    </div>
+                    <h1 class="hero-h1">
+                        We build your website.<br>
+                        You pay only if you <em>love it.</em>
+                    </h1>
+                    <p class="hero-sub">
+                        See your finished website in 48 hours. If it works for you, pay and we publish. If not, walk away free — no charge, no awkward conversations, nothing lost.
+                    </p>
+                    <div class="hero-price-row">
+                        <div class="hero-price-block">
+                            <div class="hero-price-label">India</div>
+                            <div class="hero-price-value">&#8377;20,000 &ndash; &#8377;50,000</div>
+                        </div>
+                        <div class="hero-price-block">
+                            <div class="hero-price-label">International</div>
+                            <div class="hero-price-value">USD 600 &ndash; USD 1,500</div>
+                        </div>
+                    </div>
+                    <div class="hero-ctas">
+                        <a href="#apply" class="btn-amber">Apply for a Demo &#8594;</a>
+                        <a href="https://wa.me/917397225523" target="_blank" rel="noopener" class="btn-ghost">WhatsApp Us</a>
+                    </div>
+                    <p class="hero-tz">Available across IST &middot; GMT &middot; EST &middot; PST &nbsp;&mdash;&nbsp; Last updated: 2026-05-27</p>
                 </div>
-                <div class="hero-price-block">
-                    <div class="hero-price-label">International (US &middot; UK &middot; CA &middot; AU)</div>
-                    <div class="hero-price-value">USD 600 &ndash; USD 1,500</div>
+
+                <!-- RIGHT: BROWSER MOCKUP -->
+                <div class="browser-mock-wrap">
+                    <div class="bm-badge-live">
+                        <span class="bm-live-dot"></span>
+                        Live preview
+                    </div>
+                    <div class="browser-mock">
+                        <div class="bm-chrome">
+                            <div class="bm-dots">
+                                <span class="bm-dot bm-dot-red"></span>
+                                <span class="bm-dot bm-dot-yel"></span>
+                                <span class="bm-dot bm-dot-grn"></span>
+                            </div>
+                            <div class="bm-url">optiscaleadvisors.com/your-business</div>
+                        </div>
+                        <div class="bm-body">
+                            <div class="bm-nav">
+                                <div class="bm-nav-logo">
+                                    <div class="bm-nav-logo-dot"></div>
+                                    <div class="bm-nav-logo-text">&nbsp;YourBrand</div>
+                                </div>
+                                <div class="bm-nav-links">
+                                    <div class="bm-nav-link"></div>
+                                    <div class="bm-nav-link"></div>
+                                    <div class="bm-nav-link"></div>
+                                </div>
+                                <div class="bm-nav-btn"></div>
+                            </div>
+                            <div class="bm-hero-area">
+                                <div class="bm-hero-tag"></div>
+                                <div class="bm-hero-h"></div>
+                                <div class="bm-hero-h2"></div>
+                                <div class="bm-hero-sub"></div>
+                                <div class="bm-hero-sub2"></div>
+                                <div class="bm-hero-btns">
+                                    <div class="bm-btn-a"></div>
+                                    <div class="bm-btn-b"></div>
+                                </div>
+                            </div>
+                            <div class="bm-cards">
+                                <div class="bm-card">
+                                    <div class="bm-card-icon"></div>
+                                    <div class="bm-card-line"></div>
+                                    <div class="bm-card-line-short"></div>
+                                </div>
+                                <div class="bm-card">
+                                    <div class="bm-card-icon"></div>
+                                    <div class="bm-card-line"></div>
+                                    <div class="bm-card-line-short"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bm-badge-timer">
+                        <span class="bm-timer-icon">&#9203;</span>
+                        Demo delivered in 48h
+                    </div>
                 </div>
             </div>
-            <div class="hero-cta-row">
-                <a href="#apply" class="btn-white">Apply for a Demo</a>
-                <a href="https://wa.me/917397225523" target="_blank" rel="noopener" class="btn-primary" style="background:rgba(255,255,255,0.12);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,0.2);">WhatsApp Us</a>
-            </div>
-            <p class="tz-note">Available across IST, GMT, EST, and PST</p>
         </div>
     </section>
-    <div class="section-divider">
-        <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,0 C480,60 960,60 1440,0 L1440,60 L0,60 Z" fill="#FFFFFF"/></svg>
+
+    <!-- ============================================================
+         2. STATS BAR
+    ============================================================ -->
+    <div class="rfsd-stats">
+        <div class="container">
+            <div class="stats-inner">
+                <div class="stat-item animate-on-scroll">
+                    <div class="stat-value">48h</div>
+                    <div class="stat-label">First demo delivered</div>
+                </div>
+                <div class="stat-item animate-on-scroll">
+                    <div class="stat-value">&#8377;0</div>
+                    <div class="stat-label">Upfront for Indian clients</div>
+                </div>
+                <div class="stat-item animate-on-scroll">
+                    <div class="stat-value">6</div>
+                    <div class="stat-label">Countries served</div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- THE PROBLEM -->
-    <section class="section">
-        <div class="container prose">
-            <p>Most businesses get burned on websites. They pay a freelancer upfront and wait weeks for a result that looks nothing like what they imagined. Or they pay an agency a deposit and sign a contract before seeing a single page. The money is gone before the work is done.</p>
-            <p>The risk-free model flips this. You fill in a short form. We build your website. You see the real, finished site within 48 hours. If it works for you, you pay and we publish it. If it does not, you walk away. No charge. No awkward conversations. No lost money.</p>
-            <p>Every website we build is AI-optimised by default. That means schema markup, structured content, and fast load times so your site shows up when customers ask ChatGPT, Perplexity, or Google AI for businesses like yours.</p>
-        </div>
-    </section>
-
-    <!-- 3 STEPS -->
-    <section class="section section-alt">
+    <!-- ============================================================
+         3. THE PROBLEM
+    ============================================================ -->
+    <section class="sec sec-white">
         <div class="container">
-            <h2 class="section-title section-title-center">How It Works</h2>
-            <div class="steps-grid stagger-children">
-                <div class="step-card animate-on-scroll">
-                    <div class="step-number">01</div>
-                    <h3>Apply via the form</h3>
-                    <p>Takes 2 minutes. Tell us your business name, industry, and what you need. No card required for Indian clients.</p>
+            <div class="problem-grid">
+                <div class="problem-text animate-on-scroll">
+                    <span class="eyebrow">The Problem</span>
+                    <h2 class="sec-h2">Most businesses get burned on websites.</h2>
+                    <p class="sec-lead">
+                        You pay a freelancer upfront and wait weeks for something that looks nothing like what you imagined. Or you pay an agency a deposit and sign a contract before seeing a single page. The money is gone before the work is done.
+                    </p>
+                    <p class="sec-lead">
+                        The risk-free model flips this. You fill in a short form. We build your website. You see the real, finished site within 48 hours — and only then decide if you want it.
+                    </p>
+                    <p class="sec-lead">
+                        Every website is AI-optimised by default: schema markup, structured content, and fast load times so your site appears when customers ask ChatGPT, Perplexity, or Google AI for businesses like yours.
+                    </p>
                 </div>
-                <div class="step-card highlight-step animate-on-scroll">
-                    <div class="step-number">02</div>
-                    <h3>We build your website in 48 hours</h3>
-                    <p>We design a real, working website for your business. Custom, not a template. You get a private preview link.</p>
-                </div>
-                <div class="step-card animate-on-scroll">
-                    <div class="step-number">03</div>
-                    <h3>Approve and pay, or walk away free</h3>
-                    <p>You see the finished site. If you want it, you pay the agreed price and we publish. If not, no charge.</p>
+                <div class="contrast-cards animate-on-scroll">
+                    <div class="contrast-card">
+                        <div class="contrast-card-label before">Before — the old way</div>
+                        <p>Pay upfront. Wait 4–8 weeks. Receive something you never approved. Argue over revisions or write off the deposit.</p>
+                    </div>
+                    <div class="contrast-card after-card">
+                        <div class="contrast-card-label after">After — the risk-free way</div>
+                        <p>Fill a 2-minute form. We build a real, working site. You see it in 48 hours. Pay only when you love it.</p>
+                    </div>
+                    <div class="contrast-card result-card">
+                        <div class="contrast-card-label result">The guarantee</div>
+                        <p>If you do not approve the demo, you walk away free. No charge. No follow-up. No questions asked.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PRICING -->
-    <section class="section">
+    <!-- ============================================================
+         4. HOW IT WORKS
+    ============================================================ -->
+    <section class="sec sec-gray">
         <div class="container">
-            <h2 class="section-title section-title-center">What It Costs</h2>
-            <p style="text-align:center;color:var(--text-muted);margin-bottom:0;font-size:0.9rem;">GST extra where applicable for Indian clients. International clients: no GST.</p>
-            <div class="pricing-grid-2">
+            <span class="eyebrow animate-on-scroll">How It Works</span>
+            <h2 class="sec-h2 animate-on-scroll">Three steps. No surprises.</h2>
+            <div class="steps-row">
+                <div class="step-panel animate-on-scroll">
+                    <div class="step-number">01</div>
+                    <div class="step-title">Apply via the form</div>
+                    <p class="step-desc">Takes 2 minutes. Tell us your business name, industry, and what you need. No card required for Indian clients.</p>
+                </div>
+                <div class="step-panel step-featured animate-on-scroll">
+                    <div class="step-number">02</div>
+                    <div class="step-title">We build your website in 48 hours</div>
+                    <p class="step-desc">We design a real, working website for your business. Custom, not a template. You get a private preview link by email.</p>
+                </div>
+                <div class="step-panel animate-on-scroll">
+                    <div class="step-number">03</div>
+                    <div class="step-title">Approve and pay, or walk away free</div>
+                    <p class="step-desc">You see the finished site. If you want it, you pay the agreed price and we publish. If not — no charge, full stop.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         5. PRICING
+    ============================================================ -->
+    <section class="sec sec-white">
+        <div class="container">
+            <div class="pricing-header animate-on-scroll">
+                <span class="eyebrow">Pricing</span>
+                <h2 class="sec-h2">What It Costs</h2>
+                <p class="sec-lead">GST extra where applicable for Indian clients. International clients: no GST.</p>
+            </div>
+            <div class="pricing-cards">
                 <div class="pricing-card animate-on-scroll">
-                    <div class="card-name">Landing Page</div>
-                    <div class="card-price-inr">&#8377;20,000</div>
-                    <div class="card-price-usd">/ USD 600</div>
-                    <ul>
+                    <div class="pricing-card-name">Landing Page</div>
+                    <div class="pricing-inr">&#8377;20,000</div>
+                    <div class="pricing-usd">/ USD 600</div>
+                    <div class="pricing-divider"></div>
+                    <ul class="pricing-features">
                         <li>1 focused page</li>
                         <li>Hero section with clear CTA</li>
                         <li>Services or offer section</li>
@@ -411,14 +1777,17 @@
                         <li>Mobile-first design</li>
                         <li>Fast load time (PageSpeed 90+)</li>
                     </ul>
-                    <p class="intl-note">International: refundable USD 49 holding retainer at application. Credited to invoice if you proceed.</p>
+                    <p class="pricing-note">International: refundable USD 49 holding retainer at application. Credited to invoice if you proceed.</p>
+                    <div class="pricing-divider"></div>
+                    <a href="#apply" class="btn-outline-blue">Apply for This Plan</a>
                 </div>
-                <div class="pricing-card featured animate-on-scroll">
-                    <span style="display:inline-block;background:var(--gradient-accent);color:var(--primary-navy);padding:0.25rem 0.75rem;border-radius:50px;font-size:0.72rem;font-weight:700;margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.05em;">Most Popular</span>
-                    <div class="card-name">Full Website</div>
-                    <div class="card-price-inr">&#8377;50,000</div>
-                    <div class="card-price-usd">/ USD 1,500</div>
-                    <ul>
+                <div class="pricing-card featured-card animate-on-scroll">
+                    <div class="featured-badge">Most Popular</div>
+                    <div class="pricing-card-name">Full Website</div>
+                    <div class="pricing-inr">&#8377;50,000</div>
+                    <div class="pricing-usd">/ USD 1,500</div>
+                    <div class="pricing-divider"></div>
+                    <ul class="pricing-features">
                         <li>4 to 8 pages</li>
                         <li>Home, About, Services, Contact</li>
                         <li>Portfolio section if you have projects</li>
@@ -428,355 +1797,517 @@
                         <li>Google Analytics 4 setup</li>
                         <li>Google Search Console setup</li>
                     </ul>
-                    <p class="intl-note">International: refundable USD 49 holding retainer at application. Credited to invoice if you proceed.</p>
+                    <p class="pricing-note">International: refundable USD 49 holding retainer at application. Credited to invoice if you proceed.</p>
+                    <div class="pricing-divider"></div>
+                    <a href="#apply" class="btn-blue">Apply for This Plan</a>
                 </div>
             </div>
-            <p style="text-align:center;margin-top:2rem;font-size:0.9rem;color:var(--text-secondary);">Need more pages, blog articles, or ongoing monitoring? See the <a href="/ai-ready-website" style="color:var(--primary-blue);">AI-Ready Lead-Gen Website</a> for the full engagement.</p>
+            <p class="pricing-footnote animate-on-scroll">Need more pages, blog articles, or ongoing monitoring? See the <a href="/ai-ready-website">AI-Ready Lead-Gen Website</a> for the full engagement.</p>
         </div>
     </section>
 
-    <!-- COMPARE TABLE -->
-    <section class="section section-alt">
+    <!-- ============================================================
+         6. COMPARE TABLE
+    ============================================================ -->
+    <section class="sec sec-gray">
         <div class="container">
-            <h2 class="section-title section-title-center">How We Compare</h2>
-            <p style="text-align:center;color:var(--text-secondary);max-width:52ch;margin:0 auto 0;font-size:0.95rem;">Before you spend money on a website, know exactly what you are getting into.</p>
-            <div class="compare-wrap">
-                <table class="compare-table">
-                    <thead>
-                        <tr>
-                            <th class="col-label" style="width:28%;"></th>
-                            <th class="highlight" style="width:18%;">OptiScale<br>Risk-Free</th>
-                            <th style="width:18%;color:var(--text-primary);">DIY Builders<br><span style="font-size:11px;font-weight:500;color:var(--text-muted);">Wix, Squarespace</span></th>
-                            <th style="width:18%;color:var(--text-primary);">Freelancer</th>
-                            <th style="width:18%;color:var(--text-primary);">Web Agency</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="col-label">Upfront cost</td>
-                            <td class="highlight"><span class="yes">&#8377;0 (India)<br><span style="font-size:11px;font-weight:500;">USD 49 refundable (Intl)</span></span></td>
-                            <td>&#8377;0<br><span style="font-size:11px;color:var(--text-muted);">then monthly fees</span></td>
-                            <td>&#8377;5,000 to &#8377;50,000+</td>
-                            <td>&#8377;30,000 to &#8377;1,50,000+</td>
-                        </tr>
-                        <tr>
-                            <td class="col-label">See it before you pay</td>
-                            <td class="highlight">
-                                <span class="chk"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-                            </td>
-                            <td><span style="font-size:12px;color:var(--text-muted);">You build it yourself</span></td>
-                            <td>
-                                <span class="crs"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
-                            </td>
-                            <td>
-                                <span class="crs"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="col-label">Custom design (not a template)</td>
-                            <td class="highlight">
-                                <span class="chk"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-                            </td>
-                            <td>
-                                <span class="crs"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
-                            </td>
-                            <td>
-                                <span class="chk"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-                            </td>
-                            <td>
-                                <span class="chk"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="col-label">Time until you see a result</td>
-                            <td class="highlight"><span class="yes">48 hours</span></td>
-                            <td>Days to weeks</td>
-                            <td>2 to 6 weeks</td>
-                            <td>4 to 12 weeks</td>
-                        </tr>
-                        <tr>
-                            <td class="col-label">We do the work</td>
-                            <td class="highlight">
-                                <span class="chk"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-                                <span style="display:block;font-size:11px;color:#16a34a;margin-top:2px;">We build it</span>
-                            </td>
-                            <td>
-                                <span class="crs"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
-                                <span style="display:block;font-size:11px;color:#dc2626;margin-top:2px;">You build it</span>
-                            </td>
-                            <td>
-                                <span class="chk"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-                                <span style="display:block;font-size:11px;color:#16a34a;margin-top:2px;">They build it</span>
-                            </td>
-                            <td>
-                                <span class="chk"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-                                <span style="display:block;font-size:11px;color:#16a34a;margin-top:2px;">They build it</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="col-label">Risk if you do not like it</td>
-                            <td class="highlight"><span class="yes">None. Walk away free.</span></td>
-                            <td>Monthly fees wasted</td>
-                            <td>Deposit lost</td>
-                            <td>Thousands lost</td>
-                        </tr>
-                        <tr>
-                            <td class="col-label">AI-optimised by default</td>
-                            <td class="highlight">
-                                <span class="chk"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-                            </td>
-                            <td>
-                                <span class="crs"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
-                            </td>
-                            <td>
-                                <span class="dsh"><svg width="9" height="2" viewBox="0 0 10 2" fill="none"><rect width="10" height="2" rx="1" fill="#d97706"/></svg></span>
-                                <span style="display:block;font-size:11px;color:#d97706;margin-top:2px;">Varies</span>
-                            </td>
-                            <td>
-                                <span class="dsh"><svg width="9" height="2" viewBox="0 0 10 2" fill="none"><rect width="10" height="2" rx="1" fill="#d97706"/></svg></span>
-                                <span style="display:block;font-size:11px;color:#d97706;margin-top:2px;">Extra cost</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="col-label">Contract required</td>
-                            <td class="highlight">
-                                <span class="crs" style="background:rgba(255,255,255,0.8);"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
-                                <span style="display:block;font-size:11px;color:var(--text-muted);margin-top:2px;">No contract</span>
-                            </td>
-                            <td>
-                                <span class="crs"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
-                                <span style="display:block;font-size:11px;color:#dc2626;margin-top:2px;">Monthly plan</span>
-                            </td>
-                            <td>
-                                <span class="crs"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
-                                <span style="display:block;font-size:11px;color:#dc2626;margin-top:2px;">Signed agreement</span>
-                            </td>
-                            <td>
-                                <span class="crs"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
-                                <span style="display:block;font-size:11px;color:#dc2626;margin-top:2px;">Full contract</span>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            <span class="eyebrow animate-on-scroll">How We Compare</span>
+            <h2 class="sec-h2 animate-on-scroll">Before you spend money on a website,<br>know what you are getting into.</h2>
+            <div class="compare-shell animate-on-scroll">
+                <div class="compare-scroll">
+                    <table class="compare-table">
+                        <thead>
+                            <tr>
+                                <th class="th-feature"></th>
+                                <th class="th-us">OptiScale<br>Risk-Free</th>
+                                <th>DIY Builders<br><span style="font-size:0.72rem;font-weight:400;color:var(--gray-400);">Wix, Squarespace</span></th>
+                                <th>Freelancer</th>
+                                <th>Web Agency</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="td-feature">Upfront cost</td>
+                                <td class="td-us ct-yes">&#8377;0 for India<br><span style="font-size:0.78rem;font-weight:500;color:var(--green);">USD 49 refundable (Intl)</span></td>
+                                <td>&#8377;0 then<br>monthly fees</td>
+                                <td>&#8377;5,000 – &#8377;50,000+</td>
+                                <td>&#8377;30,000 – &#8377;1,50,000+</td>
+                            </tr>
+                            <tr>
+                                <td class="td-feature">See it before you pay</td>
+                                <td class="td-us">
+                                    <span class="ct-icon-yes">
+                                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                    </span>
+                                </td>
+                                <td style="font-size:0.8rem;color:var(--gray-400);">You build it yourself</td>
+                                <td>
+                                    <span class="ct-icon-no">
+                                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="ct-icon-no">
+                                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td-feature">Custom design (not a template)</td>
+                                <td class="td-us">
+                                    <span class="ct-icon-yes">
+                                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="ct-icon-no">
+                                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="ct-icon-yes">
+                                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="ct-icon-yes">
+                                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td-feature">Time until you see a result</td>
+                                <td class="td-us ct-yes">48 hours</td>
+                                <td>Days to weeks</td>
+                                <td>2 to 6 weeks</td>
+                                <td>4 to 12 weeks</td>
+                            </tr>
+                            <tr>
+                                <td class="td-feature">We do the work</td>
+                                <td class="td-us">
+                                    <span class="ct-icon-yes">
+                                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                    </span>
+                                    <div style="font-size:0.72rem;color:var(--green);margin-top:3px;">We build it</div>
+                                </td>
+                                <td>
+                                    <span class="ct-icon-no">
+                                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                                    </span>
+                                    <div style="font-size:0.72rem;color:var(--red);margin-top:3px;">You build it</div>
+                                </td>
+                                <td>
+                                    <span class="ct-icon-yes">
+                                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                    </span>
+                                    <div style="font-size:0.72rem;color:var(--green);margin-top:3px;">They build it</div>
+                                </td>
+                                <td>
+                                    <span class="ct-icon-yes">
+                                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                    </span>
+                                    <div style="font-size:0.72rem;color:var(--green);margin-top:3px;">They build it</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td-feature">Risk if you do not like it</td>
+                                <td class="td-us ct-yes">None. Walk away free.</td>
+                                <td class="ct-meh">Monthly fees wasted</td>
+                                <td class="ct-no">Deposit lost</td>
+                                <td class="ct-no">Thousands lost</td>
+                            </tr>
+                            <tr>
+                                <td class="td-feature">AI-optimised by default</td>
+                                <td class="td-us">
+                                    <span class="ct-icon-yes">
+                                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="ct-icon-no">
+                                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="ct-icon-meh">
+                                        <svg width="9" height="2" viewBox="0 0 10 2" fill="none"><rect width="10" height="2" rx="1" fill="#D97706"/></svg>
+                                    </span>
+                                    <div style="font-size:0.72rem;color:var(--amber);margin-top:3px;">Varies</div>
+                                </td>
+                                <td>
+                                    <span class="ct-icon-meh">
+                                        <svg width="9" height="2" viewBox="0 0 10 2" fill="none"><rect width="10" height="2" rx="1" fill="#D97706"/></svg>
+                                    </span>
+                                    <div style="font-size:0.72rem;color:var(--amber);margin-top:3px;">Extra cost</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td-feature">Contract required</td>
+                                <td class="td-us" style="color:var(--gray-500);font-size:0.82rem;">No contract</td>
+                                <td style="font-size:0.8rem;color:var(--red);">Monthly plan</td>
+                                <td style="font-size:0.8rem;color:var(--red);">Signed agreement</td>
+                                <td style="font-size:0.8rem;color:var(--red);">Full contract</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <p style="text-align:center;font-size:12px;color:var(--text-muted);margin-top:10px;">Scroll to see all columns on smaller screens.</p>
-            <p style="text-align:center;margin-top:1.5rem;font-size:0.9rem;color:var(--text-secondary);">See the full comparison: <a href="/compare" style="color:var(--primary-blue);">OptiScale Risk-Free vs all alternatives &rarr;</a></p>
+            <p class="compare-scroll-note">Scroll to see all columns on smaller screens.</p>
+            <p style="margin-top:1.25rem;font-size:0.875rem;color:var(--gray-500);">
+                See the full comparison: <a href="/compare" style="color:var(--blue);text-decoration:none;font-weight:600;">OptiScale Risk-Free vs all alternatives &rarr;</a>
+            </p>
         </div>
     </section>
 
-    <!-- AI OPTIMISED BY DEFAULT -->
-    <section class="section">
+    <!-- ============================================================
+         7. AI-OPTIMISED BY DEFAULT (navy bg)
+    ============================================================ -->
+    <section class="sec sec-navy">
         <div class="container">
-            <h2 class="section-title">AI-Optimised by Default</h2>
-            <div class="ai-box">
-                <h3>What "AI-optimised" means in practice</h3>
-                <p>Every website we build includes schema markup — the structured data that tells ChatGPT, Perplexity, Google AI Overviews, and Gemini exactly what your business does, where you are, and who your customers are. Without schema, AI engines guess. With it, they can recommend you directly.</p>
-                <p>We also structure the content on every page so it answers the questions your customers ask AI search tools. FAQ sections, clear service descriptions, and a fast load time (PageSpeed 90+) all contribute to AI citation probability.</p>
-                <p>Most website designers do not think about AI search at all. OptiScale builds it in by default because that is what we do for every client.</p>
-                <p style="margin-bottom:0;">Want to understand your current AI visibility before building a new site? <a href="/ai-visibility-audit" style="color:var(--primary-blue);font-weight:600;">See the AI Visibility Audit &#8594;</a></p>
+            <div class="ai-grid">
+                <div class="ai-text animate-on-scroll">
+                    <span class="eyebrow" style="color:rgba(255,255,255,0.45);">AI-Optimised by Default</span>
+                    <h2 class="sec-h2 sec-h2-white">Built so AI engines<br>can recommend you.</h2>
+                    <p style="margin-top:1.25rem;">
+                        Every website we build includes schema markup — the structured data that tells ChatGPT, Perplexity, Google AI Overviews, and Gemini exactly what your business does, where you are, and who your customers are. Without schema, AI engines guess. With it, they can recommend you directly.
+                    </p>
+                    <p>
+                        We also structure the content on every page so it answers the questions your customers ask AI search tools. FAQ sections, clear service descriptions, and a fast load time (PageSpeed 90+) all contribute to AI citation probability.
+                    </p>
+                    <p>
+                        Most website designers do not think about AI search at all. OptiScale builds it in by default because that is what we do for every client.
+                    </p>
+                    <p style="margin-bottom:0;">
+                        Want to understand your current AI visibility before building a new site? <a href="/ai-visibility-audit">See the AI Visibility Audit &rarr;</a>
+                    </p>
+                </div>
+                <div class="ai-tiles animate-on-scroll">
+                    <div class="ai-tile">
+                        <span class="ai-tile-icon">&#9881;&#65039;</span>
+                        <div class="ai-tile-title">Schema Markup</div>
+                        <div class="ai-tile-desc">Structured JSON-LD on every page so AI engines read your business correctly.</div>
+                    </div>
+                    <div class="ai-tile">
+                        <span class="ai-tile-icon">&#128195;</span>
+                        <div class="ai-tile-title">Structured Content</div>
+                        <div class="ai-tile-desc">FAQ sections and clear service copy that directly answer AI search queries.</div>
+                    </div>
+                    <div class="ai-tile">
+                        <span class="ai-tile-icon">&#9889;</span>
+                        <div class="ai-tile-title">Fast Load Time</div>
+                        <div class="ai-tile-desc">PageSpeed 90+ by default — a real signal for both Google and AI crawlers.</div>
+                    </div>
+                    <div class="ai-tile">
+                        <span class="ai-tile-icon">&#128161;</span>
+                        <div class="ai-tile-title">AI Citation Ready</div>
+                        <div class="ai-tile-desc">Content structured for ChatGPT, Perplexity, Gemini, and Bing Copilot to cite.</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- DESIGN INTEND CASE STUDY -->
-    <section class="section section-alt">
+    <!-- ============================================================
+         8. CASE STUDY
+    ============================================================ -->
+    <section class="sec sec-white">
         <div class="container">
-            <h2 class="section-title">Delivered: Design Intend</h2>
-            <div class="cs-strip animate-on-scroll">
-                <div class="cs-strip-badge">Delivered Client</div>
-                <div class="cs-strip-body">
+            <span class="eyebrow animate-on-scroll">Delivered Client</span>
+            <h2 class="sec-h2 animate-on-scroll">Design Intend</h2>
+            <div class="cs-card animate-on-scroll">
+                <div class="cs-stats">
+                    <div class="cs-stat">
+                        <div class="cs-stat-value">36</div>
+                        <div class="cs-stat-label">pages delivered</div>
+                    </div>
+                    <div class="cs-stat">
+                        <div class="cs-stat-value">2,289</div>
+                        <div class="cs-stat-label">canonical refs corrected</div>
+                    </div>
+                    <div class="cs-stat">
+                        <div class="cs-stat-value">48h</div>
+                        <div class="cs-stat-label">delivery window</div>
+                    </div>
+                    <div class="cs-stat">
+                        <div class="cs-stat-value">0</div>
+                        <div class="cs-stat-label">paid before approval</div>
+                    </div>
+                </div>
+                <div class="cs-narrative">
+                    <span class="cs-badge">Delivered: Risk-Free Model</span>
                     <h4>Design Intend &mdash; 12-year architecture practice, Hosur, Tamil Nadu</h4>
                     <p>Design Intend had no digital presence. No website, no Google Business Profile, no schema. We built and delivered their complete AI-optimised website using the same risk-free model described on this page. The engagement is part of the same operator family as OptiScale Advisors and is shared here as a documented example of the methodology at work.</p>
-                    <ul>
-                        <li>Complete website rebuild</li>
-                        <li>Project pages: Kishore Farmhouse, Jamna Auto Industries</li>
-                        <li>Author page for Ar. Chittrarasan with Person schema</li>
-                        <li>2,289 canonical references corrected across 47 files</li>
-                        <li>LocalBusiness, CreativeWork, BreadcrumbList schema</li>
-                        <li>Sitemap and robots.txt rebuilt for AI crawler access</li>
+                    <div class="cs-tags">
+                        <span class="cs-tag">Complete website rebuild</span>
+                        <span class="cs-tag">Project pages: Kishore Farmhouse, Jamna Auto Industries</span>
+                        <span class="cs-tag">Author page with Person schema</span>
+                        <span class="cs-tag">LocalBusiness + CreativeWork + BreadcrumbList schema</span>
+                        <span class="cs-tag">Sitemap and robots.txt rebuilt for AI crawler access</span>
+                    </div>
+                    <a href="/case-studies/design-intend/" class="cs-link">Read the full case study &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         9. APPLICATION FORM
+    ============================================================ -->
+    <section class="sec form-section-bg" id="apply">
+        <div class="container">
+            <div class="apply-layout">
+                <!-- LEFT: FORM -->
+                <div>
+                    <div class="form-card">
+                        <div id="form-success" class="form-success">
+                            <div class="form-success-icon">&#10003;</div>
+                            <h3>Application received.</h3>
+                            <p>We will have your website demo ready within 48 hours. Check your email for a confirmation.</p>
+                        </div>
+                        <form id="rfsd-form" novalidate>
+                            <div class="form-header">
+                                <h2>Apply for a Demo</h2>
+                                <p>See your finished website in 48 hours. Takes 2 minutes to apply.</p>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="rfsd-name">Your name <span style="color:var(--red)">*</span></label>
+                                    <input type="text" id="rfsd-name" name="name" autocomplete="name" required placeholder="Ravi Kumar">
+                                </div>
+                                <div class="form-group">
+                                    <label for="rfsd-business">Business name <span style="color:var(--red)">*</span></label>
+                                    <input type="text" id="rfsd-business" name="business" required placeholder="Kumar Dental Clinic">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="rfsd-email">Email address <span style="color:var(--red)">*</span></label>
+                                <input type="email" id="rfsd-email" name="email" autocomplete="email" required placeholder="ravi@yourbusiness.com">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="rfsd-industry">Industry <span style="color:var(--red)">*</span></label>
+                                    <select id="rfsd-industry" name="industry" required>
+                                        <option value="">Select your industry</option>
+                                        <option>Interior Design / Architecture</option>
+                                        <option>Doctor / Clinic / Healthcare</option>
+                                        <option>Law Firm / Legal Services</option>
+                                        <option>Chartered Accountant / Finance</option>
+                                        <option>Real Estate</option>
+                                        <option>Consultant / Coach</option>
+                                        <option>Digital Marketing Agency</option>
+                                        <option>Retail / E-commerce</option>
+                                        <option>Restaurant / Food</option>
+                                        <option>Education / Training</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="rfsd-country">Country <span style="color:var(--red)">*</span></label>
+                                    <select id="rfsd-country" name="country" required>
+                                        <option value="">Select your country</option>
+                                        <option value="India">India</option>
+                                        <option value="USA">United States</option>
+                                        <option value="UK">United Kingdom</option>
+                                        <option value="Canada">Canada</option>
+                                        <option value="Australia">Australia</option>
+                                        <option value="Singapore">Singapore</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="intl-retainer-note" class="intl-retainer-note">
+                                <strong>International clients:</strong> A refundable USD 49 holding retainer will be requested by email after your application. This is refunded in full if we do not deliver your demo within 48 hours, and credited toward your invoice if you proceed.
+                            </div>
+                            <div class="form-group">
+                                <label for="rfsd-whatsapp">WhatsApp number <span class="optional">(optional, but faster for updates)</span></label>
+                                <input type="tel" id="rfsd-whatsapp" name="whatsapp" autocomplete="tel" placeholder="+91 73972 25523">
+                            </div>
+                            <!-- Honeypot -->
+                            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+                            <button type="submit" class="form-submit-btn" id="rfsd-submit">Apply for My Demo &rarr;</button>
+                            <p class="form-disclaimer">No spam. No cold calls. Your info is only used to build your website demo.</p>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- RIGHT: TRUST SIGNALS -->
+                <div class="form-aside animate-on-scroll">
+                    <span class="eyebrow">No card. No contract.</span>
+                    <h2 class="form-aside-heading">Your demo is built before a single rupee changes hands.</h2>
+                    <ul class="form-trust-list">
+                        <li><span class="icon">&#9201;</span><span>Demo delivered within 48 hours of your application</span></li>
+                        <li><span class="icon">&#128274;</span><span>No upfront cost for Indian clients &mdash; zero</span></li>
+                        <li><span class="icon">&#10003;</span><span>International: refundable USD 49 retainer, credited to invoice</span></li>
+                        <li><span class="icon">&#128077;</span><span>Walk away free if you do not approve &mdash; no questions</span></li>
+                        <li><span class="icon">&#128300;</span><span>Every site AI-optimised with schema markup by default</span></li>
+                        <li><span class="icon">&#127758;</span><span>India &middot; USA &middot; UK &middot; Canada &middot; Australia &middot; Singapore</span></li>
                     </ul>
-                    <p style="margin-top:0.75rem;margin-bottom:0;font-size:0.85rem;"><a href="/case-studies/design-intend/" style="color:var(--primary-blue);font-weight:600;">Read the full case study &#8594;</a></p>
+                    <p class="form-whatsapp">
+                        Prefer to talk first? <a href="https://wa.me/917397225523" target="_blank" rel="noopener">WhatsApp us directly</a> or <a href="https://cal.com/optiscale360/discoverycall" target="_blank" rel="noopener">book a free 15-minute call</a>. Available across IST, GMT, EST, and PST.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- APPLICATION FORM -->
-    <section class="form-section" id="apply">
+    <!-- ============================================================
+         10. FAQ
+    ============================================================ -->
+    <section class="sec sec-white">
+        <div class="container" style="max-width:780px;">
+            <span class="eyebrow animate-on-scroll">Common Questions</span>
+            <h2 class="sec-h2 animate-on-scroll">Everything you need to know.</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What does &ldquo;approval&rdquo; mean exactly?
+                        <span class="faq-icon">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                        </span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">You see the finished site in 48 hours. If you approve it, you pay the agreed price and we publish it. If you do not approve it, you walk away free. No charge. No follow-up. No questions.</div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What if I do not approve the demo?
+                        <span class="faq-icon">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                        </span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">You walk away. No charge, no awkward calls, no pressure. For Indian clients there is nothing to refund because nothing was paid. For international clients the USD 49 holding retainer is refunded in full.</div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How does the 48-hour timeline work?
+                        <span class="faq-icon">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                        </span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Once your application is received, we build a real working website and send you a private preview link within 48 hours. The clock starts when the form is submitted and we confirm receipt. If we miss the 48-hour window, international clients receive a full refund of the holding retainer.</div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Landing Page vs Full Website &mdash; what is the difference?
+                        <span class="faq-icon">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                        </span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">A Landing Page is one focused page: hero section, services, contact form, AI-optimised schema. It converts visitors into enquiries. A Full Website is 4 to 8 pages: home, about, services, contact, blog setup, and portfolio if you have projects to show. Both are AI-optimised by default.</div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How is this different from the AI-Ready Lead-Gen Website?
+                        <span class="faq-icon">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                        </span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">The Risk-Free Website Design is for businesses that need a website fast and want to see it before paying. The <a href="/ai-ready-website">AI-Ready Lead-Gen Website</a> is a deeper engagement: discovery call, competitor analysis, 5 to 12 pages, blog articles written, 90 days of monitoring. If you want the full strategic build, that is the right choice.</div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Do you work with my industry?
+                        <span class="faq-icon">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                        </span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">We work with service-based businesses of all types: interior designers, doctors and clinics, law firms, chartered accountants, real estate agents, consultants, coaches, and digital agencies. If you serve clients and need a website that brings them in, apply and we will confirm.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         11. RELATED SERVICES
+    ============================================================ -->
+    <section class="sec sec-gray">
         <div class="container">
-            <div style="text-align:center;margin-bottom:2rem;">
-                <p style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:0.75rem;">Apply for a Demo</p>
-                <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:700;color:#fff;margin-bottom:0.5rem;">See Your Website in 48 Hours</h2>
-                <p style="color:rgba(255,255,255,0.65);font-size:0.95rem;">Takes 2 minutes. No card required for Indian clients.</p>
-                <p style="color:rgba(255,255,255,0.45);font-size:0.8rem;margin-top:0.4rem;">Available across IST, GMT, EST, and PST</p>
-            </div>
-            <div class="form-card">
-                <div class="form-success" id="form-success">
-                    <div style="font-size:2.5rem;margin-bottom:0.75rem;">&#10003;</div>
-                    <h3>Application received.</h3>
-                    <p>We will have your website demo ready within 48 hours. Check your email for a confirmation.</p>
-                </div>
-                <form id="rfsd-form" novalidate>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="rfsd-name">Your name <span style="color:#dc2626">*</span></label>
-                            <input type="text" id="rfsd-name" name="name" autocomplete="name" required placeholder="Ravi Kumar">
-                        </div>
-                        <div class="form-group">
-                            <label for="rfsd-business">Business name <span style="color:#dc2626">*</span></label>
-                            <input type="text" id="rfsd-business" name="business" required placeholder="Kumar Dental Clinic">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="rfsd-email">Email address <span style="color:#dc2626">*</span></label>
-                        <input type="email" id="rfsd-email" name="email" autocomplete="email" required placeholder="ravi@yourbusiness.com">
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="rfsd-industry">Industry <span style="color:#dc2626">*</span></label>
-                            <select id="rfsd-industry" name="industry" required>
-                                <option value="">Select your industry</option>
-                                <option>Interior Design / Architecture</option>
-                                <option>Doctor / Clinic / Healthcare</option>
-                                <option>Law Firm / Legal Services</option>
-                                <option>Chartered Accountant / Finance</option>
-                                <option>Real Estate</option>
-                                <option>Consultant / Coach</option>
-                                <option>Digital Marketing Agency</option>
-                                <option>Retail / E-commerce</option>
-                                <option>Restaurant / Food</option>
-                                <option>Education / Training</option>
-                                <option>Other</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="rfsd-country">Country <span style="color:#dc2626">*</span></label>
-                            <select id="rfsd-country" name="country" required>
-                                <option value="">Select your country</option>
-                                <option value="India">India</option>
-                                <option value="USA">United States</option>
-                                <option value="UK">United Kingdom</option>
-                                <option value="Canada">Canada</option>
-                                <option value="Australia">Australia</option>
-                                <option value="Singapore">Singapore</option>
-                                <option value="Other">Other</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div id="intl-retainer-note" class="intl-retainer-note">
-                        <strong>International clients:</strong> A refundable USD 49 holding retainer will be requested by email after your application. This is refunded in full if we do not deliver your demo within 48 hours, and credited toward your invoice if you proceed.
-                    </div>
-                    <div class="form-group">
-                        <label for="rfsd-whatsapp">WhatsApp number <span class="optional">(optional, but faster for updates)</span></label>
-                        <input type="tel" id="rfsd-whatsapp" name="whatsapp" autocomplete="tel" placeholder="+91 73972 25523">
-                    </div>
-                    <!-- Honeypot -->
-                    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-                    <button type="submit" class="form-submit" id="rfsd-submit">Apply for My Demo &#8594;</button>
-                    <p style="text-align:center;font-size:0.78rem;color:var(--text-muted);margin-top:0.75rem;">No spam. No cold calls. Your info is only used to build your website demo.</p>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="section">
-        <div class="container" style="max-width:760px;">
-            <h2 class="section-title section-title-center">Common Questions</h2>
-            <div style="margin-top:0.5rem;">
-
-                <div class="faq-item">
-                    <button class="faq-question">What does "approval" mean exactly? <span class="faq-icon">&#8964;</span></button>
-                    <div class="faq-answer"><div class="faq-answer-inner">You see the finished site in 48 hours. If you approve it, you pay the agreed price and we publish it. If you do not approve it, you walk away free. No charge. No follow-up. No questions.</div></div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">What if I do not approve the demo? <span class="faq-icon">&#8964;</span></button>
-                    <div class="faq-answer"><div class="faq-answer-inner">You walk away. No charge, no awkward calls, no pressure. For Indian clients there is nothing to refund because nothing was paid. For international clients the USD 49 holding retainer is refunded in full.</div></div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">How does the 48-hour timeline work? <span class="faq-icon">&#8964;</span></button>
-                    <div class="faq-answer"><div class="faq-answer-inner">Once your application is received, we build your website and send a private preview link within 48 hours. The clock starts when the form is submitted and we confirm receipt. If we miss the 48-hour window, international clients receive a full refund of the holding retainer.</div></div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">Landing Page vs Full Website &mdash; what is the difference? <span class="faq-icon">&#8964;</span></button>
-                    <div class="faq-answer"><div class="faq-answer-inner">A Landing Page is one focused page: hero section, services, contact form, AI-optimised schema. It converts visitors into enquiries. A Full Website is 4 to 8 pages: home, about, services, contact, blog setup, and portfolio if you have projects to show. Both are AI-optimised by default.</div></div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">How is this different from the AI-Ready Lead-Gen Website? <span class="faq-icon">&#8964;</span></button>
-                    <div class="faq-answer"><div class="faq-answer-inner">The Risk-Free Website Design is for businesses that need a website fast and want to see it before paying. The <a href="/ai-ready-website">AI-Ready Lead-Gen Website</a> is a deeper engagement: discovery call, competitor analysis, 5 to 12 pages, blog articles written, 90 days of monitoring. If you want the full strategic build, that is the right choice.</div></div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">Do you work with my industry? <span class="faq-icon">&#8964;</span></button>
-                    <div class="faq-answer"><div class="faq-answer-inner">We work with service-based businesses of all types: interior designers, doctors and clinics, law firms, chartered accountants, real estate agents, consultants, coaches, and digital agencies. If you serve clients and need a website that brings them in, apply and we will confirm.</div></div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- INTERNAL LINKS -->
-    <section class="section section-alt">
-        <div class="container">
-            <h2 class="section-title">Related Services</h2>
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;margin-top:0.5rem;">
-                <a href="/ai-visibility-audit" style="display:block;background:#fff;border:1px solid var(--silver-dark);border-radius:var(--radius-md);padding:1.5rem;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow='none'">
-                    <div style="font-family:'Space Grotesk',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--primary-blue);margin-bottom:0.5rem;">AI Visibility Audit</div>
-                    <div style="font-weight:600;color:var(--primary-navy);margin-bottom:0.4rem;">Not sure if your site is visible on AI platforms?</div>
-                    <div style="font-size:0.88rem;color:var(--text-secondary);">&#8377;15,000 / USD 199 &mdash; 48-hour report across 5 AI platforms &#8594;</div>
+            <span class="eyebrow animate-on-scroll">Related Services</span>
+            <h2 class="sec-h2 animate-on-scroll">More from OptiScale</h2>
+            <div class="related-cards">
+                <a href="/ai-visibility-audit" class="related-card animate-on-scroll">
+                    <span class="related-card-tag">AI Visibility Audit</span>
+                    <div class="related-card-title">Not sure if your site is visible on AI platforms?</div>
+                    <div class="related-card-desc">&#8377;15,000 / USD 199 &mdash; 48-hour report across 5 AI platforms.</div>
+                    <div class="related-card-arrow">Learn more &rarr;</div>
                 </a>
-                <a href="/ai-ready-website" style="display:block;background:#fff;border:1px solid var(--silver-dark);border-radius:var(--radius-md);padding:1.5rem;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow='none'">
-                    <div style="font-family:'Space Grotesk',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--primary-blue);margin-bottom:0.5rem;">AI-Ready Lead-Gen Website</div>
-                    <div style="font-weight:600;color:var(--primary-navy);margin-bottom:0.4rem;">Want the full strategic website build?</div>
-                    <div style="font-size:0.88rem;color:var(--text-secondary);">Starting &#8377;50,000 / USD 1,500 &mdash; 5 to 12 pages with 90-day monitoring &#8594;</div>
+                <a href="/ai-ready-website" class="related-card animate-on-scroll">
+                    <span class="related-card-tag">AI-Ready Lead-Gen Website</span>
+                    <div class="related-card-title">Want the full strategic website build?</div>
+                    <div class="related-card-desc">Starting &#8377;50,000 / USD 1,500 &mdash; 5 to 12 pages with 90-day monitoring.</div>
+                    <div class="related-card-arrow">Learn more &rarr;</div>
                 </a>
-                <a href="/compare" style="display:block;background:#fff;border:1px solid var(--silver-dark);border-radius:var(--radius-md);padding:1.5rem;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow='none'">
-                    <div style="font-family:'Space Grotesk',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--primary-blue);margin-bottom:0.5rem;">Full Comparison</div>
-                    <div style="font-weight:600;color:var(--primary-navy);margin-bottom:0.4rem;">OptiScale vs DIY vs Freelancer vs Agency</div>
-                    <div style="font-size:0.88rem;color:var(--text-secondary);">See all options side by side before you decide &#8594;</div>
+                <a href="/compare" class="related-card animate-on-scroll">
+                    <span class="related-card-tag">Full Comparison</span>
+                    <div class="related-card-title">OptiScale vs DIY vs Freelancer vs Agency</div>
+                    <div class="related-card-desc">See all options side by side before you decide.</div>
+                    <div class="related-card-arrow">See comparison &rarr;</div>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- BOTTOM CTA -->
-    <section class="cta-section">
-        <div class="container">
+    <!-- ============================================================
+         12. BOTTOM CTA
+    ============================================================ -->
+    <section class="bottom-cta">
+        <div class="container bottom-cta-inner">
             <h2>Ready to see your website?</h2>
             <p>Apply in 2 minutes. Your demo will be ready in 48 hours.</p>
-            <a href="#apply" class="btn-white">Apply for a Demo</a>
-            <p class="whatsapp-note" style="margin-top:1.25rem;">Prefer to talk first? <a href="https://wa.me/917397225523" target="_blank" rel="noopener">WhatsApp us directly</a> or <a href="https://cal.com/optiscale360/discoverycall" target="_blank" rel="noopener">book a free 15-minute call</a>.</p>
-            <p style="color:rgba(255,255,255,0.4);font-size:0.8rem;margin-top:0.75rem;">Available across IST, GMT, EST, and PST</p>
+            <a href="#apply" class="btn-amber">Apply for a Demo &rarr;</a>
+            <p class="bottom-cta-note">
+                Prefer to talk first?
+                <a href="https://wa.me/917397225523" target="_blank" rel="noopener">WhatsApp us</a>
+                or
+                <a href="https://cal.com/optiscale360/discoverycall" target="_blank" rel="noopener">book a free 15-minute call</a>.
+                <br>Available across IST &middot; GMT &middot; EST &middot; PST
+            </p>
         </div>
     </section>
 
     <div id="footer-placeholder"></div>
 
     <script src="/components/loader.js" defer></script>
-    <script src="https://unpkg.com/lucide@latest" defer></script>
+
     <script>
-        // FAQ accordion
+        // ============================================================
+        // FAQ ACCORDION
+        // ============================================================
         document.querySelectorAll('.faq-question').forEach(function(btn) {
             btn.addEventListener('click', function() {
                 var item = this.closest('.faq-item');
                 var wasActive = item.classList.contains('active');
-                document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('active'); });
+                document.querySelectorAll('.faq-item').forEach(function(i) {
+                    i.classList.remove('active');
+                });
                 if (!wasActive) item.classList.add('active');
             });
         });
 
-        // Country change: show international retainer note
+        // ============================================================
+        // COUNTRY CHANGE — show international retainer note
+        // ============================================================
         document.getElementById('rfsd-country').addEventListener('change', function() {
             var note = document.getElementById('intl-retainer-note');
             note.classList.toggle('visible', this.value !== 'India' && this.value !== '');
         });
 
-        // Form submission via fetch (no-cors, same pattern as RiskFreeSites)
+        // ============================================================
+        // FORM SUBMISSION
+        // ============================================================
         var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzJpwnqEMskxZPzCvNuwegu34M4giL4p0u5WD6v93wBiQxjgUMapfd2E110XtXRjLSo/exec';
+
         document.getElementById('rfsd-form').addEventListener('submit', function(e) {
             e.preventDefault();
             var btn = document.getElementById('rfsd-submit');
@@ -785,7 +2316,11 @@
             btn.textContent = 'Sending...';
             var formData = new FormData(this);
             // Honeypot check
-            if (formData.get('_gotcha')) { btn.disabled = false; btn.textContent = 'Apply for My Demo →'; return; }
+            if (formData.get('_gotcha')) {
+                btn.disabled = false;
+                btn.textContent = 'Apply for My Demo →';
+                return;
+            }
             fetch(SCRIPT_URL, { method: 'POST', body: formData, mode: 'no-cors' })
                 .then(function() {
                     document.getElementById('rfsd-form').style.display = 'none';
@@ -798,12 +2333,26 @@
                 });
         });
 
-        // Animate on scroll
+        // ============================================================
+        // ANIMATE ON SCROLL — adds .animate-in (matches main.css)
+        // ============================================================
         if ('IntersectionObserver' in window) {
             var obs = new IntersectionObserver(function(entries) {
-                entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('animate-in'); obs.unobserve(e.target); } });
+                entries.forEach(function(e) {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('animate-in');
+                        obs.unobserve(e.target);
+                    }
+                });
             }, { threshold: 0.1 });
-            document.querySelectorAll('.animate-on-scroll').forEach(function(el) { obs.observe(el); });
+            document.querySelectorAll('.animate-on-scroll').forEach(function(el) {
+                obs.observe(el);
+            });
+        } else {
+            // Fallback for browsers without IntersectionObserver
+            document.querySelectorAll('.animate-on-scroll').forEach(function(el) {
+                el.classList.add('animate-in');
+            });
         }
     </script>
 </body>
