@@ -11,13 +11,13 @@ body { padding-top: 72px; }
 /* --- Design Tokens --- */
 :root {
     /* Teal — single accent color */
-    --primary:          #4F46E5;
-    --primary-light:    #6366F1;
-    --primary-dark:     #3730A3;
+    --primary:          #059669;
+    --primary-light:    #10B981;
+    --primary-dark:     #047857;
 
-    --accent:           #4F46E5;
-    --accent-light:     #EEF2FF;
-    --accent-dark:      #3730A3;
+    --accent:           #059669;
+    --accent-light:     #ECFDF5;
+    --accent-dark:      #047857;
 
     /* Status */
     --success:          #10B981;
@@ -289,7 +289,7 @@ body { padding-top: 72px; }
 }
 .score-ring-fill {
     fill: none;
-    stroke: #4F46E5;
+    stroke: #059669;
     stroke-width: 8;
     stroke-linecap: round;
     stroke-dasharray: 283;
@@ -360,7 +360,7 @@ body { padding-top: 72px; }
     border-radius: 8px;
     font-size: 0.8rem;
     font-weight: 600;
-    color: #6366F1;
+    color: #10B981;
 }
 .score-card-alert i {
     width: 16px;
@@ -443,7 +443,7 @@ body { padding-top: 72px; }
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    color: #6366F1;
+    color: #10B981;
     font-size: 0.7rem;
 }
 
