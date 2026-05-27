@@ -66,7 +66,16 @@
           "contactType": "customer service",
           "availableLanguage": ["English", "Tamil", "Hindi"]
         },
-        "areaServed": ["Hosur", "Bengaluru", "India"],
+        "areaServed": [
+          {"@type": "Country", "name": "India"},
+          {"@type": "Country", "name": "United States"},
+          {"@type": "Country", "name": "United Kingdom"},
+          {"@type": "Country", "name": "Canada"},
+          {"@type": "Country", "name": "Australia"},
+          {"@type": "Country", "name": "Singapore"}
+        ],
+        "currenciesAccepted": "INR, USD",
+        "availableLanguage": [{"@type": "Language", "name": "English"}],
         "sameAs": ["https://www.linkedin.com/in/vinod-websites/"],
         "founder": {
           "@type": "Person",
@@ -97,8 +106,15 @@
           "longitude": 77.8253
         },
         "priceRange": "₹₹",
-        "areaServed": ["Hosur", "Bengaluru", "India"],
-        "description": "We audit your AI search visibility and build websites that AI engines recommend. Based in Hosur, Tamil Nadu. Serving businesses across India.",
+        "areaServed": [
+          {"@type": "Country", "name": "India"},
+          {"@type": "Country", "name": "United States"},
+          {"@type": "Country", "name": "United Kingdom"},
+          {"@type": "Country", "name": "Canada"},
+          {"@type": "Country", "name": "Australia"},
+          {"@type": "Country", "name": "Singapore"}
+        ],
+        "description": "We audit your AI search visibility and build AI-optimised websites. Based in Hosur, Tamil Nadu. Serving businesses across India and internationally.",
         "knowsAbout": ["AI search visibility", "GEO optimization", "Schema markup", "AI-ready websites", "SEO audits"]
       },
       {
@@ -132,8 +148,18 @@
             "url": "https://optiscaleadvisors.com/ai-visibility-audit",
             "description": "Complete AI search visibility audit across ChatGPT, Perplexity, Google AI, Bing, and Gemini. Includes 10 live query tests, competitor analysis, and a prioritised fix roadmap.",
             "provider": {"@type": "Organization", "name": "OptiScale Advisors"},
-            "areaServed": "India",
-            "offers": {"@type": "Offer", "price": "15000", "priceCurrency": "INR"}
+            "areaServed": [
+              {"@type": "Country", "name": "India"},
+              {"@type": "Country", "name": "United States"},
+              {"@type": "Country", "name": "United Kingdom"},
+              {"@type": "Country", "name": "Canada"},
+              {"@type": "Country", "name": "Australia"},
+              {"@type": "Country", "name": "Singapore"}
+            ],
+            "offers": [
+              {"@type": "Offer", "name": "India", "price": "15000", "priceCurrency": "INR"},
+              {"@type": "Offer", "name": "International", "price": "199", "priceCurrency": "USD"}
+            ]
           },
           {
             "@type": "Service",
@@ -142,8 +168,18 @@
             "url": "https://optiscaleadvisors.com/ai-ready-website",
             "description": "Schema-rich, mobile-first websites built for AI search visibility and lead generation. Includes GBP setup, Analytics, and 90-day performance tracking.",
             "provider": {"@type": "Organization", "name": "OptiScale Advisors"},
-            "areaServed": "India",
-            "offers": {"@type": "Offer", "price": "50000", "priceCurrency": "INR"}
+            "areaServed": [
+              {"@type": "Country", "name": "India"},
+              {"@type": "Country", "name": "United States"},
+              {"@type": "Country", "name": "United Kingdom"},
+              {"@type": "Country", "name": "Canada"},
+              {"@type": "Country", "name": "Australia"},
+              {"@type": "Country", "name": "Singapore"}
+            ],
+            "offers": [
+              {"@type": "Offer", "name": "Starter (India)", "price": "50000", "priceCurrency": "INR"},
+              {"@type": "Offer", "name": "Starter (International)", "price": "1500", "priceCurrency": "USD"}
+            ]
           },
           {
             "@type": "Service",
@@ -152,8 +188,40 @@
             "url": "https://optiscaleadvisors.com/contact",
             "description": "Monthly AI visibility checks across all 5 platforms, competitor tracking, one content optimisation per month, and a monthly report.",
             "provider": {"@type": "Organization", "name": "OptiScale Advisors"},
-            "areaServed": "India",
-            "offers": {"@type": "Offer", "price": "20000", "priceCurrency": "INR"}
+            "areaServed": [
+              {"@type": "Country", "name": "India"},
+              {"@type": "Country", "name": "United States"},
+              {"@type": "Country", "name": "United Kingdom"},
+              {"@type": "Country", "name": "Canada"},
+              {"@type": "Country", "name": "Australia"},
+              {"@type": "Country", "name": "Singapore"}
+            ],
+            "offers": [
+              {"@type": "Offer", "name": "India", "price": "20000", "priceCurrency": "INR"},
+              {"@type": "Offer", "name": "International", "price": "249", "priceCurrency": "USD"}
+            ]
+          },
+          {
+            "@type": "Service",
+            "position": 4,
+            "name": "Risk-Free Website Design",
+            "url": "https://optiscaleadvisors.com/risk-free-website",
+            "description": "Custom AI-optimised website built before you pay. No upfront cost for Indian clients. Refundable USD 49 holding retainer for international clients. First demo in 48 hours.",
+            "provider": {"@type": "Organization", "name": "OptiScale Advisors"},
+            "areaServed": [
+              {"@type": "Country", "name": "India"},
+              {"@type": "Country", "name": "United States"},
+              {"@type": "Country", "name": "United Kingdom"},
+              {"@type": "Country", "name": "Canada"},
+              {"@type": "Country", "name": "Australia"},
+              {"@type": "Country", "name": "Singapore"}
+            ],
+            "offers": [
+              {"@type": "Offer", "name": "Landing Page — India", "price": "20000", "priceCurrency": "INR"},
+              {"@type": "Offer", "name": "Landing Page — International", "price": "600", "priceCurrency": "USD"},
+              {"@type": "Offer", "name": "Full Website — India", "price": "50000", "priceCurrency": "INR"},
+              {"@type": "Offer", "name": "Full Website — International", "price": "1500", "priceCurrency": "USD"}
+            ]
           }
         ]
       },
@@ -857,14 +925,14 @@
       <div class="container" style="max-width:800px;">
         <p style="font-size:1.1rem;line-height:1.8;color:#475569;">Most business owners in India have no idea whether their company appears when someone searches on ChatGPT, Perplexity, or Google AI Overviews. These platforms now handle hundreds of millions of searches every day, and they recommend businesses directly, without showing a list of links. If your business is not optimised for AI search, your competitors are getting those customers instead.</p>
         <p style="font-size:1.1rem;line-height:1.8;color:#475569;margin-top:1rem;">We help small and medium businesses across India fix this. We start with a complete <a href="/ai-visibility-audit" style="color:#1E40AF;text-decoration:underline;">AI visibility audit</a>, testing your business across five AI platforms, identifying exactly who is appearing instead of you, and delivering a prioritised action plan within 48 hours. For businesses that need deeper fixes, we build <a href="/ai-ready-website" style="color:#1E40AF;text-decoration:underline;">AI-ready websites</a> designed from the ground up to generate leads and appear in AI recommendations.</p>
-        <p style="font-size:1.1rem;line-height:1.8;color:#475569;margin-top:1rem;">Based in Hosur, Tamil Nadu. Working with businesses across India.</p>
+        <p style="font-size:1.1rem;line-height:1.8;color:#475569;margin-top:1rem;">Based in Hosur, Tamil Nadu. Serving businesses across India, and working with international clients in the USA, UK, Canada, Australia, and Singapore.</p>
       </div>
     </section>
 
     <!-- SERVICES: TWO WAYS WE HELP -->
     <section class="section" id="services">
         <div class="container">
-            <h2 class="section-title">Two Ways We Help Your Business</h2>
+            <h2 class="section-title">Our Services</h2>
             <p class="section-subtitle">A clear path from diagnosis to results.</p>
 
             <!-- Step 1 -->
@@ -884,10 +952,32 @@
                     <li>Prioritised fix roadmap</li>
                     <li>45-minute video walkthrough of findings</li>
                 </ul>
-                <p class="price-tag">Investment: &#8377;15,000</p>
-                <p class="price-note">Includes 45-minute video walkthrough. Report delivered in 48 hours.</p>
+                <p class="price-tag">Investment: &#8377;15,000 / USD 199</p>
+                <p class="price-note">Includes 45-minute video walkthrough. Delivered in 48 hours. Audit fee credited toward any OptiScale implementation.</p>
                 <a href="/ai-visibility-audit" class="btn-primary">Get My AI Visibility Audit</a>
                 <p style="margin-top:1rem;"><a href="/ai-visibility-audit" style="color:#1E40AF;text-decoration:underline;">Learn what the audit covers →</a></p>
+            </div>
+
+            <!-- Risk-Free Website Design -->
+            <div class="service-card card-glow animate-on-scroll">
+                <div style="display:flex;align-items:center;gap:16px;margin-bottom:1rem;">
+                    <div class="icon-container"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                    <span class="step-label" style="margin-bottom:0;">Entry-Level Website</span>
+                </div>
+                <h3>Risk-Free Website Design</h3>
+                <p>Need a website but not ready to pay upfront? We build a custom, AI-optimised site in 48 hours. You see it before you pay anything. Indian clients pay nothing upfront. International clients pay a fully refundable USD 49 holding retainer at application.</p>
+                <ul class="check-list">
+                    <li>Custom design, not a template</li>
+                    <li>AI-optimised with schema markup built in</li>
+                    <li>First demo delivered in 48 hours</li>
+                    <li>Pay only after you approve</li>
+                    <li>Landing page or full website (4–8 pages)</li>
+                    <li>Mobile-first, sub-2-second load time</li>
+                </ul>
+                <p class="price-tag">India: &#8377;20,000–&#8377;50,000 &nbsp;|&nbsp; International: USD 600–1,500</p>
+                <p class="price-note">No upfront cost for Indian clients. USD 49 refundable holding retainer for international clients. No contract required.</p>
+                <a href="/risk-free-website" class="btn-primary">Apply for a Free Demo</a>
+                <p style="margin-top:1rem;"><a href="/risk-free-website" style="color:#1E40AF;text-decoration:underline;">See how the risk-free model works →</a></p>
             </div>
 
             <!-- Step 2 -->
@@ -907,8 +997,8 @@
                     <li>Google Analytics 4 and Search Console setup</li>
                     <li>90-day performance tracking after launch</li>
                 </ul>
-                <p class="price-tag">Investment: Starting &#8377;50,000</p>
-                <p class="price-note">For our first 5 clients: we build a working prototype at no upfront cost. You review it. You pay only when you are satisfied. No risk. <a href="https://riskfreesites.com" target="_blank" rel="noopener" style="color:var(--primary-blue);text-decoration:underline;">See the full risk-free offer at riskfreesites.com →</a></p>
+                <p class="price-tag">Investment: Starting &#8377;50,000 / USD 1,500</p>
+                <p class="price-note">Three packages: Starter, Growth, and Authority. Includes Google Business Profile setup, Analytics integration, and 90-day tracking. Audit fee credited on engagement.</p>
                 <a href="/ai-ready-website" class="btn-primary">Get My AI-Ready Website</a>
                 <p style="margin-top:1rem;"><a href="/ai-ready-website" style="color:#1E40AF;text-decoration:underline;">See our packages and pricing →</a></p>
             </div>
@@ -928,7 +1018,7 @@
                     <li>Monthly report with specific action items</li>
                     <li>Direct WhatsApp access for questions</li>
                 </ul>
-                <p class="price-tag">Investment: &#8377;20,000/month</p>
+                <p class="price-tag">Investment: &#8377;20,000 / USD 249 per month</p>
                 <a href="/contact" class="btn-primary">Learn More</a>
             </div>
         </div>
@@ -943,7 +1033,7 @@
                     <span style="display:inline-block;background:rgba(245,158,11,0.15);color:#FBBF24;padding:0.35rem 1rem;border-radius:50px;font-size:0.8rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1rem;border:1px solid rgba(245,158,11,0.25);">Risk-Free Website Offer</span>
                     <h2 style="font-family:var(--font-primary);font-size:clamp(1.4rem,3vw,2rem);font-weight:700;color:#fff;margin-bottom:0.75rem;line-height:1.2;">Need a Website? See It Before You Pay a Rupee.</h2>
                     <p style="color:rgba(255,255,255,0.8);font-size:1.05rem;line-height:1.7;margin-bottom:1.5rem;max-width:520px;">We build your complete AI-ready website first. You review every page. You pay only when you are fully satisfied. No upfront cost. No pressure.</p>
-                    <a href="https://riskfreesites.com" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#F59E0B,#FBBF24);color:#0F172A;padding:0.9rem 1.75rem;border-radius:50px;text-decoration:none;font-weight:700;font-size:1rem;transition:all 0.3s ease;box-shadow:0 4px 12px rgba(245,158,11,0.35);">See How It Works at riskfreesites.com →</a>
+                    <a href="/risk-free-website" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#F59E0B,#FBBF24);color:#0F172A;padding:0.9rem 1.75rem;border-radius:50px;text-decoration:none;font-weight:700;font-size:1rem;transition:all 0.3s ease;box-shadow:0 4px 12px rgba(245,158,11,0.35);">Apply for Your Free Website Demo →</a>
                 </div>
                 <div class="rfs-trust-list">
                     <div class="rfs-trust-item">

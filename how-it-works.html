@@ -63,7 +63,7 @@
         .step-body h3{font-family:var(--font-primary);font-size:1.25rem;font-weight:700;color:var(--primary-navy);margin-bottom:0.5rem}
         .step-body p{color:var(--text-secondary);line-height:1.8}
 
-        .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem}
+        .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1.5rem;margin-top:2rem}
         .service-summary{background:var(--pure-white);border:1px solid var(--silver-dark);border-radius:var(--radius-lg);padding:2rem;text-align:center;transition:all 0.3s cubic-bezier(0.22,1,0.36,1);position:relative;overflow:hidden}
         .service-summary::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(135deg,#3B82F6,#F59E0B)}
         .service-summary:hover{transform:translateY(-4px) scale(1.02);box-shadow:var(--shadow-md)}
@@ -109,7 +109,14 @@
         "addressCountry": "IN"
       },
       "founder": {"@type": "Person", "name": "Vinod Kumar"},
-      "areaServed": {"@type": "Country", "name": "India"},
+      "areaServed": [
+        {"@type": "Country", "name": "India"},
+        {"@type": "Country", "name": "United States"},
+        {"@type": "Country", "name": "United Kingdom"},
+        {"@type": "Country", "name": "Canada"},
+        {"@type": "Country", "name": "Australia"},
+        {"@type": "Country", "name": "Singapore"}
+      ],
       "sameAs": ["https://www.linkedin.com/company/optiscaleadvisors"]
     }
     </script>
@@ -195,23 +202,30 @@
                 <div class="service-summary card-hover card-glow animate-on-scroll">
                     <div class="icon-container"><i data-lucide="search"></i></div>
                     <h3>AI Visibility Audit</h3>
-                    <div class="service-price">&#8377;15,000</div>
+                    <div class="service-price">&#8377;15,000 / <span style="font-size:0.85em;color:#475569;">USD 199</span></div>
                     <p>Find out exactly where you stand.</p>
                     <a href="/ai-visibility-audit">Book My Audit &rarr;</a>
                 </div>
                 <div class="service-summary card-hover card-glow animate-on-scroll">
                     <div class="icon-container"><i data-lucide="globe"></i></div>
                     <h3>AI-Ready Website</h3>
-                    <div class="service-price">from &#8377;50,000</div>
+                    <div class="service-price">from &#8377;50,000 / <span style="font-size:0.85em;color:#475569;">USD 1,500</span></div>
                     <p>A site that AI engines recommend.</p>
                     <a href="/ai-ready-website">Get My Website &rarr;</a>
                 </div>
                 <div class="service-summary card-hover card-glow animate-on-scroll">
                     <div class="icon-container"><i data-lucide="bar-chart-3"></i></div>
                     <h3>Monthly Monitoring</h3>
-                    <div class="service-price">&#8377;20,000/month</div>
-                    <p>keep ahead as AI search evolves.</p>
+                    <div class="service-price">&#8377;20,000 / <span style="font-size:0.85em;color:#475569;">USD 249</span> per month</div>
+                    <p>Keep ahead as AI search evolves.</p>
                     <a href="/contact">Learn More &rarr;</a>
+                </div>
+                <div class="service-summary card-hover card-glow animate-on-scroll">
+                    <div class="icon-container"><i data-lucide="shield-check"></i></div>
+                    <h3>Risk-Free Website</h3>
+                    <div class="service-price">&#8377;20,000 / <span style="font-size:0.85em;color:#475569;">USD 600</span>+</div>
+                    <p>See the site before you pay a penny.</p>
+                    <a href="/risk-free-website">Learn More &rarr;</a>
                 </div>
             </div>
         </div>
@@ -225,7 +239,7 @@
         <canvas class="constellation-canvas"></canvas>
         <div class="container">
             <h2>Ready to Start?</h2>
-            <p>Book a free 15-minute call. We will tell you exactly what makes sense for your business.</p>
+            <p>Book a free 15-minute call (IST / GMT / EST / PST). We will tell you exactly what makes sense for your business.</p>
             <a href="https://cal.com/optiscale360/discoverycall" class="btn-white"><i data-lucide="calendar" style="width:18px;height:18px;"></i> Book Free 15-Min Call</a>
         </div>
     </section>
