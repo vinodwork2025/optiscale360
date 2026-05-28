@@ -752,6 +752,59 @@
         }
 
         /* RESPONSIVE */
+        /* PROBLEM-SOLUTION CARD */
+        .ps-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border: 1px solid rgba(0,0,0,0.08);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+        }
+        .ps-panel { padding: 2.5rem; }
+        .ps-panel-problem { background: #FAFAF8; border-right: 1px solid rgba(0,0,0,0.08); }
+        .ps-panel-solution { background: #FFFFFF; }
+        .ps-eyebrow {
+            font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+            text-transform: uppercase; color: #059669; margin-bottom: 1rem;
+        }
+        .ps-heading {
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+            font-size: 1.2rem; font-weight: 700; color: #1B2D4F;
+            line-height: 1.3; margin-bottom: 0.875rem; letter-spacing: -0.02em;
+        }
+        .ps-body { color: #374151; font-size: 0.92rem; line-height: 1.7; margin-bottom: 1.25rem; }
+        .ps-pain-list { list-style: none; display: flex; flex-direction: column; gap: 0.625rem; }
+        .ps-pain-item {
+            display: flex; align-items: flex-start; gap: 0.625rem;
+            color: #374151; font-size: 0.9rem; line-height: 1.6;
+        }
+        .ps-x {
+            width: 18px; height: 18px; border-radius: 50%;
+            background: #FEF2F2; border: 1px solid rgba(220,38,38,0.15);
+            display: inline-flex; align-items: center; justify-content: center;
+            flex-shrink: 0; margin-top: 2px;
+        }
+        .ps-steps { display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 1.5rem; }
+        .ps-step { display: flex; align-items: flex-start; gap: 0.875rem; }
+        .ps-num {
+            width: 30px; height: 30px; border-radius: 50%; background: #059669;
+            color: #fff; display: flex; align-items: center; justify-content: center;
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+            font-weight: 700; font-size: 0.82rem; flex-shrink: 0;
+        }
+        .ps-step-title {
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+            font-weight: 700; color: #1B2D4F; font-size: 0.95rem; margin-bottom: 0.2rem;
+        }
+        .ps-step-desc { color: #374151; font-size: 0.87rem; line-height: 1.65; }
+        .ps-step-desc a { color: #059669; text-decoration: none; font-weight: 600; }
+        .ps-footer {
+            padding-top: 1.25rem; border-top: 1px solid rgba(0,0,0,0.06);
+            font-size: 0.8rem; color: #787878;
+        }
+
+        /* RESPONSIVE */
         @media (max-width: 768px) {
             .hero { padding: 3.5rem 0 2.5rem; }
             .hero-subtitle { font-size: 1rem; }
@@ -762,6 +815,9 @@
             .cta-section .hero-ctas { flex-direction: column; align-items: center; }
             .rfs-banner-grid { grid-template-columns: 1fr; gap: 1.5rem; }
             .rfs-trust-list { flex-direction: row; flex-wrap: wrap; min-width: unset; }
+            .ps-grid { grid-template-columns: 1fr; }
+            .ps-panel-problem { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.08); }
+            .ps-panel { padding: 1.75rem; }
         }
         @media (max-width: 480px) {
             .hero-ctas { align-items: stretch; }
@@ -831,12 +887,62 @@
         <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,0 C480,60 960,60 1440,0 L1440,60 L0,60 Z" fill="#FFFFFF"/></svg>
     </div>
 
-    <!-- INTRO PARAGRAPH -->
-    <section style="padding:3rem 0 1rem;background:#fff;">
-      <div class="container" style="max-width:800px;">
-        <p style="font-size:1.1rem;line-height:1.8;color:#374151;">Most business owners in India have no idea whether their company appears when someone searches on ChatGPT, Perplexity, or Google AI Overviews. These platforms now handle hundreds of millions of searches every day, and they recommend businesses directly, without showing a list of links. If your business is not optimised for AI search, your competitors are getting those customers instead.</p>
-        <p style="font-size:1.1rem;line-height:1.8;color:#374151;margin-top:1rem;">We help small and medium businesses across India fix this. We start with a complete <a href="/ai-visibility-audit" style="color:#059669;text-decoration:underline;">AI visibility audit</a>, testing your business across five AI platforms, identifying exactly who is appearing instead of you, and delivering a prioritised action plan within 48 hours. For businesses that need deeper fixes, we build <a href="/ai-ready-website" style="color:#059669;text-decoration:underline;">AI-ready websites</a> designed from the ground up to generate leads and appear in AI recommendations.</p>
-        <p style="font-size:1.1rem;line-height:1.8;color:#374151;margin-top:1rem;">Based in Hosur, Tamil Nadu. Serving businesses across India, and working with international clients in the USA, UK, Canada, Australia, and Singapore.</p>
+    <!-- PROBLEM / SOLUTION CARD -->
+    <section style="padding:3rem 0 4rem;background:#fff;">
+      <div class="container">
+        <div class="ps-grid">
+
+          <!-- LEFT: PROBLEM -->
+          <div class="ps-panel ps-panel-problem">
+            <div class="ps-eyebrow">The Problem</div>
+            <h3 class="ps-heading">Most Indian businesses are invisible on AI search</h3>
+            <p class="ps-body">ChatGPT, Perplexity, and Google AI now handle hundreds of millions of searches daily — recommending businesses directly, without showing a list of links.</p>
+            <ul class="ps-pain-list">
+              <li class="ps-pain-item">
+                <span class="ps-x"><svg width="8" height="8" viewBox="0 0 10 10" fill="none"><path d="M2 2l6 6M8 2l-6 6" stroke="#DC2626" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                Your competitors appear on ChatGPT, Perplexity &amp; Google AI. You don't.
+              </li>
+              <li class="ps-pain-item">
+                <span class="ps-x"><svg width="8" height="8" viewBox="0 0 10 10" fill="none"><path d="M2 2l6 6M8 2l-6 6" stroke="#DC2626" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                Customers choose from AI recommendations — not Google results alone.
+              </li>
+              <li class="ps-pain-item">
+                <span class="ps-x"><svg width="8" height="8" viewBox="0 0 10 10" fill="none"><path d="M2 2l6 6M8 2l-6 6" stroke="#DC2626" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                Traditional SEO alone doesn't fix AI visibility.
+              </li>
+            </ul>
+          </div>
+
+          <!-- RIGHT: SOLUTION -->
+          <div class="ps-panel ps-panel-solution">
+            <div class="ps-eyebrow">How We Fix It</div>
+            <div class="ps-steps">
+              <div class="ps-step">
+                <div class="ps-num">1</div>
+                <div>
+                  <div class="ps-step-title">Audit</div>
+                  <div class="ps-step-desc">Test your visibility across ChatGPT, Perplexity, Google AI, Bing &amp; Gemini. Identify exactly who appears instead of you. <a href="/ai-visibility-audit">Full report in 48 hours →</a></div>
+                </div>
+              </div>
+              <div class="ps-step">
+                <div class="ps-num">2</div>
+                <div>
+                  <div class="ps-step-title">Fix</div>
+                  <div class="ps-step-desc">Build an AI-ready website with schema markup, FAQ architecture, and structured content so AI engines cite and recommend your business. <a href="/ai-ready-website">See packages →</a></div>
+                </div>
+              </div>
+              <div class="ps-step">
+                <div class="ps-num">3</div>
+                <div>
+                  <div class="ps-step-title">Track</div>
+                  <div class="ps-step-desc">Monthly visibility checks across all 5 platforms, competitor tracking, and one content optimisation per month so you stay ahead.</div>
+                </div>
+              </div>
+            </div>
+            <div class="ps-footer">India-based &middot; Serving businesses across India, USA, UK, Canada, Australia &amp; Singapore.</div>
+          </div>
+
+        </div>
       </div>
     </section>
 
