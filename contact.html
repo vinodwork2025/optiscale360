@@ -369,7 +369,9 @@
                 message: 'Service: ' + formData.get('service') + '\nWebsite: ' + formData.get('website') + '\nPhone: ' + formData.get('phone') + '\n\n' + (formData.get('message') || 'No additional message')
             });
 
-            var sheetPromise = fetch(SHEET_URL, { method: 'POST', body: formData, mode: 'no-cors' });
+            var sheetParams = new URLSearchParams();
+            for (var pair of formData.entries()) { sheetParams.append(pair[0], pair[1]); }
+            var sheetPromise = fetch(SHEET_URL, { method: 'POST', body: sheetParams, mode: 'no-cors' });
 
             var results = await Promise.allSettled([emailjsPromise, sheetPromise]);
             var emailOk = results[0].status === 'fulfilled';

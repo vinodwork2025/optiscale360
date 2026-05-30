@@ -785,7 +785,9 @@
             formData.append('source_page', 'risk-free-website');
             formData.append('timestamp_utc', new Date().toISOString());
 
-            var sheetPromise = fetch(SCRIPT_URL, { method: 'POST', body: formData, mode: 'no-cors' });
+            var sheetParams = new URLSearchParams();
+            for (var pair of formData.entries()) { sheetParams.append(pair[0], pair[1]); }
+            var sheetPromise = fetch(SCRIPT_URL, { method: 'POST', body: sheetParams, mode: 'no-cors' });
 
             var emailjsPromise = (typeof emailjs !== 'undefined')
                 ? emailjs.send('service_g4erqhd', 'template_4au5yft', {
