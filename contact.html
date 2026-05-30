@@ -301,6 +301,11 @@
         <h4 style="font-weight:600;margin-bottom:8px">Message Sent Successfully</h4>
         <p style="margin:0">Thank you for reaching out. We will get back to you within 24 hours.</p>
     </div>
+    <!-- Error Message (shown only if both capture paths fail) -->
+    <div id="errorMessage" class="success-message" style="background:#dc2626;box-shadow:0 8px 24px rgba(220,38,38,0.25);">
+        <h4 style="font-weight:600;margin-bottom:8px">Something went wrong</h4>
+        <p style="margin:0">Please WhatsApp us at <a href="https://wa.me/917397225523" style="color:#fff;font-weight:700">+91 73972 25523</a> or email <a href="mailto:vinod@optiscale360.com" style="color:#fff">vinod@optiscale360.com</a></p>
+    </div>
 
     <div id="footer-placeholder"></div>
 
@@ -330,6 +335,7 @@
     });
 
     // Contact Form Handling
+    var SHEET_URL = 'https://script.google.com/macros/s/AKfycbz6C0DDrpe-7hAmjPEG7QBl31zjMBSl9vGk9gfqumGF5qHqAJvhkkooS5ZDs0r9cj5Qng/exec';
     var contactForm = document.getElementById('contactForm');
 
     if (contactForm) {
@@ -343,38 +349,46 @@
             submitBtn.disabled = true;
             submitBtn.textContent = 'Sending...';
 
-            try {
-                var formData = new FormData(contactForm);
+            var formData = new FormData(contactForm);
+            formData.append('source_page', 'contact');
+            formData.append('timestamp_utc', new Date().toISOString());
 
-                await emailjs.send('service_g4erqhd', 'template_4au5yft', {
-                    to_email: 'info@optiscaleadvisors.com',
-                    from_name: formData.get('name'),
-                    first_name: formData.get('name').split(' ')[0],
-                    last_name: formData.get('name').split(' ').slice(1).join(' ') || '',
-                    email: 'contact-form@optiscaleadvisors.com',
-                    phone: formData.get('phone'),
-                    company: formData.get('company'),
-                    website: formData.get('website'),
-                    form_type: 'Contact Form - ' + formData.get('service'),
-                    timestamp: new Date().toLocaleString('en-IN', { dateStyle: 'full', timeStyle: 'long', timeZone: 'Asia/Kolkata' }),
-                    source: document.referrer ? new URL(document.referrer).hostname : 'Direct',
-                    referrer: document.referrer || 'Direct',
-                    message: 'Service: ' + formData.get('service') + '\nWebsite: ' + formData.get('website') + '\nPhone: ' + formData.get('phone') + '\n\n' + (formData.get('message') || 'No additional message')
-                });
+            var emailjsPromise = emailjs.send('service_g4erqhd', 'template_4au5yft', {
+                to_email: 'vinod@optiscaleadvisors.com',
+                from_name: formData.get('name'),
+                first_name: formData.get('name').split(' ')[0],
+                last_name: formData.get('name').split(' ').slice(1).join(' ') || '',
+                email: 'contact-form@optiscaleadvisors.com',
+                phone: formData.get('phone'),
+                company: formData.get('company'),
+                website: formData.get('website'),
+                form_type: 'Contact Form - ' + formData.get('service'),
+                timestamp: new Date().toLocaleString('en-IN', { dateStyle: 'full', timeStyle: 'long', timeZone: 'Asia/Kolkata' }),
+                source: document.referrer ? new URL(document.referrer).hostname : 'Direct',
+                referrer: document.referrer || 'Direct',
+                message: 'Service: ' + formData.get('service') + '\nWebsite: ' + formData.get('website') + '\nPhone: ' + formData.get('phone') + '\n\n' + (formData.get('message') || 'No additional message')
+            });
 
+            var sheetParams = new URLSearchParams();
+            for (var pair of formData.entries()) { sheetParams.append(pair[0], pair[1]); }
+            var sheetPromise = fetch(SHEET_URL, { method: 'POST', body: sheetParams, mode: 'no-cors' });
+
+            var results = await Promise.allSettled([emailjsPromise, sheetPromise]);
+            var emailOk = results[0].status === 'fulfilled';
+            var sheetOk = results[1].status === 'fulfilled';
+
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+
+            if (emailOk || sheetOk) {
                 var successMessage = document.getElementById('successMessage');
                 successMessage.classList.add('show');
                 setTimeout(function() { successMessage.classList.remove('show'); }, 5000);
-
                 contactForm.reset();
-                submitBtn.disabled = false;
-                submitBtn.textContent = originalText;
-
-            } catch (error) {
-                console.error('Form submission error:', error);
-                alert('There was an error sending your message. Please try again or email us directly at info@optiscaleadvisors.com');
-                submitBtn.disabled = false;
-                submitBtn.textContent = originalText;
+            } else {
+                var errorMessage = document.getElementById('errorMessage');
+                errorMessage.classList.add('show');
+                setTimeout(function() { errorMessage.classList.remove('show'); }, 8000);
             }
 
             return false;
