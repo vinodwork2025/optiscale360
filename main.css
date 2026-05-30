@@ -1063,7 +1063,7 @@ body { padding-top: 72px; }
     text-align: center !important;
     margin-bottom: 3rem !important;
     padding: 4rem 3rem 3rem !important;
-    background: linear-gradient(135deg, #fefefe 0%, #fdfdfd 100%) !important;
+    background: #1B2D4F !important;
     position: relative !important;
 }
 
@@ -1075,7 +1075,7 @@ body { padding-top: 72px; }
     transform: translateX(-50%) !important;
     width: 80px !important;
     height: 2px !important;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    background: #059669 !important;
     border-radius: 2px !important;
 }
 
@@ -2088,8 +2088,8 @@ p {
     text-align: center;
     margin-bottom: var(--space-2xl);
     padding: var(--space-3xl) var(--space-3xl) var(--space-2xl);
-    background: linear-gradient(135deg, #fafbff 0%, #ffffff 100%);
-    border-bottom: 1px solid #e5e7eb;
+    background: #1B2D4F;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
     position: relative;
 }
 
@@ -2101,7 +2101,7 @@ p {
     transform: translateX(-50%);
     width: 120px;
     height: 3px;
-    background: linear-gradient(135deg, #2563eb 0%, #0891b2 50%, #059669 100%);
+    background: #059669;
     border-radius: 2px;
 }
 
@@ -2112,11 +2112,11 @@ p {
     gap: var(--space-xs);
     margin-bottom: var(--space-lg);
     font-size: 0.9rem;
-    color: var(--text-muted);
+    color: rgba(255,255,255,0.7);
 }
 
 .blog-breadcrumbs a {
-    color: var(--primary-color);
+    color: #6EE7B7;
     text-decoration: none;
 }
 
@@ -2134,7 +2134,7 @@ p {
     margin: var(--space-lg) 0 var(--space-md) 0;
     line-height: 1.2;
     font-weight: 800;
-    color: #1e293b;
+    color: #ffffff;
     text-align: center;
     max-width: 900px;
     margin-left: auto;
@@ -2144,7 +2144,7 @@ p {
 
 .blog-post-excerpt {
     font-size: 1.25rem;
-    color: #64748b;
+    color: rgba(255,255,255,0.82);
     margin-bottom: var(--space-xl);
     max-width: 700px;
     margin-left: auto;
@@ -2154,9 +2154,14 @@ p {
 }
 
 .blog-post-author {
-    color: var(--text-muted);
+    color: rgba(255,255,255,0.7);
     font-style: italic;
     margin-bottom: var(--space-md);
+}
+
+.blog-post-header .post-date,
+.blog-post-header .post-reading-time {
+    color: rgba(255,255,255,0.7);
 }
 
 .blog-post-tags {
