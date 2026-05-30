@@ -354,7 +354,7 @@
             formData.append('timestamp_utc', new Date().toISOString());
 
             var emailjsPromise = emailjs.send('service_g4erqhd', 'template_4au5yft', {
-                to_email: 'info@optiscaleadvisors.com',
+                to_email: 'vinod@optiscaleadvisors.com',
                 from_name: formData.get('name'),
                 first_name: formData.get('name').split(' ')[0],
                 last_name: formData.get('name').split(' ').slice(1).join(' ') || '',
