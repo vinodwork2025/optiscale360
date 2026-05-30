@@ -173,6 +173,12 @@
     </script>
 
     <link rel="stylesheet" href="main.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
+    <script type="text/javascript">
+        window.addEventListener('DOMContentLoaded', function(){
+            emailjs.init("F25NFcVlXeUqES9qL");
+        });
+    </script>
     <script src="https://unpkg.com/lucide@latest" defer></script>
     <style>
         :root {
@@ -661,6 +667,9 @@
                     <button type="submit" class="form-submit" id="rfsd-submit">Apply for My Demo &#8594;</button>
                     <p style="text-align:center;font-size:0.78rem;color:var(--text-muted);margin-top:0.75rem;">No spam. No cold calls. Your info is only used to build your website demo.</p>
                 </form>
+                <div id="rfsd-error" style="display:none;background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:1rem;margin-top:1rem;font-size:0.88rem;color:#991b1b;text-align:center;line-height:1.6;">
+                    Something went wrong. Please WhatsApp us at <a href="https://wa.me/917397225523" style="color:#991b1b;font-weight:700">+91 73972 25523</a> or email <a href="mailto:vinod@optiscale360.com" style="color:#991b1b">vinod@optiscale360.com</a>
+                </div>
             </div>
         </div>
     </section>
@@ -761,7 +770,7 @@
             note.classList.toggle('visible', this.value !== 'India' && this.value !== '');
         });
 
-        // Form submission via fetch (no-cors, same pattern as RiskFreeSites)
+        // Form submission: Google Sheet (primary) + EmailJS notification (backup)
         var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzJpwnqEMskxZPzCvNuwegu34M4giL4p0u5WD6v93wBiQxjgUMapfd2E110XtXRjLSo/exec';
         document.getElementById('rfsd-form').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -772,16 +781,42 @@
             var formData = new FormData(this);
             // Honeypot check
             if (formData.get('_gotcha')) { btn.disabled = false; btn.textContent = 'Apply for My Demo →'; return; }
-            fetch(SCRIPT_URL, { method: 'POST', body: formData, mode: 'no-cors' })
-                .then(function() {
+
+            formData.append('source_page', 'risk-free-website');
+            formData.append('timestamp_utc', new Date().toISOString());
+
+            var sheetPromise = fetch(SCRIPT_URL, { method: 'POST', body: formData, mode: 'no-cors' });
+
+            var emailjsPromise = (typeof emailjs !== 'undefined')
+                ? emailjs.send('service_g4erqhd', 'template_4au5yft', {
+                    to_email: 'info@optiscaleadvisors.com',
+                    from_name: formData.get('name'),
+                    first_name: formData.get('name').split(' ')[0],
+                    last_name: formData.get('name').split(' ').slice(1).join(' ') || '',
+                    email: formData.get('email') || 'rfsd-form@optiscaleadvisors.com',
+                    phone: formData.get('whatsapp') || 'Not provided',
+                    company: formData.get('business'),
+                    website: '',
+                    form_type: 'Risk-Free Website Application - ' + formData.get('industry') + ' - ' + formData.get('country'),
+                    timestamp: new Date().toLocaleString('en-IN', { dateStyle: 'full', timeStyle: 'long', timeZone: 'Asia/Kolkata' }),
+                    source: document.referrer ? new URL(document.referrer).hostname : 'Direct',
+                    referrer: document.referrer || 'Direct',
+                    message: 'Business: ' + formData.get('business') + '\nIndustry: ' + formData.get('industry') + '\nCountry: ' + formData.get('country') + '\nWhatsApp: ' + (formData.get('whatsapp') || 'Not provided') + '\nEmail: ' + formData.get('email')
+                  })
+                : Promise.reject(new Error('emailjs not loaded'));
+
+            Promise.allSettled([sheetPromise, emailjsPromise]).then(function(results) {
+                var sheetOk = results[0].status === 'fulfilled';
+                var emailOk = results[1].status === 'fulfilled';
+                if (sheetOk || emailOk) {
                     document.getElementById('rfsd-form').style.display = 'none';
                     document.getElementById('form-success').style.display = 'block';
-                })
-                .catch(function() {
-                    // Show success anyway — no-cors means we cannot read the response
-                    document.getElementById('rfsd-form').style.display = 'none';
-                    document.getElementById('form-success').style.display = 'block';
-                });
+                } else {
+                    btn.disabled = false;
+                    btn.textContent = 'Apply for My Demo →';
+                    document.getElementById('rfsd-error').style.display = 'block';
+                }
+            });
         });
 
         // Animate on scroll
