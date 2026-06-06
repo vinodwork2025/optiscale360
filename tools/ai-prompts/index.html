@@ -692,7 +692,10 @@
         sheetParams.append('notes',        'City: ' + city);
         sheetParams.append('subject',      'Your AI question list from OptiScale Advisors');
         sheetParams.append('user_message', 'Here are the questions your customers ask AI about ' + biz + ' in ' + city + ':\n\n' + questionList + '\n\nTo rank for these, your business needs to appear in AI answers on ChatGPT, Perplexity, and Google AI.\n\nStart with a free AI visibility check: https://optiscaleadvisors.com/ai-visibility-audit');
-        var sheetPromise = fetch(SHEET_URL, { method:'POST', body:sheetParams, mode:'no-cors' });
+        var sheetPromise = fetch(SHEET_URL, { method:'POST', body:sheetParams })
+          .then(function(r){ console.log('Sheet response:', r.status, r.url); return r.text(); })
+          .then(function(t){ console.log('Sheet body:', t); })
+          .catch(function(err){ console.error('Sheet fetch error:', err); });
 
         var results = await Promise.allSettled([leadPromise, sheetPromise]);
         btn.disabled = false;
