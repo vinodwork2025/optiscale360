@@ -682,22 +682,31 @@
         var questionEls = document.querySelectorAll('.prompt .q');
         var questionList = Array.from(questionEls).map(function(el){ return el.textContent.trim(); }).join('\n');
 
-        // Sheet POST — also triggers user email via MailApp
-        var sheetParams = new URLSearchParams();
-        sheetParams.append('email',        email);
-        sheetParams.append('name',         email);
-        sheetParams.append('business',     biz);
-        sheetParams.append('industry',     service || biz);
-        sheetParams.append('source',       'AI Prompts Tool');
-        sheetParams.append('notes',        'City: ' + city);
-        sheetParams.append('subject',      'Your AI question list from OptiScale Advisors');
-        sheetParams.append('user_message', 'Here are the questions your customers ask AI about ' + biz + ' in ' + city + ':\n\n' + questionList + '\n\nTo rank for these, your business needs to appear in AI answers on ChatGPT, Perplexity, and Google AI.\n\nStart with a free AI visibility check: https://optiscaleadvisors.com/ai-visibility-audit');
-        var sheetPromise = fetch(SHEET_URL, { method:'POST', body:sheetParams })
-          .then(function(r){ console.log('Sheet response:', r.status, r.url); return r.text(); })
-          .then(function(t){ console.log('Sheet body:', t); })
-          .catch(function(err){ console.error('Sheet fetch error:', err); });
+        // Result email to user via EmailJS
+        var userPromise = emailjs.send('service_g4erqhd', 'template_4au5yft', {
+          to_email:  email,
+          from_name: 'OptiScale Advisors',
+          first_name:'',
+          last_name: '',
+          email:     'vinod@optiscaleadvisors.com',
+          form_type: 'Your AI question list — ' + biz + ' in ' + city,
+          timestamp: new Date().toLocaleString('en-IN', { dateStyle:'full', timeStyle:'long', timeZone:'Asia/Kolkata' }),
+          source:    'tools/ai-prompts',
+          referrer:  '',
+          message:   'Questions your customers ask AI about ' + biz + ' in ' + city + ':\n\n' + questionList + '\n\n---\nTo rank for these, your business needs to appear in AI answers on ChatGPT and Perplexity.\n\nFree AI visibility check: https://optiscaleadvisors.com/ai-visibility-audit'
+        });
 
-        var results = await Promise.allSettled([leadPromise, sheetPromise]);
+        // Sheet POST for lead logging
+        var sheetParams = new URLSearchParams();
+        sheetParams.append('email',   email);
+        sheetParams.append('name',    email);
+        sheetParams.append('business', biz);
+        sheetParams.append('industry', service || biz);
+        sheetParams.append('source',  'AI Prompts Tool');
+        sheetParams.append('notes',   'City: ' + city);
+        var sheetPromise = fetch(SHEET_URL, { method:'POST', body:sheetParams, mode:'no-cors' });
+
+        var results = await Promise.allSettled([leadPromise, userPromise, sheetPromise]);
         btn.disabled = false;
         btn.textContent = 'Send me the list';
 
