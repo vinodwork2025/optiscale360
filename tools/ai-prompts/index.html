@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y1J0TYF857"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-Y1J0TYF857');</script>
+    <script src="https://analytics.ahrefs.com/analytics.js" data-key="7Dv8ewYHFaHabiZqyQRQ6Q" async></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Your Customers Ask AI | Free Prompt Tool | OptiScale Advisors</title>
+    <meta name="description" content="See the exact questions your customers ask ChatGPT and Perplexity about your business. Free, instant, no signup.">
+
+    <link rel="canonical" href="https://optiscaleadvisors.com/tools/ai-prompts">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://optiscaleadvisors.com/tools/ai-prompts">
+    <meta property="og:title" content="What Your Customers Ask AI | Free Prompt Tool | OptiScale Advisors">
+    <meta property="og:description" content="See the exact questions your customers ask ChatGPT and Perplexity about your business. Free, instant, no signup.">
+    <meta property="og:locale" content="en_IN">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://optiscaleadvisors.com/tools/ai-prompts">
+    <meta property="twitter:title" content="What Your Customers Ask AI | Free Prompt Tool | OptiScale Advisors">
+    <meta property="twitter:description" content="See the exact questions your customers ask ChatGPT and Perplexity about your business. Free, instant, no signup.">
+
+    <link rel="stylesheet" href="/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <style>
+    /* Page background */
+    body { background: #FAFAF8; }
+
+    /* Hero */
+    .tool-hero {
+        background: #fff;
+        padding: 3rem 0 2.5rem;
+        border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .tool-hero-inner {
+        max-width: 740px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+    }
+    .tool-breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-family: var(--font-body);
+        font-size: 0.79rem;
+        color: var(--text-muted);
+        margin-bottom: 1.25rem;
+        flex-wrap: wrap;
+    }
+    .tool-breadcrumb a { color: var(--text-muted); text-decoration: none; }
+    .tool-breadcrumb a:hover { color: var(--primary); }
+    .tool-breadcrumb svg { width: 11px; height: 11px; opacity: 0.45; flex-shrink: 0; }
+    .tool-hero h1 {
+        font-family: var(--font-display);
+        font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+        font-weight: 800;
+        color: var(--text-primary);
+        letter-spacing: -0.03em;
+        line-height: 1.15;
+        margin-bottom: 0.75rem;
+    }
+    .tool-hero p {
+        font-family: var(--font-body);
+        font-size: 1rem;
+        color: var(--text-secondary);
+        line-height: 1.65;
+        max-width: 540px;
+    }
+    .tool-hero-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 1rem;
+    }
+    .badge {
+        font-family: var(--font-body);
+        font-size: 0.74rem;
+        font-weight: 600;
+        padding: 5px 11px;
+        border-radius: 999px;
+        background: #ECFDF5;
+        color: #047857;
+        border: 1px solid rgba(5,150,105,0.18);
+    }
+
+    /* Content wrapper */
+    .tool-content {
+        max-width: 740px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 4rem;
+    }
+
+    /* Form panel */
+    .tool-panel {
+        background: #fff;
+        border: 1px solid rgba(0,0,0,0.08);
+        border-radius: 16px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px -8px rgba(0,0,0,0.08);
+        padding: 1.75rem;
+    }
+    .tool-panel h2 {
+        font-family: var(--font-display);
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        letter-spacing: -0.02em;
+        margin-bottom: 0.2rem;
+    }
+    .panel-hint {
+        font-family: var(--font-body);
+        font-size: 0.84rem;
+        color: var(--text-muted);
+        margin-bottom: 1.25rem;
+    }
+
+    /* Form */
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+    @media (max-width: 540px) { .form-grid { grid-template-columns: 1fr; } }
+    .form-field { display: flex; flex-direction: column; gap: 5px; }
+    .form-field.full { grid-column: 1 / -1; }
+    .form-field label {
+        font-family: var(--font-body);
+        font-size: 0.79rem;
+        font-weight: 600;
+        color: var(--text-primary);
+    }
+    .form-field label .opt { color: var(--text-muted); font-weight: 500; }
+    .form-field input {
+        font-family: var(--font-body);
+        font-size: 0.94rem;
+        padding: 11px 13px;
+        border: 1px solid rgba(0,0,0,0.12);
+        border-radius: 10px;
+        background: #FAFAF8;
+        color: var(--text-primary);
+        transition: border-color 0.15s, box-shadow 0.15s;
+        outline: none;
+        width: 100%;
+    }
+    .form-field input:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(5,150,105,0.12);
+        background: #fff;
+    }
+    .form-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 1.25rem;
+        flex-wrap: wrap;
+    }
+    .btn-navy {
+        font-family: var(--font-body);
+        font-weight: 600;
+        font-size: 0.92rem;
+        padding: 12px 22px;
+        background: var(--navy);
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background 0.2s ease, transform 0.15s ease;
+    }
+    .btn-navy:hover { background: #152340; transform: translateY(-1px); }
+    .btn-navy:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .btn-outline {
+        font-family: var(--font-body);
+        font-weight: 600;
+        font-size: 0.92rem;
+        padding: 11px 20px;
+        background: transparent;
+        color: var(--navy);
+        border: 1px solid rgba(0,0,0,0.14);
+        border-radius: 10px;
+        cursor: pointer;
+        transition: border-color 0.2s ease, background 0.2s ease;
+    }
+    .btn-outline:hover { border-color: rgba(0,0,0,0.28); background: rgba(0,0,0,0.02); }
+    .form-err {
+        font-family: var(--font-body);
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: #DC2626;
+        display: none;
+    }
+
+    /* Results */
+    #results { margin-top: 2rem; display: none; }
+    .results-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 0.5rem;
+    }
+    .results-head h2 {
+        font-family: var(--font-display);
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        letter-spacing: -0.02em;
+    }
+    .results-head p {
+        font-family: var(--font-body);
+        font-size: 0.84rem;
+        color: var(--text-muted);
+        margin-top: 2px;
+    }
+
+    /* Category groups */
+    .cat { margin-top: 1.5rem; opacity: 0; transform: translateY(14px); animation: rise 0.5s forwards; }
+    @keyframes rise { to { opacity: 1; transform: none; } }
+    .cat-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: var(--font-body);
+        font-size: 0.71rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.09em;
+        color: var(--primary);
+        margin-bottom: 0.75rem;
+    }
+    .cat-title::after { content: ''; flex: 1; height: 1px; background: rgba(0,0,0,0.08); }
+
+    /* Prompt rows */
+    .prompt {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: #fff;
+        border: 1px solid rgba(0,0,0,0.08);
+        border-radius: 10px;
+        padding: 12px 14px;
+        margin-bottom: 8px;
+        cursor: pointer;
+        transition: border-color 0.15s, transform 0.1s, box-shadow 0.15s;
+    }
+    .prompt:hover {
+        border-color: var(--primary);
+        box-shadow: 0 4px 12px -4px rgba(0,0,0,0.1);
+        transform: translateY(-1px);
+    }
+    .prompt .q {
+        flex: 1;
+        font-family: var(--font-body);
+        font-size: 0.93rem;
+        color: var(--text-secondary);
+    }
+    .prompt .q b { color: var(--text-primary); font-weight: 600; }
+    .prompt .copy {
+        font-family: var(--font-body);
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: var(--text-muted);
+        border: 1px solid rgba(0,0,0,0.1);
+        border-radius: 6px;
+        padding: 4px 8px;
+        white-space: nowrap;
+        transition: all 0.15s;
+    }
+    .prompt:hover .copy { color: var(--primary); border-color: var(--primary); }
+
+    /* Email capture */
+    #capture-block {
+        display: none;
+        background: #fff;
+        border: 1px solid rgba(0,0,0,0.08);
+        border-radius: 16px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px -8px rgba(0,0,0,0.08);
+        padding: 1.75rem;
+        margin-top: 2rem;
+    }
+    #capture-block h3 {
+        font-family: var(--font-display);
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        letter-spacing: -0.02em;
+        margin-bottom: 1rem;
+        max-width: 40ch;
+        line-height: 1.3;
+    }
+    .cap-row {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+    .cap-row input[type="email"] {
+        font-family: var(--font-body);
+        font-size: 0.94rem;
+        padding: 11px 13px;
+        border: 1px solid rgba(0,0,0,0.12);
+        border-radius: 10px;
+        background: #FAFAF8;
+        color: var(--text-primary);
+        outline: none;
+        flex: 1;
+        min-width: 200px;
+        transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .cap-row input[type="email"]:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(5,150,105,0.12);
+        background: #fff;
+    }
+    .cap-err {
+        font-family: var(--font-body);
+        font-size: 0.82rem;
+        color: #DC2626;
+        font-weight: 600;
+        display: none;
+        margin-top: 6px;
+    }
+    .cap-hint {
+        font-family: var(--font-body);
+        font-size: 0.77rem;
+        color: var(--text-muted);
+        margin-top: 8px;
+    }
+    #cap-success {
+        display: none;
+        font-family: var(--font-body);
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--primary);
+        margin-top: 10px;
+    }
+    #cap-fail {
+        display: none;
+        font-family: var(--font-body);
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #DC2626;
+        margin-top: 10px;
+    }
+
+    /* CTA block */
+    .tool-cta {
+        background: var(--navy);
+        color: #fff;
+        border-radius: 16px;
+        padding: 2rem 1.75rem;
+        margin-top: 2rem;
+        position: relative;
+        overflow: hidden;
+    }
+    .tool-cta::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(420px 220px at 90% 0%, rgba(5,150,105,0.28), transparent 60%);
+    }
+    .tool-cta-inner { position: relative; z-index: 1; }
+    .tool-cta h3 {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+        max-width: 28ch;
+        letter-spacing: -0.02em;
+        line-height: 1.25;
+    }
+    .tool-cta p {
+        font-family: var(--font-body);
+        color: rgba(255,255,255,0.68);
+        max-width: 52ch;
+        margin-bottom: 1.25rem;
+        font-size: 0.93rem;
+        line-height: 1.6;
+    }
+    .tool-cta a {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--primary);
+        color: #fff;
+        text-decoration: none;
+        font-family: var(--font-body);
+        font-weight: 600;
+        font-size: 0.92rem;
+        padding: 12px 22px;
+        border-radius: 10px;
+        transition: background 0.2s ease;
+    }
+    .tool-cta a:hover { background: var(--primary-dark); }
+
+    /* Toast */
+    #toast {
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%) translateY(20px);
+        background: var(--navy);
+        color: #fff;
+        padding: 11px 20px;
+        border-radius: 10px;
+        font-family: var(--font-body);
+        font-size: 0.88rem;
+        font-weight: 600;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.25s;
+        z-index: 9000;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+    #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    </style>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="tool-hero">
+            <div class="tool-hero-inner">
+                <nav class="tool-breadcrumb" aria-label="Breadcrumb">
+                    <a href="/">Home</a>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                    <a href="/tools">Free Tools</a>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                    <span>What Your Customers Ask AI</span>
+                </nav>
+                <h1>The questions your customers ask AI about you</h1>
+                <p>Your buyers now ask ChatGPT and Perplexity for recommendations. Enter your details and see the exact questions they type. If you are not in the answers, you are invisible.</p>
+                <div class="tool-hero-badges">
+                    <span class="badge">ChatGPT</span>
+                    <span class="badge">Perplexity</span>
+                    <span class="badge">Google AI</span>
+                    <span class="badge">Gemini</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="tool-content">
+            <section class="tool-panel">
+                <h2>Generate your prompts</h2>
+                <p class="panel-hint">Takes 10 seconds. Nothing is stored.</p>
+                <div class="form-grid">
+                    <div class="form-field">
+                        <label for="biz">What you do <span class="opt">(e.g. interior designer, dentist)</span></label>
+                        <input id="biz" type="text" placeholder="interior designer" autocomplete="off">
+                    </div>
+                    <div class="form-field">
+                        <label for="city">Your city or area</label>
+                        <input id="city" type="text" placeholder="Hosur" autocomplete="off">
+                    </div>
+                    <div class="form-field full">
+                        <label for="service">Main service <span class="opt">(optional, e.g. home interiors)</span></label>
+                        <input id="service" type="text" placeholder="home interiors" autocomplete="off">
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button class="btn-navy" id="go">Show me the questions</button>
+                    <span class="form-err" id="err">Please enter what you do and your city.</span>
+                </div>
+            </section>
+
+            <section id="results">
+                <div class="results-head">
+                    <div>
+                        <h2 id="rtitle">Questions your customers ask AI</h2>
+                        <p>Tap any question to copy it. Then ask it in ChatGPT and see if you show up.</p>
+                    </div>
+                    <button class="btn-outline" id="copyAll">Copy all</button>
+                </div>
+                <div id="cats"></div>
+            </section>
+
+            <section id="capture-block">
+                <h3>Want the full list plus how to rank for these questions?</h3>
+                <div class="cap-row">
+                    <input type="email" id="cap-email" placeholder="your@email.com" autocomplete="email">
+                    <button class="btn-navy" id="cap-send">Send me the list</button>
+                </div>
+                <div class="cap-err" id="cap-error">Please enter a valid email address.</div>
+                <p class="cap-hint">No spam. Just your result and the occasional AI visibility tip.</p>
+                <p id="cap-success">Done. Check your inbox.</p>
+                <p id="cap-fail">Something went wrong, please try again.</p>
+            </section>
+
+            <section class="tool-cta">
+                <div class="tool-cta-inner">
+                    <h3>Not showing up in those answers? That is fixable.</h3>
+                    <p>We run a full AI visibility check across ChatGPT, Perplexity, and Google AI, then hand you a plain list of what to fix first. You see the work before you pay.</p>
+                    <a href="/ai-visibility-audit">Get a free AI visibility check</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <div id="toast">Copied</div>
+
+    <script>
+    // ── TOOL JAVASCRIPT (carried over intact from ai-prompt-generator.html) ──
+    (function(){
+      var categories = [
+        { title:"How they find you", t:[
+          "Best {biz} in {city}?",
+          "Who is the top {biz} in {city}?",
+          "Recommend a reliable {biz} near {city}.",
+          "Which {biz} in {city} has the best reviews?"
+        ]},
+        { title:"What it costs", t:[
+          "How much does {service} cost in {city}?",
+          "Average price for {service} in {city}?",
+          "Is {service} expensive in {city}?",
+          "What is a fair quote for {service} in {city}?"
+        ]},
+        { title:"Who they should pick", t:[
+          "Best {biz} in {city} for a small budget?",
+          "Most affordable {biz} in {city}?",
+          "Best {biz} in {city} for first-timers?",
+          "Top {biz} in {city} for {service}?"
+        ]},
+        { title:"Before they hire", t:[
+          "How do I choose a good {biz} in {city}?",
+          "What should I ask before hiring a {biz}?",
+          "Questions to ask a {biz} before paying?",
+          "Is it worth hiring a {biz} for {service}?"
+        ]},
+        { title:"Do they even need you", t:[
+          "Do I really need a {biz} for {service}?",
+          "Signs I should hire a {biz} in {city}?",
+          "Can I do {service} myself or hire a {biz}?"
+        ]},
+        { title:"Local and urgent", t:[
+          "{cbiz} near me in {city}?",
+          "{cbiz} in {city} with fast turnaround?",
+          "Trusted {biz} in {city} available now?"
+        ]}
+      ];
+
+      var biz=document.getElementById('biz'),
+          city=document.getElementById('city'),
+          service=document.getElementById('service'),
+          results=document.getElementById('results'),
+          cats=document.getElementById('cats'),
+          err=document.getElementById('err'),
+          rtitle=document.getElementById('rtitle');
+
+      function cap(s){return s.charAt(0).toUpperCase()+s.slice(1);}
+      function esc(s){return s.replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
+
+      function fill(tpl,b,c,s){
+        return tpl
+          .replace(/{biz}/g,b)
+          .replace(/{cbiz}/g,cap(b))
+          .replace(/{city}/g,c)
+          .replace(/{service}/g,s);
+      }
+      // highlight the variable bits for readability
+      function highlight(text,b,c,s){
+        var safe=esc(text);
+        [c,s,b].forEach(function(v){
+          if(!v) return;
+          var re=new RegExp('('+v.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
+          safe=safe.replace(re,'<b>$1</b>');
+        });
+        return safe;
+      }
+
+      var allPrompts=[];
+
+      function generate(){
+        var b=biz.value.trim(), c=city.value.trim(), s=service.value.trim()||b;
+        if(!b||!c){err.style.display='inline';return;}
+        err.style.display='none';
+        cats.innerHTML='';
+        allPrompts=[];
+        rtitle.textContent='Questions your customers ask AI about '+cap(b)+' in '+cap(c);
+
+        categories.forEach(function(group,gi){
+          var wrap=document.createElement('div');
+          wrap.className='cat';
+          wrap.style.animationDelay=(gi*0.07)+'s';
+          var title=document.createElement('div');
+          title.className='cat-title';
+          title.textContent=group.title;
+          wrap.appendChild(title);
+
+          group.t.forEach(function(tpl){
+            var q=fill(tpl,b,c,s);
+            allPrompts.push(q);
+            var row=document.createElement('div');
+            row.className='prompt';
+            row.innerHTML='<span class="q">'+highlight(q,b,c,s)+'</span><span class="copy">Copy</span>';
+            row.addEventListener('click',function(){ copy(q); });
+            wrap.appendChild(row);
+          });
+          cats.appendChild(wrap);
+        });
+
+        results.style.display='block';
+        results.scrollIntoView({behavior:'smooth',block:'start'});
+      }
+
+      function copy(text){
+        if(navigator.clipboard&&navigator.clipboard.writeText){
+          navigator.clipboard.writeText(text).then(toast);
+        }else{
+          var ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);
+          ta.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(ta);toast();
+        }
+      }
+      var toastEl=document.getElementById('toast'),tt;
+      function toast(){toastEl.classList.add('show');clearTimeout(tt);tt=setTimeout(function(){toastEl.classList.remove('show');},1400);}
+
+      document.getElementById('go').addEventListener('click',generate);
+      [biz,city,service].forEach(function(el){el.addEventListener('keydown',function(e){if(e.key==='Enter')generate();});});
+      document.getElementById('copyAll').addEventListener('click',function(){
+        if(allPrompts.length) copy(allPrompts.join('\n'));
+      });
+    })();
+    // ── END TOOL JAVASCRIPT ──
+
+    // ── Reveal capture block when results appear ──
+    (function(){
+      var obs = new MutationObserver(function(){
+        if(document.getElementById('results').style.display === 'block'){
+          document.getElementById('capture-block').style.display = 'block';
+        }
+      });
+      obs.observe(document.getElementById('results'), { attributes: true, attributeFilter: ['style'] });
+    })();
+
+    // ── EMAIL CAPTURE ──
+    (function(){
+      var SHEET_URL = 'https://script.google.com/macros/s/AKfycbz6C0DDrpe-7hAmjPEG7QBl31zjMBSl9vGk9gfqumGF5qHqAJvhkkooS5ZDs0r9cj5Qng/exec';
+      emailjs.init('F25NFcVlXeUqES9qL');
+
+      document.getElementById('cap-send').addEventListener('click', async function(){
+        var emailEl  = document.getElementById('cap-email');
+        var errEl    = document.getElementById('cap-error');
+        var successEl= document.getElementById('cap-success');
+        var failEl   = document.getElementById('cap-fail');
+        var btn      = this;
+
+        var email = emailEl.value.trim();
+        errEl.style.display = 'none';
+        successEl.style.display = 'none';
+        failEl.style.display = 'none';
+
+        if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+          errEl.style.display = 'block';
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+
+        var biz     = document.getElementById('biz').value.trim();
+        var city    = document.getElementById('city').value.trim();
+        var service = document.getElementById('service').value.trim();
+
+        var emailPromise = emailjs.send('service_g4erqhd', 'template_4au5yft', {
+          to_email:  'vinod@optiscaleadvisors.com',
+          from_name: email,
+          first_name:'',
+          last_name: '',
+          email:     email,
+          form_type: 'Free Tool Lead — AI Prompts',
+          timestamp: new Date().toLocaleString('en-IN', { dateStyle:'full', timeStyle:'long', timeZone:'Asia/Kolkata' }),
+          source:    'tools/ai-prompts',
+          referrer:  document.referrer || 'Direct',
+          message:   'Tool: What Your Customers Ask AI\nBusiness type: ' + biz + '\nCity: ' + city + '\nService: ' + service + '\nEmail: ' + email
+        });
+
+        var sheetParams = new URLSearchParams();
+        sheetParams.append('email',        email);
+        sheetParams.append('source_page',  'tools/ai-prompts');
+        sheetParams.append('biz',          biz);
+        sheetParams.append('city',         city);
+        sheetParams.append('service',      service);
+        sheetParams.append('timestamp_utc', new Date().toISOString());
+        var sheetPromise = fetch(SHEET_URL, { method:'POST', body:sheetParams, mode:'no-cors' });
+
+        var results = await Promise.allSettled([emailPromise, sheetPromise]);
+        btn.disabled = false;
+        btn.textContent = 'Send me the list';
+
+        if(results[0].status === 'fulfilled' || results[1].status === 'fulfilled'){
+          successEl.style.display = 'block';
+        } else {
+          failEl.style.display = 'block';
+        }
+      });
+    })();
+    // ── END EMAIL CAPTURE ──
+    </script>
+
+    <script>
+    fetch('/components/header.html').then(function(r){return r.text()}).then(function(html){
+        document.getElementById('header-placeholder').innerHTML=html;
+        document.getElementById('header-placeholder').querySelectorAll('script').forEach(function(s){
+            var ns=document.createElement('script');ns.textContent=s.textContent;document.head.appendChild(ns);
+        });
+    });
+    fetch('/components/footer.html').then(function(r){return r.text()}).then(function(html){
+        document.getElementById('footer-placeholder').innerHTML=html;
+    });
+    </script>
+</body>
+</html>

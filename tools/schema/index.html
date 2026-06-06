@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y1J0TYF857"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-Y1J0TYF857');</script>
+    <script src="https://analytics.ahrefs.com/analytics.js" data-key="7Dv8ewYHFaHabiZqyQRQ6Q" async></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Schema Generator for AI Search | OptiScale Advisors</title>
+    <meta name="description" content="Generate clean LocalBusiness and FAQ schema so ChatGPT, Perplexity, and Google AI can read and recommend your business.">
+
+    <link rel="canonical" href="https://optiscaleadvisors.com/tools/schema">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://optiscaleadvisors.com/tools/schema">
+    <meta property="og:title" content="Free Schema Generator for AI Search | OptiScale Advisors">
+    <meta property="og:description" content="Generate clean LocalBusiness and FAQ schema so ChatGPT, Perplexity, and Google AI can read and recommend your business.">
+    <meta property="og:locale" content="en_IN">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://optiscaleadvisors.com/tools/schema">
+    <meta property="twitter:title" content="Free Schema Generator for AI Search | OptiScale Advisors">
+    <meta property="twitter:description" content="Generate clean LocalBusiness and FAQ schema so ChatGPT, Perplexity, and Google AI can read and recommend your business.">
+
+    <link rel="stylesheet" href="/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <style>
+    /* Page background */
+    body { background: #FAFAF8; }
+
+    /* Hero */
+    .tool-hero {
+        background: #fff;
+        padding: 3rem 0 2.5rem;
+        border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .tool-hero-inner {
+        max-width: 1060px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+    }
+    .tool-breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-family: var(--font-body);
+        font-size: 0.79rem;
+        color: var(--text-muted);
+        margin-bottom: 1.25rem;
+        flex-wrap: wrap;
+    }
+    .tool-breadcrumb a { color: var(--text-muted); text-decoration: none; }
+    .tool-breadcrumb a:hover { color: var(--primary); }
+    .tool-breadcrumb svg { width: 11px; height: 11px; opacity: 0.45; flex-shrink: 0; }
+    .tool-hero h1 {
+        font-family: var(--font-display);
+        font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+        font-weight: 800;
+        color: var(--text-primary);
+        letter-spacing: -0.03em;
+        line-height: 1.15;
+        margin-bottom: 0.75rem;
+    }
+    .tool-hero p {
+        font-family: var(--font-body);
+        font-size: 1rem;
+        color: var(--text-secondary);
+        line-height: 1.65;
+        max-width: 580px;
+    }
+
+    /* Content wrapper */
+    .tool-content {
+        max-width: 1060px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 4rem;
+    }
+
+    /* Two-column layout */
+    .schema-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.25rem;
+        align-items: start;
+    }
+    @media (max-width: 840px) { .schema-layout { grid-template-columns: 1fr; } }
+
+    /* Panels */
+    .tool-panel {
+        background: #fff;
+        border: 1px solid rgba(0,0,0,0.08);
+        border-radius: 16px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px -8px rgba(0,0,0,0.08);
+        padding: 1.5rem;
+    }
+    .tool-panel h2 {
+        font-family: var(--font-display);
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        letter-spacing: -0.02em;
+        margin-bottom: 0.2rem;
+    }
+    .panel-hint {
+        font-family: var(--font-body);
+        font-size: 0.83rem;
+        color: var(--text-muted);
+        margin-bottom: 1.1rem;
+    }
+
+    /* Form fields */
+    .field {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        margin-bottom: 12px;
+    }
+    .row2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+    @media (max-width: 480px) { .row2 { grid-template-columns: 1fr; } }
+    .field label {
+        font-family: var(--font-body);
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: var(--text-primary);
+    }
+    .field label .opt { color: var(--text-muted); font-weight: 500; }
+    .field input,
+    .field select,
+    .field textarea {
+        font-family: var(--font-body);
+        font-size: 0.92rem;
+        padding: 10px 12px;
+        border: 1px solid rgba(0,0,0,0.12);
+        border-radius: 10px;
+        background: #FAFAF8;
+        color: var(--text-primary);
+        transition: border-color 0.15s, box-shadow 0.15s;
+        outline: none;
+        width: 100%;
+    }
+    .field textarea { resize: vertical; min-height: 64px; }
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(5,150,105,0.12);
+        background: #fff;
+    }
+    .divider {
+        height: 1px;
+        background: rgba(0,0,0,0.06);
+        margin: 16px 0;
+    }
+    .sec-label {
+        font-family: var(--font-body);
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.09em;
+        color: var(--primary);
+        margin-bottom: 10px;
+    }
+    .faq-pair {
+        border: 1px dashed rgba(0,0,0,0.1);
+        border-radius: 10px;
+        padding: 12px;
+        margin-bottom: 10px;
+    }
+    .btn-add-faq {
+        font-family: var(--font-body);
+        font-size: 0.86rem;
+        font-weight: 600;
+        padding: 9px 16px;
+        background: #FAFAF8;
+        border: 1px solid rgba(0,0,0,0.12);
+        border-radius: 9px;
+        color: var(--navy);
+        cursor: pointer;
+        transition: border-color 0.2s ease, background 0.2s ease;
+        width: 100%;
+        text-align: left;
+    }
+    .btn-add-faq:hover { border-color: rgba(0,0,0,0.22); background: #f3f3f1; }
+
+    /* Output panel */
+    .out-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        gap: 10px;
+    }
+    .btn-navy {
+        font-family: var(--font-body);
+        font-weight: 600;
+        font-size: 0.88rem;
+        padding: 10px 18px;
+        background: var(--navy);
+        color: #fff;
+        border: none;
+        border-radius: 9px;
+        cursor: pointer;
+        transition: background 0.2s ease, transform 0.15s ease;
+        white-space: nowrap;
+    }
+    .btn-navy:hover { background: #152340; transform: translateY(-1px); }
+    .btn-navy:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    pre {
+        background: var(--navy);
+        color: #e7eefb;
+        border-radius: 12px;
+        padding: 16px;
+        overflow: auto;
+        font-family: var(--font-mono);
+        font-size: 0.77rem;
+        line-height: 1.55;
+        max-height: 500px;
+    }
+    .schema-note {
+        font-family: var(--font-body);
+        font-size: 0.82rem;
+        color: var(--text-muted);
+        margin-top: 10px;
+        line-height: 1.5;
+    }
+    .schema-note b { color: var(--text-primary); }
+
+    /* Email capture */
+    .capture-block {
+        background: #fff;
+        border: 1px solid rgba(0,0,0,0.08);
+        border-radius: 16px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px -8px rgba(0,0,0,0.08);
+        padding: 1.75rem;
+        margin-top: 1.25rem;
+    }
+    .capture-block h3 {
+        font-family: var(--font-display);
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        letter-spacing: -0.02em;
+        margin-bottom: 1rem;
+        max-width: 40ch;
+        line-height: 1.3;
+    }
+    .cap-row {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+    .cap-row input[type="email"] {
+        font-family: var(--font-body);
+        font-size: 0.92rem;
+        padding: 10px 12px;
+        border: 1px solid rgba(0,0,0,0.12);
+        border-radius: 9px;
+        background: #FAFAF8;
+        color: var(--text-primary);
+        outline: none;
+        flex: 1;
+        min-width: 180px;
+        transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .cap-row input[type="email"]:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(5,150,105,0.12);
+        background: #fff;
+    }
+    .cap-err {
+        font-family: var(--font-body);
+        font-size: 0.81rem;
+        color: #DC2626;
+        font-weight: 600;
+        display: none;
+        margin-top: 6px;
+    }
+    .cap-hint {
+        font-family: var(--font-body);
+        font-size: 0.77rem;
+        color: var(--text-muted);
+        margin-top: 8px;
+    }
+    .cap-success-msg {
+        display: none;
+        font-family: var(--font-body);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--primary);
+        margin-top: 10px;
+    }
+    .cap-fail-msg {
+        display: none;
+        font-family: var(--font-body);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: #DC2626;
+        margin-top: 10px;
+    }
+
+    /* CTA block */
+    .tool-cta {
+        background: var(--navy);
+        color: #fff;
+        border-radius: 16px;
+        padding: 2rem 1.75rem;
+        margin-top: 1.5rem;
+        position: relative;
+        overflow: hidden;
+    }
+    .tool-cta::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(420px 220px at 90% 0%, rgba(5,150,105,0.28), transparent 60%);
+    }
+    .tool-cta-inner { position: relative; z-index: 1; }
+    .tool-cta h3 {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+        max-width: 30ch;
+        letter-spacing: -0.02em;
+        line-height: 1.25;
+    }
+    .tool-cta p {
+        font-family: var(--font-body);
+        color: rgba(255,255,255,0.68);
+        max-width: 52ch;
+        margin-bottom: 1.25rem;
+        font-size: 0.92rem;
+        line-height: 1.6;
+    }
+    .tool-cta a {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--primary);
+        color: #fff;
+        text-decoration: none;
+        font-family: var(--font-body);
+        font-weight: 600;
+        font-size: 0.92rem;
+        padding: 11px 20px;
+        border-radius: 9px;
+        transition: background 0.2s ease;
+    }
+    .tool-cta a:hover { background: var(--primary-dark); }
+
+    /* Toast */
+    #toast {
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%) translateY(20px);
+        background: var(--navy);
+        color: #fff;
+        padding: 11px 20px;
+        border-radius: 10px;
+        font-family: var(--font-body);
+        font-size: 0.88rem;
+        font-weight: 600;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.25s;
+        z-index: 9000;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+    #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    </style>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="tool-hero">
+            <div class="tool-hero-inner">
+                <nav class="tool-breadcrumb" aria-label="Breadcrumb">
+                    <a href="/">Home</a>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                    <a href="/tools">Free Tools</a>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                    <span>AI Schema Generator</span>
+                </nav>
+                <h1>Free schema generator built for AI search</h1>
+                <p>Schema is how machines read your business. Fill the form and copy clean LocalBusiness and FAQ markup that helps ChatGPT, Perplexity, and Google AI understand and recommend you.</p>
+            </div>
+        </section>
+
+        <div class="tool-content">
+            <div class="schema-layout">
+                <!-- FORM -->
+                <section class="tool-panel">
+                    <h2>Your details</h2>
+                    <p class="panel-hint">Everything updates live. Nothing is stored or sent.</p>
+
+                    <div class="field">
+                        <label for="name">Business name</label>
+                        <input id="name" type="text" placeholder="Design Intend" autocomplete="off">
+                    </div>
+                    <div class="row2">
+                        <div class="field">
+                            <label for="type">Business type</label>
+                            <select id="type">
+                                <option value="LocalBusiness">Local business (general)</option>
+                                <option value="ProfessionalService">Professional service</option>
+                                <option value="HomeAndConstructionBusiness">Construction / interiors</option>
+                                <option value="GeneralContractor">Contractor / builder</option>
+                                <option value="Dentist">Dentist</option>
+                                <option value="MedicalBusiness">Clinic / medical</option>
+                                <option value="HealthAndBeautyBusiness">Salon / spa / beauty</option>
+                                <option value="Restaurant">Restaurant / cafe</option>
+                                <option value="Store">Shop / store</option>
+                                <option value="LegalService">Lawyer / legal</option>
+                                <option value="AccountingService">Accountant / finance</option>
+                                <option value="RealEstateAgent">Real estate</option>
+                                <option value="Electrician">Electrician</option>
+                                <option value="Plumber">Plumber</option>
+                                <option value="AutoRepair">Auto repair</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label for="url">Website URL</label>
+                            <input id="url" type="text" placeholder="https://designintend.com" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="desc">Short description</label>
+                        <textarea id="desc" placeholder="Architects and interior designers in Hosur. We design homes, farmhouses, and offices."></textarea>
+                    </div>
+                    <div class="row2">
+                        <div class="field">
+                            <label for="phone">Phone <span class="opt">(with country code)</span></label>
+                            <input id="phone" type="text" placeholder="+91 73976 06382" autocomplete="off">
+                        </div>
+                        <div class="field">
+                            <label for="price">Price range <span class="opt">(optional)</span></label>
+                            <input id="price" type="text" placeholder="₹₹" autocomplete="off">
+                        </div>
+                    </div>
+
+                    <div class="divider"></div>
+                    <div class="sec-label">Address</div>
+                    <div class="field">
+                        <label for="street">Street address</label>
+                        <input id="street" type="text" placeholder="No.2, Second Floor, Ring Road" autocomplete="off">
+                    </div>
+                    <div class="row2">
+                        <div class="field"><label for="city">City</label><input id="city" type="text" placeholder="Hosur" autocomplete="off"></div>
+                        <div class="field"><label for="region">State / region</label><input id="region" type="text" placeholder="Tamil Nadu" autocomplete="off"></div>
+                    </div>
+                    <div class="row2">
+                        <div class="field"><label for="zip">Postal code</label><input id="zip" type="text" placeholder="635109" autocomplete="off"></div>
+                        <div class="field"><label for="country">Country code</label><input id="country" type="text" placeholder="IN" autocomplete="off" maxlength="2"></div>
+                    </div>
+
+                    <div class="divider"></div>
+                    <div class="sec-label">FAQ (optional, great for AI)</div>
+                    <div id="faqs">
+                        <div class="faq-pair">
+                            <div class="field"><label>Question</label><input class="fq" type="text" placeholder="Do you offer free consultations?" autocomplete="off"></div>
+                            <div class="field" style="margin-bottom:0"><label>Answer</label><textarea class="fa" placeholder="Yes. We offer a free first consultation for every project."></textarea></div>
+                        </div>
+                    </div>
+                    <button class="btn-add-faq" id="addFaq">+ Add another question</button>
+                </section>
+
+                <!-- OUTPUT -->
+                <div>
+                    <section class="tool-panel">
+                        <div class="out-head">
+                            <h2>Your schema</h2>
+                            <button class="btn-navy" id="copy">Copy code</button>
+                        </div>
+                        <pre id="output"></pre>
+                        <p class="schema-note"><b>How to use it:</b> copy the whole block and paste it into the <b>&lt;head&gt;</b> of your homepage. Then test it free with Google's Rich Results Test. One block, and AI engines read your business clearly.</p>
+                    </section>
+
+                    <div class="capture-block">
+                        <h3>Want this schema emailed to you with a simple 3-step setup guide?</h3>
+                        <div class="cap-row">
+                            <input type="email" id="cap-email" placeholder="your@email.com" autocomplete="email">
+                            <button class="btn-navy" id="cap-send">Send it to me</button>
+                        </div>
+                        <div class="cap-err" id="cap-error">Please enter a valid email address.</div>
+                        <p class="cap-hint">No spam. Just your result and the occasional AI visibility tip.</p>
+                        <p class="cap-success-msg" id="cap-success">Done. Check your inbox.</p>
+                        <p class="cap-fail-msg" id="cap-fail">Something went wrong, please try again.</p>
+                    </div>
+                </div>
+            </div>
+
+            <section class="tool-cta">
+                <div class="tool-cta-inner">
+                    <h3>Schema is step one. Want the full picture?</h3>
+                    <p>We check whether AI engines actually find and recommend your business, then give you a plain fix-list across schema, content, and crawler access. You see the work before you pay.</p>
+                    <a href="/ai-visibility-audit">Get a free AI visibility check</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <div id="toast">Copied</div>
+
+    <script>
+    // ── TOOL JAVASCRIPT (carried over intact from schema-generator.html) ──
+    (function(){
+      var ids=['name','type','url','desc','phone','price','street','city','region','zip','country'];
+      var el={};ids.forEach(function(i){el[i]=document.getElementById(i);});
+      var output=document.getElementById('output');
+
+      function val(id){return el[id].value.trim();}
+
+      function build(){
+        var biz={
+          "@context":"https://schema.org",
+          "@type":val('type')||"LocalBusiness"
+        };
+        if(val('name')) biz.name=val('name');
+        if(val('desc')) biz.description=val('desc');
+        if(val('url'))  biz.url=normUrl(val('url'));
+        if(val('phone')) biz.telephone=val('phone');
+        if(val('price')) biz.priceRange=val('price');
+
+        var addr={};
+        if(val('street')) addr.streetAddress=val('street');
+        if(val('city'))   addr.addressLocality=val('city');
+        if(val('region')) addr.addressRegion=val('region');
+        if(val('zip'))    addr.postalCode=val('zip');
+        if(val('country'))addr.addressCountry=val('country').toUpperCase();
+        if(Object.keys(addr).length){addr["@type"]="PostalAddress";biz.address=addr;}
+
+        // FAQs
+        var faqs=[];
+        document.querySelectorAll('.faq-pair').forEach(function(p){
+          var q=p.querySelector('.fq').value.trim();
+          var a=p.querySelector('.fa').value.trim();
+          if(q&&a){
+            faqs.push({"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}});
+          }
+        });
+
+        var obj;
+        if(faqs.length){
+          obj={"@context":"https://schema.org","@graph":[
+            stripContext(biz),
+            {"@type":"FAQPage","mainEntity":faqs}
+          ]};
+        }else{
+          obj=biz;
+        }
+        return obj;
+      }
+
+      function stripContext(o){var c=Object.assign({},o);delete c["@context"];return c;}
+      function normUrl(u){return /^https?:\/\//.test(u)?u:'https://'+u;}
+
+      function render(){
+        var json=JSON.stringify(build(),null,2);
+        var wrapped='<script type="application/ld+json">\n'+json+'\n<\/script>';
+        output.textContent=wrapped;
+      }
+
+      ids.forEach(function(i){el[i].addEventListener('input',render);});
+      document.getElementById('faqs').addEventListener('input',render);
+
+      document.getElementById('addFaq').addEventListener('click',function(){
+        var div=document.createElement('div');
+        div.className='faq-pair';
+        div.innerHTML='<div class="field"><label>Question</label><input class="fq" type="text" placeholder="Another common question?" autocomplete="off"></div>'+
+                      '<div class="field" style="margin-bottom:0"><label>Answer</label><textarea class="fa" placeholder="A clear, direct answer."></textarea></div>';
+        document.getElementById('faqs').appendChild(div);
+      });
+
+      var toastEl=document.getElementById('toast'),tt;
+      function toast(){toastEl.classList.add('show');clearTimeout(tt);tt=setTimeout(function(){toastEl.classList.remove('show');},1400);}
+      document.getElementById('copy').addEventListener('click',function(){
+        var text=output.textContent;
+        if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(toast);}
+        else{var ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(ta);toast();}
+      });
+
+      render();
+    })();
+    // ── END TOOL JAVASCRIPT ──
+
+    // ── EMAIL CAPTURE ──
+    (function(){
+      var SHEET_URL = 'https://script.google.com/macros/s/AKfycbz6C0DDrpe-7hAmjPEG7QBl31zjMBSl9vGk9gfqumGF5qHqAJvhkkooS5ZDs0r9cj5Qng/exec';
+      emailjs.init('F25NFcVlXeUqES9qL');
+
+      document.getElementById('cap-send').addEventListener('click', async function(){
+        var emailEl  = document.getElementById('cap-email');
+        var errEl    = document.getElementById('cap-error');
+        var successEl= document.getElementById('cap-success');
+        var failEl   = document.getElementById('cap-fail');
+        var btn      = this;
+
+        var email = emailEl.value.trim();
+        errEl.style.display = 'none';
+        successEl.style.display = 'none';
+        failEl.style.display = 'none';
+
+        if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+          errEl.style.display = 'block';
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+
+        var bizName = document.getElementById('name').value.trim();
+        var bizType = document.getElementById('type').value;
+        var bizUrl  = document.getElementById('url').value.trim();
+        var bizCity = document.getElementById('city').value.trim();
+
+        var emailPromise = emailjs.send('service_g4erqhd', 'template_4au5yft', {
+          to_email:  'vinod@optiscaleadvisors.com',
+          from_name: email,
+          first_name:'',
+          last_name: '',
+          email:     email,
+          form_type: 'Free Tool Lead — Schema Generator',
+          timestamp: new Date().toLocaleString('en-IN', { dateStyle:'full', timeStyle:'long', timeZone:'Asia/Kolkata' }),
+          source:    'tools/schema',
+          referrer:  document.referrer || 'Direct',
+          message:   'Tool: AI Schema Generator\nBusiness name: ' + bizName + '\nBusiness type: ' + bizType + '\nWebsite URL: ' + bizUrl + '\nCity: ' + bizCity + '\nEmail: ' + email
+        });
+
+        var sheetParams = new URLSearchParams();
+        sheetParams.append('email',        email);
+        sheetParams.append('source_page',  'tools/schema');
+        sheetParams.append('biz_name',     bizName);
+        sheetParams.append('biz_type',     bizType);
+        sheetParams.append('biz_url',      bizUrl);
+        sheetParams.append('city',         bizCity);
+        sheetParams.append('timestamp_utc', new Date().toISOString());
+        var sheetPromise = fetch(SHEET_URL, { method:'POST', body:sheetParams, mode:'no-cors' });
+
+        var results = await Promise.allSettled([emailPromise, sheetPromise]);
+        btn.disabled = false;
+        btn.textContent = 'Send it to me';
+
+        if(results[0].status === 'fulfilled' || results[1].status === 'fulfilled'){
+          successEl.style.display = 'block';
+        } else {
+          failEl.style.display = 'block';
+        }
+      });
+    })();
+    // ── END EMAIL CAPTURE ──
+    </script>
+
+    <script>
+    fetch('/components/header.html').then(function(r){return r.text()}).then(function(html){
+        document.getElementById('header-placeholder').innerHTML=html;
+        document.getElementById('header-placeholder').querySelectorAll('script').forEach(function(s){
+            var ns=document.createElement('script');ns.textContent=s.textContent;document.head.appendChild(ns);
+        });
+    });
+    fetch('/components/footer.html').then(function(r){return r.text()}).then(function(html){
+        document.getElementById('footer-placeholder').innerHTML=html;
+    });
+    </script>
+</body>
+</html>
