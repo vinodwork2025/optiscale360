@@ -291,7 +291,7 @@ Build topical authority by creating comprehensive content clusters.
 2. **Use AI to Generate Clusters:**
    ```
    Core Topic: AI SEO
-   ├─ Pillar Content: [Complete AI SEO Guide](/blog/ai-seo-complete-guide-2025/)
+   ├─ Pillar Content: [Complete AI SEO Guide](/blog/ai-seo-complete-guide-2026/)
    ├─ Cluster 1: [AI Content Optimization](/blog/ai-content-optimization-strategies/)
    ├─ Cluster 2: AI Keyword Research (this article)
    └─ Cluster 3: [AI Technical SEO](/blog/ai-technical-seo-audit-guide/)
@@ -625,6 +625,6 @@ AI keyword research isn't about finding keywords—it's about discovering opport
 **Ready to dominate search with AI-powered keyword research?** OptiScale 360 specializes in uncovering high-value keyword opportunities using advanced AI tools and proprietary analysis methods. [Get a free keyword opportunity analysis](/contact.html) for your business.
 
 **Related Reading:**
-- [Complete AI SEO Guide 2025](/blog/ai-seo-complete-guide-2025/)
+- [Complete AI SEO Guide 2025](/blog/ai-seo-complete-guide-2026/)
 - [AI Content Optimization Strategies](/blog/ai-content-optimization-strategies/)
 - [AI Technical SEO Audit Guide](/blog/ai-technical-seo-audit-guide/)

@@ -26,7 +26,7 @@ const URLS = [
   'https://optiscaleadvisors.com/blog/what-is-geo-generative-engine-optimization',
   'https://optiscaleadvisors.com/blog/why-your-business-is-not-showing-on-chatgpt',
   'https://optiscaleadvisors.com/blog/geo-vs-seo-difference-explained',
-  'https://optiscaleadvisors.com/blog/ai-seo-complete-guide-2025/',
+  'https://optiscaleadvisors.com/blog/ai-seo-complete-guide-2026/',
   'https://optiscaleadvisors.com/blog/ai-keyword-research-tools-guide/',
   'https://optiscaleadvisors.com/blog/ai-content-optimization-strategies/',
   'https://optiscaleadvisors.com/blog/ai-technical-seo-audit-guide/',
