@@ -623,48 +623,37 @@
         var bizUrl  = document.getElementById('url').value.trim();
         var bizCity = document.getElementById('city').value.trim();
 
-        var ts = new Date().toLocaleString('en-IN', { dateStyle:'full', timeStyle:'long', timeZone:'Asia/Kolkata' });
-
-        // Lead notification to Vinod
+        // Lead notification to Vinod via EmailJS
         var leadPromise = emailjs.send('service_g4erqhd', 'template_4au5yft', {
           to_email:  'vinod@optiscaleadvisors.com',
           from_name: email,
           first_name:'',
           last_name: '',
           email:     email,
-          form_type: 'Free Tool Lead — Schema Generator',
-          timestamp: ts,
+          form_type: 'Free Tool Lead - Schema Generator',
+          timestamp: new Date().toLocaleString('en-IN', { dateStyle:'full', timeStyle:'long', timeZone:'Asia/Kolkata' }),
           source:    'tools/schema',
           referrer:  document.referrer || 'Direct',
           message:   'Tool: AI Schema Generator\nBusiness name: ' + bizName + '\nBusiness type: ' + bizType + '\nWebsite URL: ' + bizUrl + '\nCity: ' + bizCity + '\nEmail: ' + email
         });
 
-        // Schema code + setup guide to the user
+        // Schema code for user email
         var schemaCode = document.getElementById('output').textContent;
-        var userPromise = emailjs.send('service_g4erqhd', 'template_4au5yft', {
-          to_email:  email,
-          from_name: 'OptiScale Advisors',
-          first_name:'',
-          last_name: '',
-          email:     'vinod@optiscaleadvisors.com',
-          form_type: 'Your schema markup from OptiScale',
-          timestamp: ts,
-          source:    'tools/schema',
-          referrer:  '',
-          message:   'Here is your schema markup for ' + bizName + ':\n\n' + schemaCode + '\n\n3-step setup:\n1. Copy the full code block above.\n2. Paste it inside the <head> tag of your homepage HTML.\n3. Test it free at https://search.google.com/test/rich-results\n\nWant AI engines to actually recommend your business? Start here: https://optiscaleadvisors.com/ai-visibility-audit'
-        });
 
+        // Sheet POST — also triggers user email via MailApp
         var sheetParams = new URLSearchParams();
         sheetParams.append('email',        email);
-        sheetParams.append('source_page',  'tools/schema');
-        sheetParams.append('biz_name',     bizName);
-        sheetParams.append('biz_type',     bizType);
-        sheetParams.append('biz_url',      bizUrl);
-        sheetParams.append('city',         bizCity);
-        sheetParams.append('timestamp_utc', new Date().toISOString());
+        sheetParams.append('name',         bizName || email);
+        sheetParams.append('business',     bizName);
+        sheetParams.append('industry',     bizType);
+        sheetParams.append('website',      bizUrl);
+        sheetParams.append('source',       'Schema Generator Tool');
+        sheetParams.append('notes',        'City: ' + bizCity);
+        sheetParams.append('subject',      'Your schema markup from OptiScale Advisors');
+        sheetParams.append('user_message', 'Here is your schema markup for ' + bizName + ':\n\n' + schemaCode + '\n\n3-step setup:\n1. Copy the full code block above.\n2. Paste it inside the <head> tag of your homepage HTML.\n3. Test it free at https://search.google.com/test/rich-results\n\nWant AI engines to actually recommend your business?\nhttps://optiscaleadvisors.com/ai-visibility-audit');
         var sheetPromise = fetch(SHEET_URL, { method:'POST', body:sheetParams, mode:'no-cors' });
 
-        var results = await Promise.allSettled([leadPromise, userPromise, sheetPromise]);
+        var results = await Promise.allSettled([leadPromise, sheetPromise]);
         btn.disabled = false;
         btn.textContent = 'Send it to me';
 
