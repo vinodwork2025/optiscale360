@@ -11,6 +11,7 @@ Contact: vinod@optiscale360.com | +91 73972 25523 | https://cal.com/optiscale360
 ## Blog Posts
 
 - [How to Make Your Website Show Up on ChatGPT and Perplexity (2026 Checklist)](https://optiscaleadvisors.com/blog/ai-technical-seo-audit-guide/): Eight-step checklist covering AI bot access, HTML rendering, structured data, content writing, brand identity, off-site mentions, freshness, and indexing. Includes a 20-minute self-audit method.
+- [How to Track If ChatGPT and Perplexity Mention Your Business (Best Tools 2026)](https://optiscaleadvisors.com/blog/ai-visibility-tracking-tools/): Covers free and paid tools to monitor AI visibility, sorted by budget including options under ₹5,000 a month. Explains the visibility rate metric.
 - [Why Your Business Is Not Showing on ChatGPT](https://optiscaleadvisors.com/blog/why-your-business-is-not-showing-on-chatgpt): Explains the four main reasons businesses are invisible on AI search platforms and what each one means.
 - [How to Check If Your Business Appears on ChatGPT](https://optiscaleadvisors.com/blog/how-to-check-if-your-business-appears-on-chatgpt): Step-by-step method to test your AI search visibility across ChatGPT, Perplexity, and Google AI.
 - [What Is GEO (Generative Engine Optimisation)?](https://optiscaleadvisors.com/blog/what-is-geo-generative-engine-optimization): Plain-English explanation of GEO, how it differs from SEO, and why it matters for businesses in 2026.

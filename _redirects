@@ -70,6 +70,10 @@
 /blog/test-publish                  /blog/                     301
 /blog/github-config                 /blog/                     301
 
+# Renamed blog posts → new URL
+/blog/ai-keyword-research-tools-guide/    /blog/ai-visibility-tracking-tools/    301
+/blog/ai-keyword-research-tools-guide     /blog/ai-visibility-tracking-tools/    301
+
 # Deleted blog posts → blog index
 /blog/ai-seo-ultimate-guide/        /blog/                     301
 /blog/case-study-ecommerce-seo-success/ /blog/                 301
