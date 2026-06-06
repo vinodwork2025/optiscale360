@@ -1029,7 +1029,7 @@ body { padding-top: 72px; }
     padding: 120px 0 5rem 0 !important;
     min-height: 100vh !important;
     background: linear-gradient(135deg, #fafbff 0%, #f1f5f9 50%, #e2e8f0 100%) !important;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+    font-family: 'DM Sans', system-ui, sans-serif !important;
 }
 
 .blog-post-container {
@@ -1056,7 +1056,7 @@ body { padding-top: 72px; }
     left: 0 !important;
     right: 0 !important;
     height: 6px !important;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%) !important;
+    background: #059669 !important;
 }
 
 .blog-post-header {
@@ -1080,7 +1080,7 @@ body { padding-top: 72px; }
 }
 
 .blog-content {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+    font-family: 'DM Sans', system-ui, sans-serif !important;
     font-size: 1.125rem !important;
     line-height: 1.75 !important;
     color: #191F2A !important;
@@ -1101,7 +1101,7 @@ body { padding-top: 72px; }
     max-width: 800px !important;
     margin-left: auto !important;
     margin-right: auto !important;
-    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.08) !important;
+    box-shadow: 0 10px 30px rgba(5, 150, 105, 0.08) !important;
     position: relative !important;
 }
 
@@ -1112,7 +1112,7 @@ body { padding-top: 72px; }
     left: 0 !important;
     right: 0 !important;
     height: 4px !important;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%) !important;
+    background: #059669 !important;
     border-radius: 20px 20px 0 0 !important;
 }
 
@@ -1134,7 +1134,7 @@ body { padding-top: 72px; }
     transform: translateX(-50%) !important;
     width: 60px !important;
     height: 2px !important;
-    background: #667eea !important;
+    background: #059669 !important;
 }
 
 .toc-list {
@@ -1154,7 +1154,7 @@ body { padding-top: 72px; }
     position: absolute !important;
     left: 0 !important;
     top: 0.125rem !important;
-    color: #667eea !important;
+    color: #059669 !important;
     font-weight: 700 !important;
     font-size: 1.1rem !important;
     transition: transform 0.2s ease !important;
@@ -1177,8 +1177,8 @@ body { padding-top: 72px; }
 }
 
 .toc-list a:hover {
-    color: #667eea !important;
-    background: rgba(102, 126, 234, 0.05) !important;
+    color: #059669 !important;
+    background: rgba(5, 150, 105, 0.05) !important;
     padding-left: 0.75rem !important;
     margin-left: -0.75rem !important;
 }
@@ -1198,7 +1198,7 @@ body { padding-top: 72px; }
 
 /* STUNNING TYPOGRAPHY HIERARCHY */
 .blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4, .blog-content h5, .blog-content h6 {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif !important;
     font-weight: 700 !important;
     line-height: 1.25 !important;
     letter-spacing: -0.025em !important;
@@ -1209,14 +1209,10 @@ body { padding-top: 72px; }
 .blog-content h1 {
     font-size: 2.75rem !important;
     font-weight: 900 !important;
-    color: #0C1322 !important;
+    color: #1B2D4F !important;
     line-height: 1.1 !important;
     margin: 0 0 2.5rem 0 !important;
     letter-spacing: -0.04em !important;
-    background: linear-gradient(135deg, #0f172a 0%, #374151 100%) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    background-clip: text !important;
     position: relative !important;
 }
 
@@ -1227,7 +1223,7 @@ body { padding-top: 72px; }
     left: 0 !important;
     width: 60px !important;
     height: 4px !important;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    background: #059669 !important;
     border-radius: 2px !important;
 }
 
@@ -1239,8 +1235,8 @@ body { padding-top: 72px; }
     line-height: 1.2 !important;
     position: relative !important;
     padding: 1.5rem 0 1.5rem 2rem !important;
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.03) 0%, rgba(118, 75, 162, 0.03) 100%) !important;
-    border-left: 5px solid #667eea !important;
+    background: rgba(5, 150, 105, 0.03) !important;
+    border-left: 5px solid #059669 !important;
     border-radius: 0 12px 12px 0 !important;
 }
 
@@ -1250,7 +1246,7 @@ body { padding-top: 72px; }
     left: 0.75rem !important;
     top: 50% !important;
     transform: translateY(-50%) !important;
-    color: #667eea !important;
+    color: #059669 !important;
     font-size: 1.5rem !important;
     font-weight: 900 !important;
 }
@@ -1273,7 +1269,7 @@ body { padding-top: 72px; }
     left: 0 !important;
     width: 40px !important;
     height: 2px !important;
-    background: #667eea !important;
+    background: #059669 !important;
 }
 
 .blog-content h4 {
@@ -1354,7 +1350,7 @@ body { padding-top: 72px; }
     position: absolute !important;
     left: 0 !important;
     top: 0 !important;
-    color: #667eea !important;
+    color: #059669 !important;
     font-weight: 700 !important;
     font-size: 1.1rem !important;
 }
@@ -1380,7 +1376,7 @@ body { padding-top: 72px; }
     top: 0 !important;
     width: 2rem !important;
     height: 2rem !important;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    background: #059669 !important;
     color: white !important;
     border-radius: 50% !important;
     display: flex !important;
@@ -1420,7 +1416,7 @@ body { padding-top: 72px; }
     left: 0 !important;
     right: 0 !important;
     height: 3px !important;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%) !important;
+    background: #059669 !important;
     border-radius: 16px 16px 0 0 !important;
 }
 
@@ -1448,7 +1444,7 @@ body { padding-top: 72px; }
 /* BEAUTIFUL BLOCKQUOTES */
 .blog-content blockquote {
     background: linear-gradient(135deg, #fefefe 0%, #f8fafc 100%) !important;
-    border-left: 6px solid #667eea !important;
+    border-left: 6px solid #059669 !important;
     border-radius: 0 16px 16px 0 !important;
     padding: 2rem 2rem 2rem 3rem !important;
     margin: 3rem 0 !important;
@@ -1457,7 +1453,7 @@ body { padding-top: 72px; }
     font-size: 1.125rem !important;
     line-height: 1.7 !important;
     color: #3C4553 !important;
-    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.08) !important;
+    box-shadow: 0 4px 20px rgba(5, 150, 105, 0.08) !important;
 }
 
 .blog-content blockquote::before {
@@ -1466,7 +1462,7 @@ body { padding-top: 72px; }
     top: 1.5rem !important;
     left: 1rem !important;
     font-size: 3rem !important;
-    color: #667eea !important;
+    color: #059669 !important;
     font-family: Georgia, serif !important;
     line-height: 1 !important;
     opacity: 0.7 !important;
@@ -1491,7 +1487,7 @@ body { padding-top: 72px; }
 }
 
 .blog-content th {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    background: #1B2D4F !important;
     color: white !important;
     padding: 1.25rem 1.5rem !important;
     text-align: left !important;
@@ -1519,7 +1515,7 @@ body { padding-top: 72px; }
 
 /* ENHANCED LINKS */
 .blog-content a {
-    color: #667eea !important;
+    color: #059669 !important;
     text-decoration: none !important;
     font-weight: 500 !important;
     position: relative !important;
@@ -1533,12 +1529,12 @@ body { padding-top: 72px; }
     left: 0 !important;
     width: 0 !important;
     height: 2px !important;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    background: #059669 !important;
     transition: width 0.3s ease !important;
 }
 
 .blog-content a:hover {
-    color: #5b67ca !important;
+    color: #047857 !important;
 }
 
 .blog-content a:hover::after {
@@ -1549,7 +1545,7 @@ body { padding-top: 72px; }
 .blog-content hr {
     border: none !important;
     height: 2px !important;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%) !important;
+    background: #059669 !important;
     margin: 4rem 0 !important;
     border-radius: 2px !important;
     opacity: 0.6 !important;
@@ -2081,7 +2077,7 @@ p {
     left: 0;
     right: 0;
     height: 8px;
-    background: linear-gradient(135deg, #2563eb 0%, #0891b2 50%, #059669 100%);
+    background: #059669;
 }
 
 .blog-post-header {
@@ -2205,7 +2201,7 @@ p {
     content: '→';
     position: absolute;
     left: 0;
-    color: #3b82f6;
+    color: #059669;
     font-weight: bold;
 }
 
@@ -2219,7 +2215,7 @@ p {
 }
 
 .toc-list a:hover {
-    color: #2563eb;
+    color: #059669;
 }
 
 .blog-post-content {
