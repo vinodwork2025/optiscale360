@@ -664,17 +664,38 @@
         var city    = document.getElementById('city').value.trim();
         var service = document.getElementById('service').value.trim();
 
-        var emailPromise = emailjs.send('service_g4erqhd', 'template_4au5yft', {
+        var ts = new Date().toLocaleString('en-IN', { dateStyle:'full', timeStyle:'long', timeZone:'Asia/Kolkata' });
+
+        // Lead notification to Vinod
+        var leadPromise = emailjs.send('service_g4erqhd', 'template_4au5yft', {
           to_email:  'vinod@optiscaleadvisors.com',
           from_name: email,
           first_name:'',
           last_name: '',
           email:     email,
           form_type: 'Free Tool Lead — AI Prompts',
-          timestamp: new Date().toLocaleString('en-IN', { dateStyle:'full', timeStyle:'long', timeZone:'Asia/Kolkata' }),
+          timestamp: ts,
           source:    'tools/ai-prompts',
           referrer:  document.referrer || 'Direct',
           message:   'Tool: What Your Customers Ask AI\nBusiness type: ' + biz + '\nCity: ' + city + '\nService: ' + service + '\nEmail: ' + email
+        });
+
+        // Collect generated questions from DOM
+        var questionEls = document.querySelectorAll('.prompt .q');
+        var questionList = Array.from(questionEls).map(function(el){ return el.textContent.trim(); }).join('\n');
+
+        // Result email to the user
+        var userPromise = emailjs.send('service_g4erqhd', 'template_4au5yft', {
+          to_email:  email,
+          from_name: 'OptiScale Advisors',
+          first_name:'',
+          last_name: '',
+          email:     'vinod@optiscaleadvisors.com',
+          form_type: 'Your AI prompt list from OptiScale',
+          timestamp: ts,
+          source:    'tools/ai-prompts',
+          referrer:  '',
+          message:   'Here are the questions your customers ask AI about ' + biz + ' in ' + city + ':\n\n' + questionList + '\n\nTo rank for these questions, your business needs to be cited by AI platforms like ChatGPT and Perplexity.\n\nStart with a free AI visibility check: https://optiscaleadvisors.com/ai-visibility-audit'
         });
 
         var sheetParams = new URLSearchParams();
@@ -686,7 +707,7 @@
         sheetParams.append('timestamp_utc', new Date().toISOString());
         var sheetPromise = fetch(SHEET_URL, { method:'POST', body:sheetParams, mode:'no-cors' });
 
-        var results = await Promise.allSettled([emailPromise, sheetPromise]);
+        var results = await Promise.allSettled([leadPromise, userPromise, sheetPromise]);
         btn.disabled = false;
         btn.textContent = 'Send me the list';
 
