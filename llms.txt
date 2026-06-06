@@ -8,6 +8,15 @@ OptiScale serves small and medium businesses across India primarily, including c
 
 Contact: vinod@optiscale360.com | +91 73972 25523 | https://cal.com/optiscale360/discoverycall | Available across IST, GMT, EST, and PST
 
+## Blog Posts
+
+- [How to Make Your Website Show Up on ChatGPT and Perplexity (2026 Checklist)](https://optiscaleadvisors.com/blog/ai-technical-seo-audit-guide/): Eight-step checklist covering AI bot access, HTML rendering, structured data, content writing, brand identity, off-site mentions, freshness, and indexing. Includes a 20-minute self-audit method.
+- [Why Your Business Is Not Showing on ChatGPT](https://optiscaleadvisors.com/blog/why-your-business-is-not-showing-on-chatgpt): Explains the four main reasons businesses are invisible on AI search platforms and what each one means.
+- [How to Check If Your Business Appears on ChatGPT](https://optiscaleadvisors.com/blog/how-to-check-if-your-business-appears-on-chatgpt): Step-by-step method to test your AI search visibility across ChatGPT, Perplexity, and Google AI.
+- [What Is GEO (Generative Engine Optimisation)?](https://optiscaleadvisors.com/blog/what-is-geo-generative-engine-optimization): Plain-English explanation of GEO, how it differs from SEO, and why it matters for businesses in 2026.
+- [Why AI Search Traffic Converts Better Than Google](https://optiscaleadvisors.com/blog/ai-search-traffic-converts-better-than-google): Explains the intent difference between AI search visitors and Google search visitors, and why AI-referred visitors convert at a higher rate.
+- [Google Traffic Drop and AI Overviews in India](https://optiscaleadvisors.com/blog/google-traffic-drop-ai-overviews-india): Covers the traffic pattern changes Indian businesses are seeing as Google AI Overviews expands in India.
+
 ## Core Pages
 
 - [Home](https://optiscaleadvisors.com/): Overview of OptiScale's four services, the AI search visibility problem, and how businesses can fix it.
@@ -141,4 +150,4 @@ The Risk-Free Website Design service was originally launched under the RiskFreeS
 - Available across IST, GMT, EST, and PST
 - Address: 13, Rayakotta Rd, Old Rayakottah Hudco, Hosur, Tamil Nadu 635109, India
 
-Last updated: 2026-05-26
+Last updated: 2026-06-06
