@@ -12,11 +12,21 @@ Contact: vinod@optiscale360.com | +91 73972 25523 | https://cal.com/optiscale360
 
 - [How to Make Your Website Show Up on ChatGPT and Perplexity (2026 Checklist)](https://optiscaleadvisors.com/blog/ai-technical-seo-audit-guide/): Eight-step checklist covering AI bot access, HTML rendering, structured data, content writing, brand identity, off-site mentions, freshness, and indexing. Includes a 20-minute self-audit method.
 - [How to Track If ChatGPT and Perplexity Mention Your Business (Best Tools 2026)](https://optiscaleadvisors.com/blog/ai-visibility-tracking-tools/): Covers free and paid tools to monitor AI visibility, sorted by budget including options under ₹5,000 a month. Explains the visibility rate metric.
+- [AI Search Visibility for Indian Businesses: A Complete Guide (2026)](https://optiscaleadvisors.com/blog/ai-seo-complete-guide-2026/): Comprehensive guide on how ChatGPT, Perplexity, and Google AI Overviews work, why most Indian business websites are invisible on them, and the specific steps to fix that. Covers all major AI platforms and the key differences from traditional SEO.
+- [How to Optimise Website Content for AI Search in India](https://optiscaleadvisors.com/blog/ai-content-optimization-strategies/): Six practical fixes for making website content AI-citeable. Covers answer-first writing, FAQ structure, content depth, entity clarity, and the formatting signals AI engines use to decide what to quote.
+- [How to Appear on ChatGPT: A 5-Minute Visibility Test](https://optiscaleadvisors.com/blog/how-to-appear-on-chatgpt-visibility-test): Free step-by-step test to check if your business appears on ChatGPT, Perplexity, and Google AI. Any business owner can run it in under 5 minutes with no tools or accounts required.
+- [GEO vs SEO: The Difference Every Indian Business Owner Needs to Know](https://optiscaleadvisors.com/blog/geo-vs-seo-difference-explained): Side-by-side comparison of SEO and GEO. Covers goals, ranking signals, content formats, trust signals, and which to prioritise first depending on your situation.
 - [Why Your Business Is Not Showing on ChatGPT](https://optiscaleadvisors.com/blog/why-your-business-is-not-showing-on-chatgpt): Explains the four main reasons businesses are invisible on AI search platforms and what each one means.
 - [How to Check If Your Business Appears on ChatGPT](https://optiscaleadvisors.com/blog/how-to-check-if-your-business-appears-on-chatgpt): Step-by-step method to test your AI search visibility across ChatGPT, Perplexity, and Google AI.
 - [What Is GEO (Generative Engine Optimisation)?](https://optiscaleadvisors.com/blog/what-is-geo-generative-engine-optimization): Plain-English explanation of GEO, how it differs from SEO, and why it matters for businesses in 2026.
 - [Why AI Search Traffic Converts Better Than Google](https://optiscaleadvisors.com/blog/ai-search-traffic-converts-better-than-google): Explains the intent difference between AI search visitors and Google search visitors, and why AI-referred visitors convert at a higher rate.
 - [Google Traffic Drop and AI Overviews in India](https://optiscaleadvisors.com/blog/google-traffic-drop-ai-overviews-india): Covers the traffic pattern changes Indian businesses are seeing as Google AI Overviews expands in India.
+
+## Free Tools
+
+- [Free AI Search Tools Hub](https://optiscaleadvisors.com/tools): Index page for two free tools — the AI Prompt Generator and the Schema Markup Generator. No account required.
+- [AI Prompt Generator — What Your Customers Ask AI](https://optiscaleadvisors.com/tools/ai-prompts): Enter your business type, city, and service to generate the exact questions customers ask ChatGPT and Perplexity about businesses like yours. Shows 20 prompts across five categories: comparison, trust, local, specific, and process. Free to use, no login.
+- [Schema Markup Generator](https://optiscaleadvisors.com/tools/schema): Generates ready-to-paste JSON-LD schema markup for LocalBusiness, Service, FAQ, and Article schema types. Enter your business details and copy the output directly into your website's HTML head. Free to use, no login.
 
 ## Core Pages
 
@@ -151,4 +161,4 @@ The Risk-Free Website Design service was originally launched under the RiskFreeS
 - Available across IST, GMT, EST, and PST
 - Address: 13, Rayakotta Rd, Old Rayakottah Hudco, Hosur, Tamil Nadu 635109, India
 
-Last updated: 2026-06-06
+Last updated: 2026-06-08
