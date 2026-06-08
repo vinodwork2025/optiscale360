@@ -66,8 +66,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
     <style>
     /* Page background */
     body { background: #FAFAF8; }
@@ -636,15 +634,14 @@
 
     // ── EMAIL CAPTURE ──
     (function(){
-      var SHEET_URL = 'https://script.google.com/macros/s/AKfycbz6C0DDrpe-7hAmjPEG7QBl31zjMBSl9vGk9gfqumGF5qHqAJvhkkooS5ZDs0r9cj5Qng/exec';
-      emailjs.init('F25NFcVlXeUqES9qL');
+      var SCRIPT_URL = 'PASTE_APPS_SCRIPT_URL_HERE';
 
       document.getElementById('cap-send').addEventListener('click', async function(){
-        var emailEl  = document.getElementById('cap-email');
-        var errEl    = document.getElementById('cap-error');
-        var successEl= document.getElementById('cap-success');
-        var failEl   = document.getElementById('cap-fail');
-        var btn      = this;
+        var emailEl   = document.getElementById('cap-email');
+        var errEl     = document.getElementById('cap-error');
+        var successEl = document.getElementById('cap-success');
+        var failEl    = document.getElementById('cap-fail');
+        var btn       = this;
 
         var email = emailEl.value.trim();
         errEl.style.display = 'none';
@@ -659,62 +656,37 @@
         btn.disabled = true;
         btn.textContent = 'Sending...';
 
-        var bizName = document.getElementById('name').value.trim();
-        var bizType = document.getElementById('type').value;
-        var bizUrl  = document.getElementById('url').value.trim();
-        var bizCity = document.getElementById('city').value.trim();
-
-        // Lead notification to Vinod via EmailJS
-        var leadPromise = emailjs.send('service_g4erqhd', 'template_4au5yft', {
-          to_email:  'vinod@optiscaleadvisors.com',
-          from_name: email,
-          first_name:'',
-          last_name: '',
-          email:     email,
-          form_type: 'Free Tool Lead - Schema Generator',
-          timestamp: new Date().toLocaleString('en-IN', { dateStyle:'full', timeStyle:'long', timeZone:'Asia/Kolkata' }),
-          source:    'tools/schema',
-          referrer:  document.referrer || 'Direct',
-          message:   'Tool: AI Schema Generator\nBusiness name: ' + bizName + '\nBusiness type: ' + bizType + '\nWebsite URL: ' + bizUrl + '\nCity: ' + bizCity + '\nEmail: ' + email
-        });
-
-        // Schema code for user email
+        var bizName  = document.getElementById('name').value.trim();
+        var bizType  = document.getElementById('type').value;
+        var bizUrl   = document.getElementById('url').value.trim();
+        var bizCity  = document.getElementById('city').value.trim();
         var schemaCode = document.getElementById('output').textContent;
 
-        // Result email to user via EmailJS
-        var userPromise = emailjs.send('service_g4erqhd', 'template_4au5yft', {
-          to_email:  email,
-          from_name: 'OptiScale Advisors',
-          first_name:'',
-          last_name: '',
-          email:     'vinod@optiscaleadvisors.com',
-          form_type: 'Your schema markup — ' + bizName,
-          timestamp: new Date().toLocaleString('en-IN', { dateStyle:'full', timeStyle:'long', timeZone:'Asia/Kolkata' }),
-          source:    'tools/schema',
-          referrer:  '',
-          message:   'Schema markup for ' + bizName + ':\n\n' + schemaCode + '\n\n---\n3-step setup:\n1. Copy the code block above.\n2. Paste it inside the <head> tag of your homepage.\n3. Test free at https://search.google.com/test/rich-results\n\nWant AI engines to recommend your business?\nhttps://optiscaleadvisors.com/ai-visibility-audit'
-        });
+        var userMsg = 'Schema markup for ' + bizName + ':\n\n'
+          + schemaCode
+          + '\n\n---\n3-step setup:\n1. Copy the code block above.\n2. Paste it inside the <head> tag of your homepage.\n3. Test free at https://search.google.com/test/rich-results\n\nWant AI engines to recommend your business?\nhttps://optiscaleadvisors.com/ai-visibility-audit';
 
-        // Sheet POST for lead logging
-        var sheetParams = new URLSearchParams();
-        sheetParams.append('email',    email);
-        sheetParams.append('name',     bizName || email);
-        sheetParams.append('business', bizName);
-        sheetParams.append('industry', bizType);
-        sheetParams.append('website',  bizUrl);
-        sheetParams.append('source',   'Schema Generator Tool');
-        sheetParams.append('notes',    'City: ' + bizCity);
-        var sheetPromise = fetch(SHEET_URL, { method:'POST', body:sheetParams, mode:'no-cors' });
+        var params = new URLSearchParams();
+        params.append('email',        email);
+        params.append('name',         bizName || email);
+        params.append('business',     bizName);
+        params.append('city',         bizCity);
+        params.append('industry',     bizType);
+        params.append('website',      bizUrl);
+        params.append('source',       'Schema Generator Tool');
+        params.append('notes',        'City: ' + bizCity);
+        params.append('subject',      'Your schema markup — ' + bizName);
+        params.append('user_message', userMsg);
 
-        var results = await Promise.allSettled([leadPromise, userPromise, sheetPromise]);
-        btn.disabled = false;
-        btn.textContent = 'Send it to me';
-
-        if(results[0].status === 'fulfilled' || results[1].status === 'fulfilled'){
+        try {
+          await fetch(SCRIPT_URL, { method:'POST', body:params, mode:'no-cors' });
           successEl.style.display = 'block';
-        } else {
+        } catch(err) {
           failEl.style.display = 'block';
         }
+
+        btn.disabled = false;
+        btn.textContent = 'Send it to me';
       });
     })();
     // ── END EMAIL CAPTURE ──

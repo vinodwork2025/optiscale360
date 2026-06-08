@@ -64,8 +64,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
     <style>
     /* Page background */
     body { background: #FAFAF8; }
@@ -676,15 +674,14 @@
 
     // ── EMAIL CAPTURE ──
     (function(){
-      var SHEET_URL = 'https://script.google.com/macros/s/AKfycbz6C0DDrpe-7hAmjPEG7QBl31zjMBSl9vGk9gfqumGF5qHqAJvhkkooS5ZDs0r9cj5Qng/exec';
-      emailjs.init('F25NFcVlXeUqES9qL');
+      var SCRIPT_URL = 'PASTE_APPS_SCRIPT_URL_HERE';
 
       document.getElementById('cap-send').addEventListener('click', async function(){
-        var emailEl  = document.getElementById('cap-email');
-        var errEl    = document.getElementById('cap-error');
-        var successEl= document.getElementById('cap-success');
-        var failEl   = document.getElementById('cap-fail');
-        var btn      = this;
+        var emailEl   = document.getElementById('cap-email');
+        var errEl     = document.getElementById('cap-error');
+        var successEl = document.getElementById('cap-success');
+        var failEl    = document.getElementById('cap-fail');
+        var btn       = this;
 
         var email = emailEl.value.trim();
         errEl.style.display = 'none';
@@ -703,57 +700,33 @@
         var city    = document.getElementById('city').value.trim();
         var service = document.getElementById('service').value.trim();
 
-        // Lead notification to Vinod via EmailJS
-        var leadPromise = emailjs.send('service_g4erqhd', 'template_4au5yft', {
-          to_email:  'vinod@optiscaleadvisors.com',
-          from_name: email,
-          first_name:'',
-          last_name: '',
-          email:     email,
-          form_type: 'Free Tool Lead - AI Prompts',
-          timestamp: new Date().toLocaleString('en-IN', { dateStyle:'full', timeStyle:'long', timeZone:'Asia/Kolkata' }),
-          source:    'tools/ai-prompts',
-          referrer:  document.referrer || 'Direct',
-          message:   'Tool: What Your Customers Ask AI\nBusiness type: ' + biz + '\nCity: ' + city + '\nService: ' + service + '\nEmail: ' + email
-        });
-
-        // Collect generated questions from DOM
-        var questionEls = document.querySelectorAll('.prompt .q');
+        var questionEls  = document.querySelectorAll('.prompt .q');
         var questionList = Array.from(questionEls).map(function(el){ return el.textContent.trim(); }).join('\n');
 
-        // Result email to user via EmailJS
-        var userPromise = emailjs.send('service_g4erqhd', 'template_4au5yft', {
-          to_email:  email,
-          from_name: 'OptiScale Advisors',
-          first_name:'',
-          last_name: '',
-          email:     'vinod@optiscaleadvisors.com',
-          form_type: 'Your AI question list — ' + biz + ' in ' + city,
-          timestamp: new Date().toLocaleString('en-IN', { dateStyle:'full', timeStyle:'long', timeZone:'Asia/Kolkata' }),
-          source:    'tools/ai-prompts',
-          referrer:  '',
-          message:   'Questions your customers ask AI about ' + biz + ' in ' + city + ':\n\n' + questionList + '\n\n---\nTo rank for these, your business needs to appear in AI answers on ChatGPT and Perplexity.\n\nFree AI visibility check: https://optiscaleadvisors.com/ai-visibility-audit'
-        });
+        var userMsg = 'Questions your customers ask AI about ' + biz + ' in ' + city + ':\n\n'
+          + questionList
+          + '\n\n---\nTo rank for these, your business needs to appear in AI answers on ChatGPT and Perplexity.\n\nFree AI visibility check: https://optiscaleadvisors.com/ai-visibility-audit';
 
-        // Sheet POST for lead logging
-        var sheetParams = new URLSearchParams();
-        sheetParams.append('email',   email);
-        sheetParams.append('name',    email);
-        sheetParams.append('business', biz);
-        sheetParams.append('industry', service || biz);
-        sheetParams.append('source',  'AI Prompts Tool');
-        sheetParams.append('notes',   'City: ' + city);
-        var sheetPromise = fetch(SHEET_URL, { method:'POST', body:sheetParams, mode:'no-cors' });
+        var params = new URLSearchParams();
+        params.append('email',        email);
+        params.append('name',         email);
+        params.append('business',     biz);
+        params.append('city',         city);
+        params.append('industry',     service || biz);
+        params.append('source',       'AI Prompts Tool');
+        params.append('notes',        'City: ' + city);
+        params.append('subject',      'Your AI question list — ' + biz + ' in ' + city);
+        params.append('user_message', userMsg);
 
-        var results = await Promise.allSettled([leadPromise, userPromise, sheetPromise]);
-        btn.disabled = false;
-        btn.textContent = 'Send me the list';
-
-        if(results[0].status === 'fulfilled' || results[1].status === 'fulfilled'){
+        try {
+          await fetch(SCRIPT_URL, { method:'POST', body:params, mode:'no-cors' });
           successEl.style.display = 'block';
-        } else {
+        } catch(err) {
           failEl.style.display = 'block';
         }
+
+        btn.disabled = false;
+        btn.textContent = 'Send me the list';
       });
     })();
     // ── END EMAIL CAPTURE ──
