@@ -10,6 +10,7 @@ Contact: vinod@optiscale360.com | +91 73972 25523 | https://cal.com/optiscale360
 
 ## Blog Posts
 
+- [Lead Generation Activities That Won't Help You Get Customers](https://optiscaleadvisors.com/blog/lead-generation-activities-that-wont-help/): Ten common marketing activities that waste money without bringing real buyers — buying lead lists, bulk WhatsApp blasts, boosting posts, cheap-click ads, spreading across too many channels, slow replies, friction-heavy contact, slow websites, no tracking, and thin content. Covers the real reason each fails and what to do instead. Written for small business owners in India.
 - [How to Make Your Website Show Up on ChatGPT and Perplexity (2026 Checklist)](https://optiscaleadvisors.com/blog/ai-technical-seo-audit-guide/): Eight-step checklist covering AI bot access, HTML rendering, structured data, content writing, brand identity, off-site mentions, freshness, and indexing. Includes a 20-minute self-audit method.
 - [How to Track If ChatGPT and Perplexity Mention Your Business (Best Tools 2026)](https://optiscaleadvisors.com/blog/ai-visibility-tracking-tools/): Covers free and paid tools to monitor AI visibility, sorted by budget including options under ₹5,000 a month. Explains the visibility rate metric.
 - [AI Search Visibility for Indian Businesses: A Complete Guide (2026)](https://optiscaleadvisors.com/blog/ai-seo-complete-guide-2026/): Comprehensive guide on how ChatGPT, Perplexity, and Google AI Overviews work, why most Indian business websites are invisible on them, and the specific steps to fix that. Covers all major AI platforms and the key differences from traditional SEO.
@@ -161,4 +162,4 @@ The Risk-Free Website Design service was originally launched under the RiskFreeS
 - Available across IST, GMT, EST, and PST
 - Address: 13, Rayakotta Rd, Old Rayakottah Hudco, Hosur, Tamil Nadu 635109, India
 
-Last updated: 2026-06-08
+Last updated: 2026-06-09
