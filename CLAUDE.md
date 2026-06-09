@@ -787,3 +787,20 @@ A page with these does not fear updates. A page without them is always one updat
 The mental model: imagine ChatGPT is deciding whether to keep your page in its retrieval index for the next 12 months. Would it? If yes, you've built something that lasts. If not, you've built filler.
 
 That is the entire game. Follow this rulebook on every task, every time.
+
+---
+
+## Part P: The Mandatory Publish Checklist
+
+Every time a page or blog post is added or updated, ALL of the following files must be touched before committing. No exceptions.
+
+| File | What to do |
+|------|-----------|
+| **Page/post HTML** | Create or edit the file |
+| **`sitemap.xml`** | Add URL (trailing slash for folder posts, no slash for `.html` posts); bump blog index `lastmod` to today |
+| **`blog/index.html`** | Add card at top of the correct section (new posts → top of Latest Guides) |
+| **`llms.txt`** | Add entry under the relevant section; bump `Last updated` date |
+| **`blog/feed.xml`** | Add `<item>` at top; bump `<lastBuildDate>` |
+| **`_redirects`** | Only if a `.html` file needs a clean-URL redirect — folder-based posts resolve automatically on Cloudflare |
+
+Before writing the commit message, run through this list. If any file is not updated, update it first. Batch into one commit where possible.
