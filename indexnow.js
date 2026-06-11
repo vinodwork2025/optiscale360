@@ -19,6 +19,7 @@ const URLS = [
   'https://optiscaleadvisors.com/press',
   'https://optiscaleadvisors.com/case-studies/design-intend/',
   'https://optiscaleadvisors.com/seo-packages',
+  'https://optiscaleadvisors.com/seo-services-hosur',
   'https://optiscaleadvisors.com/blog/',
   'https://optiscaleadvisors.com/blog/ai-search-traffic-converts-better-than-google',
   'https://optiscaleadvisors.com/blog/google-traffic-drop-ai-overviews-india',
