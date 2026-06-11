@@ -45,6 +45,11 @@ Contact: vinod@optiscale360.com | +91 73972 25523 | https://cal.com/optiscale360
 - [SEO Packages & Pricing in India](https://optiscaleadvisors.com/seo-packages): Monthly SEO packages for small and medium businesses in India. Covers honest pricing ranges (₹10,000–₹2,00,000+), what a genuine package includes, red flags to avoid, five questions to ask any agency, AI search optimization, and the OptiScale 90-day AI visibility guarantee. No lock-in contracts.
 - [AI-Ready Lead-Gen Website](https://optiscaleadvisors.com/ai-ready-website): Premium custom websites starting at ₹50,000 / USD 1,500 with schema markup, FAQ architecture, sub-2-second load times, mobile-first design, Google Business Profile setup, and analytics integration. Three packages: Starter ₹50,000 / USD 1,500, Growth ₹75,000 / USD 2,250, Authority ₹1,20,000 / USD 3,600.
 - [SEO Services for Hosur Businesses](https://optiscaleadvisors.com/seo-services-hosur): Local SEO and AI search optimization page for Hosur, Tamil Nadu. Covers all six services (SEO audit from ₹7,500, AI visibility audit from ₹15,000, Local SEO and Google Business Profile from ₹10,000, AI-ready websites, schema markup, monthly care), the Design Intend 60-day case study, industry chips for Hosur sectors, and eight Hosur-specific FAQs. Based at No.13, Rayakota Road, Hosur.
+- [SEO Content Strategy & CRO Hosur](https://optiscaleadvisors.com/seo-content-strategy-hosur): Content strategy and conversion rate optimisation service for Hosur businesses. Covers keyword research mapped to real buyer searches, content structured for both Google and AI engines, and CRO work to turn visitors into enquiries. Includes an honesty section on realistic timelines and a case study example.
+- [Technical SEO & Website Speed Hosur](https://optiscaleadvisors.com/technical-seo-hosur): Technical SEO audit and implementation service for Hosur businesses. Covers crawlability, Core Web Vitals, schema markup, mobile performance, duplicate content, and AI bot access. Six-point service breakdown with realistic expectations and Hosur-specific FAQs.
+- [Local SEO & Google Business Profile Hosur](https://optiscaleadvisors.com/local-seo-hosur): Local SEO service for Hosur businesses targeting nearby customers. Covers Google Business Profile optimisation, local citation building, map pack ranking, and review strategy. Three-service breakdown with Hosur-specific FAQs on ranking timelines, GBP suspension, and multi-location SEO.
+- [AI Search Optimization Hosur](https://optiscaleadvisors.com/ai-search-optimization-hosur): Generative Engine Optimisation (GEO) service for Hosur businesses wanting to appear in ChatGPT, Perplexity, Google AI Overviews, Bing Copilot, and Gemini answers. Three-step process: audit visibility gaps, fix structural and content signals, monitor and improve. Six Hosur-specific FAQs on AI search visibility.
+- [Website Design Hosur](https://optiscaleadvisors.com/website-design-hosur): Risk-free website design service for Hosur businesses. Pay only after approving the finished site. Covers custom design, mobile optimisation, AI search readiness, schema markup, and fast delivery. Seven FAQs covering pricing, timeline, CMS, and the pay-after-approval model.
 
 ## Company Facts
 
@@ -165,4 +170,4 @@ The Risk-Free Website Design service was originally launched under the RiskFreeS
 - Available across IST, GMT, EST, and PST
 - Address: No.13, Rayakota Road, Hosur, Tamil Nadu 635109, India
 
-Last updated: 2026-06-11
+Last updated: 2026-06-12
