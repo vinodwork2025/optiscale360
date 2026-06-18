@@ -94,7 +94,7 @@
   <!-- Blog index -->
   <url>
     <loc>https://optiscaleadvisors.com/blog/</loc>
-    <lastmod>2026-06-10</lastmod>
+    <lastmod>2026-06-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -144,6 +144,18 @@
   </url>
 
   <!-- Recent blog posts -->
+  <url>
+    <loc>https://optiscaleadvisors.com/blog/seo-for-real-estate-india/</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://optiscaleadvisors.com/blog/seo-for-healthcare-india/</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <url>
     <loc>https://optiscaleadvisors.com/blog/seo-packages-india/</loc>
     <lastmod>2026-06-10</lastmod>
