@@ -16,7 +16,7 @@
 /website-design-hosur.html          /website-design-hosur          301
 /compare.html                       /compare                   301
 /case-studies.html                  /case-studies              301
-/resources.html                     /resources                 301
+/resources.html                     /                          301
 /press.html                         /press                     301
 /privacy-policy.html                /privacy-policy            301
 /terms-of-service.html              /terms-of-service          301
@@ -30,7 +30,6 @@
 /Free-AI-Ready-Website.html         /ai-ready-website          301
 
 # Legacy pages redirected per Phase 3 plan
-/services                           /                          301
 /case-studies                       /case-studies/design-intend/   301
 
 # Admin / test pages — redirect to home
@@ -53,19 +52,20 @@
 /landing-page-new                   /                          301
 /landing-page-new.html              /                          301
 
-# Resource sub-pages → parent (old design, no canonical)
-/resources/best-practices           /resources                 301
-/resources/best-practices.html      /resources                 301
-/resources/webinars-training        /resources                 301
-/resources/webinars-training.html   /resources                 301
-/resources/business-templates       /resources                 301
-/resources/business-templates.html  /resources                 301
-/resources/industry-insights        /resources                 301
-/resources/industry-insights.html   /resources                 301
-/resources/roi-calculator           /resources                 301
-/resources/roi-calculator.html      /resources                 301
-/resources/support-center           /resources                 301
-/resources/support-center.html      /resources                 301
+# Resources — deleted, redirect to home
+/resources                          /                          301
+/resources/best-practices           /                          301
+/resources/best-practices.html      /                          301
+/resources/webinars-training        /                          301
+/resources/webinars-training.html   /                          301
+/resources/business-templates       /                          301
+/resources/business-templates.html  /                          301
+/resources/industry-insights        /                          301
+/resources/industry-insights.html   /                          301
+/resources/roi-calculator           /                          301
+/resources/roi-calculator.html      /                          301
+/resources/support-center           /                          301
+/resources/support-center.html      /                          301
 
 # Deleted blog pages → blog index
 /blog.html                          /blog/                     301
@@ -82,6 +82,16 @@
 /blog/ai-keyword-research-tools-guide     /blog/ai-visibility-tracking-tools/    301
 /blog/ai-seo-complete-guide-2025/         /blog/ai-seo-complete-guide-2026/      301
 /blog/ai-seo-complete-guide-2025          /blog/ai-seo-complete-guide-2026/      301
+
+# Blog posts moved to service URLs
+/blog/seo-for-real-estate-india/    /seo-for-real-estate/      301
+/blog/seo-for-real-estate-india     /seo-for-real-estate/      301
+/blog/seo-for-healthcare-india/     /seo-for-healthcare/       301
+/blog/seo-for-healthcare-india      /seo-for-healthcare/       301
+
+# Dead service URLs — redirect to services hub
+/services/operations-scaling        /services                  301
+/services/ai-llm-seo                /services                  301
 
 # Deleted blog posts → blog index
 /blog/ai-seo-ultimate-guide/        /blog/                     301
