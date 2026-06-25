@@ -804,3 +804,13 @@ Every time a page or blog post is added or updated, ALL of the following files m
 | **`_redirects`** | Only if a `.html` file needs a clean-URL redirect — folder-based posts resolve automatically on Cloudflare |
 
 Before writing the commit message, run through this list. If any file is not updated, update it first. Batch into one commit where possible.
+
+## Site integrity rules (do not break)
+
+- Cloudflare Pages serves an existing file over any _redirects rule. To retire a page, DELETE the file AND add the 301. Never leave an orphan file with a redirect pointing elsewhere.
+- Every redirect must resolve in ONE hop. No chains.
+- Every blog post is a folder with index.html and a trailing-slash URL. No flat /blog/x.html files.
+- Booking link is exactly https://calendly.com/vinod-optiscaleadvisors/15min-discovery-call everywhere. No cal.com links.
+- Contact email is exactly info@optiscaleadvisors.com everywhere. No @optiscale360.com.
+- No "optiscale360" or "RiskFreeSites" brand text in any public page.
+- sitemap.xml, the actual files on disk, and llms.txt must always agree. After any add/delete/rename, run scripts/verify-site.sh and fix anything it flags before committing.

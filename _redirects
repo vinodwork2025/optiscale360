@@ -29,8 +29,6 @@
 /Free-AI-Ready-Website              /ai-ready-website          301
 /Free-AI-Ready-Website.html         /ai-ready-website          301
 
-# Legacy pages redirected per Phase 3 plan
-/case-studies                       /case-studies/design-intend/   301
 
 # Admin / test pages — redirect to home
 /admin                              /                          301
@@ -105,3 +103,19 @@
 /blog/posts/business-automation-ai-tools       /blog/          301
 /blog/posts/seo-ai-optimization-guide          /blog/          301
 /blog/posts/website-performance-optimization-2024 /blog/       301
+
+# Flat blog posts converted to folder URLs (trailing-slash canonical)
+/blog/ai-search-traffic-converts-better-than-google.html   /blog/ai-search-traffic-converts-better-than-google/   301
+/blog/ai-search-traffic-converts-better-than-google        /blog/ai-search-traffic-converts-better-than-google/   301
+/blog/geo-vs-seo-difference-explained.html                 /blog/geo-vs-seo-difference-explained/                 301
+/blog/geo-vs-seo-difference-explained                      /blog/geo-vs-seo-difference-explained/                 301
+/blog/google-traffic-drop-ai-overviews-india.html          /blog/google-traffic-drop-ai-overviews-india/          301
+/blog/google-traffic-drop-ai-overviews-india               /blog/google-traffic-drop-ai-overviews-india/          301
+/blog/how-to-appear-on-chatgpt-visibility-test.html        /blog/how-to-appear-on-chatgpt-visibility-test/        301
+/blog/how-to-appear-on-chatgpt-visibility-test             /blog/how-to-appear-on-chatgpt-visibility-test/        301
+/blog/how-to-check-if-your-business-appears-on-chatgpt.html  /blog/how-to-check-if-your-business-appears-on-chatgpt/  301
+/blog/how-to-check-if-your-business-appears-on-chatgpt     /blog/how-to-check-if-your-business-appears-on-chatgpt/  301
+/blog/what-is-geo-generative-engine-optimization.html      /blog/what-is-geo-generative-engine-optimization/     301
+/blog/what-is-geo-generative-engine-optimization           /blog/what-is-geo-generative-engine-optimization/     301
+/blog/why-your-business-is-not-showing-on-chatgpt.html     /blog/why-your-business-is-not-showing-on-chatgpt/    301
+/blog/why-your-business-is-not-showing-on-chatgpt          /blog/why-your-business-is-not-showing-on-chatgpt/    301
